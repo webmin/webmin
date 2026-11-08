@@ -63,7 +63,7 @@ These tests submit CGI forms and force database write and lookup failures. They 
 
 `api-only-cluster.py` tests fast RPC between two isolated Webmin instances using local account files. Prepare both sandboxes under `/tmp/webmin-api-...` without fixture users. The source must listen on guest loopback port 18443 and the destination on port 18444. Include `t/fixtures/api-only-cluster.pl` in the source's `candidate.tar`. Also include the full `cluster-webmin` module if the installed package lacks it.
 
-Run `python3 fixtures/api-only-cluster.py SOURCE-SANDBOX DESTINATION-SANDBOX`. The test checks dry runs, failed reads and writes, cleanup, retries and accounts without API-only restrictions. Stop and remove both sandboxes afterwards.
+Run `python3 fixtures/api-only-cluster.py SOURCE-SANDBOX DESTINATION-SANDBOX`. The test checks dry runs, failed reads and writes, cleanup, retries, and accounts without API-only restrictions. It also checks that group restrictions reach existing and nested members without replacing personal endpoints. Stop and remove both sandboxes afterwards.
 
 ## Coverage reports
 

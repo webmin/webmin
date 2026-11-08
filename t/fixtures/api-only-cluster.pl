@@ -57,6 +57,38 @@ elsif ($mode eq 'inspect') {
         locked => $user && $user->{pass} =~ /^!/ ? 1 : 0,
         deny => $user->{deny}, api_only => $acl{api_only}});
 }
+elsif ($mode eq 'group-members') {
+    # Add a nested group whose member already has a personal endpoint.
+    acl::create_user({name => $f->{clone}, pass => '!', modules => []});
+    save_module_acl({api_only => 'personal-api.cgi'}, $f->{clone}, '', 1);
+    acl::create_group({name => $f->{group}.'_nested', modules => [],
+        members => [$f->{clone}]});
+}
+elsif ($mode eq 'group-source') {
+    # Transfer only the parent group. Its users already exist on the target.
+    my $group = acl::get_group($f->{group});
+    $group->{members} = [$f->{user}, '@'.$f->{group}.'_nested'];
+    acl::modify_group($f->{group}, $group);
+    save_group_module_acl({api_only => 'cluster-api.cgi'}, $f->{group}, '', 1);
+    # Cache only the parent group so synchronization does not copy users.
+    foreign_require('cluster-webmin', 'cluster-webmin-lib.pl');
+    foreign_call('cluster-webmin', 'save_webmin_host',
+        {id => 0, users => [], groups => [$group], modules => [], themes => []});
+    foreign_call('cluster-webmin', 'save_webmin_host',
+        {id => $f->{server_id}, users => [], groups => [], modules => [], themes => []});
+}
+elsif ($mode eq 'inspect-group') {
+    # Report only the nested group's and member's endpoints.
+    my %nested = get_group_module_acl($f->{group}.'_nested', '', 1);
+    my %personal = get_module_acl($f->{clone}, '', 1, 1);
+    print encode_json({nested => $nested{api_only}, personal => $personal{api_only}});
+}
+elsif ($mode eq 'cleanup-group') {
+    # Remove the target parent, nested group and extra fixture user.
+    acl::delete_group($_) for grep { acl::get_group($_) }
+        ($f->{group}, $f->{group}.'_nested');
+    acl::delete_user($f->{clone}) if acl::get_user($f->{clone});
+}
 elsif ($mode eq 'delete-copy') {
     # Remove a successful or partial copy before another synchronization test.
     acl::delete_user($f->{user}) if acl::get_user($f->{user});

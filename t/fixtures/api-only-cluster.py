@@ -61,6 +61,8 @@ try:
     # The sandbox registry must contain only the chosen loopback destination.
     for entry in (source / 'config/servers').glob('*.serv'):
         entry.unlink()
+    # Packaged guests may not have this module's configuration directory yet.
+    (source / 'config/cluster-webmin').mkdir(exist_ok=True)
     shutil.rmtree(source / 'config/cluster-webmin/hosts', ignore_errors=True)
     helper('setup')
     operate(destination, 'destination')
@@ -124,6 +126,25 @@ try:
     base = 'http://127.0.0.1:18444/'
     status, body = request('index.cgi', who='user')
     check(status == 200, 'ordinary synchronized account can open UI', body)
+    # Group sync must restrict existing members and keep personal endpoints.
+    operate(destination, 'group-members')
+    operate(source, 'group-source')
+    base = 'http://127.0.0.1:18443/'
+    status, body = request('cluster-webmin/sync.cgi',
+        {'server': fixture['server_id'], 'users_mode': '0',
+         'groups_mode': '2', 'gsel': fixture['group']})
+    # Inspect saved ACLs independently of the synchronization response.
+    current = inspect()
+    inherited = json.loads(operate(destination, 'inspect-group'))
+    check(current['api_only'] == 'cluster-api.cgi', 'group sync restricts existing user', body)
+    check(inherited == {'nested': 'cluster-api.cgi', 'personal': 'personal-api.cgi'},
+          'group sync reaches nested groups and retains personal endpoints', inherited)
+    # The existing login must now allow only its inherited endpoint.
+    base = 'http://127.0.0.1:18444/'
+    status, body = request('index.cgi', who='user')
+    check(status == 403, 'existing group member can no longer open UI', body)
+    status, body = request('cluster-api.cgi', who='user')
+    check(status == 200 and 'CLUSTER_OK' in body, 'existing member can use inherited API', body)
     print('All live cluster checks passed', flush=True)
 finally:
     base = 'http://127.0.0.1:18443/'
@@ -135,6 +156,7 @@ finally:
         target_acl.rmdir()
     # Remove the copied user, source fixtures and temporary endpoint.
     operate(destination, 'delete-copy')
+    operate(destination, 'cleanup-group')
     helper('cleanup')
     path.unlink(missing_ok=True)
     (destination / 'root/cluster-api.cgi').unlink(missing_ok=True)

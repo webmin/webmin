@@ -48,22 +48,25 @@ print &ui_table_row($text{'gedit_group'},
 print &ui_table_row($text{'gedit_desc'},
 	&ui_textbox("desc", $group{'desc'}, 60));
 
-# Find and show the parent group
+# Find the parent even when this editor cannot change group membership.
 my @glist = grep { $_->{'name'} ne $group{'name'} } &list_groups();
+my ($parent) = grep {
+	&indexof('@'.$group{'name'}, @{$_->{'members'}}) >= 0
+	} @glist;
+my $memg = $parent ? $parent->{'name'} : undef;
+# Offer assignable groups and retain the current parent in the selector.
 my @mcan = $access{'gassign'} eq '*' ?
 		( ( map { $_->{'name'} } @glist ), '_none' ) :
 		split(/\s+/, $access{'gassign'});
 my %gcan = map { $_, 1 } @mcan;
 if (@glist && %gcan) {
+	# Show the selector only when group assignment is available.
 	my @opts = ( );
 	if ($gcan{'_none'}) {
+		# Allow leaving the parent group only with permission.
 		push(@opts, [ undef, "&lt;$text{'edit_none'}&gt;" ]);
 		}
-	my $memg = undef;
 	foreach my $g (@glist) {
-		if (&indexof('@'.$group{'name'}, @{$g->{'members'}}) >= 0) {
-			$memg = $g->{'name'};
-			}
 		next if (!$gcan{$g->{'name'}} && $memg ne $g->{'name'});
 		push(@opts, [ $g->{'name'} ]);
 		}
@@ -135,8 +138,8 @@ print &ui_table_row(undef, &ui_links_row(\@links).
                            &ui_links_row(\@links), 2);
 print &ui_hidden_table_end("mods");
 
-# Add global ACL section
-if ($access{'acl'} && $in{'group'}) {
+# Hide global permission controls for groups that inherit from a parent.
+if ($access{'acl'} && $in{'group'} && !$parent) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
 	my %uaccess = &get_group_module_acl($in{'group'}, "");

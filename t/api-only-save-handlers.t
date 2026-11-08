@@ -19,10 +19,11 @@ $text{acl_eapi_only} = 'Invalid API endpoint';
 # load_routine(file, name): load production helpers without host initialization.
 sub load_routine {
     my ($file, $name) = @_;
-    # Extract just the requested routine, ending at the next POD section.
+    # Load from the named routine to the next POD section or end of file.
+    # Include any following CGI helpers within that section.
     open(my $fh, '<', "$FindBin::Bin/../$file") or die $!;
-    local $/; my $source = <$fh>;
-    $source =~ /^(sub \Q$name\E\n\{.*?)(?=^=head2|\z)/ms or die "Missing $name";
+    local $/; my $routine_source = <$fh>;
+    $routine_source =~ /^(sub \Q$name\E\n\{.*?)(?=^=head2|\z)/ms or die "Missing $name";
     eval "no strict; $1"; die $@ if $@;
 }
 # Load real storage and validation helpers while replacing host integration.
@@ -185,4 +186,62 @@ subtest 'invalid endpoint is rejected before group changes' => sub {
     ok(get_group('before') && !get_group('after'), 'rejected request does not rename group');
     is(get_group('before')->{desc}, 'original', 'rejected request does not change description');
 };
+
+# A hidden parent selector must not detach inherited permissions.
+for my $backend ('', 'mysql') {
+    subtest 'omitted subgroup parent on '.($backend || 'files') => sub {
+        # The editor cannot change the parent, so the form omits that field.
+        reset_fixture($backend);
+        group_fixture('parent', ['@child'], 'virtual-server/remote.cgi');
+        group_fixture('child', [], 'virtual-server/remote.cgi');
+        $access{gassign} = '';
+        # Submitting an unrestricted policy must not clear inherited limits.
+        is(run_cgi('save_group', {old => 'child', name => 'child', mod => 'example', acl_security_form => 1, api_only_def => 1}), '', 'save without selector succeeds');
+        my %policy = get_group_module_acl('child', '', 1);
+        is($policy{api_only}, 'virtual-server/remote.cgi', 'inherited endpoint is retained');
+        is_deeply(get_group('child')->{modules}, ['example'], 'inherited modules are retained');
+        ok(grep($_ eq '@child', @{get_group('parent')->{members}}), 'parent membership is retained');
+    };
+}
+
+# Use real storage and synchronization, replacing only the RPC transport.
+load_routine('cluster-webmin/sync.cgi', 'sync_account');
+# remote_error_setup(&handler): let local storage exceptions propagate.
+*main::remote_error_setup = sub {};
+# remote_foreign_require(host, module, file): helpers are already loaded.
+*main::remote_foreign_require = sub {};
+# remote_foreign_call(host, module, function, [args...]): supply the source
+# policy or invoke the destination's real storage routine with args.
+*main::remote_foreign_call = sub {
+    my ($host, $module, $function, @args) = @_;
+    if ($host eq 'source') {
+        # Only the source group's global policy is relevant to this transfer.
+        die "Unexpected source routine $function" unless $function eq 'get_group_module_acl';
+        return $args[1] eq '' ? (api_only => 'virtual-server/remote.cgi', rpc => 0) : ();
+    }
+    # Destination calls operate on the isolated file or SQLite backend.
+    no strict 'refs';
+    return &{$function}(@args);
+};
+for my $backend ('', 'mysql') {
+    subtest 'group sync reaches existing members on '.($backend || 'files') => sub {
+        # Both users already exist; only one has a personal endpoint.
+        reset_fixture($backend);
+        for my $name ('member', 'personal') {
+            create_user({name => $name, pass => '*LK*', modules => ['example']});
+        }
+        save_module_acl({api_only => 'other/api.cgi'}, 'personal', '', 1);
+        group_fixture('nested', ['member', 'personal'], '');
+        # Synchronize a new parent without recreating its nested members.
+        my $err = sync_account({name => 'synced', members => ['@nested'], modules => ['example'], source => {host => 'source'}}, {host => 'destination'}, 'group');
+        is($err, undef, 'synchronization succeeds');
+        # Inheritance reaches nested members without replacing personal policy.
+        my %nested = get_group_module_acl('nested', '', 1);
+        is($nested{api_only}, 'virtual-server/remote.cgi', 'nested group inherits the endpoint');
+        my %member = get_module_acl('member', '', 1, 1);
+        is($member{api_only}, 'virtual-server/remote.cgi', 'existing nested user inherits the endpoint');
+        my %personal = get_module_acl('personal', '', 1, 1);
+        is($personal{api_only}, 'other/api.cgi', 'personal endpoint is retained');
+    };
+}
 done_testing();

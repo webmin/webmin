@@ -82,9 +82,10 @@ if ($in{'old'}) {
 		}
 	}
 
-my $newgroup;
+# Keep the current parent and its permissions when the selector is omitted.
+my $newgroup = $oldgroup;
 if (defined($in{'group'})) {
-	# Check if group is allowed
+	# Check permission to change or remove the parent.
 	if ($access{'gassign'} ne '*') {
 		my @gcan = split(/\s+/, $access{'gassign'});
 		$in{'group'} && &indexof($in{'group'}, @gcan) >= 0 ||
@@ -137,9 +138,10 @@ if (!$in{'old'}) {
 	}
 
 if ($newgroup) {
+	# Use this parent even when no parent was submitted.
 	# Copy inherited ACLs before a rename or any cloned permissions.
 	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
-	&copy_group_acl_files($in{'group'}, $name,
+	&copy_group_acl_files($newgroup->{'name'}, $name,
 			      [ @{$newgroup->{'modules'}}, "" ]);
 	}
 

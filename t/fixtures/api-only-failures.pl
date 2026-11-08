@@ -53,6 +53,12 @@ elsif ($mode eq 'cleanup-parent') {
     # Remove the extra parent even if an earlier assertion aborted the test.
     acl::delete_group($f->{parent}) if acl::get_group($f->{parent});
 }
+elsif ($mode eq 'subgroup-editor') {
+    # This editor can edit permissions, but cannot select a parent group.
+    save_module_acl({users => $f->{user}, acl => 1, gassign => '',
+        groups => 1, create => 0, delete => 0, rename => 0},
+        $f->{editor}, 'acl', 1);
+}
 else {
     # Faults affect only the sandbox database created by api-only-userdb.py.
     my $userdb = get_userdb_string();

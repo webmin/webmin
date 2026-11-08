@@ -141,7 +141,7 @@ foreach $host (@phosts) {
 # sync_account(&account, &server, type)
 # Copy a source account and its ACLs to server. type is 'user' or 'group'.
 # Return undef on success or an error string on failure.
-# New users cannot log in until all ACLs have been copied.
+# Restore new users' original login settings after copying their ACLs.
 sub sync_account
 {
 my ($account, $server, $type) = @_;
@@ -149,7 +149,7 @@ my ($account, $server, $type) = @_;
 my %pending = %$account;
 delete @pending{'id', 'proto', 'source'};
 if ($type eq 'user') {
-	# Block password, certificate and configured IP-based logins.
+	# Set temporary password, certificate and IP login restrictions.
 	$pending{'pass'} = '!'.$account->{'pass'};
 	$pending{'cert'} = undef;
 	$pending{'allow'} = undef;
@@ -174,6 +174,22 @@ my $ok = eval {
 			}
 		&remote_foreign_call($server->{'host'}, 'acl', 'modify_user',
 				     $account->{'name'}, $user);
+		}
+	else {
+		# Read the transferred group's policy for its existing members.
+		my %acl = &remote_foreign_call($server->{'host'}, 'acl',
+			'get_group_module_acl', $account->{'name'}, '', 1);
+		if ($acl{'api_only'}) {
+			# Copy global ACLs to existing and nested members.
+			# Retain any endpoint already set on a member.
+			my @users = &remote_foreign_call($server->{'host'},
+				'acl', 'list_users');
+			my @groups = &remote_foreign_call($server->{'host'},
+				'acl', 'list_groups');
+			&remote_foreign_call($server->{'host'}, 'acl',
+				'set_acl_files', \@users, \@groups, '',
+				$account->{'members'}, \%acl);
+			}
 		}
 	1;
 	};
