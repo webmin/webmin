@@ -134,6 +134,9 @@ while(1) {
 	last if (!$line);
 	my ($len, $auth) = split(/\s+/, $line);
 	die "Invalid session ID" if ($auth ne $sid);
+	# Read the current API policy before each command. A new restriction
+	# or a read failure closes this connection before the command runs.
+	die "API-only accounts cannot use RPC\n" if (&webmin_user_api_only());
 	my $rawarg;
 	while(length($rawarg) < $len) {
 		my $got;

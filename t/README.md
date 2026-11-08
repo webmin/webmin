@@ -49,6 +49,14 @@ python3 fixtures/api-only-userdb.py /tmp/task mysql setup    # or postgresql; re
 python3 fixtures/api-only-userdb.py /tmp/task mysql cleanup
 ```
 
+The additional restriction tests check subgroup editing and closing an open fast RPC session when an account becomes API-only. Include `t/fixtures/api-only-failures.pl` in `candidate.tar`, then use `api-only-sandbox.py` to prepare a sandbox at `/tmp/webmin-api-task`. Run:
+
+```sh
+python3 fixtures/api-only-restrictions.py /tmp/webmin-api-task files
+```
+
+After setting up a test database with `api-only-userdb.py`, replace `files` with `mysql` or `postgresql` to run the same checks with SQL account storage. Other sandbox names must start with `/tmp/webmin-api-`.
+
 `api-only-live.py` with `fixtures/api-only-account.pl` beside it also runs against the guest's real Webmin on port 10000. Stop the sandbox PID in `miniserv.pid` and remove the task directory afterwards; it holds copies of the guest configuration.
 
 `api-only-save-handlers.t`, `api-only-policy.t`, `miniserv-api-only-ip.t` and `cluster-webmin-api-only.t` test save failures, inherited permissions, account lookup and cluster synchronization errors. Tests that need SQL use an isolated SQLite database. They skip if DBI or DBD::SQLite is unavailable.
