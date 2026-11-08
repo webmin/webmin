@@ -113,17 +113,24 @@ if ($newgroup) {
 		}
 	@mods = &unique(@mods, @{$newgroup->{'modules'}});
 	$group{'ownmods'} = \@ownmods;
-
-	# Copy ACL files for parent group
-	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
-	&copy_group_acl_files($in{'group'}, $name,
-			      [ @{$newgroup->{'modules'}}, "" ]);
 	}
 
 # Store group options
 $group{'modules'} = \@mods;
 $group{'name'} = $in{'name'};
 $group{'desc'} = $in{'desc'};
+
+if (!$in{'old'}) {
+	# Database groups need an ID before inherited ACLs can be stored.
+	&create_group(\%group);
+	}
+
+if ($newgroup) {
+	# Copy inherited ACLs before a rename or any cloned permissions.
+	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
+	&copy_group_acl_files($in{'group'}, $name,
+			      [ @{$newgroup->{'modules'}}, "" ]);
+	}
 
 if ($in{'old'}) {
 	# update group
@@ -135,9 +142,10 @@ if ($in{'old'}) {
 	&update_members(\@ulist, \@glist, $group{'modules'},
 			$old->{'members'});
 	}
-else {
-	# create group
-	&create_group(\%group, $in{'clone'});
+elsif ($in{'clone'}) {
+	# Preserve the clone's ACLs over inherited defaults.
+	&copy_group_acl_files($in{'clone'}, $group{'name'},
+			      [ "", &list_modules() ]);
 	}
 
 if ($in{'old'} && $in{'acl_security_form'}) {
