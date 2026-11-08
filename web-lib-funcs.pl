@@ -5292,8 +5292,9 @@ if ($userdb) {
 	&disconnect_userdb($userdb, $dbh);
 	}
 if (!$foundindb) {
-	# Read from local files
-	&read_file_cached("$config_directory/$m/$g.gacl", \%rv);
+	# Use the same global ACL path as group deletion and direct reads.
+	my $dir = $m eq "" ? $config_directory : "$config_directory/$m";
+	&read_file_cached("$dir/$g.gacl", \%rv);
 	}
 if (defined(&theme_get_module_acl)) {
 	%rv = &theme_get_module_acl($g, $m, \%rv);
@@ -5592,15 +5593,16 @@ if ($userdb) {
 	}
 
 if (!$foundindb) {
-	# Save ACL to local file
-	if (!-d "$config_directory/$m") {
-		mkdir("$config_directory/$m", 0755);
+	# Match the reader's path so writes and resets update its cache.
+	my $dir = $m eq "" ? $config_directory : "$config_directory/$m";
+	if (!-d $dir) {
+		mkdir($dir, 0755);
 		}
 	if ($_[0]) {
-		&write_file("$config_directory/$m/$g.gacl", $_[0]);
+		&write_file("$dir/$g.gacl", $_[0]);
 		}
 	else {
-		&unlink_file("$config_directory/$m/$g.gacl");
+		&unlink_file("$dir/$g.gacl");
 		}
 	}
 }
