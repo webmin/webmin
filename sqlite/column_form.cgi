@@ -27,7 +27,7 @@ if ($in{'column'} ne '') {
 		&error($text{'column_eunsupported'});
 	}
 
-my $desc = &ui_tag('tt', &html_escape($object->{'name'})).
+my $desc = &ui_tag('tt', &html_escape($object->{'name'})).' '.
 	$text{'table_in'}.' '.&ui_tag('tt', &html_escape($path));
 &ui_print_header($desc,
 	$text{$existing ? 'column_title_rename' : 'column_title_add'}, '',
