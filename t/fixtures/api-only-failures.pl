@@ -5,15 +5,15 @@ use strict;
 use warnings;
 no warnings 'uninitialized';
 use JSON::PP;
-BEGIN {
-    # Require root on Linux and load Webmin from the sandbox.
-    die 'Run only in an isolated Linux guest sandbox' unless $^O eq 'linux' &&
-        $> == 0 && $ARGV[0] =~ m{^/(?:var/)?tmp/webmin-api-};
-    unshift @INC, "$ARGV[0]/root";
-    $ENV{WEBMIN_CONFIG} = "$ARGV[0]/config";
-    $ENV{WEBMIN_VAR} = "$ARGV[0]/var";
-}
-use WebminCore;
+# Validate the guest at runtime, before loading Webmin or changing its paths.
+# Syntax checks must not initialize a guest sandbox.
+die 'Run only in an isolated Linux guest sandbox' unless $^O eq 'linux' &&
+    $> == 0 && $ARGV[0] =~ m{^/(?:var/)?tmp/webmin-api-};
+unshift @INC, "$ARGV[0]/root";
+$ENV{WEBMIN_CONFIG} = "$ARGV[0]/config";
+$ENV{WEBMIN_VAR} = "$ARGV[0]/var";
+require WebminCore;
+WebminCore->import();
 # Load isolated Webmin settings and the private fixture account names.
 my ($task, $mode, $file) = @ARGV;
 $0 = "$task/root/api-only-failures.pl";
