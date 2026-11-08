@@ -51,11 +51,17 @@ python3 fixtures/api-only-userdb.py /tmp/task mysql cleanup
 
 `api-only-live.py` with `fixtures/api-only-account.pl` beside it also runs against the guest's real Webmin on port 10000. Stop the sandbox PID in `miniserv.pid` and remove the task directory afterwards; it holds copies of the guest configuration.
 
+`api-only-save-handlers.t`, `api-only-policy.t`, `miniserv-api-only-ip.t` and `cluster-webmin-api-only.t` test save failures, inherited permissions, account lookup and cluster synchronization errors. Tests that need SQL use an isolated SQLite database. They skip if DBI or DBD::SQLite is unavailable.
+
 `miniserv-cgi-status.t` runs temporary CGIs through MiniServ's forked request handler over a Unix socket pair. It checks HTTP status codes, access logs, redirects and ordinary responses. The live group fixture tests deletion, name reuse and inheritance in one process to catch stale cached permissions.
 
 For live failure tests, include `t/fixtures/api-only-failures.py` and `t/fixtures/api-only-failures.pl` in `candidate.tar`, then prepare a sandbox at `/tmp/webmin-api-task` with `api-only-sandbox.py`. Run `python3 fixtures/api-only-failures.py /tmp/webmin-api-task files`. Repeat with `mysql` and `postgresql`, using `api-only-userdb.py` to set up and clean up each test database. Other sandbox names must start with `/tmp/webmin-api-`.
 
 These tests submit CGI forms and force database write and lookup failures. They also run CGI initialization in a Perl process without MiniServ's account identity fields.
+
+`api-only-cluster.py` tests fast RPC between two isolated Webmin instances using local account files. Prepare both sandboxes under `/tmp/webmin-api-...` without fixture users. The source must listen on guest loopback port 18443 and the destination on port 18444. Include `t/fixtures/api-only-cluster.pl` in the source's `candidate.tar`. Also include the full `cluster-webmin` module if the installed package lacks it.
+
+Run `python3 fixtures/api-only-cluster.py SOURCE-SANDBOX DESTINATION-SANDBOX`. The test checks dry runs, failed reads and writes, cleanup, retries and accounts without API-only restrictions. Stop and remove both sandboxes afterwards.
 
 ## Coverage reports
 
