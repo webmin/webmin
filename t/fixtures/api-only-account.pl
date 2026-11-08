@@ -82,6 +82,33 @@ elsif ($mode eq 'group-editor') {
     &save_module_acl({users => $f->{user}, acl => 1, gassign => '', create => 0,
         delete => 0, rename => 0, groups => 0, pass => 0}, $f->{editor}, 'acl', 1);
 }
+elsif ($mode eq 'cache-reuse') {
+    # Keep deletion and recreation in one process to exercise cached reads.
+    # Deletion must clear ordinary permissions and the API endpoint.
+    my $group = acl::get_group($f->{group});
+    die 'Expected an empty fixture group' if @{$group->{members}};
+    save_group_module_acl({api_only => 'virtual-server/remote.cgi', rpc => 1,
+        nodot => 1}, $f->{group}, '', 1);
+    my %before = get_group_module_acl($f->{group}, '', 1);
+    die 'Fixture policy was not cached' unless $before{api_only} && $before{rpc};
+    # Deletion must remove the stored policy and its cached contents.
+    acl::delete_group($f->{group});
+    my %deleted = get_group_module_acl($f->{group}, '', 1);
+    die 'Deleted group still has cached global permissions' if keys %deleted;
+    # Reusing the name must not restore permissions from the deleted group.
+    acl::create_group({name => $f->{group}, desc => 'Recreated cache fixture',
+        modules => [], members => []});
+    my %after = get_group_module_acl($f->{group}, '', 1);
+    die 'Recreated group revived global permissions' if keys %after;
+
+    # A new account must not inherit permissions from the deleted group.
+    acl::create_user({name => $f->{clone}, pass => '!', modules => []});
+    acl::copy_group_user_acl_files($f->{group}, $f->{clone}, ['']);
+    my %user = get_module_acl($f->{clone}, '', 1, 1);
+    die 'New member inherited deleted global permissions' if keys %user;
+    acl::delete_user($f->{clone});
+    print "Group deletion, recreation and inheritance passed in one process\n";
+}
 elsif ($mode eq 'cleanup') {
     # Remove every possible lifecycle name, including clones and renamed users.
     foreach my $key ('user', 'renamed', 'clone', 'editor', 'admin') {

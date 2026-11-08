@@ -27,6 +27,9 @@ def controls(target, who='admin'):
 
 try:
     helper('setup')
+    # The helper asserts deletion, name reuse and inheritance in one process.
+    helper('cache-reuse')
+    check(True, 'group deletion and reuse clear cached permissions in one process')
     userform = 'acl/edit_user.cgi?user=' + fixture['user']
     groupform = 'acl/edit_group.cgi?group=' + fixture['group']
     global_fields = {'api_only', 'rpc', 'acl_security_form', 'root_def', 'nodot'}

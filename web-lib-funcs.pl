@@ -8706,6 +8706,11 @@ foreach my $f (@_) {
 			$rv = 0;
 			$err = $!;
 			}
+		else {
+			# Clear contents and missing-file caches after deletion.
+			delete($main::read_file_cache{$realf});
+			delete($main::read_file_missing{$realf});
+			}
 		}
 	}
 return wantarray ? ($rv, $err) : $rv;

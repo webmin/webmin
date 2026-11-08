@@ -1183,7 +1183,11 @@ my $lref = &read_file_lines("$config_directory/webmin.groups");
 @$lref = grep { !/^([^:]+):/ || $1 ne $groupname } @$lref;
 &flush_file_lines();
 &unlock_file("$config_directory/webmin.groups");
-&unlink_file(map { "$config_directory/$_/$groupname.gacl" } &list_modules());
+# Delete global and module ACLs. The empty module preserves the double slash
+# in the global cache key used by get_group_module_acl().
+foreach my $mod ("", &list_modules()) {
+	&unlink_file("$config_directory/$mod/$groupname.gacl");
+	}
 
 if ($miniserv{'userdb'}) {
 	# Also delete from group database
