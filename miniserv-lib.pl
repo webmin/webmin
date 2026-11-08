@@ -4128,13 +4128,15 @@ if ($config{'userdb'}) {
 
 # get_api_only_endpoint(username, &user-details)
 # Read the base user's global endpoint without caching it across requests.
-# Returns (endpoint, error); storage failures deny access rather than falling
-# back to an unrestricted account. user-details comes from get_user_details.
+# Return (endpoint, error). Failed account or policy reads deny access.
+# user-details comes from get_user_details.
 sub get_api_only_endpoint
 {
 my ($username, $user) = @_;
+# Deny a failed account lookup instead of falling back to a local policy.
+return (undef, 1) if (!$user);
 my %acl;
-if ($user && $user->{'proto'}) {
+if ($user->{'proto'}) {
 	# Database logins must use their database policy, never a local fallback.
 	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
 	return (undef, 1) if (!ref($dbh));

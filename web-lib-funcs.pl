@@ -15,6 +15,7 @@ Example code:
 ##use warnings;
 use Socket;
 use POSIX;
+use Errno qw(ENOENT);
 use IO::Handle;
 use bytes ();
 use feature 'state';
@@ -5061,13 +5062,17 @@ my $rel = &get_webmin_version_release();
 return $ver.($rel ? "-".$rel : "");
 }
 
-=head2 get_module_acl([user], [module], [no-rbac], [no-default])
+=head2 get_module_acl([user], [module], [no-rbac], [no-default], [strict])
 
 Returns a hash containing access control options for the given user and module.
 By default the current username and module name are used. If the no-rbac flag
 is given, the permissions will not be updated based on the user's RBAC role
 (as seen on Solaris). If the no-default flag is given, default permissions for
 the module will not be included.
+The strict flag resolves the account's storage, rejects read failures and
+reads its local ACL without caching. It also skips theme and safe-mode
+overrides. Set no-default as well when only stored permissions are needed,
+as in API-only policy checks and copies.
 
 =cut
 sub get_module_acl
@@ -5077,6 +5082,11 @@ my $m = defined($_[1]) ? $_[1] : &get_module_name();
 $m = '' if ($m eq '.');	# The global ACL has one database key
 my $norbac = $_[2];
 my $nodef = $_[3];
+my $strict = $_[4];
+# Error pages disable ordinary DB ACL lookups while rendering their theme.
+# Security checks must still read the authenticated account's stored policy.
+local $main::no_miniserv_userdb =
+	$strict ? 0 : $main::no_miniserv_userdb;
 $m ||= "";
 my $mdir = &module_root_directory($m);
 my %rv;
@@ -5099,7 +5109,18 @@ if ($u ne '') {
 	# Use normal Webmin ACL, if a user is set
 	my $userdb = &get_userdb_string();
 	my $foundindb = 0;
-	if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
+	my $requiredb = $u eq $base_remote_user && $remote_user_proto;
+	if ($strict && $userdb && !$requiredb) {
+		# External CGI hosts and ACL copies have no backend hint. Local
+		# accounts take precedence over same-named database accounts.
+		my %miniserv;
+		&get_miniserv_config(\%miniserv);
+		my %users = &read_api_policy_file($miniserv{'userfile'} ||
+			"$config_directory/miniserv.users", ':');
+		$requiredb = !exists($users{$u});
+		}
+	if ($userdb && ($strict ? $requiredb :
+			$u ne $base_remote_user || $remote_user_proto)) {
 		# Look for this user in the user/group DB, if one is defined
 		# and if the user might be in the DB
 		my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
@@ -5114,9 +5135,16 @@ if ($u ne '') {
 			# Find the user in the SQL DB
 			my $cmd = $dbh->prepare(
 				"select id from webmin_user where name = ?");
-			$cmd && $cmd->execute($u) ||
+			if (!$cmd || !$cmd->execute($u)) {
+				# Avoid recursive themed errors in strict mode.
+				die "Cannot read global ACL from user database\n"
+					if ($strict);
 				&error(&text('euserdbacl', $dbh->errstr));
+				}
 			my ($id) = $cmd->fetchrow();
+			# A failed fetch must not look like an absent account.
+			die "Cannot read global ACL from user database\n"
+				if ($strict && $cmd->err);
 			$foundindb = 1 if (defined($id));
 			$cmd->finish();
 
@@ -5125,11 +5153,18 @@ if ($u ne '') {
 				my $cmd = $dbh->prepare(
 				    "select attr,value from webmin_user_acl ".
 				    "where id = ? and module = ?");
-				$cmd && $cmd->execute($id, $m) ||
-				    &error(&text('euserdbacl', $dbh->errstr));
+				if (!$cmd || !$cmd->execute($id, $m)) {
+					# Avoid recursive theme ACL reads.
+					die "Cannot read global ACL from user database\n"
+						if ($strict);
+					&error(&text('euserdbacl', $dbh->errstr));
+					}
 				while(my ($a, $v) = $cmd->fetchrow()) {
 					$rv{$a} = $v;
 					}
+				# Reject partial ACLs after a failed fetch.
+				die "Cannot read global ACL from user database\n"
+					if ($strict && $cmd->err);
 				$cmd->finish();
 				}
 			}
@@ -5141,6 +5176,9 @@ if ($u ne '') {
 					  $args->{'userclass'}.'))',
 				scope => 'sub');
 			if (!$rv || $rv->code) {
+				# Avoid recursive policy reads on LDAP errors.
+				die "Cannot read global ACL from user database\n"
+					if ($strict);
 				&error(&text('euserdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 				}
@@ -5149,16 +5187,22 @@ if ($u ne '') {
 			# Find ACL sub-object for the module
 			my $ldapm = $m || "global";
 			if ($user) {
+				# Strict reads must not use a local fallback.
+				$foundindb = 1 if ($strict);
 				my $rv = $dbh->search(
 					base => $user->dn(),
 					filter => '(cn='.$ldapm.')',
 					scope => 'one');
 				if (!$rv || $rv->code) {
+					# Search errors must not grant access.
+					die "Cannot read global ACL from user database\n"
+						if ($strict);
 					&error(&text('euserdbacl',
 					   $rv ? $rv->error : "Unknown error"));
 					}
 				my ($acl) = $rv->all_entries;
 				if ($acl) {
+					# Decode each name=value entry.
 					foreach my $av ($acl->get_value(
 							'webminAclEntry')) {
 						my ($a, $v) = split(/=/, $av,2);
@@ -5172,15 +5216,29 @@ if ($u ne '') {
 			}
 		}
 
+	# A missing account or unsupported backend cannot establish its policy.
+	die "Cannot read global ACL from user database\n"
+		if ($strict && $requiredb && !$foundindb);
 	if (!$foundindb) {
 		# Read from local files
-		&read_file_cached("$config_directory/$m/$u.acl", \%rv);
+		if ($strict) {
+			# Bypass the cache and report policy read errors.
+			%rv = &read_api_policy_file(
+				"$config_directory/$m/$u.acl");
+			}
+		else {
+			# Retain ordinary module caching.
+			&read_file_cached("$config_directory/$m/$u.acl", \%rv);
+			}
 		if ($remote_user ne $base_remote_user && !defined($_[0])) {
 			&read_file_cached(
 				"$config_directory/$m/$remote_user.acl",\%rv);
 			}
 		}
 	}
+
+# Strict callers skip theme and safe-mode changes to the loaded policy.
+return %rv if ($strict);
 
 # If the ACL says the user should get only safe settings for this module,
 # read and apply them
@@ -14479,12 +14537,46 @@ return &globals('delete', $variable, $scope);
 
 # webmin_user_api_only()
 # Returns the authenticated base user's endpoint, or a false value if unset.
-# Endpoint scripts set main::allow_api_only to the same value before
-# init_config.
+# Dies if policy storage cannot be read. Endpoint scripts set
+# main::allow_api_only to the same endpoint before init_config.
 sub webmin_user_api_only
 {
-my %access = &get_module_acl($base_remote_user, "");
+my $user = $base_remote_user;
+# Initialization may run before an authenticated user is available.
+return undef if (!defined($user) || $user eq '');
+# Resolve the backend even without MiniServ hints, and reject storage errors.
+my %access = &get_module_acl($user, '', 1, 1, 1);
 return $access{'api_only'};
+}
+
+# read_api_policy_file(file, [separator])
+# Read account or ACL records into a hash without caching. The default
+# separator is '='. Return an empty hash for a missing file and die on other
+# open, read or close failures.
+sub read_api_policy_file
+{
+my ($file, $separator) = @_;
+$separator = '=' if (!defined($separator));
+my %values;
+if (open(my $fh, '<', $file)) {
+	# Directories and special files cannot supply an account policy.
+	-f $fh || die "Cannot read API policy file\n";
+	local $! = 0;
+	# Match ACL parsing: ignore comments and let the last value win.
+	while(my $line = <$fh>) {
+		$line =~ s/[\r\n]//g;
+		my ($key, $value) = split(/\Q$separator\E/, $line, 2);
+		$values{$key} = $value if ($line !~ /^#/ && defined($value));
+		}
+	# Preserve a read error before close can overwrite it.
+	my $read_error = $!;
+	close($fh) && !$read_error || die "Cannot read API policy file\n";
+	}
+elsif ($! != ENOENT) {
+	# Only an absent file may represent an unrestricted local user.
+	die "Cannot read API policy file\n";
+	}
+return %values;
 }
 
 # webmin_user_can_rpc()
