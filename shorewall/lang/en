@@ -435,6 +435,7 @@ comment_header=Table comment details
 comment_msg=Message
 comment_err=Failed to save comment
 comment_enone=No message entered
+comment_ereturn=Invalid message entered
 
 log_create_table=Added entry to the $1 table
 log_modify_table=Modified entry in the $1 table

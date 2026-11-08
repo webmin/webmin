@@ -124,6 +124,144 @@
 	text-align: left;
 }
 
+/* Shared CSS tooltips. Theme tokens keep the bubble and its arrow readable
+ * in light and dark palettes. Ordinary help bubbles retain their theme style. */
+.ui_tip[data-tooltip][aria-label] {
+	position: relative;
+	display: inline-block;
+	vertical-align: baseline;
+	--ui-tip-bg: var(--ui-fg, var(--text-color, #212121));
+	--ui-tip-fg: var(--ui-surface, var(--main-content, var(--bg-color, #fff)));
+}
+.ui_tip[data-tooltip][aria-label]::before,
+.ui_tip[data-tooltip][aria-label]::after {
+	position: absolute;
+	pointer-events: none;
+	display: none;
+	z-index: 1060;
+}
+.ui_tip[data-tooltip][aria-label]::before {
+	content: attr(aria-label);
+	bottom: calc(100% + 8px);
+	left: 0;
+	width: max-content;
+	box-sizing: border-box;
+	max-width: min(32rem, calc(100vw - 24px));
+	padding: 7px 10px;
+	border-radius: 5px;
+	/* Theme text colors may have alpha; paint over a solid surface. */
+	background: linear-gradient(var(--ui-tip-bg), var(--ui-tip-bg)),
+		var(--ui-tip-fg);
+	color: var(--ui-tip-fg);
+	font-size: 13px;
+	line-height: 1.45;
+	font-weight: normal;
+	font-style: normal;
+	text-align: left;
+	text-transform: none;
+	text-shadow: none;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+.ui_tip[data-tooltip][aria-label]::after {
+	content: '';
+	bottom: calc(100% + 4px);
+	left: 12px;
+	width: 8px;
+	height: 8px;
+	background: linear-gradient(var(--ui-tip-bg), var(--ui-tip-bg)),
+		var(--ui-tip-fg);
+	transform: rotate(45deg);
+}
+.ui_tip[data-tooltip][aria-label]:is(:hover, :focus-within)::before,
+.ui_tip[data-tooltip][aria-label]:is(:hover, :focus-within)::after {
+	display: block;
+}
+/* A hovered row takes priority over the checkbox that still has focus. */
+.ui_multi:has(.ui_tip:hover) .ui_tip:not(:hover)::before,
+.ui_multi:has(.ui_tip:hover) .ui_tip:not(:hover)::after {
+	display: none;
+}
+/* Fixed anchors escape scrolling lists. Scope each pair so repeated entries
+ * cannot attach to another row's tooltip. Older browsers use the absolute
+ * positioning above. */
+@supports (anchor-scope: --ui-tip) {
+	.ui_tip[data-tooltip][aria-label] {
+		anchor-name: --ui-tip;
+		anchor-scope: --ui-tip, --ui-tip-box, --ui-tip-input;
+	}
+	.ui_tip[data-tooltip][aria-label]::before {
+		position: fixed;
+		position-anchor: --ui-tip;
+		anchor-name: --ui-tip-box;
+		bottom: anchor(top);
+		left: anchor(left);
+		margin-bottom: 8px;
+		position-try-fallbacks: --ui-tip-right, --ui-tip-fit,
+			--ui-tip-below, --ui-tip-below-right, --ui-tip-below-fit;
+		position-visibility: anchors-visible;
+	}
+	.ui_tip[data-tooltip][aria-label]::after {
+		position: fixed;
+		position-anchor: --ui-tip;
+		bottom: auto;
+		/* Attach the arrow to the nearest bubble edge after a position change. */
+		top: calc(clamp(anchor(--ui-tip-box top), anchor(bottom),
+			anchor(--ui-tip-box bottom)) - 4px);
+		left: clamp(calc(anchor(--ui-tip-box left) + 8px),
+			calc(anchor(left) + 12px), calc(anchor(--ui-tip-box right) - 16px));
+		position-visibility: anchors-visible;
+	}
+	/* Point list descriptions at the checkbox, whose size varies by theme.
+	 * Leave room beside it for the bubble's rounded corner. */
+	.ui_multi .ui_tip input[type="checkbox"] {
+		anchor-name: --ui-tip-input;
+	}
+	.ui_multi .ui_tip[data-tooltip][aria-label]::before {
+		left: calc(anchor(--ui-tip-input center) - 12px);
+	}
+	.ui_multi .ui_tip[data-tooltip][aria-label]::after {
+		left: clamp(calc(anchor(--ui-tip-box left) + 8px),
+			calc(anchor(--ui-tip-input center) - 4px),
+			calc(anchor(--ui-tip-box right) - 16px));
+	}
+	@position-try --ui-tip-right {
+		left: auto;
+		right: anchor(right);
+	}
+	/* A long description can need more room than either side of its label. */
+	@position-try --ui-tip-fit {
+		left: 12px;
+		right: 12px;
+		width: auto;
+	}
+	@position-try --ui-tip-below {
+		bottom: auto;
+		top: anchor(bottom);
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+	@position-try --ui-tip-below-right {
+		bottom: auto;
+		top: anchor(bottom);
+		left: auto;
+		right: anchor(right);
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+	@position-try --ui-tip-below-fit {
+		bottom: auto;
+		top: anchor(bottom);
+		left: 12px;
+		right: 12px;
+		width: auto;
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+}
+.ui_multi .ui_tip { display: inline-flex; align-items: center; min-width: 0; }
+.ui_multi .ui_tip > input[type="checkbox"] { margin-right: 6px; }
+
 /* Built-in dark palette, enabled with data-ui-scheme="dark" on any
  * ancestor element (or on the .ui_page wrapper itself, via the scheme
  * option of ui_page_start). With data-ui-scheme="auto" the dark
@@ -281,7 +419,9 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_field, .ui_field * {
 	box-sizing: border-box;
 }
-.ui_page h1, .ui_page h2, .ui_page p, .ui_page dl, .ui_page dd { margin: 0; }
+/* Reset widget paragraphs without removing spacing from help and other prose. */
+.ui_page h1, .ui_page h2, .ui_page p.ui--p,
+.ui_page dl, .ui_page dd { margin: 0; }
 .ui_page svg.ui_svg_icon { flex-shrink: 0; vertical-align: -0.18em; }
 
 /* Underline plain text links, but keep links styled as buttons undecorated. */
@@ -406,6 +546,86 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_cluster_center { justify-content: center; }
 .ui_cluster_end { justify-content: flex-end; }
 .ui_cluster_between { justify-content: space-between; }
+/* Align mixed text sizes and inline controls on the same text baseline. */
+.ui_cluster_baseline { align-items: baseline; }
+
+/* Fields beside small actions take their height from the button. */
+.ui_cluster_small { align-items: stretch; }
+.ui_cluster_small > label { align-self: center; line-height: 1; }
+.ui_cluster.ui_cluster_small > :is(input.ui_textbox, select.ui_select) {
+	box-sizing: border-box;
+	height: auto !important;
+	min-height: 0 !important;
+	max-height: none !important;
+	padding-block: 0 1px !important;
+	font-size: 0.9em !important;
+	line-height: 1 !important;
+}
+/* Keep content-width menus and center the arrow within the compact field. */
+.ui_cluster.ui_cluster_small > select.ui_select {
+	width: auto !important;
+	min-width: 0 !important;
+	field-sizing: content;
+	padding-inline: 4px 18px !important;
+	background-position: right 3px center !important;
+}
+
+/* Wrap a single ui_select in ui_select_inline to use it within a heading
+ * or sentence. Keep the theme's arrow, with room for it after the text. */
+.ui_select_inline {
+	display: inline-flex;
+	align-items: baseline;
+	max-width: 100%;
+	vertical-align: baseline;
+}
+/* A wrapping label associates its text without relying on a control ID. */
+label.ui_select_inline {
+	column-gap: calc(var(--ui-gap, 10px) / 3);
+	font-weight: inherit;
+}
+/* Keep an inline selector close to its label, preserving the next item gap. */
+.ui_cluster > label + .ui_select_inline {
+	margin-inline-start: calc(var(--ui-gap) / -1.5);
+}
+.ui_select_inline > select.ui_select:not([multiple]):is(:not([size]), [size="1"]) {
+	box-sizing: border-box;
+	width: auto !important;
+	min-width: 0 !important;
+	max-width: 100%;
+	field-sizing: content;
+	height: auto !important;
+	min-height: 0 !important;
+	max-height: none !important;
+	padding-block: 0 !important;
+	padding-inline: 0 1em !important;
+	border: 0 !important;
+	border-radius: 0;
+	background-color: transparent !important;
+	background-position: right 0 center !important;
+	box-shadow: none !important;
+	color: inherit !important;
+	font: inherit !important;
+	cursor: pointer;
+}
+/* Underline only the selected text, leaving its label and arrow clear. */
+.ui_select_inline_underlined > select.ui_select {
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+}
+/* A borderless field still needs a visible keyboard focus indicator. */
+.ui_select_inline > select.ui_select:focus-visible {
+	outline: 2px solid var(--ui-accent, var(--link-color, #0b46ab)) !important;
+	outline-offset: 2px;
+}
+.ui_select_inline > select.ui_select:disabled {
+	opacity: 0.55;
+	cursor: default;
+}
+/* Native option menus need an opaque surface in both light and dark themes. */
+.ui_select_inline > select.ui_select option {
+	background-color: var(--ui-surface, var(--main-content, Canvas));
+	color: var(--ui-fg, var(--text-color, CanvasText));
+}
 
 @media (max-width: 760px) {
 	.ui_grid_fixed { grid-template-columns: 1fr; }
@@ -652,6 +872,7 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	font-size: 0.8em;
 	line-height: 1.25;
 }
+.ui_badge_small:has(> .ui_svg_icon) { padding-left: 4px; }
 .ui_badge_small .ui_svg_icon { width: 1em; height: 1em; }
 /* Rounded ends, only when a caller asks for them. Widgets are drawn
  * square, apart from the toggle and the badge dot, which are round */
@@ -768,6 +989,10 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 :is(button, a, summary).ui_action_rounded { border-radius: 4px; }
 :is(button, a, summary).ui_action_pill { border-radius: 999px; }
 .ui_action .ui_svg_icon { width: 1em; height: 1em; flex-shrink: 0; }
+/* Offset the plain tick's empty left edge when it leads a button label. */
+.ui_action_content > .ui_svg_icon_check:first-child {
+	margin-inline-start: -0.15em;
+}
 .ui_action_small .ui_svg_icon_trash {
 	transform: translateY(-0.25px);
 }
@@ -823,7 +1048,7 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	border-bottom: 1px solid var(--ui-border-soft);
 }
 .ui_list_item:last-child { border-bottom: 0; }
-.ui_list_flush .ui_list_item { padding: 5px 6px 5px 7px; }
+.ui_list_flush .ui_list_item { padding: 5px 6px 6px 7px; }
 .ui_list_main { flex: 1; min-width: 0; }
 .ui_list_title {
 	font-weight: 600;
@@ -1125,8 +1350,8 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: grid;
 	gap: var(--ui-inset);
 	min-width: 0;
-	/* Half the inset above and below, the full inset at the sides */
-	padding: calc(var(--ui-inset) / 2) var(--ui-inset);
+	/* Match vertical padding to the surrounding page gap */
+	padding: var(--ui-gap) var(--ui-inset);
 	border: 1px solid var(--ui-border);
 	background: var(--ui-surface);
 }
@@ -1348,9 +1573,9 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: inline-flex;
 	align-items: stretch;
 	max-width: 100%;
-	padding: 2px;
-	gap: 2px;
-	border: 1px solid var(--ui-border);
+	padding: 3px;
+	gap: 3px;
+	/* border: 1px solid var(--ui-border); */
 	background: var(--ui-surface-2);
 	vertical-align: middle;
 }
@@ -1374,16 +1599,19 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	z-index: 1;
 	cursor: pointer;
 }
+/* The track and each button keep one pixel more of inner space than the
+ * text line needs, and the line height gives those pixels back, so the
+ * control stays as tall as a 1.5 line of its text with 2px of padding. */
 .ui_segment_label {
 	display: inline-flex;
 	align-items: center;
 	gap: 5px;
-	padding: 2px 10px;
+	padding: 3px 9px;
 	border: 1px solid transparent;
 	color: var(--ui-fg-muted);
 	font-size: 0.9em;
 	font-weight: 600;
-	line-height: 1.5;
+	line-height: calc(1.5em - 4px);
 	white-space: nowrap;
 	transition: background 0.15s ease, color 0.15s ease;
 }
@@ -1391,7 +1619,7 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 .ui_segmented_small .ui_segment_label {
 	padding: 0 8px;
 	font-size: 0.8em;
-	line-height: 1.25;
+	line-height: calc(1.25em - 2px);
 }
 .ui_segment:hover .ui_segment_label { color: var(--ui-fg); }
 .ui_segment input:checked ~ .ui_segment_label,
@@ -1595,23 +1823,23 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	white-space: nowrap;
 }
 .ui_multi_side { margin-left: auto; padding-left: 8px; flex-shrink: 0; }
-/* Metadata stays secondary to the label, with room between rows and badges. */
-.ui_multi_item:has(> .ui_multi_badges) { padding: 7px 10px; }
+/* Keep badges small enough to fit the row's normal padding and height. */
 .ui_multi_badges {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: flex-end;
-	gap: 6px 8px;
+	gap: 6px;
 	flex-shrink: 1;
-	padding-left: 16px;
 }
 .ui_multi_badges .ui_badge {
-	padding: 3px 10px;
+	padding: 0 8px;
+	font-size: 0.8em;
 	font-weight: 400;
-	line-height: 1.4;
+	line-height: 1.25;
 	border-color: color-mix(in srgb, currentColor 16%, transparent);
 }
+.ui_multi_badges .ui_badge .ui_svg_icon { width: 1em; height: 1em; }
 .ui_multi_badges .ui_badge_neutral {
 	background: color-mix(in srgb, var(--ui-neutral-soft) 35%, transparent);
 	color: var(--ui-fg-muted);
@@ -1799,6 +2027,8 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
+	white-space: normal;
+	overflow-wrap: anywhere;
 }
 .ui_dropdown_desc {
 	color: var(--ui-fg-muted);

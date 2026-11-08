@@ -1143,6 +1143,7 @@ foreach my $folder (&list_user_folders($user)) {
 	else {
 		&unlink_file(glob("\Q$ifile\E.{dir,pag,db}"));
 		}
+	&unlink_file("$ifile.ids") if (-e "$ifile.ids");
 	}
 # Remove read file
 local $read = &user_read_dbm_file($user);

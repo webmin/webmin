@@ -1588,18 +1588,23 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 				$cgiheader{lc($1)} = $2;
 				push(@cgiheader, [ $1, $2 ]);
 				}
-			# Honor a valid CGI status in the response and log.
-			# Keep the default for a malformed code or reason.
-			my $cgi_status = $cgiheader{"status"} =~
-				/^([1-5][0-9][0-9])\s+([^\r\n]+)$/;
+			# A CGI can reject a request before producing normal
+			# output. Use its explicit status instead of the default
+			# success code.
+			my $cgi_status = $cgiheader{'status'} =~
+				/\A([1-5][0-9][0-9])\s+([^\r\n]+)\z/;
 			if ($cgi_status) {
-				# Match the response and logged status.
-				$ok_code = $logged_code = $1;
-				$ok_message = $2;
+				($ok_code, $ok_message) = ($1, $2);
 				}
-			if ($cgiheader{"location"} && !$cgi_status) {
-				# Location alone implies a redirect.
-				&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
+			else {
+				# Invalid control headers must not affect
+				# redirect logging.
+				delete($cgiheader{'status'});
+				}
+			if ($cgiheader{"location"}) {
+				&write_data("HTTP/1.0 ".($cgi_status
+					? "$ok_code $ok_message"
+					: "302 Moved Temporarily")."\r\n");
 				&write_data("Date: $datestr\r\n");
 				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
@@ -1706,7 +1711,9 @@ else {
 # log the request
 &log_request($loghost, $authuser, $reqline,
 	     $logged_code ? $logged_code :
-	     $cgiheader{"location"} ? "302" : $ok_code, &byte_count());
+	     $cgiheader{"location"} && !$cgiheader{"status"}
+		? "302"
+		: $ok_code, &byte_count());
 return $rv;
 }
 
@@ -2372,7 +2379,7 @@ kill('TERM', @childpids) if (@childpids);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
 unlink($config{'pidfile'});
-exit(1);
+exit(0);
 }
 
 sub http_date
@@ -2534,9 +2541,22 @@ foreach $d (@_) {
 				}
 			}
 		if ($doneheaders) {
+			# Match forked CGI status handling for in-process
+			# scripts.
+			my $cgi_status = $cgiheader{'status'} =~
+				/\A([1-5][0-9][0-9])\s+([^\r\n]+)\z/;
+			if ($cgi_status) {
+				($ok_code, $ok_message) = ($1, $2);
+				}
+			else {
+				# Invalid control headers must not affect
+				# redirect logging.
+				delete($cgiheader{'status'});
+				}
 			if ($cgiheader{"location"}) {
-				&write_data(
-					"HTTP/1.0 302 Moved Temporarily\r\n");
+				&write_data("HTTP/1.0 ".($cgi_status
+					? "$ok_code $ok_message"
+					: "302 Moved Temporarily")."\r\n");
 				&write_data("Date: $datestr\r\n");
 				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
@@ -2551,6 +2571,7 @@ foreach $d (@_) {
 				&write_keep_alive(0);
 				}
 			foreach $h (@cgiheader) {
+				next if (lc($h->[0]) eq 'status');
 				&write_data("$h->[0]: $h->[1]\r\n");
 				}
 			&write_data("\r\n");
@@ -2588,7 +2609,9 @@ if ($doing_cgi_eval && $$ == $main_process_id) {
 	close(SOCK);
 	close($PASSINw); close($PASSOUTw);
 	&log_request($loghost, $authuser, $reqline,
-		     $cgiheader{"location"} ? "302" : $ok_code, &byte_count());
+		     $cgiheader{"location"} && !$cgiheader{"status"}
+		     	? "302"
+			: $ok_code, &byte_count());
 	}
 }
 
@@ -2628,7 +2651,8 @@ return @rv;
 sub validate_user
 {
 local ($user, $pass, $host, $actpip, $port) = @_;
-return ( ) if (!$user);
+return ( ) if (!$user || $user =~ /\r|\n|\0/);
+return ( ) if ($pass =~ /\r|\n|\0/);
 print DEBUG "validate_user: user=$user pass=$pass host=$host\n";
 local ($canuser, $canmode, $notexist, $webminuser, $sudo) =
 	&can_user_login($user, undef, $host);

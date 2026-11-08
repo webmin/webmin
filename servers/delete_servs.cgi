@@ -15,6 +15,12 @@ my @del = split(/\0/, $in{'d'});
 @del || &error($text{'delete_enone'});
 $access{'edit'} || &error($text{'delete_ecannot'});
 
+# Check every selected server before removing any, including forged IDs.
+foreach my $d (@del) {
+	my $server = &get_server($d);
+	$server && &can_use_server($server) || &error($text{'delete_ecannot'});
+	}
+
 if ($in{'confirm'}) {
 	# Go ahead and delete
 	foreach my $d (@del) {

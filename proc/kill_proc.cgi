@@ -5,7 +5,7 @@
 require './proc-lib.pl';
 &ReadParse();
 &switch_acl_uid();
-&error_setup(&text('kill_err', $in{signal}, $in{pid}));
+&error_setup(&text('kill_err', &html_escape($in{signal}), &html_escape($in{pid})));
 foreach $s ('KILL', 'TERM', 'HUP', 'STOP', 'CONT') {
 	$in{'signal'} = $s if ($in{$s});
 	}

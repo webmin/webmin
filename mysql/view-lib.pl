@@ -111,7 +111,7 @@ if (&foreign_check("virtual-server") &&
 			my ($got) = grep { $_->{'name'} eq $dbname } @dbs;
 			if ($got) {
 				return "../virtual-server/list_databases.cgi?".
-				       "dom=$d->{'id'}";
+				       "dom=".&urlize($d->{'id'});
 				}
 			}
 		}

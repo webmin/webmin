@@ -297,7 +297,7 @@ else {
 sub print_errors
 {
 my (@errors) = @_;
-&ui_print_header(undef, $module_info{'name'}, "");
+&ui_print_header(undef, $module_info{'desc'}, "");
 print "<tt>$text{'errors_occured'}</tt><br>";
 print "<ul class=\"err-body\">";
 foreach $error (@errors) {

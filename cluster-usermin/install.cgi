@@ -74,17 +74,17 @@ if ($two eq "\037\235") {
 	# Unix compressed
 	&has_command("uncompress") ||
 		&download_error(&text('install_ecomp', "<tt>uncompress</tt>"));
-	$cmd = "uncompress -c '$pfile' | tar tf -";
+	$cmd = "uncompress -c ".quotemeta($pfile)." | tar tf -";
 	}
 elsif ($two eq "\037\213") {
 	# Gzipped
 	&has_command("gunzip") || 
 		&download_error(&text('install_egzip', "<tt>gunzip</tt>"));
-	$cmd = "gunzip -c '$pfile' | tar tf -";
+	$cmd = "gunzip -c ".quotemeta($pfile)." | tar tf -";
 	}
 else {
 	# Just a tar file
-	$cmd = "tar tf '$pfile'";
+	$cmd = "tar tf ".quotemeta($pfile);
 	}
 $tar = `$cmd 2>&1`;
 $? && &download_error(&text('install_ecmd', "<tt>$tar</tt>"));
@@ -108,7 +108,7 @@ mkdir($tempdir, 0755);
 foreach $m (keys %mods) {
 	local $xcmd = $cmd;
 	$xcmd =~ s/tf/xf/g;
-	system("cd $tempdir ; $xcmd $m/module.info ./$m/module.info >/dev/null 2>&1");
+	system("cd $tempdir && $xcmd $m/module.info ./$m/module.info >/dev/null 2>&1");
 	local %minfo;
 	&read_file("$tempdir/$m/module.info", \%minfo);
 	$modver{$m} = $minfo{'version'};

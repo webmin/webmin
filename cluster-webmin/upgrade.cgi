@@ -84,12 +84,13 @@ if (&has_command("rpm")) {
 	}
 
 # Work out what kind of file we have (RPM or tar.gz)
-if (`rpm -qp $file 2>&1` =~ /(^|\n)webmin-(\d+\.\d+)/) {
+my $qfile = quotemeta($file);
+if (`rpm -qp $qfile 2>&1` =~ /(^|\n)webmin-(\d+\.\d+)/) {
 	# Looks like a webmin RPM
 	$mode = "rpm";
 	$version = $2;
 	}
-elsif (`dpkg --info $file 2>&1` =~ /Package:\s+webmin/) {
+elsif (`dpkg --info $qfile 2>&1` =~ /Package:\s+webmin/) {
 	# Looks like a Webmin Debian package
 	$mode = "deb";
 	`dpkg --info $file 2>&1` =~ /Version:\s+(\S+)/;
@@ -97,7 +98,7 @@ elsif (`dpkg --info $file 2>&1` =~ /Package:\s+webmin/) {
 	}
 else {
         # Check if it is a webmin tar.gz file
-        open(TAR, "gunzip -c $file | tar tf - 2>&1 |");
+        open(TAR, "gunzip -c $qfile | tar tf - 2>&1 |");
         while(<TAR>) {
                 s/\r|\n//g;
                 if (/^webmin-([0-9\.]+)\//) {

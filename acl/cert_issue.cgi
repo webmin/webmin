@@ -22,6 +22,7 @@ my $fh = "IN";
 &open_tempfile($fh, ">$temp1");
 foreach my $k ("emailAddress", "organizationalUnitName", "organizationName",
 	       "stateOrProvinceName", "countryName", "commonName") {
+	$in{$k} =~ /:|\n|\0/ && &error($text{'cert_echars'});
 	&print_tempfile($fh, "$k = $in{$k}\n");
 	}
 $in{'key'} =~ s/\s//g;
@@ -31,12 +32,12 @@ my $cmd = &get_ssleay();
 my $ssleay = &backquote_logged("$cmd ca -spkac $temp1 -out $temp2 -config $module_config_directory/openssl.cnf -days 1095 2>&1");
 &unlink_file($temp1);
 if ($?) {
-	&error("<pre>$ssleay</pre>");
+	&error("<pre>".&html_escape($ssleay)."</pre>");
 	}
 else {
 	# Display status and redirect to actual cert file
 	&ui_print_unbuffered_header(undef, $text{'cert_title'}, "");
-	print &text('cert_done', $in{'commonName'}),"<p>\n";
+	print &text('cert_done', &html_escape($in{'commonName'})),"<p>\n";
 	print &text('cert_pickup', "cert_output.cgi?file=$temp2"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 

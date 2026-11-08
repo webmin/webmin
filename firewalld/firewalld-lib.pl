@@ -251,9 +251,9 @@ my $out = &backquote_logged(
 	$config{'firewall_cmd'}." ".
 	"--zone ".quotemeta($zone->{'name'})." ".
 	"--permanent ".
-	"--add-forward-port=port=$srcport:proto=$srcproto".
-	($dstport ? ":toport=$dstport" : "").
-	($dstaddr ? ":toaddr=$dstaddr" : "").
+	"--add-forward-port=port=".quotemeta($srcport).":proto=".quotemeta($srcproto).
+	($dstport ? ":toport=".quotemeta($dstport) : "").
+	($dstaddr ? ":toaddr=".quotemeta($dstaddr) : "").
 	" 2>&1");
 return $? ? $out : undef;
 }
@@ -268,9 +268,9 @@ my $out = &backquote_logged(
 	$config{'firewall_cmd'}." ".
 	"--zone ".quotemeta($zone->{'name'})." ".
 	"--permanent ".
-	"--remove-forward-port=port=$srcport:proto=$srcproto".
-	($dstport ? ":toport=$dstport" : "").
-	($dstaddr ? ":toaddr=$dstaddr" : "").
+	"--remove-forward-port=port=".quotemeta($srcport).":proto=".quotemeta($srcproto).
+	($dstport ? ":toport=".quotemeta($dstport) : "").
+	($dstaddr ? ":toaddr=".quotemeta($dstaddr) : "").
 	" 2>&1");
 return $? ? $out : undef;
 }
@@ -555,8 +555,8 @@ my $permanent = $opts->{'permanent'};
 my $get_cmd = sub {
 	my ($rtype) = @_;
 	my $type = $rtype ? " --permanent" : "";
-	return "$config{'firewall_cmd'} --zone=\"".quotemeta($zone)."\"".
-	       "$type --".quotemeta($action)."-rich-rule='$opts->{'rule'}'".
+	return "$config{'firewall_cmd'} --zone=".quotemeta($zone).
+	       "$type --".quotemeta($action)."-rich-rule=".quotemeta($opts->{'rule'}).
 	       ($timeout ? " --timeout=".quotemeta($timeout) : "");
 	};
 
@@ -763,7 +763,8 @@ $rrule =~ s/^\Q$family\E\s+\Q$table\E\s+\Q$chain\E\s+//;
 $rrule =~ s/\s+/ /g;
 
 # Get existing rules
-my $cmd = "$config{'firewall_cmd'} --direct --get-rules $family $table $chain";
+my $cmd = "$config{'firewall_cmd'} --direct --get-rules ".quotemeta($family).
+	  " ".quotemeta($table)." ".quotemeta($chain);
 my $out = &backquote_logged($cmd." 2>&1 </dev/null");
 return $? ? 0 : ($out =~ /\Q$rrule\E/);
 }

@@ -22,6 +22,7 @@ my @options = map { { value => "image-$_", label => "Image $_",
 	group => { label => $_ < 4 ? 'Recommended' : $_ < 8 ? 'Supported' : 'Older',
 		state => $_ < 4 ? 'success' : $_ < 8 ? 'neutral' : 'warning' },
 	disabled => $_ == 9,
+	attrs => { title => "Description for image $_. Literal <text> & punctuation." },
 	metadata => [ { label => '10 GiB', title => 'Minimum disk size: 10 GiB', icon => 'hard-drive' },
 		{ label => $_ < 8 ? 'Support until 2030' : 'Support ended 2025',
 			icon => 'clock', state => $_ < 8 ? 'neutral' : 'warning' } ] }

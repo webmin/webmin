@@ -7,7 +7,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './acl-lib.pl';    ## no critic
-our (%in, %text, %config, %access, $config_directory);
+our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 &ReadParse();
 $access{'groups'} || &error($text{'gedit_ecannot'});
 my $g;
@@ -95,6 +95,12 @@ print &ui_hidden_table_start($text{'edit_mods'}, "width=100%", 2, "mods");
 # Show available modules, under categories
 my @mlist = &list_module_infos();
 my %has = map { $_, 1 } @{$group{'modules'}};
+# Disable modules that this administrator cannot grant or remove.
+my $me = $access{'mode'} == 1 ? &get_user($base_remote_user) : undef;
+@mcan = $access{'mode'} == 1 ? @{$me->{'modules'} || []} :
+	$access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+			     map { $_->{'dir'} } @mlist;
+my %mcan = map { $_, 1 } @mcan;
 my @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
 	      &select_invert_link("mod", 0, $text{'edit_invert'}) );
 my @cats = &unique(map { $_->{'category'} || "" } @mlist);
@@ -119,7 +125,8 @@ foreach my $c (sort { $b cmp $a } @cats) {
 		else {
 			$label = $m->{'desc'};
 			}
-		push(@grid, &ui_checkbox("mod", $md, $label,$has{$md}));
+		push(@grid, &ui_checkbox("mod", $md, $label, $has{$md},
+					undef, !$mcan{$md}));
 		}
 	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}

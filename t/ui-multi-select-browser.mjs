@@ -95,7 +95,7 @@ try {
     assert.equal(await evaluate("value('domains')"), 'parent\nchild');
     assert.equal(await evaluate("box('domains').querySelector('[data-ui-multi-level]').hidden"), true);
     assert.equal(await evaluate("box('domains').querySelector('.ui_multi_count').textContent"), '1 selected');
-    assert.equal(await evaluate("box('domains').querySelector('.ui_chip').textContent"), 'Disabled');
+    assert.equal(await evaluate("box('domains').querySelector('.ui_chip').textContent.trim()"), 'Disabled');
     await evaluate("box('domains').querySelector('[data-ui-multi-action=children]').click()");
     assert.equal(await evaluate("box('domains').querySelector('[data-ui-multi-level]').hidden"), false);
     await evaluate(`const mode = box('domains').querySelector('select'); mode.value = '1'; mode.dispatchEvent(new Event('change', {bubbles:true}));`);
@@ -122,6 +122,40 @@ try {
     assert.equal(await evaluate("value('legacy')"), 'b\na');
     assert.equal(await evaluate("value('grouped')"), 'image-0');
     assert.equal(await evaluate("box('domains').querySelector('[data-ui-multi-level]').hidden"), true);
+
+    // Row descriptions use CSS on keyboard focus, without native or JS tips.
+    await evaluate(`box('grouped').scrollIntoView();
+        window.tip = box('grouped').querySelector('.ui_tip');
+        tip.querySelector('input').focus();`);
+    assert.equal(await evaluate("getComputedStyle(tip, '::before').display"), 'block');
+    assert.equal(await evaluate("tip.getAttribute('aria-label')"), 'Description for image 0. Literal <text> & punctuation.');
+    assert.equal(await evaluate("tip.querySelector('input').getAttribute('aria-description')"),
+        await evaluate("tip.getAttribute('aria-label')"));
+    assert.equal(await evaluate("box('grouped').querySelectorAll('.ui_multi_item[title], .tooltip').length"), 0);
+    // The arrow follows the checkbox center, not a fixed label offset.
+    const arrowOffset = await evaluate(`{ const a = getComputedStyle(tip, '::after');
+        const r = tip.querySelector('input').getBoundingClientRect();
+        parseFloat(a.left) + parseFloat(a.width) / 2 - (r.x + r.width / 2); }`);
+    assert.ok(Math.abs(arrowOffset) < 1, 'tooltip arrow points at the checkbox');
+    const nextTip = await evaluate(`{ const r = box('grouped').querySelectorAll('.ui_tip')[1].getBoundingClientRect();
+        ({x: r.x + 5, y: r.y + r.height / 2}); }`);
+    await page('Input.dispatchMouseEvent', { type: 'mouseMoved', ...nextTip });
+    assert.equal(await evaluate("getComputedStyle(tip, '::before').display"), 'none', 'hover takes priority over old focus');
+    assert.equal(await evaluate("getComputedStyle(box('grouped').querySelectorAll('.ui_tip')[1], '::before').display"), 'block');
+    await page('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 1100, y: 0 });
+    const tipColors = [];
+    for (const scheme of ['light', 'dark']) {
+        await evaluate(`box('grouped').dataset.uiScheme = '${scheme}'`);
+        tipColors.push(await evaluate("getComputedStyle(tip, '::before').backgroundImage"));
+    }
+    assert.notEqual(tipColors[0], tipColors[1], 'tooltip colors follow the widget scheme');
+    await page('Emulation.setDeviceMetricsOverride', { width: 375, height: 900, deviceScaleFactor: 1, mobile: false });
+    const tipBounds = await evaluate(`{ const s = getComputedStyle(tip, '::before');
+        ({left: parseFloat(s.left), right: parseFloat(s.left) + parseFloat(s.width)}); }`);
+    assert.ok(tipBounds.left >= 0 && tipBounds.right <= 375, 'tooltip fits the narrow viewport');
+    await evaluate("tip.querySelector('input').blur()");
+    assert.equal(await evaluate("getComputedStyle(tip, '::before').display"), 'none');
+    await page('Emulation.setDeviceMetricsOverride', { width: 1120, height: 900, deviceScaleFactor: 1, mobile: false });
 
     // Inspect real Cloudmin metadata in both schemes and a narrow viewport.
     if (process.argv[3]) {

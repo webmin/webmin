@@ -904,6 +904,9 @@ sub device_input
 {
 local (%used, $vg, $pv, $d, $p);
 
+# Dropdown labels need plain text sizes without theme HTML.
+local $main::theme_forbid_nice_size = 1;
+
 # Find partitions that are part of an LVM
 foreach $vg (&list_volume_groups()) {
 	foreach $pv (&list_physical_volumes($vg->{'name'})) {
@@ -931,13 +934,15 @@ foreach $d (&fdisk::list_disks_partitions()) {
 		}
 	}
 
-# Show available RAID devices
-local $conf = &raid::get_raidtab();
-foreach $c (@$conf) {
-	next if ($used{$c->{'value'}});
-	local @ds = &device_status($c->{'value'});
-	next if (@ds);
-	push(@opts, [ $c->{'value'}, &text('pv_raid', $c->{'value'} =~ /md(\d+)$/ ? "$1" : $c->{'value'}) ]);
+# Show available RAID devices when the module is installed
+if ($has_raid) {
+	local $conf = &raid::get_raidtab();
+	foreach $c (@$conf) {
+		next if ($used{$c->{'value'}});
+		local @ds = &device_status($c->{'value'});
+		next if (@ds);
+		push(@opts, [ $c->{'value'}, &text('pv_raid', $c->{'value'} =~ /md(\d+)$/ ? "$1" : $c->{'value'}) ]);
+		}
 	}
 
 push(@opts, [ '', $text{'pv_other'} ]);

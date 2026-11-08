@@ -17,7 +17,7 @@ $temp = $in{'to'} ? $in{'file'} : &transname();
 chdir(&module_root_directory($mods[0])."/..");
 $cmd = "tar chf -";
 foreach $m (@mods) {
-	$cmd .= " $m";
+	$cmd .= " ".quotemeta($m);
 	}
 $cmd .= " | gzip -c >".quotemeta($temp);
 $out = &backquote_logged("($cmd) 2>&1 </dev/null");

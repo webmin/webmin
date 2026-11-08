@@ -33,7 +33,8 @@ if ($in{'all'}) {
 	print "$text{'backup_desc3'}\n";
 	}
 else {
-	print &text('backup_desc', "<tt>".&html_escape($in{'db'})."</tt>"),"\n";
+	print &text('backup_desc',
+		    "<tt>".&html_escape($in{'db'})."</tt>"),"\n";
 	}
 if ($cron) {
 	print "$text{'backup_desc2'}\n";

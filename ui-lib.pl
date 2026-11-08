@@ -1024,9 +1024,20 @@ if ( !$nojs ) {
     # ui_opt_textbox that aren't in the default state.
     my $rv = "<script type='text/javascript'>\n";
     $rv .= "(function () {\n";
+    $rv .= "function restore() {\n";
     $rv .= "const opts = document.getElementsByClassName('ui_opt_textbox');\n";
     $rv .= "for(let i=0; i<opts.length; i++) {\n";
     $rv .= "  opts[i].disabled = document.getElementsByName(opts[i].name+'_def')[0].checked;\n";
+    $rv .= "}\n";
+    $rv .= "}\n";
+    # Disabling inputs during a history load prevents their values being restored.
+    $rv .= "const navigation = window.performance && performance.getEntriesByType && performance.getEntriesByType('navigation')[0];\n";
+    $rv .= "if (!navigation || navigation.type !== 'back_forward') restore();\n";
+    # Native history restores radio values after the page's scripts have run.
+    # One listener handles all forms, including forms loaded by theme navigation.
+    $rv .= "if (!window.webminOptTextboxHistoryReady) {\n";
+    $rv .= "  window.webminOptTextboxHistoryReady = true;\n";
+    $rv .= "  window.addEventListener('pageshow', function() { setTimeout(restore, 0); });\n";
     $rv .= "}\n";
     $rv .= "})();\n";
     $rv .= "</script>\n";
@@ -1083,7 +1094,7 @@ return &ui_textbox($name, $value, $size, $dis, $max, $tags)."&nbsp;".
        &file_chooser_button($name, $dironly);
 }
 
-=head2 ui_bytesbox(name, bytes, [size], [disabled?])
+=head2 ui_bytesbox(name, bytes, [size], [disabled?], [tags], [defaultunits], [maxunits])
 
 Returns HTML for entering a number of bytes, but with friendly kB/MB/GB
 options. May truncate values to 2 decimal points! The parameters are :
@@ -1100,19 +1111,24 @@ options. May truncate values to 2 decimal points! The parameters are :
 
 =item defaultunits - Units mode selected by default
 
+=item maxunits - Largest unit multiplier to offer, such as 1024**3 for GiB.
+Defaults to all units. Larger values are displayed in this unit.
+
 =cut
 sub ui_bytesbox
 {
-my ($name, $bytes, $size, $dis, $tags, $defaultunits) = @_;
+my ($name, $bytes, $size, $dis, $tags, $defaultunits, $maxunits) = @_;
 my $units = 1;
 my $omorfi_unit;
 
 if ($bytes eq '' && $defaultunits) {
-	$units = $defaultunits;
+	$units = $maxunits && $defaultunits > $maxunits ? $maxunits : $defaultunits;
 	}
 else {
 	for(my $i=1; $i<=4; $i++) {
 		my $u = 1024**$i;
+		# Keep the value intact when callers restrict the displayed units.
+		last if ($maxunits && $u > $maxunits);
 		if ($bytes >= $u) {
 			$units = $u;
 			$omorfi_unit = $units
@@ -1132,7 +1148,8 @@ $size = &ui_max_text_width($size || 8);
 return &ui_tag('span',
        &ui_textbox($name, $bytes, $size, $dis, undef, $tags)." ".
        &ui_select($name."_units", $units,
-		 [ [ 1, $text{"nice_size_b"} ],
+		 [ grep { !$maxunits || $_->[0] <= $maxunits }
+		   [ 1, $text{"nice_size_b"} ],
 		   [ 1024, $text{"nice_size_kiB"} ],
 		   [ 1024*1024, $text{"nice_size_MiB"} ],
 		   [ 1024*1024*1024, $text{"nice_size_GiB"} ],
@@ -1226,6 +1243,13 @@ are :
 =item disabled - Set to 1 to disable this input.
 
 =item tags - Additional HTML attributes for the <select> input.
+
+For a borderless single select that inherits the surrounding text style,
+wrap the returned HTML in a span with class ui_select_inline. A label
+with the same class can wrap both the label text and select without an
+explicit control ID. Add ui_select_inline_underlined to the wrapper to
+underline the selected text. Call ui_page_assets() if the page does not
+already load the widget styles.
 
 =cut
 sub ui_select
@@ -4347,7 +4371,7 @@ my %ui_svg_icons = (
 	'arrow-right'    => 'M2.8 8h10|M9 4.2L12.8 8 9 11.8',
 	'plus'           => 'M8 3v10|M3 8h10',
 	'minus'          => 'M3 8h10',
-	'refresh'        => 'M13.2 6.2A5.5 5.5 0 0 0 3.4 4.6|M2.8 9.8a5.5 5.5 0 0 0 9.8 1.6|M13.5 2.5v3.7H9.8|M2.5 13.5V9.8h3.7',
+	'refresh'        => 'M2.75 6.5a5.5 5.5 0 0 1 10.5 0|M13.25 3.5v3h-3|M13.25 9.5a5.5 5.5 0 0 1-10.5 0|M2.75 12.5v-3h3',
 	'play'           => 'M5.5 3.6v8.8L12.5 8z',
 	'pause'          => 'M4 3.6h2.5v8.8H4z|M9.5 3.6H12v8.8H9.5z',
 	'stop'           => 'M4.7 4.7h6.6v6.6H4.7z',
@@ -4360,6 +4384,7 @@ my %ui_svg_icons = (
 	'server'         => 'M2 3.2h12v4.2H2z|M2 8.6h12v4.2H2z|M4.6 5.3h.01|M4.6 10.7h.01',
 	'gear'           => 'M8 10.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z|M8 1.8v2|M8 12.2v2|M1.8 8h2|M12.2 8h2|M3.6 3.6L5 5|M11 11l1.4 1.4|M12.4 3.6L11 5|M5 11l-1.4 1.4',
 	'user'           => 'M8 8a2.6 2.6 0 1 0 0-5.2A2.6 2.6 0 0 0 8 8z|M2.9 13.6a5.4 5.4 0 0 1 10.2 0',
+	'unplug'         => 'M12.7 3.3l1.8-1.8|M1.5 14.5l1.8-1.8|M8 4l4 4 1.5-1.5a1.6 1.6 0 0 0 0-2.3l-1.7-1.7a1.6 1.6 0 0 0-2.3 0z|M4.2 13.5a1.6 1.6 0 0 0 2.3 0L8 12 4 8l-1.5 1.5a1.6 1.6 0 0 0 0 2.3z|M5 9l1.7-1.7|M7 11l1.7-1.7',
 	'trash'          => 'M2.8 4.2h10.4|M6.2 4V2.8h3.6V4|M4.2 4.4l.5 8a1.4 1.4 0 0 0 1.4 1.3h3.8a1.4 1.4 0 0 0 1.4-1.3l.5-8|M6.6 7v4|M9.4 7v4',
 	'download'       => 'M8 2.5v7|M4.8 6.7L8 9.9l3.2-3.2|M3 12.5h10',
 	'upload'         => 'M8 9.5v-7|M4.8 5.3L8 2.1l3.2 3.2|M3 12.5h10',
@@ -4498,7 +4523,7 @@ my %attrs = ( 'class' => &_ui_class('ui_svg_icon', 'ui_svg_icon_'.$name,
 	      'viewBox' => '0 0 16 16',
 	      'fill' => $ui_svg_icons_filled{$name} ? 'currentColor' : 'none',
 	      'stroke' => 'currentColor',
-	      'stroke-width' => '1.5',
+	      'stroke-width' => $name eq 'refresh' ? '1.8' : '1.5',
 	      'stroke-linecap' => 'round',
 	      'stroke-linejoin' => 'round' );
 if (defined($opts->{'title'}) && $opts->{'title'} ne '') {
@@ -4530,9 +4555,10 @@ return &ui_tag('code', &html_escape($str), { 'class' => 'ui_code' });
 
 =head2 ui_tip(content-html, tip)
 
-Wraps arbitrary HTML content so the given plain-text tip is shown on
-hover by the theme's tooltip, the same one ui_help uses. For a plain
-question-mark help bubble, use ui_help instead.
+Wraps HTML content in a CSS tooltip, shown on hover or focus within the
+content. Load ui_page_assets when using this outside a widget page.
+The tip is text; HTML tags are stripped. For a question-mark help bubble,
+use ui_help instead.
 
 =cut
 sub ui_tip
@@ -4748,7 +4774,11 @@ between.
 
 =item gap - Gap between items, as a CSS length.
 
-=item class - Additional CSS classes.
+=item class - Additional CSS classes. Use ui_cluster_small for text fields
+and single-select menus beside small action buttons. Fields match the
+button height set by the theme, and menus fit their selected text.
+Use ui_cluster_baseline to align mixed text sizes and inline controls on
+the same baseline.
 
 =cut
 sub ui_cluster
@@ -6132,7 +6162,7 @@ Size, add-if-missing, titles and width are ignored.
 
 =item values - Array reference of selected scalars or [ value, label, attributes ] entries. Attributes are also retained when a selected entry is missing from options.
 
-=item options - Array reference of [ value, label, attributes ] entries or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right), disabled and attrs. Attributes may be a hash or trusted HTML attribute string, as in ui_select. disabled applies to the checkbox; other attributes, such as title, style and class, apply to the row. Widget identity and selection remain controlled by the library.
+=item options - Array reference of [ value, label, attributes ] entries or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right), disabled and attrs. Attributes may be a hash or trusted HTML attribute string, as in ui_select. disabled applies to the checkbox; title becomes a CSS tooltip around the checkbox label; style and class apply to the row. Widget identity and selection remain controlled by the library.
 
 =item badges - An option hash may also contain a badges array. Each entry holds ui_badge arguments: [ label, state, options ]. Badges appear separately at the right, beside any tag. Their labels are escaped and included in filtering.
 
@@ -6402,10 +6432,16 @@ foreach my $it (@items) {
 	# Checkbox renderers may place HTML outside their label element.
 	my $ctags = "data-ui-multi-item='1'";
 	$ctags .= ' aria-label="'.$filter_label.'"' if ($opts->{'html'});
+	# Reuse the CSS tooltip for row titles, without a second native tooltip.
+	my $tip = delete($it->{'attrs'}->{'title'});
+	$ctags .= ' aria-description="'.&html_escape($tip, 1).'"'
+		if (defined($tip) && $tip ne '');
 	my $row = &ui_checkbox($inputname.'_item', $val, $label,
 			       $selected{$val} ? 1 : 0,
 			       $ctags,
 			       $dis || $it->{'disabled'} ? 1 : 0);
+	$row = &ui_tip($row, &html_escape($tip, 1))
+		if (defined($tip) && $tip ne '');
 	if ($note && $it->{'kids'}) {
 		my $nattrs = { 'class' => 'ui_multi_note' };
 		$nattrs->{'hidden'} = undef if (!$folded);
@@ -6415,9 +6451,9 @@ foreach my $it (@items) {
 	# Keep plain tags compatible while allowing separate state badges.
 	my @badges = ref($it->{'badges'}) eq 'ARRAY' ?
 		grep { ref($_) eq 'ARRAY' && defined($_->[0]) } @{$it->{'badges'}} : ();
-	my $side = defined($it->{'tag'}) && $it->{'tag'} ne '' ?
-		&ui_chip($it->{'tag'}) : '';
-	$side .= join('', map { &ui_badge(@$_) } @badges);
+	# Badges and metadata come first, so the tag chip stays a fixed
+	# right-hand column across rows with and without badges.
+	my $side = join('', map { &ui_badge(@$_) } @badges);
 	# Several facts share one badge, with plain labels and accessible tooltips.
 	my @metadata = ref($it->{'metadata'}) eq 'ARRAY' ?
 		grep { ref($_) eq 'HASH' && defined($_->{'label'}) &&
@@ -6435,6 +6471,8 @@ foreach my $it (@items) {
 			{ 'class' => 'ui_badge ui_badge_neutral ui_badge_small '.
 				'ui_badge_rounded ui_multi_metadata' });
 		}
+	$side .= &ui_chip($it->{'tag'})
+		if (defined($it->{'tag'}) && $it->{'tag'} ne '');
 	$row .= &ui_tag('span', $side,
 		{ 'class' => &_ui_class('ui_multi_side', @badges ? 'ui_multi_badges' : undef) })
 		if (length($side));

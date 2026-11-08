@@ -354,13 +354,32 @@ if ($iface->{'virtual'} ne '') {
 	&save_interface($parent, $boot);
 	}
 else {
-	# Delete all the lines
+	# Find current lines because earlier deletions may have shifted them.
 	&lock_file($iface->{'file'});
+	&unflush_file_lines($iface->{'file'});
+	my $yaml = &read_yaml_file($iface->{'file'});
+	my @network = grep { $_->{'name'} eq 'network' } @$yaml;
+	my @groups = grep { $_->{'name'} eq 'ethernets' ||
+			   $_->{'name'} eq 'bridges' }
+			 map { @{$_->{'members'}} } @network;
+	my $entry;
+	foreach my $g (@groups) {
+		my ($e) = grep { $_->{'name'} eq $iface->{'fullname'} }
+				@{$g->{'members'}};
+		next if (!$e);
+		# Remove the group as well when deleting its last interface.
+		$entry = @{$g->{'members'}} == 1 ? $g : $e;
+		last;
+		}
+	$entry || &error("No interface named $iface->{'fullname'} exists");
+
+	# Delete the interface without changing neighboring definitions.
 	my $lref = &read_file_lines($iface->{'file'});
-	splice(@$lref, $iface->{'line'},
-	       $iface->{'eline'} - $iface->{'line'} + 1);
+	splice(@$lref, $entry->{'line'},
+	       $entry->{'eline'} - $entry->{'line'} + 1);
 	&flush_file_lines($iface->{'file'});
 	if (&is_yaml_empty($iface->{'file'})) {
+		# Discard the file only when no settings or interfaces remain.
 		&unlink_file($iface->{'file'});
 		}
 	&unlock_file($iface->{'file'});
@@ -368,22 +387,22 @@ else {
 }
 
 # is_yaml_empty(file)
-# Return 1 if a YAML file contains only network and ethernets line, with no
-# other interfaces
+# Returns 1 if only the version and empty Ethernet or bridge groups remain
 sub is_yaml_empty
 {
 my ($file) = @_;
 my $yaml = &read_yaml_file($file);
 return 1 if (!$yaml);
-my @rest = grep { $_->{'name'} ne 'network' } @$yaml;
-return 0 if (@rest);
 foreach my $n (@$yaml) {
-	my @rest = grep { $_->{'name'} ne 'ethernets' &&
-			  $_->{'name'} ne 'bridges' }
-			@{$network->{'members'}};
-	return 0 if (@rest);
-	foreach my $ens (@{$network->{'members'}}) {
-		return 0 if (@{$ens->{'members'}});
+	# Preserve unknown directives and inline network settings.
+	return 0 if ($n->{'name'} ne 'network' ||
+		    ($n->{'value'} ne '' && $n->{'value'} ne '{}'));
+	# Only the version and empty device groups are safe to discard.
+	foreach my $ens (@{$n->{'members'}}) {
+		next if ($ens->{'name'} eq 'version');
+		return 0 if (($ens->{'name'} ne 'ethernets' &&
+			     $ens->{'name'} ne 'bridges') || @{$ens->{'members'}} ||
+			($ens->{'value'} ne '' && $ens->{'value'} ne '{}'));
 		}
 	}
 return 1;

@@ -1474,6 +1474,25 @@ subtest 'save_user.cgi create privilege' => sub {
     delete_user('admin');
 };
 
+subtest 'save_user.cgi rejected module escaping' => sub {
+    _reset_fixture();
+    _seed_user_acl('admin', { create => 1, mode => 2, mods => 'proc' });
+    create_user({ name => 'admin', pass => 'x', modules => ['acl', 'proc'] });
+
+    # Ordinary and hostile module names must remain text in the error page.
+    for my $module ('cron', '<script>alert(1)</script>') {
+        my $r = run_cgi('save_user.cgi', {
+            name => 'newbie', pass_def => 1, mod => $module,
+            logouttime_def => 1, minsize_def => 1 });
+        my $expected = text('save_emod', html_escape($module));
+        like($r->{out}, qr/\Q$expected\E/, 'rejected module is escaped');
+        unlike($r->{out}, qr/<script>alert\(1\)<\/script>/,
+               'module error cannot inject a script');
+        _clear_caches();
+        ok(!get_user('newbie'), 'rejected module does not create an account');
+    }
+};
+
 # Unix conversion must not bypass the privileged-name guard in save_user.cgi.
 # An ACL-capable administrator can still deliberately convert such a user.
 subtest 'convert.cgi privileged username gate' => sub {
@@ -1648,6 +1667,125 @@ subtest 'save_group.cgi name validation' => sub {
     ok(!$r->{location}, 'no redirect when description contains colon');
     ($g) = grep { $_->{name} eq 'goodname' } list_groups();
     ok(!$g, 'group with colon-bearing description not created');
+};
+
+# Group module limits must reject requests before any membership is changed.
+subtest 'save_group.cgi module limits' => sub {
+    _reset_fixture();
+    create_user({ name => 'admin', pass => 'x', modules => ['acl', 'proc'] });
+    create_group({ name => 'parent', members => [], modules => ['proc'] });
+    _seed_user_acl('admin', { mode => 2, mods => 'proc', groups => 1,
+                              gassign => '*' });
+
+    my $r = run_cgi('save_group.cgi', {
+        name => 'child', desc => 'd', group => 'parent', mod => ['proc', 'cron'] });
+    like($r->{out}, qr/You cannot grant access to module 'cron'/,
+         'explicit module limit rejects an unauthorized grant');
+    _clear_caches();
+    ok(!get_group('child'), 'rejected group is not created');
+    is_deeply(get_group('parent')->{members}, [],
+              'rejected save does not change parent membership');
+
+    $r = run_cgi('save_group.cgi', {
+        name => 'child', desc => 'd', group => 'parent', mod => 'proc' });
+    is($r->{status}, 0, 'allowed group creation exits successfully');
+    _clear_caches();
+    is_deeply(get_group('child')->{modules}, ['proc'], 'allowed module is saved');
+    is_deeply(get_group('parent')->{members}, ['@child'],
+              'successful save updates parent membership');
+
+    $r = run_cgi('save_group.cgi', {
+        old => 'child', name => 'child', desc => 'changed', group => '', mod => 'cron' });
+    like($r->{out}, qr/You cannot grant access to module 'cron'/,
+         'editing an existing group cannot grant an unauthorized module');
+    _clear_caches();
+    is_deeply(get_group('parent')->{members}, ['@child'],
+              'rejected edit does not detach the existing group');
+
+    my $payload = '<script>alert(1)</script>';
+    $r = run_cgi('save_group.cgi', { name => 'badmod', mod => $payload });
+    like($r->{out}, qr/&lt;script&gt;/, 'rejected module name is escaped');
+    unlike($r->{out}, qr/\Q$payload\E/, 'module error cannot inject HTML');
+
+    # Mode 1 uses the effective user's modules, including mapped logins.
+    _seed_user_acl('admin', { mode => 1, groups => 1 });
+    $r = run_cgi('save_group.cgi', { name => 'ownmods', mod => 'proc' },
+                 user => 'mapped-user', env => { BASE_REMOTE_USER => 'admin' });
+    _clear_caches();
+    is_deeply(get_group('ownmods')->{modules}, ['proc'],
+              'mapped login uses the base user module list');
+    $r = run_cgi('save_group.cgi', { name => 'denied', mod => 'cron' });
+    like($r->{out}, qr/You cannot grant access to module 'cron'/,
+         'mode 1 rejects modules the base user does not hold');
+
+    delete_user('admin');
+    _seed_user_acl('admin', { mode => 1, groups => 1 });
+    $r = run_cgi('save_group.cgi', { name => 'missing', mod => 'proc' });
+    like($r->{out}, qr/\Q$text{'edit_egone'}\E/, 'missing user returns a normal error');
+    unlike($r->{err}, qr/undefined value|compilation errors/,
+           'missing user does not cause a Perl exception');
+    _clear_caches();
+    ok(!get_group('missing'), 'missing user cannot create a group');
+
+    # Unrestricted mode does not require the mode-1 user record.
+    _seed_user_acl('admin', { mode => 0, groups => 1 });
+    $r = run_cgi('save_group.cgi', { name => 'unrestricted', mod => 'cron' });
+    _clear_caches();
+    is_deeply(get_group('unrestricted')->{modules}, ['cron'],
+              'unrestricted module grants remain supported');
+};
+
+# Editing unrelated fields must retain modules outside the admin's grant list.
+subtest 'existing group module preservation' => sub {
+    for my $mode (1, 2, 0) {
+        _reset_fixture();
+        create_user({ name => 'admin', pass => 'x', modules => ['acl', 'proc'] });
+        create_user({ name => 'member', pass => 'x', modules => ['proc', 'cron'] });
+        create_group({ name => 'existing', members => ['member'],
+                       modules => ['proc', 'cron'], desc => 'before' });
+        _seed_user_acl('admin', { mode => $mode, mods => 'proc', groups => 1 });
+
+        my $r = run_cgi('edit_group.cgi', { group => 'existing' });
+        my ($checkbox) = $r->{out} =~ /(<input\b[^>]*value="cron"[^>]*>)/;
+        ok($checkbox && $checkbox =~ /checked/, "mode $mode shows existing cron access");
+        is($checkbox && $checkbox =~ /disabled/ ? 1 : 0, $mode ? 1 : 0,
+           "mode $mode disables only restricted modules");
+
+        # Disabled controls are omitted by the browser.
+        $r = run_cgi('save_group.cgi', {
+            old => 'existing', name => 'existing', desc => 'after', mod => 'proc' });
+        _clear_caches();
+        my $group = get_group('existing');
+        is($group->{desc}, 'after', "mode $mode permits description edits");
+        my @expected = $mode ? qw(cron proc) : qw(proc);
+        is_deeply([sort @{$group->{modules}}], \@expected,
+                  "mode $mode preserves restricted modules but allows authorized removal");
+        is_deeply([sort @{get_user('member')->{modules}}], \@expected,
+                  "mode $mode preserves the correct member access");
+        next if !$mode;
+
+        # An old form can still submit the existing restricted selection.
+        $r = run_cgi('save_group.cgi', {
+            old => 'existing', name => 'existing', desc => 'old form',
+            mod => ['proc', 'cron'] });
+        _clear_caches();
+        is(get_group('existing')->{desc}, 'old form',
+           "mode $mode accepts an unchanged restricted selection");
+
+        $r = run_cgi('save_group.cgi', {
+            old => 'existing', name => 'existing', desc => 'forged',
+            mod => ['proc', 'cron', 'webmin'] });
+        like($r->{out}, qr/You cannot grant access to module 'webmin'/,
+             "mode $mode rejects a new unauthorized module");
+        _clear_caches();
+        is(get_group('existing')->{desc}, 'old form',
+           "mode $mode rejects before writing changes");
+
+        $r = run_cgi('save_group.cgi', {
+            name => 'cloned', clone => 'existing', mod => ['proc', 'cron'] });
+        like($r->{out}, qr/You cannot grant access to module 'cron'/,
+             "mode $mode cannot grant restricted modules by cloning");
+    }
 };
 
 subtest 'save_user.cgi self-lockout guard' => sub {

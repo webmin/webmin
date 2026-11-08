@@ -358,7 +358,7 @@ if (!-r $_[0]->{'value'} && $_[0]->{'value'} =~ /\/md(\d+)$/) {
 if ($raid_mode eq "raidtools") {
 	# Call the raidtools mkraid command
 	local $f = $_[1] ? "--really-force" : "";
-	local $out = &backquote_logged("mkraid $f $_[0]->{'value'} ".
+	local $out = &backquote_logged("mkraid $f ".quotemeta($_[0]->{'value'})." ".
 				       "2>&1 </dev/null");
 	return $? ? &text($out =~ /force/i ? 'eforce' : 'emkraid',
 			  "<pre>$out</pre>")
@@ -383,20 +383,20 @@ else {
 			push(@parities, $d->{'value'});
 			}
 		}
-	local $cmd = "mdadm --$mode --level $lvl";
+	local $cmd = "mdadm --".quotemeta($mode)." --level ".quotemeta($lvl);
 	if ($_[2]) {
 		push(@devices, "missing");
 		}
-	$cmd .= " --layout $layout" if ($layout);
-	$cmd .= " --chunk $chunk" if ($chunk);
+	$cmd .= " --layout ".quotemeta($layout) if ($layout);
+	$cmd .= " --chunk ".quotemeta($chunk) if ($chunk);
 	$cmd .= " --raid-devices ".scalar(@devices);
 	$cmd .= " --spare-devices ".scalar(@spares) if (@spares);
 	$cmd .= " --force" if ($_[1]);
 	$cmd .= " --assume-clean" if ($_[3]);
 	$cmd .= " --run";
-	$cmd .= " $_[0]->{'value'}";
+	$cmd .= " ".quotemeta($_[0]->{'value'});
 	foreach $d (@devices, @parities, @spares) {
-		$cmd .= " $d";
+		$cmd .= " ".quotemeta($d);
 		}
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 	
@@ -421,7 +421,7 @@ if ($raid_mode eq "raidtools") {
 	&deactivate_raid($_[0]) if ($_[0]->{'active'});
 	}
 else {
-	local $out = &backquote_logged("mdadm --stop $_[0]->{'value'} 2>&1");
+	local $out = &backquote_logged("mdadm --stop ".quotemeta($_[0]->{'value'})." 2>&1");
 	&error(&text('emdadmstop', "<tt>$out</tt>")) if ($?);
 	}
 }
@@ -431,7 +431,7 @@ else {
 sub activate_raid
 {
 if ($raid_mode eq "raidtools") {
-	local $out = &backquote_logged("raidstart $_[0]->{'value'} 2>&1");
+	local $out = &backquote_logged("raidstart ".quotemeta($_[0]->{'value'})." 2>&1");
 	&error(&text('eraidstart', "<tt>$out</tt>")) if ($?);
 	}
 }
@@ -442,7 +442,7 @@ sub deactivate_raid
 {
 if ($raid_mode eq "raidtools") {
 	# Just stop the raid set
-	local $out = &backquote_logged("raidstop $_[0]->{'value'} 2>&1");
+	local $out = &backquote_logged("raidstop ".quotemeta($_[0]->{'value'})." 2>&1");
 	&error(&text('eraidstop', "<tt>$out</tt>")) if ($?);
 	}
 }
@@ -454,7 +454,8 @@ sub add_partition
 if ($raid_mode eq "mdadm") {
 	# Call mdadm command to add
 	local $out = &backquote_logged(
-		"mdadm --manage $_[0]->{'value'} --add $_[1] 2>&1");
+		"mdadm --manage ".quotemeta($_[0]->{'value'}).
+		" --add ".quotemeta($_[1])." 2>&1");
 	&error(&text('emdadmadd', "<tt>$out</tt>")) if ($?);
 
 	# Add device to mdadm.conf
@@ -481,9 +482,8 @@ sub grow
 {
 if ($raid_mode eq "mdadm") {
 	# Call mdadm command to add
-	$cmd="mdadm -G $_[0]->{'value'} -n $_[1] 2>&1";
-	local $out = &backquote_logged(
-		$cmd);
+	$cmd="mdadm -G ".quotemeta($_[0]->{'value'})." -n ".quotemeta($_[1])." 2>&1";
+	local $out = &backquote_logged($cmd);
 	&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
 	}
 }
@@ -502,22 +502,24 @@ if ($raid_mode eq "mdadm") {
 		$backup_file = "/raid-level-convert-$raid_device_short-$date.bck";
 
 		# Call mdadm command to convert
-		$cmd="mdadm -G $_[0]->{'value'} -l $_[3] -n $_[2] --backup-file $backup_file 2>&1";
-        
-		local $out = &backquote_logged(
-			$cmd);
+		local $cmd = "mdadm -G ".quotemeta($_[0]->{'value'}).
+			     " -l ".quotemeta($_[3]).
+			     " -n ".quotemeta($_[2]).
+			     " --backup-file ".quotemeta($backup_file)." 2>&1";
+		local $out = &backquote_logged($cmd);
 		&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
 		}
 	else {
 		$newcount = $_[1] - 1;
-		$cmd="mdadm --grow $_[0]->{'value'} --level $_[3] -n $newcount";
+		local $cmd = "mdadm --grow ".quotemeta($_[0]->{'value'}).
+			     " --level ".quotemeta($_[3]).
+			     " -n ".quotemeta($newcount);
 		$raid_device_short = $_[0]->{'value'};
                 $raid_device_short =~ s/\/dev\///;
                 $date = `date \+\%Y\%m\%d-\%H\%M`;
                 chomp($date);
-                $cmd .= " --backup-file /tmp/convert-$raid_device_short-$date";
-		local $out = &backquote_logged(
-                        $cmd);
+                $cmd .= " --backup-file ".quotemeta("/tmp/convert-$raid_device_short-$date");
+		local $out = &backquote_logged($cmd);
                 &error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
 		}
 	}
@@ -530,10 +532,12 @@ sub remove_partition
 if ($raid_mode eq "mdadm") {
 	# Call mdadm commands to fail and remove
 	local $out = &backquote_logged(
-		"mdadm --manage $_[0]->{'value'} --fail $_[1] 2>&1");
+		"mdadm --manage ".quotemeta($_[0]->{'value'}).
+		" --fail ".quotemeta($_[1])." 2>&1");
 	&error(&text('emdadmfail', "<tt>$out</tt>")) if ($?);
 	local $out = &backquote_logged(
-		"mdadm --manage $_[0]->{'value'} --remove $_[1] 2>&1");
+		"mdadm --manage ".quotemeta($_[0]->{'value'}).
+		" --remove ".quotemeta($_[1])." 2>&1");
 	&error(&text('emdadmremove', "<tt>$out</tt>")) if ($?);
 
 	# Remove device from mdadm.conf
@@ -567,7 +571,8 @@ sub remove_detached
 if ($raid_mode eq "mdadm") {
 	# Call mdadm commands to remove
 	local $out = &backquote_logged(
-		"mdadm --manage $_[0]->{'value'} --remove detached 2>&1");
+		"mdadm --manage ".quotemeta($_[0]->{'value'}).
+		" --remove detached 2>&1");
 	&error(&text('emdadmremove', "<tt>$out</tt>")) if ($?);
 	}
 }
@@ -579,7 +584,8 @@ sub replace_partition
 if ($raid_mode eq "mdadm") {
         # Call mdadm commands to replace
         local $out = &backquote_logged(
-                "mdadm --replace $_[0]->{'value'} $_[1] --with $_[2] 2>&1");
+                "mdadm --replace ".quotemeta($_[0]->{'value'}).
+		" ".quotemeta($_[1])." --with ".quotemeta($_[2])." 2>&1");
         &error(&text('emdadmreplace', "<tt>$out</tt>")) if ($?);
         }
 }
@@ -818,7 +824,7 @@ if (&has_command("update-initramfs")) {
 # Returns the mdadm version number
 sub get_mdadm_version
 {
-local $out = `mdadm --version 2>&1`;
+local $out = &backquote_command("mdadm --version 2>&1 </dev/null");
 local $ver = $out =~ /\s+v([0-9\.]+)/ ? $1 : undef;
 return wantarray ? ( $ver, $out ) : $ver;
 }

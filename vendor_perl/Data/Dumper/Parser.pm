@@ -56,6 +56,10 @@ if ($$s =~ /\G'/gc) {
 elsif ($$s =~ /\G"/gc) {
 	return _parse_double($s);
 	}
+elsif ($$s =~ /\G!!([01])(?![A-Za-z0-9_.])/gc) {
+	# Read native boolean literals without evaluating arbitrary expressions.
+	return $1 eq '1';
+	}
 elsif ($$s =~ /\G(-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?)(?![A-Za-z0-9_.])/gc) {
 	# Return an unquoted number as a numeric scalar.
 	return $1 + 0;
