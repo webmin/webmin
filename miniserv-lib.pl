@@ -17,7 +17,7 @@ eval "use Time::HiRes;";
 	   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" );
 
 # handle_request(remoteaddress, localaddress, ipv6-flag)
-# Where the real work is done
+# Authenticate and serve one HTTP request from the accepted connection.
 sub handle_request
 {
 local ($acptip, $localip, $ipv6) = @_;
@@ -1588,7 +1588,17 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 				$cgiheader{lc($1)} = $2;
 				push(@cgiheader, [ $1, $2 ]);
 				}
-			if ($cgiheader{"location"}) {
+			# Honor a valid CGI status in the response and log.
+			# Keep the default for a malformed code or reason.
+			my $cgi_status = $cgiheader{"status"} =~
+				/^([1-5][0-9][0-9])\s+([^\r\n]+)$/;
+			if ($cgi_status) {
+				# Match the response and logged status.
+				$ok_code = $logged_code = $1;
+				$ok_message = $2;
+				}
+			if ($cgiheader{"location"} && !$cgi_status) {
+				# Location alone implies a redirect.
 				&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 				&write_data("Date: $datestr\r\n");
 				&write_data("Server: @{[&server_info()]}\r\n");
@@ -1611,6 +1621,8 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 				&write_keep_alive(0);
 				}
 			foreach $h (@cgiheader) {
+				# Do not forward the CGI Status header.
+				next if (lc($h->[0]) eq 'status');
 				&write_data("$h->[0]: $h->[1]\r\n");
 				}
 			&write_data("\r\n");

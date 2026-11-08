@@ -51,6 +51,8 @@ python3 fixtures/api-only-userdb.py /tmp/task mysql cleanup
 
 `api-only-live.py` with `fixtures/api-only-account.pl` beside it also runs against the guest's real Webmin on port 10000. Stop the sandbox PID in `miniserv.pid` and remove the task directory afterwards; it holds copies of the guest configuration.
 
+`miniserv-cgi-status.t` runs temporary CGIs through MiniServ's forked request handler over a Unix socket pair. It checks HTTP status codes, access logs, redirects and ordinary responses. The live group fixture tests deletion, name reuse and inheritance in one process to catch stale cached permissions.
+
 ## Coverage reports
 
 ```sh
