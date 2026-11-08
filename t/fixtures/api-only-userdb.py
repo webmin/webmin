@@ -90,10 +90,12 @@ if mode=='setup':
        'grant all on '+name+'.* to '+"'"+name+"'@'localhost'",'flush privileges'])
   sql(schema,name)
  else:
+  # PostgreSQL table ownership lets the fixture login install triggers and
+  # rename tables during fault tests without superuser access.
   sql(['create user '+name+" with password '"+password+"'",'create database '+name+' owner '+name])
-  # Tables belong to the superuser; the login needs both table and sequence rights.
-  sql(schema+['grant all on all tables in schema public to '+name,
-      'grant all on all sequences in schema public to '+name],name)
+  tables=('webmin_user','webmin_group','webmin_user_attr','webmin_group_attr',
+          'webmin_user_acl','webmin_group_acl')
+  sql(schema+['alter table '+table+' owner to '+name for table in tables],name)
  configure(kind+'://'+name+':'+password+'@localhost/'+name)
  print('Sandbox now authenticates against '+kind+' database '+name)
 else:

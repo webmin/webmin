@@ -376,8 +376,15 @@ if ($in{'old'}) {
 		}
 	}
 else {
-	# create and add to access list
-	&create_user(\%user, $in{'clone'});
+	# Keep every login method disabled until all ACL writes succeed. The IP
+	# denial also covers certificate and configured IP-based authentication.
+	my %pending = (%user, 'pass' => '!'.$user{'pass'}, 'cert' => undef,
+		       'allow' => undef, 'deny' => '0.0.0.0/0 ::/0');
+	&create_user(\%pending, $in{'clone'});
+	# Activation must use the ID and backend assigned during creation.
+	$user{'id'} = $pending{'id'};
+	$user{'proto'} = $pending{'proto'};
+	# Let the creator edit the account, including after a later ACL failure.
 	if ($access{'users'} ne '*') {
 		$access{'users'} .= " ".$in{'name'};
 		&save_module_acl(\%access);
@@ -387,8 +394,17 @@ else {
 # Database users need an ID before their inherited ACLs can be stored.
 # Copy after creation or rename so group restrictions reach the actual account.
 if ($newgroup) {
+	# Copy the group's permissions before applying the requested endpoint.
 	&copy_group_user_acl_files($in{'group'}, $in{'name'},
 			      [ @{$newgroup->{'modules'}}, "" ]);
+	if ($global_access{'api_only'}) {
+		# Preserve an explicitly requested endpoint while inheriting the
+		# group's other permissions. An empty form value cannot clear an
+		# inherited or previously saved restriction.
+		my %inherited = &get_module_acl($in{'name'}, '', 1, 1);
+		$inherited{'api_only'} = $global_access{'api_only'};
+		&save_module_acl(\%inherited, $in{'name'}, '', 1);
+		}
 	}
 
 my $aclfile = "$config_directory/$in{'name'}.acl";
@@ -422,6 +438,11 @@ if ($in{'safe'}) {
 			&save_module_acl(\%macl, $in{'name'}, $m);
 			}
 		}
+	}
+
+# Activate new accounts only after direct, inherited and safe ACLs are saved.
+if (!$in{'old'}) {
+	&modify_user($user{'name'}, \%user);
 	}
 
 # Log the event

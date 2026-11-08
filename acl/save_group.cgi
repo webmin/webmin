@@ -36,6 +36,13 @@ if ($in{'old'}) {
 	}
 &error_setup($text{'gsave_err'});
 
+# Validate global permissions before changing the group or its members' ACLs.
+my %global_access;
+if ($in{'old'} && $in{'acl_security_form'}) {
+	&foreign_require("", "acl_security.pl");
+	&foreign_call("", "acl_security_save", \%global_access, \%in);
+	}
+
 # Check for duplicate group names
 $in{'name'} =~ /^[A-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
 	&error(&text('gsave_ename', $in{'name'}));
@@ -128,19 +135,21 @@ else {
 	&create_group(\%group, $in{'clone'});
 	}
 
-if ($in{'old'} && $in{'acl_security_form'}) {
-	# Update group's global ACL
-	&foreign_require("", "acl_security.pl");
-	my %uaccess;
-	&foreign_call("", "acl_security_save", \%uaccess, \%in);
+if ($in{'old'} && $in{'acl_security_form'} && !$newgroup) {
+	# Save direct global permissions only for groups without a parent.
 	my $aclfile = "$config_directory/$in{'name'}.gacl";
 	&lock_file($aclfile);
-	&save_group_module_acl(\%uaccess, $in{'name'}, "", 1);
+	&save_group_module_acl(\%global_access, $in{'name'}, "", 1);
 	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
-	# Apply a newly selected endpoint to existing members as well as future
-	# members. Keep any endpoint already set on a user or nested group.
+	}
+
+if ($in{'old'} && ($in{'acl_security_form'} || $newgroup)) {
+	# Apply the saved policy, including any endpoint inherited from a parent.
+	# Subgroup forms must not overwrite inherited global permissions.
+	my %uaccess = &get_group_module_acl($in{'name'}, '', 1);
 	if ($uaccess{'api_only'}) {
+		# Restrict members while retaining their saved endpoints.
 		my @users = &list_users();
 		my @groups = &list_groups();
 		&set_acl_files(\@users, \@groups, '', $group{'members'},
