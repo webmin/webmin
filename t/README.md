@@ -53,7 +53,9 @@ python3 fixtures/api-only-userdb.py /tmp/task mysql cleanup
 
 `api-only-save-handlers.t`, `api-only-policy.t`, `miniserv-api-only-ip.t` and `cluster-webmin-api-only.t` test save failures, inherited permissions, account lookup and cluster synchronization errors. Tests that need SQL use an isolated SQLite database. They skip if DBI or DBD::SQLite is unavailable.
 
-`miniserv-cgi-status.t` runs temporary CGIs through MiniServ's forked request handler over a Unix socket pair. It checks HTTP status codes, access logs, redirects and ordinary responses. The live group fixture tests deletion, name reuse and inheritance in one process to catch stale cached permissions.
+`miniserv-cgi-status.t` tests MiniServ's in-process CGI response writer without starting a server. It checks status codes, redirects, malformed statuses and removal of the CGI `Status` header. `fixtures/miniserv-cgi-status.py` checks HTTP responses and request logs in both forked and in-process CGI modes on a disposable Linux VM.
+
+The live group fixture tests deletion, name reuse and inheritance in one process to catch stale cached permissions.
 
 For live failure tests, include `t/fixtures/api-only-failures.py` and `t/fixtures/api-only-failures.pl` in `candidate.tar`, then prepare a sandbox at `/tmp/webmin-api-task` with `api-only-sandbox.py`. Run `python3 fixtures/api-only-failures.py /tmp/webmin-api-task files`. Repeat with `mysql` and `postgresql`, using `api-only-userdb.py` to set up and clean up each test database. Other sandbox names must start with `/tmp/webmin-api-`.
 
