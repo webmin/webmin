@@ -62,9 +62,9 @@ local (@rv, $i);
 for($i=0; defined($in{"ExtFilterDefine_n_$i"}); $i++) {
 	next if (!$in{"ExtFilterDefine_n_$i"});
 	$in{"ExtFilterDefine_n_$i"} =~ /^\S+$/ ||
-		&error(&text('filter_ename', $in{"ExtFilterDefine_n_$i"}));
+		&error(&text('filter_ename', &html_escape($in{"ExtFilterDefine_n_$i"})));
 	$in{"ExtFilterDefine_c_$i"} ||
-		&error(&text('filter_ecmd', $in{"ExtFilterDefine_n_$i"}));
+		&error(&text('filter_ecmd', &html_escape($in{"ExtFilterDefine_n_$i"})));
 	local $l = $in{"ExtFilterDefine_n_$i"}." mode=".
 		   $in{"ExtFilterDefine_m_$i"}." cmd=\"".
 		   $in{"ExtFilterDefine_c_$i"}."\"";

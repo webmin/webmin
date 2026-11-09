@@ -50,7 +50,7 @@ else {
 			$ac eq '*' || $ac eq '_default_' ||
 			    &to_ipaddress($ac) ||
 			    $ac =~ /^\[(\S+)\]$/ && &to_ip6address("$1") ||
-				&error(&text('vserv_eaddr2', $ac));
+				&error(&text('vserv_eaddr2', &html_escape($ac)));
 			}
 		$addr = join(" ", @addrs);
 		}
@@ -69,7 +69,7 @@ else {
 			}
 		elsif (!&to_ipaddress($in{'addr'}) &&
 		       !&to_ip6address($in{'addr'})) {
-			&error(&text('vserv_eaddr2', $in{'addr'}));
+			&error(&text('vserv_eaddr2', &html_escape($in{'addr'})));
 			}
 		elsif (&check_ip6address($in{'addr'})) {
 			# IPv6 address
@@ -85,14 +85,14 @@ else {
 	if ($in{'port_mode'} == 0) { $port = ""; }
 	elsif ($in{'port_mode'} == 1) { $port = ":*"; }
 	elsif ($in{'port'} !~ /^\d+$/) {
-		&error(&text('vserv_eport', $in{'port'}));
+		&error(&text('vserv_eport', &html_escape($in{'port'})));
 		}
 	else { $port = ":$in{'port'}"; }
 
 	# Check document root
 	if (!$in{'root_def'}) {
 		(-d $in{'root'}) ||
-			&error(&text('vserv_eroot', $in{'root'}));
+			&error(&text('vserv_eroot', &html_escape($in{'root'})));
 		$root = $in{'root'};
 		$root = "\"$root\"" if ($root =~ /\s/);
 		}
@@ -100,7 +100,7 @@ else {
 	# Check server name
 	if (!$in{'name_def'}) {
 		$in{'name'} =~ /^[a-z0-9\.\_\-]+$/i ||
-			&error(&text('vserv_ename', $in{'name'}));
+			&error(&text('vserv_ename', &html_escape($in{'name'})));
 		$name = $in{'name'};
 		}
 

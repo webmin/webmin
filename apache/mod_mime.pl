@@ -54,8 +54,8 @@ local($i, $type, $exts, @rv, $re); $re = $_[1];
 for($i=0; defined($in{"$_[0]_type_$i"}); $i++) {
 	$type = $in{"$_[0]_type_$i"}; $exts = $in{"$_[0]_exts_$i"};
 	if ($type !~ /\S/ && $exts !~ /\S/) { next; }
-	if ($type !~ /$re/) { &error(&text('mod_mime_einvalid', $type, $_[2])); }
-	if ($exts !~ /\S/) { &error(&text('mod_mime_eext', $_[2], $type)); }
+	if ($type !~ /$re/) { &error(&text('mod_mime_einvalid', &html_escape($type), $_[2])); }
+	if ($exts !~ /\S/) { &error(&text('mod_mime_eext', $_[2], &html_escape($type))); }
 	push(@rv, "$type $exts");
 	}
 return ( \@rv );
@@ -244,7 +244,7 @@ for($i=0; defined($in{"$_[0]_e_$i"}); $i++) {
 	local @f = split(/\0/, $in{"$_[0]_f_$i"});
 	next if (!@f);
 	local $exts = $in{"$_[0]_e_$i"};
-	$exts || &error(&text('mod_mime_efext', join(" ", @f)));
+	$exts || &error(&text('mod_mime_efext', &html_escape(join(" ", @f))));
 	push(@rv, join(";", @f)." ".$exts);
 	}
 return ( \@rv );

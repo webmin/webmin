@@ -64,23 +64,23 @@ for($i=0; defined($type = $in{"allow_type_$i"}); $i++) {
 	if ($mode == 0) { $what = "all"; }
 	elsif ($mode == 2 && !&check_ipaddress($what) &&
 			     !&check_ip6address($what)) {
-		&error(&text('mod_access_eip', $what));
+		&error(&text('mod_access_eip', &html_escape($what)));
 		}
 	elsif ($mode == 3 && $what !~ /^[0-9\.]+$/) {
-		&error(&text('mod_access_epip', $what));
+		&error(&text('mod_access_epip', &html_escape($what)));
 		}
 	elsif ($mode == 4 && ($what !~ /^([0-9\.:]+)\/([0-9\.:]+)$/ ||
 	       (!&check_ipaddress($1) && !&check_ip6address($1)) ||
 	       (!&check_ipaddress($2) && !&check_ip6address($2)))) {
-		&error(&text('mod_access_emask', $what));
+		&error(&text('mod_access_emask', &html_escape($what)));
 		}
 	elsif ($mode == 5 && ($what !~ /^([0-9\.:]+)\/([0-9]+)$/ ||
 	       !&check_ipaddress($1) || $2 > 32)) {
-		&error(&text('mod_access_ecidr', $what));
+		&error(&text('mod_access_ecidr', &html_escape($what)));
 		}
 	elsif ($mode == 6) {
 		$what =~ /^\S+$/ ||
-			&error(&text('mod_access_evar', $what));
+			&error(&text('mod_access_evar', &html_escape($what)));
 		$what = "env=$what";
 		}
 	if ($type == 1) { push(@allow, "from $what"); }

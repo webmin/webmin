@@ -48,7 +48,7 @@ if ($_[0]->{'version'} >= 1.3) {
 		$nick = $in{"LogFormat_nick_$i"}; $fmt =$in{"LogFormat_fmt_$i"};
 		$fmt =~ s/\"/\\\"/g;
 		if ($nick !~ /\S/ && $fmt !~ /\S/) { next; }
-		$nick =~ /^\S+$/ || &error(&text('mod_log_config_enick', $nick));
+		$nick =~ /^\S+$/ || &error(&text('mod_log_config_enick', &html_escape($nick)));
 		push(@rv, "\"$fmt\" $nick");
 		}
 	return ( \@rv );
@@ -115,12 +115,12 @@ for($i=0; defined($in{"Log_dest_$i"}); $i++) {
 	$env = $in{"Log_env_$i"};
 	$cust =~ s/\"/\\\"/g;
 	if ($cust !~ /\S/ && $dest !~ /\S/) { next; }
-	if (!$def && $cust !~ /\S/) { &error(&text('mod_log_config_eformat', $dest)); }
+	if (!$def && $cust !~ /\S/) { &error(&text('mod_log_config_eformat', &html_escape($dest))); }
 	if ($dest !~ /\S/) { &error($text{'mod_log_config_enofilprog'}); }
 	&allowed_auth_file($dest) ||
-		&error(&text('mod_log_config_efilprog', $dest));
+		&error(&text('mod_log_config_efilprog', &html_escape($dest)));
 	$prog || &directory_exists($dest) ||
-		&error(&text('mod_log_config_edir', $dest));
+		&error(&text('mod_log_config_edir', &html_escape($dest)));
 
 	$fileprog = !$prog ? $dest :
 		     $dest =~ /^\S+$/ ? "|$dest" : "\"|$dest\"";

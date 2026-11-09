@@ -36,7 +36,7 @@ if (!$running) {
 	else {
 		$errorlog = &server_root($errorlog);
 		$out = &backquote_command("tail -5 ".quotemeta($errorlog));
-		&error("<pre>$out</pre>");
+		&error("<pre>".&html_escape($out)."</pre>");
 		}
 	}
 &webmin_log("apply");

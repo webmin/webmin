@@ -8,7 +8,7 @@ require './auth-lib.pl';
 $conf = &get_config();
 &ReadParse();
 &allowed_auth_file($in{'file'}) ||
-	&error(&text('authg_ecannot', $in{'file'}));
+	&error(&text('authg_ecannot', &html_escape($in{'file'})));
 $desc = &text('authg_header', "<tt>$in{'file'}</tt>");
 &ui_print_header($desc, $text{'authg_title'}, "");
 $f = &server_root($in{'file'});

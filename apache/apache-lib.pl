@@ -2075,7 +2075,7 @@ if ($config{'test_always'} || $access{'test_always'}) {
 	if ($err) {
 		# Something failed .. revert all files
 		&rollback_apache_config();
-		&error(&text('eafter', "<pre>$err</pre>"));
+		&error(&text('eafter', "<pre>".&html_escape($err)."</pre>"));
 		}
 	}
 }
@@ -2183,8 +2183,8 @@ elsif (-x &translate_filename($config{'apachectl_path'})) {
 	}
 else {
 	# send SIGHUP directly
-	&open_readfile(PID, $pidfile) || return &text('restart_epid', $pidfile);
-	<PID> =~ /(\d+)/ || return &text('restart_epid2', $pidfile);
+	&open_readfile(PID, $pidfile) || return &text('restart_epid', &html_escape($pidfile));
+	<PID> =~ /(\d+)/ || return &text('restart_epid2', &html_escape($pidfile));
 	close(PID);
 	&kill_logged('HUP', $1) || return &text('restart_esig', $1);
 	&wait_for_graceful();
@@ -2239,8 +2239,8 @@ elsif (-x $config{'apachectl_path'}) {
 else {
 	# kill the process
 	$pidfile = &get_pid_file();
-	open(PID, "<".$pidfile) || return &text('stop_epid', $pidfile);
-	<PID> =~ /(\d+)/ || return &text('stop_epid2', $pidfile);
+	open(PID, "<".$pidfile) || return &text('stop_epid', &html_escape($pidfile));
+	<PID> =~ /(\d+)/ || return &text('stop_epid2', &html_escape($pidfile));
 	close(PID);
 	&kill_logged('TERM', $1) || return &text('stop_esig', $1);
 	}
@@ -2311,7 +2311,7 @@ if (!&is_apache_running()) {
 	local $errorlog = $errorlogstr ? $errorlogstr->{'words'}->[0]
 				       : "logs/error_log";
 	if ($out =~ /\S/) {
-		return "$text{'start_eafter'} : <pre>$out</pre>";
+		return "$text{'start_eafter'} : <pre>".&html_escape($out)."</pre>";
 		}
 	elsif ($errorlog eq 'syslog' || $errorlog =~ /^\|/) {
 		return $text{'start_eunknown'};
@@ -2319,7 +2319,7 @@ if (!&is_apache_running()) {
 	else {
 		$errorlog = &server_root($errorlog);
 		$out = &backquote_command("tail -5 ".quotemeta($errorlog));
-		return "$text{'start_eafter'} : <pre>$out</pre>";
+		return "$text{'start_eafter'} : <pre>".&html_escape($out)."</pre>";
 		}
 	}
 &restart_last_restart_time();

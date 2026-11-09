@@ -60,8 +60,8 @@ local($i, $name, $value, @rv);
 for($i=0; defined($in{"mod_$_[0]_name_$i"}); $i++) {
 	$name = $in{"mod_$_[0]_name_$i"}; $value = $in{"mod_$_[0]_value_$i"};
 	if ($name !~ /\S/ && $value !~ /\S/) { next; }
-	$name =~ /^(\S+)$/ || &error(&text('mod_php_ename', $name));
-	$value =~ /^(.+)$/ || &error(&text('mod_php_evalue', $name, $value));
+	$name =~ /^(\S+)$/ || &error(&text('mod_php_ename', &html_escape($name)));
+	$value =~ /^(.+)$/ || &error(&text('mod_php_evalue', &html_escape($name), &html_escape($value)));
 	push(@rv, "$name $value");
 	}
 return ( \@rv );
@@ -113,8 +113,8 @@ local($i, $name, $value, @rv);
 for($i=0; defined($in{"mod_$_[0]_name_$i"}); $i++) {
 	$name = $in{"mod_$_[0]_name_$i"}; $value = $in{"mod_$_[0]_value_$i"};
 	if ($name !~ /\S/ ) { next; }
-	$name =~ /^(\S+)$/ || &error(&text('mod_php_ename', $name));
-	$value =~ /^(on|off)$/i || &error(&text('mod_php_evalue', $name, $value));
+	$name =~ /^(\S+)$/ || &error(&text('mod_php_ename', &html_escape($name)));
+	$value =~ /^(on|off)$/i || &error(&text('mod_php_evalue', &html_escape($name), &html_escape($value)));
 	push(@rv, "$name $value");
 	}
 return ( \@rv );

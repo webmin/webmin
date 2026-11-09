@@ -7,7 +7,7 @@ require './auth-lib.pl';
 
 &ReadParse();
 &allowed_auth_file($in{'file'}) ||
-	&error(&text('authg_ecannot', $in{'file'}));
+	&error(&text('authg_ecannot', &html_escape($in{'file'})));
 $desc = &text('authg_header', "<tt>$in{'file'}</tt>");
 if (defined($in{'group'})) {
 	# editing existing group

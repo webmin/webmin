@@ -17,7 +17,7 @@ $in{'file'} eq $mfile || &error($text{'mime_ecannot'});
 
 &error_setup($text{'mime_err'});
 if ($in{'type'} !~ /^(\S+)\/(\S+)$/) {
-	&error(&text('mime_etype', $in{'type'}));
+	&error(&text('mime_etype', &html_escape($in{'type'})));
 	}
 
 &lock_file($in{'file'});

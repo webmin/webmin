@@ -46,8 +46,8 @@ for($i=0; defined($in{"AddIcon_icon_$i"}); $i++) {
 	$icon = $in{"AddIcon_icon_$i"}; $alt = $in{"AddIcon_alt_$i"};
 	$mode = $in{"AddIcon_mode_$i"}; $file = $in{"AddIcon_file_$i"};
 	if ($icon !~ /\S/ && $file !~ /\S/) { next; }
-	$icon =~ /^\S+$/ || &error(&text('autoindex_eiconurl', $icon));
-	$file =~ /\S/ || &error(&text('autoindex_emiss', $AddIcon_descs[$mode], $icon));
+	$icon =~ /^\S+$/ || &error(&text('autoindex_eiconurl', &html_escape($icon)));
+	$file =~ /\S/ || &error(&text('autoindex_emiss', $AddIcon_descs[$mode], &html_escape($icon)));
 	$aref = $mode==0 ? \@ai : $mode==1 ? \@ait : \@aie;
 	if ($alt) { push(@$aref, "($alt,$icon) $file"); }
 	else { push(@$aref, "$icon $file"); }
@@ -105,7 +105,7 @@ local($i, $alt, $file, $mode, $aref, @ai, @ait, @aie);
 for($i=0; defined($alt = $in{"AddAlt_alt_$i"}); $i++) {
 	$mode = $in{"AddAlt_mode_$i"}; $file = $in{"AddAlt_file_$i"};
 	if ($alt !~ /\S/ && $file !~ /\S/) { next; }
-	$file =~ /\S/ || &error(&text('autoindex_emissquot', $AddAlt_descs[$mode], $alt));
+	$file =~ /\S/ || &error(&text('autoindex_emissquot', $AddAlt_descs[$mode], &html_escape($alt)));
 	$aref = $mode==0 ? \@ai : $mode==1 ? \@ait : \@aie;
 	push(@$aref, "\"$alt\" $file");
 	}
@@ -136,8 +136,8 @@ for($i=0; defined($in{"AddDescription_desc_$i"}); $i++) {
 	$desc = $in{"AddDescription_desc_$i"};
 	$file = $in{"AddDescription_file_$i"};
 	if ($desc !~ /\S/ && $file !~ /\S/) { next; }
-	$desc =~ /\S/ || &error(&text('autoindex_enodesc', $file));
-	$file =~ /\S/ || &error(&text('autoindex_enofile', $desc));
+	$desc =~ /\S/ || &error(&text('autoindex_enodesc', &html_escape($file)));
+	$file =~ /\S/ || &error(&text('autoindex_enofile', &html_escape($desc)));
 	push(@rv, "\"$desc\" $file");
 	}
 return ( \@rv );
@@ -235,13 +235,13 @@ for($i=0; $i<@IndexOptions_v; $i++) {
 	if ($o =~ /IconWidth|IconHeight/ &&
 	    $in{"Index_${o}"} && !$in{"Index_${o}_def"}) {
 		$in{"Index_${o}_wh"} =~ /^[1-9]\d*$/ ||
-			&error(&text('autoindex_eiconsize', $in{"Index_${o}_wh"}));
+			&error(&text('autoindex_eiconsize', &html_escape($in{"Index_${o}_wh"})));
 		$opts{$o} = $in{"Index_${o}_wh"};
 		}
 	elsif ($o =~ /NameWidth|DescriptionWidth/ && $in{"Index_${o}"}) {
 		$in{"Index_${o}_w"} =~ /^[1-9]\d*$/ ||
 		    $in{"Index_${o}_w"} eq '*' ||
-			&error(&text('autoindex_ewidth', $in{"Index_$(o)_h"}));
+			&error(&text('autoindex_ewidth', &html_escape($in{"Index_$(o)_h"})));
 		$opts{$o} = $in{"Index_${o}_w"};
 		}
 	if ($IndexOptions_i[$i]) { $opts{$o} = -$opts{$o}-1; }

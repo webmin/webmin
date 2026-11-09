@@ -23,7 +23,7 @@ if ($config{'test_manual'}) {
 	$err = &test_config();
 	if ($err) {
 		&execute_command("mv ".quotemeta($temp)." ".quotemeta($in{'file'}));
-		&error(&text('manual_etest', "<pre>$err</pre>"));
+		&error(&text('manual_etest', "<pre>".&html_escape($err)."</pre>"));
 		}
 	}
 unlink($temp);

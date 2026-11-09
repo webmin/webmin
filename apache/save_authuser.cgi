@@ -7,7 +7,7 @@ require './auth-lib.pl';
 
 &ReadParse();
 &allowed_auth_file($in{'file'}) ||
-	&error(&text('authu_ecannot', $in{'file'}));
+	&error(&text('authu_ecannot', &html_escape($in{'file'})));
 if ($in{'delete'}) {
 	# Deleting a user
 	&delete_authuser($in{'file'}, $in{'olduser'});
@@ -32,14 +32,14 @@ else {
 		# updating an old user
 		if ($in{'olduser'} ne $in{'user'} &&
 		    &get_authuser($in{'file'}, $in{'user'})) {
-			&error(&text('authu_edup', $in{'user'}));
+			&error(&text('authu_edup', &html_escape($in{'user'})));
 			}
 		&save_authuser($in{'file'}, $in{'olduser'}, \%uinfo);
 		}
 	else {
 		# creating a new one
 		if (&get_authuser($in{'file'}, $in{'user'})) {
-			&error(&text('authu_edup', $in{'user'}));
+			&error(&text('authu_edup', &html_escape($in{'user'})));
 			}
 		&create_authuser($in{'file'}, \%uinfo);
 		}

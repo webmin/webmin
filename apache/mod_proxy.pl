@@ -81,8 +81,8 @@ for($i=0; defined($proxy = $in{"ProxyRemote_proxy_$i"}); $i++) {
 	$match_all = $in{"ProxyRemote_match_all_$i"};
 	if ($match !~ /\S/ && $proxy !~ /\S/) { next; }
 	if ($match_all) { $match = "*"; }
-	elsif ($match !~ /^\S+$/) { &error(&text('mod_proxy_erequest', $match)); }
-	$proxy =~ /^http:\/\/\S+$/ || &error(&text('mod_proxy_epurl', $proxy));
+	elsif ($match !~ /^\S+$/) { &error(&text('mod_proxy_erequest', &html_escape($match))); }
+	$proxy =~ /^http:\/\/\S+$/ || &error(&text('mod_proxy_epurl', &html_escape($proxy)));
 	push(@rv, "$match $proxy");
 	}
 return ( \@rv );
@@ -143,9 +143,9 @@ local($i, $url, $path, @rv, @notrv);
 for($i=0; defined($path = $in{"$_[0]_path_$i"}); $i++) {
 	$url = $in{"$_[0]_url_${i}_def"} ? "!" : $in{"$_[0]_url_$i"};
 	next if (!$path);
-	$path =~ /^\/\S*$/ || &error(&text('mod_proxy_elurl', $path));
+	$path =~ /^\/\S*$/ || &error(&text('mod_proxy_elurl', &html_escape($path)));
 	$url =~ /^(http|https|balancer|ajp):\/\/(\S+)$/ || $url eq "!" ||
-		&error(&text('mod_proxy_erurl', $url));
+		&error(&text('mod_proxy_erurl', &html_escape($url)));
 	if ($url eq "!") {
 		push(@notrv, "$path $url");
 		}
@@ -204,26 +204,26 @@ for($i=0; defined($type = $in{"NoProxy_type_$i"}); $i++) {
 	if ($type == 0) {
 		&check_ipaddress($for) || 
 		    &check_ip6address($for) || 
-			&error(&text('mod_proxy_eip', $for));
+			&error(&text('mod_proxy_eip', &html_escape($for)));
 		}
 	elsif ($type == 1) {
 		$for =~ /^[A-z0-9\-][A-z0-9\-\.]+[A-z0-9\-]$/ ||
-			&error(&text('mod_proxy_ehost', $for));
+			&error(&text('mod_proxy_ehost', &html_escape($for)));
 		}
 	elsif ($type == 2) {
 		$for =~ /^\.[A-z0-9\-\.]+[A-z0-9\-]$/ ||
-			&error(&text('mod_proxy_edomain', $for));
+			&error(&text('mod_proxy_edomain', &html_escape($for)));
 		}
 	elsif ($type == 3) {
 		if ($for =~ /^(\d+)$/) { $for .= ".0.0.0"; }
 		elsif ($for =~ /^(\d+)\.(\d+)$/) { $for .= ".0.0"; }
 		elsif ($for =~ /^(\d+)\.(\d+)\.(\d+)$/) { $for .= ".0"; }
-		&check_ipaddress($for) || &error(&text('mod_proxy_enet', $for));
+		&check_ipaddress($for) || &error(&text('mod_proxy_enet', &html_escape($for)));
 		}
 	elsif ($type == 4) {
 		($for =~ /^(\S+)\/(\d+)$/ &&
 	          (&check_ipaddress($1) || &check_ip6address($1)) && $2 < 32) ||
-			&error(&text('mod_proxy_enetbit', $for));
+			&error(&text('mod_proxy_enetbit', &html_escape($for)));
 		}
 	push(@rv, $for);
 	}

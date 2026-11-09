@@ -46,11 +46,11 @@ local($i, $var, $mode, $val, @pa, @uns, @se);
 for($i=0; defined($var = $in{"Env_var_$i"}); $i++) {
 	$mode = $in{"Env_mode_$i"}; $val = $in{"Env_val_$i"};
 	if ($var !~ /\S/ && $val !~ /\S/) { next; }
-	$var =~ /^\S+$/ || &error(&text('mod_env_evar', $var));
+	$var =~ /^\S+$/ || &error(&text('mod_env_evar', &html_escape($var)));
 	if ($mode == 0) { push(@pa, $var); }
 	elsif ($mode == 1) { push(@uns, $var); }
 	elsif ($var !~ /^\S+$/) {
-		&error(&text('mod_env_evalue', $var));
+		&error(&text('mod_env_evalue', &html_escape($var)));
 		}
 	else { push(@se, "$var \"$val\""); }
 	}

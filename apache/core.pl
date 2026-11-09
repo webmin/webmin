@@ -307,14 +307,14 @@ sub parse_rlimit
 if ($in{"$_[0]_mode"} == 0) { return ( [ ] ); }
 elsif ($in{"$_[0]_mode"} == 1) {
 	$in{"$_[0]_soft1"} =~ /^(\d+|max)$/ ||
-		&error(&text('core_eslimit', $in{"$_[0]_soft1"}, $_[1]));
+		&error(&text('core_eslimit', &html_escape($in{"$_[0]_soft1"}), $_[1]));
 	return ( [ $in{"$_[0]_soft1"} ] );
 	}
 elsif ($in{"$_[0]_mode"} == 2) {
 	$in{"$_[0]_soft2"} =~ /^(\d+|max)$/ ||
-		&error(&text('core_eslimit', $in{"$_[0]_soft2"}, $_[1]));
+		&error(&text('core_eslimit', &html_escape($in{"$_[0]_soft2"}), $_[1]));
 	$in{"$_[0]_hard2"} =~ /^(\d+|max)$/ ||
-		&error(&text('core_ehlimit', $in{"$_[0]_hard2"}, $_[1]));
+		&error(&text('core_ehlimit', &html_escape($in{"$_[0]_hard2"}), $_[1]));
 	return ( [ $in{"$_[0]_soft2"}." ".$in{"$_[0]_hard2"} ] );
 	}
 }
@@ -410,11 +410,11 @@ for($i=0; defined($in{"Port_$i"}); $i++) {
 	if ($bdef) { push(@blist, "*"); }
 	elsif ($b =~ /^\S+$/ &&
 	       (&to_ipaddress($b) || &to_ip6address($b))) { push(@blist, $b); }
-	else { &error(&text('core_eaddress', $b)); }
+	else { &error(&text('core_eaddress', &html_escape($b))); }
 
 	if ($pdef) { push(@plist, undef); }
 	elsif ($p =~ /^\d+$/) { push(@plist, $p); }
-	else { &error(&text('core_eport', $p)); }
+	else { &error(&text('core_eport', &html_escape($p))); }
 
 	push(@slist, $in{"Name_$i"});
 	}
@@ -456,7 +456,7 @@ else {
 		else { push(@l, "*:$plist[$i]"); }
 		if ($doneport{$l[$#l]}++) {
 			# Same listen given twice
-			&error(&text('core_eduplisten', $l[$#l]));
+			&error(&text('core_eduplisten', &html_escape($l[$#l])));
 			}
 		if ($_[0]->{'version'} >= 2.4 && $slist[$i]) {
 			$l[$#l] .= " ".$slist[$i];
@@ -502,7 +502,7 @@ if ($_[0]->{'version'} >= 1.2) {
 	if ($in{'KeepAlive_def'} == 0) { return ( [ "off" ], [ ] ); }
 	elsif ($in{'KeepAlive_def'} == 1) { return ( [ "on" ], [ ] ); }
 	elsif ($in{'KeepAlive'} !~ /^\d+$/) {
-		&error(&text('core_ekeep', $in{'KeepAlive'}));
+		&error(&text('core_ekeep', &html_escape($in{'KeepAlive'})));
 		}
 	else { return ( [ "on" ], [ $in{'KeepAlive'} ] ); }
 	}
@@ -511,7 +511,7 @@ else {
 	if ($in{'KeepAlive_def'} == 0) { return ( [ 0 ], [ ] ); }
 	elsif ($in{'KeepAlive_def'} == 1) { return ( [ ], [ ] ); }
 	elsif ($in{'KeepAlive'} !~ /^\d+$/) {
-		&error(&text('core_ekeep', $in{'KeepAlive'}));
+		&error(&text('core_ekeep', &html_escape($in{'KeepAlive'})));
 		}
 	else { return ( [ $in{'KeepAlive'} ], [ ] ); }
 	}
@@ -680,7 +680,7 @@ foreach $nv (@nv) {
 	else { $addr = $nv; }
 	if (!&to_ipaddress($addr) &&
 	    !&to_ip6address($addr) && $addr ne '*') {
-		&error(&text('core_evirtaddr', $addr));
+		&error(&text('core_evirtaddr', &html_escape($addr)));
 		}
 	if ($nv =~ /^(\S+):(\d+|\*)$/ && &check_ip6address($1)) {
 		$nv = "[$1]:$2";
@@ -799,9 +799,9 @@ sub save_DocumentRoot
 {
 if (!$in{'DocumentRoot_def'}) {
 	-d $in{'DocumentRoot'} ||
-		&error(&text('core_enodoc', $in{'DocumentRoot'}));
+		&error(&text('core_enodoc', &html_escape($in{'DocumentRoot'})));
 	&allowed_doc_dir($in{'DocumentRoot'}) ||
-		&error(&text('core_ecandoc', $in{'DocumentRoot'}));
+		&error(&text('core_ecandoc', &html_escape($in{'DocumentRoot'})));
 	}
 return &parse_opt("DocumentRoot");
 }
@@ -1486,7 +1486,7 @@ sub save_Group
 if ($in{'Group'} == 0) { return ( [ ] ); }
 elsif ($in{'Group'} == 1) { return ( [ $in{'Group_name'} ] ); }
 elsif ($in{'Group_id'} !~ /^\-?\d+$/) {
-	&error(&text('core_euid', $in{'Group_id'}));
+	&error(&text('core_euid', &html_escape($in{'Group_id'})));
 	}
 else { return ( [ "\"#$in{'Group_id'}\"" ] ); }
 }
@@ -1512,7 +1512,7 @@ sub save_User
 if ($in{'User'} == 0) { return ( [ ] ); }
 elsif ($in{'User'} == 1) { return ( [ $in{'User_name'} ] ); }
 elsif ($in{'User_id'} !~ /^\-?\d+$/) {
-	&error(&text('core_egid', $in{'User_id'}));
+	&error(&text('core_egid', &html_escape($in{'User_id'})));
 	}
 else { return ( [ "\"#$in{'User_id'}\"" ] ); }
 }
@@ -1552,9 +1552,9 @@ local($i, $code, $url, @rv);
 for($i=0; defined($in{"ErrorDocument_code_$i"}); $i++) {
 	$code = $in{"ErrorDocument_code_$i"}; $url = $in{"ErrorDocument_url_$i"};
 	if ($code !~ /\S/ || $url !~ /\S/) { next; }
-	$code =~ /^\d\d\d$/ || &error(&text('core_eerror', $code));
+	$code =~ /^\d\d\d$/ || &error(&text('core_eerror', &html_escape($code)));
 	if ($in{"ErrorDocument_type_$i"} == 0) {
-		$url =~ /^\S+$/ || &error(&text('core_eurl', $url));
+		$url =~ /^\S+$/ || &error(&text('core_eurl', &html_escape($url)));
 		push(@rv, "$code $url");
 		}
 	elsif ($_[0]->{'version'} >= 2.0) { push(@rv, "$code \"$url\""); }

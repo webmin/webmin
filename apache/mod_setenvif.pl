@@ -64,9 +64,9 @@ for($i=0; defined($head = $in{"SetEnvIf_head_$i"}); $i++) {
 	$var = $in{"SetEnvIf_var_$i"};
 	$val = $in{"SetEnvIf_val_${i}_def"} ? undef : $in{"SetEnvIf_val_$i"};
 	if ($head !~ /\S/ && $regex !~ /\S/ && $var !~ /\S/) { next; }
-	$head =~ /^\S+$/ || &error(&text('mod_setenvif_eheader', $head));
-	$regex =~ /^\S+$/ || &error(&text('mod_setenvif_eregex', $regex));
-	$var =~ /^\S+$/ || &error(&text('mod_setenvif_evar', $var));
+	$head =~ /^\S+$/ || &error(&text('mod_setenvif_eheader', &html_escape($head)));
+	$regex =~ /^\S+$/ || &error(&text('mod_setenvif_eregex', &html_escape($regex)));
+	$var =~ /^\S+$/ || &error(&text('mod_setenvif_evar', &html_escape($var)));
 	$set = !defined($val) ? "!$var" : $val eq "1" ? $var : "$var=$val";
 	if ($case) {
 		if ("$head $regex" eq $lastsi) { $si[$#si] .= " $set"; }

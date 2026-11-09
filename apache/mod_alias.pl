@@ -79,11 +79,11 @@ for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 	$to = $in{"$_[0]_to_$i"};
 	$old_to = $in{"$_[0]_old_to_$i"};
 	if ($from !~ /\S/ && $to !~ /\S/) { next; }
-	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', $from, $_[1])); }
-	if ($to !~ /$re/) { &error(&text('mod_alias_edest', $to, $_[1])); }
+	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', &html_escape($from), $_[1])); }
+	if ($to !~ /$re/) { &error(&text('mod_alias_edest', &html_escape($to), $_[1])); }
 	&allowed_doc_dir($to) ||
 	    $old_to && !&allowed_doc_dir($old_to) ||
-		&error(&text('mod_alias_edest2', $to, $_[1]));
+		&error(&text('mod_alias_edest2', &html_escape($to), $_[1]));
 	if ($to =~ /^[a-zA-Z0-9:\/\.\-]+$/) {
 		push(@rv, "$from $to");
 		}
@@ -105,15 +105,15 @@ for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 	$old_to = $in{"$_[0]_old_to_$i"};
 	$stat = $in{"$_[0]_stat_$i"};
 	if ($from !~ /\S/ && $to !~ /\S/) { next; }
-	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', $from, $_[1])); }
-	if ($stat !~ /^(\d*)$/) { &error(&text('mod_alias_estatus', $stat)); }
+	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', &html_escape($from), $_[1])); }
+	if ($stat !~ /^(\d*)$/) { &error(&text('mod_alias_estatus', &html_escape($stat))); }
 	if (!$stat || $stat >= 300 && $stat <= 399) {
 		if ($to !~ /$re/) {
-			&error(&text('mod_alias_edest', $to, $_[1]));
+			&error(&text('mod_alias_edest', &html_escape($to), $_[1]));
 			}
 		&allowed_doc_dir($to) ||
 	            $old_to && !&allowed_doc_dir($old_to) ||
-			&error(&text('mod_alias_edest2', $to, $_[1]));
+			&error(&text('mod_alias_edest2', &html_escape($to), $_[1]));
 		}
 	else { $to = ""; }
 	$to = "\"$to\"" if ($to);

@@ -42,7 +42,7 @@ local($i, $regex, $case, $var, $val, $set, $lastbm, $lastbmnc, @bm, @bmnc);
 for($i=0; defined($regex = $in{"Browser_regex_$i"}); $i++) {
 	$case = $in{"Browser_case_$i"}; $var = $in{"Browser_var_$i"};
 	if ($regex !~ /\S/ && $var !~ /\S/) { next; }
-	$var =~ /^\S+$/ || &error(&text('browsermatch_evar', $var));
+	$var =~ /^\S+$/ || &error(&text('browsermatch_evar', &html_escape($var)));
 	$val = $in{"Browser_val_$i"};
 	$set = $in{"Browser_val_${i}_def"} ? "!$var" :
 		$val eq "1" ? $var : "$var=$val";

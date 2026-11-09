@@ -5,7 +5,8 @@
 require './apache-lib.pl';
 require './auth-lib.pl';
 &ReadParse();
-&allowed_auth_file($in{'file'}) || &error(&text('authu_ecannot', $in{'file'}));
+&allowed_auth_file($in{'file'}) ||
+	&error(&text('authu_ecannot', &html_escape($in{'file'})));
 $in{'sync'} =~ s/\0/ /g;
 if ($in{'sync'}) {
 	$config{"sync_$in{'file'}"} = $in{'sync'};

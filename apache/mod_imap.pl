@@ -45,7 +45,7 @@ sub save_ImapDefault
 if ($in{'ImapDefault'} eq "") { return ( [ ] ); }
 elsif ($in{'ImapDefault'} ne "url") { return ( [ $in{'ImapDefault'} ] ); }
 elsif ($in{'ImapDefault_url'} !~ /^\S+$/) {
-	&error(&text('mod_imap_eurl', $in{'ImapDefault_url'}));
+	&error(&text('mod_imap_eurl', &html_escape($in{'ImapDefault_url'})));
 	}
 else { return ( [ $in{'ImapDefault_url'} ] ); }
 }
@@ -67,7 +67,7 @@ sub save_ImapBase
 if ($in{'ImapBase'} eq "") { return ( [ ] ); }
 elsif ($in{'ImapBase'} ne "url") { return ( [ $in{'ImapBase'} ] ); }
 elsif ($in{'ImapBase_url'} !~ /^\S+$/) {
-	&error(&text('mod_imap_eurl', $in{'ImapBase_url'}));
+	&error(&text('mod_imap_eurl', &html_escape($in{'ImapBase_url'})));
 	}
 else { return ( [ $in{'ImapBase_url'} ] ); }
 }

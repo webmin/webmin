@@ -44,8 +44,8 @@ local($i, $cgi, $type, @rv);
 for($i=0; defined($in{"Action_type_$i"}); $i++) {
 	$type = $in{"Action_type_$i"}; $cgi = $in{"Action_cgi_$i"};
 	if ($type !~ /\S/ && $cgi !~ /\S/) { next; }
-	$type =~ /^(\S+)$/ || &error(&text('mod_actions_emime', $type));
-	$cgi =~ /^\/(\S+)$/ || &error(&text('mod_actions_ecgi', $cgi));
+	$type =~ /^(\S+)$/ || &error(&text('mod_actions_emime', &html_escape($type)));
+	$cgi =~ /^\/(\S+)$/ || &error(&text('mod_actions_ecgi', &html_escape($cgi)));
 	push(@rv, "$type $cgi");
 	}
 return ( \@rv );
@@ -81,8 +81,8 @@ local($i, @rv, $meth, $cgi);
 for($i=0; defined($in{"Script_meth_$i"}); $i++) {
 	$meth = $in{"Script_meth_$i"}; $cgi = $in{"Script_cgi_$i"};
 	if (!$meth && $cgi !~ /\S/) { next; }
-	$meth || &error(&text('mod_actions_enometh', $cgi));
-	$cgi =~ /^\/(\S+)$/ || &error(&text('mod_actions_ecgi', $cgi));
+	$meth || &error(&text('mod_actions_enometh', &html_escape($cgi)));
+	$cgi =~ /^\/(\S+)$/ || &error(&text('mod_actions_ecgi', &html_escape($cgi)));
 	push(@rv, "$meth $cgi");
 	}
 return ( \@rv );

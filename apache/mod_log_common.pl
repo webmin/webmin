@@ -24,7 +24,7 @@ sub save_TransferLog
 {
 if ($in{'TransferLog_mode'} == 0) { return ( [ ] ); }
 $in{'TransferLog'} =~ /^\S+$/ ||
-	&error("$in{'TransferLog'} is not a valid access log filename");
+	&error(&html_escape($in{'TransferLog'})." is not a valid access log filename");
 &allowed_auth_file($in{'TransferLog'}) ||
 	&error("access log is not under the allowed directory");
 if ($in{'TransferLog_mode'} == 1) { return ( [ $in{'TransferLog'} ] ); }

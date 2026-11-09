@@ -7,14 +7,14 @@ require './auth-lib.pl';
 
 &ReadParse();
 &allowed_auth_file($in{'file'}) ||
-	&error(&text('authu_ecannot', $in{'file'}));
-$desc = &text('authu_header', "<tt>$in{'file'}</tt>");
+	&error(&text('authu_ecannot', &html_escape($in{'file'})));
+$desc = &text('authu_header', "<tt>".&html_escape($in{'file'})."</tt>");
 if (defined($in{'user'})) {
 	# editing an existing user
 	&ui_print_header($desc, $text{'authu_edit'}, "");
 	$u = &get_authuser($in{'file'}, $in{'user'});
-	$user = $u->{'user'};
-	$pass = $u->{'pass'};
+	$user = &html_escape($u->{'user'});
+	$pass = &html_escape($u->{'pass'});
 	$new = 0;
 	}
 else {
@@ -24,9 +24,12 @@ else {
 	}
 
 print "<form method=post action=save_authuser.cgi>\n";
-print "<input type=hidden name=file value=\"$in{'file'}\">\n";
-print "<input type=hidden name=url value=\"$in{'url'}\">\n";
-if (!$new) { print "<input type=hidden name=olduser value=$in{'user'}>\n"; }
+print "<input type=hidden name=file value=\"".&html_escape($in{'file'})."\">\n";
+print "<input type=hidden name=url value=\"".&html_escape($in{'url'})."\">\n";
+if (!$new) {
+	print "<input type=hidden name=olduser value=\"".
+	      &html_escape($in{'user'})."\">\n";
+	}
 
 print "<table border>\n";
 printf "<tr $tb> <td><b>%s</b></td> </tr>\n",
@@ -50,5 +53,5 @@ print "<input type=submit value=\"$text{'delete'}\" name=delete>\n"
 print "</td> </tr></table></td></tr></table>\n";
 print "</form>\n";
 
-&ui_print_footer($in{'url'}, $text{'authu_return'});
+&ui_print_footer(&html_escape($in{'url'}), $text{'authu_return'});
 

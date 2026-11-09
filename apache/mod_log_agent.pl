@@ -24,7 +24,7 @@ sub save_AgentLog
 {
 if ($in{'AgentLog_mode'} == 0) { return ( [ ] ); }
 $in{'AgentLog'} =~ /^\S+$/ ||
-	&error(&text('mod_log_agent_efile', $in{'AgentLog'}));
+	&error(&text('mod_log_agent_efile', &html_escape($in{'AgentLog'})));
 if ($in{'AgentLog_mode'} == 1) { return ( [ $in{'AgentLog'} ] ); }
 else { return ( [ "|$in{'AgentLog'}" ] ); }
 }

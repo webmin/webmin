@@ -7,7 +7,7 @@ require './auth-lib.pl';
 
 &ReadParse();
 &allowed_auth_file($in{'file'}) ||
-	&error(&text('authg_ecannot', $in{'file'}));
+	&error(&text('authg_ecannot', &html_escape($in{'file'})));
 if ($in{'delete'}) {
 	# Deleting a group
 	&delete_authgroup($in{'file'}, $in{'oldgroup'});
@@ -27,14 +27,14 @@ else {
 		# updating an old group
 		if ($in{'oldgroup'} ne $in{'group'} &&
 		    &get_authgroup($in{'file'}, $in{'group'})) {
-			&error(&text('authg_edup', $in{'group'}));
+			&error(&text('authg_edup', &html_escape($in{'group'})));
 			}
 		&save_authgroup($in{'file'}, $in{'oldgroup'}, \%ginfo);
 		}
 	else {
 		# creating a new one
 		if (&get_authgroup($in{'file'}, $in{'group'})) {
-			&error(&text('authg_edup', $in{'group'}));
+			&error(&text('authg_edup', &html_escape($in{'group'})));
 			}
 		&create_authgroup($in{'file'}, \%ginfo);
 		}

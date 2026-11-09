@@ -78,7 +78,7 @@ for($i=0; defined($bw = $in{"BandWidth_bw_$i"}); $i++) {
 	$client = $in{"BandWidth_$i"};
 	$all = $in{"BandWidth_all_$i"};
 	next if ($bw eq "");
-	$bw =~ /^\d+$/ || &error(&text('mod_band_ebw', $bw));
+	$bw =~ /^\d+$/ || &error(&text('mod_band_ebw', &html_escape($bw)));
 	$all || $client =~ /^[a-z0-9\.\-\_\/]+$/i ||
 		&error(&text('mod_band_eclient', $bw));
 	push(@rv, ($all ? "all" : $client)." ".$bw);
@@ -110,7 +110,7 @@ local ($i, $bw, $size, @rv);
 for($i=0; defined($bw = $in{"LargeFileLimit_bw_$i"}); $i++) {
 	$size = $in{"LargeFileLimit_$i"};
 	next if ($bw eq "");
-	$bw =~ /^\d+$/ || &error(&text('mod_band_ebw', $bw));
+	$bw =~ /^\d+$/ || &error(&text('mod_band_ebw', &html_escape($bw)));
 	$size =~ /^\d+$/ || $size == -1 || &error(&text('mod_band_esize', $bw));
 	push(@rv, "$size $bw");
 	}

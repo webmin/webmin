@@ -31,7 +31,7 @@ elsif ($in{'addr'} !~ /\S/) {
 else {
 	foreach $a (split(/\s+/, $in{'addr'})) {
 		&to_ipaddress($a) || &to_ip6address($a) ||
-			&error(&text('cvirt_eaddr2', $a));
+			&error(&text('cvirt_eaddr2', &html_escape($a)));
 		push(@addrs, &check_ip6address($a) ? "[$a]" : $a);
 		}
 	$addr = join(" ", @addrs);
@@ -48,7 +48,7 @@ elsif ($in{'port_mode'} == 1) {
 	$portnum = "*";
 	}
 elsif ($in{'port'} !~ /^\d+$/) {
-	&error(&text('cvirt_eport', $in{'port'}));
+	&error(&text('cvirt_eport', &html_escape($in{'port'})));
 	}
 else {
 	$port = ":$in{'port'}";
@@ -57,9 +57,9 @@ else {
 
 if (!$in{'name_def'}) {
 	@names = split(/\s+/, $in{'name'});
-	@names || &error(&text('cvirt_ename', $in{'name'}));
+	@names || &error(&text('cvirt_ename', &html_escape($in{'name'})));
 	foreach my $n (@names) {
-		$n =~ /^[a-z0-9\.\_\-]+$/i || &error(&text('vserv_ename', $n));
+		$n =~ /^[a-z0-9\.\_\-]+$/i || &error(&text('vserv_ename', &html_escape($n)));
 		}
 	}
 
@@ -75,12 +75,12 @@ if (!$in{'name_def'}) {
 
 # Check if the root directory is allowed
 !$in{'root'} || &allowed_auth_file($in{'root'}) ||
-	&error(&text('cvirt_eroot3', $in{'root'}));
+	&error(&text('cvirt_eroot3', &html_escape($in{'root'})));
 
 if ($in{'root'} && !-e $in{'root'}) {
 	# create the document root
 	mkdir($in{'root'}, 0755) ||
-		&error(&text('cvirt_eroot2', $in{'root'}, $!));
+		&error(&text('cvirt_eroot2', &html_escape($in{'root'}), $!));
 	$user = &find_directive("User", $conf);
 	$group = &find_directive("Group", $conf);
 	$user || &error($text{'cvirt_eroot4'});
@@ -288,7 +288,7 @@ foreach $v (&find_directive_struct("VirtualHost", $conf)) {
 	}
 if (!$found) {
 	&rollback_apache_config();
-	&error(&text('cvirt_emissing', $f, "../config.cgi?$module_name"));
+	&error(&text('cvirt_emissing', &html_escape($f), "../config.cgi?$module_name"));
 	}
 
 &after_changing();
