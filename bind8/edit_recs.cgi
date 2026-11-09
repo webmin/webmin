@@ -268,7 +268,7 @@ for(my $i=0; $i<@_; $i++) {
 		if (length($joined) > 80) {
 			$joined = substr($joined, 0, 80)." ...";
 			}
-		push(@cols, $joined);
+		push(@cols, &html_escape($joined));
 		}
 	if ($config{'allow_comments'} && $in{'type'} ne "WKS") {
 		push(@cols, &html_escape($r->{'comment'}));
