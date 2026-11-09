@@ -1684,6 +1684,11 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	gap: 6px;
 	min-width: 0;
 }
+/* A switch is shorter than a text input. Reserve the theme's control height
+ * so labeled switches stay centered beside text fields and selects. */
+.ui_field_control:has(> .ui_toggle) {
+	min-height: var(--control-height, 28px);
+}
 .ui_field_control > :is(input:not([type="button"], [type="submit"],
 	[type="reset"], [type="checkbox"], [type="radio"], [type="image"]),
 	select, textarea, .ui_search) {
