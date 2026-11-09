@@ -1183,7 +1183,12 @@ my $lref = &read_file_lines("$config_directory/webmin.groups");
 @$lref = grep { !/^([^:]+):/ || $1 ne $groupname } @$lref;
 &flush_file_lines();
 &unlock_file("$config_directory/webmin.groups");
-&unlink_file(map { "$config_directory/$_/$groupname.gacl" } &list_modules());
+# Remove the group's module permissions.
+foreach my $mod (&list_modules()) {
+	&unlink_file("$config_directory/$mod/$groupname.gacl");
+	}
+# Remove global permissions too, so reusing the name cannot revive old ACLs.
+&unlink_file("$config_directory/$groupname.gacl");
 
 if ($miniserv{'userdb'}) {
 	# Also delete from group database
@@ -1748,12 +1753,15 @@ elsif (!defined($fromid) && !defined($toid)) {
 	my $fromsuffix = $fromtype eq "user" ? "acl" : "gacl";
 	my $tosuffix = $totype eq "user" ? "acl" : "gacl";
 	foreach my $m (@$mods) {
-		&unlink_file("$config_directory/$m/$to.$tosuffix");
+		# Match each ACL reader's path so copies refresh its cache.
+		my $fromdir = $fromtype eq "group" && $m eq "" ?
+			$config_directory : "$config_directory/$m";
+		my $todir = $totype eq "group" && $m eq "" ?
+			$config_directory : "$config_directory/$m";
+		&unlink_file("$todir/$to.$tosuffix");
 		my %acl;
-		if (&read_file("$config_directory/$m/$from.$fromsuffix",
-			       \%acl)) {
-			&write_file("$config_directory/$m/$to.$tosuffix",
-				    \%acl);
+		if (&read_file("$fromdir/$from.$fromsuffix", \%acl)) {
+			&write_file("$todir/$to.$tosuffix", \%acl);
 			}
 		}
 	}

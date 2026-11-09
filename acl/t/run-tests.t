@@ -1548,6 +1548,36 @@ subtest 'save_user.cgi gassign whitelist' => sub {
     delete_user('admin');
 };
 
+# edit_user.cgi: the create form preselects public-only URL downloads, while
+# an existing user without an explicit setting keeps the unrestricted global
+# default. save_user.cgi stores the form value, so new users never depend on
+# the default changing later.
+subtest 'edit_user.cgi download address default' => sub {
+    _reset_fixture();
+    _seed_user_acl('admin', { users => '*', create => 1, acl => 1,
+                              gassign => '*' });
+    create_user({ name => 'admin', pass => 'x', modules => ['acl'] });
+    create_user({ name => 'oldtimer', pass => 'x', modules => ['acl'] });
+
+    my $r = run_cgi('edit_user.cgi', {});
+    is($r->{status}, 0, 'new user form renders');
+    like($r->{out},
+         qr/name="download_address_mode" value="public"\s+checked/,
+         'new user form preselects public URL downloads');
+    unlike($r->{out},
+           qr/name="download_address_mode" value="all"\s+checked/,
+           'new user form does not preselect unrestricted downloads');
+
+    $r = run_cgi('edit_user.cgi', { user => 'oldtimer' });
+    is($r->{status}, 0, 'existing user form renders');
+    like($r->{out},
+         qr/name="download_address_mode" value="all"\s+checked/,
+         'existing user without a setting keeps unrestricted downloads');
+
+    delete_user('oldtimer');
+    delete_user('admin');
+};
+
 # forgot_form.cgi and forgot_send.cgi — the admin-side password-reset flow.
 # These are NOT the unauthenticated /forgot.cgi flow; they require an
 # authenticated admin and gate on can_edit_user.

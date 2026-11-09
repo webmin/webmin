@@ -572,9 +572,10 @@ if ($copy_tar) {
 	system("cp $rpm_source_dir/$mod.tar.gz /tmp/$tar_release_file");
 	}
 
-# Build the actual RPM
+# Build in RPM v4 format for systems that cannot verify v6 signatures.
 my $cmd = -x "/usr/bin/rpmbuild" ? "/usr/bin/rpmbuild" : "/bin/rpm";
-system("$cmd -ba $spec_dir/$prefix$mod.spec") && exit;
+system("$cmd --define '_rpmformat 4' -ba ".
+       "$spec_dir/$prefix$mod.spec") && exit;
 unlink("$rpm_source_dir/$mod.tar.gz");
 
 # Sign if requested

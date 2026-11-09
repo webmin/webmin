@@ -3859,13 +3859,49 @@ $rv = $content if (defined($content));
 return $rv;
 }
 
+# ui_tag_is_inline(tag)
+# Returns 1 if the tag is a text-level element such as tt, b or span. These
+# must not be followed by a newline, because browsers render it as a visible
+# space before any punctuation or text that follows the tag. Form controls
+# and replaced elements such as label, button, select and svg are not listed,
+# so the newline after them still separates them from adjacent content.
+sub ui_tag_is_inline
+{
+return theme_ui_tag_is_inline(@_) if (defined(&theme_ui_tag_is_inline));
+my ($tag) = @_;
+my %inline_tags = map { $_ => 1 }
+	qw(
+		a abbr acronym b bdi bdo big cite code data del dfn em font
+		i ins kbd mark nobr q rp rt ruby s samp small span strike
+		strong sub sup time tt u var
+	);
+return exists($inline_tags{lc($tag // '')}) ? 1 : 0;
+}
+
+# ui_tag_is_void(tag)
+# Returns 1 if the tag has no content and therefore no closing tag, such as
+# br, img or input.
+sub ui_tag_is_void
+{
+return theme_ui_tag_is_void(@_) if (defined(&theme_ui_tag_is_void));
+my ($tag) = @_;
+my %void_tags = map { $_ => 1 }
+	qw(
+		area base br col embed hr img input link
+		meta param source track wbr
+	);
+return exists($void_tags{lc($tag // '')}) ? 1 : 0;
+}
+
 # ui_tag_end(tag)
-# Function to create a closing HTML tag.
+# Function to create a closing HTML tag. Block tags end with a newline so the
+# generated page stays readable. Inline tags end without one, because that
+# whitespace would be rendered as a space after the tag.
 sub ui_tag_end
 {
 return theme_ui_tag_end(@_) if (defined(&theme_ui_tag_end));
 my ($tag) = @_;
-return "</$tag>\n";
+return "</$tag>".(ui_tag_is_inline($tag) ? "" : "\n");
 }
 
 # ui_tag(tag, [content], [attrs])
@@ -3876,12 +3912,7 @@ return theme_ui_tag(@_) if (defined(&theme_ui_tag));
 my ($tag, $content, $attrs) = @_;
 my $rv = ui_tag_start($tag, $attrs);
 $rv .= ui_tag_content($content) if (defined($content));
-my %void_tags = map { $_ => 1 }
-	qw(
-		area base br col embed hr img input link
-		meta param source track wbr
-	);
-$rv .= ui_tag_end($tag) if (!exists($void_tags{lc($tag)}));
+$rv .= ui_tag_end($tag) if (!ui_tag_is_void($tag));
 return $rv;
 }
 
