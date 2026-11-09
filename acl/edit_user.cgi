@@ -47,6 +47,11 @@ if (!$in{'user'} && $uaccess{'rpc'} == 2) {
 	# Don't offer the confusing 'root' or 'admin' RPC option by default
 	$uaccess{'rpc'} = 0;
 	}
+if (!$in{'user'}) {
+	# New users should only download from public addresses by default,
+	# while existing users keep the unrestricted global default
+	$uaccess{'download_address_mode'} = 'public';
+	}
 if (!$in{'user'} && $safe) {
 	# Safe users should not inherit new permissions by default
 	$uaccess{'negative'} = 1;
