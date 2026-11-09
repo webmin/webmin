@@ -7,19 +7,19 @@ do 'cluster-shell-lib.pl';
 # Converts logged information from this module into human-readable form
 sub parse_webmin_log
 {
-local ($user, $script, $action, $type, $object, $p, $long) = @_;
+my ($user, $script, $action, $type, $object, $p, $long) = @_;
 if ($action eq 'clear') {
 	return $text{'log_clear'};
 	}
 elsif ($action eq 'run') {
-	local @server = split(/\0/, $p->{'run'});
+	my @server = split(/\0/, $p->{'run'});
 	if ($long) {
-		return &text('log_run_l', "<tt>$p->{'cmd'}</tt>",
-		     join(", ", map { $_ ? "<tt>$_</tt>"
+		return &text('log_run_l', "<tt>".&html_escape($p->{'cmd'})."</tt>",
+		     join(", ", map { $_ ? "<tt>".&html_escape($_)."</tt>"
 					 : $text{'index_this'} } @server));
 		}
 	else {
-		return &text('log_run', "<tt>$p->{'cmd'}</tt>",
+		return &text('log_run', "<tt>".&html_escape($p->{'cmd'})."</tt>",
 					scalar(@server));
 		}
 	}
