@@ -84,6 +84,7 @@ return 1;
 sub read_table_file
 {
 my ($table, $func) = @_;
+$table =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 my @rv;
 open(FILE, "<$config{'config_dir'}/$table");
 while(<FILE>) {
@@ -99,6 +100,7 @@ return @rv;
 sub read_table_struct
 {
 my ($table, $func) = @_;
+$table =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 if (!defined($read_table_cache{$table})) {
 	my @rv;
 	open(FILE, "<$config{'config_dir'}/$table");
@@ -146,6 +148,7 @@ return undef;
 sub delete_table_row
 {
 my ($table, $func, $idx) = @_;
+$table =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 my $lref = &read_file_lines("$config{'config_dir'}/$table");
 my $lnum = &find_line_num($lref, $func, $idx);
 splice(@$lref, $lnum, 1) if (defined($lnum));
@@ -176,6 +179,7 @@ foreach my $c (@$cache) {
 sub create_table_row
 {
 my ($table, $pfunc, $line, $insert) = @_;
+$table =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 my $lref = &read_file_lines("$config{'config_dir'}/$table");
 my $idx = -1;
 for(my $i=0; $i<@$lref; $i++) {
@@ -261,6 +265,7 @@ else {
 sub modify_table_row
 {
 my ($table, $pfunc, $idx, $line) = @_;
+$table =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 my $lref = &read_file_lines("$config{'config_dir'}/$table");
 my $lnum = &find_line_num($lref, $pfunc, $idx);
 $lref->[$lnum] = &simplify_line($line) if (defined($lnum));
@@ -289,6 +294,7 @@ if ($oldstr ne $newstr) {
 sub swap_table_rows
 {
 my ($table, $pfunc, $idx1, $idx2) = @_;
+$table =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 my $lref = &read_file_lines("$config{'config_dir'}/$table");
 my $lnum1 = &find_line_num($lref, $pfunc, $idx1);
 my $lnum2 = &find_line_num($lref, $pfunc, $idx2);
