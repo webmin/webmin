@@ -380,6 +380,10 @@ if ($in{'acl_security_form'} && !$newgroup && !$in{'safe'}) {
 	&foreign_call("", "acl_security_save", \%uaccess, \%in);
 	$uaccess{'rpc'} = $in{'rpc'};
 	&lock_file($aclfile);
+	# This form cannot change the application's API-only restriction.
+	my %saved = &get_module_acl($in{'name'}, "", 1, 1);
+	$uaccess{'api_only'} = $saved{'api_only'}
+		if (exists($saved{'api_only'}));
 	&save_module_acl(\%uaccess, $in{'name'}, "", 1);
 	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
