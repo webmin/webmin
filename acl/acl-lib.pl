@@ -1823,6 +1823,21 @@ are :
 sub copy_group_user_acl_files
 {
 my ($from, $to, $mods) = @_;
+if (&indexof("", @$mods) >= 0) {
+	# Keep the account's API restriction when replacing global permissions.
+	my $aclfile = "$config_directory/$to.acl";
+	&lock_file($aclfile);
+	my %saved = &get_module_acl($to, "", 1, 1);
+	if (exists($saved{'api_only'})) {
+		# Merge before writing so the restriction is never removed by a
+		# copy.
+		my %gaccess = &get_group_module_acl($from, "", 1);
+		$gaccess{'api_only'} = $saved{'api_only'};
+		&save_module_acl(\%gaccess, $to, "", 1);
+		$mods = [ grep { $_ ne "" } @$mods ];
+		}
+	&unlock_file($aclfile);
+	}
 &copy_acl_files($from, $to, $mods, "group", "user");
 }
 
@@ -1852,7 +1867,16 @@ foreach my $m (@$members) {
 		if ($u) {
 			my $aclfile = "$config_directory/$mod/$u->{'name'}.acl";
 			&lock_file($aclfile);
-			&save_module_acl($access, $u->{'name'}, $mod, 1);
+			my %uaccess = %$access;
+			if ($mod eq "") {
+				# Keep this member's restriction out of the
+				# shared group ACL.
+				my %saved =
+					&get_module_acl($u->{'name'}, "", 1, 1);
+				$uaccess{'api_only'} = $saved{'api_only'}
+					if (exists($saved{'api_only'}));
+				}
+			&save_module_acl(\%uaccess, $u->{'name'}, $mod, 1);
 			chmod(0640, $aclfile) if (-r $aclfile);
 			&unlock_file($aclfile);
 			}

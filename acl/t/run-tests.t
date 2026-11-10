@@ -1596,6 +1596,79 @@ subtest 'user and global ACL saves preserve API-only access' => sub {
     }
 };
 
+# Joining or re-saving a group member must keep its API restriction, even
+# when the group has no global ACL. Renaming must retain it under the new name.
+subtest 'group assignment preserves API-only access' => sub {
+    foreach my $has_acl (0, 1) {
+        foreach my $endpoint (undef, 'virtual-server/remote.cgi') {
+            _reset_fixture();
+            _seed_user_acl('admin', { users => '*', gassign => '*', rename => 1 });
+            create_user({ name => 'admin', pass => 'x', modules => ['acl'] });
+            create_user({ name => 'target', pass => 'x', modules => ['acl'] });
+            create_group({ name => 'team', members => [], modules => ['acl'] });
+            save_group_module_acl({ download_address_mode => 'public' },
+                                  'team', '', 1) if $has_acl;
+            my %original = ( download_address_mode => 'all' );
+            $original{api_only} = $endpoint if defined($endpoint);
+            save_module_acl(\%original, 'target', '', 1);
+            foreach my $name ('target', 'target', 'renamed') {
+                my $r = run_cgi('save_user.cgi', {
+                    old => 'target', name => $name, group => 'team', mod => 'acl',
+                    pass_def => 1, oldpass => 'x', logouttime_def => 1,
+                    minsize_def => 1, days_def => 1, hours_def => 1 });
+                ok($r->{location}, "group assignment saves $name")
+                    or diag("stdout: $r->{out}\nstderr: $r->{err}");
+                _clear_caches();
+                my %saved = get_module_acl($name, '', 1, 1);
+                is($saved{api_only}, $endpoint, 'keeps the account restriction');
+                is($saved{download_address_mode}, $has_acl ? 'public' : undef,
+                   'ordinary global permissions come from the group');
+                is(get_users_group($name)->{name}, 'team', 'membership is saved');
+            }
+            my %group = get_group_module_acl('team', '', 1);
+            ok(!exists($group{api_only}), 'user restriction is not copied to group');
+            delete_user('renamed');
+            delete_user('admin');
+            delete_group('team');
+        }
+    }
+};
+
+# Each member keeps its own restriction during recursive group ACL updates.
+subtest 'group ACL saves preserve member API-only access' => sub {
+    _reset_fixture();
+    _seed_user_acl('admin', { users => '*', groups => 1, acl => 1 });
+    my %endpoints = ( direct => 'virtual-server/remote.cgi',
+                      nested => 'other/api.cgi', ordinary => undef );
+    create_user({ name => 'admin', pass => 'x', modules => ['acl'] });
+    foreach my $name (sort keys %endpoints) {
+        create_user({ name => $name, pass => 'x', modules => ['acl'] });
+        my %original = ( download_address_mode => 'all' );
+        $original{api_only} = $endpoints{$name} if defined($endpoints{$name});
+        save_module_acl(\%original, $name, '', 1);
+    }
+    create_group({ name => 'child', members => ['nested'], modules => ['acl'] });
+    create_group({ name => 'parent', members => ['direct', 'ordinary', '@child'],
+                   modules => ['acl'] });
+    my $r = run_cgi('save_acl.cgi', { _acl_group => 'parent', _acl_mod => '',
+                                     download_address_mode => 'public' });
+    ok($r->{location}, 'group global ACL saves')
+        or diag("stdout: $r->{out}\nstderr: $r->{err}");
+    _clear_caches();
+    foreach my $name (sort keys %endpoints) {
+        my %saved = get_module_acl($name, '', 1, 1);
+        is($saved{api_only}, $endpoints{$name}, "$name keeps its own restriction");
+        is($saved{download_address_mode}, 'public', "$name gets group permissions");
+        delete_user($name);
+    }
+    foreach my $name ('parent', 'child') {
+        my %group = get_group_module_acl($name, '', 1);
+        ok(!exists($group{api_only}), "$name does not inherit a member restriction");
+        delete_group($name);
+    }
+    delete_user('admin');
+};
+
 # edit_user.cgi: the create form preselects public-only URL downloads, while
 # an existing user without an explicit setting keeps the unrestricted global
 # default. save_user.cgi stores the form value, so new users never depend on
