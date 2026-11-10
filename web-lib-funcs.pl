@@ -2188,7 +2188,7 @@ if (!$ENV{'REQUEST_METHOD'}) {
 	&print_call_stack() if ($gconfig{'error_stack'});
 	}
 elsif (defined(&theme_error)) {
-	&theme_error({err => \@_, stack => \@stack, err_caller => $err_caller});
+	&theme_error({err => \@msg, stack => \@stack, err_caller => $err_caller});
 	}
 elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	my %jerror;
