@@ -1,5 +1,5 @@
 ## Changelog
-#### 2.680 (October 23, 2026)
+#### 2.680 (November, 2026)
 * Add an SQLite database browser and editor with schema inspection, table management, row editing and direct SQL execution [forum.virtualmin.com/t/137508](https://forum.virtualmin.com/t/sqlite-database-browser-and-editor/137508/)
 * Add color schemes to the Terminal module
 * Add per-user Terminal preferences for color scheme, font size, screen reader mode and terminal dimensions
@@ -23,6 +23,7 @@
 * Fix the logged in users list in Users and Groups module showing nobody when `who` prints ISO dates under a non-C locale or `sshd pts/N` lines from the logind backend [forum.virtualmin.com/t/138162](https://forum.virtualmin.com/t/138162)
 * Fix missing SSH logins in the Users and Groups module on Ubuntu 26.04 by using systemd-logind when `utmp` is absent
 * Fix mail date parsing of ISO dates like `2026-10-15 02:33` returning the wrong minutes
+* Fix the default for new users in the Webmin Users module to allow URL downloads only from public IP addresses (thanks to 0xpack)
 * Add optional address-family selection to HTTP downloads and socket connections, preserved across redirects [#1300](https://github.com/virtualmin/virtualmin-gpl/issues/1300)
 * Update the Authentic theme to the latest version with various improvements:
   - Add support for Terminal module color preferences
