@@ -1300,6 +1300,9 @@ if (-d _) {
 # CGI or normal file
 local $rv;
 if (&get_type($full) eq "internal/cgi" && $validated != 4) {
+	# Check the resolved script even if it does not initialize Webmin.
+	return 0 if (!&check_api_only_access(
+		substr($full, length($foundroot)+1)));
 	# A CGI program to execute
 	print DEBUG "handle_request: executing CGI\n";
 	$envtz = $ENV{"TZ"};

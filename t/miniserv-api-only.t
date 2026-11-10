@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# Check API-only restrictions on WebSockets, DAV and CGI execution.
 use strict;
 use warnings;
 no warnings qw(once redefine uninitialized);
@@ -117,6 +118,19 @@ SKIP: {
     $ldap->{error} = 1;
     is_deeply(request('database', $user), [403, 0, 1], 'LDAP lookup failure denies access');
 }
+# These CGI fixtures omit Webmin initialization, including its API-only check.
+mkdir("$dir/allowed") or die $!;
+foreach my $name ('custom.cgi', 'allowed/remote.cgi', 'error.cgi') {
+	open(my $fh, '>', "$dir/$name") or die $!;
+	print $fh "#!$^X\nprint qq(Content-type: text/plain\\r\\n\\r\\nCGI_RAN);\n";
+	close($fh) or die $!;
+	chmod(0700, "$dir/$name") or die $!;
+	}
+# Static files remain accessible to API-only accounts.
+open(my $asset, '>', "$dir/asset.txt") or die $!;
+print $asset 'STATIC_BODY';
+close($asset) or die $!;
+write_acl('api', "api_only=allowed/remote.cgi\n");
 
 # http_request(user, path): dispatch without a TCP listener or host config.
 sub http_request
@@ -169,6 +183,23 @@ die $err if ($err && $err ne "DENIED\n");
 return [$status, $body =~ /CGI_RAN|STATIC_BODY/ ? 1 : 0, $direct];
 }
 
+# Enforce before custom code runs, including PATH_INFO and directory indexes.
+is_deeply(http_request('api', '/custom.cgi'), [403, 0, 1],
+	'custom CGI is denied without running a custom error page');
+is_deeply(http_request('api', '/custom.cgi/extra'), [403, 0, 1],
+	'custom CGI with PATH_INFO is denied');
+is_deeply(http_request('ordinary', '/custom.cgi'), [200, 1, 0],
+	'ordinary account can still run a custom CGI');
+foreach my $path ('/allowed/remote.cgi?x=1', '/allowed/remote.cgi/extra',
+		 '/allowed/', '/allowed//remote.cgi') {
+	is_deeply(http_request('api', $path), [200, 1, 0],
+		"assigned CGI is allowed at $path");
+	}
+# DAV is blocked, static files stay accessible, and failed ACL reads deny CGI.
 is_deeply(http_request('api', '/dav/file'), [403, 0, 1],
 	'DAV is denied before its modules or filesystem are used');
+is_deeply(http_request('api', '/asset.txt'), [200, 1, 0],
+	'static files remain accessible');
+is_deeply(http_request('unreadable', '/allowed/remote.cgi'), [403, 0, 1],
+	'failed policy read denies CGI execution');
 done_testing();
