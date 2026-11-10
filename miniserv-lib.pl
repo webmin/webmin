@@ -5,6 +5,7 @@ package miniserv;
 use Socket;
 use POSIX;
 use Time::Local;
+use Errno qw(ENOENT);
 eval "use Time::HiRes;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -4126,6 +4127,98 @@ if ($config{'userdb'}) {
 	}
 }
 
+# check_api_only_access([script])
+# Allow API-only accounts to run only their assigned CGI. The script path is
+# relative to the serving root. Omit it to deny DAV and WebSocket requests.
+sub check_api_only_access
+{
+my ($script) = @_;
+# Standalone MiniServ and requests without an account have no Webmin ACL.
+return 1 if (!$config{'env_WEBMIN_CONFIG'} || !$baseauthuser);
+my ($endpoint, $err) = &get_api_only_endpoint($baseauthuser, $uinfo);
+if ($err || $endpoint && (!defined($script) || $script ne $endpoint)) {
+	# Deny directly so a custom error CGI cannot bypass this restriction.
+	local $error_handler_recurse = 1;
+	&http_error(403, $err ? "Cannot read this account's API policy" :
+		"This account can only use its assigned API");
+	return 0;
+	}
+return 1;
+}
+
+# get_api_only_endpoint(username, &user-details)
+# Read the base account's global API restriction for this request.
+# user-details is from get_user_details. Return (endpoint, read-error).
+sub get_api_only_endpoint
+{
+my ($username, $user) = @_;
+# Deny access if the account lookup failed.
+return (undef, 1) if (!$user);
+my %acl;
+if ($user->{'proto'}) {
+	# Database accounts must use their database ACL, not a local fallback.
+	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
+	return (undef, 1) if (!ref($dbh));
+	my $ok = eval {
+		if ($proto eq 'mysql' || $proto eq 'postgresql') {
+			# The authenticated account ID selects its global permissions.
+			my $cmd = $dbh->prepare(
+				"select attr,value from webmin_user_acl ".
+				"where id = ? and module = ?");
+			$cmd && $cmd->execute($user->{'id'}, '') ||
+				die "ACL query failed";
+			while(my ($key, $value) = $cmd->fetchrow()) {
+				$acl{$key} = $value;
+				}
+			$cmd->err && die "ACL fetch failed";
+			$cmd->finish();
+			}
+		elsif ($proto eq 'ldap') {
+			# LDAP stores global permissions below the account's DN.
+			my $result = $dbh->search(base => $user->{'id'},
+				filter => '(cn=global)', scope => 'one');
+			$result && !$result->code || die "ACL search failed";
+			my ($entry) = $result->all_entries;
+			if ($entry) {
+				# Read permissions when the global entry exists.
+				foreach my $pair ($entry->get_value('webminAclEntry')) {
+					my ($key, $value) = split(/=/, $pair, 2);
+					$acl{$key} = $value;
+					}
+				}
+			}
+		else {
+			# Do not allow access when the storage type is unknown.
+			die "Unknown ACL backend";
+			}
+		1;
+		};
+	# Release the connection even when reading the policy failed.
+	&disconnect_userdb($config{'userdb'}, $dbh);
+	return (undef, 1) if (!$ok);
+	}
+else {
+	# Read the local ACL on each request so policy changes take effect.
+	my $file = "$config{'env_WEBMIN_CONFIG'}/$username.acl";
+	if (open(my $fh, '<', $file)) {
+		# Require a regular file and a complete read.
+		-f $fh || return (undef, 1);
+		local $! = 0;
+		while(my $line = <$fh>) {
+			$line =~ s/[\r\n]//g;
+			$acl{'api_only'} = $1 if ($line =~ /^api_only=(.*)$/);
+			}
+		my $read_error = $!;
+		close($fh) && !$read_error || return (undef, 1);
+		}
+	elsif ($! != ENOENT) {
+		# A missing ACL is normal; other open failures must deny access.
+		return (undef, 1);
+		}
+	}
+return ($acl{'api_only'}, undef);
+}
+
 # get_user_details(username, [original-username])
 # Returns a hash ref of user details, either from config files or the user DB
 sub get_user_details
@@ -4923,6 +5016,8 @@ return @rv;
 sub handle_websocket_request
 {
 my ($ws, $simple) = @_;
+# WebSocket requests bypass the API-only check in CGI initialization.
+return 0 if (!&check_api_only_access());
 my $key = $header{'sec-websocket-key'};
 if (!$key) {
 	&http_error(500, "Missing Sec-Websocket-Key header");
