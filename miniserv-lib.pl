@@ -6259,8 +6259,9 @@ return undef;
 }
 
 # execute_webmin_command(command, &argv, [stdout-fd])
-# Run some Webmin script in a sub-process, like webmincron.pl
-# Returns the PID of the new process.
+# Run a Webmin wrapper in a child process with the supplied argument list.
+# Returns the child PID. Wrappers must exit or exec. Returning is a failure.
+# The optional file descriptor receives stdout, otherwise stdout uses stderr.
 sub execute_webmin_command
 {
 my ($cmd, $argv, $fd) = @_;
@@ -6342,10 +6343,9 @@ if (!$pid) {
 		do \"$cmd\";
 		die \$@ if (\$@);
 		";
-	if ($@) {
-		&log_error("Perl failure : $@");
-		}
-	exit(0);
+	# Fail if the wrapper dies or returns without ending the child process.
+	&log_error("Perl failure : ".($@ || "No exit status from $cmd"));
+	exit(1);
 	}
 return $pid;
 }

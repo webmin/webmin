@@ -32,3 +32,6 @@ if ($@) {
 if ($gconfig{'logsched'}) {
 	&webmin_log("run", "webmincron", $cron->{'id'}, $log);
 	}
+
+# Report completion even when logging is disabled or the callback returns undef.
+exit(0);
