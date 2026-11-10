@@ -83,6 +83,7 @@ sub new_zones_format
 # read_table_file(table, &parserfunc)
 sub read_table_file
 {
+$_[0] =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 local @rv;
 local $func = $_[1];
 open(FILE, "<$config{'config_dir'}/$_[0]");
@@ -98,6 +99,7 @@ return @rv;
 # read_table_struct(table, &parserfunc)
 sub read_table_struct
 {
+$_[0] =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 if (!defined($read_table_cache{$_[0]})) {
 	local @rv;
 	local $func = $_[1];
@@ -145,6 +147,7 @@ return undef;
 # delete_table_row(table, &parserfunc, index)
 sub delete_table_row
 {
+$_[0] =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
 local $lnum = &find_line_num($lref, $_[1], $_[2]);
 splice(@$lref, $lnum, 1) if (defined($lnum));
@@ -172,6 +175,7 @@ foreach $c (@$cache) {
 # create_table_row(table, &parserfunc, line, [insert-index])
 sub create_table_row
 {
+$_[0] =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
 local ($i, $idx);
 for($i=0; $i<@$lref; $i++) {
@@ -238,6 +242,7 @@ else {
 # modify_table_row(table, &parserfunc, index, line)
 sub modify_table_row
 {
+$_[0] =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
 local $lnum = &find_line_num($lref, $_[1], $_[2]);
 $lref->[$lnum] = &simplify_line($_[3]) if (defined($lnum));
@@ -262,6 +267,7 @@ if ($_[0] ne $_[1]) {
 # swap_table_rows(table, &parserfunc, index1, index2)
 sub swap_table_rows
 {
+$_[0] =~ /\/|\0|\s|\.\./ && &error("Invalid table name");
 local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
 local $lnum1 = &find_line_num($lref, $_[1], $_[2]);
 local $lnum2 = &find_line_num($lref, $_[1], $_[3]);
