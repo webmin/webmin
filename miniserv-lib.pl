@@ -4770,6 +4770,8 @@ else {
 sub handle_dav_request
 {
 local ($path) = @_;
+# DAV bypasses CGI initialization and exposes separate file operations.
+return 0 if (!&check_api_only_access());
 eval "use Filesys::Virtual::Plain";
 eval "use Net::DAV::Server";
 eval "use HTTP::Request";

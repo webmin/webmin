@@ -5,6 +5,7 @@ no warnings qw(once redefine uninitialized);
 use Test::More;
 use File::Temp qw(tempdir);
 use FindBin;
+use Socket;
 require "$FindBin::Bin/../miniserv-lib.pl";
 my $dir = tempdir(TMPDIR => 1, CLEANUP => 1);
 
@@ -116,4 +117,58 @@ SKIP: {
     $ldap->{error} = 1;
     is_deeply(request('database', $user), [403, 0, 1], 'LDAP lookup failure denies access');
 }
+
+# http_request(user, path): dispatch without a TCP listener or host config.
+sub http_request
+{
+my ($user, $path) = @_;
+my ($status, $direct, $body) = (undef, 0, '');
+# Authenticate a fixture account by IP and resolve paths under the temporary root.
+local %miniserv::config = (env_WEBMIN_CONFIG => $dir, maxconns => 1,
+	agents_nosession => 'Webmin', session => 0, forkcgis => 1,
+	index_docs => 'remote.cgi', error_handler_403 => 'error.cgi');
+local @miniserv::roots = ($dir);
+local @miniserv::davpaths = ('/dav');
+local %miniserv::users = (api => '!', ordinary => '!', unreadable => '!');
+local %miniserv::ipaccess = ('192.0.2.42' => $user);
+local %miniserv::mime = (cgi => 'internal/cgi');
+local $miniserv::host = 'test.invalid';
+local $miniserv::port = 10000;
+local $miniserv::perl_path = $^X;
+# Reset request state so one call cannot supply buffered data to the next.
+local $miniserv::checked_timeout = 0;
+local $miniserv::buffer = '';
+local $miniserv::offset = 0;
+local $miniserv::cgipid;
+# Capture the response and status without writing logs or socket output.
+local *miniserv::log_error = sub {};
+local *miniserv::log_request = sub { $status = $_[3]; };
+local *miniserv::write_keep_alive = sub {};
+local *miniserv::write_data = sub { $body .= join('', @_); };
+# http_error(code, message): record denials and the custom error handler flag.
+local *miniserv::http_error = sub {
+	$status = $_[0];
+	$direct = $miniserv::error_handler_recurse ? 1 : 0;
+	die "DENIED\n";
+	};
+# Feed a real HTTP request through a Unix socket pair without a TCP listener.
+local *miniserv::DEBUG;
+open(miniserv::DEBUG, '>', \my $debug) or die $!;
+socketpair(*miniserv::SOCK, my $client, AF_UNIX, SOCK_STREAM, PF_UNSPEC) ||
+	die $!;
+my $request = "GET $path HTTP/1.0\r\nHost: test.invalid\r\n".
+	"User-Agent: Webmin test\r\n\r\n";
+syswrite($client, $request) == length($request) or die $!;
+eval { miniserv::handle_request('192.0.2.42', '192.0.2.1', 0); };
+my $err = $@;
+# Close both sockets and reap any forked CGI before checking the result.
+close($client);
+close(miniserv::SOCK);
+waitpid($miniserv::cgipid, 0) if ($miniserv::cgipid);
+die $err if ($err && $err ne "DENIED\n");
+return [$status, $body =~ /CGI_RAN|STATIC_BODY/ ? 1 : 0, $direct];
+}
+
+is_deeply(http_request('api', '/dav/file'), [403, 0, 1],
+	'DAV is denied before its modules or filesystem are used');
 done_testing();
