@@ -1871,7 +1871,7 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: flex;
 	align-items: center;
 	gap: 6px;
-	padding: 6px;
+	padding: 6px 6px 3px 6px;
 	border-top: 1px solid var(--ui-border);
 	color: var(--ui-fg-muted);
 	font-size: 0.93em;
