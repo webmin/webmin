@@ -518,7 +518,8 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 
 # Grouped metadata stays plain text and preserves values and legacy defaults.
 {
-	my $group = { label => $xss, state => 'success', icon => 'star' };
+	my $group = { label => $xss, state => 'success', icon => 'star',
+		help => 'Help '.$xss };
 	my @options = (
 		{ value => 'a', label => 'First', group => $group, metadata => [
 			{ label => '10 GiB', icon => 'hard-drive', title => $xss },
@@ -529,6 +530,10 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	my $html = main::ui_multi_select_list('grouped', [ 'b', 'a' ], \@options,
 		{ compact => 1, search => 1, summary => $xss, summary_icon => 'download' });
 	is(scalar(() = $html =~ /data-ui-multi-heading=/g), 2, 'consecutive options share a heading');
+	is(scalar(() = $html =~ /class="ui_help"/g), 1, 'group help appears once beside its heading');
+	my $escaped_help = main::html_escape(main::html_strip('Help '.$xss));
+	like($html, qr/aria-label="\Q$escaped_help\E" data-tooltip><samp>\?<\/samp>/,
+		'group help uses an escaped tooltip with a question mark');
 	is(scalar(() = $html =~ /class="[^"]*\bui_multi_metadata\b/g), 1, 'metadata facts share one badge');
 	is(scalar(() = $html =~ /class="[^"]*\bui_multi_item\b/g), 3, 'headings are not selectable options');
 	like($html, qr/ui_multi_compact/, 'compact layout is explicitly enabled');

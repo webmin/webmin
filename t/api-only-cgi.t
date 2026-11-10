@@ -12,6 +12,8 @@ use Symbol qw(gensym);
 my $root = abs_path("$FindBin::Bin/..");
 my $dir = tempdir(TMPDIR => 1, CLEANUP => 1);
 mkdir("$dir/var") or die $!;
+# Root cleanup must not create the lock parent and reset the child exit status.
+mkdir("$dir/var/locks") or die $!;
 mkdir("$dir/acl") or die $!;
 
 # write_fixture(name, content): write only inside the temporary configuration.
