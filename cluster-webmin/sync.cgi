@@ -53,7 +53,7 @@ elsif ($in{'groups_mode'} == 3) {
 	@gsync = grep { !$gnot{$_->{'name'}} } @glist;
 	}
 
-# Setup error handler for down hosts
+# add_error(messages...): save a remote host error for display.
 sub add_error
 {
 $add_error_msg = join("", @_);
@@ -84,36 +84,25 @@ foreach $host (@phosts) {
 			next;
 			}
 
-		# Create missing users
-		foreach $u (@uneed) {
-			# Create the user
-			print &text('sync_ucreate', $u->{'name'}),"<br>\n";
-			if (!$in{'test'}) {
-				&remote_foreign_call($serv->{'host'},
-					"acl", "create_user", $u);
-				push(@{$host->{'users'}}, $u);
+		# Copy missing users and groups, then cache completed copies.
+		foreach my $type ('user', 'group') {
+			foreach my $account ($type eq 'user' ? @uneed : @gneed) {
+				print &text($type eq 'user' ? 'sync_ucreate' :
+					'sync_gcreate', $account->{'name'}),"<br>\n";
+				print &text('sync_acl', $account->{'name'}),"<br>\n";
+				if (!$in{'test'}) {
+					# Dry runs skip account and ACL writes.
+					my ($copy, $err) =
+						&sync_account($account, $serv, $type);
+					if ($err) {
+						# Do not cache failed copies.
+						print &html_escape($err),"<p>\n";
+						next;
+						}
+					push(@{$host->{$type.'s'}}, $copy);
+					}
+				print "$text{'refresh_done'}<p>\n";
 				}
-			print "$text{'refresh_done'}<p>\n";
-
-			# Copy .acl files
-			print &text('sync_acl', $u->{'name'}),"<br>\n";
-			&copy_acls_for($u, $serv, "user");
-			print "$text{'refresh_done'}<p>\n";
-			}
-
-		# Create missing groups
-		foreach $g (@gneed) {
-			print &text('sync_gcreate', $g->{'group'}),"<br>\n";
-			if (!$in{'test'}) {
-				&remote_foreign_call($serv->{'host'},
-					"acl", "create_group", $g);
-				push(@{$host->{'groups'}}, $g);
-				}
-			print "$text{'refresh_done'}<p>\n";
-
-			print &text('sync_acl', $g->{'name'}),"<br>\n";
-			&copy_acls_for($g, $serv, "group");
-			print "$text{'refresh_done'}<p>\n";
 			}
 
 		# Restart webmin
@@ -135,21 +124,82 @@ foreach $host (@phosts) {
 
 &ui_print_footer("", $text{'index_return'});
 
-# copy_acls_for(&user|&group, &server)
-# Copy all .acl files from the server on which a user or group does exist
-# to the given server
+# sync_account(&account, &server, type)
+# Copy a source account and its ACLs to server. type is 'user' or 'group'.
+# Return (destination account, error), with an undefined error on success.
+# New users cannot log in until all ACLs have been copied.
+sub sync_account
+{
+my ($account, $server, $type) = @_;
+# The destination assigns its own storage ID and backend.
+my $copy = { %$account };
+delete @{$copy}{'id', 'proto', 'source'};
+my %pending = %$copy;
+if ($type eq 'user') {
+	# Block password, certificate and configured IP-based logins.
+	$pending{'pass'} = '!'.$account->{'pass'};
+	$pending{'cert'} = undef;
+	$pending{'allow'} = undef;
+	$pending{'deny'} = '0.0.0.0/0 ::/0';
+	}
+my $created;
+# Turn remote errors into exceptions so failed copies stop before activation.
+local $main::remote_error_handler = sub { die join('', @_)."\n"; };
+my $ok = eval {
+	# Record successful creation so a later ACL failure can trigger cleanup.
+	&remote_foreign_call($server->{'host'}, 'acl', 'create_'.$type,
+			     \%pending);
+	$created = 1;
+	&copy_acls_for($account, $server, $type);
+	# Use the destination's ID and backend for activation and the local cache.
+	my $dest = &remote_foreign_call($server->{'host'}, 'acl', 'get_'.$type,
+					$account->{'name'});
+	$dest || die "Cannot find newly synchronized account\n";
+	# The remote ACL cache may still predate creation. Keep source settings.
+	foreach my $key ('id', 'proto') {
+		$copy->{$key} = $dest->{$key} if (exists($dest->{$key}));
+		}
+	if ($type eq 'user') {
+		# Enable logins only after all permissions have been copied.
+		&remote_foreign_call($server->{'host'}, 'acl', 'modify_user',
+				     $account->{'name'}, $copy);
+		}
+	1;
+	};
+my $err = $@;
+if (!$ok && $created) {
+	# Remove failed copies so synchronization can retry them. A failed ACL
+	# transfer leaves the user disabled even if cleanup also fails.
+	eval { &remote_foreign_call($server->{'host'}, 'acl', 'delete_'.$type,
+				    $account->{'name'}); };
+	# Report cleanup errors without losing the original transfer error.
+	$err .= $@ if ($@);
+	}
+return $ok ? ($copy, undef) : (undef, $err);
+}
+
+# copy_acls_for(&account, &server, type)
+# Copy global and module ACLs from account->{source} to the destination server.
+# type is user or group and selects the matching remote ACL helpers.
 sub copy_acls_for
 {
 local $source = $_[0]->{'source'};
 &remote_foreign_require($source->{'host'}, "acl", "acl-lib.pl")
 	if (!$done_require{$source->{'host'}}++);
 local $suffix = $_[2] eq "user" ? "module_acl" : "group_module_acl";
-foreach $m (@{$_[0]->{'modules'}}) {
+# Global permissions include the account's API-only restriction.
+foreach $m (&unique('', @{$_[0]->{'modules'}})) {
+	# Copy stored global permissions without adding source defaults or RBAC.
+	# Module permissions retain their existing default handling.
+	my @options = $m eq '' ? (1, 1) : ();
 	local %acl = &remote_foreign_call($source->{'host'}, "acl",
-					  "get_".$suffix, $_[0]->{'name'},$m);
+					  "get_".$suffix, $_[0]->{'name'},
+					  $m, @options);
 	if (%acl) {
+		# Only populated source ACLs need a write on the new destination
+		# account.
 		&remote_foreign_call($_[1]->{'host'}, "acl", "save_".$suffix,
-				     \%acl, $_[0]->{'name'}, $m);
+				     \%acl, $_[0]->{'name'}, $m, 1);
 		}
 	}
 }

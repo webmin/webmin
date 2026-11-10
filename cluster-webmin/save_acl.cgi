@@ -62,30 +62,51 @@ foreach $h (@hosts) {
 	pipe($rh, $wh);
 	if (!fork()) {
 		close($rh);
-		&remote_foreign_require($s->{'host'}, "acl", "acl-lib.pl");
-		if ($user_error_msg) {
-			# Host is down
-			print $wh &serialise_variable([ 0, $user_error_msg ]);
-			exit;
+		# Stop this host's save if a remote read or write fails.
+		local $main::remote_error_handler = sub { die join('', @_); };
+		my $locked;
+		my $ok = eval {
+			&remote_foreign_require($s->{'host'}, "acl", "acl-lib.pl");
+			my $cd = &remote_eval($s->{'host'}, "acl",
+					     '$config_directory');
+			my $sfx = $in{'_acl_user'} ? "acl" : "gacl";
+			my $file = "$cd/$in{'_acl_mod'}/$who.$sfx";
+			my $suffix = $in{'_acl_user'} ? "module_acl" :
+							"group_module_acl";
+			&remote_foreign_call($s->{'host'}, "acl", "lock_file", $file);
+			$locked = $file;
+			if ($in{'_acl_mod'} eq '') {
+				# This child keeps its host's existing API endpoint.
+				my %saved = &remote_foreign_call($s->{'host'},
+					"acl", "get_".$suffix, $who, "", 1, 1);
+				delete($maccess{'api_only'});
+				$maccess{'api_only'} = $saved{'api_only'}
+					if (exists($saved{'api_only'}));
+				}
+			# Use the account's storage backend without updating its parent.
+			&remote_foreign_call($s->{'host'}, "acl", "save_".$suffix,
+				\%maccess, $who, $in{'_acl_mod'}, 1);
+			&remote_foreign_call($s->{'host'}, "acl", "unlock_file", $locked);
+			$locked = undef;
+
+			if ($in{'_acl_group'}) {
+				# Apply the saved group permissions to its members.
+				my ($group) = grep { $_->{'name'} eq $in{'_acl_group'} }
+						  @{$h->{'groups'}};
+				&remote_foreign_call($s->{'host'}, "acl", "set_acl_files",
+					$h->{'users'}, $h->{'groups'}, $in{'_acl_mod'},
+					$group->{'members'}, \%maccess);
+				}
+			1;
+			};
+		my $err = $@;
+		if ($locked) {
+			# Release the lock after a failed read or save when reachable.
+			eval { &remote_foreign_call($s->{'host'}, "acl",
+						   "unlock_file", $locked); };
+			$err .= $@ if ($@);
 			}
-
-		# Save the .acl file
-		local $cd = &remote_eval($s->{'host'}, "acl",
-					 '$config_directory');
-		$sfx = $in{'_acl_user'} ? "acl" : "gacl";
-		&remote_foreign_call($s->{'host'}, "acl", "write_file",
-			"$cd/$in{'_acl_mod'}/$who.$sfx", \%maccess);
-
-		# Recursively update the ACL for all member users and groups
-		if ($in{'_acl_group'}) {
-			local ($group) = grep { $_->{'name'} eq $in{'_acl_group'} }
-					      @{$h->{'groups'}};
-			&remote_foreign_call($s->{'host'}, "acl", "set_acl_files",
-				$h->{'users'}, $h->{'groups'}, $in{'_acl_mod'},
-				$group->{'members'}, \%maccess);
-			}
-
-		print $wh &serialise_variable([ 1 ]);
+		print $wh &serialise_variable([ $ok ? 1 : 0, $err ]);
 		exit;
 		}
 	close($wh);
