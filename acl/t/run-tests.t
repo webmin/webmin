@@ -1355,7 +1355,7 @@ subtest 'delete_user.cgi gating' => sub {
 #   user path: mode controls which modules are editable; mode=2 + mods=<list>
 #              is the principle-of-least-privilege case worth testing.
 #   group path: access{groups} required.
-#   reset path: removes the .acl file (or .gacl).
+#   module reset path: removes the .acl file (or .gacl).
 subtest 'save_acl.cgi gating' => sub {
     # Need a target module dir under $rootdir; useradmin is real.
     # mode=2, mods='useradmin', target _acl_mod='apache' -> denied
@@ -1590,6 +1590,60 @@ subtest 'user and global ACL saves preserve API-only access' => sub {
                 is(get_user($name)->{pass}, 'x',
                    "$cgi leaves the password unchanged");
                 delete_user($name);
+                delete_user('admin');
+            }
+        }
+    }
+};
+
+# Global resets keep only the stored API restriction. Module resets and
+# unrestricted accounts must still remove their ACL files.
+subtest 'ACL resets preserve API-only access' => sub {
+    foreach my $kind ('user', 'group') {
+        foreach my $endpoint (undef, 'virtual-server/remote.cgi') {
+            foreach my $module ('', 'proc') {
+                _reset_fixture();
+                _seed_user_acl('admin', { users => '*', groups => 1,
+                                          acl => 1, mode => 0 });
+                create_user({ name => 'admin', pass => 'x', modules => ['acl'] });
+                if ($kind eq 'user') {
+                    # Exercise the reset form for an existing account.
+                    create_user({ name => 'target', pass => 'x', modules => ['proc'] });
+                }
+                else {
+                    # Group resets use the separate group ACL writer.
+                    create_group({ name => 'target', members => [], modules => ['proc'] });
+                }
+                my $save = $kind eq 'user' ? \&save_module_acl : \&save_group_module_acl;
+                my $get = $kind eq 'user' ? \&get_module_acl : \&get_group_module_acl;
+                my %original = ( download_address_mode => 'listed' );
+                $original{api_only} = $endpoint if defined($endpoint);
+                $save->(\%original, 'target', '', 1);
+                $save->({ fixture => 1 }, 'target', $module, 1) if $module;
+
+                my $r = run_cgi('save_acl.cgi', {
+                    '_acl_'.$kind => 'target', _acl_mod => $module,
+                    reset => 1, api_only => 'other/api.cgi' });
+                ok($r->{location}, "$kind ACL reset succeeds")
+                    or diag("stdout: $r->{out}\nstderr: $r->{err}");
+                _clear_caches();
+                my %saved = $get->('target', $module, 1, 1);
+                my %expected = !$module && defined($endpoint) ?
+                    ( api_only => $endpoint ) : ();
+                is_deeply(\%saved, \%expected,
+                          "$kind reset removes ordinary settings and retains only the global restriction");
+                my $suffix = $kind eq 'user' ? 'acl' : 'gacl';
+                is(-e "$confdir/$module/target.$suffix" ? 1 : 0,
+                   keys(%expected) ? 1 : 0,
+                   "$kind reset keeps a file only for a global restriction");
+                if ($module) {
+                    # Resetting module permissions must not change globals.
+                    my %global = $get->('target', '', 1, 1);
+                    is_deeply(\%global, \%original,
+                              "$kind module reset leaves global permissions intact");
+                }
+                my $delete = $kind eq 'user' ? \&delete_user : \&delete_group;
+                $delete->('target');
                 delete_user('admin');
             }
         }

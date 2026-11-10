@@ -33,16 +33,25 @@ my %minfo = $in{'_acl_mod'} ? &get_module_info($in{'_acl_mod'})
 			    : ( 'desc' => $text{'index_global'} );
 %minfo || &error($text{'acl_emod2'});
 if ($in{'reset'}) {
-	# Just remove the .acl file
+	# Reset ordinary permissions without removing the API restriction.
 	&lock_file($aclfile);
+	my $reset_acl;
+	if (!$in{'_acl_mod'}) {
+		# Only global ACLs contain the application-owned restriction.
+		my %saved = $in{'_acl_group'} ?
+			&get_group_module_acl($who, "", 1) :
+			&get_module_acl($who, "", 1, 1);
+		$reset_acl = { 'api_only' => $saved{'api_only'} }
+			if ($saved{'api_only'});
+		}
 	if ($in{'_acl_group'}) {
 		# For a group
-		&save_group_module_acl(undef, $in{'_acl_group'},
+		&save_group_module_acl($reset_acl, $in{'_acl_group'},
 				       $in{'_acl_mod'}, 1);
 		}
 	else {
 		# For a user
-		&save_module_acl(undef, $in{'_acl_user'},
+		&save_module_acl($reset_acl, $in{'_acl_user'},
 				 $in{'_acl_mod'},1);
 		}
 	&unlock_file($aclfile);
