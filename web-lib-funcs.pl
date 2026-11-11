@@ -14369,13 +14369,11 @@ my ($variable, $scope) = @_;
 return &globals('delete', $variable, $scope);
 }
 
-# webmin_user_api_only([username])
-# Return the user's API entry script, defaulting to the current base user.
+# webmin_user_api_only()
+# Return the base user's API entry script, or an empty value if unrestricted.
 sub webmin_user_api_only
 {
-my ($username) = @_;
-$username = $base_remote_user if (!defined($username));
-my %access = &get_module_acl($username, "", 1, 1);
+my %access = &get_module_acl($base_remote_user, "", 1, 1);
 return $access{'api_only'};
 }
 

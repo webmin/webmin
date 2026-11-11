@@ -47,13 +47,8 @@ foreach $h (@hosts) {
 	if (!fork()) {
 		close($rh);
 		&remote_foreign_require($s->{'host'}, "acl", "acl-lib.pl");
-		# API accounts are hidden from the inventory but reserve their names.
-		if (!$user_error_msg && &remote_foreign_call($s->{'host'}, "acl",
-						  "get_user", $in{'name'})) {
-			$user_error_msg = &text('user_etaken', $in{'name'});
-			}
 		if ($user_error_msg) {
-			# Stop before changing groups or copying permissions.
+			# Host is down
 			print $wh &serialise_variable([ 0, $user_error_msg ]);
 			exit;
 			}

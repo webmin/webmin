@@ -31,7 +31,7 @@ $use_hmac_sha256 = 1 if (!$@);
 our %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
-=head2 list_users([&only-users], [include-api-only])
+=head2 list_users([&only-users])
 
 Returns a list of hashes containing Webmin user details. Useful keys include :
 
@@ -46,13 +46,10 @@ Returns a list of hashes containing Webmin user details. Useful keys include :
 If the only-users parameter is given, limit the list to just users with
 those usernames.
 
-API-only accounts are omitted unless include-api-only is set. Applications
-that own these accounts must set it when listing them for their own management.
-
 =cut
 sub list_users
 {
-my ($only, $include_api_only) = @_;
+my ($only) = @_;
 my (%miniserv, @rv, %acl, %logout);
 &read_acl(undef, \%acl);
 &get_miniserv_config(\%miniserv);
@@ -194,22 +191,19 @@ if ($miniserv{'userdb'}) {
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
 
-# Keep application-owned API accounts out of ordinary management lists.
-return $include_api_only ? @rv :
-	grep { !&webmin_user_api_only($_->{'name'}) } @rv;
+return @rv;
 }
 
 =head2 get_user(username)
 
 Returns a hash ref of details of the user with some name, in the same format
-as list_users. Includes API-only accounts so named lookups and username collision
-checks can still find them. Returns undef if not found.
+as list_users. Returns undef if not found
 
 =cut
 sub get_user
 {
 my ($username) = @_;
-my @rv = &list_users([ $username ], 1);
+my @rv = &list_users([ $username ]);
 my ($user) = grep { $_->{'name'} eq $username } @rv;
 return $user;
 }
@@ -380,9 +374,6 @@ settings from for this new user.
 sub create_user
 {
 my ($user, $clone) = @_;
-# Hidden API accounts still reserve their usernames.
-&webmin_user_api_only($user->{'name'}) &&
-	&error(&text('save_edup', &html_escape($user->{'name'})));
 my %miniserv;
 my @mods = &list_modules();
 $user->{'name'} eq "webmin" && &error("Invalid username webmin for new user");
@@ -555,11 +546,6 @@ to create_user.
 sub modify_user
 {
 my ($username, $user) = @_;
-# A rename must not take the name of a hidden API account.
-if ($username ne $user->{'name'} &&
-    &webmin_user_api_only($user->{'name'})) {
-	&error(&text('save_edup', &html_escape($user->{'name'})));
-	}
 my (%miniserv, @pwfile, @acl, @mods, $m);
 &get_miniserv_config(\%miniserv);
 $user->{'name'} eq "webmin" &&
@@ -1321,8 +1307,6 @@ Returns 1 if the current Webmin user can edit some other user.
 sub can_edit_user
 {
 my ($username, $groups) = @_;
-# API accounts are managed by the application that created them.
-return 0 if (&webmin_user_api_only($username));
 return 1 if ($access{'users'} eq '*');
 if ($access{'users'} eq '~') {
 	return $base_remote_user eq $username;
