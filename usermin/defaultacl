@@ -22,7 +22,6 @@ sessions=1
 referers=1
 anon=1
 logout=1
-dav=1
 descs=1
 blocked=1
 advanced=1

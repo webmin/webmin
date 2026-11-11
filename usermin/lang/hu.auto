@@ -464,26 +464,6 @@ logout_efile=Hiányzó vagy nem létező fájl a (z) $1 sorban
 logout_etime=Hiányzó vagy érvénytelen időkorlát a (z) $1 sorban
 logout_ecannot=A kijelentkezési idő nem konfigurálható
 
-dav_title=DAV szerver
-dav_header=A DAV szerver lehetőségei
-dav_path=A DAV engedélyezve van?
-dav_disabled=Tiltva
-dav_enabled=Engedélyezve, a (z) $1 URL útvonal alatt
-dav_root=Hozzáférés engedélyezése a könyvtárhoz
-dav_root0=Teljes fájlrendszer
-dav_root1=A felhasználó otthoni könyvtára
-dav_root2=$1 könyvtár
-dav_ecannot=A DAV szerver nem konfigurálható
-dav_emodule=A DAV engedélyezéséhez szükséges $1 Perl-modul nincs telepítve.
-dav_cpan=<a href='$1'>Kattintson ide</a>, ha a Webmin automatikusan letölti és telepíti az ön számára.
-dav_desc=A Usermin DAV támogatása lehetővé teszi a DAV protokollt támogató ügyfelek számára, hogy csatlakozzanak ehhez a Usermin szerverhez, és fájlokat olvassanak és írjanak. Az összes fájlhozzáférést a bejelentkezett felhasználó Unix jogosultságaival kell elvégezni, és a megadott könyvtárra korlátozódik.
-dav_err=A DAV szerver beállításainak mentése nem sikerült
-dav_epath=Hiányzó vagy érvénytelen URL-útvonal
-dav_eroot=Hiányzó vagy érvénytelen gyökérkönyvtár
-dav_users=Felhasználók, akik használhatják a DAV-t
-dav_users1=Minden felhasználó
-dav_users0=Az alább felsorolt felhasználók és csoportok ..
-dav_eusers=Nincs felhasználó megadva
 
 syslog_errorlog=Usermin hiba napló
 

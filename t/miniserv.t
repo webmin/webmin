@@ -1571,8 +1571,6 @@ subtest 'build_config_mappings' => sub {
 		'sessiononly'       => '/api /webhooks',
 		'logouttimes'       => 'alice=15 @wheel=60',
 		'logouttime'        => 5,
-		'davpaths'          => '/dav1 /dav2',
-		'dav_users'         => 'eve',
 		'mobile_agents'     => "Foo\tBar",
 		'mobile_prefixes'   => 'XYZ ABC',
 		'expires_paths'     => "\\.css\$=3600\t\\.js\$=86400",
@@ -1593,8 +1591,6 @@ subtest 'build_config_mappings' => sub {
 	local %miniserv::unixauth    = ();
 	local %miniserv::sessiononly = ();
 	local @miniserv::logouttimes = ();
-	local @miniserv::davpaths    = ();
-	local @miniserv::davusers    = ();
 	local @miniserv::mobile_agents   = ();
 	local @miniserv::mobile_prefixes = ();
 	local @miniserv::expires_paths   = ();
@@ -1615,8 +1611,6 @@ subtest 'build_config_mappings' => sub {
 	is($miniserv::unixauth{admin}, 'root',                            'specific unixauth parsed');
 	is($miniserv::unixauth{'*'},   'apache',                          'default unixauth parsed');
 	ok($miniserv::sessiononly{'/api'},                                'sessiononly entry set');
-	is_deeply(\@miniserv::davpaths,    ['/dav1', '/dav2'],            'davpaths parsed');
-	is_deeply(\@miniserv::davusers,    ['eve'],                       'davusers parsed');
 	is_deeply(\@miniserv::mobile_agents, ['Foo', 'Bar'],
 	          'mobile_agents tab-split');
 

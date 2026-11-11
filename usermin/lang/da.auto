@@ -465,26 +465,6 @@ logout_efile=Manglende eller ikke-eksisterende fil i række $1
 logout_etime=Manglende eller ugyldig timeout i række $1
 logout_ecannot=Du har ikke tilladelse til at konfigurere logout-tider
 
-dav_title=DAV-server
-dav_header=DAV-serverindstillinger
-dav_path=DAV aktiveret?
-dav_disabled=handicappet
-dav_enabled=Aktiveret under URL-sti $1
-dav_root=Tillad adgang til katalog
-dav_root0=Hele filsystem
-dav_root1=Brugerens hjemmekatalog
-dav_root2=Katalog $1
-dav_ecannot=Du har ikke tilladelse til at konfigurere DAV-serveren
-dav_emodule=Perl-modulet $1, der er nødvendigt for at aktivere DAV, er ikke installeret.
-dav_cpan=<a href='$1'>Klik her</a> for at få Webmin til at downloade og installere det automatisk for dig.
-dav_desc=Usermins DAV-support gør det muligt for klienter, der understøtter DAV-protokollen, at oprette forbindelse til denne Usermin-server og læse og skrive filer. Al filadgang med udføres med Unix-privilegierne for den tilmeldte bruger og vil være begrænset til det specificerede bibliotek.
-dav_err=Kunne ikke gemme DAV-serverindstillinger
-dav_epath=Manglende eller ugyldig URL-sti
-dav_eroot=Manglende eller ugyldig rodkatalog
-dav_users=Brugere, der kan bruge DAV
-dav_users1=Alle brugere
-dav_users0=Brugere og grupper nedenfor.
-dav_eusers=Der er ikke angivet nogen brugere
 
 syslog_errorlog=Usermin fejllogg
 

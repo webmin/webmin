@@ -465,26 +465,6 @@ logout_efile=Chýbajúci alebo neexistujúci súbor v riadku $1
 logout_etime=Chýbajúci alebo neplatný časový limit v riadku $1
 logout_ecannot=Nie je povolené konfigurovať časy odhlásenia
 
-dav_title=Server DAV
-dav_header=Možnosti servera DAV
-dav_path=Povolené DAV?
-dav_disabled=invalidný
-dav_enabled=Povolené pod cestou URL $1
-dav_root=Povoliť prístup k adresáru
-dav_root0=Celý súborový systém
-dav_root1=Domovský adresár používateľa
-dav_root2=Adresár $1
-dav_ecannot=Nemáte povolenie konfigurovať server DAV
-dav_emodule=Nie je nainštalovaný modul Perl $1 potrebný na povolenie DAV.
-dav_cpan=<a href='$1'>Kliknite sem</a>, aby ste si Webmin stiahli a automaticky nainštalovali.
-dav_desc=Podpora protokolu DAV od spoločnosti Usermin umožňuje klientom, ktorí podporujú protokol DAV, pripojiť sa k tomuto serveru Usermin a čítať a zapisovať súbory. Všetok prístup k súborom s pomocou oprávnení Unix prihláseného používateľa bude obmedzený na určený adresár.
-dav_err=Možnosti servera DAV sa nepodarilo uložiť
-dav_epath=Chýbajúca alebo neplatná cesta k adrese URL
-dav_eroot=Chýbajúci alebo neplatný koreňový adresár
-dav_users=Používatelia, ktorí môžu používať DAV
-dav_users1=Všetci používatelia
-dav_users0=Používatelia a skupiny uvedené nižšie.
-dav_eusers=Neboli zadaní žiadni používatelia
 
 syslog_errorlog=Denník chýb Usermin
 

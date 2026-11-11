@@ -75,7 +75,6 @@ if (!$miniserv{'root'} && !-d $miniserv{'root'}) {
 	   "edit_users.cgi",
 	   "edit_defacl.cgi",
 	   "edit_logout.cgi",
-	   "edit_dav.cgi",
 	   $miniserv{'session'} ? ( "list_sessions.cgi", "edit_twofactor.cgi" ) : ( ),
 	   "edit_blocked.cgi",
 	   "edit_mobile.cgi",

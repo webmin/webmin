@@ -485,26 +485,6 @@ logout_efile=$1 numaralı satırda dosya eksik veya mevcut değil
 logout_etime=$1 numaralı satırda zaman aşımı eksik veya geçersiz
 logout_ecannot=Çıkış sürelerini yapılandırma yetkiniz yok
 
-dav_title=DAV Sunucusu
-dav_header=DAV sunucusu seçenekleri
-dav_path=DAV etkin mi?
-dav_disabled=Devre dışı
-dav_enabled=Etkin, $1 URL yolu altında
-dav_root=Şu dizine erişime izin ver
-dav_root0=Tüm dosya sistemi
-dav_root1=Kullanıcının ev dizini
-dav_root2=$1 dizini
-dav_ecannot=DAV sunucusunu yapılandırma yetkiniz yok
-dav_emodule=DAV'ı etkinleştirmek için gereken $1 Perl modülü kurulu değil.
-dav_cpan=Webmin'in sizin için otomatik olarak indirip kurması için <a href='$1'>buraya tıklayın</a>.
-dav_desc=Usermin'in DAV desteği, DAV protokolünü destekleyen istemcilerin bu Usermin sunucusuna bağlanıp dosya okuyup yazmasına olanak tanır. Tüm dosya erişimi giriş yapmış kullanıcının Unix yetkileriyle yapılır ve belirtilen dizinle sınırlıdır.
-dav_err=DAV sunucusu seçenekleri kaydedilemedi
-dav_epath=URL yolu eksik veya geçersiz
-dav_eroot=Kök dizin eksik veya geçersiz
-dav_users=DAV kullanabilecek kullanıcılar
-dav_users1=Tüm kullanıcılar
-dav_users0=Aşağıda listelenen kullanıcılar ve gruplar ..
-dav_eusers=Hiç kullanıcı girilmedi
 
 syslog_errorlog=Usermin hata günlüğü
 

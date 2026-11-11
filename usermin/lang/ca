@@ -453,26 +453,6 @@ logout_efile=Hi falta el fitxer o bé no existeix a la fila $1
 logout_etime=Hi falta el temps límit o bé és invàlid a la fila $1
 logout_ecannot=No tens permís per configurar els temps de sortida
 
-dav_title=Servidor DAV
-dav_header=Opcions del servidor DAV
-dav_path=DAV activat?
-dav_disabled=Desactivat
-dav_enabled=Activat sota l'URL $1
-dav_root=Permet l'accés al directori
-dav_root0=Tot el sistema de fitxers
-dav_root1=El directori arrel de l'usuari
-dav_root2=Directori $1
-dav_ecannot=No tens permís per configurar el servidor DAV
-dav_emodule=El mòdul Perl $1 necessari per activar DAV no està instal·lat.
-dav_cpan=<a href='$1'>Fes clic aquí</a> per fer que Webmin descarregui i l'instal·li per tu automàticament.
-dav_desc=El suport per DAV d'Usermin permet als clients que suporten el protocol DAV de connectar-se amb aquest servidor Usermin i llegir i escriure fitxers. Tots els accessos a fitxers es faran amb els permisos Unix de l'usuari registrat, i estan restringits al directori especificat.
-dav_err=No s'han pogut desar les opcions del servidor DAV
-dav_epath=Hi falta l'URL o bé és invàlid
-dav_eroot=Hi falta el directori arrel o bé és invàlid
-dav_users=Usuaris que poden utilitzar DAV
-dav_users1=Tots els usuaris
-dav_users0=Els usuaris i grups llistats a sota...
-dav_eusers=No has introduït cap usuari
 
 syslog_errorlog=Registres d'error d'Usermin
 

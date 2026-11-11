@@ -484,15 +484,8 @@ if (defined($redir)) {
 	return 0;
 	}
 
-# Check for a DAV request
-$davpath = undef;
-foreach my $d (@davpaths) {
-	if ($simple eq $d || $simple =~ /^\Q$d\E\//) {
-		$davpath = $d;
-		last;
-		}
-	}
-if (!$davpath && ($method eq "SEARCH" || $method eq "PUT")) {
+# Reject unsupported file-operation methods
+if ($method eq "SEARCH" || $method eq "PUT") {
 	&http_error(400, "Bad Request method ".&html_strip($method));
 	}
 
@@ -504,11 +497,11 @@ local $http_auth_error;
 local $http_auth_reason;
 
 # Session authentication is never used for connections by
-# another webmin server, or for specified pages, or for DAV, or XMLRPC,
+# another webmin server, or for specified pages, or for XMLRPC,
 # or mobile browsers if requested.
 if ($header{'user-agent'} =~ /webmin/i ||
     $header{'user-agent'} =~ /$config{'agents_nosession'}/i ||
-    $sessiononly{$simple} || $davpath ||
+    $sessiononly{$simple} ||
     $simple eq "/xmlrpc.cgi" ||
     $acptip eq $config{'host_nosession'} ||
     $mobile_device && $config{'mobile_nosession'}) {
@@ -1061,11 +1054,6 @@ print DEBUG "handle_request: page=$page simple=$simple\n";
 if ($bogus) {
 	&http_error(400, "Invalid path");
 	return 0;
-	}
-
-# Check for a DAV request
-if ($davpath) {
-	return &handle_dav_request($davpath);
 	}
 
 # Check for a websockets request
@@ -4541,13 +4529,6 @@ foreach my $a (split(/\s+/, $config{'logouttimes'})) {
 	}
 push(@logouttimes, [ undef, $config{'logouttime'} ]);
 
-# Build list of DAV pathss
-undef(@davpaths);
-foreach my $d (split(/\s+/, $config{'davpaths'})) {
-	push(@davpaths, $d);
-	}
-@davusers = split(/\s+/, $config{'dav_users'});
-
 # Mobile agent substrings and hostname prefixes
 @mobile_agents = split(/\t+/, $config{'mobile_agents'});
 @mobile_prefixes = split(/\s+/, $config{'mobile_prefixes'});
@@ -4670,124 +4651,6 @@ if ($use_perl_crypt) {
 else {
 	return crypt($pass, $salt);
 	}
-}
-
-# handle_dav_request(davpath)
-# Pass a request on to the Net::DAV::Server module
-sub handle_dav_request
-{
-local ($path) = @_;
-eval "use Filesys::Virtual::Plain";
-eval "use Net::DAV::Server";
-eval "use HTTP::Request";
-eval "use HTTP::Headers";
-
-if ($Net::DAV::Server::VERSION eq '1.28' && $config{'dav_nolock'}) {
-	delete $Net::DAV::Server::implemented{lock};
-	delete $Net::DAV::Server::implemented{unlock};
-	}
-
-# Read in request data
-if (!$posted_data) {
-	local $clen = $header{"content-length"};
-	while(length($posted_data) < $clen) {
-		$buf = &read_data($clen - length($posted_data));
-		if (!length($buf)) {
-			&http_error(500, "Failed to read POST request");
-			}
-		$posted_data .= $buf;
-		}
-	}
-
-# For subsequent logging
-open(MINISERVLOG, ">>$config{'logfile'}");
-
-# Switch to user
-local $root;
-local @u = getpwnam($authuser);
-if ($config{'dav_remoteuser'} && !$< && $validated) {
-	if (@u) {
-		if ($u[2] != 0) {
-			$( = $u[3]; $) = "$u[3] $u[3]";
-			($>, $<) = ($u[2], $u[2]);
-			}
-		if ($config{'dav_root'} eq '*') {
-			$root = $u[7];
-			}
-		}
-	else {
-		&http_error(500, "Unix user ".&html_strip($authuser).
-				 " does not exist");
-		return 0;
-		}
-	}
-$root ||= $config{'dav_root'};
-$root ||= "/";
-
-# Check if this user can use DAV
-if (@davusers) {
-	&users_match(\@u, @davusers) ||
-		&http_error(500, "You are not allowed to access DAV");
-	}
-
-# Create DAV server
-my $filesys = Filesys::Virtual::Plain->new({root_path => $root});
-my $webdav = Net::DAV::Server->new();
-$webdav->filesys($filesys);
-
-# Make up a request object, and feed to DAV
-local $ho = HTTP::Headers->new;
-foreach my $h (keys %header) {
-	next if (lc($h) eq "connection");
-	$ho->header($h => $header{$h});
-	}
-if ($path ne "/") {
-	$request_uri =~ s/^\Q$path\E//;
-	$request_uri = "/" if ($request_uri eq "");
-	}
-my $request = HTTP::Request->new($method, $request_uri, $ho,
-				 $posted_data);
-if ($config{'dav_debug'}) {
-	&log_error("DAV request :");
-	&log_error("---------------------------------------------");
-	&log_error($request->as_string());
-	&log_error("---------------------------------------------");
-	}
-my $response = $webdav->run($request);
-
-# Send back the reply
-&write_data("HTTP/1.1 ",$response->code()," ",$response->message(),"\r\n");
-local $content = $response->content();
-if ($path ne "/") {
-	$content =~ s|href>/(.+)<|href>$path/$1<|g;
-	$content =~ s|href>/<|href>$path<|g;
-	}
-foreach my $h ($response->header_field_names) {
-	next if (lc($h) eq "connection" || lc($h) eq "content-length");
-	&write_data("$h: ",$response->header($h),"\r\n");
-	}
-&write_data("Content-length: ",length($content),"\r\n");
-local $rv = &write_keep_alive(0);
-&write_data("\r\n");
-&write_data($content);
-
-if ($config{'dav_debug'}) {
-	&log_error("DAV reply :");
-	&log_error("---------------------------------------------");
-	&log_error("HTTP/1.1 ",$response->code()," ",$response->message());
-	foreach my $h ($response->header_field_names) {
-		next if (lc($h) eq "connection" || lc($h) eq "content-length");
-		&log_error("$h: ",$response->header($h));
-		}
-	&log_error("Content-length: ",length($content));
-	&log_error($content);
-	&log_error("---------------------------------------------");
-	}
-
-# Log it
-&log_request($loghost, $authuser, $reqline, $response->code(),
-	     length($response->content()));
-return 0;
 }
 
 # normalise_websocket_origin(scheme, host, port)

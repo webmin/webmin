@@ -443,26 +443,6 @@ logout_efile=Chybějící nebo neexistující soubor v řádku $1
 logout_etime=Chybějící nebo chybný čas odpojení v řádku $1
 logout_ecannot=Nemáte oprávnění konfigurovat čas automatického odpojení
 
-dav_title=DAV server
-dav_header=Volby pro DAV server
-dav_path=Je DAV povolen?
-dav_disabled=Vypnuto
-dav_enabled=Povoleno, pod URL adresou $1
-dav_root=Povolit přístup do adresáře
-dav_root0=celistvý filesystem
-dav_root1=Domovský adresář uživatele
-dav_root2=Adresář $1
-dav_ecannot=Nemůžete konfigurovat DAV server
-dav_emodule=Chcete-li nainstalovat DAV, musíte nejprve zprovoznit Perl modul $1.
-dav_cpan=<a href='$1'>Klepněte zde</a>, pokud chcete Webmin stáhnout a nainstalovat automaticky.
-dav_desc=Podpora DAV pro Usermin je přístupná klientům, kteří pro připojení k Usermin serveru podporují DAV protokol, přičemž zároveň musí podporovat čtení a zápis souborů. Veškeré přístupy k souborům jsou zajištěny na základě Unix práv pro konkrétního přihlášeného uživatele a zároveň jsou omezena příslušným adresářem.
-dav_err=Chyba při uložení nastavení DAV serveru
-dav_epath=cHYB2J9C9 NEBO CHYBN8 URL adresa
-dav_eroot=Chybějící nebo chybný kořenový adresář
-dav_users=Uživatelé, kteří mohou používat DAV
-dav_users1=Všichni uživatelé
-dav_users0=Uživatelé a skupiny uvedené níže ..
-dav_eusers=Nebyli vložení žádní uživatelé
 
 syslog_errorlog=Usermin chybový log
 
