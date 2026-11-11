@@ -72,6 +72,12 @@ else {
 		}
 	else {
 		# For a user
+		if (!$in{'_acl_mod'}) {
+			# Keep the API restriction when replacing global permissions.
+			my %saved = &get_module_acl($who, "", 1, 1);
+			$maccess{'api_only'} = $saved{'api_only'}
+				if (exists($saved{'api_only'}));
+			}
 		&save_module_acl(\%maccess, $in{'_acl_user'},
 				 $in{'_acl_mod'},1);
 		}

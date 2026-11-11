@@ -2188,7 +2188,7 @@ if (!$ENV{'REQUEST_METHOD'}) {
 	&print_call_stack() if ($gconfig{'error_stack'});
 	}
 elsif (defined(&theme_error)) {
-	&theme_error({err => \@_, stack => \@stack, err_caller => $err_caller});
+	&theme_error({err => \@msg, stack => \@stack, err_caller => $err_caller});
 	}
 elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	my %jerror;
@@ -6023,6 +6023,15 @@ if ($module_name) {
 			 &get_all_module_infos(2);
 	%module_info = %$mi;
 	$module_root_directory = &module_root_directory($module_name);
+	}
+
+if ($main::webmin_script_type eq 'web' &&
+    !defined($ENV{'FOREIGN_MODULE_NAME'})) {
+	# Only the API entry script may opt in to this account's restriction.
+	my $endpoint = &webmin_user_api_only();
+	if ($endpoint && $main::allow_api_only ne $endpoint) {
+		&error($text{'eapionly'});
+		}
 	}
 
 if (!$main::allow_rpc_only &&
@@ -14360,6 +14369,14 @@ my ($variable, $scope) = @_;
 return &globals('delete', $variable, $scope);
 }
 
+# webmin_user_api_only()
+# Return the base user's API entry script, or an empty value if unrestricted.
+sub webmin_user_api_only
+{
+my %access = &get_module_acl($base_remote_user, "", 1, 1);
+return $access{'api_only'};
+}
+
 # webmin_user_can_rpc()
 # Returns 1 if the given user can receive remote calls, 0 if not, or 2 if the
 # user can receive remote calls but not use the UI
@@ -14367,6 +14384,8 @@ sub webmin_user_can_rpc
 {
 my $u = $base_remote_user;
 my %access = &get_module_acl($u, "");
+# API credentials cannot grant access to Webmin's general RPC interface.
+return 0 if ($access{'api_only'});
 return 1 if ($access{'rpc'} == 1);	# Can make arbitrary RPC calls
 return 2 if ($access{'rpc'} == 3);	# Can only make RPC calls
 return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs

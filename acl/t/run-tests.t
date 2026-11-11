@@ -1548,6 +1548,54 @@ subtest 'save_user.cgi gassign whitelist' => sub {
     delete_user('admin');
 };
 
+# Ordinary account and global ACL saves must retain the application-owned API
+# restriction, including after a rename. Submitted API values are not trusted.
+subtest 'user and global ACL saves preserve API-only access' => sub {
+    foreach my $case ([ 'save_user.cgi', 'target' ],
+                     [ 'save_user.cgi', 'renamed' ],
+                     [ 'save_acl.cgi', 'target' ]) {
+        my ($cgi, $name) = @$case;
+        foreach my $endpoint (undef, 'virtual-server/remote.cgi') {
+            foreach my $submitted (undef, '', 'other/api.cgi') {
+                _reset_fixture();
+                _seed_user_acl('admin', { users => '*', acl => 1, mode => 0 });
+                create_user({ name => 'admin', pass => 'x', modules => ['acl'] });
+                create_user({ name => 'target', pass => 'x', modules => ['acl'] });
+                my %original = ( rpc => 0, download_address_mode => 'all' );
+                $original{api_only} = $endpoint if defined($endpoint);
+                save_module_acl(\%original, 'target', '', 1);
+                my %form = ( download_address_mode => 'public' );
+                if ($cgi eq 'save_user.cgi') {
+                    # Submit the account form without changing its password.
+                    %form = (%form, old => 'target', name => $name,
+                        pass_def => 1, oldpass => 'x', mod => 'acl',
+                        acl_security_form => 1,
+                        rpc => 0, logouttime_def => 1, minsize_def => 1,
+                        days_def => 1, hours_def => 1);
+                }
+                else {
+                    # An empty module selects the standalone global ACL form.
+                    %form = (%form, _acl_user => 'target', _acl_mod => '');
+                }
+                $form{api_only} = $submitted if defined($submitted);
+                my $r = run_cgi($cgi, \%form);
+                ok($r->{location}, "$cgi saves $name")
+                    or diag("stdout: $r->{out}\nstderr: $r->{err}");
+                _clear_caches();
+                my %saved = get_module_acl($name, '', 1, 1);
+                is($saved{api_only}, $endpoint,
+                   "$cgi retains the stored API restriction");
+                is($saved{download_address_mode}, 'public',
+                   "$cgi still applies ordinary permission changes");
+                is(get_user($name)->{pass}, 'x',
+                   "$cgi leaves the password unchanged");
+                delete_user($name);
+                delete_user('admin');
+            }
+        }
+    }
+};
+
 # edit_user.cgi: the create form preselects public-only URL downloads, while
 # an existing user without an explicit setting keeps the unrestricted global
 # default. save_user.cgi stores the form value, so new users never depend on

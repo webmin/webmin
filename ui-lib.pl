@@ -6199,7 +6199,7 @@ Size, add-if-missing, titles and width are ignored.
 
 =item metadata - An option hash may contain an array of hashes with label, icon, title and state. These appear together in one compact badge at the right. Labels and tooltip titles are plain text and included in filtering. Unknown metadata should be omitted.
 
-=item group - An option hash may contain a hash with label, icon and state. Consecutive options with the same group share a heading. Group labels are plain text and included in filtering. Empty groups disappear when filtering; headings do not affect selection or submission order.
+=item group - An option hash may contain a hash with label, icon, state and help. Consecutive options with the same group share a heading. Group labels are plain text and included in filtering. Optional help text appears in a ui_help tooltip beside the heading. Empty groups disappear when filtering; headings do not affect selection or submission order.
 
 =item opts - Optional hash reference with the keys :
 
@@ -6438,13 +6438,16 @@ foreach my $it (@items) {
 	# Group headings never become selectable items or change option order.
 	my $group = ref($it->{'group'}) eq 'HASH' ? $it->{'group'} : {};
 	my $group_label = defined($group->{'label'}) ? $group->{'label'} : '';
+	my $group_help = defined($group->{'help'}) ? $group->{'help'} : '';
 	my $group_key = $group_label eq '' ? '' :
-		join("\0", $group_label, $group->{'state'} || '', $group->{'icon'} || '');
+		join("\0", $group_label, $group->{'state'} || '',
+			$group->{'icon'} || '', $group_help);
 	if ($group_key ne '' && $group_key ne $lastgroup) {
 		$groupnum++;
 		$rows .= &ui_tag('div',
 			&ui_svg_icon($group->{'icon'} || 'dot', { 'size' => 14 }).
-			&ui_tag('span', &html_escape($group_label)),
+			&ui_tag('span', &html_escape($group_label).
+				($group_help ne '' ? ' '.&ui_help($group_help) : '')),
 			{ 'class' => 'ui_multi_group ui_multi_group_' .
 				&_ui_state($group->{'state'}),
 			  'role' => 'heading', 'aria-level' => 3,
