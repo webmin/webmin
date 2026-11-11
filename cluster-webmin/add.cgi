@@ -73,7 +73,7 @@ foreach $s (@add) {
 					     "list_themes");
 	$host->{'themes'} = \@themes;
 
-	local @users = &remote_foreign_call($s->{'host'}, "acl", "list_users");
+	local @users = &list_cluster_users($s->{'host'});
 	$host->{'users'} = \@users;
 
 	local @groups = &remote_foreign_call($s->{'host'}, "acl","list_groups");

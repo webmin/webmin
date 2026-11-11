@@ -49,8 +49,14 @@ foreach $h (@hosts) {
 	if (!fork()) {
 		close($rh);
 		&remote_foreign_require($s->{'host'}, "acl", "acl-lib.pl");
+		# Renames must also check accounts excluded from Cluster management.
+		if (!$user_error_msg && $in{'name'} ne $in{'old'} &&
+		    &remote_foreign_call($s->{'host'}, "acl", "get_user",
+				 $in{'name'})) {
+			$user_error_msg = &text('user_etaken', $in{'name'});
+			}
 		if ($user_error_msg) {
-			# Host is down
+			# Stop before changing the account or its permissions.
 			print $wh &serialise_variable([ 0, $user_error_msg ]);
 			exit;
 			}

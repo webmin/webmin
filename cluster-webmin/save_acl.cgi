@@ -52,6 +52,12 @@ if ($in{'all'}) {
 else {
 	# Doing on just one host
 	@hosts = grep { $_->{'id'} == $in{'_acl_host'} } @allhosts;
+	if ($in{'_acl_user'}) {
+		# Direct submissions must also target a managed account.
+		my ($user) = grep { $_->{'name'} eq $in{'_acl_user'} }
+				 @{$hosts[0]->{'users'}};
+		$user || &error(&text('acl_efound', $who, $in{'_acl_mod'}));
+		}
 	local ($s) = grep { $_->{'id'} == $hosts[0]->{'id'} } @servers;
 	print "<b>",&text('acl_doing2', $who, &server_name($s)),"</b><p>\n";
 	}
