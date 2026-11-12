@@ -467,6 +467,10 @@ else {
 		&error(&text('usave_emaking', "<tt>$merr</tt>"))
 			if (defined($merr));
 
+		# Force the move option if the ACL does not allow a choice
+		$in{'movehome'} = !$access{'movehome'}
+			if ($access{'movehome'} != 1);
+
 		# Rename home dir, if needed
 		$oldhome = $uinfo->get_value("homeDirectory");
 		if ($home ne $oldhome && -d $oldhome && !-e $home &&

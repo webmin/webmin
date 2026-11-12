@@ -46,9 +46,11 @@ print &ui_table_row($text{'batch_makehome'},
 print &ui_table_row($text{'batch_copy'},
 	&ui_yesno_radio("copy", 1));
 
-# Move home dirs
-print &ui_table_row($text{'batch_movehome'},
-	&ui_yesno_radio("movehome", 1));
+# Move home dirs, if the ACL allows a choice
+if ($access{'movehome'} == 1) {
+	print &ui_table_row($text{'batch_movehome'},
+		&ui_yesno_radio("movehome", 1));
+	}
 
 # Update UIDs on files
 print &ui_table_row($text{'batch_chuid'},

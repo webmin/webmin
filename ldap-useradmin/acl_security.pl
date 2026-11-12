@@ -54,6 +54,14 @@ print &ui_table_row($text{'acl_home'},
 	&ui_checkbox("autohome", 1, $text{'acl_autohome'}, $o->{'autohome'}),
 	3);
 
+# Moving a home directory can be the user's choice, always done or never done
+print &ui_table_row($text{'uedit_movehome'},
+	&ui_radio("movehome", $o->{'movehome'} eq '' ? 1 : $o->{'movehome'},
+		  [ [ 1, $text{'acl_canedit'} ],
+		    [ 0, $text{'acl_on'} ],
+		    [ 2, $text{'acl_off'} ] ]),
+	3);
+
 print &ui_table_row($text{'acl_uid'},
 	join("", map { &ui_checkbox($_, 1, $text{'acl_'.$_}, $o->{$_}) }
 		    ('umultiple', 'gmultiple')),

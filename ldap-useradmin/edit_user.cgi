@@ -423,9 +423,11 @@ else {
 	# On save options
 	print &ui_table_start($text{'onsave'}, "width=100%", 2, \@tds);
 
-	# Move home directory
-	print &ui_table_row($text{'uedit_movehome'},
-		&ui_yesno_radio("movehome", 1));
+	# Move home directory, if the ACL allows a choice
+	if ($access{'movehome'} == 1) {
+		print &ui_table_row($text{'uedit_movehome'},
+			&ui_yesno_radio("movehome", 1));
+		}
 
 	# Change UID on files
 	print &ui_table_row($text{'uedit_chuid'},

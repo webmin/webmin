@@ -27,6 +27,9 @@ elsif ($in{'source'} == 2) {
 
 &ui_print_unbuffered_header(undef, $text{'batch_title'}, "");
 
+# Force the move option if the ACL does not allow a choice
+$in{'movehome'} = !$access{'movehome'} if ($access{'movehome'} != 1);
+
 $ldap = &ldap_connect();
 $schema = $ldap->schema();
 $pft = $schema->attribute("shadowLastChange") ? 2 : 0;

@@ -9,6 +9,9 @@ use WebminCore;
 &foreign_require("useradmin");
 &foreign_require("ldap-client");
 %access = &get_module_acl();
+# ACLs saved before the move-home option was shown stored it empty, which
+# must keep meaning that the user can choose, as in the default ACL
+$access{'movehome'} = 1 if ($access{'movehome'} eq '');
 $useradmin::access{'udelete'} = 1;	# needed for users_table / groups_table
 $useradmin::access{'gdelete'} = 1;
 
