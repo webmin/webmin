@@ -462,26 +462,6 @@ logout_efile=Fehlende oder nicht existente Datei in Zeile $1
 logout_etime=Fehlende oder ungültige Zeitüberschreitung in Zeile $1
 logout_ecannot=Sie sind nicht berechtigt, Abmeldezeiten zu konfigurieren
 
-dav_title=DAV-Server
-dav_header=DAV-Server-Optionen
-dav_path=DAV aktiviert?
-dav_disabled=Deaktiviert
-dav_enabled=Aktiviert, unter URL-Pfad $1
-dav_root=Zugriff auf Verzeichnis erlauben
-dav_root0=Gesamtes Dateisystem
-dav_root1=Home-Verzeichnis des Benutzers
-dav_root2=Verzeichnis $1
-dav_ecannot=Sie sind nicht berechtigt, den DAV-Server zu konfigurieren
-dav_emodule=Das Perl-Modul $1, das zur Aktivierung von DAV benötigt wird, ist nicht installiert.
-dav_cpan=<a href='$1'>Klicken Sie hier</a>, damit Webmin es automatisch für Sie herunterladen und installieren kann.
-dav_desc=Die DAV-Unterstützung von Usermin ermöglicht es Clients, die das DAV-Protokoll unterstützen, eine Verbindung zu diesem Usermin-Server herzustellen und Dateien zu lesen und zu schreiben. Der gesamte Dateizugriff erfolgt mit den Unix-Berechtigungen des angemeldeten Benutzers und ist auf das angegebene Verzeichnis beschränkt.
-dav_err=Speichern der DAV-Server-Optionen fehlgeschlagen
-dav_epath=Fehlender oder ungültiger URL-Pfad
-dav_eroot=Fehlendes oder ungültiges Root-Verzeichnis
-dav_users=Benutzer, die DAV verwenden können
-dav_users1=Alle Benutzer
-dav_users0=Benutzer und Gruppen unten aufgeführt ..
-dav_eusers=Keine Benutzer eingegeben
 
 syslog_errorlog=Usermin-Fehlerprotokoll
 

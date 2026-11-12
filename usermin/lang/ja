@@ -308,24 +308,6 @@ logout_efile=行 $1 のファイルが存在しません
 logout_etime=行 $1 のタイムアウトが存在しないか不正です。
 logout_ecannot=あなたはログアウト時間の設定を許可されていません
 
-dav_title=DAV サーバ
-dav_header=DAV サーバオプション
-dav_path=DAV は有効ですか？
-dav_disabled=無効
-dav_enabled=URL パス $1 以下が有効化されました
-dav_root=ディレクトリアクセス許可
-dav_root0=ファイルシステム全体
-dav_root1=ユーザのホームディレクトリ
-dav_root2=ディレクトリ $1
-dav_ecannot=あなたは DAV サーバの設定を許可されていません
-dav_emodule=DAV を有効にするために必要な Perl モジュール $1 が導入されていません。
-dav_err=DAV サーバオプションの保存に失敗しました
-dav_epath=URL パスが存在しないか不正です
-dav_eroot=ルートディレクトリが存在しないか不正です。
-dav_users=DAV を利用可能なユーザ
-dav_users1=全てのユーザ
-dav_users0=以下にユーザとグループの一覧を表示...
-dav_eusers=ユーザが入力されていません
 
 descs_title=モジュール表題
 

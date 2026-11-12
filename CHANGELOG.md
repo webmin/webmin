@@ -24,6 +24,7 @@
 * Fix missing SSH logins in the Users and Groups module on Ubuntu 26.04 by using systemd-logind when `utmp` is absent
 * Fix mail date parsing of ISO dates like `2026-10-15 02:33` returning the wrong minutes
 * Fix the default for new users in the Webmin Users module to allow URL downloads only from public IP addresses (thanks to 0xpack)
+* Remove built-in WebDAV file access from MiniServ and its Usermin configuration pages
 * Add optional address-family selection to HTTP downloads and socket connections, preserved across redirects [#1300](https://github.com/virtualmin/virtualmin-gpl/issues/1300)
 * Update the Authentic theme to the latest version with various improvements:
   - Add support for Terminal module color preferences

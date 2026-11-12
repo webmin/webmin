@@ -453,26 +453,6 @@ logout_efile=Manglende eller ikke-ekeisterende fil i rad $1
 logout_etime=Manglende eller ugyldig tidsavbrudd i rad $1
 logout_ecannot=Du har ikke lov til å konfigurere tidsgrenser for auto-utlogging
 
-dav_title=DAV tjener
-dav_header=Innstillinger DAV tjener
-dav_path=DAV aktivert?
-dav_disabled=Deaktivert
-dav_enabled=Aktivert, under URL sti $1
-dav_root=Tillat tilgang til katalog
-dav_root0=Hele filsystemet
-dav_root1=Brukeres hjemmekatalog
-dav_root2=Katalog $1
-dav_ecannot=Du har ikke tilgang til å konfigurere DAV tjeneren
-dav_emodule=Perlmodulen $1 som er nødvendig for å aktivere DAV er ikke installert.
-dav_cpan=<a href='$1'>Klikk her</a> for å la Webmin laste den ned og installere den automatisk for deg.
-dav_desc=Usermins DAV støtte lar klienter bruke DAV protokollen til å koble til denne tjeneren og lese og skrive filer. All filtilgang vil bli gjort med rettighetene til den innloggede brukeren, og vil bli begrenset til den angitte katalogen.
-dav_err=Kunne ikke lagre innstillinger for DAV tjener
-dav_epath=Manglende eller ugyldig URL sti
-dav_eroot=Manglende eller ugyldig rot katalog
-dav_users=Brukere som kan bruke DAV
-dav_users1=Alle brukere
-dav_users0=Brukere og grupper angitt nedenfor ..
-dav_eusers=Ingen brukere angitt
 
 syslog_errorlog=Usermin feillogg
 

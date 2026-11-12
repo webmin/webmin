@@ -465,26 +465,6 @@ logout_efile=$1 행에 없거나 존재하지 않는 파일
 logout_etime=$1 행에 시간 초과가 없거나 잘못되었습니다
 logout_ecannot=로그 아웃 시간을 구성 할 수 없습니다
 
-dav_title=DAV 서버
-dav_header=DAV 서버 옵션
-dav_path=DAV를 사용 하시겠습니까?
-dav_disabled=비활성화
-dav_enabled=URL 경로 $1 에서 사용
-dav_root=디렉토리 접근 허용
-dav_root0=전체 파일 시스템
-dav_root1=사용자의 홈 디렉토리
-dav_root2=디렉토리 $1
-dav_ecannot=DAV 서버를 구성 할 수 없습니다
-dav_emodule=DAV를 활성화하는 데 필요한 Perl 모듈 $1 이 (가) 설치되지 않았습니다.
-dav_cpan=Webmin을 자동으로 다운로드하여 설치하려면 <a href='$1'>여기를 클릭</a>하십시오.
-dav_desc=Usermin의 DAV 지원은 DAV 프로토콜을 지원하는 클라이언트가이 Usermin 서버에 연결하여 파일을 읽고 쓸 수 있도록합니다. 모든 파일 액세스는 로그인 한 사용자의 Unix 권한으로 수행되며 지정된 디렉토리로 제한됩니다.
-dav_err=DAV 서버 옵션을 저장하지 못했습니다
-dav_epath=누락되었거나 잘못된 URL 경로
-dav_eroot=누락되었거나 잘못된 루트 디렉토리
-dav_users=DAV를 사용할 수있는 사용자
-dav_users1=모든 사용자들
-dav_users0=아래에 나열된 사용자 및 그룹 ..
-dav_eusers=입력 한 사용자가 없습니다
 
 syslog_errorlog=Usermin 오류 로그
 

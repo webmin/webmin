@@ -465,26 +465,6 @@ logout_efile=第 $1行中缺少文件或文件不存在
 logout_etime=第 $1行中缺少超时或无效超时
 logout_ecannot=您无权配置注销时间
 
-dav_title=DAV服务器
-dav_header=DAV服务器选项
-dav_path=是否启用DAV？
-dav_disabled=残障人士
-dav_enabled=已启用，在URL路径 $1下
-dav_root=允许访问目录
-dav_root0=整个文件系统
-dav_root1=用户的主目录
-dav_root2=目录 $1
-dav_ecannot=您无权配置DAV服务器
-dav_emodule=未安装启用DAV所需的Perl模块 $1。
-dav_cpan=<a href='$1'>单击此处</a>让Webmin下载并自动为您安装。
-dav_desc=Usermin的DAV支持允许支持DAV协议的客户端连接到此Usermin服务器并读写文件。所有文件访问均以登录用户的Unix特权完成，并且将被限制在指定的目录中。
-dav_err=无法保存DAV服务器选项
-dav_epath=URL路径缺失或无效
-dav_eroot=根目录丢失或无效
-dav_users=可以使用DAV的用户
-dav_users1=所有用户
-dav_users0=下面列出的用户和组。
-dav_eusers=没有用户输入
 
 syslog_errorlog=Usermin错误日志
 

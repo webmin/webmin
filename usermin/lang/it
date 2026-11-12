@@ -443,26 +443,6 @@ logout_efile=File mancante o non esistente alla riga $1
 logout_etime=Intervallo mancante o non valido alla riga $1
 logout_ecannot=Non hai i permessi per modificare i tempi di logout
 
-dav_title=Server DAV
-dav_header=Opzioni del server DAV
-dav_path=DAV è abilitato?
-dav_disabled=Disabilitato
-dav_enabled=Attivato, nel percorso URL $1
-dav_root=Permetti l'accesso alla directory:
-dav_root0=Tutto il file system
-dav_root1=La directory home dell'utente
-dav_root2=Directory $1
-dav_ecannot=Non hai i permessi per configurare il server DAV
-dav_emodule=Il modulo Perl $1 necessario per abilitare DAV non è installato.
-dav_cpan=<a href='$1'>Clicca qui</a> per permettere a Webmin si scaricarlo ed installarlo automaticamente.
-dav_desc=Il supporto DAV di Usermin permette ai client che supportano il protocollo DAV di connettersi a questo server Usermin e leggere e scrivere file. Tutti gli accessi ai file sarà eseguito in base ai diritti dell'utente collegato e riguarderanno solo le directory specificate.
-dav_err=Salvataggio delle opzioni del server DAV non riuscito
-dav_epath=Percorso URL mancante o non valido
-dav_eroot=Directory root mancante o non valida
-dav_users=Utenti che possono usare DAV
-dav_users1=Tutti gli utenti
-dav_users0=Gli utenti e i gruppi elencati sotto:
-dav_eusers=Nessun utente inserito
 
 syslog_errorlog=Registro degli errori di Usermin
 

@@ -452,26 +452,6 @@ logout_efile=Ontbrekende of niet bestaande file in rij $1
 logout_etime=Ontbrekende of ongeldige time-out in rij $1
 logout_ecannot=U bent niet bevoegd om de uitlog tijden te configureren
 
-dav_title=DAV Server
-dav_header=DAV server opties
-dav_path=DAV aangezet?
-dav_disabled=Uitgeschakeld
-dav_enabled=Aangezet, onder URL pad $1
-dav_root=Toegang aan directory toestaan
-dav_root0=Gehele filesysteem
-dav_root1=Gebruikers home directory
-dav_root2=Directory $1
-dav_ecannot=U bent niet bevoegd om de DAV server te configureren
-dav_emodule=De Perl module $1 die nodig is om DAV aan te zetten, is niet geinstalleerd.
-dav_cpan=<a href='$1'>Klik hier</a> zodat Webmin het automatisch download en installeert voor u.
-dav_desc=Usermin's DAV support staat clienten toe die het DAV protocol ondersteunen om te verbinden met deze Usermin server en files lezen en schrijven. Alle file toegangen zullen gedaan worden met Unix voorrechten van de ingelogde gebruiker, en zal alleen beperkt worden tot de gespecificeerde directie.
-dav_err=Mislukt om DAV server opties op te slaan
-dav_epath=Ontbrekende of ongeldige URL pad
-dav_eroot=Ontbrekende of ongeldige root directory
-dav_users=Gebruikers die DAV kunnen gebruiken
-dav_users1=Alle gebruikers
-dav_users0=Gebruikers en groepen in de lijst hieronder ..
-dav_eusers=Geen gebruikers ingevuld
 
 syslog_errorlog=Usermin fouten log
 

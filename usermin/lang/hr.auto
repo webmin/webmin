@@ -465,26 +465,6 @@ logout_efile=Nedostaje ili ne postoji datoteka u retku $1
 logout_etime=Nedostaje ili nevažeće vremensko ograničenje u retku $1
 logout_ecannot=Nije vam dopušteno konfigurirati vrijeme odjave
 
-dav_title=DAV poslužitelj
-dav_header=Opcije DAV poslužitelja
-dav_path=Omogućen DAV?
-dav_disabled=Onemogućeno
-dav_enabled=Omogućeno, pod URL-om puta $1
-dav_root=Dopusti pristup direktoriju
-dav_root0=Cijeli datotečni sustav
-dav_root1=Korisnikov kućni imenik
-dav_root2=Imenik $1
-dav_ecannot=Nije vam dopušteno konfigurirati DAV poslužitelj
-dav_emodule=Perl modul $1 potreban za omogućavanje DAV-a nije instaliran.
-dav_cpan=<a href='$1'>Kliknite ovdje</a> da biste preuzeli Webmin i automatski ga instalirali za vas.
-dav_desc=Userminova DAV podrška omogućuje klijentima koji podržavaju DAV protokol za povezivanje s ovim Usermin poslužiteljem i čitanje i pisanje datoteka. Sav pristup datotekama vrši se s Unix povlasticama prijavljenog korisnika i bit će ograničen na specificirani direktorij.
-dav_err=Spremanje opcija DAV poslužitelja nije uspjelo
-dav_epath=Nedostaje ili nevažeća staza URL-a
-dav_eroot=Nedostaje ili nije važeći korijenski direktorij
-dav_users=Korisnici koji mogu koristiti DAV
-dav_users1=Svi korisnici
-dav_users0=Dolje navedeni korisnici i grupe ..
-dav_eusers=Nema korisnika
 
 syslog_errorlog=Zapisnik pogreške korisnika
 

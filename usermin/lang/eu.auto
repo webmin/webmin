@@ -465,26 +465,6 @@ logout_efile=Fitxategia falta da edo ez dago $1 errenkadan
 logout_etime=$1 errenkadan denbora-muga falta edo baliogabea
 logout_ecannot=Ezin duzu saioa amaitu denbora konfiguratu
 
-dav_title=DAV zerbitzaria
-dav_header=DAV zerbitzariaren aukerak
-dav_path=DAV gaituta?
-dav_disabled=Desgaituta
-dav_enabled=Gaituta, $1 URLaren azpian
-dav_root=Baimendu direktoriora sarbidea
-dav_root0=Fitxategi sistema osoa
-dav_root1=Erabiltzailearen etxeko direktorio
-dav_root2=$1 direktorio
-dav_ecannot=Ezin duzu DAV zerbitzaria konfiguratu
-dav_emodule=DAV gaitzeko behar den $1 Perl modulua ez dago instalatuta.
-dav_cpan=<a href='$1'>Egin klik hemen</a> Webmin deskargatu eta automatikoki instalatzeko.
-dav_desc=Usermin-en DAV laguntza onartzen du DAV protokoloa onartzen duten bezeroak Usermin zerbitzari honetara konektatu eta fitxategiak irakurri eta idazteko. Sarbide guztiak fitxategian sartutako erabiltzaile Unix pribilegioekin egin behar dira eta zehaztutako direktoriora mugatuko da.
-dav_err=Huts egin du DAV zerbitzariaren aukerak gordetzean
-dav_epath=Falta URL edo bide baliogabea
-dav_eroot=Erroko direktorio falta edo baliogabea
-dav_users=DAV erabil dezaketen erabiltzaileak
-dav_users1=Erabiltzaile guztiak
-dav_users0=Jarraian agertzen diren erabiltzaileak eta taldeak.
-dav_eusers=Ez da erabiltzaileik sartu
 
 syslog_errorlog=Erabiltzaile errorearen erregistroa
 

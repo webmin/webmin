@@ -51,26 +51,6 @@ sessions_ok=Cambiar
 
 logout_ecannot=No tiene permiso para configurar los tiempos de cierre de sesión
 
-dav_title=Servidor DAV
-dav_header=Opciones del servidor DAV
-dav_path=DAV habilitado?
-dav_disabled=Discapacitado
-dav_enabled=Habilitado, en la ruta URL $1
-dav_root=Permitir acceso al directorio
-dav_root0=Sistema de archivos completo
-dav_root1=Directorio de inicio del usuario
-dav_root2=Directorio $1
-dav_ecannot=No tiene permiso para configurar el servidor DAV
-dav_emodule=El módulo Perl $1 necesario para habilitar DAV no está instalado.
-dav_cpan=<a href='$1'>Haga clic aquí</a> para que Webmin lo descargue e instale automáticamente.
-dav_desc=El soporte DAV de Usermin permite a los clientes que admiten el protocolo DAV conectarse a este servidor Usermin y leer y escribir archivos. Todo el acceso a los archivos se realizará con los privilegios de Unix del usuario que inició sesión y se limitará al directorio especificado.
-dav_err=Error al guardar las opciones del servidor DAV
-dav_epath=Ruta URL faltante o inválida
-dav_eroot=Directorio raíz faltante o no válido
-dav_users=Usuarios que pueden usar DAV
-dav_users1=Todos los usuarios
-dav_users0=Usuarios y grupos enumerados a continuación.
-dav_eusers=Ningún usuario ingresó
 
 syslog_errorlog=Usermin error log
 

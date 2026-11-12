@@ -485,26 +485,6 @@ logout_efile=Missing or non-existant file in row $1
 logout_etime=Missing or invalid timeout in row $1
 logout_ecannot=You are not allowed to configure logout times
 
-dav_title=DAV Server
-dav_header=DAV server options
-dav_path=DAV enabled?
-dav_disabled=Disabled
-dav_enabled=Enabled, under URL path $1
-dav_root=Allow access to directory
-dav_root0=Entire filesystem
-dav_root1=User's home directory
-dav_root2=Directory $1
-dav_ecannot=You are not allowed to configure the DAV server
-dav_emodule=The Perl module $1 needed to enable DAV is not installed.
-dav_cpan=<a href='$1'>Click here</a> to have Webmin download and install it for you automatically.
-dav_desc=Usermin's DAV support allows clients that support the DAV protocol to connect to this Usermin server and read and write files. All file access with be done with the Unix privileges of the logged-in user, and will be restricted to the specified directory.
-dav_err=Failed to save DAV server options
-dav_epath=Missing or invalid URL path
-dav_eroot=Missing or invalid root directory
-dav_users=Users who can use DAV
-dav_users1=All users
-dav_users0=Users and groups listed below ..
-dav_eusers=No users entered
 
 syslog_errorlog=Usermin error log
 

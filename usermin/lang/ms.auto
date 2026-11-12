@@ -459,26 +459,6 @@ logout_efile=Fail yang hilang atau tidak wujud dalam baris $1
 logout_etime=Masa tamat yang hilang atau tidak sah dalam baris $1
 logout_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi masa logout
 
-dav_title=DAV Server
-dav_header=Pilihan pelayan DAV
-dav_path=DAV diaktifkan?
-dav_disabled=Dinyahdayakan
-dav_enabled=Dihidupkan, di bawah laluan URL $1
-dav_root=Benarkan akses ke direktori
-dav_root0=Keseluruhan sistem fail
-dav_root1=Direktori rumah pengguna
-dav_root2=Direktori $1
-dav_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi pelayan DAV
-dav_emodule=Mod Perl $1 diperlukan untuk mendayakan DAV tidak dipasang.
-dav_cpan=<a href='$1'>Klik di sini</a> untuk memuat turun Webmin dan memasangnya secara automatik.
-dav_desc=Sokongan DAV Usermin membolehkan pelanggan yang menyokong protokol DAV untuk menyambung ke pelayan Usermin ini dan membaca dan menulis fail. Semua akses fail dengan dilakukan dengan keistimewaan Unix pengguna log masuk, dan akan dihadkan ke direktori yang ditentukan.
-dav_err=Gagal menyimpan pilihan pelayan DAV
-dav_epath=Laluan URL yang hilang atau tidak sah
-dav_eroot=Direktori root hilang atau tidak sah
-dav_users=Pengguna yang boleh menggunakan DAV
-dav_users1=Semua pengguna
-dav_users0=Pengguna dan kumpulan disenaraikan di bawah ..
-dav_eusers=Tiada pengguna yang dimasukkan
 
 syslog_errorlog=Log ralat ralat Usermin
 

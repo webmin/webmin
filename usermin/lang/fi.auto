@@ -465,26 +465,6 @@ logout_efile=Puuttuva tai puuttuva tiedosto riviltä $1
 logout_etime=Puuttuva tai virheellinen aikakatkaisu rivillä $1
 logout_ecannot=Et voi määrittää uloskirjautumisaikoja
 
-dav_title=DAV-palvelin
-dav_header=DAV-palvelimen asetukset
-dav_path=DAV käytössä?
-dav_disabled=Liikuntarajoitteinen
-dav_enabled=Käytössä, URL-osoitteen polussa $1
-dav_root=Salli pääsy hakemistoon
-dav_root0=Koko tiedostojärjestelmä
-dav_root1=Käyttäjän kotihakemisto
-dav_root2=Hakemisto $1
-dav_ecannot=Sinulla ei ole oikeutta määrittää DAV-palvelinta
-dav_emodule=DAV: n käyttöönottoon tarvittavaa Perl-moduulia $1 ei ole asennettu.
-dav_cpan=<a href='$1'>Napsauta tätä</a>, niin Webmin lataa ja asentaa sen sinulle automaattisesti.
-dav_desc=Userminin DAV-tuki sallii DAV-protokollaa tukevien asiakkaiden muodostaa yhteyden tähän Usermin-palvelimeen ja lukea ja kirjoittaa tiedostoja. Kaikki tiedostoihin pääsy tehdään kirjautuneen käyttäjän Unix-oikeuksilla, ja ne rajoitetaan määritettyyn hakemistoon.
-dav_err=DAV-palvelimen asetusten tallentaminen epäonnistui
-dav_epath=Puuttuva tai virheellinen URL-osoite
-dav_eroot=Puuttuva tai virheellinen juurihakemisto
-dav_users=Käyttäjät, jotka voivat käyttää DAV: tä
-dav_users1=Kaikki käyttäjät
-dav_users0=Alla luetellut käyttäjät ja ryhmät ..
-dav_eusers=Ei käyttäjiä
 
 syslog_errorlog=Usermin -virheloki
 

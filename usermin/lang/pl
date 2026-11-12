@@ -452,26 +452,6 @@ logout_efile=Brakujący lub nie istniejący plik w wierszu $1
 logout_etime=Brakujący lub nieprawidłowy czas oczekiwania w wierszu $1
 logout_ecannot=Nie masz uprawnień, aby skonfigurować czas wylogowania
 
-dav_title=Serwer DAV
-dav_header=Opcje serwera DAV
-dav_path=DAV włączony?
-dav_disabled=Wyłączony
-dav_enabled=Włączony pod adresem URL $1
-dav_root=Zezwól na dostęp do katalogu
-dav_root0=Cały system plików
-dav_root1=Katalog domowy użytkowników
-dav_root2=Katalog $1
-dav_ecannot=Nie masz uprawnień, aby skonfigurować serwer DAV
-dav_emodule=Moduł Perl $1, nie jest zainstalowany. Jest on potrzebny, aby włączyć serwer DAV.
-dav_cpan=<a href='$1'>Kliknij tutaj</a>, aby ściągnąć i zainstalować automatycznie.
-dav_desc=Usermin z obsługą DAV pozwala klientom na łączenie się z serwerem przez protokół DAV i odczytywanie/zapisywanie plików. Dostęp do wszystkich plików zostatnie przydzielony aktualnie zalogowanemu użytkownikowi i będzie ograniczony do wybranego katalogu.
-dav_err=Zapisywanie konfiguracji serwera DAV nie powiodło się
-dav_epath=Brakująca lub nieprawidłowa ścieżka URL
-dav_eroot=Brakujący lub błędny katalog root
-dav_users=Użytkownicy, którzy mogą używać DAV
-dav_users1=Wszyscy użytkownicy
-dav_users0=Użytkownicy i grypy z poniższej listy ..
-dav_eusers=Nie wprowadzono użytkowników
 
 syslog_errorlog=Log błędów Usermina
 
