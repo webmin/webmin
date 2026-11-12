@@ -138,7 +138,8 @@ assert_no_handler_injection(
 	'ui_toggle');
 assert_no_handler_injection(
 	main::ui_search({ 'name' => $xss, 'value' => $xss,
-			  'placeholder' => $xss, 'filter' => $xss }),
+			  'placeholder' => $xss, 'filter' => $xss,
+			  'clear_href' => $xss, 'clear_label' => $xss }),
 	'ui_search');
 assert_no_handler_injection(
 	main::ui_progress(50, { 'label' => $xss, 'value' => $xss }),
@@ -355,6 +356,21 @@ like(main::ui_columns_start([ 'A' ]), qr/class='ui_columns'/,
 # Search boxes carry the client-side filter target
 like(main::ui_search({ 'name' => 'q', 'filter' => '#rows' }),
 	qr/data-ui-filter="#rows"/, 'search filter selector emitted');
+
+# A disabled search cannot offer an active clear action.
+{
+	my $opts = { 'name' => 'q', 'value' => 'service',
+		     'clear_href' => 'index.cgi?mode=tables&owner=1' };
+	my $html = main::ui_search($opts);
+	like($html, qr/href="index.cgi\?mode=tables&amp;owner=1"/,
+		'clear action preserves and escapes its destination');
+	like($html, qr/aria-label="Clear search"/,
+		'clear icon has a default accessible name');
+	unlike(main::ui_search({ %$opts, 'disabled' => 1 }),
+		qr/\bui_search_clear\b/, 'disabled search has no clear action');
+	unlike(main::ui_search({ 'name' => 'q' }), qr/\bui_search_clear\b/,
+		'clear action is opt-in');
+}
 
 # Progress percentages are clamped, scaled by max, and colored by thresholds
 like(main::ui_progress(250), qr/width:100%/, 'progress clamps above 100');

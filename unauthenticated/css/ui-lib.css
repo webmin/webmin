@@ -1667,6 +1667,32 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	border-color: var(--ui-accent);
 	box-shadow: 0 0 0 3px var(--ui-ring);
 }
+/* Keep the clear action inside the input and avoid a second native cross. */
+.ui_search_clearable .ui_search_input { padding-right: 34px; }
+.ui_search_clearable .ui_search_input::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+.ui_search .ui_search_clear {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
+	width: 26px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--ui-fg-muted);
+	text-decoration: none;
+	border-radius: 2px;
+}
+.ui_search .ui_search_clear:hover {
+	color: var(--ui-fg);
+	background: var(--ui-surface-2);
+}
+.ui_search .ui_search_clear:focus-visible {
+	outline: 2px solid var(--ui-accent);
+	outline-offset: -2px;
+}
 
 /* ---- Stacked fields ----
  * A label above its control and a help line under it. Text inputs in

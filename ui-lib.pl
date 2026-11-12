@@ -5887,6 +5887,12 @@ are :
 entries are filtered client-side as the user types, with no server
 round-trip.
 
+=item clear_href - URL without the search filter. Adds a clear icon inside
+this input. Omit it when no filter is applied. Disabled inputs hide the icon.
+
+=item clear_label - Tooltip and accessible name for the clear icon, defaulting
+to "Clear search".
+
 =item width - CSS width for the input.
 
 =item size - Approximate width in characters, when width is not set.
@@ -5914,10 +5920,19 @@ my $attrs = &_ui_attrs({
 	'form' => $opts->{'form'},
 	'data-ui-filter' => $opts->{'filter'} });
 $attrs->{'disabled'} = undef if ($opts->{'disabled'});
+# Clearing a server-side filter follows its unfiltered URL without JavaScript.
+my $clear = '';
+if ($opts->{'clear_href'} && !$opts->{'disabled'}) {
+	my $label = $opts->{'clear_label'} || $text{'ui_search_clear'};
+	$clear = &ui_tag('a', &ui_svg_icon('x', { 'size' => 14 }), {
+		'class' => 'ui_search_clear', 'href' => $opts->{'clear_href'},
+		'title' => $label, 'aria-label' => $label });
+	}
 return &ui_tag('span',
 	&ui_svg_icon('search', { 'size' => 14, 'class' => 'ui_search_icon' }).
-	&ui_tag('input', undef, $attrs),
-	&_ui_attrs({ 'class' => 'ui_search',
+	&ui_tag('input', undef, $attrs).$clear,
+	&_ui_attrs({ 'class' => &_ui_class('ui_search',
+				$clear ? 'ui_search_clearable' : undef),
 		     'style' => $opts->{'width'} ?
 				"width:".$opts->{'width'} : undef }));
 }

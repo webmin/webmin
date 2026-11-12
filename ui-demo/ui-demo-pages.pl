@@ -1468,17 +1468,15 @@ my $last = $page * 2 > $total ? $total : $page * 2;
 my @visible = $total ? @matches[$first - 1 .. $last - 1] : ();
 my $base = 'index.cgi?mode=tables';
 
-# Enter submits the search and resets paging. The clear link removes the filter.
+# Enter submits the search and resets paging. The clear icon removes the filter.
 my $search = ui_form_start('index.cgi', 'get').ui_hidden('mode', 'tables').
-	ui_cluster([
-		ui_search({ 'name' => 'table_search', 'width' => '14em',
-			'value' => html_escape($query),
-			'placeholder' => $text{'index_f_search_ph'},
-			'attrs' => { 'maxlength' => 200,
-				'aria-label' => $text{'index_f_search_ph'} } }),
-		length($query) ? ui_link($base,
-			html_escape($text{'index_t_clear'}), 'text-link') : (),
-		], { 'gap' => '8px' }).ui_form_end();
+	ui_search({ 'name' => 'table_search', 'width' => '14em',
+		'value' => html_escape($query),
+		'placeholder' => $text{'index_f_search_ph'},
+		'clear_href' => length($query) ? $base : undef,
+		'clear_label' => $text{'index_t_clear'},
+		'attrs' => { 'maxlength' => 200,
+			'aria-label' => $text{'index_f_search_ph'} } }).ui_form_end();
 my $table = @visible
 	? ui_tag('div', ui_columns_table(\@heads, 100,
 		[ map { [ map { html_escape($_) } @$_ ] } @visible ]),

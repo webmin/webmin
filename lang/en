@@ -346,6 +346,7 @@ ui_error_fatal=Fatal Error
 ui_page_help=Help
 ui_empty_state=Nothing to display
 ui_search=Search
+ui_search_clear=Clear search
 ui_dismiss=Dismiss
 ui_close=Close
 ui_confirm=Please confirm
