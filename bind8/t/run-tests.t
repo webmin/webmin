@@ -469,6 +469,49 @@ is_deeply($mx->{'values'}, [ '10', 'mail' ],
 my ($dmarc_rec) = grep { uc($_->{'type'}) eq 'DMARC' } @zrecs;
 ok($dmarc_rec, 'DMARC record reclassified from TXT');
 
+# --- zero TTLs ------------------------------------------------------------
+# Explicit zero TTLs must override defaults, including on DNSSEC records.
+foreach my $ttl (undef, 0, 3600) {
+    my $ttlfile = "$confdir/ttl-".(defined($ttl) ? $ttl : 'none').".zone";
+    open(my $fh, '>', $ttlfile) or die "$ttlfile: $!";
+    print $fh '$TTL '.$ttl."\n" if defined($ttl);
+    print $fh <<'EOF';
+inherited IN A 192.0.2.1
+explicit 0 IN A 192.0.2.2
+@ 0 IN NSEC3PARAM 1 0 0 -
+@ 0 IN RRSIG NSEC3PARAM 13 2 0 20270101000000 20260101000000 12345 example.com. Zml4dHVyZQ==
+EOF
+    close($fh);
+    my @records = grep { defined($_->{'values'}) }
+        read_zone_file($ttlfile, 'example.com', undef, 0, 1);
+    is($records[0]->{'realttl'}, $ttl, 'omitted TTL inherits the zone default');
+    foreach my $record (@records[1..3]) {
+        is($record->{'ttl'}, '0', "$record->{'type'} keeps explicit TTL zero");
+        is($record->{'realttl'}, '0', "$record->{'type'} does not inherit a default");
+    }
+}
+
+# The record editor must submit explicit zero rather than selecting Default.
+foreach my $case ([ 0, '0', 0 ], [ undef, '', 1 ], [ 120, '120', 0 ],
+                  [ '1H', '1', 0 ], [ '0S', '0', 0 ]) {
+    my ($ttl, $value, $default) = @$case;
+    my $record = { name => 'edit.example.com.', type => 'A', ttl => $ttl,
+                   realttl => defined($ttl) ? $ttl : 3600,
+                   values => [ '192.0.2.1' ] };
+    my $html = '';
+    {
+        open(my $capture, '>', \$html) or die "capture: $!";
+        local *STDOUT = $capture;
+        record_input('example.com', undef, 'A', $zonefile,
+                     'example.com', 1, $record);
+    }
+    my @inputs = $html =~ /(<input\b[^>]*>)/g;
+    my ($selected) = grep { /name="ttl_def"/ && /\bchecked\b/ } @inputs;
+    my ($textbox) = grep { /name="ttl"/ } @inputs;
+    like($selected, qr/value="$default"/, 'editor preserves TTL selection');
+    like($textbox, qr/value="\Q$value\E"/, 'editor preserves TTL value');
+}
+
 # --- only-soa fast path ----------------------------------------------------
 my @soaonly = read_zone_file($zonefile, 'example.com', undef, 1, 1);
 my @soas = grep { $_->{'type'} eq 'SOA' } @soaonly;

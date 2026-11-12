@@ -22,10 +22,10 @@ foreach my $d (split(/\0/, $in{'d'})) {
 	}
 $access{'ro'} && &error($text{'master_ero'});
 
-# Validate inputs
+# Reject empty values, while allowing a TTL of zero.
 $in{'old'} =~ s/\s+/ /g;
-$in{'old_def'} || $in{'old'} || &error($text{'umass_eold'});
-$in{'new'} || &error($text{'umass_enew'});
+$in{'old_def'} || length($in{'old'}) || &error($text{'umass_eold'});
+length($in{'new'}) || &error($text{'umass_enew'});
 if ($in{'type'} eq 'A') {
 	&check_ipaddress($in{'new'}) ||
 		&error(&text('edit_eip', $in{'new'}));
@@ -83,8 +83,8 @@ foreach my $zi (@zones) {
 				       $in{'new'}, $r->{'cmt'});
 			$rcount++;
 			}
-		elsif ($in{'type'} eq 'ttl' && $r->{'defttl'}) {
-			# Found default TTL to fix
+		elsif ($in{'type'} eq 'ttl' && defined($r->{'defttl'})) {
+			# Update an existing default TTL, including zero.
 			&lock_file($realfile);
 			&modify_defttl($zi->{'file'}, $r, $in{'new'});
 			$rcount++;

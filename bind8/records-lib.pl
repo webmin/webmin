@@ -285,7 +285,8 @@ while($i < @tok) {
 			}
 		$dir{'values'} = \@values;
 		$dir{'eline'} = $lnum[$i-1];
-		$dir{'realttl'} = $dir{'ttl'} || $currttl;
+		# Only omitted TTLs inherit the zone default. Zero is explicit.
+		$dir{'realttl'} = defined($dir{'ttl'}) ? $dir{'ttl'} : $currttl;
 
 		# Work out canonical form, and maybe use it
 		my $canon = $dir{'name'};

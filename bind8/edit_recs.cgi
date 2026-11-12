@@ -193,7 +193,8 @@ for(my $i=0; $i<@_; $i++) {
 		if ($ttl =~ s/D//i) { $ttl *= 86400; }
 		if ($ttl =~ s/W//i) { $ttl *= 604800; }
 		}
-	push(@cols, $ttl ? &html_escape($ttl) : $text{'default'});
+	# Zero disables caching and must not be shown as an omitted TTL.
+	push(@cols, defined($ttl) ? &html_escape($ttl) : $text{'default'});
 	for(my $j=0; $j<@hmap; $j++) {
 		my $v;
 		if ($in{'type'} eq "RP" && $j == 0) {

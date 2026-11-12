@@ -11,6 +11,7 @@
 * Update File Manager to use the new UI widgets in the standard theme, dropping legacy templates
 * Fix sorting and message lookup in large mailboxes, and speed up unread counts and bulk flag changes in Maildir folders [#2902](https://github.com/webmin/webmin/pull/2902)
 * Fix standard theme sortable tables dropping controls from table headings, such as the select-all checkbox in File Manager
+* Fix zero DNS TTLs being displayed as defaults, lost when editing records, or skipped during bulk updates in the BIND DNS Server module [#2925](https://github.com/webmin/webmin/issues/2925)
 * Fix package installation with DNF running `update` instead of `install` when one of several requested packages is already installed, leaving the others uninstalled
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page

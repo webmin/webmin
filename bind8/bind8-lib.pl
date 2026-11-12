@@ -1114,8 +1114,8 @@ if ($config{'short_names'} && defined($_[5])) {
 	print &ui_table_row($text{'edit_canon'}, "<tt>$rec{'canon'}</tt>");
 	}
 
-# TTL field
-if ($rec{'ttl'} && $rec{'ttl'} =~ /^(\d+)([SMHDW]?)$/i) {
+# Preserve explicit zero TTLs instead of selecting the zone default.
+if (defined($rec{'ttl'}) && $rec{'ttl'} =~ /^(\d+)([SMHDW]?)$/i) {
 	$ttl = $1;
 	$ttlunit = $2;
 	}
@@ -1124,7 +1124,7 @@ else {
 	$ttlunit = "";
 	}
 my $defmsg = $text{'default'};
-if ($rec{'realttl'}) {
+if (defined($rec{'realttl'})) {
 	$defmsg .= " ($rec{'realttl'})";
 	}
 print &ui_table_row($text{'edit_ttl'},
