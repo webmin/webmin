@@ -80,6 +80,27 @@ and the old widget's selected values. Both show the full description and submit
 `staff`. Positional list calls also retain selected-value order and accept
 pre-escaped labels from existing callers.
 
+## Search, table and pagination layout
+
+Pass `class => 'ui_table_layout'` to `ui_stack` to keep search controls, a table
+and pagination together. Use `ui_cluster` with `align => 'between'` for each
+control row, and wrap the table in a `div` with class `ui_table_scroll` so wide
+results scroll horizontally.
+
+The shared CSS supplies compact spacing. Cards without a header are borderless
+and have extra padding above the first control row. Spacing stays the same with
+one page or no results. Filtering, page counts and access checks remain the
+caller's responsibility. `demo_tables_tab` includes a working example that
+filters six sample services before dividing them into pages of two.
+
+```perl
+ui_card({ body => ui_stack([
+	$search_row,
+	ui_tag('div', $table, { class => 'ui_table_scroll' }),
+	$pagination_row,
+], { class => 'ui_table_layout' }) });
+```
+
 ## Page chrome
 
 Around the gallery, `index.cgi` and `demo_page_actions` show the parts

@@ -4782,6 +4782,23 @@ return &_ui_block('div', join("\n", @items), &_ui_attrs({
 Returns HTML stacking the given fragments vertically with consistent
 spacing. Options are C<gap> and C<class>.
 
+Use C<ui_table_layout> to keep search controls, a table and pagination
+close together:
+
+    ui_stack([
+        $search_row,
+        ui_tag('div', $table, { class => 'ui_table_scroll' }),
+        $pagination_row,
+    ], { class => 'ui_table_layout' });
+
+C<ui_table_scroll> lets wide tables scroll horizontally. Build each control
+row with C<ui_cluster> and C<< align => 'between' >> to place text on the
+left and controls on the right.
+
+Spacing stays consistent with no results or page links. Inside C<ui_card>,
+the layout uses compact padding. If the card has no header, it also has no
+outer border and leaves extra space above the first row.
+
 =cut
 sub ui_stack
 {

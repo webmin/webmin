@@ -1454,6 +1454,54 @@ $rv .= ui_form_columns_table('index.cgi',
 $rv .= ui_tag('div', ui_note($text{'index_t_checked_desc'}),
 	      { 'style' => 'margin-top: 6px' });
 
+# Filter all sample services before selecting a page of two rows.
+my $query = substr($in{'table_search'} // '', 0, 200);
+my @matches = grep { index(lc(join(' ', @$_)), lc($query)) >= 0 } @rows;
+my $total = scalar(@matches);
+my $pages = int(($total + 1) / 2) || 1;
+my $page = ($in{'table_page'} || '') =~ /\A[1-9][0-9]{0,7}\z/
+	? $in{'table_page'} : 1;
+# A changed search or a stale link must not leave the result page out of range.
+$page = $pages if ($page > $pages);
+my $first = $total ? ($page - 1) * 2 + 1 : 0;
+my $last = $page * 2 > $total ? $total : $page * 2;
+my @visible = $total ? @matches[$first - 1 .. $last - 1] : ();
+my $base = 'index.cgi?mode=tables';
+
+# Enter submits the search and resets paging. The clear link removes the filter.
+my $search = ui_form_start('index.cgi', 'get').ui_hidden('mode', 'tables').
+	ui_cluster([
+		ui_search({ 'name' => 'table_search', 'width' => '14em',
+			'value' => html_escape($query),
+			'placeholder' => $text{'index_f_search_ph'},
+			'attrs' => { 'maxlength' => 200,
+				'aria-label' => $text{'index_f_search_ph'} } }),
+		length($query) ? ui_link($base,
+			html_escape($text{'index_t_clear'}), 'text-link') : (),
+		], { 'gap' => '8px' }).ui_form_end();
+my $table = @visible
+	? ui_tag('div', ui_columns_table(\@heads, 100,
+		[ map { [ map { html_escape($_) } @$_ ] } @visible ]),
+		{ 'class' => 'ui_table_scroll' })
+	: ui_empty_state({ 'title' => $text{'index_t_no_matches'} });
+
+# Shared layout classes keep both control rows close to the table, even when
+# no page links are needed. Ordinary cards and stacks retain their spacing.
+$rv .= ui_section_title($text{'index_t_layout'});
+$rv .= ui_card({ 'id' => 'demo-table-layout',
+	'body' => ui_stack([
+		ui_cluster([ html_escape($text{'index_t_layout_desc'}), $search ],
+			{ 'align' => 'between', 'gap' => '12px' }),
+		$table,
+		ui_cluster([
+			html_escape(text('index_t_showing', $first, $last, $total)),
+			ui_pager({ 'page' => $page, 'pages' => $pages,
+				'href' => $base.'&table_search='.urlize($query).
+					'&table_page=' }),
+			], { 'align' => 'between', 'gap' => '12px' }),
+		], { 'class' => 'ui_table_layout' }),
+	});
+
 return $rv;
 }
 

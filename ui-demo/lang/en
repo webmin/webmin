@@ -147,6 +147,11 @@ index_t_create=Create
 index_t_sortable=Sortable table
 index_t_sortable_desc=A standard ui_columns_table with its sortable parameter set. Themes that support it add client-side sorting and searching, as Authentic does with DataTables; the gray theme sorts with sorttable; other themes show a plain table. A module can also set sortable=1 in module.info for all of its tables.
 index_t_checked_desc=A standard ui_form_columns_table with its sortable parameter set: a checkbox column, select all and invert links, and buttons that act on the selection. Failed units are checked by default.
+index_t_layout=Search and pagination
+index_t_layout_desc=Search covers all six sample services.
+index_t_showing=Showing $1–$2 of $3 services
+index_t_clear=Clear search
+index_t_no_matches=No services match your search.
 index_t_empty=Empty table
 index_t_empty_title=No scheduled jobs yet
 index_t_empty_desc=When a table has no rows, it can show an empty state with a next step instead of a bare header.

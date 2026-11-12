@@ -2234,7 +2234,6 @@ button.ui_dialog_x:focus-visible { box-shadow: inset 0 0 0 2px var(--ui-ring); }
 	display: inline-flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 3px;
 }
 .ui_pager_link {
 	display: inline-flex;
@@ -2249,6 +2248,7 @@ button.ui_dialog_x:focus-visible { box-shadow: inset 0 0 0 2px var(--ui-ring); }
 	font-size: 0.93em;
 	line-height: 1;
 	text-decoration: none;
+	margin-right: -1px;
 }
 a.ui_pager_link:hover, a.ui_pager_link:focus-visible {
 	border-color: var(--ui-accent);
@@ -2261,12 +2261,45 @@ a.ui_pager_link:focus-visible { box-shadow: 0 0 0 3px var(--ui-ring); }
 	border-color: var(--ui-accent);
 	background: var(--ui-accent);
 	color: #fff;
-	font-weight: 600;
+	margin-right: -1px;
+	z-index: 1;
+}
+.ui_pager_current:hover,
+.ui_pager_current:focus-visible,
+.ui_pager_current:active,
+a.ui_pager_link:hover,
+a.ui_pager_link:focus-visible,
+a.ui_pager_link:active {
+	position: relative;
+	z-index: 1;
 }
 .ui_pager_disabled { opacity: 0.5; }
 .ui_pager_gap {
 	padding: 0 4px;
 	color: var(--ui-fg-muted);
+}
+
+/* ---- Search, table and pagination layout ---- */
+
+/* Opt in explicitly so empty results and a single page keep the same spacing. */
+.ui_stack.ui_table_layout {
+	gap: 1px;
+	min-width: 0;
+}
+.ui_table_layout > .ui_table_scroll {
+	min-width: 0;
+	overflow-x: auto;
+}
+.ui_card_body:has(> .ui_table_layout) {
+	padding: 3px 7px 6px;
+}
+/* A table-only card needs no outer frame. Separate its first control row
+ * from the surrounding content without changing the gaps around the table. */
+.ui_card:has(> .ui_card_body:first-child > .ui_table_layout) {
+	border: none;
+}
+.ui_card_body:first-child:has(> .ui_table_layout) {
+	padding-top: 0;
 }
 
 /* ---- Reduced motion ---- */
