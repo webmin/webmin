@@ -10,18 +10,20 @@ use WebminCore;
 # Returns 1 if some log can be viewed/edited, 0 if not
 sub can_edit_log
 {
+my ($log) = @_;
 return 1 if (!$access{'logs'});
-local @files = split(/\s+/, $access{'logs'});
-local $lf;
-if (ref($_[0])) {
-	$lf = $_[0]->{'file'} || $_[0]->{'pipe'} || $_[0]->{'host'} ||
-	      $_[0]->{'socket'} || $_[0]->{'cmd'} ||
-	      ($_[0]->{'all'} ? "*" : "users");
+my @files = split(/\s+/, $access{'logs'});
+my $lf;
+if (ref($log)) {
+	$lf = $log->{'file'} || $log->{'pipe'} || $log->{'host'} ||
+	      $log->{'socket'} || $log->{'cmd'} ||
+	      ($log->{'all'} ? "*" : "users");
 	}
 else {
-	$lf = $_[0];
+	$lf = $log;
 	}
-foreach $f (@files) {
+$lf = &resolve_links($lf);
+foreach my $f (@files) {
 	return 1 if ($f eq $lf || &is_under_directory($f, $lf));
 	}
 return 0;
