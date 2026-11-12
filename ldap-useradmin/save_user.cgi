@@ -471,7 +471,8 @@ else {
 		$oldhome = $uinfo->get_value("homeDirectory");
 		if ($home ne $oldhome && -d $oldhome && !-e $home &&
 		    $in{'movehome'}) {
-			$out = `mv '$oldhome' '$home' 2>&1`;
+			$out = &backquote_logged("mv ".quotemeta($oldhome)." ".
+						       quotemeta($home)." 2>&1");
 			if ($?) { &error(&text('usave_emove', $out)); }
 			}
 
