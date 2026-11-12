@@ -12,7 +12,7 @@ if ($in{'dest'}) {
 	$in{'file'} =~ /^([a-z]:)?\/\S/ || &error($text{'csv_efile'});
 	$access{'buser'} || &error($text{'cvs_ebuser'});
 	&is_under_directory($access{'bpath'}, $in{'file'}) ||
-		&error($text{"cvs_ebpath'});
+		&error($text{'cvs_ebpath'});
 	}
 if (!$in{'where_def'}) {
 	$in{'where'} =~ /\S/ || &error($text{'csv_ewhere'});
