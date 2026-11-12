@@ -2043,7 +2043,7 @@ my $ZONE;
 &close_tempfile($ZONE);
 &set_ownership(&make_chroot($file));
 foreach my $r (@$records) {
-	if ($r->{'defttl'}) {
+	if (defined($r->{'defttl'})) {
 		&create_defttl($file, $r->{'defttl'});
 		}
 	elsif ($r->{'generate'}) {
@@ -2119,7 +2119,7 @@ my $ZONE;
 &open_tempfile($ZONE, ">".&make_chroot($filename), 1, 1) || return 0;
 &close_tempfile($ZONE);
 foreach my $r (@$records) {
-	if ($r->{'defttl'}) {
+	if (defined($r->{'defttl'})) {
 		&create_defttl($filename, $r->{'defttl'});
 		}
 	elsif ($r->{'generate'}) {

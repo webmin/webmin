@@ -68,7 +68,7 @@ my $vals = "$in{'master'} $in{'email'} (\n".
 &modify_record($file, $old, $old->{'name'}, $old->{'ttl'},
 	       $old->{'class'}, "SOA", $vals);
 
-my ($defttl) = grep { $_->{'defttl'} } @recs;
+my ($defttl) = grep { defined($_->{'defttl'}) } @recs;
 if (!$defttl && !$in{'defttl_def'}) {
 	&create_defttl($file, $in{'defttl'}.$in{'defttlunit'});
 	}

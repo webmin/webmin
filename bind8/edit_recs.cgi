@@ -39,7 +39,7 @@ my @allrecs;
 my $nosearch;
 if (!$config{'largezones'} || $in{'search'}) {
 	# Get all records
-	@allrecs = grep { !$_->{'generate'} && !$_->{'defttl'} }
+	@allrecs = grep { !$_->{'generate'} && !defined($_->{'defttl'}) }
 		     &read_zone_file($file, $dom);
 	$nosearch = 1 if (!@allrecs);
 	}

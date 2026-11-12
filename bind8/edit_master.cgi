@@ -28,7 +28,7 @@ elsif ($d) {
 # Find the record types
 my (@rcodes, @recs);
 if (!$config{'largezones'}) {
-	@recs = grep { !$_->{'generate'} && !$_->{'defttl'} }
+	@recs = grep { !$_->{'generate'} && !defined($_->{'defttl'}) }
 		     &read_zone_file($zone->{'file'}, $dom);
 	}
 if ($dom =~ /in-addr\.arpa/i || $dom =~ /\.$ipv6revzone/i) {

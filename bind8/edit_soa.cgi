@@ -22,7 +22,7 @@ my $soa;
 my $defttl;
 foreach my $r (@recs) {
 	$soa = $r if ($r->{'type'} eq "SOA");
-	$defttl = $r if ($r->{'defttl'});
+	$defttl = $r if (defined($r->{'defttl'}));
 	}
 my $v = $soa->{'values'};
 
