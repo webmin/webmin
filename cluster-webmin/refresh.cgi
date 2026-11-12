@@ -78,8 +78,7 @@ foreach $h (@hosts) {
 			$h->{'themes'} = \@themes;
 
 			# Refresh users and groups
-			local @users = &remote_foreign_call($s->{'host'},
-					"acl", "list_users");
+			local @users = &list_cluster_users($s->{'host'});
 			local $ud = scalar(@users) - scalar(@{$h->{'users'}});
 			$h->{'users'} = \@users;
 			local @groups = &remote_foreign_call($s->{'host'},

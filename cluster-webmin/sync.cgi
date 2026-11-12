@@ -86,6 +86,14 @@ foreach $host (@phosts) {
 
 		# Create missing users
 		foreach $u (@uneed) {
+			# An excluded API account may already own the destination name.
+			my $existing = &remote_foreign_call($serv->{'host'}, "acl",
+							  "get_user", $u->{'name'});
+			if ($existing || $add_error_msg) {
+				print $add_error_msg ||
+					&text('user_etaken', $u->{'name'}),"<p>\n";
+				next;
+				}
 			# Create the user
 			print &text('sync_ucreate', $u->{'name'}),"<br>\n";
 			if (!$in{'test'}) {

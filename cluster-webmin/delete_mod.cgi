@@ -90,8 +90,7 @@ if ($in{'sure'}) {
 					        @{$h->{'themes'}};
 			$h->{'modules'} = \@newmods;
 			$h->{'themes'} = \@newthemes;
-			$h->{'users'} = [ &remote_foreign_call($g->{'host'},
-						"acl", "list_users") ];
+			$h->{'users'} = [ &list_cluster_users($g->{'host'}) ];
 			$h->{'groups'} = [ &remote_foreign_call($g->{'host'},
 						"acl", "list_groups") ];
 			&save_webmin_host($h);

@@ -6,6 +6,22 @@ use WebminCore;
 &init_config();
 &foreign_require("servers", "servers-lib.pl");
 
+# list_cluster_users(server)
+# List accounts eligible for Cluster management. Require the remote ACL library
+# first. Filter on the server so older peers need no new API or extra RPC calls.
+sub list_cluster_users
+{
+my ($server) = @_;
+# Return an array reference because fast RPC evaluates code in scalar context.
+my $users = &remote_eval($server, "acl", '
+	[ grep {
+		my %acl = &get_module_acl($_->{"name"}, "", 1, 1);
+		!$acl{"api_only"};
+		} &list_users() ];
+	');
+return $users ? @$users : ( );
+}
+
 # list_webmin_hosts()
 # Returns a list of all hosts whose webmin modules are being managed
 sub list_webmin_hosts

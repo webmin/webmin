@@ -233,8 +233,7 @@ foreach $h (@hosts) {
 					"webmin", "get_all_module_infos", 1) ];
 			$h->{'themes'} = [ &remote_foreign_call($s->{'host'},
 						"webmin", "list_themes") ];
-			$h->{'users'} = [ &remote_foreign_call($s->{'host'},
-						"acl", "list_users") ];
+			$h->{'users'} = [ &list_cluster_users($s->{'host'}) ];
 			$h->{'groups'} = [ &remote_foreign_call($s->{'host'},
 						"acl", "list_groups") ];
 			&save_webmin_host($h);
