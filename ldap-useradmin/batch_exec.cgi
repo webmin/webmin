@@ -466,9 +466,9 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		if ($olduser{'home'} ne $user{'home'} && $in{'movehome'} &&
 		    $user{'home'} ne '/' && $olduser{'home'} ne '/') {
 			if (-d $olduser{'home'} && !-e $user{'home'}) {
-				local $out = &backquote_logged(
-					"mv \"$olduser{'home'}\" ".
-					"\"$user{'home'}\" 2>&1");
+				my $out = &backquote_logged(
+					"mv ".quotemeta($olduser{'home'})." ".
+					      quotemeta($user{'home'})." 2>&1");
 				if ($?) { &error(&text('batch_emove',
 						 $lnum, $out)); }
 				}
