@@ -29,6 +29,18 @@ foreach my $f (@files) {
 return 0;
 }
 
+# extra_log_exec_ids(&log)
+# Returns the UID and GID for an extra log, or root for an unrestricted log.
+# Returns an empty list if the configured non-root account does not exist.
+sub extra_log_exec_ids
+{
+my ($log) = @_;
+return (0, 0) if (!$log || !$access{'run_as_user'});
+my @uinfo = getpwnam($access{'run_as_user'});
+return () if (!@uinfo || $uinfo[2] <= 0);
+return @uinfo[2, 3];
+}
+
 # get_journal_since
 # Returns a list of journalctl since commands
 sub get_journal_since

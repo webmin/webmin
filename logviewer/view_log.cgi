@@ -116,6 +116,10 @@ elsif ($in{'file'}) {
 else {
 	&error($text{'save_emissing'});
 	}
+
+# Run restricted extra logs with the permissions of their configured account
+my ($exec_uid, $exec_gid) = &extra_log_exec_ids($extra);
+defined($exec_uid) || &error($text{'save_ecannot2'});
 print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
 my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
@@ -197,7 +201,8 @@ if (!$follow) {
 				}
 			open(my $output_fh, '>', \$safe_proc_out);
 			$safe_proc_out_got = &proc::safe_process_exec(
-				$fcmd, 0, 0, $output_fh, undef, 1, 0, undef, 1);
+				$fcmd, $exec_uid, $exec_gid, $output_fh,
+				undef, 1, 0, undef, 1);
 			close($output_fh);
 			print $safe_proc_out if ($safe_proc_out !~ /-- No entries --/m);
 			}
@@ -244,7 +249,8 @@ if (!$follow) {
 		if ($fullcmd) {
 			open(my $output_fh, '>', \$safe_proc_out);
 			$safe_proc_out_got = &proc::safe_process_exec(
-				$fullcmd, 0, 0, $output_fh, undef, 1, 0, undef, 1);
+				$fullcmd, $exec_uid, $exec_gid, $output_fh,
+				undef, 1, 0, undef, 1);
 			close($output_fh);
 			print $safe_proc_out if ($safe_proc_out !~ /-- No entries --/m);
 			}
