@@ -729,6 +729,7 @@ csv_format1=CSV without quotes
 csv_format2=Tab separated
 cvs_err=CSV export failed
 csv_efile=Missing or invalid destination file
+cvs_ebpath=Destination file is not in an allowed directory
 csv_ebuser=You are not allowed to export to a file
 csv_ewhere=Missing <tt>where</tt> clause
 csv_done=CSV export to $1 is complete. The resulting file size is $2.
