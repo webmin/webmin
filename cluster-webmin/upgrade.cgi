@@ -464,8 +464,7 @@ foreach $h (@hosts) {
 		local @themes = &remote_foreign_call($s->{'host'},
 				 "webmin", "list_themes");
 		$h->{'themes'} = \@themes;
-		local @users = &remote_foreign_call($s->{'host'},
-				"acl", "list_users");
+		local @users = &list_cluster_users($s->{'host'});
 		$h->{'users'} = \@users;
 		local @groups = &remote_foreign_call($s->{'host'},
 				"acl", "list_groups");

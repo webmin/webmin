@@ -1493,6 +1493,107 @@ subtest 'save_user.cgi rejected module escaping' => sub {
     }
 };
 
+# Both save handlers must enforce the global ACL editor's permission check.
+subtest 'user and group global ACL permissions' => sub {
+    for my $allowed (0, 1) {
+        _reset_fixture();
+        create_user({ name => 'operator', pass => 'x', modules => ['acl', 'proc'] });
+        create_user({ name => 'target', pass => 'x', modules => ['proc'] });
+        create_group({ name => 'limited', members => [], modules => ['proc'] });
+        _seed_user_acl('operator', {
+            users => 'target', acl => $allowed, groups => 1,
+            mode => 2, mods => 'proc', times => 0,
+        });
+        my %before = (root => '/restricted', fileunix => 'nobody',
+                      download_address_mode => 'public');
+        save_module_acl(\%before, 'target', '', 1);
+        save_group_module_acl(\%before, 'limited', '', 1);
+
+        for my $kind ('user', 'group') {
+            my $name = $kind eq 'user' ? 'target' : 'limited';
+            my $r = run_cgi("save_$kind.cgi", {
+                old => $name, name => $name, mod => 'proc',
+                pass_def => 1, oldpass => 'x', logouttime_def => 1, minsize_def => 1,
+                acl_security_form => 1, root => '/', fileunix => 'root',
+                download_address_mode => 'all',
+            }, user => 'operator');
+            my $file = $kind eq 'user' ? 'target.acl' : 'limited.gacl';
+            my %saved;
+            read_file("$confdir/$file", \%saved);
+            if (!$allowed) {
+                like($r->{out}, qr/\Q$text{'acl_emod'}\E/, "$kind rejects acl=0");
+                is_deeply(\%saved, \%before, "$kind keeps existing restrictions");
+            }
+            else {
+                ok($r->{location}, "$kind accepts an authorized ACL save");
+                is($saved{root}, '/', "$kind saves the allowed root directory");
+                is($saved{fileunix}, 'root', "$kind saves the file-access user");
+                is($saved{download_address_mode}, 'all', "$kind saves download access");
+            }
+        }
+    }
+};
+
+# Rejected user edits must leave membership and inherited ACL files untouched.
+subtest 'user validation before group writes' => sub {
+    _reset_fixture();
+    create_user({ name => 'operator', pass => 'x', modules => ['acl', 'proc'] });
+    create_user({ name => 'target', pass => 'x', modules => ['proc'] });
+    create_group({ name => 'first', members => ['target'], modules => ['proc'] });
+    create_group({ name => 'second', members => [], modules => ['proc'] });
+    _seed_user_acl('operator', {
+        users => '*', mode => 2, mods => 'proc', gassign => '*', rename => 1,
+        times => 0, acl => 0,
+    });
+    my %before = (root => '/original');
+    save_module_acl(\%before, 'target', '', 1);
+    save_group_module_acl({ root => '/second' }, 'second', '', 1);
+    my %form = (old => 'target', name => 'target', pass_def => 1, oldpass => 'x',
+                logouttime_def => 1, minsize_def => 1, group => 'second', mod => 'proc');
+
+    for my $invalid ({mod => 'cron'}, {email => 'invalid:email'},
+                     {acl_security_form => 1}) {
+        my $r = run_cgi('save_user.cgi', { %form, %$invalid }, user => 'operator');
+        ok(!$r->{location}, 'invalid user save is rejected');
+        _clear_caches();
+        is_deeply(get_group('first')->{members}, ['target'], 'old membership retained');
+        is_deeply(get_group('second')->{members}, [], 'new group not modified');
+        my %saved;
+        read_file("$confdir/target.acl", \%saved);
+        is_deeply(\%saved, \%before, 'inherited ACL not copied on rejection');
+    }
+
+    # Valid transfers and same-group renames still update membership and ACLs.
+    my $r = run_cgi('save_user.cgi', \%form, user => 'operator');
+    ok($r->{location}, 'valid transfer succeeds');
+    _clear_caches();
+    is_deeply(get_group('first')->{members}, [], 'valid transfer removes old membership');
+    is_deeply(get_group('second')->{members}, ['target'], 'valid transfer adds membership');
+    my %saved;
+    read_file("$confdir/target.acl", \%saved);
+    is($saved{root}, '/second', 'valid transfer copies inherited ACL');
+    $r = run_cgi('save_user.cgi', { %form, name => 'renamed' }, user => 'operator');
+    ok($r->{location}, 'same-group rename succeeds');
+    _clear_caches();
+    is_deeply(get_group('second')->{members}, ['renamed'], 'membership follows rename');
+
+    # Failed creation must not add a nonexistent member; valid creation still can.
+    my %new = (%form, old => '', name => 'newmember', mod => 'cron');
+    $r = run_cgi('save_user.cgi', \%new, user => 'operator');
+    ok(!$r->{location}, 'invalid new user is rejected');
+    _clear_caches();
+    is_deeply(get_group('second')->{members}, ['renamed'], 'no member added on rejection');
+    $new{mod} = 'proc';
+    $r = run_cgi('save_user.cgi', \%new, user => 'operator');
+    ok($r->{location}, 'valid new group member is created');
+    _clear_caches();
+    is_deeply(get_group('second')->{members}, ['renamed', 'newmember'],
+              'new user is added to the selected group');
+    %saved = ();
+    read_file("$confdir/newmember.acl", \%saved);
+    is($saved{root}, '/second', 'new user inherits group ACL');
+};
+
 # Unix conversion must not bypass the privileged-name guard in save_user.cgi.
 # An ACL-capable administrator can still deliberately convert such a user.
 subtest 'convert.cgi privileged username gate' => sub {
@@ -1548,9 +1649,9 @@ subtest 'save_user.cgi gassign whitelist' => sub {
     delete_user('admin');
 };
 
-# Ordinary account and global ACL saves must retain the application-owned API
-# restriction, including after a rename. Submitted API values are not trusted.
-subtest 'user and global ACL saves preserve API-only access' => sub {
+# Webmin must reject API account saves while ordinary accounts remain editable.
+# Submitted API values cannot create or change an application-owned restriction.
+subtest 'user and global ACL saves reject API-only accounts' => sub {
     foreach my $case ([ 'save_user.cgi', 'target' ],
                      [ 'save_user.cgi', 'renamed' ],
                      [ 'save_acl.cgi', 'target' ]) {
@@ -1579,21 +1680,98 @@ subtest 'user and global ACL saves preserve API-only access' => sub {
                 }
                 $form{api_only} = $submitted if defined($submitted);
                 my $r = run_cgi($cgi, \%form);
-                ok($r->{location}, "$cgi saves $name")
-                    or diag("stdout: $r->{out}\nstderr: $r->{err}");
+                if ($endpoint) {
+                    ok(!$r->{location}, "$cgi rejects the API account");
+                    ok(!get_user('renamed'), 'API account was not renamed');
+                }
+                else {
+                    ok($r->{location}, "$cgi saves ordinary account $name")
+                        or diag("stdout: $r->{out}\nstderr: $r->{err}");
+                }
                 _clear_caches();
-                my %saved = get_module_acl($name, '', 1, 1);
+                my $saved_name = $endpoint ? 'target' : $name;
+                my %saved = get_module_acl($saved_name, '', 1, 1);
                 is($saved{api_only}, $endpoint,
                    "$cgi retains the stored API restriction");
-                is($saved{download_address_mode}, 'public',
-                   "$cgi still applies ordinary permission changes");
-                is(get_user($name)->{pass}, 'x',
+                is($saved{download_address_mode}, $endpoint ? 'all' : 'public',
+                   "$cgi only changes ordinary account permissions");
+                is(get_user($saved_name)->{pass}, 'x',
                    "$cgi leaves the password unchanged");
-                delete_user($name);
+                delete_user($saved_name);
                 delete_user('admin');
             }
         }
     }
+};
+
+# The shared permission check protects forms, resets and bulk deletion too.
+subtest 'Webmin Users rejects API account management' => sub {
+    _reset_fixture();
+    _seed_user_acl('admin', { users => '*', acl => 1, create => 1, rename => 1, delete => 1, mode => 0 });
+    create_user({ name => 'admin', pass => 'x', modules => ['acl'] });
+    create_user({ name => 'ordinary_fixture', pass => 'x', modules => ['acl'] });
+    create_user({ name => 'api_fixture', pass => 'locked', modules => ['acl'] });
+    save_module_acl({ api_only => 'virtual-server/remote.cgi' }, 'api_fixture', '', 1);
+    is_deeply([sort map { $_->{name} } list_users()],
+              ['admin', 'api_fixture', 'ordinary_fixture'],
+              'shared user lists still include API accounts');
+    is_deeply([map { $_->{name} } list_users(['api_fixture'])],
+              ['api_fixture'], 'filtered lookups still include API accounts');
+    is(get_user('api_fixture')->{pass}, 'locked',
+       'named lookup still finds API accounts');
+    {
+        # Fast RPC evaluates code in scalar context. The Cluster helper must
+        # return full account records without changing the underlying list.
+        foreign_require('cluster-webmin', 'cluster-webmin-lib.pl');
+        no warnings 'redefine', 'once';
+        local *cluster_webmin::remote_eval = sub {
+            my $result = eval $_[2];
+            die $@ if $@;
+            return $result;
+        };
+        is_deeply([sort map { $_->{name} }
+                   cluster_webmin::list_cluster_users('fixture')],
+                  ['admin', 'ordinary_fixture'],
+                  'Cluster selects only accounts it can manage');
+        is(scalar(list_users()), 3, 'shared account list remains complete');
+    }
+    for my $form (
+        { name => 'api_fixture', pass_def => 4 },
+        { old => 'ordinary_fixture', name => 'api_fixture', pass_def => 4 },
+    ) {
+        my $response = run_cgi('save_user.cgi', $form);
+        like($response->{out}, qr/already/i,
+             'ordinary collision checks still find API accounts');
+    }
+    for my $case (
+        ['edit_user.cgi', { user => 'api_fixture', readwrite => 1 }],
+        ['edit_acl.cgi', { user => 'api_fixture', mod => 'acl' }],
+        ['save_acl.cgi', { _acl_user => 'api_fixture', _acl_mod => '', reset => 1 }],
+        ['delete_user.cgi', { user => 'api_fixture' }],
+        ['delete_users.cgi', { d => ['ordinary_fixture', 'api_fixture'], confirm => 1 }],
+    ) {
+        my ($cgi, $form) = @$case;
+        my $response = run_cgi($cgi, $form);
+        like($response->{out}, qr/not allowed/i, "$cgi rejects API account changes");
+        _clear_caches();
+        is(get_user('api_fixture')->{pass}, 'locked', 'API account is unchanged');
+        is(webmin_user_api_only('api_fixture'), 'virtual-server/remote.cgi',
+           'API restriction remains');
+        ok(get_user('ordinary_fixture'), 'bulk rejection leaves other accounts unchanged');
+    }
+    my $index = run_cgi('index.cgi', {});
+    unlike($index->{out}, qr/edit_user\.cgi\?user=api(?:_|%5F)fixture/,
+           'API account has no edit link');
+    like($index->{out}, qr/edit_user\.cgi\?user=admin/, 'ordinary account keeps its edit link');
+    my $api = get_user('api_fixture');
+    $api->{pass} = 'application_updated';
+    modify_user('api_fixture', $api);
+    _clear_caches();
+    is(get_user('api_fixture')->{pass}, 'application_updated',
+       'owning application can still update API credentials');
+    delete_user('api_fixture');
+    delete_user('ordinary_fixture');
+    delete_user('admin');
 };
 
 # edit_user.cgi: the create form preselects public-only URL downloads, while

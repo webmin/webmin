@@ -13453,7 +13453,8 @@ return wantarray ? @rv : $rv[0];
 
 =head2 disconnect_userdb(string, &handle, [force-disconnect])
 
-Closes a handle opened by connect_userdb
+Commits pending SQL changes, retaining the connection for reuse while cached.
+Closes a handle opened by connect_userdb when uncached, expired, or forced.
 
 =cut
 sub disconnect_userdb
@@ -13461,6 +13462,13 @@ sub disconnect_userdb
 my ($str, $h, $force) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
+my $err;
+# Finish this operation even when the connection stays in the cache.
+if ($str =~ /^(mysql|postgresql):/ && !$h->{'AutoCommit'} && !$h->commit()) {
+	# Discard a failed transaction and report its error after closing.
+	$err = "Failed to commit user database changes : ".$h->errstr;
+	$force = 1;
+	}
 my $timeout = defined($miniserv{'userdb_cache_timeout'}) ?
 			$miniserv{'userdb_cache_timeout'} : 60;
 if ($force ||
@@ -13468,9 +13476,6 @@ if ($force ||
     time() - $main::connect_userdb_cache_time{$str} > $timeout) {
 	if ($str =~ /^(mysql|postgresql):/) {
 		# DBI disconnect
-		if (!$h->{'AutoCommit'}) {
-			$h->commit();
-			}
 		$h->disconnect();
 		}
 	elsif ($str =~ /^ldap:/) {
@@ -13481,6 +13486,7 @@ if ($force ||
 	delete($main::connect_userdb_cache{$str});
 	delete($main::connect_userdb_cache_time{$str});
 	}
+&error($err) if ($err);
 }
 
 =head2 split_userdb_string(string)
@@ -14369,11 +14375,13 @@ my ($variable, $scope) = @_;
 return &globals('delete', $variable, $scope);
 }
 
-# webmin_user_api_only()
-# Return the base user's API entry script, or an empty value if unrestricted.
+# webmin_user_api_only([username])
+# Return the user's API entry script, defaulting to the current base user.
 sub webmin_user_api_only
 {
-my %access = &get_module_acl($base_remote_user, "", 1, 1);
+my ($username) = @_;
+$username = $base_remote_user if (!defined($username));
+my %access = &get_module_acl($username, "", 1, 1);
 return $access{'api_only'};
 }
 

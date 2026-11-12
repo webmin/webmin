@@ -1307,6 +1307,8 @@ Returns 1 if the current Webmin user can edit some other user.
 sub can_edit_user
 {
 my ($username, $groups) = @_;
+# API accounts are managed by the application that created them.
+return 0 if (&webmin_user_api_only($username));
 return 1 if ($access{'users'} eq '*');
 if ($access{'users'} eq '~') {
 	return $base_remote_user eq $username;

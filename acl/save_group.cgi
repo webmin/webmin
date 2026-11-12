@@ -21,6 +21,9 @@ elsif ($in{'but_delete'}) {
 	exit;
 	}
 
+# Check global ACL access before saving any group changes.
+$in{'acl_security_form'} && !$access{'acl'} && &error($text{'acl_emod'});
+
 # Find logged-in webmin user
 my @ulist = &list_users();
 my ($me) = grep { $_->{'name'} eq $base_remote_user } @ulist;

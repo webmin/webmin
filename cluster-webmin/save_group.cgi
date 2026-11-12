@@ -133,8 +133,7 @@ foreach $h (@hosts) {
 		&remote_foreign_call($s->{'host'}, "acl", "update_members",
 				     $h->{'users'}, $h->{'groups'},
 				     $edgrp->{'modules'}, $edgrp->{'members'});
-		@freshusers = &remote_foreign_call($s->{'host'}, "acl",
-						   "list_users");
+		@freshusers = &list_cluster_users($s->{'host'});
 		$h->{'users'} = \@freshusers;
 		@freshgroups = &remote_foreign_call($s->{'host'}, "acl",
 						    "list_groups");
