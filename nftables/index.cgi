@@ -429,7 +429,9 @@ else {
 		print ui_tag('div',
 			text('index_table_file',
 			     "<tt>".html_escape($curr->{'file'})."</tt>"),
-			{'class' => 'nftables_table_file'}), "\n";
+			{'class' => 'nftables_table_file',
+			 'style' => 'margin-top: 0.5em;'
+			}), "\n";
 		}
 
 	if ($curr) {
