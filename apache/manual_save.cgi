@@ -32,6 +32,7 @@ if (defined($in{'virt'})) {
 			}
 		$logtype = 'virt'; $logname = &virtual_name($v, 1);
 		}
+	&can_edit_virt($v) || &error($text{'virt_ecannot'});
 	}
 else {
 	&allowed_auth_file($in{'file'}) || &error($text{'htindex_ecannot'});

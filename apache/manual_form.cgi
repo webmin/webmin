@@ -33,6 +33,7 @@ if (defined($in{'virt'})) {
 			$start = $end = undef;
 			}
 		}
+	&can_edit_virt($v) || &error($text{'virt_ecannot'});
 	}
 else {
 	&allowed_auth_file($in{'file'}) || &error($text{'htindex_ecannot'});

@@ -4,6 +4,7 @@
 
 require './apache-lib.pl';
 &ReadParse();
+&allowed_auth_file($in{'file'}) || &error($text{'htindex_ecannot'});
 $conf = &get_htaccess_config($in{'file'});
 $desc = &text('htindex_header', "<tt>$in{'file'}</tt>");
 &ui_print_header($desc, $text{'show_title'}, "");

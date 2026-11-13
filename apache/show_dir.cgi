@@ -5,6 +5,7 @@
 require './apache-lib.pl';
 &ReadParse();
 ($vconf, $v) = &get_virtual_config($in{'virt'});
+&can_edit_virt($v) || &error($text{'virt_ecannot'});
 $d = $vconf->[$in{'idx'}];
 $conf = $d->{'members'};
 $desc = &text('dir_header', &dir_name($d), &virtual_name($v));

@@ -4,6 +4,7 @@
 
 require './apache-lib.pl';
 &ReadParse();
+&allowed_auth_file($in{'file'}) || &error($text{'htindex_ecannot'});
 $hconf = &get_htaccess_config($in{'file'});
 $d = $hconf->[$in{'idx'}];
 $conf = $d->{'members'};
