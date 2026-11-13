@@ -26,14 +26,22 @@ return $smartctl_version_cache;
 
 =head2 list_smart_disks_partitions
 
-Returns a sorted list of disks that can support SMART.
+Returns a sorted list of disks that can support SMART. Optional disk-only and
+scalar error-reference arguments select fresh metadata and report fatal failure
+without throwing an exception. If automatic discovery fails, configured RAID
+disks are retained with a warning and no fatal error result. With no usable
+configured fallback, failure returns an empty list and sets the error reference,
+or produces a warning if no reference was supplied.
 
 =cut
 sub list_smart_disks_partitions
 {
+my ($disk_only, $error_ref) = @_;
+$$error_ref = undef if ($error_ref);
 my @rv;
+my $discovery_error;
 if (&foreign_check("fdisk")) {
-	@rv = &list_smart_disks_partitions_fdisk();
+	@rv = &list_smart_disks_partitions_fdisk($disk_only, \$discovery_error);
 	}
 elsif (&foreign_check("bsdfdisk")) {
 	@rv = &list_smart_disks_partitions_bsdfdisk();
@@ -41,7 +49,13 @@ elsif (&foreign_check("bsdfdisk")) {
 elsif (&foreign_check("mount")) {
 	@rv = &list_smart_disks_partitions_fstab();
 	}
-push(@rv, &list_configured_raid_disks());
+my @manual = &list_configured_raid_disks();
+if ($discovery_error) {
+	return &smart_disk_discovery_error($discovery_error, $error_ref) if (!@manual);
+	warn "Automatic SMART disk discovery failed; using configured RAID disks: $discovery_error\n";
+	@rv = ();
+	}
+push(@rv, @manual);
 return &unique_smart_disks(@rv);
 }
 
@@ -53,11 +67,15 @@ module. May include faked-up 3ware devices.
 =cut
 sub list_smart_disks_partitions_fdisk
 {
+my ($disk_only, $error_ref) = @_;
+$$error_ref = undef if ($error_ref);
 &foreign_require("fdisk");
 local @rv;
 my $twcount = 0;
-foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
-		    &fdisk::list_disks_partitions()) {
+my $error;
+my @disks = &fdisk::list_disks_partitions(undef, $disk_only, \$error);
+return &smart_disk_discovery_error($error, $error_ref) if ($error);
+foreach my $d (sort { $a->{'device'} cmp $b->{'device'} } @disks) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
 	    $d->{'model'} =~ /3ware|amcc|\b9750\b/i) {
 		# A 3ware hardware RAID device.
@@ -72,6 +90,8 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 			}
 
 		# Assume that /dev/sdX maps to units in order
+		return &smart_disk_discovery_error("Incomplete 3ware SMART discovery", $error_ref)
+			if ($disk_only && (!$units[$twcount] || !@{$units[$twcount]->[2]}));
 		my $i = 0;
 		foreach my $sd (@{$units[$twcount]->[2]}) {
 			my $c = $units[$twcount]->[1];
@@ -101,6 +121,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 	       $d->{'model'} =~ /LSI/i && $d->{'model'} !~ /\b9750\b/) {
 		# A LSI megaraid device.
 		local @units = &list_megaraid_subdisks(0);
+		return &smart_disk_discovery_error("Incomplete MegaRAID SMART discovery", $error_ref) if ($disk_only && !@units);
 
 		foreach my $i (@units) {
 			push(@rv, { 'device' => $d->{'device'},
@@ -117,6 +138,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 	elsif ($d->{'device'} =~ /^\/dev\/cciss\/(.*)$/) {
 		# HP Smart Array .. add underlying disks
 		my $count = &count_subdisks($d, "cciss");
+		return &smart_disk_discovery_error("Incomplete cciss SMART discovery", $error_ref) if ($disk_only && !$count);
 		for(my $i=0; $i<$count; $i++) {
 			push(@rv, { 'device' => $d->{'device'},
 				    'prefix' => $d->{'device'},
@@ -136,6 +158,19 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 	}
 return sort { $a->{'device'} cmp $b->{'device'} ||
 	      $a->{'subdisk'} <=> $b->{'subdisk'} } @rv;
+}
+
+# Return a discovery error through the optional reference, or warn once.
+sub smart_disk_discovery_error
+{
+my ($message, $error_ref) = @_;
+if ($error_ref) {
+	$$error_ref = $message;
+	}
+else {
+	warn "$message\n";
+	}
+return ();
 }
 
 =head2 list_megaraid_subdisks(adapter)
