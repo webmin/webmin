@@ -50,6 +50,20 @@ These tests build RPM fixtures and check path traversal, symlinks, hard links,
 ownership, permissions, failed extraction, and extraction without root access.
 All fixture files are created in a temporary directory and removed afterward.
 
+## File chooser access tests on a VM
+
+Run as root on a disposable Linux VM with Webmin and Perl's Test::More installed:
+
+```sh
+WEBMIN_CHOOSER_VM_TEST=1 timeout 90 prove -v t/chooser-vm.t
+```
+
+The tests run this checkout's chooser CGI with the installed Webmin libraries
+and temporary ACL settings. They check directory traversal, symlink escapes,
+safe fallback directories and additional allowed directories while browsing as
+root and nobody. Installed configuration is unchanged, and temporary files are
+removed afterward. Set `WEBMIN_CHOOSER_SOURCE` to test another `chooser.cgi`.
+
 ## Coverage reports
 
 ```sh

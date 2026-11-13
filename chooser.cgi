@@ -57,10 +57,11 @@ if (&supports_users()) {
 
 &ReadParse(undef, undef, 1);
 
-# If a chroot is forced which is under the allowed root, there is no need for
-# a restrictred root
+# Use a chroot as the displayed root only after checking its real path.
+# Keep the original root to enforce access limits on each listed directory.
+$realroot = $rootdir;
 if ($in{'chroot'} && $in{'chroot'} ne '/' && $rootdir && $rootdir ne '/' &&
-    ($in{'chroot'} =~ /^\Q$rootdir\E\// || $in{'chroot'} eq $rootdir)) {
+    &is_under_directory($rootdir, $in{'chroot'})) {
 	$rootdir = undef;
 	}
 
@@ -103,6 +104,10 @@ if (!&allowed_dir($dir)) {
 	# Directory is outside allowed root
 	$dir = $rootdir.'/';
 	$file = "";
+	# Give up if the chroot makes even the default directory unsafe
+	&allowed_dir($dir) ||
+		&error(&text('chooser_eopen',
+			     "<tt>".&html_escape($in{'chroot'})."</tt>"));
 	}
 
 # Work out the top allowed dir
@@ -249,13 +254,23 @@ EOF
 	}
 
 # allowed_dir(dir)
-# Returns 1 if some directory should be listable
+# Returns 1 if some directory should be listable. The directory is relative
+# to the chroot, so both it and its real path are checked.
 sub allowed_dir
 {
 local ($dir) = @_;
-return 1 if ($rootdir eq "" || $rootdir eq "/" || $rootdir eq "c:");
-foreach my $allowed ($rootdir, split(/\t+/, $access{'otherdirs'})) {
-	return 1 if (&is_under_directory($allowed, $dir));
+my @allowed = split(/\t+/, $access{'otherdirs'});
+if ($rootdir ne "" && $rootdir ne "/" && $rootdir ne "c:") {
+	# A restricted root still applies to the directory as entered
+	return 0 if (!grep { &is_under_directory($_, $dir) }
+			   ($rootdir, @allowed));
 	}
-return 0;
+
+# Users with full access can list anything
+return 1 if ($realroot eq "" || $realroot eq "/");
+
+# The real path must stay under the original root or another allowed directory,
+# even when a symlink inside an accepted chroot points elsewhere
+my $real = $in{'chroot'}.$dir;
+return (grep { &is_under_directory($_, $real) } ($realroot, @allowed)) ? 1 : 0;
 }
