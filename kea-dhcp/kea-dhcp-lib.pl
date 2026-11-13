@@ -832,7 +832,7 @@ return ($default, undef);
 }
 
 # kea_read_leases(version)
-# Reads Kea memfile CSV leases and returns parsed rows, error text, and path.
+# Replays Kea memfile CSV updates and returns current rows, error text, and path.
 sub kea_read_leases
 {
 my ($ver) = @_;
@@ -841,27 +841,41 @@ return ([ ], $err, "") if ($err);
 my ($file, $ferr) = &kea_lease_file($ver, $root);
 return ([ ], $ferr, $file) if ($ferr);
 return ([ ], $text{'leases_enofile'}, $file) if (!$file);
-return ([ ], &text('leases_missing', $file), $file) if (!-e $file);
-return ([ ], &text('leases_unreadable', $file), $file) if (!-r $file);
-my $text = &read_file_contents($file);
-my @lines = split(/\r?\n/, $text);
-my @heads;
-my @leases;
-foreach my $line (@lines) {
-	$line =~ s/^\s+|\s+$//g;
-	next if ($line eq '' || $line =~ /^#/);
-	my @cols = &kea_csv_fields($line);
-	if (!@heads) {
-		@heads = map { &kea_normalize_lease_field($_) } @cols;
-		next;
+
+# A completed cleanup replaces .2 and .1. Replay the main file last.
+my @files = -e "$file.completed" ? ( "$file.completed" ) :
+	    ( "$file.2", "$file.1" );
+@files = grep { -e $_ } (@files, $file);
+return ([ ], &text('leases_missing', $file), $file) if (!@files);
+my (%leases, @order);
+foreach my $source (@files) {
+	return ([ ], &text('leases_unreadable', $source), $file) if (!-r $source);
+	my $text = &read_file_contents($source);
+	my @lines = split(/\r?\n/, $text || "");
+	# Each file has its own header, which may use an older schema.
+	my @heads;
+	foreach my $line (@lines) {
+		$line =~ s/^\s+|\s+$//g;
+		next if ($line eq '' || $line =~ /^#/);
+		my @cols = &kea_csv_fields($line);
+		if (!@heads) {
+			@heads = map { &kea_normalize_lease_field($_) } @cols;
+			next;
+			}
+		my %lease;
+		for(my $i=0; $i<@heads; $i++) {
+			$lease{$heads[$i]} = defined($cols[$i]) ? $cols[$i] : "";
+			}
+		my $address = &kea_lease_address(\%lease);
+		next if (!$address);
+		# Preserve first-seen order, including deleted and reused addresses.
+		push(@order, $address) if (!exists($leases{$address}));
+		# The last record wins. A zero lifetime removes the lease.
+		$leases{$address} = defined($lease{'valid_lifetime'}) &&
+			$lease{'valid_lifetime'} =~ /^0+$/ ? undef : \%lease;
 		}
-	my %lease;
-	for(my $i=0; $i<@heads; $i++) {
-		$lease{$heads[$i]} = defined($cols[$i]) ? $cols[$i] : "";
-		}
-	push(@leases, \%lease);
 	}
-return (\@leases, undef, $file);
+return ([ grep { defined($_) } map { $leases{$_} } @order ], undef, $file);
 }
 
 # kea_csv_fields(line)
