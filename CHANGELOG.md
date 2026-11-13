@@ -9,6 +9,7 @@
 * Add confirmation dialogs for buttons and links carrying `data-ui-confirm`, replacing the browser's own prompt
 * Update the Framed Theme with many visual and usability improvements
 * Update File Manager to use the new UI widgets in the standard theme, dropping legacy templates
+* Fix RPM extraction in File Manager to use `bsdtar` for better compatibility and security
 * Fix sorting and message lookup in large mailboxes, and speed up unread counts and bulk flag changes in Maildir folders [#2902](https://github.com/webmin/webmin/pull/2902)
 * Fix standard theme sortable tables dropping controls from table headings, such as the select-all checkbox in File Manager
 * Fix zero DNS TTLs being displayed as defaults, lost when editing records, or skipped during bulk updates in the BIND DNS Server module [#2925](https://github.com/webmin/webmin/issues/2925)

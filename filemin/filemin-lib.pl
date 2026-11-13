@@ -608,10 +608,7 @@ for (my $count = 1 + $pagelimit * ($page - 1);
 		      index($type,
 			"application-vnd.rar") != -1
 		     ) && has_command('unrar')) ||
-		    (index($type,
-			"application-x-rpm") != -1 &&
-		     has_command('rpm2cpio') &&
-		     has_command('cpio')) ||
+		    $type =~ /application-x-(source-)?rpm/ ||
 		    (index($type,
 			"application-x-deb") != -1 &&
 		     has_command('dpkg')) ||
@@ -1232,6 +1229,23 @@ $error && &error(
 		join(" , ", @allowed_paths)) . '`.'));
 }
 
+# rpm_extract_command(archive, directory, [uid, gid])
+# Returns the bsdtar command, or undef if unavailable. Keep path protections
+# enabled and omit privileged permissions. Root can assign extracted entries
+# to the supplied owner; otherwise, files belong to the extracting user.
+sub rpm_extract_command
+{
+my ($archive, $directory, $uid, $gid) = @_;
+my $bsdtar = &has_command('bsdtar');
+return undef if (!$bsdtar);
+my $owner = defined($uid) && defined($gid) && $> == 0
+	? " --same-owner --uid $uid --gid $gid"
+	: " --no-same-owner";
+return quotemeta($bsdtar)." -xf ".quotemeta($archive).
+	" -C ".quotemeta($directory).
+	" --no-same-permissions".$owner;
+}
+
 # filemin_path_under_directory(directory, file)
 # Like is_under_directory, but permits legitimate names containing "..".
 sub filemin_path_under_directory
@@ -1375,10 +1389,27 @@ foreach my $fref (@{$files_to_extract}) {
 				}
 			}
 		}
-	mkdir($extract_to);
-
 	my $archive_type =
 		mimetype($archive);
+	my $is_rpm = $archive_type =~ /\/x-(source-)?rpm/;
+	my $rpm_cmd;
+	if ($is_rpm) {
+		# Assign only extracted entries to the uploaded archive's owner
+		my @perms = stat($archive);
+		$rpm_cmd = &rpm_extract_command($archive, $extract_to,
+					       @perms[4, 5]);
+		if (!$rpm_cmd) {
+			push(@errors, &text('extract_missing_bsdtar',
+				&html_escape($name)));
+			next;
+			}
+		}
+	my $created = mkdir($extract_to);
+	if ($is_rpm && $created && $> == 0) {
+		# Newly created upload directories share the archive's ownership
+		my @perms = stat($archive);
+		chown($perms[4], $perms[5], $extract_to);
+		}
 
 	if ($archive_type =~ /x-tar/ ||
 	    $archive_type =~ /-compressed-tar/) {
@@ -1521,36 +1552,16 @@ foreach my $fref (@{$files_to_extract}) {
 				}
 			}
 		}
-	elsif ($archive_type =~ /\/x-rpm/) {
-		my $rpm2cpio_cmd =
-			has_command('rpm2cpio');
-		my $cpio_cmd = has_command('cpio');
-		if (!$rpm2cpio_cmd) {
-			push(@errors,
-			     &text('extract_cmd_not_avail',
-				   "<tt>" .
-				   &html_escape($name) .
-				   "</tt>",
-				   '<tt>rpm2cpio</tt>'));
-			}
-		elsif (!$cpio_cmd) {
-			push(@errors,
-			     &text('extract_cmd_not_avail',
-				   "<tt>" .
-				   &html_escape($name) .
-				   "</tt>",
-				   '<tt>cpio</tt>'));
-			}
-		else {
-			# Keep absolute member names inside the target, and skip
-			# extraction if the target directory can't be entered
-			$status = system(
-				"($rpm2cpio_cmd " .
-				quotemeta($archive) .
-				" | (cd " .
-				quotemeta($extract_to) .
-				" && $cpio_cmd -idmv " .
-				"--no-absolute-filenames))");
+	elsif ($is_rpm) {
+		# Keep failed uploads and report bsdtar's diagnostic
+		my $out = &backquote_logged("$rpm_cmd 2>&1 </dev/null");
+		$status = $?;
+		if ($status) {
+			push(@errors, &text('extract_failed',
+				&html_escape($name), &html_escape($out)));
+			# Remove only a new, empty directory after failure
+			rmdir($extract_to) if ($created);
+			next;
 			}
 		}
 	elsif ($archive_type =~
@@ -1573,10 +1584,12 @@ foreach my $fref (@{$files_to_extract}) {
 			}
 		}
 
-	# Set permissions for all extracted files
-	my @perms = stat($archive);
-	system("chown -R $perms[4]:$perms[5] " .
-		quotemeta($extract_to));
+	# RPM ownership is set during extraction, without changing unrelated files
+	if (!$is_rpm) {
+		my @perms = stat($archive);
+		system("chown -R $perms[4]:$perms[5] " .
+			quotemeta($extract_to));
+		}
 
 	# Delete empty extraction
 	rmdir($extract_to);

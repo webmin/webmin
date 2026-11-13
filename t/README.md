@@ -33,6 +33,23 @@ The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, pa
 
 By default, it tests `open_socket` from this checkout with the installed Webmin helpers. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` to compare versions.
 
+## File Manager RPM extraction
+
+Run `prove -v filemin/t/rpm-extract.t` for isolated command and failure checks.
+The tests also cover Authentic Theme when its source is in the sibling
+`authentic-theme-src` checkout. Set `AUTHENTIC_THEME_SOURCE` to use another path.
+
+For real extraction tests, use a disposable Linux VM with `bsdtar`, `rpmbuild`,
+Python 3, and Perl's Test::More installed. Run as root:
+
+```sh
+FILEMIN_RPM_VM_TEST=1 timeout 180 prove -v filemin/t/rpm-extract.t
+```
+
+These tests build RPM fixtures and check path traversal, symlinks, hard links,
+ownership, permissions, failed extraction, and extraction without root access.
+All fixture files are created in a temporary directory and removed afterward.
+
 ## Coverage reports
 
 ```sh

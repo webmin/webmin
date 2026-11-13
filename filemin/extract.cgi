@@ -40,23 +40,21 @@ elsif ($archive_type =~ /\/x-rar|\/vnd\.rar/) {
 		quotemeta($full).
 		" ".quotemeta($cwd);
 	}
-elsif ($archive_type =~ /(\/x-rpm|\/x-deb)/) {
+elsif ($archive_type =~ /\/x-(source-)?rpm/) {
+	# bsdtar reads RPMs directly and rejects paths through directory symlinks
+	my ($dir) = fileparse($full, qr/\.[^.]*/);
+	my $target = &validate_filename_path($dir);
+	$cmd = &rpm_extract_command($full, $target);
+	$cmd || &error(&text('extract_missing_bsdtar', &html_escape($name)));
+	&make_dir($target, 0755);
+	}
+elsif ($archive_type =~ /\/x-deb/) {
 	my ($dir) = fileparse($full, qr/\.[^.]*/);
 	my $path = &validate_filename_path($dir);
 	&make_dir($path, 0755);
-	if ($archive_type =~ /\/x-rpm/) {
-		# Keep absolute member names inside the target, and skip
-		# extraction if the target directory can't be entered
-		$cmd = "(rpm2cpio ".
-			quotemeta($full).
-			" | (cd ".quotemeta($path).
-			" && cpio -idmv --no-absolute-filenames))";
-		}
-	else {
-		$cmd = "dpkg -x ".
-			quotemeta($full).
-			" ".quotemeta($path);
-		}
+	$cmd = "dpkg -x ".
+		quotemeta($full).
+		" ".quotemeta($path);
 	}
 else {
 	&error($text{'extract_etype'});
