@@ -189,12 +189,13 @@ return $desc;
 # Given a filename, returns all rotated versions, ordered by oldest first
 sub all_log_files
 {
-$_[0] =~ /^(.*)\/([^\/]+)$/;
-local $dir = $1;
-local $base = $2;
-local ($f, @rv);
+my ($file) = @_;
+$file =~ /^(.*)\/([^\/]+)$/ || return ();
+my $dir = $1;
+my $base = $2;
+my @rv;
 opendir(DIR, &translate_filename($dir));
-foreach $f (readdir(DIR)) {
+foreach my $f (readdir(DIR)) {
 	local $trans = &translate_filename("$dir/$f");
 	if ($f =~ /^\Q$base\E/ && -f $trans && $f !~ /\.offset$/) {
 		push(@rv, "$dir/$f");
@@ -209,20 +210,20 @@ return sort { $mtime{$a}->[9] <=> $mtime{$b}->[9] } @rv;
 # Returns a list of logs supplied by other modules
 sub get_other_module_logs
 {
-local ($mod) = @_;
-local @rv;
-local %done;
+my ($mod) = @_;
+my @rv;
+my %done;
 foreach my $minfo (&get_all_module_infos()) {
 	next if ($mod && $minfo->{'dir'} ne $mod);
 	next if (!$minfo->{'syslog'});
 	next if ($minfo->{'dir'} =~ /^(init|proc)$/);
 	next if (!&foreign_installed($minfo->{'dir'}));
-	local $mdir = &module_root_directory($minfo->{'dir'});
+	my $mdir = &module_root_directory($minfo->{'dir'});
 	next if (!-r "$mdir/syslog_logs.pl");
 	&foreign_require($minfo->{'dir'}, "syslog_logs.pl");
-	local $j = 0;
+	my $j = 0;
 	foreach my $l (&foreign_call($minfo->{'dir'}, "syslog_getlogs")) {
-		local $fc = $l->{'file'} || $l->{'cmd'};
+		my $fc = $l->{'file'} || $l->{'cmd'};
 		next if ($done{$fc}++);
 		$l->{'minfo'} = $minfo;
 		$l->{'mod'} = $minfo->{'dir'};
@@ -231,7 +232,7 @@ foreach my $minfo (&get_all_module_infos()) {
 		}
 	}
 @rv = sort { $a->{'minfo'}->{'desc'} cmp $b->{'minfo'}->{'desc'} } @rv;
-local $i = 0;
+my $i = 0;
 foreach my $l (@rv) {
 	$l->{'index'} = $i++;
 	}
@@ -243,7 +244,7 @@ return @rv;
 # based on allowed directory is done though!
 sub extra_log_files
 {
-local @rv;
+my @rv;
 foreach my $fd (split(/\t+/, $config{'extras'}), split(/\t+/, $access{'extras'})) {
 	if ($fd =~ /^"(\S+)"\s+"(\S.*)"$/) {
 		push(@rv, { 'file' => $1, 'desc' => $2 });
@@ -279,8 +280,8 @@ sub config_post_save
 # plain text, or undef if impossible
 sub catter_command
 {
-local ($l) = @_;
-local $q = quotemeta($l);
+my ($l) = @_;
+my $q = quotemeta($l);
 if ($l =~ /\.gz$/i) {
 	return &has_command("gunzip") ? "gunzip -c $q" : undef;
 	}

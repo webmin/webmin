@@ -13,7 +13,7 @@ my @lnks;
 if ($access{'syslog'}) {
 	my @systemctl_cmds = &get_systemctl_cmds();
 	foreach $o (@systemctl_cmds) {
-		local @cols;
+		my @cols;
 		push(@cols, &text('index_cmd', "<tt>".
 			&cleanup_destination($o->{'cmd'})."</tt>"));
 		my $icon = $o->{'id'} =~ /journal-(a|x)/ ? "&#x25E6;&nbsp; " : "";
@@ -33,8 +33,8 @@ if ($access{'syslog'}) {
 		foreach $c (@$conf) {
 			next if ($c->{'tag'});
 			next if (!&can_edit_log($c));
-			local @cols;
-			local $name;
+			my @cols;
+			my $name;
 			if ($c->{'file'}) {
 				$name = &text('index_file',
 					"<tt>".&html_escape($c->{'file'})."</tt>");
@@ -89,7 +89,7 @@ if ($config{'others'} && $access{'others'}) {
 	@others = &get_other_module_logs();
 	if (@others) {
 		foreach $o (@others) {
-			local @cols;
+			my @cols;
 			if ($o->{'file'}) {
 				push(@cols, &text('index_file',
 				    "<tt>".&html_escape($o->{'file'})."</tt>"));
@@ -111,7 +111,7 @@ if ($config{'others'} && $access{'others'}) {
 
 # Display extra log files
 foreach $e (&extra_log_files()) {
-	local @cols;
+	my @cols;
 	if ($e->{'file'}) {
 		push(@cols, &text('index_file',
 			"<tt>".&html_escape($e->{'file'})."</tt>"));

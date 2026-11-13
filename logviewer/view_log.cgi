@@ -165,12 +165,12 @@ my $view_title = $in{'idx'} =~ /^journal/ ?
 if (!$follow) {
 	$| = 1;
 	print "<pre>";
-	local $tailcmd = $config{'tail_cmd'} || "tail -n LINES";
+	my $tailcmd = $config{'tail_cmd'} || "tail -n LINES";
 	$tailcmd =~ s/LINES/$lines/g;
 	my ($safe_proc_out, $safe_proc_out_got);
 	if ($filter ne "") {
 		# Are we supposed to filter anything? Then use grep.
-		local @cats;
+		my @cats;
 		if ($cmd) {
 			# Getting output from a command
 			push(@cats, $cmd);
@@ -218,7 +218,7 @@ if (!$follow) {
 			}
 		elsif ($config{'compressed'}) {
 			# Cat all compressed files
-			local @cats;
+			my @cats;
 			$total = 0;
 			foreach $l (reverse(&all_log_files($file))) {
 				next if (!-s $l);
