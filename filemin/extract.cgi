@@ -45,10 +45,12 @@ elsif ($archive_type =~ /(\/x-rpm|\/x-deb)/) {
 	my $path = &validate_filename_path($dir);
 	&make_dir($path, 0755);
 	if ($archive_type =~ /\/x-rpm/) {
+		# Keep absolute member names inside the target, and skip
+		# extraction if the target directory can't be entered
 		$cmd = "(rpm2cpio ".
 			quotemeta($full).
 			" | (cd ".quotemeta($path).
-			"; cpio -idmv))";
+			" && cpio -idmv --no-absolute-filenames))";
 		}
 	else {
 		$cmd = "dpkg -x ".

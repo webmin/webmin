@@ -1542,12 +1542,15 @@ foreach my $fref (@{$files_to_extract}) {
 				   '<tt>cpio</tt>'));
 			}
 		else {
+			# Keep absolute member names inside the target, and skip
+			# extraction if the target directory can't be entered
 			$status = system(
 				"($rpm2cpio_cmd " .
 				quotemeta($archive) .
 				" | (cd " .
 				quotemeta($extract_to) .
-				"; $cpio_cmd -idmv))");
+				" && $cpio_cmd -idmv " .
+				"--no-absolute-filenames))");
 			}
 		}
 	elsif ($archive_type =~
