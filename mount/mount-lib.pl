@@ -323,8 +323,8 @@ foreach my $m (@mounted) {
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" || $m->[2] eq "f2fs" ||
 	    $m->[2] eq "zfs" || $m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" || $m->[2] eq "btrfs" ||
-	    $m->[2] eq "apfs" || $m->[2] eq "fuseblk" || $tmp_is_tmpfs ||
-	    $m->[1] =~ /^\/dev\// ||
+	    $m->[2] eq "apfs" || $m->[2] eq "fuseblk" || $m->[2] eq "ntfs" ||
+	    $tmp_is_tmpfs || $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
 		my $zp;
 		if ($m->[1] =~ /^([^\/]+)(\/(\S+))?/ &&
