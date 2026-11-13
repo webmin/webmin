@@ -64,6 +64,18 @@ safe fallback directories and additional allowed directories while browsing as
 root and nobody. Installed configuration is unchanged, and temporary files are
 removed afterward. Set `WEBMIN_CHOOSER_SOURCE` to test another `chooser.cgi`.
 
+## Kea lease cleanup tests
+
+Run `prove kea-dhcp/t/leases.t` for isolated IPv4 and IPv6 lease replay tests. They cover cleanup generations, interrupted cleanup, renewals, deletions and first-seen display order.
+
+To also run the installed `kea-lfc` program, use a disposable Linux VM as root:
+
+```sh
+KEA_LFC_VM_TEST=1 KEA_LFC_LEASE_DIR=/var/lib/kea timeout 90 prove kea-dhcp/t/leases.t
+```
+
+The lease directory must exist. This location and the fixture filenames comply with Debian's AppArmor profile. The tests create unique files and remove them afterward. Set `KEA_LEASE_SOURCE` to another `kea-dhcp-lib.pl` to compare readers.
+
 ## Coverage reports
 
 ```sh

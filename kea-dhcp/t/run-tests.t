@@ -200,18 +200,25 @@ write_plain_file($ctrl_conf, <<"EOF");
 }
 EOF
 
-# Kea memfile lease databases are CSV files. The fixtures include one active
-# and one expired lease per protocol so runtime pages can prove both parsing
-# and filtering behavior.
-write_plain_file($dhcp4_lease_file, <<'EOF');
+# Keep active leases in the last cleanup snapshot and newer expiry updates in
+# the main file. Runtime lists and counters must merge both generations.
+write_plain_file($dhcp4_lease_file.'.2', <<'EOF');
 address,hwaddr,client_id,valid_lifetime,expire,subnet_id,fqdn_fwd,fqdn_rev,hostname,state,user_context
 192.0.2.50,00:11:22:33:44:55,01:00:11:22:33:44:55,3600,4102444800,1,0,0,alpha,0,
+192.0.2.51,00:11:22:33:44:66,01:00:11:22:33:44:66,3600,4102444800,1,0,0,previous,0,
+EOF
+write_plain_file($dhcp4_lease_file, <<'EOF');
+address,hwaddr,client_id,valid_lifetime,expire,subnet_id,fqdn_fwd,fqdn_rev,hostname,state,user_context
 192.0.2.51,00:11:22:33:44:66,01:00:11:22:33:44:66,3600,1,1,0,0,expired,0,
 EOF
 
-write_plain_file($dhcp6_lease_file, <<'EOF');
+write_plain_file($dhcp6_lease_file.'.2', <<'EOF');
 address,duid,valid_lifetime,expire,subnet_id,pref_lifetime,lease_type,iaid,prefix_len,fqdn_fwd,fqdn_rev,hostname,hwaddr,state,user_context,pool_id
 2001:db8:1::50,00:01:02:03,4000,4102444800,1,3000,0,1,128,0,0,bravo,00:11:22:33:44:77,0,,0
+2001:db8:1::51,00:01:02:04,4000,4102444800,1,3000,0,2,128,0,0,previous6,00:11:22:33:44:88,0,,0
+EOF
+write_plain_file($dhcp6_lease_file, <<'EOF');
+address,duid,valid_lifetime,expire,subnet_id,pref_lifetime,lease_type,iaid,prefix_len,fqdn_fwd,fqdn_rev,hostname,hwaddr,state,user_context,pool_id
 2001:db8:1::51,00:01:02:04,4000,1,1,3000,0,2,128,0,0,expired6,00:11:22:33:44:88,0,,0
 EOF
 
