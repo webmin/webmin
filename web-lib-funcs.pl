@@ -5357,8 +5357,10 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 
 		# Replace ACLs for user
 		if ($foundindb) {
+			# Keep the API restriction until other permissions are saved.
 			my $cmd = $dbh->prepare("delete from webmin_user_acl ".
-						"where id = ? and module = ?");
+				"where id = ? and module = ?".
+				($m eq '' ? " and attr <> 'api_only'" : ""));
 			if (!$cmd || !$cmd->execute($id, $m)) {
 				&disconnect_userdb($userdb, $dbh);
 				&error(&text('euserdbacl', $dbh->errstr));
@@ -5371,6 +5373,8 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 				$cmd || &error(&text('euserdbacl2',
 						     $dbh->errstr));
 				foreach my $a (keys %{$_[0]}) {
+					# Save the global endpoint after this loop.
+					next if ($m eq '' && $a eq 'api_only');
 					if (!$cmd->execute($id,$m,$a,
 							   $_[0]->{$a})) {
 						&disconnect_userdb(
@@ -5379,6 +5383,15 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 							     $dbh->errstr));
 						}
 					$cmd->finish();
+					}
+				}
+			if ($m eq '') {
+				# Failed changes must retain the previous endpoint.
+				my $err = &save_userdb_api_only($dbh,
+					'webmin_user_acl', $id, $_[0]);
+				if ($err) {
+					&disconnect_userdb($userdb, $dbh);
+					&error(&text('euserdbacl2', $err));
 					}
 				}
 			}
@@ -5507,8 +5520,10 @@ if ($userdb) {
 
 		# Replace ACLs for group
 		if ($foundindb) {
+			# Keep the API restriction until other permissions are saved.
 			my $cmd = $dbh->prepare("delete from webmin_group_acl ".
-						"where id = ? and module = ?");
+				"where id = ? and module = ?".
+				($m eq '' ? " and attr <> 'api_only'" : ""));
 			if (!$cmd || !$cmd->execute($id, $m)) {
 				&disconnect_userdb($userdb, $dbh);
 				&error(&text('egroupdbacl', $dbh->errstr));
@@ -5524,6 +5539,8 @@ if ($userdb) {
 						     $dbh->errstr));
 					}
 				foreach my $a (keys %{$_[0]}) {
+					# Save the global endpoint after this loop.
+					next if ($m eq '' && $a eq 'api_only');
 					if (!$cmd->execute($id,$m,$a,
 							   $_[0]->{$a})) {
 						&disconnect_userdb(
@@ -5532,6 +5549,15 @@ if ($userdb) {
 							     $dbh->errstr));
 						}
 					$cmd->finish();
+					}
+				}
+			if ($m eq '') {
+				# Failed changes must retain the previous endpoint.
+				my $err = &save_userdb_api_only($dbh,
+					'webmin_group_acl', $id, $_[0]);
+				if ($err) {
+					&disconnect_userdb($userdb, $dbh);
+					&error(&text('egroupdbacl2', $err));
 					}
 				}
 			}
@@ -5605,6 +5631,46 @@ if (!$foundindb) {
 		&unlink_file("$dir/$g.gacl");
 		}
 	}
+}
+
+# save_userdb_api_only(&database, table, id, &acl)
+# Save the global API restriction last, without deleting it before an update.
+# table is webmin_user_acl or webmin_group_acl. As with the ACL writers, undef
+# or an omitted key removes the setting. Return an error, or undef on success.
+sub save_userdb_api_only
+{
+my ($dbh, $table, $id, $acl) = @_;
+$table =~ /\Awebmin_(?:user|group)_acl\z/ || return 'Invalid ACL table';
+my $where = "where id = ? and module = '' and attr = 'api_only'";
+my $select = $dbh->prepare("select value from $table $where");
+$select && $select->execute($id) || return $dbh->errstr;
+my @old = $select->fetchrow();
+my $err = $select->errstr if ($select->err);
+$select->finish();
+return $err if ($err);
+my ($sql, @args);
+if (!$acl || !exists($acl->{'api_only'})) {
+	# Preserve replacement and reset behavior after other writes succeed.
+	return undef if (!@old);
+	$sql = "delete from $table $where";
+	@args = ($id);
+	}
+elsif (@old) {
+	# One UPDATE keeps the old endpoint in place if the write fails.
+	return undef if ($old[0] eq $acl->{'api_only'});
+	$sql = "update $table set value = ? $where";
+	@args = ($acl->{'api_only'}, $id);
+	}
+else {
+	# A new restriction has no existing row to replace.
+	$sql = "insert into $table (value,id,module,attr) ".
+		"values (?,?,'','api_only')";
+	@args = ($acl->{'api_only'}, $id);
+	}
+my $write = $dbh->prepare($sql);
+$write && $write->execute(@args) || return $dbh->errstr;
+$write->finish();
+return undef;
 }
 
 =head2 init_config
