@@ -22,8 +22,11 @@ if (defined($in{'virt'})) {
 		$editable = 'virtual'; $rmsg = $text{'virt_return'};
 		$dir = "dir_index.cgi";
 		}
+	&can_edit_virt($v) || &error($text{'virt_ecannot'});
 	}
 else {
+	&allowed_auth_file($in{'file'}) ||
+		&error($text{'htindex_ecannot'});
 	if (defined($in{'idx'})) {
 		# files within .htaccess file
 		$hconf = &get_htaccess_config($in{'file'});
