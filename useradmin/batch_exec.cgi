@@ -610,9 +610,7 @@ if ($_[1] && !$access{'uuid'} && $_[1]->{'uid'} != $_[0]->{'uid'}) {
 
 # make sure home dir is under the allowed root
 if (!$access{'autohome'}) {
-	$al = length($access{'home'});
-	if (length($_[0]->{'home'}) < $al ||
-	    substr($_[0]->{'home'}, 0, $al) ne $access{'home'}) {
+	if (!&is_under_directory($access{'home'}, $_[0]->{'home'})) {
 		return &text('usave_ehomepath', $_[0]->{'home'});
 		}
 	}
