@@ -1,5 +1,5 @@
 ## Changelog
-#### 2.680 (November, 2026)
+#### 2.680 (November 14, 2026)
 * Add an SQLite database browser and editor with schema inspection, table management, row editing and direct SQL execution [forum.virtualmin.com/t/137508](https://forum.virtualmin.com/t/sqlite-database-browser-and-editor/137508/)
 * Add color schemes to the Terminal module
 * Add per-user Terminal preferences for color scheme, font size, screen reader mode and terminal dimensions
@@ -31,8 +31,10 @@
 * Add optional address-family selection to HTTP downloads and socket connections, preserved across redirects [#1300](https://github.com/virtualmin/virtualmin-gpl/issues/1300)
 * Update the Authentic theme to the latest version with various improvements:
   - Add support for Terminal module color preferences
-  - Add support for the new Cloudmin navigation, graphical console and live virtual machine controls
+  - Add support for the new Cloudmin 10 beta navigation, graphical console and live virtual machine controls
   - Fix spacing and borders in widgets, tables and tab panes
+  - Fix zip download dropping symlinks and failing on dangling ones in File Manager module [webmin#1918](https://github.com/webmin/webmin/issues/1918)
+  - Fix archive downloads to report the real archiving error in File Manager module
 
 #### 2.670 (September 20, 2026)
 * Add new Hardware Information module for inspecting system, firmware, security, PCI, USB, storage, network, processor, sensor, driver, and kernel module details
