@@ -9179,9 +9179,10 @@ return $reason ? "$msg : @{[lcfirst $reason]}" : $msg;
 
 =head2 remote_rpc_call(server, &structure)
 
-Calls rpc.cgi on some server and passes it a perl structure (hash,array,etc)
-and then reads back a reply structure. This is mainly for internal use only,
-and is called by the other remote_* functions.
+Sends an RPC request structure and returns the operation's result. The server
+can be a server record, a registered hostname, or undef for local execution.
+Remote calls use the configured RPC transport; pinned servers require HTTPS.
+Used internally by the other remote_* functions.
 
 =cut
 sub remote_rpc_call
@@ -9223,6 +9224,15 @@ if ($serv->{'checkssl'}) {
 		$reqs->{'capath'} = $sconfig{'capath'};
 		}
 	}
+# Enforce saved pins even without CA checks. Cloudmin guests must have a pin.
+my $fingerprint;
+if (defined($serv->{'sslfingerprint'}) || $serv->{'cloudmin_uuid'}) {
+	# Add the pin without replacing any requested CA or hostname checks.
+	&foreign_require("servers");
+	$fingerprint = &servers::server_ssl_fingerprints($serv);
+	$reqs ||= { 'host' => $serv->{'host'}, 'nocheckhost' => 1 };
+	$reqs->{'fingerprint'} = $fingerprint;
+	}
 
 # Work out the username and password
 my ($user, $pass);
@@ -9237,8 +9247,10 @@ else {
 	$pass = $serv->{'pass'};
 	}
 
-if ($serv->{'fast'} || !$sn) {
-	# Make TCP connection call to fastrpc.cgi
+# Fast RPC switches to a plain TCP socket after login. Pinned servers must
+# keep using HTTPS RPC so every request stays on a verified TLS connection.
+if (($serv->{'fast'} && !$fingerprint) || !$sn) {
+	# Local calls and unpinned fast sessions can use the TCP transport.
 	if (!$fast_fh_cache{$sn} && $sn) {
 		# Need to open the connection
 		my $con = &make_http_connection(
@@ -9409,7 +9421,7 @@ if ($serv->{'fast'} || !$sn) {
 		}
 	}
 else {
-	# Call rpc.cgi on remote server
+	# Use HTTP RPC so pinned sessions verify TLS before each request.
 	my $error = 0;
 	my $tostr = &serialise_variable($str);
 	my $con = &make_http_connection($ip, $serv->{'port'},
@@ -9910,7 +9922,9 @@ The parameters are :
 
 =item bindip - IP address to bind to for outgoing HTTP connection
 
-=item certreqs - A hash ref containing options for remote cert verification
+=item certreqs - A hash ref containing remote certificate checks. fingerprint
+is a comma-separated list of lower-case SHA-256 hex values and requires SSL.
+nocheckhost skips hostname matching without disabling the fingerprint check.
 
 =item address-family - If set to 4 or 6, connects only using that IP family.
 
@@ -9919,6 +9933,9 @@ sub make_http_connection
 {
 my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs,
     $family) = @_;
+# A caller cannot bypass a required certificate check by disabling SSL.
+return "SSL is required for a pinned certificate"
+	if (!$ssl && $certreqs && $certreqs->{'fingerprint'});
 my $htxt;
 if (ref($headers) eq 'ARRAY') {
 	# Headers are name-value pairs
@@ -10046,7 +10063,9 @@ if ($ssl) {
 		};
 	Net::SSLeay::connect($rv->{'ssl_con'}) ||
 		return "SSL connect() failed";
-	if ($certreqs && !$certreqs->{'nocheckhost'}) {
+	if ($certreqs && (!$certreqs->{'nocheckhost'} ||
+			  $certreqs->{'fingerprint'})) {
+		# Check the peer before HTTP, even when name matching is off.
 		my $err = &validate_ssl_connection(
 			$rv->{'ssl_con'},
 			$certreqs->{'checkhost'} ||
@@ -10102,8 +10121,10 @@ return $rv;
 
 =head2 validate_ssl_connection(&ssl-handle, hostname, &requirements)
 
-Validates the SSL certificate presented by a remote server, and returns an
-error message if any requirements were not met.
+Validates the peer certificate on an SSL handle. Returns an error message on
+failure or undef on success. requirements can include fingerprint, a list of
+comma-separated lower-case SHA-256 hex values. nocheckhost skips matching the
+hostname but keeps the pin check and any other requested checks.
 
 =cut
 sub validate_ssl_connection
@@ -10112,8 +10133,18 @@ my ($ssl, $host, $reqs) = @_;
 $host = lc($host);
 my $x509 = Net::SSLeay::get_peer_certificate($ssl);
 $x509 || return "Could not fetch peer certificate";
-if ($reqs->{'host'} || $reqs->{'checkhost'}) {
-	# Check for sensible hostname
+if ($reqs->{'fingerprint'}) {
+	# Compare the certificate's SHA-256 digest with the trusted pins.
+	# A missing digest also fails; it must never disable verification.
+	my $got = lc(eval { Net::SSLeay::X509_get_fingerprint($x509,
+							      "sha256") });
+	$got =~ s/://g;
+	$got && &indexof($got, split(/,/, $reqs->{'fingerprint'})) >= 0 ||
+		return "Certificate fingerprint does not match the one saved ".
+		       "for this server";
+	}
+if (($reqs->{'host'} || $reqs->{'checkhost'}) && !$reqs->{'nocheckhost'}) {
+	# Apply the requested hostname check in addition to any pin check.
 	my @subjects;
 	my $subject = Net::SSLeay::X509_NAME_oneline(
 		Net::SSLeay::X509_get_subject_name($x509));
