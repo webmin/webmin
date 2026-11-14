@@ -42,6 +42,9 @@ else {
 		$in{'wuser'} =~ /\S/ || &error($text{'save_euser'});
 		$in{'wpass'} =~ /\S/ || &error($text{'save_epass'});
 		}
+	# Pinned servers require HTTPS RPC throughout. Disable fast RPC and its
+	# login probe, which would send credentials without checking the pin.
+	$in{'fast'} = 0 if (&server_ssl_fingerprints($serv));
 	if ($in{'fast'} == 2 && $in{'mode'} == 1) {
 		# Does the server have fastrpc.cgi ?
 		my $con = &make_http_connection($in{'host'}, $in{'port'},
