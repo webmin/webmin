@@ -11,15 +11,17 @@ our (%config, %packages, %text);
 our ($yum_command, $supports_dnf_versionlock, $dnf_version,
      $update_system_error);
 
-sub has_command
-{
-return $_[0] eq 'dnf' ? '/usr/bin/dnf' : undef;
-}
-
 my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..'));
 chdir($root) or die "chdir($root): $!";
 
+require './web-lib-funcs.pl';
+{
+no warnings qw(once redefine);
+local *has_command = sub {
+	return $_[0] eq 'dnf' ? '/usr/bin/dnf' : undef;
+	};
 do './software/yum-lib.pl' or die $@ || $!;
+}
 
 {
 no warnings qw(once redefine);
@@ -392,6 +394,7 @@ is($ops[2]->{'arch'}, 'noarch', 'handles wrapped package names');
 no warnings qw(once redefine);
 my @executed;
 my $dnf_major = 4;
+my $wrapped_output = 0;
 # get_dnf_version() - Returns the selected test version.
 local *get_dnf_version = sub { return $dnf_major; };
 # append_architectures(name, [installed]) - Marks only bash as installed.
@@ -419,6 +422,13 @@ local *open_execute_command = sub {
 	my ($fh, $command) = @_;
 	push(@executed, $command);
 	my $output = "Complete!\n";
+	if ($wrapped_output) {
+		# Model translated DNF output and a summary spanning two lines.
+		my $lang = $ENV{'LC_ALL'} || $ENV{'LC_MESSAGES'} ||
+			   $ENV{'LANG'} || 'C';
+		$output = $lang eq 'C' ? "Installed:\n" : "Installiert:\n";
+		$output .= "  bash.x86_64\n  perl-DBD-SQLite.x86_64\n\n";
+		}
 	no strict 'refs';
 	open(ref($fh) ? $fh : \*{$fh}, '<', \$output)
 		or die "open simulated DNF install: $!";
@@ -447,6 +457,23 @@ like($executed[-1],
 update_system_install(' ', { }, 1);
 like($executed[-1], qr{^\(/usr/bin/dnf\s+-y install\s+\) </dev/null$},
 	'does not turn an empty package list into a full system update');
+
+# Parsed results must work under a translated locale without changing it.
+$wrapped_output = 1;
+local %ENV = ( LANG => 'de_DE.UTF-8', LANGUAGE => 'de',
+	LC_ALL => 'de_DE.UTF-8', LC_MESSAGES => 'de_DE.UTF-8',
+	HTTP_ACCEPT => 'text/html' );
+my %original = %ENV;
+clean_environment();
+my %outer = %ENV;
+is_deeply([ update_system_install('bash perl-DBD-SQLite', { }, 1) ],
+	[ 'bash', 'perl-DBD-SQLite' ],
+	'returns packages from wrapped summaries under a German locale');
+is_deeply({ %ENV }, \%outer,
+	'restores the caller locale after the transaction');
+reset_environment();
+is_deeply({ %ENV }, \%original,
+	'preserves the outer caller environment cleanup');
 }
 
 done_testing();
