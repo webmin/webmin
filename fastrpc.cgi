@@ -1,8 +1,7 @@
 #!/usr/local/bin/perl
-# Handles remote_* function calls by a faster method. When first called
-# as a CGI, forks and starts listening on a port which is returned to the
-# client. From then on, direct TCP connections can be made to this port
-# to send requests and get replies.
+# Start a worker for remote_* calls and return its TCP port to the client.
+# File transfers use separate sockets. Clients requesting TLS use it on both
+# channels, with the same certificate as HTTPS.
 
 BEGIN { push(@INC, "."); };
 use WebminCore;
@@ -24,12 +23,37 @@ if (!&webmin_user_can_rpc()) {
 	exit;
 	}
 
-# Will IPv6 work?
+# Load the settings used by the RPC listeners.
 &get_miniserv_config(\%miniserv);
+# Remove the local marker so programs started by RPC calls do not inherit it.
+my $local_rpc = delete($ENV{'FASTRPC_RUN_LOCAL'});
 $use_ipv6 = 0;
-if ($miniserv{'ipv6'}) {
+# The built-in local client connects only over IPv4 loopback.
+if ($miniserv{'ipv6'} && !$local_rpc) {
 	eval "use Socket6";
 	$use_ipv6 = 1 if (!$@);
+	}
+
+# TLS is requested explicitly. Old clients keep their existing TCP protocol.
+my $tls = $ENV{'QUERY_STRING'} eq 'tls=1';
+my ($tls_ctx, $tls_con);
+if ($tls) {
+	# Without miniserv's key, keep requests on the existing HTTPS channel.
+	if (!$ENV{'MINISERV_KEYFILE'}) {
+		print "2 HTTPS\n";
+		exit;
+		}
+	# Use the certificate selected for this HTTPS request, including SNI.
+	require './rpc-lib.pl';
+	eval {
+		$tls_ctx = WebminRPC::context(\%miniserv,
+			$ENV{'MINISERV_KEYFILE'}, $ENV{'MINISERV_CERTFILE'});
+		};
+	if ($@) {
+		# TLS setup errors must not enable a plaintext listener.
+		print "0 $@";
+		exit;
+		}
 	}
 
 # Find a free port
@@ -40,16 +64,29 @@ if ($aerr) {
 	exit;
 	}
 if (open(RANDOM, "/dev/urandom")) {
+	# Use a random token to authenticate control and file requests.
 	my $tmpsid;
-	read(RANDOM, $tmpsid, 16);
+	my $read = read(RANDOM, $tmpsid, 16);
+	if ($tls && (!defined($read) || $read != 16)) {
+		# Require all 16 random bytes for a TLS session token.
+		print "0 Cannot generate a secure RPC session ID\n";
+		exit;
+		}
 	$sid = lc(unpack('h*', $tmpsid));
 	close RANDOM;
 	}
 else {
+	# Keep the legacy fallback only for clients using the old protocol.
+	if ($tls) {
+		# TLS sessions require an unpredictable token.
+		print "0 Cannot generate a secure RPC session ID\n";
+		exit;
+		}
 	$sid = time()*$$;
 	}
+# Advertise TLS only after the listener and its token are ready.
 $version = &get_webmin_version();
-print "1 $port $sid $version\n";
+print "1 $port $sid $version".($tls ? " TLS1" : "")."\n";
 
 # Timeout
 my $rpc_idle_factor = $gconfig{'rpc_idle_factor'} || $DEFAULT_RPC_IDLE_FACTOR;
@@ -98,6 +135,12 @@ my $oldsel = select(SOCK);
 $| = 1;
 select($oldsel);
 
+if ($tls) {
+	# Complete the handshake before reading a session token or request.
+	$tls_con = WebminRPC::start(\*SOCK, $tls_ctx, 1,
+		$config_rpc_timeout);
+	}
+
 my $rcount = 0;
 my %xfer_kids;
 while(1) {
@@ -113,7 +156,9 @@ while(1) {
 	my $timeout = $rcount
 			? $config_rpc_timeout * $rpc_idle_factor
 			: $config_rpc_timeout;
-	my $sel = select($rmask, undef, undef, $timeout);
+	# Check buffered TLS data before waiting for another socket event.
+	my $sel = $tls && Net::SSLeay::pending($tls_con->{'ssl'})
+		? 1 : select($rmask, undef, undef, $timeout);
 	if ($sel <= 0) {
 		# Don't kill the control session while a tcpwrite/tcpread is
 		# running
@@ -130,16 +175,33 @@ while(1) {
 		last;
 		}
 
-	my $line = <SOCK>;
-	last if (!$line);
-	my ($len, $auth) = split(/\s+/, $line);
-	die "Invalid session ID" if ($auth ne $sid);
-	my $rawarg;
-	while(length($rawarg) < $len) {
-		my $got;
-		my $rv = read(SOCK, $got, $len - length($rawarg));
-		exit if ($rv <= 0);
-		$rawarg .= $got;
+	my ($line, $rawarg);
+	if ($tls) {
+		# TLS reads use explicit framing and bounded waits, including headers.
+		my $ok = eval {
+			$line = WebminRPC::read_line($tls_con);
+			$line =~ /^(\d+) (\S+)\n$/ or
+				die "Invalid RPC request length\n";
+			my ($len, $auth) = ($1, $2);
+			# Check the token before reading the request body.
+			die "Invalid session ID\n" if ($auth ne $sid);
+			$rawarg = WebminRPC::read_data($tls_con, $len);
+			1;
+			};
+		last if (!$ok);
+		}
+	else {
+		# Preserve the wire protocol used by older and non-SSL clients.
+		$line = <SOCK>;
+		last if (!$line);
+		my ($len, $auth) = split(/\s+/, $line);
+		die "Invalid session ID" if ($auth ne $sid);
+		while(length($rawarg) < $len) {
+			my $got;
+			my $rv = read(SOCK, $got, $len - length($rawarg));
+			exit if ($rv <= 0);
+			$rawarg .= $got;
+			}
 		}
 	print STDERR "fastrpc[$$]: raw $rawarg\n" if ($gconfig{'rpcdebug'});
 
@@ -178,6 +240,11 @@ while(1) {
 		print FILE $arg->{'data'};
 		close(FILE);
 		$rv = { 'status' => 1, 'rv' => $file };
+		}
+	elsif ($tls && ($arg->{'action'} eq 'tcpwrite' ||
+			$arg->{'action'} eq 'tcpread')) {
+		# Every secondary socket uses the control session's TLS identity.
+		$rv = &tls_transfer($arg);
 		}
 	elsif ($arg->{'action'} eq 'tcpwrite') {
 		# Transfer data to a my temp file over TCP connection
@@ -402,44 +469,151 @@ while(1) {
 		}
 	$rawrv = &serialise_variable($rv, $dumper);
 
-	# Send back to the client
-	print SOCK length($rawrv),"\n";
-	print SOCK $rawrv;
+	# Send the response using the transport negotiated at startup.
+	if ($tls) {
+		# Length prefixes separate replies on the TLS stream.
+		WebminRPC::write_data($tls_con, length($rawrv)."\n".$rawrv);
+		}
+	else {
+		# Retain the plaintext framing expected by older clients.
+		print SOCK length($rawrv),"\n";
+		print SOCK $rawrv;
+		}
 	last if ($arg->{'action'} eq 'quit');
 	$rcount++;
 	}
 
+# tls_transfer(request)
+# Start a file transfer child for a tcpwrite or tcpread request hash.
+# Return an RPC result containing the filename, port and session token.
+sub tls_transfer
+{
+my ($arg) = @_;
+my $writing = $arg->{'action'} eq 'tcpwrite';
+my $file = $arg->{'file'} ? $arg->{'file'} :
+	   $arg->{'name'} ? &tempname($arg->{'name'}) : &tempname();
+my $source;
+if (!$writing) {
+	# Report missing or unreadable sources before the client opens its output.
+	return { status => 0, rv => "$file is a directory" } if (-d $file);
+	open($source, '<', $file) or
+		return { status => 0, rv => "Failed to open $file : $!" };
+	binmode($source);
+	}
+# Give this transfer its own listener so control requests can continue.
+my $tport = $port + 1;
+my ($listener, $listener6);
+require Symbol;
+$listener = Symbol::gensym();
+$listener6 = Symbol::gensym() if ($use_ipv6);
+my $err = &allocate_socket($listener, $listener6, \$tport);
+return { status => 0, rv => $err } if ($err);
+my $pid = fork();
+if (!defined($pid)) {
+	# No child owns these listeners if the fork fails.
+	close($listener);
+	close($listener6) if ($listener6);
+	return { status => 0, rv => "fork() failed : $!" };
+	}
+if (!$pid) {
+	# Do not send TLS shutdown on the parent's inherited control connection.
+	WebminRPC::close($tls_con);
+	close(MAIN);
+	close(MAIN6) if ($use_ipv6);
+	my $con;
+	my $ok = eval {
+		# Wait for a file connection on either enabled address family.
+		my $mask = '';
+		vec($mask, fileno($listener), 1) = 1;
+		vec($mask, fileno($listener6), 1) = 1 if ($listener6);
+		select($mask, undef, undef, $config_rpc_timeout) > 0 or
+			die "RPC transfer accept timed out\n";
+		my $ready = vec($mask, fileno($listener), 1)
+			? $listener : $listener6;
+		accept(my $socket, $ready) or die "RPC accept failed : $!\n";
+		# Require TLS and the token before transferring file contents.
+		$con = WebminRPC::start($socket, $tls_ctx, 1,
+			$config_rpc_timeout);
+		WebminRPC::read_line($con) eq "$sid\n" or
+			die "Invalid transfer session ID\n";
+		if ($writing) {
+			# Only an authenticated transfer may create or truncate a file.
+			open(my $fh, '>', $file) or
+				die "Failed to open $file : $!\n";
+			binmode($fh);
+			# Report open failures before the client starts sending file data.
+			WebminRPC::write_data($con, "OK\n");
+			WebminRPC::receive_file($con, $fh);
+			}
+		else {
+			# The source is already open and ready to send.
+			WebminRPC::send_file($con, $source);
+			}
+		# Confirm that the transfer and file close succeeded.
+		WebminRPC::write_data($con, "OK\n");
+		1;
+		};
+	if (!$ok && $con) {
+		# Send one error line when the TLS connection is still usable.
+		my $error = $@;
+		$error =~ s/[\r\n]+/ /g;
+		eval { WebminRPC::write_data($con, "ERROR $error\n"); };
+		}
+	# Close only this child's file connection.
+	WebminRPC::close($con) if ($con);
+	exit;
+	}
+# Track the child while releasing the parent's copies of its handles.
+$xfer_kids{$pid} = 1;
+close($source) if ($source);
+close($listener);
+close($listener6) if ($listener6);
+return { status => 1, rv => [ $file, $tport, $sid ] };
+}
+
 # allocate_socket(handle, ipv6-handle, &port)
+# Bind listening sockets at the next free port and update port in place.
+# Pass undef for ipv6-handle to use IPv4 only. Return an error or undef.
 sub allocate_socket
 {
 my ($fh, $fh6, $port) = @_;
 my $proto = getprotobyname('tcp');
 if (!socket($fh, PF_INET, SOCK_STREAM, $proto)) {
+	# Every listener needs IPv4, including built-in local RPC.
 	return "socket failed : $!";
 	}
 setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 if ($fh6) {
+	# A separate IPv6-only socket shares the chosen port with IPv4.
 	if (!socket($fh6, PF_INET6(), SOCK_STREAM, $proto)) {
+		# Do not advertise IPv6 when its socket cannot be created.
 		return "socket6 failed : $!";
 		}
 	setsockopt($fh6, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 	setsockopt($fh6, 41, 26, pack("l", 1));	# IPv6 only
 	}
 while(1) {
+	# Try ports after the supplied one, staying within the TCP port range.
 	$$port++;
 	if ($$port < 0 || $$port > 65535) {
+		# Report exhaustion instead of wrapping around to another port.
 		return "Failed to allocate a free port number: $$port";
 		}
-	$pack = pack_sockaddr_in($$port, INADDR_ANY);
+	# Only the built-in local path may bind exclusively to loopback.
+	$pack = pack_sockaddr_in($$port,
+		$local_rpc ? inet_aton('127.0.0.1') : INADDR_ANY);
 	next if (!bind($fh, $pack));
 	if ($fh6) {
+		# Remote IPv6 clients must reach the same advertised port.
 		$pack6 = pack_sockaddr_in6($$port, in6addr_any());
 		next if (!bind($fh6, $pack6));
 		}
 	last;
 	}
+# Both sockets must be listening before the caller advertises the port.
 listen($fh, SOMAXCONN) || return "listen failed : $!";
 if ($fh6) {
+	# Enable the second address family when requested.
 	listen($fh6, SOMAXCONN) || return "listen6 failed : $!";
 	}
 return undef;

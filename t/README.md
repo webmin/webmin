@@ -33,6 +33,31 @@ The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, pa
 
 By default, it tests `open_socket` from this checkout with the installed Webmin helpers. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` to compare versions.
 
+## RPC TLS tests on a VM
+
+Run `prove t/web-lib-funcs-rpc.t` for transport selection and failure checks.
+
+For real connections, use root on a disposable Linux VM with Webmin, Python 3, OpenSSL, Net::SSLeay, Socket6, `unshare`, `ip` and `sysctl`. Set `WEBMIN_RPC_TLS_SOURCE` to a complete copy of the changed Webmin source and `WEBMIN_RPC_TLS_LEGACY` to an older installation without RPC TLS:
+
+```sh
+WEBMIN_RPC_TLS_VM_TEST=1 \
+WEBMIN_RPC_TLS_SOURCE=/tmp/webmin-new \
+WEBMIN_RPC_TLS_LEGACY=/tmp/webmin-old \
+timeout 400 prove -v t/rpc-tls-vm.t
+```
+
+The fixture starts isolated Webmin servers and tests both upgrade orders, binary and empty files, certificate and cipher checks, remote errors, interrupted transfers and slow writes. It tests local RPC with IPv6 disabled inside a private network namespace. It also upgrades a temporary installation with the tar installer and removes its service configuration afterward.
+
+Certificate pin tests run when the source includes PR #2932. When merging that PR, keep its certificate checks and this change's TLS negotiation and automatic detection. Remove the guards that force pinned servers to use HTTPS RPC.
+
+For a server configured with SSL, the client requests `fastrpc.cgi?tls=1`. A `TLS1` reply selects TLS for both control and file connections. Both must present the certificate used for HTTPS. Older servers use HTTPS RPC, with remote errors returned to the caller and files sent in chunks of up to 1 MiB per request. If a TLS proxy presents a different certificate from Webmin, disable fast RPC to keep all requests on HTTPS.
+
+TLS file transfers use chunks of up to 65,536 bytes, a zero-length end marker and a final `OK` reply. Uploads also wait for an `OK` confirming that the destination opened successfully.
+
+After each file chunk, the client pings the control session if the keepalive interval has elapsed. This interval is half the RPC timeout, with a minimum of 30 seconds, to keep NAT from dropping the idle connection. Ping I/O uses half the RPC timeout, rounded down and limited to 1–30 seconds. If a ping fails, the control session closes and keepalives stop for that transfer. The file transfer continues. Long-running commands keep their caller-controlled timeouts.
+
+Servers configured with plain HTTP and older clients keep their existing plaintext transport. Without certificate verification or a trusted saved fingerprint, TLS protects against passive eavesdropping. It does not verify the initial HTTPS server's identity.
+
 ## File Manager RPM extraction
 
 Run `prove -v filemin/t/rpm-extract.t` for isolated command and failure checks.

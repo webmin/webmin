@@ -25,6 +25,7 @@ $vfile  = $min ? "$fullvers-minimal" : $fullvers;
 $zipdir = 'zips';
 $vers || usage();
 
+# Core files shipped in both full and minimal packages.
 @files = ("config.cgi", "config-*-linux",
 	  "config-solaris", "images", "index.cgi", "mime.types",
 	  "miniserv.pl", "miniserv-lib.pl", "os_list.txt", "perlpath.pl",
@@ -41,7 +42,7 @@ $vers || usage();
 	  "config-openbsd",
 	  "config-macos", "LICENCE",
 	  "session_login.cgi", "login-lib.pl", "acl_security.pl",
-	  "defaultacl", "rpc.cgi", "date_chooser.cgi",
+	  "defaultacl", "rpc.cgi", "rpc-lib.pl", "date_chooser.cgi",
 	  "safeacl", "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
 	  "defaulttheme", "negativeacl",
