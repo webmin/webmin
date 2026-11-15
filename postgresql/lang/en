@@ -444,6 +444,8 @@ acl_cmds=Can edit before and after backup commands?
 acl_views=Can view and manage views?
 acl_indexes=Can view and manage indexes?
 acl_seqs=Can view and manage sequences?
+acl_bpath=Backup file directory
+acl_buser=Write backup as Unix user
 
 fdrop_err=Failed to delete fields
 fdrop_enone=None selected

@@ -61,43 +61,56 @@ print &ui_table_row($text{'acl_indexes'},
 	&ui_yesno_radio("indexes", $o->{'indexes'}));
 print &ui_table_row($text{'acl_seqs'},
 	&ui_yesno_radio("seqs", $o->{'seqs'}));
+
+print &ui_table_row($text{'acl_buser'},
+	&ui_opt_textbox("buser", $o->{'buser'}, 8, $text{'acl_bnone'})." ".
+	&user_chooser_button("buser"),
+	3);
+
+print &ui_table_row($text{'acl_bpath'},
+	&ui_textbox("bpath", $o->{'bpath'}, 40)." ".
+	&file_chooser_button("bpath", 1),
+	3);
 }
 
 # acl_security_save(&options)
 # Parse the form for security options for the postgresql module
 sub acl_security_save
 {
+my ($o) = @_;
 if ($in{'dblist'} eq '1') {
 	if ($in{'dbs_def'}) {
-		$_[0]->{'dbs'} = '*';
+		$o->{'dbs'} = '*';
 		}
 	else {
-		$_[0]->{'dbs'} = join(" ", split(/\0/, $in{'dbs'}));
+		$o->{'dbs'} = join(" ", split(/\0/, $in{'dbs'}));
 		}
 	} 
 else {
-	$_[0]->{'dbs'} = $in{'dblist'};
-	$_[0]->{'dbs'} =~ s/^0 //;
+	$o->{'dbs'} = $in{'dblist'};
+	$o->{'dbs'} =~ s/^0 //;
 	}
-$_[0]->{'create'} = $in{'create'};
-$_[0]->{'max'} = $in{'max'};
-$_[0]->{'delete'} = $in{'delete'};
-$_[0]->{'stop'} = $in{'stop'};
-$_[0]->{'users'} = $in{'users'};
-$_[0]->{'backup'} = $in{'backup'};
-$_[0]->{'restore'} = $in{'restore'};
-$_[0]->{'cmds'} = $in{'cmds'};
-$_[0]->{'views'} = $in{'views'};
-$_[0]->{'indexes'} = $in{'indexes'};
-$_[0]->{'seqs'} = $in{'seqs'};
+$o->{'create'} = $in{'create'};
+$o->{'max'} = $in{'max'};
+$o->{'delete'} = $in{'delete'};
+$o->{'stop'} = $in{'stop'};
+$o->{'users'} = $in{'users'};
+$o->{'backup'} = $in{'backup'};
+$o->{'restore'} = $in{'restore'};
+$o->{'cmds'} = $in{'cmds'};
+$o->{'views'} = $in{'views'};
+$o->{'indexes'} = $in{'indexes'};
+$o->{'seqs'} = $in{'seqs'};
 if ($in{'user_def'}) {
-	delete($_[0]->{'user'});
-	delete($_[0]->{'pass'});
+	delete($o->{'user'});
+	delete($o->{'pass'});
 	}
 else {
-	$_[0]->{'user'} = $in{'user'};
-	$_[0]->{'pass'} = $in{'pass'};
+	$o->{'user'} = $in{'user'};
+	$o->{'pass'} = $in{'pass'};
 	}
-$_[0]->{'sameunix'} = $in{'sameunix'};
+$o->{'sameunix'} = $in{'sameunix'};
+$o->{'bpath'} = $in{'bpath'};
+$o->{'buser'} = $in{'buser_def'} ? undef : $in{'buser'};
 }
 
