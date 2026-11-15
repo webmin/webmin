@@ -10370,6 +10370,7 @@ if (!@main::clean_environment_stack) {
 $ENV{'LANG'} = '';
 $ENV{'LANGUAGE'} = '';
 $ENV{'LC_ALL'} = '';
+$ENV{'LC_MESSAGES'} = '';
 $ENV{'LOCALE'} = '';
 }
 
