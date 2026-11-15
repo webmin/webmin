@@ -63,7 +63,7 @@ print &ui_table_row($text{'acl_seqs'},
 	&ui_yesno_radio("seqs", $o->{'seqs'}));
 
 print &ui_table_row($text{'acl_buser'},
-	&ui_opt_textbox("buser", $o->{'buser'}, 8, $text{'acl_bnone'})." ".
+	&ui_textbox("buser", $o->{'buser'}, 8, $text{'acl_bnone'})." ".
 	&user_chooser_button("buser"),
 	3);
 
@@ -111,6 +111,6 @@ else {
 	}
 $o->{'sameunix'} = $in{'sameunix'};
 $o->{'bpath'} = $in{'bpath'};
-$o->{'buser'} = $in{'buser_def'} ? undef : $in{'buser'};
+$o->{'buser'} = $in{'buser'};
 }
 

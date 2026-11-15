@@ -10,3 +10,5 @@ cmds=1
 views=1
 indexes=1
 seqs=1
+buser=root
+bpath=/
