@@ -5357,30 +5357,39 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 
 		# Replace ACLs for user
 		if ($foundindb) {
-			my $trans = $dbh->{'AutoCommit'};
-			$dbh->begin_work() if ($trans);
-			my $cmd = $dbh->prepare("delete from webmin_user_acl ".
-						"where id = ? and module = ?");
-			if (!$cmd || !$cmd->execute($id, $m)) {
+			# Prepare the SQL commands
+			my $delcmd = $dbh->prepare(
+				"delete from webmin_user_acl ".
+				"where id = ? and module = ?");
+			my $inscmd = $dbh->prepare(
+				"insert into webmin_user_acl ".
+				"(id,module,attr,value) values (?,?,?,?)");
+			if (!$delcmd || !$inscmd) {
 				&disconnect_userdb($userdb, $dbh);
 				&error(&text('euserdbacl', $dbh->errstr));
 				}
-			$cmd->finish();
+
+			# Delete old permissions and add new ones inside
+			# an SQL transaction
+			my $trans = $dbh->{'AutoCommit'};
+			$dbh->begin_work() if ($trans);
+			if (!$delcmd->execute($id, $m)) {
+				$dbh->rollback();
+				&disconnect_userdb($userdb, $dbh);
+				&error(&text('euserdbacl', $dbh->errstr));
+				}
+			$delcmd->finish();
 			if ($_[0]) {
-				my $cmd = $dbh->prepare(
-				    "insert into webmin_user_acl ".
-				    "(id,module,attr,value) values (?,?,?,?)");
-				$cmd || &error(&text('euserdbacl2',
-						     $dbh->errstr));
 				foreach my $a (keys %{$_[0]}) {
-					if (!$cmd->execute($id,$m,$a,
+					if (!$inscmd->execute($id,$m,$a,
 							   $_[0]->{$a})) {
+						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('euserdbacl2',
 							     $dbh->errstr));
 						}
-					$cmd->finish();
+					$inscmd->finish();
 					}
 				}
 			$dbh->commit() if ($trans);
