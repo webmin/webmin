@@ -168,6 +168,9 @@ print &text('yum_install', "<tt>".&html_escape($uicmd)."</tt>"),"\n";
 print "<pre data-installer>";
 &additional_log('exec', undef, $fullcmd);
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
+# The parser below requires English transaction output.
+&clean_environment();
+&clean_language();
 &open_execute_command(CMD, "($fullcmd) </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
@@ -187,7 +190,7 @@ while(<CMD>) {
 				print &html_escape($pkgs);
 				$pkgs =~ s/^\s+//;
 				$pkgs =~ s/\s+$//;
-				my @linepkgs = split(/\s+/, $_);
+				my @linepkgs = split(/\s+/, $pkgs);
 				last if (!@linepkgs);
 				push(@pkgs, @linepkgs);
 				}
@@ -226,6 +229,7 @@ while(<CMD>) {
 	}
 close(CMD);
 local $status = $?;
+&reset_environment();
 
 # Restore holds at the versions now installed.
 if (@relock) {
