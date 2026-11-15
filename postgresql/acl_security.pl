@@ -52,16 +52,6 @@ print &ui_table_row($text{'acl_backup'},
 print &ui_table_row($text{'acl_restore'},
 	&ui_yesno_radio("restore", $o->{'restore'}));
 
-print &ui_table_row($text{'acl_cmds'},
-	&ui_yesno_radio("cmds", $o->{'cmds'}));
-print &ui_table_row($text{'acl_views'},
-	&ui_yesno_radio("views", $o->{'views'}));
-
-print &ui_table_row($text{'acl_indexes'},
-	&ui_yesno_radio("indexes", $o->{'indexes'}));
-print &ui_table_row($text{'acl_seqs'},
-	&ui_yesno_radio("seqs", $o->{'seqs'}));
-
 print &ui_table_row($text{'acl_buser'},
 	&ui_textbox("buser", $o->{'buser'}, 8, $text{'acl_bnone'})." ".
 	&user_chooser_button("buser"),
@@ -71,6 +61,16 @@ print &ui_table_row($text{'acl_bpath'},
 	&ui_textbox("bpath", $o->{'bpath'}, 40)." ".
 	&file_chooser_button("bpath", 1),
 	3);
+
+print &ui_table_row($text{'acl_cmds'},
+	&ui_yesno_radio("cmds", $o->{'cmds'}));
+print &ui_table_row($text{'acl_views'},
+	&ui_yesno_radio("views", $o->{'views'}));
+
+print &ui_table_row($text{'acl_indexes'},
+	&ui_yesno_radio("indexes", $o->{'indexes'}));
+print &ui_table_row($text{'acl_seqs'},
+	&ui_yesno_radio("seqs", $o->{'seqs'}));
 }
 
 # acl_security_save(&options)
