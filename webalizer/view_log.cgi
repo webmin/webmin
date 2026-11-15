@@ -32,6 +32,8 @@ $file =~ /\.\./ || $file =~ /\<|\>|\||\0/ && &error($text{'view_efile'});
 my $lconf = &get_log_config($log) ||
 	&error($text{'view_elog'}." : ".&html_escape($log));
 my $full = $lconf->{'dir'}.$file;
+&is_under_directory($lconf->{'dir'}, &resolve_links($file)) ||
+	&error($text{'view_epath'});
 my $fh;
 my $data = &eval_as_unix_user($lconf->{'user'} || 'root',
 		sub { &read_file_contents($full) });
