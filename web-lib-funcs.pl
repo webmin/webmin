@@ -5520,33 +5520,42 @@ if ($userdb) {
 
 		# Replace ACLs for group
 		if ($foundindb) {
-			my $cmd = $dbh->prepare("delete from webmin_group_acl ".
-						"where id = ? and module = ?");
-			if (!$cmd || !$cmd->execute($id, $m)) {
+			# Prepare the SQL commands
+			my $delcmd = $dbh->prepare(
+				"delete from webmin_group_acl ".
+				"where id = ? and module = ?");
+			my $inscmd = $dbh->prepare(
+				"insert into webmin_group_acl ".
+				"(id,module,attr,value) values (?,?,?,?)");
+			if (!$delcmd || !$inscmd) {
+				&disconnect_userdb($userdb, $dbh);
+				&error(&text('euserdbacl', $dbh->errstr));
+				}
+
+			# Delete old permissions and add new ones inside
+			# an SQL transaction
+			my $trans = $dbh->{'AutoCommit'};
+			$dbh->begin_work() if ($trans);
+			if (!$delcmd->execute($id, $m)) {
+				$dbh->rollback();
 				&disconnect_userdb($userdb, $dbh);
 				&error(&text('egroupdbacl', $dbh->errstr));
 				}
-			$cmd->finish();
+			$delcmd->finish();
 			if ($acl) {
-				my $cmd = $dbh->prepare(
-				    "insert into webmin_group_acl ".
-				    "(id,module,attr,value) values (?,?,?,?)");
-				if (!$cmd) {
-					&disconnect_userdb($userdb, $dbh);
-					&error(&text('egroupdbacl2',
-						     $dbh->errstr));
-					}
 				foreach my $a (keys %$acl) {
-					if (!$cmd->execute($id,$m,$a,
+					if (!$inscmd->execute($id,$m,$a,
 							   $acl->{$a})) {
+						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('egroupdbacl2',
 							     $dbh->errstr));
 						}
-					$cmd->finish();
+					$inscmd->finish();
 					}
 				}
+			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
