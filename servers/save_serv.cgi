@@ -7,7 +7,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './servers-lib.pl';
-our (%in, %access, %text);
+our (%in, %access, %text, %config);
 &ReadParse();
 $access{'edit'} || &error($text{'edit_ecannot'});
 &error_setup($text{'save_err'});
@@ -43,9 +43,17 @@ else {
 		$in{'wpass'} =~ /\S/ || &error($text{'save_epass'});
 		}
 	if ($in{'fast'} == 2 && $in{'mode'} == 1) {
+		# Use the normal RPC certificate checks before sending the login.
+		my $reqs;
+		if ($in{'checkssl'}) {
+			$reqs = { 'host' => $in{'host'}, 'self' => 1 };
+			$reqs->{'capath'} = $config{'capath'}
+				if ($config{'capath'});
+			}
 		# Does the server have fastrpc.cgi ?
 		my $con = &make_http_connection($in{'host'}, $in{'port'},
-					   $in{'ssl'}, "GET", "/fastrpc.cgi");
+					   $in{'ssl'}, "GET", "/fastrpc.cgi",
+					   undef, undef, $reqs);
 		$in{'fast'} = 0;
 		if (ref($con)) {
 			&write_http_connection($con,

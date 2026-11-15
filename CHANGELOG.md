@@ -9,6 +9,7 @@
 * Add confirmation dialogs for buttons and links carrying `data-ui-confirm`, replacing the browser's own prompt
 * Update the Framed Theme with many visual and usability improvements
 * Update File Manager to use the new UI widgets in the standard theme, dropping legacy templates
+* Fix automatic fast RPC detection to honor SSL certificate checks before sending login credentials
 * Fix RPM extraction in File Manager to use `bsdtar` for better compatibility and security
 * Fix missing and stale Kea DHCP leases after lease file cleanup [#2930](https://github.com/webmin/webmin/issues/2930)
 * Fix sorting and message lookup in large mailboxes, and speed up unread counts and bulk flag changes in Maildir folders [#2902](https://github.com/webmin/webmin/pull/2902)
