@@ -5317,10 +5317,11 @@ Updates the acl hash for some user and module. The parameters are :
 =cut
 sub save_module_acl
 {
-my $u = defined($_[1]) ? $_[1] : $base_remote_user;
-my $m = defined($_[2]) ? $_[2] : &get_module_name();
+my ($acl, $u, $m, $nogroup) = @_;
+$u //= $base_remote_user;
+$m //= &get_module_name();
 $u eq "webmin" && &error("Invalid username webmin for ACL");
-if (!$_[3] && &foreign_check("acl")) {
+if (!$nogroup && &foreign_check("acl")) {
 	# Check if this user is a member of a group, and if he gets the
 	# module from a group. If so, update its ACL as well
 	&foreign_require("acl", "acl-lib.pl");
@@ -5333,7 +5334,7 @@ if (!$_[3] && &foreign_check("acl")) {
 			}
 		}
 	if ($group) {
-		&save_group_module_acl($_[0], $group->{'name'}, $m);
+		&save_group_module_acl($acl, $group->{'name'}, $m);
 		}
 	}
 
@@ -5379,10 +5380,10 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 				&error(&text('euserdbacl', $dbh->errstr));
 				}
 			$delcmd->finish();
-			if ($_[0]) {
-				foreach my $a (keys %{$_[0]}) {
+			if ($acl) {
+				foreach my $a (keys %$acl) {
 					if (!$inscmd->execute($id,$m,$a,
-							   $_[0]->{$a})) {
+							   $acl->{$a})) {
 						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
@@ -5425,8 +5426,8 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 			my ($acl) = $rv->all_entries;
 
 			my @al;
-			foreach my $a (keys %{$_[0]}) {
-				push(@al, $a."=".$_[0]->{$a});
+			foreach my $a (keys %$acl) {
+				push(@al, $a."=".$acl->{$a});
 				}
 			if ($acl) {
 				# Update attributes
@@ -5456,7 +5457,7 @@ if (!$foundindb) {
 	if (!-d "$config_directory/$m") {
 		mkdir("$config_directory/$m", 0755);
 		}
-	if ($_[0]) {
+	if ($acl) {
 		&write_file("$config_directory/$m/$u.acl", $_[0]);
 		}
 	else {
@@ -5480,9 +5481,9 @@ Updates the acl hash for some group and module. The parameters are :
 =cut
 sub save_group_module_acl
 {
-my $g = $_[1];
-my $m = defined($_[2]) ? $_[2] : &get_module_name();
-if (!$_[3] && &foreign_check("acl")) {
+my ($acl, $g, $m, $nogroup) = @_;
+$m //= &get_module_name();
+if (!$nogroup && &foreign_check("acl")) {
 	# Check if this group is a member of a group, and if it gets the
 	# module from a group. If so, update the parent ACL as well
 	&foreign_require("acl", "acl-lib.pl");
@@ -5495,7 +5496,7 @@ if (!$_[3] && &foreign_check("acl")) {
 			}
 		}
 	if ($group) {
-		&save_group_module_acl($_[0], $group->{'name'}, $m);
+		&save_group_module_acl($acl, $group->{'name'}, $m);
 		}
 	}
 
@@ -5526,7 +5527,7 @@ if ($userdb) {
 				&error(&text('egroupdbacl', $dbh->errstr));
 				}
 			$cmd->finish();
-			if ($_[0]) {
+			if ($acl) {
 				my $cmd = $dbh->prepare(
 				    "insert into webmin_group_acl ".
 				    "(id,module,attr,value) values (?,?,?,?)");
@@ -5535,9 +5536,9 @@ if ($userdb) {
 					&error(&text('egroupdbacl2',
 						     $dbh->errstr));
 					}
-				foreach my $a (keys %{$_[0]}) {
+				foreach my $a (keys %$acl) {
 					if (!$cmd->execute($id,$m,$a,
-							   $_[0]->{$a})) {
+							   $acl->{$a})) {
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('egroupdbacl2',
@@ -5578,8 +5579,8 @@ if ($userdb) {
 			my ($acl) = $rv->all_entries;
 
 			my @al;
-			foreach my $a (keys %{$_[0]}) {
-				push(@al, $a."=".$_[0]->{$a});
+			foreach my $a (keys %$acl) {
+				push(@al, $a."=".$acl->{$a});
 				}
 			if ($acl) {
 				# Update attributes
@@ -5610,7 +5611,7 @@ if (!$foundindb) {
 	if (!-d $dir) {
 		mkdir($dir, 0755);
 		}
-	if ($_[0]) {
+	if ($acl) {
 		&write_file("$dir/$g.gacl", $_[0]);
 		}
 	else {
@@ -11176,8 +11177,9 @@ config file, which defaults to the current module.
 =cut
 sub save_user_module_config
 {
-my $c = $_[0] || { &get_module_variable('%userconfig') };
-my $m = $_[1] || &get_module_name();
+my ($c, $m) = @_;
+$c ||= { &get_module_variable('%userconfig') };
+$m ||= &get_module_name();
 my $ucd = $user_config_directory;
 if (!$ucd) {
 	my @uinfo = @remote_user_info ? @remote_user_info
