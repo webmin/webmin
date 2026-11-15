@@ -3,10 +3,8 @@
 # Backup a database to a local file
 
 require './postgresql-lib.pl' ;
-
-&ReadParse ( ) ;
-
-&error_setup ( $text{'backup_err'} ) ;
+&ReadParse();
+&error_setup($text{'backup_err'});
 
 # Validate inputs
 if ($in{'all'}) {
@@ -18,6 +16,11 @@ else {
 	&can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 	}
 $access{'backup'} || &error($text{'backup_ecannot'});
+if (!&is_under_directory($access{'bpath'}, $in{'path'})) {
+        &error($text{'backup_epath'}."<br>".
+               &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
+        }
+
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
 		-d $in{'path'} || -d &date_subs($in{'path'}) || $in{'mkdir'} ||
