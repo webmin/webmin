@@ -74,7 +74,7 @@ view_elog=Invalid log file
 view_ecannot=You are not allowed to view this report
 view_eopen=Failed to open report file
 view_title=View Report
-view_epath=Invalid report file location
+view_ecanpath=Invalid report file location
 
 global_title=Global Webalizer Options
 global_title2=Webalizer Report Options
