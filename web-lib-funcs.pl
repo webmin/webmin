@@ -5423,15 +5423,15 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 				&error(&text('euserdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 				}
-			my ($acl) = $rv->all_entries;
+			my ($oldacl) = $rv->all_entries;
 
 			my @al;
 			foreach my $a (keys %$acl) {
 				push(@al, $a."=".$acl->{$a});
 				}
-			if ($acl) {
+			if ($oldacl) {
 				# Update attributes
-				$rv = $dbh->modify($acl->dn(),
+				$rv = $dbh->modify($oldacl->dn(),
 				  replace => { "webminAclEntry", \@al });
 				}
 			else {
@@ -5458,7 +5458,7 @@ if (!$foundindb) {
 		mkdir("$config_directory/$m", 0755);
 		}
 	if ($acl) {
-		&write_file("$config_directory/$m/$u.acl", $_[0]);
+		&write_file("$config_directory/$m/$u.acl", $acl);
 		}
 	else {
 		&unlink_file("$config_directory/$m/$u.acl");
@@ -5585,15 +5585,15 @@ if ($userdb) {
 				&error(&text('egroupdbacl',
 				     $rv ? $rv->error : "Unknown error"));
 				}
-			my ($acl) = $rv->all_entries;
+			my ($oldacl) = $rv->all_entries;
 
 			my @al;
 			foreach my $a (keys %$acl) {
 				push(@al, $a."=".$acl->{$a});
 				}
-			if ($acl) {
+			if ($oldacl) {
 				# Update attributes
-				$rv = $dbh->modify($acl->dn(),
+				$rv = $dbh->modify($oldacl->dn(),
 			   		replace => { "webminAclEntry", \@al });
 				}
 			else {
@@ -5621,7 +5621,7 @@ if (!$foundindb) {
 		mkdir($dir, 0755);
 		}
 	if ($acl) {
-		&write_file("$dir/$g.gacl", $_[0]);
+		&write_file("$dir/$g.gacl", $acl);
 		}
 	else {
 		&unlink_file("$dir/$g.gacl");
