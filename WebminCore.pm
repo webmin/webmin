@@ -13,7 +13,13 @@ Full function documentation is in web-lib-funcs.pl.
 =cut
 
 package WebminCore;
-use lib ("$ENV{'LIBROOT'}/vendor_perl");
+# Use this file's directory if LIBROOT is missing or empty.
+# Load path helpers only for that fallback.
+use lib (($ENV{'LIBROOT'} || do {
+	require Cwd;
+	require File::Basename;
+	File::Basename::dirname(Cwd::abs_path(__FILE__));
+	})."/vendor_perl");
 require Exporter;
 @ISA = qw(Exporter);
 
