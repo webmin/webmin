@@ -68,29 +68,30 @@ print &ui_table_row($text{'acl_bpath'},
 # Parse the form for security options for the mysql module
 sub acl_security_save
 {
+my ($o) = @_;
 if ($in{'dbs_def'}) {
-	$_[0]->{'dbs'} = '*';
+	$o->{'dbs'} = '*';
 	}
 else {
-	$_[0]->{'dbs'} = join(" ", split(/\0/, $in{'dbs'}));
+	$o->{'dbs'} = join(" ", split(/\0/, $in{'dbs'}));
 	}
-$_[0]->{'create'} = $in{'create'};
-$_[0]->{'indexes'} = $in{'indexes'};
-$_[0]->{'views'} = $in{'views'};
-$_[0]->{'max'} = $in{'max'};
-$_[0]->{'delete'} = $in{'delete'};
-$_[0]->{'bpath'} = $in{'bpath'};
-$_[0]->{'buser'} = $in{'buser_def'} ? undef : $in{'buser'};
-$_[0]->{'stop'} = $in{'stop'};
-$_[0]->{'perms'} = $in{'perms'};
-$_[0]->{'edonly'} = $in{'edonly'};
+$o->{'create'} = $in{'create'};
+$o->{'indexes'} = $in{'indexes'};
+$o->{'views'} = $in{'views'};
+$o->{'max'} = $in{'max'};
+$o->{'delete'} = $in{'delete'};
+$o->{'bpath'} = $in{'bpath'};
+$o->{'buser'} = $in{'buser_def'} ? undef : $in{'buser'};
+$o->{'stop'} = $in{'stop'};
+$o->{'perms'} = $in{'perms'};
+$o->{'edonly'} = $in{'edonly'};
 if ($in{'user_def'}) {
-	delete($_[0]->{'user'});
-	delete($_[0]->{'pass'});
+	delete($o->{'user'});
+	delete($o->{'pass'});
 	}
 else {
-	$_[0]->{'user'} = $in{'user'};
-	$_[0]->{'pass'} = $in{'pass'};
+	$o->{'user'} = $in{'user'};
+	$o->{'pass'} = $in{'pass'};
 	}
 }
 
