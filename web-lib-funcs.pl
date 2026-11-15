@@ -5357,7 +5357,8 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 
 		# Replace ACLs for user
 		if ($foundindb) {
-			$dbh->begin_work() if ($dbh->{'AutoCommit'});
+			my $trans = $dbh->{'AutoCommit'};
+			$dbh->begin_work() if ($trans);
 			my $cmd = $dbh->prepare("delete from webmin_user_acl ".
 						"where id = ? and module = ?");
 			if (!$cmd || !$cmd->execute($id, $m)) {
@@ -5382,7 +5383,7 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 					$cmd->finish();
 					}
 				}
-			$dbh->commit() if ($dbh->{'AutoCommit'});
+			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
