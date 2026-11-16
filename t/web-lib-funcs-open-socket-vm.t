@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use feature 'state';
 no warnings qw(once redefine);
 use Test::More;
 use File::Temp qw(tempdir);
@@ -57,13 +58,15 @@ WebminCore->import();
 init_config();
 $main::error_must_die = 1;
 
-# Substitute the changed staged functions while using installed Webmin callers.
+# Substitute the source functions while using installed Webmin callers.
 open(my $source_file, '<', $source) or die $!;
 my $code = do { local $/; <$source_file> };
 close($source_file);
 for my $function (qw(http_download complete_http_download open_socket
-			     make_http_connection init_ssl_connection
-			     connect_ssl_connection read_ssl_connection
+			     make_http_connection init_ssl_context
+			     init_ssl_connection
+			     connect_ssl_connection ssl_connection_time
+			     wait_ssl_connection read_ssl_connection
 			     write_ssl_connection read_http_connection
 			     write_http_connection validate_ssl_connection)) {
 	$code =~ /\n(sub \Q$function\E\n\{.*?\n\})\n\n=head2 /s or

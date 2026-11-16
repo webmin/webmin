@@ -35,6 +35,29 @@ The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, pa
 
 By default, it tests the HTTP, TLS and socket helpers from this checkout with the installed Webmin environment. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` that provides the same helpers.
 
+## RPC TLS tests on a VM
+
+Run `prove t/web-lib-funcs-rpc.t t/web-lib-funcs-tls.t` for transport selection, TLS framing, timeout and failure checks without network access.
+
+For real connections, use root on a disposable Linux VM with Webmin, Python 3, OpenSSL, Net::SSLeay, Socket6, `unshare`, `ip` and `sysctl`. Set `WEBMIN_RPC_TLS_SOURCE` to a complete copy of the changed source and `WEBMIN_RPC_TLS_LEGACY` to a complete source tree without RPC TLS:
+
+```sh
+WEBMIN_RPC_TLS_VM_TEST=1 \
+WEBMIN_RPC_TLS_SOURCE=/tmp/webmin-new \
+WEBMIN_RPC_TLS_LEGACY=/tmp/webmin-old \
+timeout 400 prove -v t/rpc-tls-vm.t
+```
+
+The fixture starts isolated Webmin servers and tests both upgrade orders, binary and empty files, certificate and cipher checks, remote errors, interrupted transfers and slow writes. It tests local RPC with IPv6 disabled inside a private network namespace. It also upgrades a temporary installation with the tar installer and removes its service configuration afterward.
+
+For a server configured with SSL, the client requests `fastrpc.cgi?tls=1`. A `TLS1` reply selects TLS for control and file connections. Both must present the certificate used for HTTPS. Older servers and Webmin running without TLS behind a proxy use HTTPS RPC, with files sent in chunks of up to 1 MiB per request. If a TLS proxy presents a different certificate from a TLS-enabled Webmin backend, disable fast RPC to keep requests on HTTPS.
+
+TLS file transfers use chunks of up to 65,536 bytes, a zero-length end marker and a final `OK` reply. Uploads also wait for an `OK` confirming that the destination opened successfully.
+
+During file transfers, the client pings the control session every half RPC timeout, with a minimum interval of 30 seconds. A failed ping closes the control session and stops further pings while the file transfer continues. Other commands retain their caller-controlled timeouts.
+
+Built-in local RPC and its file transfers connect over IPv4 loopback. Programs started by local RPC do not inherit this listener restriction. Plain HTTP servers and older clients keep their existing protocol. TLS follows the server's existing certificate verification settings. Without certificate verification, it protects against passive eavesdropping but does not authenticate the initial HTTPS server.
+
 ## File Manager RPM extraction
 
 Run `prove -v filemin/t/rpm-extract.t` for isolated command and failure checks.
