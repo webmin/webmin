@@ -43,17 +43,25 @@ else {
 		$in{'wpass'} =~ /\S/ || &error($text{'save_epass'});
 		}
 	if ($in{'fast'} == 2 && $in{'mode'} == 1) {
-		# Use the normal RPC certificate checks before sending the login.
+		# Verify the submitted host before sending the probe's login.
 		my $reqs;
 		if ($in{'checkssl'}) {
+			# Preserve CA and hostname checks alongside the pin.
 			$reqs = { 'host' => $in{'host'}, 'self' => 1 };
-			$reqs->{'capath'} = $config{'capath'}
-				if ($config{'capath'});
+			$reqs->{'capath'} = $config{'capath'} if ($config{'capath'});
 			}
-		# Does the server have fastrpc.cgi ?
+		my $fingerprint = &server_ssl_fingerprints($serv);
+		if ($fingerprint) {
+			# Missing required pins must also fail verification.
+			$reqs ||= { 'host' => $in{'host'}, 'nocheckhost' => 1 };
+			$reqs->{'fingerprint'} = $fingerprint;
+			}
+		# Check fast RPC availability without overriding an explicit mode.
 		my $con = &make_http_connection($in{'host'}, $in{'port'},
 					   $in{'ssl'}, "GET", "/fastrpc.cgi",
 					   undef, undef, $reqs);
+		# A failed pinned connection must not save regular RPC mode.
+		&error($con) if ($fingerprint && !ref($con));
 		$in{'fast'} = 0;
 		if (ref($con)) {
 			&write_http_connection($con,
