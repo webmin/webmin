@@ -176,14 +176,23 @@ while(1) {
 
 	my ($line, $rawarg);
 	if ($tls) {
-		# Stop the worker cleanly on a TLS, timeout or framing error.
+		# Stop the worker if reading the TLS header fails or times out.
 		my $ok = eval {
 			$line = &read_ssl_connection($tls_con);
-			$line =~ /^(\d+) (\S+)\n$/ or
-				die "Invalid RPC request length\n";
-			my ($len, $auth) = ($1, $2);
-			# Check the token before reading the request body.
-			die "Invalid session ID\n" if ($auth ne $sid);
+			1;
+			};
+		last if (!$ok);
+		if ($line !~ /^(\d+) (\S+)\n$/) {
+			# A malformed header cannot start an RPC request.
+			last;
+			}
+		my ($len, $auth) = ($1, $2);
+		if ($auth ne $sid) {
+			# Reject the token before reading the request body.
+			last;
+			}
+		# Read the authenticated body, stopping on TLS or timeout errors.
+		$ok = eval {
 			$rawarg = &read_ssl_connection($tls_con, $len);
 			1;
 			};
