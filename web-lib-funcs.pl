@@ -10333,7 +10333,8 @@ won't be passed to programs started by webmin. This is useful when calling
 programs that check for CGI-related environment variables and modify their
 behaviour, and to avoid passing sensitive variables to un-trusted programs.
 
-Calls can be nested, with each reset_environment undoing the most recent call.
+Calls can be nested with clean_language. Each cleanup call needs its own
+reset_environment call, which restores the most recent saved environment.
 
 =cut
 sub clean_environment
@@ -10362,7 +10363,8 @@ foreach my $e ('WEBMIN_CONFIG', 'SERVER_NAME', 'CONTENT_TYPE', 'REQUEST_URI',
 
 =head2 reset_environment
 
-Puts the environment back how it was before the matching cleanup call.
+Restores the environment saved by the most recent clean_environment or
+clean_language call. Each reset undoes one cleanup call.
 A reset with no cleanup to match does nothing.
 
 =cut
@@ -10377,18 +10379,16 @@ undef(%UNCLEAN_ENV) if (!@main::clean_environment_stack);
 
 =head2 clean_language
 
-Sets all language and locale-related environment variables to US english, to
-ensure that commands run output in the expected language. Can be reverted by
-reset_environment.
+Clears message-language overrides so commands produce English output.
+Each call saves the current environment, even inside another cleanup.
+Call reset_environment once for each clean_language or clean_environment call.
 
 =cut
 sub clean_language
 {
-# Share the snapshot from a preceding clean_environment call
-if (!@main::clean_environment_stack) {
-	push(@main::clean_environment_stack, { %ENV });
-	%UNCLEAN_ENV = %ENV;
-	}
+# Keep nested language cleanup from consuming the caller's saved environment.
+push(@main::clean_environment_stack, { %ENV });
+%UNCLEAN_ENV = %ENV if (@main::clean_environment_stack == 1);
 $ENV{'LANG'} = '';
 $ENV{'LANGUAGE'} = '';
 $ENV{'LC_ALL'} = '';

@@ -229,6 +229,8 @@ while(<CMD>) {
 	}
 close(CMD);
 local $status = $?;
+# Restore the language cleanup, then the environment cleanup above.
+&reset_environment();
 &reset_environment();
 
 # Restore holds at the versions now installed.
