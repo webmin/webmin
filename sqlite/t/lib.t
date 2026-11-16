@@ -12,7 +12,8 @@ BEGIN { $ENV{'SQLITE_TESTING'} = 1; }
 chdir "$FindBin::Bin/.." or die "chdir: $!";
 require './sqlite-lib.pl';
 
-our (%access, %config, %text, $remote_user, $error_must_die);
+our (%access, %config, %text, $remote_user, $error_must_die,
+     $readonly_mode_cache);
 # Make Webmin's error handler throw exceptions that the tests can inspect.
 $error_must_die = 1;
 
@@ -34,6 +35,7 @@ $text{'error_key'} = 'bad key';
 $text{'error_resultcontrol'} = 'cannot limit results: $1';
 $text{'error_resultlarge'} = 'result exceeds $1 bytes';
 $text{'error_valuelarge'} = 'value exceeds $1';
+$text{'error_readonly'} = 'read-only fixture';
 $text{'value_more'} = '...';
 $text{'value_more_chars'} = '+ $1 chars';
 $text{'value_more_chars_truncated'} = '+ $1 of $2 chars';
@@ -415,13 +417,13 @@ like($@, qr/^Invalid column name 'sqlite_x'/, 'added column names are checked');
 SKIP: {
 	my $driver_error = sqlite_load_driver();
 	# Skip only database tests when DBD::SQLite is unavailable.
-	skip("DBD::SQLite unavailable: $driver_error", 54) if ($driver_error);
+	skip("DBD::SQLite unavailable: $driver_error", 55) if ($driver_error);
 	my $limit_error = sqlite_result_limit_error();
 	# Verify the compatibility error before skipping capability-dependent tests.
 	if ($limit_error) {
 		like($limit_error, qr/does not provide sqlite_limit$/,
 			'an older driver loads but reports the missing capability');
-		skip("SQLite result limits unavailable: $limit_error", 53);
+		skip("SQLite result limits unavailable: $limit_error", 54);
 		}
 	ok(!$limit_error,
 		'the installed driver exposes result-limit control');
@@ -620,6 +622,22 @@ SKIP: {
 	ok(!$vacuumed, 'authorizer rejects VACUUM INTO');
 	ok(!-e "$outside/vacuum.db", 'rejected VACUUM creates no file');
 	$dbh->disconnect();
+	# Direct callers cannot bypass demo mode by requesting a writable handle.
+	subtest 'Demo connection modes' => sub {
+		local $readonly_mode_cache = 1;
+		local $access{'sql'} = 1;
+		ok(!sqlite_can_create(), 'demo mode denies creation capability');
+		ok(!sqlite_can_write($database), 'demo mode denies form writes');
+		ok(!sqlite_can_sql_write($database), 'demo mode denies SQL writes');
+		foreach my $mode ([ $database, 1 ], [ $database, 1, 0, 1 ],
+				 [ "$allowed/demo.db", 1, 1 ]) {
+			my $opened = eval { sqlite_connect(@$mode) };
+			like($@, qr/read-only fixture/,
+				'demo mode refuses a writable database connection');
+			$opened->disconnect() if ($opened);
+			}
+		ok(!-e "$allowed/demo.db", 'rejected connection creates no file');
+		};
 	}
 
 done_testing();

@@ -267,6 +267,7 @@ return $resolved;
 # or through SQL. Otherwise a new file would be a dead end.
 sub sqlite_can_create
 {
+return 0 if (&is_readonly_mode());
 return $access{'create'} && ($access{'write'} || $access{'sql'}) ? 1 : 0;
 }
 
@@ -275,8 +276,8 @@ return $access{'create'} && ($access{'write'} || $access{'sql'}) ? 1 : 0;
 sub sqlite_can_write
 {
 my ($path) = @_;
-# The module ACL takes precedence over filesystem permissions.
-return 0 if (!$access{'write'});
+# Demo mode and the module ACL take precedence over filesystem permissions.
+return 0 if (&is_readonly_mode() || !$access{'write'});
 return &sqlite_file_writable($path);
 }
 
@@ -287,7 +288,7 @@ return &sqlite_file_writable($path);
 sub sqlite_can_sql_write
 {
 my ($path) = @_;
-return 0 if (!$access{'sql'});
+return 0 if (&is_readonly_mode() || !$access{'sql'});
 return &sqlite_file_writable($path);
 }
 
@@ -499,6 +500,10 @@ return 'SELECT '.join(', ', @select).' '.$from;
 sub sqlite_connect
 {
 my ($path, $write, $create, $sql_write) = @_;
+# DBI writes bypass Webmin's file helpers, so enforce demo mode here too.
+if (($write || $create) && &is_readonly_mode()) {
+	&error($text{'error_readonly'});
+	}
 $path = &sqlite_database_path($path, $create);
 # An existing path always uses normal open semantics, even if create was set.
 $create = 0 if (-e $path);
