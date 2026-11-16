@@ -16,9 +16,9 @@ my @systemctl_cmds;
 	@systemctl_cmds = &get_systemctl_cmds(1);
 }
 
-# System log to follow
+# Apply the same syslog and per-log permissions as the normal viewer.
 my ($log) = grep { $_->{'id'} eq $in{'idx'} } @systemctl_cmds;
-if (!&can_edit_log($log) ||
+if (!$access{'syslog'} || !&can_edit_log($log) ||
 	!$log->{'cmd'} ||
 	$log->{'cmd'} !~ /^journalctl/) {
 	print $text{'save_ecannot3'};
