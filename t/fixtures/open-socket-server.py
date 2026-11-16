@@ -22,6 +22,11 @@ subprocess.run(['openssl', 'req', '-x509', '-newkey', 'rsa:2048', '-nodes',
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 context.load_cert_chain(cert, key)
 context.set_servername_callback(lambda connection, name, _: setattr(connection, 'fixture_sni', name))
+# An unrelated trusted certificate must not validate the fixture's identity.
+subprocess.run(['openssl', 'req', '-x509', '-newkey', 'rsa:2048', '-nodes',
+    '-days', '1', '-subj', '/CN=Unrelated CA', '-keyout', str(work / 'untrusted.key'),
+    '-out', str(work / 'untrusted.crt')], check=True,
+    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 class Server(socketserver.ThreadingTCPServer):
     daemon_threads = True
