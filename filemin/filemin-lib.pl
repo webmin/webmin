@@ -545,10 +545,12 @@ for (my $count = 1 + $pagelimit * ($page - 1);
 		'%Y/%m/%d - %T',
 		localtime($list[$count - 1][10]));
 
+	# Encode the filename for JavaScript, then for the HTML attribute.
+	my $rename_args = html_escape(convert_to_json([ $link ]));
 	$actions =
 		"<a class='action-link' " .
 		"href='javascript:void(0)' " .
-		"onclick='renameDialog(\"$vlink\")' " .
+		"onclick='renameDialog(" . $rename_args . "[0])' " .
 		"title='$text{'rename'}' " .
 		"data-container='body'>" .
 		"$rename_icon</a>";
