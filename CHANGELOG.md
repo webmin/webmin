@@ -3,6 +3,7 @@
 * Add an SQLite database browser and editor with schema inspection, table management, row editing and direct SQL execution [forum.virtualmin.com/t/137508](https://forum.virtualmin.com/t/sqlite-database-browser-and-editor/137508/)
 * Add color schemes to the Terminal module
 * Add per-user Terminal preferences for color scheme, font size, screen reader mode and terminal dimensions
+* Add NTFS3 mount support and fix missing dashboard disk-space warnings for NTFS3 filesystems [#2928](https://github.com/webmin/webmin/issues/2928)
 * Add protection against infinite loops resolving recursive symlinks (thanks to Carl Zuzart, Zedden I.T.)
 * Add a Cloudmin virtualization host profile to the nftables module
 * Add drop-down menu, dialog, breadcrumb and page link widgets to the UI library, built on native `details` and `dialog` elements
