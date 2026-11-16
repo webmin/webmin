@@ -183,6 +183,27 @@ my $token = sqlite_encode_key(@input);
 my @output = sqlite_decode_key($token, scalar(@input));
 is_deeply(\@output, \@input, 'row identity round trips');
 
+# Count characters without splitting UTF-8 bytes in previews or truncation.
+subtest 'UTF-8 display limits' => sub {
+	local $config{'max_text'} = 1000;
+	my $prefix = ('a' x 127)."\x{e9}";
+	my $value = $prefix.("\x{4e2d}" x 4);
+	my $bytes = Encode::encode('UTF-8', $value);
+	my $shown = sqlite_display_value($bytes, 'text', length($value));
+	like($shown, qr/\Q@{[Encode::encode('UTF-8', $prefix)]}\E /,
+		'preview ends at a whole character');
+	like($shown, qr/\+ 4 chars/, 'disclosure counts characters, not bytes');
+	ok(!utf8::is_utf8($shown), 'HTML remains encoded bytes for Webmin');
+	ok(eval { Encode::decode('UTF-8', $shown, Encode::FB_CROAK()); 1 },
+		'preview and remainder are valid UTF-8');
+	$config{'max_text'} = 128;
+	my $shortened = sqlite_display_value($bytes, 'text', length($value));
+	like($shortened,
+		qr/\Q@{[Encode::encode('UTF-8', $prefix)]}\E\.\.\./,
+		'display limit preserves the final whole character');
+	unlike($shortened, qr/<details/, '128 characters need no disclosure');
+	};
+
 # Check long-text disclosure markup.
 $config{'max_text'} = 1000;
 my $short_value = sqlite_display_value('unbroken-text-value');
