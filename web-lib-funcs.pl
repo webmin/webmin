@@ -5356,44 +5356,50 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
 
-		# Replace ACLs for user
+		# Replace ACLs only for users found in the database.
 		if ($foundindb) {
-			# Prepare the SQL commands
+			# Prepare both commands, stopping on the first error.
 			my $delcmd = $dbh->prepare(
 				"delete from webmin_user_acl ".
 				"where id = ? and module = ?");
-			my $inscmd = $dbh->prepare(
+			my $inscmd = $delcmd && $dbh->prepare(
 				"insert into webmin_user_acl ".
 				"(id,module,attr,value) values (?,?,?,?)");
 			if (!$delcmd || !$inscmd) {
+				# Save the error before cleanup can clear it.
+				my $err = $dbh->errstr;
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('euserdbacl', $err));
 				}
 
-			# Delete old permissions and add new ones inside
-			# an SQL transaction
-			my $trans = $dbh->{'AutoCommit'};
-			$dbh->begin_work() if ($trans);
+			# Start a transaction only if AutoCommit is enabled.
+			# disconnect_userdb commits it and reports failures.
+			$dbh->begin_work() if ($dbh->{'AutoCommit'});
 			if (!$delcmd->execute($id, $m)) {
+				# Keep the SQL error before rolling back.
+				my $err = $dbh->errstr;
 				$dbh->rollback();
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('euserdbacl', $err));
 				}
 			$delcmd->finish();
 			if ($acl) {
+				# Insert new entries unless this is a reset.
 				foreach my $a (keys %$acl) {
 					if (!$inscmd->execute($id,$m,$a,
 							   $acl->{$a})) {
+						# Undo the whole replacement
+						# and keep the insert error.
+						my $err = $dbh->errstr;
 						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('euserdbacl2',
-							     $dbh->errstr));
+							     $err));
 						}
 					$inscmd->finish();
 					}
 				}
-			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
@@ -5470,7 +5476,7 @@ if (!$foundindb) {
 
 Updates the acl hash for some group and module. The parameters are :
 
-=item acl - Hash reference for the new access control options.
+=item acl - Hash reference for the new access control options, or undef to clear.
 
 =item group - Group name to update.
 
@@ -5518,44 +5524,50 @@ if ($userdb) {
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
 
-		# Replace ACLs for group
+		# Replace ACLs only for groups found in the database.
 		if ($foundindb) {
-			# Prepare the SQL commands
+			# Prepare both commands, stopping on the first error.
 			my $delcmd = $dbh->prepare(
 				"delete from webmin_group_acl ".
 				"where id = ? and module = ?");
-			my $inscmd = $dbh->prepare(
+			my $inscmd = $delcmd && $dbh->prepare(
 				"insert into webmin_group_acl ".
 				"(id,module,attr,value) values (?,?,?,?)");
 			if (!$delcmd || !$inscmd) {
+				# Save the error before cleanup can clear it.
+				my $err = $dbh->errstr;
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('egroupdbacl', $err));
 				}
 
-			# Delete old permissions and add new ones inside
-			# an SQL transaction
-			my $trans = $dbh->{'AutoCommit'};
-			$dbh->begin_work() if ($trans);
+			# Start a transaction only if AutoCommit is enabled.
+			# disconnect_userdb commits it and reports failures.
+			$dbh->begin_work() if ($dbh->{'AutoCommit'});
 			if (!$delcmd->execute($id, $m)) {
+				# Keep the SQL error before rolling back.
+				my $err = $dbh->errstr;
 				$dbh->rollback();
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('egroupdbacl', $dbh->errstr));
+				&error(&text('egroupdbacl', $err));
 				}
 			$delcmd->finish();
 			if ($acl) {
+				# Insert new entries unless this is a reset.
 				foreach my $a (keys %$acl) {
 					if (!$inscmd->execute($id,$m,$a,
 							   $acl->{$a})) {
+						# Undo the whole replacement
+						# and keep the insert error.
+						my $err = $dbh->errstr;
 						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('egroupdbacl2',
-							     $dbh->errstr));
+							     $err));
 						}
 					$inscmd->finish();
 					}
 				}
-			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
@@ -13487,9 +13499,11 @@ my ($str, $h, $force) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 my $err;
-# Finish this operation even when the connection stays in the cache.
-if ($str =~ /^(mysql|postgresql):/ && !$h->{'AutoCommit'} && !$h->commit()) {
-	# Discard a failed transaction and report its error after closing.
+# Commit SQL changes even when the connection stays in the cache.
+# DBI can return success after a failed commit when restoring AutoCommit.
+if ($str =~ /^(mysql|postgresql):/ && !$h->{'AutoCommit'} &&
+    (!$h->commit() || $h->err())) {
+	# Keep the error before closing and removing the failed handle.
 	$err = "Failed to commit user database changes : ".$h->errstr;
 	$force = 1;
 	}
