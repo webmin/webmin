@@ -40,7 +40,7 @@ if ($miniserv{'ipv6'} && !$local_rpc) {
 my $tls = !$local_rpc && $in{'tls'} eq '1';
 my ($tls_ctx, $tls_con);
 if ($tls) {
-	# Without miniserv's key, keep requests on the existing HTTPS channel.
+	# A reverse proxy may handle HTTPS while miniserv receives plain HTTP.
 	if ($ENV{'HTTPS'} ne 'ON' || !$ENV{'MINISERV_KEYFILE'}) {
 		print "2 HTTPS\n";
 		exit;
