@@ -105,6 +105,28 @@ subtest 'report errors and return links' => sub {
 		}
 	};
 
+subtest 'report symlink boundaries' => sub {
+	for my $dir_link ('', 'relative', 'absolute') {
+		for my $target ('', 'sub/../inside.html', '../outside.html') {
+			my $label = ($dir_link || 'plain')." directory, ".
+				($target || 'plain file');
+			my $r = render_cgi('view_log', { name => 'access.log',
+				dir_link => $dir_link, report_link => $target });
+			if ($target eq '../outside.html') {
+				# A link cannot expose files outside the report directory.
+				like($r->{'error'}, qr/^Invalid report file location/,
+					"$label rejects an outside target");
+				is($r->{'html'}, '', "$label returns no report content");
+				}
+			else {
+				# Both directory and file links may contain valid .. parts.
+				is($r->{'error'}, '', "$label accepts an inside target");
+				like($r->{'html'}, qr/Report body/, "$label renders the report");
+				}
+			}
+		}
+	};
+
 subtest 'access checks remain enforced' => sub {
 	for my $page (qw(edit_log edit_global save_log view_log)) {
 		my $r = render_cgi($page, {name => '<svg onload=alert(1)>', access => {dir => ''}});

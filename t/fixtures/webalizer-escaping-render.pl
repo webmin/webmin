@@ -40,6 +40,14 @@ $main::module_config_directory = "$tmp/config";
 $main::module_name = 'webalizer';
 mkdir($main::module_config_directory) or die $!;
 mkdir($report_dir) or die $!;
+if ($case->{'dir_link'}) {
+	# Reach the report directory through a relative or absolute symlink.
+	mkdir("$tmp/links") or die $!;
+	my $target = $case->{'dir_link'} eq 'relative'
+		? "../report-$case->{'name'}" : $report_dir;
+	symlink($target, "$tmp/links/stats") or die $!;
+	$report_dir = "$tmp/links/stats";
+	}
 
 # write_fixture(path, data) writes only files in this test's temporary directory.
 sub write_fixture
@@ -57,6 +65,12 @@ write_fixture(main::log_config_name($file), "dir=$report_dir\nuser=root\ntype=1\
 	unless $case->{'no_config'};
 write_fixture("$report_dir/index.html", "<TITLE>Fixture</TITLE>\n<BODY>\nReport body\n</BODY>\n")
 	unless $case->{'no_report'};
+if (my $target = $case->{'report_link'}) {
+	# Keep the linked file readable so only the directory check can deny it.
+	mkdir("$report_dir/sub") or die $!;
+	rename("$report_dir/index.html", "$report_dir/$target") or die $!;
+	symlink($target, "$report_dir/index.html") or die $!;
+	}
 
 %main::in = (file => $file, type => 1, custom => 1, run => 1);
 %main::access = (dir => '/', user => 'root', global => 1,
