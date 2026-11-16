@@ -132,9 +132,10 @@ print &ui_table_row($text{'session_pam'},
 		    [ 1, $text{'session_pamoff'} ] ]));
 
 print &ui_table_row($text{'session_popts'},
-	ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
-		     $miniserv{'pam_conv'}.
-		     ($miniserv{'twofactor_provider'} ? " $text{'session_pamwarn'}" : "")).
+	ui_checkbox("pam_conv", 1, $text{'session_pamconv'}.
+		     ($miniserv{'twofactor_provider'} ?
+		      " $text{'session_pamwarn'}" : ""),
+		     $miniserv{'pam_conv'}).
 	"<br>".
 	ui_checkbox("pam_end", 1, $text{'session_pamend'},
 		     $miniserv{'pam_end'}).

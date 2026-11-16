@@ -16,10 +16,18 @@ else {
 	&can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 	}
 $access{'backup'} || &error($text{'backup_ecannot'});
-if (!&is_under_directory($access{'bpath'}, $in{'path'})) {
-        &error($text{'backup_epath'}."<br>".
-               &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
-        }
+# Check the destination before and after expanding date and template values.
+($bpath, $buser) = &get_backup_limits();
+foreach $p ($in{'path'}, &date_subs($in{'path'})) {
+	&is_under_directory($bpath, $p) ||
+		&error(&text('backup_eunder',
+			     "<tt>".&html_escape($bpath)."</tt>"));
+	}
+
+# Scheduled backups do not retain the restricted Unix user's permissions.
+if ($buser && ($in{'save'} || $in{'sched'})) {
+	&error($text{'backup_esave'});
+	}
 
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
@@ -36,7 +44,7 @@ if (!$in{'save'} || $in{'sched'}) {
 		@tables || &error($text{'backup_etables'});
 		}
 	}
-$cron = !$module_info{'usermin'} &&
+$cron = !$module_info{'usermin'} && !$buser &&
         !$access{'user'} && &foreign_installed("cron");
 $cmode = 0;
 if ($cron) {
@@ -115,12 +123,16 @@ if (!$in{'save'}) {
 			}
 		if ($in{'all'}) {
 			$dir = &date_subs($in{'path'});
-			&make_backup_dir($dir) if ($in{'mkdir'});
+			&make_backup_dir($dir, $buser) if ($in{'mkdir'});
 			$path = $dir."/".$db.".".$suf;
 			}
 		else {
 			$path = &date_subs($in{'path'});
 			}
+		# Check generated filenames and any existing destination symlink.
+		&is_under_directory($bpath, $path) ||
+			&error(&text('backup_eunder',
+				     "<tt>".&html_escape($bpath)."</tt>"));
 		if ($cron && $cmode == 0) {
 			# Run and check before-backup command
 			$bok = &execute_before($db, STDOUT, 1, $path, $in{'all'} ? undef : $db);
@@ -130,7 +142,7 @@ if (!$in{'save'}) {
                                 }
 			}
 		$err = &backup_database($db, $path, $in{'format'}, \@tables,
-					undef, $in{'compress'});
+					$buser, $in{'compress'});
 		if ($err) {
 			print "$main::whatfailed : ",
 			      &text('backup_ebackup',"<pre>$err</pre>"),"<p>\n";

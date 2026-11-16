@@ -5356,44 +5356,50 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
 
-		# Replace ACLs for user
+		# Replace ACLs only for users found in the database.
 		if ($foundindb) {
-			# Prepare the SQL commands
+			# Prepare both commands, stopping on the first error.
 			my $delcmd = $dbh->prepare(
 				"delete from webmin_user_acl ".
 				"where id = ? and module = ?");
-			my $inscmd = $dbh->prepare(
+			my $inscmd = $delcmd && $dbh->prepare(
 				"insert into webmin_user_acl ".
 				"(id,module,attr,value) values (?,?,?,?)");
 			if (!$delcmd || !$inscmd) {
+				# Save the error before cleanup can clear it.
+				my $err = $dbh->errstr;
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('euserdbacl', $err));
 				}
 
-			# Delete old permissions and add new ones inside
-			# an SQL transaction
-			my $trans = $dbh->{'AutoCommit'};
-			$dbh->begin_work() if ($trans);
+			# Start a transaction only if AutoCommit is enabled.
+			# disconnect_userdb commits it and reports failures.
+			$dbh->begin_work() if ($dbh->{'AutoCommit'});
 			if (!$delcmd->execute($id, $m)) {
+				# Keep the SQL error before rolling back.
+				my $err = $dbh->errstr;
 				$dbh->rollback();
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('euserdbacl', $err));
 				}
 			$delcmd->finish();
 			if ($acl) {
+				# Insert new entries unless this is a reset.
 				foreach my $a (keys %$acl) {
 					if (!$inscmd->execute($id,$m,$a,
 							   $acl->{$a})) {
+						# Undo the whole replacement
+						# and keep the insert error.
+						my $err = $dbh->errstr;
 						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('euserdbacl2',
-							     $dbh->errstr));
+							     $err));
 						}
 					$inscmd->finish();
 					}
 				}
-			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
@@ -5470,7 +5476,7 @@ if (!$foundindb) {
 
 Updates the acl hash for some group and module. The parameters are :
 
-=item acl - Hash reference for the new access control options.
+=item acl - Hash reference for the new access control options, or undef to clear.
 
 =item group - Group name to update.
 
@@ -5491,7 +5497,7 @@ if (!$nogroup && &foreign_check("acl")) {
 	foreach my $pg (&acl::list_groups()) {
 		if (&indexof('@'.$g, @{$pg->{'members'}}) >= 0 &&
 		    &indexof($m, @{$pg->{'modules'}}) >= 0) {
-			$group = $g;
+			$group = $pg;
 			last;
 			}
 		}
@@ -5518,44 +5524,50 @@ if ($userdb) {
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
 
-		# Replace ACLs for group
+		# Replace ACLs only for groups found in the database.
 		if ($foundindb) {
-			# Prepare the SQL commands
+			# Prepare both commands, stopping on the first error.
 			my $delcmd = $dbh->prepare(
 				"delete from webmin_group_acl ".
 				"where id = ? and module = ?");
-			my $inscmd = $dbh->prepare(
+			my $inscmd = $delcmd && $dbh->prepare(
 				"insert into webmin_group_acl ".
 				"(id,module,attr,value) values (?,?,?,?)");
 			if (!$delcmd || !$inscmd) {
+				# Save the error before cleanup can clear it.
+				my $err = $dbh->errstr;
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('egroupdbacl', $err));
 				}
 
-			# Delete old permissions and add new ones inside
-			# an SQL transaction
-			my $trans = $dbh->{'AutoCommit'};
-			$dbh->begin_work() if ($trans);
+			# Start a transaction only if AutoCommit is enabled.
+			# disconnect_userdb commits it and reports failures.
+			$dbh->begin_work() if ($dbh->{'AutoCommit'});
 			if (!$delcmd->execute($id, $m)) {
+				# Keep the SQL error before rolling back.
+				my $err = $dbh->errstr;
 				$dbh->rollback();
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('egroupdbacl', $dbh->errstr));
+				&error(&text('egroupdbacl', $err));
 				}
 			$delcmd->finish();
 			if ($acl) {
+				# Insert new entries unless this is a reset.
 				foreach my $a (keys %$acl) {
 					if (!$inscmd->execute($id,$m,$a,
 							   $acl->{$a})) {
+						# Undo the whole replacement
+						# and keep the insert error.
+						my $err = $dbh->errstr;
 						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('egroupdbacl2',
-							     $dbh->errstr));
+							     $err));
 						}
 					$inscmd->finish();
 					}
 				}
-			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
@@ -9963,62 +9975,8 @@ my $rv = { 'fh' => time().$$ };
 if ($ssl) {
 	# Connect using SSL
 	&can_use_http_ssl() || return $text{'link_essl'};
-	eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
-	eval "Net::SSLeay::OpenSSL_add_all_algorithms()";
-	eval "Net::SSLeay::load_error_strings()";
-	$rv->{'ssl_ctx'} = Net::SSLeay::CTX_new() ||
-		return "Failed to create SSL context";
-	if ($certreqs && $certreqs->{'capath'}) {
-		# Require that remote cert be signed by a valid CA
-		$main::last_set_verify_err = undef;
-		foreach my $capath (split(/\s+/, $certreqs->{'capath'})) {
-			if (-d $capath) {
-				Net::SSLeay::CTX_load_verify_locations(
-					$rv->{'ssl_ctx'}, "", $capath);
-				}
-			else {
-				Net::SSLeay::CTX_load_verify_locations(
-					$rv->{'ssl_ctx'}, $capath, "");
-				}
-			}
-		Net::SSLeay::CTX_set_verify(
-			$rv->{'ssl_ctx'}, &Net::SSLeay::VERIFY_PEER,
-			sub
-			{
-			my $cert = Net::SSLeay::X509_STORE_CTX_get_current_cert($_[1]);
-			if ($cert) {
-				my $errnum = Net::SSLeay::X509_STORE_CTX_get_error($_[1]);
-				if ($errnum) {
-					my $error_string = "";
-					eval {
-						$error_string = Net::SSLeay::X509_verify_cert_error_string($errnum);
-						$error_string = " $error_string"
-							if ($error_string);
-						};
-					if ($error_string) {
-						$main::last_set_verify_err = $error_string;
-						}
-					else {
-						my $issuer = Net::SSLeay::X509_NAME_oneline(
-							Net::SSLeay::X509_get_issuer_name($cert));
-						$main::last_set_verify_err =
-						"Certificate is signed by an ".
-						"unknown CA : $issuer (code $errnum)";
-						}
-					}
-				else {
-					$main::last_set_verify_err = undef;
-					}
-				}
-			else {
-				$main::last_set_verify_err =
-				  "Could not fetch CA certificate from server";
-				}
-			return 1;
-			});
-		}
-	$rv->{'ssl_con'} = Net::SSLeay::new($rv->{'ssl_ctx'}) ||
-		return "Failed to create SSL connection";
+	my $error = &init_ssl_connection($rv, $certreqs);
+	return $error if ($error);
 	my $connected;
 	if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
 	    !&no_proxy($host)) {
@@ -10060,22 +10018,8 @@ if ($ssl) {
 		return $error if ($error);
 		$rv->{'ip'} = $ip;
 		}
-	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
-	eval {
-		my $snihost = $certreqs && $certreqs->{'host'};
-		$snihost ||= $host;
-		Net::SSLeay::set_tlsext_host_name($rv->{'ssl_con'}, $snihost);
-		};
-	Net::SSLeay::connect($rv->{'ssl_con'}) ||
-		return "SSL connect() failed";
-	if ($certreqs && !$certreqs->{'nocheckhost'}) {
-		my $err = &validate_ssl_connection(
-			$rv->{'ssl_con'},
-			$certreqs->{'checkhost'} ||
-			  $certreqs->{'host'} || $host,
-			$certreqs);
-		return "Invalid SSL certificate : $err" if ($err);
-		}
+	$error = &connect_ssl_connection($rv, $host, $certreqs);
+	return $error if ($error);
 	my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
 	Net::SSLeay::write($rv->{'ssl_con'}, $rtxt);
 	}
@@ -10120,6 +10064,122 @@ else {
 		}
 	}
 return $rv;
+}
+
+=head2 init_ssl_connection(&handle, [&certreqs])
+
+Creates the TLS context and session in handle's ssl_ctx and ssl_con fields.
+Optional certreqs supplies the certificate requirements used by
+validate_ssl_connection, including CA files or directories in capath.
+Requires Net::SSLeay to be loaded, for example by can_use_http_ssl.
+Returns undef on success or an error string. Does not open a socket.
+
+=cut
+sub init_ssl_connection
+{
+my ($rv, $certreqs) = @_;
+# Initialize the available TLS algorithms before allocating the context.
+eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
+eval "Net::SSLeay::OpenSSL_add_all_algorithms()";
+eval "Net::SSLeay::load_error_strings()";
+$rv->{'ssl_ctx'} = Net::SSLeay::CTX_new() ||
+	return "Failed to create SSL context";
+if ($certreqs && $certreqs->{'capath'}) {
+	# Require that remote cert be signed by a valid CA
+	$main::last_set_verify_err = undef;
+	foreach my $capath (split(/\s+/, $certreqs->{'capath'})) {
+		if (-d $capath) {
+			# Load a directory of certificates indexed by hash.
+			Net::SSLeay::CTX_load_verify_locations(
+				$rv->{'ssl_ctx'}, "", $capath);
+			}
+		else {
+			# Load trusted CA certificates from a PEM file.
+			Net::SSLeay::CTX_load_verify_locations(
+				$rv->{'ssl_ctx'}, $capath, "");
+			}
+		}
+	Net::SSLeay::CTX_set_verify(
+		$rv->{'ssl_ctx'}, &Net::SSLeay::VERIFY_PEER,
+		# Save verification errors for validate_ssl_connection.
+		sub
+		{
+		my $cert = Net::SSLeay::X509_STORE_CTX_get_current_cert($_[1]);
+		if ($cert) {
+			# Check this certificate in the chain.
+			my $errnum = Net::SSLeay::X509_STORE_CTX_get_error($_[1]);
+			if ($errnum) {
+				# Use OpenSSL's explanation when available.
+				my $error_string = "";
+				eval {
+					$error_string =
+					    Net::SSLeay::X509_verify_cert_error_string($errnum);
+					$error_string = " $error_string"
+						if ($error_string);
+					};
+				if ($error_string) {
+					# Keep OpenSSL's error text.
+					$main::last_set_verify_err = $error_string;
+					}
+				else {
+					# Fall back to the issuer name.
+					my $issuer = Net::SSLeay::X509_NAME_oneline(
+						Net::SSLeay::X509_get_issuer_name($cert));
+					$main::last_set_verify_err =
+					"Certificate is signed by an ".
+					"unknown CA : $issuer (code $errnum)";
+					}
+				}
+			else {
+				# Clear the error after successful verification.
+				$main::last_set_verify_err = undef;
+				}
+			}
+		else {
+			# The callback cannot verify a missing certificate.
+			$main::last_set_verify_err =
+			  "Could not fetch CA certificate from server";
+			}
+		return 1;
+		});
+	}
+# Allocate the session only after its context has the verification settings.
+$rv->{'ssl_con'} = Net::SSLeay::new($rv->{'ssl_ctx'}) ||
+	return "Failed to create SSL connection";
+return undef;
+}
+
+=head2 connect_ssl_connection(&handle, hostname, [&certreqs])
+
+Starts client TLS on handle's connected fh using its initialized ssl_con.
+The hostname supplies SNI unless certreqs specifies host. Optional certreqs
+also controls certificate validation, as in validate_ssl_connection.
+Returns undef on success or an error string. Uses blocking I/O without adding
+a timeout or changing the socket's mode.
+
+=cut
+sub connect_ssl_connection
+{
+my ($rv, $host, $certreqs) = @_;
+# Attach the connected socket and select the requested TLS hostname.
+Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
+eval {
+	my $snihost = $certreqs && $certreqs->{'host'};
+	$snihost ||= $host;
+	Net::SSLeay::set_tlsext_host_name($rv->{'ssl_con'}, $snihost);
+	};
+Net::SSLeay::connect($rv->{'ssl_con'}) ||
+	return "SSL connect() failed";
+if ($certreqs && !$certreqs->{'nocheckhost'}) {
+	# Preserve the caller's hostname, self-signed and CA requirements.
+	my $err = &validate_ssl_connection(
+		$rv->{'ssl_con'},
+		$certreqs->{'checkhost'} ||
+		  $certreqs->{'host'} || $host,
+		$certreqs);
+	return "Invalid SSL certificate : $err" if ($err);
+	}
+return undef;
 }
 
 =head2 validate_ssl_connection(&ssl-handle, hostname, &requirements)
@@ -10197,30 +10257,8 @@ sub read_http_connection
 my ($h, $want) = @_;
 my $rv;
 if ($h->{'ssl_con'}) {
-	if (!$want) {
-		my ($idx, $more);
-		while(($idx = index($h->{'buffer'}, "\n")) < 0) {
-			# need to read more..
-			if (!($more = Net::SSLeay::read($h->{'ssl_con'}))) {
-				# end of the data
-				$rv = $h->{'buffer'};
-				delete($h->{'buffer'});
-				return $rv;
-				}
-			$h->{'buffer'} .= $more;
-			}
-		$rv = substr($h->{'buffer'}, 0, $idx+1);
-		$h->{'buffer'} = substr($h->{'buffer'}, $idx+1);
-		}
-	else {
-		if (length($h->{'buffer'})) {
-			$rv = $h->{'buffer'};
-			delete($h->{'buffer'});
-			}
-		else {
-			$rv = Net::SSLeay::read($h->{'ssl_con'}, $want);
-			}
-		}
+	# TLS maintains its own buffer across line and byte reads.
+	return &read_ssl_connection($h, $want);
 	}
 else {
 	if ($want) {
@@ -10229,6 +10267,53 @@ else {
 	else {
 		my $fh = $h->{'fh'};
 		$rv = <$fh>;
+		}
+	}
+$rv = undef if ($rv eq "");
+return $rv;
+}
+
+=head2 read_ssl_connection(&handle, [bytes])
+
+Reads from handle's ssl_con, keeping unread data in its buffer field.
+Omitting bytes or passing zero reads one line, including its newline, or
+returns the remaining buffered data at EOF.
+
+With a nonzero bytes value, returns the entire existing buffer if nonempty,
+even when it exceeds bytes. Otherwise requests up to bytes from TLS.
+Preserves read_http_connection's EOF and error results without adding retries
+or timeouts.
+
+=cut
+sub read_ssl_connection
+{
+my ($h, $want) = @_;
+my $rv;
+if (!$want) {
+	# Keep reading until one complete line is buffered.
+	my ($idx, $more);
+	while(($idx = index($h->{'buffer'}, "\n")) < 0) {
+		# Keep any partial line on EOF or a TLS error.
+		if (!($more = Net::SSLeay::read($h->{'ssl_con'}))) {
+			$rv = $h->{'buffer'};
+			delete($h->{'buffer'});
+			return $rv;
+			}
+		$h->{'buffer'} .= $more;
+		}
+	$rv = substr($h->{'buffer'}, 0, $idx+1);
+	$h->{'buffer'} = substr($h->{'buffer'}, $idx+1);
+	}
+else {
+	# Byte reads consume buffered data before requesting another TLS record.
+	if (length($h->{'buffer'})) {
+		# Preserve the existing behavior of returning the entire buffer.
+		$rv = $h->{'buffer'};
+		delete($h->{'buffer'});
+		}
+	else {
+		# Request up to this many bytes from TLS.
+		$rv = Net::SSLeay::read($h->{'ssl_con'}, $want);
 		}
 	}
 $rv = undef if ($rv eq "");
@@ -10246,28 +10331,44 @@ my $h = shift(@_);
 my $fh = $h->{'fh'};
 my $allok = 1;
 if ($h->{'ssl_ctx'}) {
-	# Net::SSLeay::write returns a byte count, but regular length/substr may
-	# count characters for UTF-8-flagged strings. Mixing those units could
-	# end the retry loop early or skip data, so track lengths and offsets in
-	# bytes.
-	foreach my $s (@_) {
-		my $len = bytes::length($s);
-		my $got = 0;
-		while($got < $len) {
-			my $ok = Net::SSLeay::write(
-				$h->{'ssl_con'}, bytes::substr($s, $got));
-			if (!defined($ok) || $ok <= 0) {
-				return 0;
-				}
-			$got += $ok;
-			}
-		}
+	# Preserve complete writes and byte offsets for TLS callers.
+	return &write_ssl_connection($h, @_);
 	}
 else {
 	my $ok = (print $fh @_);
 	$allok = 0 if (!$ok);
 	}
 return $allok;
+}
+
+=head2 write_ssl_connection(&handle, [data+])
+
+Writes each supplied string to handle's ssl_con, retrying partial writes
+with the remaining bytes. Returns 1 on success, including when no data is
+supplied, or 0 when a write fails. Uses blocking I/O without adding a timeout.
+
+=cut
+sub write_ssl_connection
+{
+my $h = shift(@_);
+# Net::SSLeay::write returns a byte count, but regular length/substr may
+# count characters for UTF-8-flagged strings. Mixing those units could
+# end the retry loop early or skip data, so track lengths and offsets in
+# bytes.
+foreach my $s (@_) {
+	my $len = bytes::length($s);
+	my $got = 0;
+	while($got < $len) {
+		my $ok = Net::SSLeay::write(
+			$h->{'ssl_con'}, bytes::substr($s, $got));
+		if (!defined($ok) || $ok <= 0) {
+			# Stop on failure without retrying later strings.
+			return 0;
+			}
+		$got += $ok;
+		}
+	}
+return 1;
 }
 
 =head2 close_http_connection(&handle)
@@ -13487,9 +13588,11 @@ my ($str, $h, $force) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 my $err;
-# Finish this operation even when the connection stays in the cache.
-if ($str =~ /^(mysql|postgresql):/ && !$h->{'AutoCommit'} && !$h->commit()) {
-	# Discard a failed transaction and report its error after closing.
+# Commit SQL changes even when the connection stays in the cache.
+# DBI can return success after a failed commit when restoring AutoCommit.
+if ($str =~ /^(mysql|postgresql):/ && !$h->{'AutoCommit'} &&
+    (!$h->commit() || $h->err())) {
+	# Keep the error before closing and removing the failed handle.
 	$err = "Failed to commit user database changes : ".$h->errstr;
 	$force = 1;
 	}

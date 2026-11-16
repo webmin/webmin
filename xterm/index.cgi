@@ -217,6 +217,8 @@ my $port = allocate_miniserv_websocket(
 my $user = resolve_shell_user(\%access, $remote_user, \%in, \%config);
 my @uinfo = getpwnam($user);
 @uinfo || error(text('index_euser', html_escape($user)));
+# Keep account details for clients without exposing the password hash.
+$uinfo[1] = undef;
 
 # Check for directory to start the shell in
 my $dir = $in{'dir'};
