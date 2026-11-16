@@ -36,6 +36,22 @@ do "$source_root/$file";
 return ($html, $@);
 }
 
+subtest 'Actions Log subtitle' => sub {
+	local *main::ui_print_header = sub {
+		print main::ui_post_header($_[0]);
+		die "HEADER_DONE\n";
+		};
+	foreach my $subtitle ('Domain example.test', q{O'Reilly & Partners},
+		'<img src=x onerror="alert(1)">') {
+		my ($html, $error) = render_cgi('webminlog/search.cgi',
+			{ tall => 1, search_sub_title => $subtitle });
+		is($error, "HEADER_DONE\n", 'request reaches the heading');
+		like($html, qr/\Q@{[main::html_escape($subtitle)]}\E/,
+			'subtitle appears as text');
+		unlike($html, qr/<img\b/, 'subtitle cannot introduce an HTML tag');
+		}
+	};
+
 subtest 'Cluster ACL names' => sub {
 	local *CORE::GLOBAL::pipe = sub { die "HOST_DONE\n" };
 	local *main::remote_error_setup = sub { };
