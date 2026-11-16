@@ -3,7 +3,7 @@
 
 require './postgresql-lib.pl';
 &ReadParse();
-&error_setup($text{'csv_err'});
+&error_setup($text{'css_err'});
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 $access{'edonly'} && &error($text{'dbase_ecannot'});
 
