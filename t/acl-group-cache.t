@@ -74,4 +74,32 @@ foreach my $module ('', 'example') {
 	my %recreated = get_group_module_acl('target', $module, 1);
 	is_deeply(\%recreated, {}, "$label: recreated group has no old ACL");
 	}
+
+subtest 'inherited group ACL saves' => sub {
+	# Model two parent levels without initializing the ACL module.
+	my @parents = (
+		{ name => 'parent', members => [ '@target' ],
+		  modules => [ 'example' ] },
+		{ name => 'ancestor', members => [ '@parent' ],
+		  modules => [ 'example' ] });
+	local *main::foreign_check = sub { $_[0] eq 'acl' };
+	local *main::foreign_require = sub { };
+	local *acl::list_groups = sub { @parents };
+
+	# Save through the real recursive path and inspect each group's file.
+	save_group_module_acl({ rpc => 1 }, 'target', 'example');
+	for my $group ('target', 'parent', 'ancestor') {
+		my %saved = get_group_module_acl($group, 'example', 1);
+		is_deeply(\%saved, { rpc => 1 }, "$group receives the saved ACL");
+		}
+	ok(!-e "$config_directory/example/.gacl", 'no unnamed group ACL is written');
+
+	# Explicitly disabling parent updates must still affect only the child.
+	save_group_module_acl({ rpc => 0 }, 'target', 'example', 1);
+	for my $group ('target', 'parent', 'ancestor') {
+		my %saved = get_group_module_acl($group, 'example', 1);
+		is($saved{'rpc'}, $group eq 'target' ? 0 : 1,
+			"$group respects the parent-update flag");
+		}
+	};
 done_testing();

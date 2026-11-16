@@ -5497,7 +5497,7 @@ if (!$nogroup && &foreign_check("acl")) {
 	foreach my $pg (&acl::list_groups()) {
 		if (&indexof('@'.$g, @{$pg->{'members'}}) >= 0 &&
 		    &indexof($m, @{$pg->{'modules'}}) >= 0) {
-			$group = $g;
+			$group = $pg;
 			last;
 			}
 		}
