@@ -23,15 +23,17 @@ WEBMIN_COMPILE_T_FILTER='^\./acl/' prove t/compile.t   # one module
 
 `web-lib-funcs-open-socket.t` tests address selection without network access.
 
-Run the additional compatibility tests as root on a disposable Linux VM with Webmin, Python 3, OpenSSL, and IPv6 loopback support:
+`web-lib-funcs-ssl.t` checks TLS setup errors, certificate requirements and read buffering without network access. `web-lib-funcs-io.t` also checks partial TLS writes and byte offsets.
+
+Run the additional compatibility tests as root on a disposable Linux VM with Webmin, Python 3, OpenSSL, Net::SSLeay, Socket6, and IPv6 loopback support:
 
 ```sh
 WEBMIN_OPEN_SOCKET_VM_TEST=1 timeout 90 prove -v t/web-lib-funcs-open-socket-vm.t
 ```
 
-The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, passive FTP, and service greetings. It checks IPv4 and IPv6 fallback, source binding, and error reporting without changing service configuration. It skips unless explicitly enabled.
+The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, passive FTP, and service greetings. It checks IPv4 and IPv6 fallback, source binding, certificate validation, and error reporting without changing service configuration. It skips unless explicitly enabled.
 
-By default, it tests `open_socket` from this checkout with the installed Webmin helpers. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` to compare versions.
+By default, it tests the HTTP, TLS and socket helpers from this checkout with the installed Webmin environment. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` that provides the same helpers.
 
 ## File Manager RPM extraction
 

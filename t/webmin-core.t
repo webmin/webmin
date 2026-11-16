@@ -19,6 +19,11 @@ make_path("$work/override/vendor_perl/Data/Dumper");
 copy("$root/$parser", "$work/override/$parser") or die $!;
 my $code = <<'PERL';
 use WebminCore;
+# Shared TLS helpers must be available to modules using the core API.
+for my $name (qw(init_ssl_connection connect_ssl_connection
+		read_ssl_connection write_ssl_connection)) {
+	die "TLS helper $name was not exported\n" unless main->can($name);
+	}
 # Relative imports must still work when a caller later changes directories.
 chdir($ARGV[0]) or die $!;
 my $value = unserialise_variable(q{$VAR1 = { 'status' => 1, 'rv' => 'ok' };});

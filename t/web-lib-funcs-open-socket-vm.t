@@ -62,7 +62,10 @@ open(my $source_file, '<', $source) or die $!;
 my $code = do { local $/; <$source_file> };
 close($source_file);
 for my $function (qw(http_download complete_http_download open_socket
-			     make_http_connection)) {
+			     make_http_connection init_ssl_connection
+			     connect_ssl_connection read_ssl_connection
+			     write_ssl_connection read_http_connection
+			     write_http_connection validate_ssl_connection)) {
 	$code =~ /\n(sub \Q$function\E\n\{.*?\n\})\n\n=head2 /s or
 		die "Cannot extract $function";
 	my $sub = $1;
@@ -164,6 +167,36 @@ for my $ssl (0, 1) {
 subtest 'POST request body' => sub {
     my $reply = download('four.invalid', $ports->{'https4'}, 1, 'fixture=marker');
     is($reply->{'posted'}, 'fixture=marker', 'HTTPS POST body is preserved');
+};
+
+subtest 'HTTPS certificate requirements' => sub {
+    # Trust the fixture certificate while retaining the hostname check.
+    my $requirements = { host => 'four.invalid', capath => "$task/server.crt" };
+    my $handle = make_http_connection('four.invalid', $ports->{'https4'}, 1,
+        'GET', '/marker', [['Host', 'four.invalid']], undef, $requirements);
+    ok(ref($handle), 'trusted certificate and hostname are accepted');
+    if (ref($handle)) {
+        # Read the response through the extracted TLS buffering helper.
+        my ($body, $error);
+        complete_http_download($handle, \$body, \$error, undef, undef,
+            'four.invalid', $ports->{'https4'}, undef, 1, 1, 5);
+        is($error, undef, 'verified HTTPS response succeeds');
+        is(decode_json($body)->{'sni'}, 'four.invalid',
+            'certificate requirements preserve SNI');
+    }
+    for my $case (
+        [{ %$requirements, checkhost => 'wrong.invalid' },
+         qr/Certificate is for/],
+        [{ %$requirements, self => 1 }, qr/Certificate is self-signed/],
+        [{ %$requirements, capath => "$task/untrusted.crt" },
+         qr/Invalid SSL certificate/],
+    ) {
+        # Each invalid certificate must fail before the HTTP request is sent.
+        my $result = make_http_connection('four.invalid', $ports->{'https4'}, 1,
+            'GET', '/marker', [['Host', 'four.invalid']], undef, $case->[0]);
+        ok(!ref($result), 'certificate rejection returns an error');
+        like($result, $case->[1], 'certificate error is preserved');
+    }
 };
 
 for my $family (4, 6) {
