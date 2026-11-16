@@ -762,17 +762,33 @@ if ($cmd) {
 return 1;
 }
 
-# make_backup_dir(directory)
-# Create a directory that PostgreSQL can backup into
+# make_backup_dir(directory, [as-user])
+# Create a directory that PostgreSQL can backup into. If a Unix user is given,
+# it is created as that user instead.
 sub make_backup_dir
 {
-local ($dir) = @_;
-if (!-d $dir) {
+local ($dir, $user) = @_;
+if (!-d $dir && $user) {
+	# Create as the backup user, so that only their permissions apply
+	&system_logged(&command_as_user($user, 0, "mkdir -p ".quotemeta($dir)).
+		       " >/dev/null 2>&1");
+	}
+elsif (!-d $dir) {
 	&make_dir($dir, 0755);
 	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 		&set_ownership_permissions($postgres_login, undef, undef, $dir);
 		}
 	}
+}
+
+# get_backup_limits()
+# Returns the allowed directory and optional Unix user for writing files.
+# An unset user preserves normal execution, including non-root Usermin calls.
+sub get_backup_limits
+{
+my $user = $access{'buser'};
+$user = undef if (!$user || $user eq 'root' || $< != 0);
+return ($access{'bpath'} || '/', $user);
 }
 
 # quote_table(table)
@@ -1247,7 +1263,8 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
 # 		  [compress-mode])
 # Executes the pg_dump command to backup the specified database to the
 # given destination path. Returns undef on success, or an error message
-# on failure.
+# on failure. If a run-as user is given, the destination file is written
+# as that user.
 sub backup_database
 {
 my ($db, $path, $format, $tables, $user, $compress) = @_;
@@ -1262,23 +1279,27 @@ elsif ($compress == 1) {
 elsif ($compress == 2) {
         $writer = "bzip2 -c >".quotemeta($path);
         }
-my $cmd = &quote_path($config{'dump_cmd'}).
+my $dump = &quote_path($config{'dump_cmd'}).
 	     &host_port_flags().
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U ".quotemeta($postgres_login) : " -u").
 	     ($format eq 'p' ? "" : " -b").
 	     $tablesarg.
-	     " -F".quotemeta($format)." ".quotemeta($db)." | $writer";
-if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
+	     " -F".quotemeta($format)." ".quotemeta($db);
+my $cmd = "$dump | $writer";
+my $sameunix = $postgres_sameunix && defined(getpwnam($postgres_login));
+if ($user) {
+	# Keep database authentication separate from the file writer's user.
+	$dump = &command_as_user($postgres_login, 0, $dump) if ($sameunix);
+	$cmd = &command_with_login($dump)." | ".
+	       &command_as_user($user, 0, $writer);
+	}
+elsif ($sameunix) {
 	# Postgres connections have to be made as the 'postgres' Unix user
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
 	}
-elsif ($user) {
-	# Run as a specific Unix user
-	$cmd = &command_as_user($user, 0, $cmd);
-	}
-$cmd = &command_with_login($cmd);
-my $out = &backquote_logged("$cmd 2>&1");
+$cmd = &command_with_login($cmd) if (!$user);
+my $out = &backquote_logged("($cmd) 2>&1");
 if ($? || $out =~ /could not|error|failed/i) {
 	return $out;
 	}

@@ -10,8 +10,9 @@ $access{'edonly'} && &error($text{'dbase_ecannot'});
 # Validate inputs
 if ($in{'dest'}) {
 	$in{'file'} =~ /^([a-z]:)?\/\S/ || &error($text{'csv_efile'});
-	$access{'backup'} || &error($text{'cvs_ebuser'});
-	&is_under_directory($access{'bpath'}, $in{'file'}) ||
+	$access{'backup'} || &error($text{'csv_ebuser'});
+	($bpath, $buser) = &get_backup_limits();
+	&is_under_directory($bpath, $in{'file'}) ||
 		&error($text{'cvs_ebpath'});
 	}
 if (!$in{'where_def'}) {
@@ -32,11 +33,21 @@ if (!$in{'dest'}) {
 	print "Content-type: text/plain\n\n";
 	$fh = STDOUT;
 	}
-else {
+elsif (!$buser) {
 	# Open target file directly
 	&open_tempfile(OUT, ">$in{'file'}");
 	$fh = OUT;
 	}
+else {
+	# Apply the backup user's filesystem permissions to the writer.
+	&open_execute_command(OUT, &command_as_user($buser, 0,
+				"cat >".quotemeta($in{'file'})), 0) ||
+		&error(&text('csv_ewrite', &html_escape($in{'file'})));
+	$fh = OUT;
+	}
+
+# Report a rejected writer at close instead of terminating on SIGPIPE.
+local $SIG{'PIPE'} = 'IGNORE' if ($buser);
 
 # Send the data
 if ($in{'headers'}) {
@@ -57,7 +68,14 @@ foreach $r (@{$rv->{'data'}}) {
 
 # All done .. tell the user
 if ($in{'dest'}) {
-	&close_tempfile(OUT);
+	if ($buser) {
+		# A failed writer must not be reported as a successful export.
+		close(OUT) ||
+			&error(&text('csv_ewrite', &html_escape($in{'file'})));
+		}
+	else {
+		&close_tempfile(OUT);
+		}
 	$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
 	&ui_print_header($desc, $text{'csv_title'}, "", "csv");
 
