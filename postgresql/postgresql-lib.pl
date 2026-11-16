@@ -25,7 +25,9 @@ if ($module_info{'usermin'}) {
 	%access = ( 'backup' => 1,
 		    'restore' => 1,
 		    'tables' => 1,
-		    'cmds' => 1, );
+		    'cmds' => 1,
+		    'bpath' => '/',
+		    'buser' => 'root' );
 	$max_dbs = $userconfig{'max_dbs'};
 	$commands_file = "$user_module_config_directory/commands";
 	%displayconfig = %userconfig;
