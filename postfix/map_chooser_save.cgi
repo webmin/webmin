@@ -235,13 +235,17 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 	}
 @maps || &error($text{'chooser_enone'});
 
-# Write out mysql and LDAP files
+# Lock all MySQL and LDAP settings files before writing them.
 @files = &unique(@files);
-@newfiles = map { !-r $_ } @files;
+@newfiles = grep { !-r $_ } @files;
 foreach my $f (@files) {
 	&lock_file($f);
 	}
-&flush_file_lines(@files);
+# flush_file_lines accepts one filename per call.
+foreach my $f (@files) {
+	&flush_file_lines($f);
+	}
+# New settings files may contain passwords, so restrict their permissions.
 foreach my $f (@newfiles) {
 	&set_ownership_permissions(undef, undef, 0700, $f);
 	}
