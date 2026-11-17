@@ -275,7 +275,7 @@ delete_enone=Ingen moduler valgt
 
 os_title=Operativ system
 os_desc3=Denne siden viser hvilket operativsystem Webmin oppdaget på installasjonstidspunktet, og hvilket system som er oppdaget for øyeblikket. Dersom disse er forskjellig kan du velge å oppdatere Webmin sin OS-informasjon. Dette kan være nødvendig dersom du nylig har oppgradert.
-os_desc2=Du kan også skifte søkeadressens Webmin-bruker under kjøring av programmer, og adressen til delte biblioteker (shared library path) sendt til alle programmer.
+os_desc2=Du kan også endre søkestien som Webmin bruker når programmer kjøres, samt søkestien for delte biblioteker (shared library path) som sendes til alle programmer.
 os_header=Vertens operativsystem
 os_webmin=Operativsystem i henhold til Webmin
 os_iwebmin=Intern OS-kode brukt av Webmin
@@ -324,7 +324,7 @@ ssl_extracasnone=Ingen for denne IP-adressen
 ssl_extracasbelow=Angitt nedenfor...
 ssl_err=Kunne ikke lagre SSL-innstillinger
 ssl_ekey=Den private SSL-nøkkelfilen $1 eksisterer ikke eller inneholder ikke en PEM-formatnøkkel
-ssl_ekey2=Den private SSL-nøkkelfilen $1 inneholder ikke en nøkkeli PEM-format
+ssl_ekey2=Den private SSL-nøkkelfilen $1 inneholder ikke en nøkkel i PEM-format
 ssl_ecert=SSL-sertifikatfilen $1 eksisterer ikke eller inneholder ikke et PEM-formatsertifikat
 ssl_ecert2=SSL-sertifikatfilen $1 inneholder ikke et PEM-formatsertifikat
 ssl_newkey=Dette skjemaet kan benyttes til å generere en ny SSL-nøkkel for din Webmin-tjener.
