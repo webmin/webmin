@@ -26,7 +26,7 @@ else {
 	&error($text{'view_epath'});
 	}
 
-$file =~ /\.\./ || $file =~ /\<|\>|\||\0/ && &error($text{'view_efile'});
+($file =~ /\.\./ || $file =~ /\<|\>|\||\0/) && &error($text{'view_efile'});
 &can_edit_log($log) || &error($text{'view_ecannot'});
 
 my $lconf = &get_log_config($log) ||
