@@ -68,7 +68,8 @@ for my $function (qw(http_download complete_http_download open_socket
 			     connect_ssl_connection ssl_connection_time
 			     wait_ssl_connection read_ssl_connection
 			     write_ssl_connection read_http_connection
-			     write_http_connection validate_ssl_connection)) {
+			     write_http_connection close_http_connection
+			     validate_ssl_connection)) {
 	$code =~ /\n(sub \Q$function\E\n\{.*?\n\})\n\n=head2 /s or
 		die "Cannot extract $function";
 	my $sub = $1;

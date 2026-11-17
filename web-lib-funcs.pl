@@ -9417,24 +9417,13 @@ sub remote_rpc_login_error
 {
 my ($con, $user) = @_;
 my ($headers, undef, $bad_header) = &read_http_headers($con);
-&remote_rpc_close($con);
+&close_http_connection($con);
 my $msg = ".. login to RPC server as ".($user || 'unknown')." rejected";
 my $reason = !$bad_header ? &get_http_auth_reason($headers) : undef;
 if ($reason) {
 	$reason = &html_escape($reason);
 	}
 return $reason ? "$msg : @{[lcfirst $reason]}" : $msg;
-}
-
-# remote_rpc_close(connection)
-# Close an HTTP request and free its TLS state when present.
-# Repeated HTTPS file chunks must not retain an SSL object per request.
-sub remote_rpc_close
-{
-my ($con) = @_;
-&close_http_connection($con);
-Net::SSLeay::free(delete($con->{'ssl_con'})) if ($con->{'ssl_con'});
-Net::SSLeay::CTX_free(delete($con->{'ssl_ctx'})) if ($con->{'ssl_ctx'});
 }
 
 # rpc_tls_context([miniserv-config], [keyfile], [certfile])
@@ -9697,7 +9686,7 @@ if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 		elsif ($serv->{'ssl'} && $line =~ /^2 HTTPS\s*$/) {
 			# A TLS-terminating proxy requires RPC over HTTPS
 			# throughout.
-			&remote_rpc_close($con);
+			&close_http_connection($con);
 			$remote_rpc_https{$sn} = 1;
 			return &remote_rpc_call($serv_host, $str);
 			}
@@ -9707,7 +9696,7 @@ if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 			if ($serv->{'ssl'} && !$tls) {
 				# Old peers can still be upgraded over their
 				# HTTPS RPC API.
-				&remote_rpc_close($con);
+				&close_http_connection($con);
 				$remote_rpc_https{$sn} = 1;
 				return &remote_rpc_call($serv_host, $str);
 				}
@@ -9717,7 +9706,7 @@ if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 				eval { $peer = &rpc_tls_fingerprint($con->{'ssl_con'}); };
 				$error = $@;
 				}
-			&remote_rpc_close($con);
+			&close_http_connection($con);
 			return &$main::remote_error_handler($error) if ($error);
 			&open_socket($ip, $port, $sid, \$error);
 			return &$main::remote_error_handler(
@@ -9972,7 +9961,7 @@ else {
 	while($line = &read_http_connection($con)) {
 		$fromstr .= $line;
 		}
-	&remote_rpc_close($con);
+	&close_http_connection($con);
 	my $from = &unserialise_variable($fromstr);
 	return &$main::remote_error_handler("Invalid RPC login to $serv->{'host'}") if (!$from->{'status'});
 	if ($wrapped) {
@@ -11028,13 +11017,20 @@ while(1) {
 
 =head2 close_http_connection(&handle)
 
-Closes a connection to an HTTP server, identified by the given handle.
+Closes the connection and frees its TLS session and context, if present.
+Returns the result of closing the filehandle and preserves its error in $!.
 
 =cut
 sub close_http_connection
 {
 my ($h) = @_;
-return close($h->{'fh'});
+# Preserve the close result and error for the caller.
+my $rv = close($h->{'fh'});
+local $!;
+# Remove each TLS object from the handle so it is freed only once.
+Net::SSLeay::free(delete($h->{'ssl_con'})) if ($h->{'ssl_con'});
+Net::SSLeay::CTX_free(delete($h->{'ssl_ctx'})) if ($h->{'ssl_ctx'});
+return $rv;
 }
 
 =head2 read_http_headers(&handle)
