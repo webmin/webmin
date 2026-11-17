@@ -633,45 +633,60 @@ foreach my $e (@{$_[0]}) {
 }
 
 # save_options(&options, [&always-save], [&allowed-options])
-# Save form options. always-save keeps explicit defaults.
-# allowed-options limits parameter names. Omit it to allow all.
+# Validates form options before saving. always-save lists defaults to keep.
+# allowed-options limits parameter names; omitting it allows all names.
 sub save_options
 {
 my ($options, $always_save, $allowed_options) = @_;
 my %options = %$options;
 
-# Reject disallowed parameters before saving any changes.
-if ($allowed_options) {
-	my %allowed = map { $_, 1 } @$allowed_options;
-	foreach my $key (keys %options) {
-		if ($key =~ /_def$/) {
-			(my $param = $key) =~ s/_def$//;
-			$allowed{$param} ||
-			    &error(&text('opts_eoption', &html_escape($param)));
-			}
-		}
-	}
-
-if (check_postfix()) { &error("$text{'check_error'}"); }
-
+# Validate every value first, so a rejected option leaves no partial save.
+my %allowed = map { $_, 1 } @{$allowed_options || [ ]};
+my %values;
 foreach my $key (keys %options) {
 	if ($key =~ /_def$/) {
+		# Each _def field selects a default or a user-supplied value.
 		(my $param = $key) =~ s/_def$//;
+		!$allowed_options || $allowed{$param} ||
+		    &error(&text('opts_eoption', &html_escape($param)));
 		my $value = $options{$key} eq "__USE_FREE_FIELD__"
 			? $options{$param} : $options{$key};
 		$value =~ s/\0/, /g;
-		if ($value =~ /(\S+):(\/\S+)/ && $access{'dir'} ne '/') {
-			foreach my $f (&get_maps_files("$1:$2")) {
-				if (!&is_under_directory($access{'dir'}, $f)) {
-					&error(&text('opts_edir',
-						     $access{'dir'}));
-					}
-				}
-			}
-		&set_current_value($param, $value,
-				   &indexof($param, @$always_save) >= 0);
+		&maps_under_directory($value) ||
+			&error(&text('opts_edir', $access{'dir'}));
+		$values{$param} = $value;
 		}
 	}
+
+# Check the current configuration before writing the validated values.
+if (check_postfix()) { &error("$text{'check_error'}"); }
+
+foreach my $param (keys %values) {
+	&set_current_value($param, $values{$param},
+			   &indexof($param, @$always_save) >= 0);
+	}
+}
+
+# maps_under_directory(value)
+# Returns 1 if the map paths pass the user's directory restriction.
+sub maps_under_directory
+{
+my ($value) = @_;
+
+# An empty directory or / leaves paths unrestricted.
+return 1 if (!$access{'dir'} || $access{'dir'} eq '/');
+
+# Expand references to other parameters, as Postfix does
+$value =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/&get_real_value($2 || $3) || '$'.$1/ge;
+
+# Reject unresolved map references and relative file-map paths.
+return 0 if ($value =~ /:\S*\$/ ||
+	     $value =~ /\b(hash|btree|dbm|sdbm|cdb|lmdb|cidr|regexp|pcre|texthash):[^\/]/);
+# Check every map filename, not just the first one.
+foreach my $f (&get_maps_files($value)) {
+	return 0 if (!&is_under_directory($access{'dir'}, $f));
+	}
+return 1;
 }
 
 # regenerate_aliases
