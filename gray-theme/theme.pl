@@ -1174,13 +1174,12 @@ print "Location: $url\n\n";
 }
 
 # theme_ui_hidden_javascript()
-# Returns the script that switches tabs and opens hidden sections. Both
-# only change classes; the stylesheet does the rest.
+# Returns scripts to switch tabs and toggle sections, classes and arrows.
 sub theme_ui_hidden_javascript
 {
 return <<EOF;
 <script>
-// Open or close a hidden section
+// hidden_opener(divid, openerid): Toggle a section and its arrow.
 function hidden_opener(divid, openerid)
 {
 var divobj = document.getElementById(divid);
@@ -1188,8 +1187,14 @@ var openerobj = document.getElementById(openerid);
 var shown = divobj.className == 'opener_shown';
 divobj.className = shown ? 'opener_hidden' : 'opener_shown';
 if (openerobj) {
-  // Turn the arrow of the link that opens the section
+  // Theme arrows follow the opener's CSS class.
   openerobj.className = shown ? 'opener_closed' : 'opener_open';
+  // Core openers use an image instead of a CSS arrow.
+  var img = openerobj.getElementsByTagName('img')[0];
+  if (img) {
+    img.src = img.src.replace(shown ? 'open.gif' : 'closed.gif',
+                              shown ? 'closed.gif' : 'open.gif');
+    }
   }
 }
 
