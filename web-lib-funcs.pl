@@ -354,6 +354,47 @@ $str =~ s/<(?:[^>'"]*|(['"]).*?\1)*>/$replacement/gs;
 return $str;
 }
 
+=head2 html_sanitize(string, [allowed-tags])
+
+Keeps basic HTML formatting, removes all tag attributes, and escapes text
+without double-escaping entities. Unsupported tags are removed, leaving their
+contents. The result is for use in HTML body content, not attribute values.
+
+allowed-tags is an optional array reference that narrows the supported tags.
+It cannot enable active elements such as script, style or iframe.
+
+=cut
+sub html_sanitize
+{
+my ($str, $tags) = @_;
+# Only formatting elements can be emitted, even when tags are requested.
+my %safe = map { $_ => 1 } qw(a abbr b bdi bdo blockquote br caption code
+	col colgroup dd del div dl dt em h1 h2 h3 h4 h5 h6 hr i ins kbd li mark
+	ol p pre q s samp small span strong sub sup table tbody td tfoot th
+	thead tr tt u ul var);
+if (defined($tags)) {
+	# Callers may restrict the supported formatting tags.
+	my %requested = map { lc($_) => 1 } @$tags;
+	delete($safe{$_}) foreach grep { !$requested{$_} } keys %safe;
+	}
+
+# Separate complete tags from text, allowing quoted > in attributes.
+my @parts = split(m{(<(?:[^>'"]|"[^"]*"|'[^']*')*>)}s, $str // "");
+foreach my $i (0 .. $#parts) {
+	if ($i % 2) {
+		# Rebuild supported tags using only their name and closing slash.
+		my ($close, $tag) = $parts[$i] =~ m{^<(/?)([a-z][a-z0-9:-]*)\b}i;
+		$tag = lc($tag || "");
+		$parts[$i] = $safe{$tag} ? "<$close$tag>" : "";
+		}
+	else {
+		# Escape text and incomplete markup without decoding entities.
+		$parts[$i] = &html_escape($parts[$i], 1);
+		}
+	}
+return join("", @parts);
+}
+
 =head2 quote_escape(string, [only-quote])
 
 Converts ' and " characters in a string into HTML entities, and returns it.
