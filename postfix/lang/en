@@ -872,6 +872,7 @@ opts_smtpd_use_tls=Enable TLS encryption?
 opts_smtp_enforce_tls=Require TLS encryption?
 opts_smtputf8_enable=Enable SMTPUTF8 support?
 sasl_err=Failed to save SMTP authentication and encryption
+sasl_ecannot=You are not allowed to edit SMTP authentication and encryption
 sasl_ecert=Missing or invalid TLS certificate file
 sasl_ekey=Missing or invalid TLS key file
 sasl_eca=Missing or invalid TLS certificate authority file

@@ -8,7 +8,7 @@ our ($err, $newmap, $old, $pmap, $postfix_version, $rh, %access, %in, %newrecip,
 
 &ReadParse();
 
-$access{'sasl'} || &error($text{'opts_ecannot'});
+$access{'sasl'} || &error($text{'sasl_ecannot'});
 
 &error_setup($text{'sasl_err'});
 
