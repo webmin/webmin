@@ -31,7 +31,9 @@ for(my $i = 0; $i < @$columns; $i++) {
 	# Omitted insert fields allow SQLite defaults to run.
 	next if ($in{'new'} && $in{'default_'.$i});
 	push(@names, $column->{'name'});
-	push(@values, $in{'null_'.$i} ? undef : $in{'value_'.$i});
+	# Normalize browser CRLF line endings to LF before storing text.
+	(my $value = $in{'value_'.$i}) =~ s/\r\n/\n/g;
+	push(@values, $in{'null_'.$i} ? undef : $value);
 	}
 
 # Run the insert or update in one transaction.
