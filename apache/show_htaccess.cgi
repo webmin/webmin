@@ -64,8 +64,8 @@ for($idx=0; $idx<@$list; $idx++) {
 		print " " x $ind;
 		print "&lt;/",$d->{'name'},"&gt;\n";
 		}
-	elsif ($_[1] || !$access_types{$t->{'type'}}) {
-		# Directives in section are not editable
+	elsif ($_[1] || !$t || !$access_types{$t->{'type'}}) {
+		# Show nested, unknown or disallowed directives as plain text.
 		&print_line($d, [ $d->{'name'}," ",$d->{'value'} ], $ind);
 		}
 	else {
