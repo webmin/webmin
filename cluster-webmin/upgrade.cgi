@@ -93,7 +93,7 @@ if (`rpm -qp $qfile 2>&1` =~ /(^|\n)webmin-(\d+\.\d+)/) {
 elsif (`dpkg --info $qfile 2>&1` =~ /Package:\s+webmin/) {
 	# Looks like a Webmin Debian package
 	$mode = "deb";
-	`dpkg --info $file 2>&1` =~ /Version:\s+(\S+)/;
+	`dpkg --info $qfile 2>&1` =~ /Version:\s+(\S+)/;
 	$version = $1;
 	}
 else {
