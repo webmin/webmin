@@ -28,7 +28,7 @@ our (@header_checks_actions, @check_sender_actions);
 $access{'postfinger'} = 0 if (&is_readonly_mode());
 do 'aliases-lib.pl';
 
-$config{'perpage'} ||= 20;      # a value of 0 can cause problems
+$config{'perpage'} ||= 20;    # a value of 0 can cause problems
 
 # Get the saved version number
 my $version_fh = "VERSION";
@@ -49,7 +49,8 @@ if (&open_readfile($version_fh, $version_file)) {
 if (!$postfix_version) {
 	# Not there .. work it out
 	if ($has_postfix_config_command &&
-	    &backquote_command("$postfix_config_command -d mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
+	    &backquote_command("$postfix_config_command -d mail_version 2>&1",
+			       1) =~ /mail_version\s*=\s*(.*)/) {
 		# Got the version
 		$postfix_version = $1;
 		}
@@ -69,27 +70,24 @@ else {
 	$ldap_timeout = "ldap_lookup_timeout";
 	}
 
-
 sub guess_config_dir
 {
-    my $answ = $config{'postfix_config_file'};
-    $answ =~ /(.*)\/[^\/]*/;
-    return $1;
+my $answ = $config{'postfix_config_file'};
+$answ =~ /(.*)\/[^\/]*/;
+return $1;
 }
 
 $config_dir = guess_config_dir();
-
 
 ## DOC: compared to other webmin modules, here we don't need to parse
 ##      the config file, because a config command is provided by
 ##      postfix to read and write the config parameters
 
-
 # postfix_module_version()
 # returns the version of the postfix module
 sub postfix_module_version
 {
-    return $POSTFIX_MODULE_VERSION;
+return $POSTFIX_MODULE_VERSION;
 }
 
 # is_postfix_running()
@@ -108,17 +106,16 @@ eval {
 return $pid;
 }
 
-
 sub is_existing_parameter
 {
-    my $out = &backquote_command("$config{'postfix_config_command'} -c $config_dir $_[0] 2>&1", 1);
-    return !($out =~ /unknown parameter/);
+my $out = &backquote_command(
+	"$config{'postfix_config_command'} -c $config_dir $_[0] 2>&1", 1);
+return !($out =~ /unknown parameter/);
 }
-
 
 # get_current_value(parameter_name)
 # returns a scalar corresponding to the value of the parameter
-## modified to allow main_parameter:subparameter 
+## modified to allow main_parameter:subparameter
 sub get_current_value
 {
 my ($n, $nodef) = @_;
@@ -136,14 +133,14 @@ foreach my $l (@$lref) {
 		$out .= $1;
 		$out =~ s/^\s+/ /;
 		}
- 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)|^\s*([a-z0-9\_]+)\s*=\s*$/ &&
- 	    $1 . $3 eq $name) {
+	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)|^\s*([a-z0-9\_]+)\s*=\s*$/ &&
+	    $1.$3 eq $name) {
 		# Found the one we're looking for, set a flag
 		$out = $2;
 		$begin_flag = 1;
 		}
- 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)|^\s*([a-z0-9\_]+)\s*=\s*$/ &&
- 	    $1 . $3 ne $name && $begin_flag == 1) {
+	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)|^\s*([a-z0-9\_]+)\s*=\s*$/ &&
+	    $1.$3 ne $name && $begin_flag == 1) {
 		# after the beginning, another configuration variable
 		# found!  Stop!
 		$end_flag = 1;
@@ -172,8 +169,8 @@ else {
 if ($key) {
 	# If the value asked for was like foo:bar, extract from the value
 	# the parts after bar
-	my @res = ( );
-        while($out =~ /^(.*?)\Q$key\E\s+(\S+)(.*)$/) {
+	my @res = ();
+	while ($out =~ /^(.*?)\Q$key\E\s+(\S+)(.*)$/) {
 		my $v = $2;
 		$out = $3;
 		$v =~ s/,$//;
@@ -194,15 +191,15 @@ my $raw_value = &get_current_value($parameter_name);
 my $compatibility_level = &get_current_value("compatibility_level");
 
 if ($raw_value =~ /\{\{\$compatibility_level\}\s*([<>=!]+)\s*\{(\d+)\}\s*\?\s*\{(.*?)\}\s*:\s*\{(.*?)\}\}/) {
-	my ($op, $lvl, $tval, $fval) = ($1, $2, $3, $4);
+	my ($op, $lvl, $tval, $fval) = ( $1, $2, $3, $4 );
 	my %compare = (
-		'<'  => sub { $_[0] <  $_[1] },
+		'<' => sub { $_[0] < $_[1] },
 		'<=' => sub { $_[0] <= $_[1] },
-		'>'  => sub { $_[0] >  $_[1] },
+		'>' => sub { $_[0] > $_[1] },
 		'>=' => sub { $_[0] >= $_[1] },
 		'==' => sub { $_[0] == $_[1] },
 		'!=' => sub { $_[0] != $_[1] },
-		);
+	);
 	return if (!$compare{$op});
 	return $compare{$op}->($compatibility_level, $lvl) ? $tval : $fval;
 	}
@@ -214,33 +211,33 @@ return $raw_value;
 # returns if the value is the default value
 sub if_default_value
 {
-    my ($name) = @_;
-    my $out = &backquote_command(
+my ($name) = @_;
+my $out = &backquote_command(
 	"$config{'postfix_config_command'} -c $config_dir -n ".
 	quotemeta($name)." 2>&1", 1);
-    if ($?) { &error(&text('query_get_efailed', $_[0], $out)); }
-    return ($out eq "");
+if ($?) { &error(&text('query_get_efailed', $_[0], $out)); }
+return ($out eq "");
 }
 
 # get_default_value(parameter_name)
 # returns the default value of the parameter
 sub get_default_value
 {
-    my $out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -dh $_[0] 2>&1", 1);  # -h tells postconf not to output the name of the parameter
-    if ($?) { &error(&text('query_get_efailed', $_[0], $out)); }
-    chop($out);
-    return $out;
+# -h tells postconf not to output the name of the parameter
+my $out = &backquote_command(
+	"$config{'postfix_config_command'} -c $config_dir -dh $_[0] 2>&1", 1);
+if ($?) { &error(&text('query_get_efailed', $_[0], $out)); }
+chop($out);
+return $out;
 }
-
 
 # set_current_value(parameter_name, parameter_value, [always-set])
 # Update some value in the Postfix configuration file
 sub set_current_value
 {
-    my $value = $_[1];
-    if ($value eq "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__" ||
-	$value eq &get_default_value($_[0]) && !$_[2])
-    {
+my $value = $_[1];
+if ($value eq "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__" ||
+    $value eq &get_default_value($_[0]) && !$_[2]) {
 	# there is a special case in which there is no static default value ;
 	# postfix will handle it correctly if I remove the line in `main.cf'
 	my $all_lines = &read_file_lines($config{'postfix_config_file'});
@@ -248,74 +245,73 @@ sub set_current_value
 	my $end_line_of_parameter = -1;
 	my $i = 0;
 
-	foreach (@{$all_lines})
-	{
-	    if (/^\s*$_[0]\s*=/) {
-		$line_of_parameter = $i;
-		$end_line_of_parameter = $i;
-	    } elsif ($line_of_parameter >= 0 &&
-		     /^\t+\S/) {
-		# Multi-line continuation
-		$end_line_of_parameter = $i;
-	    }
-	    $i++;
-	}
+	foreach (@{$all_lines}) {
+		if (/^\s*$_[0]\s*=/) {
+			$line_of_parameter = $i;
+			$end_line_of_parameter = $i;
+			}
+		elsif ($line_of_parameter >= 0 &&
+		       /^\t+\S/) {
+			# Multi-line continuation
+			$end_line_of_parameter = $i;
+			}
+		$i++;
+		}
 
 	if ($line_of_parameter != -1) {
-	    splice(@{$all_lines}, $line_of_parameter,
-		   $end_line_of_parameter - $line_of_parameter + 1);
-	    &flush_file_lines($config{'postfix_config_file'});
-	} else {
-	    &unflush_file_lines($config{'postfix_config_file'});
+		splice(@{$all_lines}, $line_of_parameter,
+		       $end_line_of_parameter - $line_of_parameter + 1);
+		&flush_file_lines($config{'postfix_config_file'});
+		}
+	else {
+		&unflush_file_lines($config{'postfix_config_file'});
+		}
 	}
-    }
-    else
-    {
+else {
 	my $out = &backquote_logged(
 		"$config{'postfix_config_command'} -c $config_dir ".
 		"-e $_[0]=".quotemeta($value)." 2>&1");
 	$? && &error(&text('query_set_efailed', $_[0], $_[1], $out).
-		      "<br> $config{'postfix_config_command'} -c $config_dir ".
+		     "<br> $config{'postfix_config_command'} -c $config_dir ".
 		     "-e $_[0]=\"$value\" 2>&1");
-        &unflush_file_lines($config{'postfix_config_file'}); # Invalidate cache
-    }
+	&unflush_file_lines($config{'postfix_config_file'}); # Invalidate cache
+	}
 }
 
 # check_postfix()
 #
 sub check_postfix
 {
-	my $cmd = "$config{'postfix_control_command'} -c $config_dir check";
-	my $out = &backquote_command("$cmd 2>&1 </dev/null", 1);
-	my $ex = $?;
-	if ($ex && &foreign_check("proc")) {
-		# Get a better error message
-		&foreign_require("proc", "proc-lib.pl");
-		$out = &proc::pty_backquote("$cmd 2>&1 </dev/null");
-		}
-	return $ex ? ($out || "$cmd failed") : undef;
+my $cmd = "$config{'postfix_control_command'} -c $config_dir check";
+my $out = &backquote_command("$cmd 2>&1 </dev/null", 1);
+my $ex = $?;
+if ($ex && &foreign_check("proc")) {
+	# Get a better error message
+	&foreign_require("proc", "proc-lib.pl");
+	$out = &proc::pty_backquote("$cmd 2>&1 </dev/null");
+	}
+return $ex ? ($out || "$cmd failed") : undef;
 }
 
 # reload_postfix()
 sub reload_postfix
 {
-    if (is_postfix_running())
-    {
+if (is_postfix_running()) {
 	if (check_postfix()) {
 		return $text{'check_error'};
 		}
 	my $cmd;
 	if (!$config{'reload_cmd'}) {
 		$cmd = "$config{'postfix_control_command'} -c $config_dir ".
-		       "reload";
+			"reload";
 		}
 	else {
 		$cmd = $config{'reload_cmd'};
 		}
 	my $ex = &system_logged("$cmd >/dev/null 2>&1");
 	return $ex ? "$cmd failed" : undef;
-    }
-    return;
+	}
+return;
 }
 
 # get_bootup_action()
@@ -346,7 +342,8 @@ else {
 		($ok, $out) = &init::stop_action($init);
 		}
 	if (&is_postfix_running()) {
-		$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir stop 2>&1");
+		$out = &backquote_logged(
+			"$config{'postfix_control_command'} -c $config_dir stop 2>&1");
 		$ok = !$?;
 		}
 	}
@@ -370,125 +367,120 @@ elsif ($init = &get_bootup_action()) {
 	}
 else {
 	# Fall back to the Postfix control command
-	$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir start 2>&1");
+	$out = &backquote_logged(
+		"$config{'postfix_control_command'} -c $config_dir start 2>&1");
 	}
 return $ok ? undef : "<tt>".&html_escape($out)."</tt>";
 }
 
-# option_radios_freefield(name_of_option, length_of_free_field, [name_of_radiobutton, text_of_radiobutton]+)
+# option_radios_freefield(name_of_option, length_of_free_field,
+#                        [name_of_radiobutton, text_of_radiobutton]+)
 # builds an option with variable number of radiobuttons and a free field
 # WARNING: *FIRST* RADIO BUTTON *MUST* BE THE DEFAULT VALUE OF POSTFIX
 sub option_radios_freefield
 {
-    my ($name, $length) = ($_[0], $_[1]);
+my ($name, $length) = ( $_[0], $_[1] );
 
-    my $v = &get_current_value($name);
-    my $key = 'opts_'.$name;
+my $v = &get_current_value($name);
+my $key = 'opts_'.$name;
 
-    my $check_free_field = 1;
-    
-    my $help = -r &help_file($module_name, "opt_".$name) ?
-		&hlink($text{$key}, "opt_".$name) : $text{$key};
-    my $rv;
+my $check_free_field = 1;
 
-    # first radio button (must be default value!!)
-    $rv .= &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
-		       $_[2], &if_default_value($name));
+my $help = -r &help_file($module_name, "opt_".$name)
+	? &hlink($text{$key}, "opt_".$name) : $text{$key};
+my $rv;
 
-    $check_free_field = 0 if &if_default_value($name);
-    shift;
-    
-    # other radio buttons
-    while (defined($_[2]))
-    {
+# first radio button (must be default value!!)
+$rv .= &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
+		    $_[2], &if_default_value($name));
+
+$check_free_field = 0 if &if_default_value($name);
+shift;
+
+# other radio buttons
+while (defined($_[2])) {
 	$rv .= &ui_oneradio($name."_def", $_[2], $_[3], $v eq $_[2]);
 	if ($v eq $_[2]) { $check_free_field = 0; }
 	shift;
 	shift;
-    }
+	}
 
-    # the free field
-    $rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
-		       $check_free_field == 1);
-    $rv .= &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
-    print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);
+# the free field
+$rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
+		    $check_free_field == 1);
+$rv .= &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
+print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);
 }
 
 # option_mapfield(name_of_option, length_of_free_field)
 # Prints a field for selecting a map, or none
 sub option_mapfield
 {
-    my ($name, $length) = ($_[0], $_[1]);
+my ($name, $length) = ( $_[0], $_[1] );
 
-    my $v = &get_current_value($name);
-    my $key = 'opts_'.$name;
+my $v = &get_current_value($name);
+my $key = 'opts_'.$name;
 
-    my $check_free_field = 1;
-    
-    my $help = -r &help_file($module_name, "opt_".$name) ?
-		&hlink($text{$key}, "opt_".$name) : $text{$key};
-    my $rv;
-    $rv .= &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
-		        $text{'opts_nomap'}, &if_default_value($name));
-    $rv .= "<br>\n";
+my $check_free_field = 1;
 
-    $check_free_field = 0 if &if_default_value($name);
-    shift;
-    
-    # the free field
-    $rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__",
-		        $text{'opts_setmap'}, $check_free_field == 1);
-    $rv .= &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
-    $rv .= &map_chooser_button($name, $name);
-    print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);
+my $help = -r &help_file($module_name, "opt_".$name)
+	? &hlink($text{$key}, "opt_".$name) : $text{$key};
+my $rv;
+$rv .= &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
+		    $text{'opts_nomap'}, &if_default_value($name));
+$rv .= "<br>\n";
+
+$check_free_field = 0 if &if_default_value($name);
+shift;
+
+# the free field
+$rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__",
+		    $text{'opts_setmap'}, $check_free_field == 1);
+$rv .= &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
+$rv .= &map_chooser_button($name, $name);
+print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);
 }
-
-
 
 # option_freefield(name_of_option, length_of_free_field)
 # builds an option with free field
 sub option_freefield
 {
-    my ($name, $length) = ($_[0], $_[1]);
+my ($name, $length) = ( $_[0], $_[1] );
 
-    my $v = &get_current_value($name);
-    my $key = 'opts_'.$name;
-    
-    print &ui_table_row(&hlink($text{$key}, "opt_".$name),
-	&ui_textbox($name."_def", $v, $length),
-	$length > 20 ? 3 : 1);
+my $v = &get_current_value($name);
+my $key = 'opts_'.$name;
+
+print &ui_table_row(&hlink($text{$key}, "opt_".$name),
+		    &ui_textbox($name."_def", $v, $length),
+		    $length > 20 ? 3 : 1);
 }
-
 
 # option_yesno(name_of_option, [help])
 # if help is provided, displays help link
 sub option_yesno
 {
-    my $name = $_[0];
-    my $v = &resolve_current_value($name);
-    my $key = 'opts_'.$name;
+my $name = $_[0];
+my $v = &resolve_current_value($name);
+my $key = 'opts_'.$name;
 
-    print &ui_table_row(defined($_[1]) ? &hlink($text{$key}, "opt_".$name)
-		       		       : $text{$key},
-			&ui_radio($name."_def", lc($v),
-				  [ [ "yes", $text{'yes'} ],
-				    [ "no", $text{'no'} ] ]));
+print &ui_table_row(
+	defined($_[1]) ? &hlink($text{$key}, "opt_".$name) : $text{$key},
+	&ui_radio($name."_def", lc($v),
+		  [ [ "yes", $text{'yes'} ], [ "no", $text{'no'} ] ]));
 }
 
 # option_select(name_of_option, &options, [help])
 # Shows a drop-down menu of options
 sub option_select
 {
-    my $name = $_[0];
-    my $v = &get_current_value($name);
-    my $key = 'opts_'.$name;
+my $name = $_[0];
+my $v = &get_current_value($name);
+my $key = 'opts_'.$name;
 
-    print &ui_table_row(defined($_[2]) ? &hlink($text{$key}, "opt_".$name)
-				       : $text{$key},
-    			&ui_select($name."_def", lc($v), $_[1]));
+print &ui_table_row(
+	defined($_[2]) ? &hlink($text{$key}, "opt_".$name) : $text{$key},
+	&ui_select($name."_def", lc($v), $_[1]));
 }
-
-
 
 ############################################################################
 # aliases support    [too lazy to create a aliases-lib.pl :-)]
@@ -498,24 +490,25 @@ sub option_select
 # supports multiple alias-files
 sub get_aliases_files
 {
-    return map { $_->[1] }
-	       grep { &file_map_type($_->[0]) } &get_maps_types_files($_[0]);
+return map { $_->[1] }
+	grep { &file_map_type($_->[0]) } &get_maps_types_files($_[0]);
 }
 
 # init_new_alias() : $number
 # gives a new number of alias
 sub init_new_alias
 {
-    my $aliases = &get_aliases();
+my $aliases = &get_aliases();
 
-    my $max_number = 0;
+my $max_number = 0;
 
-    foreach my $trans (@{$aliases})
-    {
-	if ($trans->{'number'} > $max_number) { $max_number = $trans->{'number'}; }
-    }
-    
-    return $max_number+1;
+foreach my $trans (@{$aliases}) {
+	if ($trans->{'number'} > $max_number) {
+		$max_number = $trans->{'number'};
+		}
+	}
+
+return $max_number + 1;
 }
 
 # list_postfix_aliases()
@@ -545,9 +538,9 @@ if (@maps) {
 	foreach my $m (@$maps) {
 		my $v = $m->{'value'};
 		my @values;
-		while($v =~ /^\s*,?\s*()"([^"]+)"(.*)$/ ||
-		      $v =~ /^\s*,?\s*(\|)"([^"]+)"(.*)$/ ||
-		      $v =~ /^\s*,?\s*()([^,\s]+)(.*)$/) {
+		while ($v =~ /^\s*,?\s*()"([^"]+)"(.*)$/ ||
+		       $v =~ /^\s*,?\s*(\|)"([^"]+)"(.*)$/ ||
+		       $v =~ /^\s*,?\s*()([^,\s]+)(.*)$/) {
 			push(@values, $1.$2);
 			$v = $3;
 			}
@@ -584,7 +577,7 @@ else {
 		$alias->{'name'} = '#'.$alias->{'name'};
 		}
 	$alias->{'value'} = join(',', map { /\s/ ? "\"$_\"" : $_ }
-					  @{$alias->{'values'}});
+				 @{$alias->{'values'}});
 	&create_mapping("alias_maps", $alias, undef, "$last_type:$last_file");
 	}
 }
@@ -615,7 +608,7 @@ if ($oldalias->{'map_type'}) {
 		$alias->{'name'} = '#'.$alias->{'name'};
 		}
 	$alias->{'value'} = join(',', map { /\s/ ? "\"$_\"" : $_ }
-					  @{$alias->{'values'}});
+				 @{$alias->{'values'}});
 	&modify_mapping("alias_maps", $oldalias, $alias);
 	}
 else {
@@ -630,9 +623,9 @@ sub renumber_list
 return if (!$_[2]);
 foreach my $e (@{$_[0]}) {
 	next if (defined($e->{'alias_file'}) &&
-	         $e->{'alias_file'} ne $_[1]->{'alias_file'});
+		 $e->{'alias_file'} ne $_[1]->{'alias_file'});
 	next if (defined($e->{'map_file'}) &&
-	         $e->{'map_file'} ne $_[1]->{'map_file'});
+		 $e->{'map_file'} ne $_[1]->{'map_file'});
 	$e->{'line'} += $_[2] if ($e->{'line'} > $_[1]->{'line'});
 	$e->{'eline'} += $_[2] if (defined($e->{'eline'}) &&
 				   $e->{'eline'} > $_[1]->{'eline'});
@@ -644,159 +637,154 @@ foreach my $e (@{$_[0]}) {
 # allowed-options limits parameter names. Omit it to allow all.
 sub save_options
 {
-    my ($options, $always_save, $allowed_options) = @_;
-    my %options = %$options;
+my ($options, $always_save, $allowed_options) = @_;
+my %options = %$options;
 
-    # Reject disallowed parameters before saving any changes.
-    if ($allowed_options) {
+# Reject disallowed parameters before saving any changes.
+if ($allowed_options) {
 	my %allowed = map { $_, 1 } @$allowed_options;
 	foreach my $key (keys %options) {
-	    if ($key =~ /_def$/) {
-		(my $param = $key) =~ s/_def$//;
-		$allowed{$param} ||
-		    &error(&text('opts_eoption', &html_escape($param)));
+		if ($key =~ /_def$/) {
+			(my $param = $key) =~ s/_def$//;
+			$allowed{$param} ||
+			    &error(&text('opts_eoption', &html_escape($param)));
+			}
 		}
-	    }
-    }
-
-    if (check_postfix()) { &error("$text{'check_error'}"); }
-
-    foreach my $key (keys %options)
-    {
-	if ($key =~ /_def$/)
-	{
-	    (my $param = $key) =~ s/_def$//;
-	    my $value = $options{$key} eq "__USE_FREE_FIELD__" ?
-			$options{$param} : $options{$key};
-	    $value =~ s/\0/, /g;
-            if ($value =~ /(\S+):(\/\S+)/ && $access{'dir'} ne '/') {
-		foreach my $f (&get_maps_files("$1:$2")) {
-		   if (!&is_under_directory($access{'dir'}, $f)) {
-			&error(&text('opts_edir', $access{'dir'}));
-		   }
-		}
-            }
-	    &set_current_value($param, $value,
-			       &indexof($param, @$always_save) >= 0);
 	}
-    }
-}
 
+if (check_postfix()) { &error("$text{'check_error'}"); }
+
+foreach my $key (keys %options) {
+	if ($key =~ /_def$/) {
+		(my $param = $key) =~ s/_def$//;
+		my $value = $options{$key} eq "__USE_FREE_FIELD__"
+			? $options{$param} : $options{$key};
+		$value =~ s/\0/, /g;
+		if ($value =~ /(\S+):(\/\S+)/ && $access{'dir'} ne '/') {
+			foreach my $f (&get_maps_files("$1:$2")) {
+				if (!&is_under_directory($access{'dir'}, $f)) {
+					&error(&text('opts_edir',
+						     $access{'dir'}));
+					}
+				}
+			}
+		&set_current_value($param, $value,
+				   &indexof($param, @$always_save) >= 0);
+		}
+	}
+}
 
 # regenerate_aliases
 #
 sub regenerate_aliases
 {
-    my $out;
-    $access{'aliases'} || error($text{'regenerate_ecannot'});
-    if (get_current_value("alias_maps") eq "")
-    {
+my $out;
+$access{'aliases'} || error($text{'regenerate_ecannot'});
+if (get_current_value("alias_maps") eq "") {
 	$out = &backquote_logged("$config{'postfix_newaliases_command'} 2>&1");
 	if ($?) { &error(&text('regenerate_alias_efailed', $out)); }
-    }
-    else
-    {
-	foreach my $map (get_maps_types_files(get_real_value("alias_maps")))
-	{
-	    if (&file_map_type($map->[0])) {
-		    my $cmd = $config{'postfix_aliases_table_command'};
-		    if ($cmd =~ /newaliases/) {
-			$cmd .= " -oA$map->[1]";
-		    } else {
-			$cmd .= " $map->[1]";
-		    }
-		    $out = &backquote_logged("$cmd 2>&1");
-		    if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
-	    }
 	}
-    }
+else {
+	foreach my $map (get_maps_types_files(get_real_value("alias_maps"))) {
+		if (&file_map_type($map->[0])) {
+			my $cmd = $config{'postfix_aliases_table_command'};
+			if ($cmd =~ /newaliases/) {
+				$cmd .= " -oA$map->[1]";
+				}
+			else {
+				$cmd .= " $map->[1]";
+				}
+			$out = &backquote_logged("$cmd 2>&1");
+			if ($?) {
+				&error(&text('regenerate_table_efailed',
+					     $map->[1], $out));
+				}
+			}
+		}
+	}
 }
-
 
 # regenerate_relocated_table()
 sub regenerate_relocated_table
 {
-    &regenerate_any_table("relocated_maps");
+&regenerate_any_table("relocated_maps");
 }
-
 
 # regenerate_virtual_table()
 sub regenerate_virtual_table
 {
-    &regenerate_any_table($virtual_maps);
+&regenerate_any_table($virtual_maps);
 }
 
 # regenerate_bcc_table()
 sub regenerate_bcc_table
 {
-    &regenerate_any_table("sender_bcc_maps");
+&regenerate_any_table("sender_bcc_maps");
 }
 
 sub regenerate_relay_recipient_table
-{ 
-    &regenerate_any_table("relay_recipient_maps");
+{
+&regenerate_any_table("relay_recipient_maps");
 }
 
 sub regenerate_sender_restrictions_table
 {
-    &regenerate_any_table("smtpd_sender_restrictions");
+&regenerate_any_table("smtpd_sender_restrictions");
 }
 
 # regenerate_recipient_bcc_table()
 sub regenerate_recipient_bcc_table
 {
-    &regenerate_any_table("recipient_bcc_maps");
+&regenerate_any_table("recipient_bcc_maps");
 }
 
 # regenerate_header_table()
 sub regenerate_header_table
 {
-    &regenerate_any_table("header_checks");
+&regenerate_any_table("header_checks");
 }
 
 # regenerate_mime_header_table()
 sub regenerate_mime_header_table
 {
-    &regenerate_any_table("mime_header_checks");
+&regenerate_any_table("mime_header_checks");
 }
 
 # regenerate_body_table()
 sub regenerate_body_table
 {
-    &regenerate_any_table("body_checks");
+&regenerate_any_table("body_checks");
 }
 
 # regenerate_canonical_table
 #
 sub regenerate_canonical_table
 {
-    &regenerate_any_table("canonical_maps");
-    &regenerate_any_table("recipient_canonical_maps");
-    &regenerate_any_table("sender_canonical_maps");
+&regenerate_any_table("canonical_maps");
+&regenerate_any_table("recipient_canonical_maps");
+&regenerate_any_table("sender_canonical_maps");
 }
-
 
 # regenerate_transport_table
 #
 sub regenerate_transport_table
 {
-    &regenerate_any_table("transport_maps");
+&regenerate_any_table("transport_maps");
 }
 
 # regenerate_sni_table
 #
 sub regenerate_sni_table
 {
-    &regenerate_any_table("tls_server_sni_maps", undef, undef, 1);
+&regenerate_any_table("tls_server_sni_maps", undef, undef, 1);
 }
 
 # regenerate_dependent_table
 #
 sub regenerate_dependent_table
 {
-    &regenerate_any_table("sender_dependent_default_transport_maps");
+&regenerate_any_table("sender_dependent_default_transport_maps");
 }
-
 
 # regenerate_any_table($parameter_where_to_find_the_table_names,
 #		       [ &force-files ], [ after-tag ], [ base-64 ])
@@ -818,6 +806,7 @@ elsif (&get_current_value($name) ne "") {
 	}
 foreach my $map (@files) {
 	next unless $map;
+
 	# Make safe permissions for SNI maps
 	if ($name eq "tls_server_sni_maps" && &file_map_type($map->[0])) {
 		&set_ownership_permissions(undef, undef, 0600, $map->[1],
@@ -833,11 +822,13 @@ foreach my $map (@files) {
 			" -c $config_dir".
 			($base64 ? " -F" : "").
 			" $map->[0]:$map->[1] 2>&1");
-		if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
+		if ($?) {
+			&error(&text('regenerate_table_efailed',
+				     $map->[1], $out));
+			}
 		}
 	}
 }
-
 
 ############################################################################
 # maps [canonical, virtual, transport] support
@@ -847,196 +838,193 @@ foreach my $map (@files) {
 # supports multiple maps-files
 sub get_maps_files
 {
-    $_[0] =~ /:(\/[^,\s]*)(.*)/ || return ( );
-    (my $returnvalue, my $recurse) = ( $1, $2 );
+$_[0] =~ /:(\/[^,\s]*)(.*)/ || return ();
+(my $returnvalue, my $recurse) = ( $1, $2 );
 
-    return ( $returnvalue,
-	     ($recurse =~ /:\/[^,\s]*/) ?
-	         &get_maps_files($recurse)
-	     :
-	         ()
-           )
+return ( $returnvalue,
+	 ($recurse =~ /:\/[^,\s]*/) ? &get_maps_files($recurse) : () )
 }
 
- 
 # get_maps($maps_name, [&force-files], [force-map]) : \@maps
 # Construct the mappings database taken from the map files given from the
 # parameters.
 sub get_maps
 {
-    if (!defined($maps_cache{$_[0]}))
-    {
-	my @maps_files = $_[1] ? (map { [ "hash", $_ ] } @{$_[1]}) :
-			 $_[2] ? &get_maps_types_files($_[2]) :
-			         &get_maps_types_files(&get_real_value($_[0]));
+if (!defined($maps_cache{$_[0]})) {
+	my @maps_files = $_[1]
+		? (map { [ "hash", $_ ] } @{$_[1]})
+		: $_[2]
+			? &get_maps_types_files($_[2])
+			: &get_maps_types_files(&get_real_value($_[0]));
 	my $number = 0;
 	$maps_cache{$_[0]} = [ ];
-	foreach my $maps_type_file (@maps_files)
-	{
-	    my ($maps_type, $maps_file) = @$maps_type_file;
+	foreach my $maps_type_file (@maps_files) {
+		my ($maps_type, $maps_file) = @$maps_type_file;
 
-	    if (&file_map_type($maps_type)) {
-		    # Read a file on disk
-		    my $mapsfh = "MAPS";
-		    &open_readfile($mapsfh, $maps_file);
-		    my $i = 0;
-		    my $cmt;
-		    my $lastmap;
-		    while (<$mapsfh>)
-		    {
-			s/\r|\n//g;	# remove newlines
-			if (/^\s*#+\s*(.*)/) {
-			    # A comment line
-			    $cmt = &is_table_comment($_);
-			    }
-			elsif (/^(\/[^\/]*\/[a-z]*)\s+(.*)/ ||
-			       /^([^\s]+)\s+(.*)/) {
-			    # An actual map
-			    $number++;
-			    my %map;
-			    $map{'name'} = $1;
-			    $map{'value'} = $2;
-			    $map{'line'} = $cmt ? $i-1 : $i;
-			    $map{'eline'} = $i;
-			    $map{'map_file'} = $maps_file;
-			    $map{'map_type'} = $maps_type;
-			    $map{'file'} = $maps_file;
-			    $map{'number'} = $number;
-			    $map{'cmt'} = $cmt;
-			    push(@{$maps_cache{$_[0]}}, \%map);
-			    $cmt = undef;
-			    $lastmap = \%map;
-			    }
-			elsif (/^\s+(\S.*$)/ && $lastmap) {
-			    # Continuation line
-			    $lastmap->{'value'} .= " ".$1;
-			    $lastmap->{'eline'} = $i;
-			    }
-			else {
-			    $cmt = undef;
-			    }
-			$i++;
-		    }
-		    close($mapsfh);
+		if (&file_map_type($maps_type)) {
+			# Read a file on disk
+			my $mapsfh = "MAPS";
+			&open_readfile($mapsfh, $maps_file);
+			my $i = 0;
+			my $cmt;
+			my $lastmap;
+			while (<$mapsfh>) {
+				s/\r|\n//g;    # remove newlines
+				if (/^\s*#+\s*(.*)/) {
+					# A comment line
+					$cmt = &is_table_comment($_);
+					}
+				elsif (/^(\/[^\/]*\/[a-z]*)\s+(.*)/ ||
+				       /^([^\s]+)\s+(.*)/) {
+					# An actual map
+					$number++;
+					my %map;
+					$map{'name'} = $1;
+					$map{'value'} = $2;
+					$map{'line'} = $cmt ? $i - 1 : $i;
+					$map{'eline'} = $i;
+					$map{'map_file'} = $maps_file;
+					$map{'map_type'} = $maps_type;
+					$map{'file'} = $maps_file;
+					$map{'number'} = $number;
+					$map{'cmt'} = $cmt;
+					push(@{$maps_cache{$_[0]}}, \%map);
+					$cmt = undef;
+					$lastmap = \%map;
+					}
+				elsif (/^\s+(\S.*$)/ && $lastmap) {
+					# Continuation line
+					$lastmap->{'value'} .= " ".$1;
+					$lastmap->{'eline'} = $i;
+					}
+				else {
+					$cmt = undef;
+					}
+				$i++;
+				}
+			close($mapsfh);
 
-	     } elsif ($maps_type eq "mysql") {
-		    # Get from a MySQL database
-		    my $conf = &mysql_value_to_conf($maps_file);
-		    my $dbh = &connect_mysql_db($conf);
-		    ref($dbh) || &error($dbh);
-		    my $cmd = $dbh->prepare(
-				       "select ".$conf->{'where_field'}.
-				       ",".$conf->{'select_field'}.
-				       " from ".$conf->{'table'}.
-				       " where 1 = 1 ".
-				       $conf->{'additional_conditions'});
-		    if (!$cmd || !$cmd->execute()) {
-			&error(&text('mysql_elist',
-			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
 			}
-		    while(my ($k, $v) = $cmd->fetchrow()) {
-			$number++;
-			my %map;
-			$map{'name'} = $k;
-			$map{'value'} = $v;
-			$map{'key'} = $k;
-			$map{'map_file'} = $maps_file;
-			$map{'map_type'} = $maps_type;
-			$map{'number'} = $number;
-			push(@{$maps_cache{$_[0]}}, \%map);
-		    }
-		    $cmd->finish();
-		    $dbh->disconnect();
+		elsif ($maps_type eq "mysql") {
+			# Get from a MySQL database
+			my $conf = &mysql_value_to_conf($maps_file);
+			my $dbh = &connect_mysql_db($conf);
+			ref($dbh) || &error($dbh);
+			my $cmd = $dbh->prepare(
+				"select ".$conf->{'where_field'}.
+				",".$conf->{'select_field'}.
+				" from ".$conf->{'table'}.
+				" where 1 = 1 ".
+				$conf->{'additional_conditions'});
+			if (!$cmd || !$cmd->execute()) {
+				&error(&text(
+					'mysql_elist',
+					"<tt>".&html_escape($dbh->errstr)."</tt>"));
+				}
+			while (my ($k, $v) = $cmd->fetchrow()) {
+				$number++;
+				my %map;
+				$map{'name'} = $k;
+				$map{'value'} = $v;
+				$map{'key'} = $k;
+				$map{'map_file'} = $maps_file;
+				$map{'map_type'} = $maps_type;
+				$map{'number'} = $number;
+				push(@{$maps_cache{$_[0]}}, \%map);
+				}
+			$cmd->finish();
+			$dbh->disconnect();
 
-	     } elsif ($maps_type eq "ldap") {
-		    # Get from an LDAP database
-	     	    my $conf = &ldap_value_to_conf($maps_file);
-		    my $ldap = &connect_ldap_db($conf);
-		    ref($ldap) || &error($ldap);
-		    my ($name_attr, $filter) = &get_ldap_key($conf);
-		    my $scope = $conf->{'scope'} || 'sub';
-		    my $rv = $ldap->search(base => $conf->{'search_base'},
-					      scope => $scope,
-					      filter => $filter);
-		    if (!$rv || $rv->code) {
-			# Search failed!
-			&error(&text('ldap_equery',
-				     "<tt>$conf->{'search_base'}</tt>",
-				     "<tt>".&html_escape($rv->error)."</tt>"));
-		    }
-		    foreach my $o ($rv->all_entries) {
-			$number++;
-			my %map;
-			$map{'name'} = $o->get_value($name_attr);
-			$map{'value'} = $o->get_value(
-				$conf->{'result_attribute'} || "maildrop");
-			$map{'dn'} = $o->dn();
-			$map{'map_file'} = $maps_file;
-			$map{'map_type'} = $maps_type;
-			$map{'number'} = $number;
-			push(@{$maps_cache{$_[0]}}, \%map);
-		    }
-	     }
+			}
+		elsif ($maps_type eq "ldap") {
+			# Get from an LDAP database
+			my $conf = &ldap_value_to_conf($maps_file);
+			my $ldap = &connect_ldap_db($conf);
+			ref($ldap) || &error($ldap);
+			my ($name_attr, $filter) = &get_ldap_key($conf);
+			my $scope = $conf->{'scope'} || 'sub';
+			my $rv = $ldap->search(base => $conf->{'search_base'},
+					       scope => $scope,
+					       filter => $filter);
+			if (!$rv || $rv->code) {
+				# Search failed!
+				&error(&text(
+					'ldap_equery',
+					"<tt>$conf->{'search_base'}</tt>",
+					"<tt>".&html_escape($rv->error)."</tt>"));
+				}
+			foreach my $o ($rv->all_entries) {
+				$number++;
+				my %map;
+				$map{'name'} = $o->get_value($name_attr);
+				$map{'value'} = $o->get_value(
+					$conf->{'result_attribute'} ||
+					"maildrop");
+				$map{'dn'} = $o->dn();
+				$map{'map_file'} = $maps_file;
+				$map{'map_type'} = $maps_type;
+				$map{'number'} = $number;
+				push(@{$maps_cache{$_[0]}}, \%map);
+				}
+			}
+		}
 	}
-    }
-    return $maps_cache{$_[0]};
+return $maps_cache{$_[0]};
 }
-
 
 # generate_map_edit(name, desc, [wide], [nametitle], [valuetitle])
 # Prints a table showing map contents, with links to edit and add
 sub generate_map_edit
 {
-    # Check if map is set
-    if (&get_current_value($_[0]) eq "")
-    {
+# Check if map is set
+if (&get_current_value($_[0]) eq "") {
 	print "<b>$text{'no_map2'}</b><p>\n";
-        return;
-    }
+	return;
+	}
 
-    # Make sure the user is allowed to edit them
-    foreach my $f (&get_maps_types_files(&get_real_value($_[0]))) {
-      if (&file_map_type($f->[0])) {
-	  &is_under_directory($access{'dir'}, $f->[1]) ||
-		&error(&text('mapping_ecannot', $access{'dir'}));
-      }
-    }
+# Make sure the user is allowed to edit them
+foreach my $f (&get_maps_types_files(&get_real_value($_[0]))) {
+	if (&file_map_type($f->[0])) {
+		&is_under_directory($access{'dir'}, $f->[1]) ||
+			&error(&text('mapping_ecannot', $access{'dir'}));
+		}
+	}
 
-    # Make sure we *can* edit them
-    foreach my $f (&get_maps_types_files(&get_real_value($_[0]))) {
-       my $err = &can_access_map(@$f);
-       if ($err) {
-	  print "<b>",&text('map_cannot', $err),"</b><p>\n";
-	  return;
-       }
-    }
+# Make sure we *can* edit them
+foreach my $f (&get_maps_types_files(&get_real_value($_[0]))) {
+	my $err = &can_access_map(@$f);
+	if ($err) {
+		print "<b>", &text('map_cannot', $err), "</b><p>\n";
+		return;
+		}
+	}
 
-    my $mappings = &get_maps($_[0]);
-    my $nt = $_[3] || $text{'mapping_name'};
-    my $vt = $_[4] || $text{'mapping_value'};
+my $mappings = &get_maps($_[0]);
+my $nt = $_[3] || $text{'mapping_name'};
+my $vt = $_[4] || $text{'mapping_value'};
 
-    my @links = ( &ui_link("edit_mapping.cgi?map_name=$_[0]",
-			      $text{'new_mapping'}),);
-    if ($access{'manual'} && &can_map_manual($_[0])) {
+my @links = ( &ui_link("edit_mapping.cgi?map_name=$_[0]",
+		       $text{'new_mapping'}), );
+if ($access{'manual'} && &can_map_manual($_[0])) {
 	push(@links, &ui_link("edit_manual.cgi?map_name=$_[0]",
 			      $text{'new_manual'}));
 	}
 
-    if ($in{'search'}) {
-        # Filter down to matching entries
-        $mappings = [ grep { $_->{'name'} =~ /\Q$in{'search'}\E/i ||
-			   $_->{'value'} =~ /\Q$in{'search'}\E/i } @$mappings ];
-        print "<b>",&text('mapping_match', &html_escape($in{'search'})),
-	      "</b><p>\n";
-        }
-
-    if ($#{$mappings} == -1) {
-        # None, so just show edit link
-        print "<b>$text{'mapping_none'}</b><p>\n";
-        print &ui_links_row(\@links);
+if ($in{'search'}) {
+	# Filter down to matching entries
+	$mappings = [ grep { $_->{'name'} =~ /\Q$in{'search'}\E/i ||
+			$_->{'value'} =~ /\Q$in{'search'}\E/i } @$mappings ];
+	print "<b>", &text('mapping_match', &html_escape($in{'search'})),
+		"</b><p>\n";
 	}
-    elsif ($config{'max_maps'} && @{$mappings} > $config{'max_maps'} &&
-           !$in{'search'}) {
+
+if ($#{$mappings} == -1) {
+	# None, so just show edit link
+	print "<b>$text{'mapping_none'}</b><p>\n";
+	print &ui_links_row(\@links);
+	}
+elsif ($config{'max_maps'} && @{$mappings} > $config{'max_maps'} &&
+       !$in{'search'}) {
 	# If there are too many, show a search form
 	print &ui_form_start(&get_webprefix().$ENV{'SCRIPT_NAME'});
 	foreach my $i (keys %in) {
@@ -1044,16 +1032,16 @@ sub generate_map_edit
 		print &ui_hidden($i, $in{$i});
 		}
 	print &text('mapping_toomany', scalar(@{$mappings}),
-		    $config{'max_maps'}),"<p>\n";
-	print $text{'mapping_find'}," ",
-	      &ui_textbox("search", $in{'search'}, 20)," ",
-	      &ui_submit($text{'mapping_search'}),"\n";
+		    $config{'max_maps'}), "<p>\n";
+	print $text{'mapping_find'}, " ",
+		&ui_textbox("search", $in{'search'}, 20), " ",
+		&ui_submit($text{'mapping_search'}), "\n";
 	print &ui_form_end();
 	print &ui_links_row(\@links);
 	}
-    else {
-        # Map description
-	print $_[1],"<p>\n";
+else {
+	# Map description
+	print $_[1], "<p>\n";
 
 	# Sort the map
 	if ($config{'sort_mode'} == 1) {
@@ -1062,26 +1050,27 @@ sub generate_map_edit
 			}
 		else {
 			@{$mappings} = sort { $a->{'name'} cmp $b->{'name'} }
-					    @{$mappings};
+				@{$mappings};
 			}
 		}
 
 	# Split into two columns, if needed
 	my @parts;
-	my $split_index = int(($#{$mappings})/2);
+	my $split_index = int(($#{$mappings}) / 2);
 	if ($config{'columns'} == 2) {
-		@parts = ( [ @{$mappings}[0 .. $split_index] ],
-			   [ @{$mappings}[$split_index+1 .. $#{$mappings} ] ] );
+		@parts = (
+			[ @{$mappings}[0 .. $split_index] ],
+			[ @{$mappings}[$split_index + 1 .. $#{$mappings}] ] );
 		}
 	else {
 		@parts = ( $mappings );
 		}
-	
+
 	# Start of the overall form
 	print &ui_form_start("delete_mappings.cgi", "post");
-	print &ui_hidden("map_name", $_[0]),"\n";
+	print &ui_hidden("map_name", $_[0]), "\n";
 	unshift(@links, &select_all_link("d", 1),
-			&select_invert_link("d", 1));
+		&select_invert_link("d", 1));
 	print &ui_links_row(\@links);
 
 	my @grid;
@@ -1090,21 +1079,21 @@ sub generate_map_edit
 		my @table;
 		foreach my $map (@$p) {
 			push(@table, [
-			    { 'type' => 'checkbox', 'name' => 'd',
-			      'value' => $map->{'name'} },
-			    "<a href=\"edit_mapping.cgi?num=$map->{'number'}&".
-			     "map_name=$_[0]\">".&html_escape($map->{'name'}).
-			     "</a>",
-			    &html_escape($map->{'value'}),
-			    $config{'show_cmts'} ?
-			     ( &html_escape($map->{'cmt'}) ) : ( ),
-			    ]);
+				{ 'type' => 'checkbox', 'name' => 'd',
+				  'value' => $map->{'name'} },
+				"<a href=\"edit_mapping.cgi?num=$map->{'number'}&".
+				"map_name=$_[0]\">".&html_escape($map->{'name'}).
+				"</a>",
+				&html_escape($map->{'value'}),
+				$config{'show_cmts'}
+					? (&html_escape($map->{'cmt'})) : (),
+			]);
 			}
 
 		# Add a table to the grid
 		push(@grid, &ui_columns_table(
 			[ "", $nt, $vt,
-                          $config{'show_cmts'} ? ( $text{'mapping_cmt'} ) : ( ),
+			  $config{'show_cmts'} ? ($text{'mapping_cmt'}) : (),
 			],
 			100,
 			\@table));
@@ -1114,24 +1103,25 @@ sub generate_map_edit
 		}
 	else {
 		print &ui_grid_table(\@grid, 2, 100,
-			[ "width=50%", "width=50%" ]);
+				     [ "width=50%", "width=50%" ]);
 		}
-	
- 	# Main form end
+
+	# Main form end
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'mapping_delete'} ] ]);
-    }
+	}
 }
-
 
 # create_mapping(map, &mapping, [&force-files], [force-map], [&before])
 sub create_mapping
 {
 my ($mapname, $map, $forcefile, $forcemap, $before) = @_;
-&get_maps($mapname, $forcefile, $forcemap);	# force cache init
-my @maps_files = $forcefile ? (map { [ "hash", $_ ] } @$forcefile) :
-		 $forcemap ? &get_maps_types_files($forcemap) :
-		         &get_maps_types_files(&get_real_value($mapname));
+&get_maps($mapname, $forcefile, $forcemap);    # force cache init
+my @maps_files = $forcefile
+	? (map { [ "hash", $_ ] } @$forcefile)
+	: $forcemap
+		? &get_maps_types_files($forcemap)
+		: &get_maps_types_files(&get_real_value($mapname));
 
 # If multiple maps, find a good one to add to .. avoid regexp if we can
 my $last_map;
@@ -1139,14 +1129,14 @@ if (@maps_files == 1) {
 	$last_map = $maps_files[0];
 	}
 else {
-	for(my $i=$#maps_files; $i>=0; $i--) {
+	for (my $i = $#maps_files; $i >= 0; $i--) {
 		if ($maps_files[$i]->[0] ne 'regexp' &&
-	 	    $maps_files[$i]->[0] ne 'pcre') {
+		    $maps_files[$i]->[0] ne 'pcre') {
 			$last_map = $maps_files[$i];
 			last;
 			}
 		}
-	$last_map ||= $maps_files[$#maps_files];	# Fall back to last one
+	$last_map ||= $maps_files[$#maps_files]; # Fall back to last one
 	}
 my ($maps_type, $maps_file) = @$last_map;
 
@@ -1176,9 +1166,9 @@ elsif ($maps_type eq "mysql") {
 	my $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
 	my $cmd = $dbh->prepare("insert into ".$conf->{'table'}." ".
-				   "(".$conf->{'where_field'}.",".
-					$conf->{'select_field'}.") values (".
-				   "?, ?)");
+				"(".$conf->{'where_field'}.",".
+				$conf->{'select_field'}.") values (".
+				"?, ?)");
 	if (!$cmd || !$cmd->execute($map->{'name'}, $map->{'value'})) {
 		&error(&text('mysql_eadd',
 			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
@@ -1193,12 +1183,12 @@ elsif ($maps_type eq "ldap") {
 	my $ldap = &connect_ldap_db($conf);
 	ref($ldap) || &error($ldap);
 	my @classes = split(/\s+/, $config{'ldap_class'} ||
-				      "inetLocalMailRecipient");
+			    "inetLocalMailRecipient");
 	my @attrs = ( "objectClass", \@classes );
 	my $name_attr = &get_ldap_key($conf);
 	push(@attrs, $name_attr, $map->{'name'});
 	push(@attrs, $conf->{'result_attribute'} || "maildrop",
-		     $map->{'value'});
+	     $map->{'value'});
 	push(@attrs, &split_props($config{'ldap_attrs'}));
 	my $dn = &make_map_ldap_dn($map, $conf);
 	if ($dn =~ /^([^=]+)=([^, ]+)/ && !&in_props(\@attrs, $1)) {
@@ -1225,7 +1215,6 @@ $map->{'number'} = scalar(@{$maps_cache{$mapname}});
 push(@{$maps_cache{$mapname}}, $map);
 }
 
-
 # delete_mapping(map, &mapping)
 sub delete_mapping
 {
@@ -1242,8 +1231,8 @@ if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 		}
 	else {
 		print STDERR "Not deleting line $_[1]->{'line'} ",
-			     "from $_[1]->{'file'} for key ",
-			     "$_[1]->{'name'} which actually contains $dl\n";
+			"from $_[1]->{'file'} for key ",
+			"$_[1]->{'name'} which actually contains $dl\n";
 		}
 	&flush_file_lines($_[1]->{'map_file'});
 	&renumber_list($maps_cache{$_[0]}, $_[1], -$len);
@@ -1259,8 +1248,8 @@ elsif ($_[1]->{'map_type'} eq 'mysql') {
 	my $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
 	my $cmd = $dbh->prepare("delete from ".$conf->{'table'}.
-				   " where ".$conf->{'where_field'}." = ?".
-				   " ".$conf->{'additional_conditions'});
+				" where ".$conf->{'where_field'}." = ?".
+				" ".$conf->{'additional_conditions'});
 	if (!$cmd || !$cmd->execute($_[1]->{'key'})) {
 		&error(&text('mysql_edelete',
 			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
@@ -1288,7 +1277,6 @@ my $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
 splice(@{$maps_cache{$_[0]}}, $idx, 1) if ($idx != -1);
 }
 
-
 # modify_mapping(map, &oldmapping, &newmapping)
 sub modify_mapping
 {
@@ -1301,8 +1289,9 @@ if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	push(@newlines, "$_[2]->{'name'}\t$_[2]->{'value'}");
 	splice(@$lref, $_[1]->{'line'}, $oldlen, @newlines);
 	&flush_file_lines($_[1]->{'map_file'});
-	&renumber_list($maps_cache{$_[0]}, $_[1], scalar(@newlines)-$oldlen);
+	&renumber_list($maps_cache{$_[0]}, $_[1], scalar(@newlines) - $oldlen);
 	my $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
+
 	if ($idx >= 0) {
 		# Update in cache
 		$_[2]->{'map_file'} = $_[1]->{'map_file'};
@@ -1318,10 +1307,10 @@ elsif ($_[1]->{'map_type'} eq 'mysql') {
 	my $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
 	my $cmd = $dbh->prepare("update ".$conf->{'table'}.
-				   " set ".$conf->{'where_field'}." = ?,".
-				   " ".$conf->{'select_field'}." = ?".
-				   " where ".$conf->{'where_field'}." = ?".
-				   " ".$conf->{'additional_conditions'});
+				" set ".$conf->{'where_field'}." = ?,".
+				" ".$conf->{'select_field'}." = ?".
+				" where ".$conf->{'where_field'}." = ?".
+				" ".$conf->{'additional_conditions'});
 	if (!$cmd || !$cmd->execute($_[2]->{'name'}, $_[2]->{'value'},
 				    $_[1]->{'key'})) {
 		&error(&text('mysql_eupdate',
@@ -1351,8 +1340,8 @@ elsif ($_[1]->{'map_type'} eq 'ldap') {
 		&ensure_ldap_parent($ldap, $newdn);
 		my ($newprefix, $newrest) = split(/,/, $newdn, 2);
 		my $rv = $ldap->moddn($_[1]->{'dn'},
-					 newrdn => $newprefix,
-					 newsuperior => $newrest);
+				      newrdn => $newprefix,
+				      newsuperior => $newrest);
 		if ($rv->code) {
 			&error(&text('ldap_erename',
 				     "<tt>$_[1]->{'dn'}</tt>",
@@ -1383,7 +1372,7 @@ $_[2]->{'map_file'} = $_[1]->{'map_file'};
 $_[2]->{'map_type'} = $_[1]->{'map_type'};
 $_[2]->{'file'} = $_[1]->{'file'};
 $_[2]->{'line'} = $_[1]->{'line'};
-$_[2]->{'eline'} = $_[2]->{'cmt'} ? $_[1]->{'line'}+1 : $_[1]->{'line'};
+$_[2]->{'eline'} = $_[2]->{'cmt'} ? $_[1]->{'line'} + 1 : $_[1]->{'line'};
 $maps_cache{$_[0]}->[$idx] = $_[2] if ($idx != -1);
 }
 
@@ -1394,7 +1383,7 @@ sub make_map_ldap_dn
 my ($map, $conf) = @_;
 my $dn;
 my $scope = $conf->{'scope'} || 'sub';
-$scope = 'base' if (!$config{'ldap_doms'});	# Never create sub-domains
+$scope = 'base' if (!$config{'ldap_doms'});   # Never create sub-domains
 my $id = $config{'ldap_id'} || 'cn';
 if ($map->{'name'} =~ /^(\S+)\@(\S+)$/ && $scope ne 'base') {
 	# Within a domain
@@ -1430,7 +1419,7 @@ else {
 	$filter = "(mailacceptinggeneralid=*)";
 	$name_attr = "mailacceptinggeneralid";
 	}
-return wantarray ? ( $name_attr, $filter ) : $name_attr;
+return wantarray ? ($name_attr, $filter) : $name_attr;
 }
 
 # ensure_ldap_parent(&ldap, dn)
@@ -1441,8 +1430,8 @@ my ($ldap, $dn) = @_;
 my $pdn = $dn;
 $pdn =~ s/^([^,]+),//;
 my $rv = $ldap->search(base => $pdn, scope => 'base',
-			  filter => "(objectClass=top)",
-			  sizelimit => 1);
+		       filter => "(objectClass=top)",
+		       sizelimit => 1);
 if (!$rv || $rv->code || !$rv->all_entries) {
 	# Does not .. so add it
 	my @pclasses = ( "top" );
@@ -1462,7 +1451,7 @@ foreach my $trans (@{$maps}) {
 		$max_number = $trans->{'number'};
 		}
 	}
-return $max_number+1;
+return $max_number + 1;
 }
 
 # postfix_mail_file(user|user-details-list)
@@ -1490,13 +1479,13 @@ sub postfix_mail_system
 if (!scalar(@mail_system_cache)) {
 	my $home_mailbox = &get_current_value("home_mailbox");
 	if ($home_mailbox) {
-		@mail_system_cache = $home_mailbox =~ /^(.*)\/$/ ?
-			(2, $1) : (1, $home_mailbox);
+		@mail_system_cache = $home_mailbox =~ /^(.*)\/$/
+			? ( 2, $1 ) : ( 1, $home_mailbox );
 		}
 	else {
 		my $mail_spool_directory =
 			&get_current_value("mail_spool_directory");
-		@mail_system_cache = (0, $mail_spool_directory);
+		@mail_system_cache = ( 0, $mail_spool_directory );
 		}
 	}
 return wantarray ? @mail_system_cache : $mail_system_cache[0];
@@ -1515,7 +1504,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 		 $l =~ /^\s+Total\s+requests:/i);
 	if ($l =~ /^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
 		my $q = { 'id' => $1, 'size' => $2,
-                             'date' => $3, 'from' => $4 };
+			  'date' => $3, 'from' => $4 };
 		if (defined(&parse_mail_date)) {
 			my $t = &parse_mail_date($q->{'date'});
 			if ($t) {
@@ -1546,7 +1535,7 @@ return @qfiles;
 
 sub list_mailq_directories
 {
-return ("active", "incoming", "deferred", "corrupt", "hold", "maildrop");
+return ( "active", "incoming", "deferred", "corrupt", "hold", "maildrop" );
 }
 
 # parse_queue_file(id)
@@ -1555,30 +1544,32 @@ sub parse_queue_file
 {
 my ($f) = @_;
 my @qfiles = map { &recurse_files("$config{'mailq_dir'}/$_") }
-		    &list_mailq_directories();
+	&list_mailq_directories();
 my ($file) = grep { $_ =~ /\/$f$/ } @qfiles;
 return if (!$file);
 my $mode = 0;
 my ($mail, @headers);
 my $queuefh = "QUEUE";
-&open_execute_command($queuefh, "$config{'postcat_cmd'} ".quotemeta($file), 1, 1);
-while(<$queuefh>) {
-	if (/^\*\*\*\s+MESSAGE\s+CONTENTS/ && !$mode) {	   # Start of headers
+&open_execute_command($queuefh, "$config{'postcat_cmd'} ".quotemeta($file),
+		      1, 1);
+
+while (<$queuefh>) {
+	if (/^\*\*\*\s+MESSAGE\s+CONTENTS/ && !$mode) { # Start of headers
 		$mode = 1;
 		}
-	elsif (/^\*\*\*\s+HEADER\s+EXTRACTED/ && $mode) {  # End of email
+	elsif (/^\*\*\*\s+HEADER\s+EXTRACTED/ && $mode) { # End of email
 		last;
 		}
-	elsif ($mode == 1 && /^\s*$/) {			   # End of headers
+	elsif ($mode == 1 && /^\s*$/) { # End of headers
 		$mode = 2;
 		}
-	elsif ($mode == 1 && /^(\S+):\s*(.*)/) {	   # Found a header
+	elsif ($mode == 1 && /^(\S+):\s*(.*)/) { # Found a header
 		push(@headers, [ $1, $2 ]);
 		}
-	elsif ($mode == 1 && /^(\s+.*)/) {		   # Header continuation
-		$headers[$#headers]->[1] .= $1 unless($#headers < 0);
+	elsif ($mode == 1 && /^(\s+.*)/) { # Header continuation
+		$headers[$#headers]->[1] .= $1 unless ($#headers < 0);
 		}
-	elsif ($mode == 2) {				   # Part of body
+	elsif ($mode == 2) { # Part of body
 		$mail->{'size'} += length($_);
 		$mail->{'body'} .= $_;
 		}
@@ -1600,7 +1591,7 @@ return $mail;
 # recurse_files(dir)
 sub recurse_files
 {
-opendir(my $dirh, &translate_filename($_[0])) || return ( $_[0] );
+opendir(my $dirh, &translate_filename($_[0])) || return ($_[0]);
 my @dir = readdir($dirh);
 closedir($dirh);
 my @rv;
@@ -1613,8 +1604,8 @@ return @rv;
 sub sort_by_domain
 {
 my ($a1, $a2, $b1, $b2);
-if ($a->{'name'} =~ /^(.*)\@(.*)$/ && (($a1, $a2) = ($1, $2)) &&
-    $b->{'name'} =~ /^(.*)\@(.*)$/ && (($b1, $b2) = ($1, $2))) {
+if ($a->{'name'} =~ /^(.*)\@(.*)$/ && (($a1, $a2) = ( $1, $2 )) &&
+    $b->{'name'} =~ /^(.*)\@(.*)$/ && (($b1, $b2) = ( $1, $2 ))) {
 	return $a2 cmp $b2 ? $a2 cmp $b2 : $a1 cmp $b1;
 	}
 else {
@@ -1657,8 +1648,9 @@ my ($name) = @_;
 my $v = &get_current_value($name);
 if (&compare_version_numbers($postfix_version, 2.1) >= 0 && $v =~ /\$/) {
 	# Try to use the built-in command to expand the param
-	my $out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -x -h ".
-				     quotemeta($name)." 2>/dev/null", 1);
+	my $out = &backquote_command(
+		"$config{'postfix_config_command'} -c $config_dir -x -h ".
+		quotemeta($name)." 2>/dev/null", 1);
 	if (!$? && $out !~ /warning:.*unknown\s+parameter/) {
 		chop($out);
 		return $out;
@@ -1702,10 +1694,10 @@ sub edit_value_header_checks
 {
 my ($act, $dest) = split(/\s+/, $_[0]->{'value'}, 2);
 return &ui_table_row($text{'header_value'},
-              &ui_select("action", $act,
-			 [ map { [ $_, $text{'header_'.lc($_)} ] }
-			       @header_checks_actions ], 0, 0, $act)."\n".
-	      &ui_textbox("value", $dest, 40));
+		     &ui_select("action", $act,
+				[ map { [ $_, $text{'header_'.lc($_)} ] }
+				  @header_checks_actions ], 0, 0, $act)."\n".
+		     &ui_textbox("value", $dest, 40));
 }
 
 sub parse_value_header_checks
@@ -1722,14 +1714,17 @@ sub edit_name_mime_header_checks
 {
 return &edit_name_header_checks(@_);
 }
+
 sub parse_name_mime_header_checks
 {
 return &parse_name_header_checks(@_);
 }
+
 sub edit_value_mime_header_checks
 {
 return &edit_value_header_checks(@_);
 }
+
 sub parse_value_mime_header_checks
 {
 return &parse_value_header_checks(@_);
@@ -1761,17 +1756,17 @@ return &parse_value_header_checks(@_);
 sub edit_name_check_sender_access
 {
 return "<td><b>$text{'access_addresses'}</b></td>\n".
-       "<td>".&ui_textbox("name", $_[0]->{'name'},40)."</td>\n";
+	"<td>".&ui_textbox("name", $_[0]->{'name'}, 40)."</td>\n";
 }
 
 sub edit_value_check_sender_access
 {
 my ($act, $dest) = split(/\s+/, $_[0]->{'value'}, 2);
 return "<td><b>$text{'header_value'}</b></td>\n".
-       "<td>".&ui_select("action", $act,
-			 [ map { [ $_, $text{'header_'.lc($_)} ] }
-			       @check_sender_actions ], 0, 0, $act)."\n".
-	      &ui_textbox("value", $dest, 40)."</td>\n";
+	"<td>".&ui_select("action", $act,
+			  [ map { [ $_, $text{'header_'.lc($_)} ] }
+			    @check_sender_actions ], 0, 0, $act)."\n".
+	&ui_textbox("value", $dest, 40)."</td>\n";
 }
 
 sub parse_value_check_sender_access
@@ -1783,20 +1778,20 @@ return &parse_value_header_checks(@_);
 			   "DISCARD", "FILTER",
 			   "PREPEND", "REPLACE", "WARN" );
 
-@check_sender_actions = ( "OK", "REJECT", "DISCARD", "FILTER", "PREPEND", 
-        "REDIRECT", "WARN", "DUNNO" );			   
+@check_sender_actions = ( "OK", "REJECT", "DISCARD", "FILTER", "PREPEND",
+			  "REDIRECT", "WARN", "DUNNO" );
 
 # get_master_config()
 # Returns an array reference of entries from the Postfix master.cf file
 sub get_master_config
 {
 if (!scalar(@master_config_cache)) {
-	@master_config_cache = ( );
+	@master_config_cache = ();
 	my $lnum = 0;
 	my $prog;
 	open(my $masterfh, "<", $config{'postfix_master'}) ||
 		return \@master_config_cache;
-	while(<$masterfh>) {
+	while (<$masterfh>) {
 		s/\r|\n//g;
 		if (/^(#?)\s*(\S+)\s+(inet|unix|fifo)\s+(y|n|\-)\s+(y|n|\-)\s+(y|n|\-)\s+(\S+)\s+(\S+)\s+(.*)$/) {
 			# A program line
@@ -1811,11 +1806,11 @@ if (!scalar(@master_config_cache)) {
 				  'command' => $9,
 				  'line' => $lnum,
 				  'eline' => $lnum,
-				 };
+			};
 			push(@master_config_cache, $prog);
 			}
 		elsif (/^(#?)\s+(.*)$/ && $prog &&
-		       $prog->{'eline'} == $lnum-1 &&
+		       $prog->{'eline'} == $lnum - 1 &&
 		       $prog->{'enabled'} == !$1) {
 			# Continuation line
 			$prog->{'command'} .= " ".$2;
@@ -1837,8 +1832,8 @@ my $conf = &get_master_config();
 my $lref = &read_file_lines($config{'postfix_master'});
 push(@$lref, &master_line($master));
 &flush_file_lines($config{'postfix_master'});
-$master->{'line'} = scalar(@$lref)-1;
-$master->{'eline'} = scalar(@$lref)-1;
+$master->{'line'} = scalar(@$lref) - 1;
+$master->{'eline'} = scalar(@$lref) - 1;
 push(@$conf, $master);
 }
 
@@ -1874,8 +1869,8 @@ splice(@$lref, $master->{'line'}, $lines,
 &flush_file_lines($config{'postfix_master'});
 foreach my $c (@$conf) {
 	if ($c->{'line'} > $master->{'eline'}) {
-		$c->{'line'} -= $lines-1;
-		$c->{'eline'} -= $lines-1;
+		$c->{'line'} -= $lines - 1;
+		$c->{'eline'} -= $lines - 1;
 		}
 	}
 }
@@ -1885,9 +1880,9 @@ sub master_line
 {
 my ($prog) = @_;
 return ($prog->{'enabled'} ? "" : "#").
-       join("\t", $prog->{'name'}, $prog->{'type'}, $prog->{'private'},
-		  $prog->{'unpriv'}, $prog->{'chroot'}, $prog->{'wakeup'},
-		  $prog->{'maxprocs'}, $prog->{'command'});
+	join("\t", $prog->{'name'}, $prog->{'type'}, $prog->{'private'},
+	     $prog->{'unpriv'}, $prog->{'chroot'}, $prog->{'wakeup'},
+	     $prog->{'maxprocs'}, $prog->{'command'});
 }
 
 sub redirect_to_map_list
@@ -1905,7 +1900,9 @@ elsif ($map_name =~ /body/) { &redirect("body.cgi"); }
 elsif ($map_name =~ /sender_bcc/) { &redirect("bcc.cgi?mode=sender"); }
 elsif ($map_name =~ /recipient_bcc/) { &redirect("bcc.cgi?mode=recipient"); }
 elsif ($map_name =~ /^smtpd_client_restrictions:/) { &redirect("client.cgi"); }
-elsif ($map_name =~ /relay_recipient_maps|smtpd_sender_restrictions/) { &redirect("smtpd.cgi"); }
+elsif ($map_name =~ /relay_recipient_maps|smtpd_sender_restrictions/) {
+	&redirect("smtpd.cgi");
+	}
 elsif ($map_name =~ /tls_server_sni_maps/) { &redirect("sni.cgi"); }
 else { &redirect(""); }
 }
@@ -1921,6 +1918,7 @@ if ($map_name =~ /sender_access/) { &regenerate_any_table($map_name); }
 if ($map_name =~ /sender_bcc/) { &regenerate_bcc_table(); }
 if ($map_name =~ /recipient_bcc/) { &regenerate_recipient_bcc_table(); }
 if ($map_name =~ /tls_server_sni_maps/) { &regenerate_sni_table(); }
+
 if ($map_name =~ /smtpd_client_restrictions:(\S+)/) {
 	&regenerate_any_table("smtpd_client_restrictions",
 			      undef, $1);
@@ -1948,7 +1946,7 @@ foreach my $q (@$qfiles) {
 	my @cols;
 	push(@cols, { 'type' => 'checkbox', 'name' => 'file',
 		      'value' => $q->{'id'} });
-	push(@cols, &ui_link("view_mailq.cgi?id=$q->{'id'}",$q->{'id'}));
+	push(@cols, &ui_link("view_mailq.cgi?id=$q->{'id'}", $q->{'id'}));
 	my $size = &nice_size($q->{'size'});
 	push(@cols, $q->{'date'});
 	push(@cols, &html_escape($q->{'from'}));
@@ -1960,19 +1958,20 @@ foreach my $q (@$qfiles) {
 	}
 
 # Show the table and form
-print &ui_form_columns_table("delete_queues.cgi",
+print &ui_form_columns_table(
+	"delete_queues.cgi",
 	[ [ undef, $text{'mailq_delete'} ],
-	  &compare_version_numbers($postfix_version, 1.1) >= 0 ?
-		( [ 'move', $text{'mailq_move'} ] ) : ( ),
-	  &compare_version_numbers($postfix_version, 2) >= 0 ?
-		( [ 'hold', $text{'mailq_hold'} ],
-		  [ 'unhold', $text{'mailq_unhold'} ] ) : ( ),
+	  &compare_version_numbers($postfix_version, 1.1) >= 0
+		? ( [ 'move', $text{'mailq_move'} ] ) : (),
+	  &compare_version_numbers($postfix_version, 2) >= 0
+		? ( [ 'hold', $text{'mailq_hold'} ],
+		    [ 'unhold', $text{'mailq_unhold'} ] ) : (),
 	],
 	1,
 	undef,
 	undef,
 	[ "", $text{'mailq_id'}, $text{'mailq_date'}, $text{'mailq_from'},
-          $text{'mailq_to'}, $text{'mailq_size'}, $text{'mailq_dir'},
+	  $text{'mailq_to'}, $text{'mailq_size'}, $text{'mailq_dir'},
 	  $text{'mailq_status'} ],
 	100,
 	\@table);
@@ -1997,13 +1996,13 @@ sub make_table_comment
 {
 my ($cmt, $force) = @_;
 if (!$cmt) {
-	return ( );
+	return ();
 	}
 elsif ($config{'prefix_cmts'} || $force) {
-	return ( "# Webmin: $cmt" );
+	return ("# Webmin: $cmt");
 	}
 else {
-	return ( "# $cmt" );
+	return ("# $cmt");
 	}
 }
 
@@ -2084,7 +2083,7 @@ sub save_backend_config
 my ($file, $name, $value) = @_;
 my $lref = &read_file_lines($file);
 my $found = 0;
-for(my $i=0; $i<@$lref; $i++) {
+for (my $i = 0; $i < @$lref; $i++) {
 	if ($lref->[$i] =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/i &&
 	    $1 eq $name) {
 		# Found the line to fix
@@ -2109,7 +2108,7 @@ sub can_access_map
 {
 my ($type, $value) = @_;
 if (&file_map_type($type)) {
-	return;	# Always can
+	return;    # Always can
 	}
 elsif ($type eq "mysql") {
 	# Parse config, connect to DB
@@ -2135,16 +2134,17 @@ elsif ($type eq "mysql") {
 			$conf->{$need} || return &text('mysql_eneed', $need);
 			}
 		}
+
 	# Try a connect, and a query
 	my $dbh = &connect_mysql_db($conf);
 	if (!ref($dbh)) {
 		return $dbh;
 		}
 	my $cmd = $dbh->prepare("select ".$conf->{'select_field'}." ".
-				   "from ".$conf->{'table'}." ".
-				   "where ".$conf->{'where_field'}." = ".
-					    $conf->{'where_field'}." ".
-				   "limit 1");
+				"from ".$conf->{'table'}." ".
+				"where ".$conf->{'where_field'}." = ".
+				$conf->{'where_field'}." ".
+				"limit 1");
 	if (!$cmd || !$cmd->execute()) {
 		return &text('mysql_equery',
 			     "<tt>".$conf->{'table'}."</tt>",
@@ -2165,10 +2165,10 @@ elsif ($type eq "ldap") {
 		return $ldap;
 		}
 	my @classes = split(/\s+/, $config{'ldap_class'} ||
-				      "inetLocalMailRecipient");
+			    "inetLocalMailRecipient");
 	my $rv = $ldap->search(base => $conf->{'search_base'},
-				  filter => "(objectClass=$classes[0])",
-				  sizelimit => 1);
+			       filter => "(objectClass=$classes[0])",
+			       sizelimit => 1);
 	if (!$rv || $rv->code && !$rv->all_entries) {
 		return &text('ldap_ebase', "<tt>$conf->{'search_base'}</tt>",
 			     $rv ? $rv->error : "Unknown search error");
@@ -2192,8 +2192,9 @@ my $drh;
 eval { require DBI; DBI->import; $drh = DBI->install_driver($driver); 1 }
 	or return &text('mysql_edriver', "<tt>DBD::$driver</tt>");
 my @hosts = split(/\s+/, $config{'mysql_hosts'} || $conf->{'hosts'});
-@hosts = ( undef ) if (!@hosts);	# Localhost only
+@hosts = ( undef ) if (!@hosts);    # Localhost only
 my $dbh;
+
 foreach my $host (@hosts) {
 	my $dbistr = "database=$conf->{'dbname'}";
 	if ($host =~ /^unix:(.*)$/) {
@@ -2227,13 +2228,13 @@ if (defined($connect_ldap_db_cache)) {
 eval { require Net::LDAP; Net::LDAP->import; 1 }
 	or return &text('ldap_eldapmod', "<tt>Net::LDAP</tt>");
 my @servers = split(/\s+/, $config{'ldap_host'} ||
-			      $conf->{'server_host'} || "localhost");
+		    $conf->{'server_host'} || "localhost");
 my ($ldap, $lasterr);
 foreach my $server (@servers) {
 	my ($host, $port, $tls);
 	if ($server =~ /^(\S+):(\d+)$/) {
 		# Host and port
-		($host, $port) = ($1, $2);
+		($host, $port) = ( $1, $2 );
 		$tls = $conf->{'start_tls'} eq 'yes';
 		}
 	elsif ($server =~ /^(ldap|ldaps):\/\/(\S+)(:(\d+))?/) {
@@ -2261,11 +2262,11 @@ foreach my $server (@servers) {
 			dn => $config{'ldap_user'} || $conf->{'bind_dn'},
 			password => $config{'ldap_pass'} || $conf->{'bind_pw'});
 		if (!$mesg || $mesg->code) {
-			$lasterr = &text('ldap_eldaplogin',
-				     "<tt>$server</tt>",
-				     "<tt>".($config{'ldap_user'} ||
-					     $conf->{'bind_dn'})."</tt>",
-				     $mesg ? $mesg->error : "Unknown error");
+			$lasterr = &text(
+				'ldap_eldaplogin', "<tt>$server</tt>",
+				"<tt>".($config{'ldap_user'} ||
+					$conf->{'bind_dn'})."</tt>",
+				$mesg ? $mesg->error : "Unknown error");
 			$ldap = undef;
 			next;
 			}
@@ -2296,8 +2297,9 @@ if ($value =~ /^[\/\.]/) {
 		}
 	-r $cfile || &error(&text('mysql_ecfile', "<tt>$cfile</tt>"));
 	$conf = &get_backend_config($cfile);
-		
-	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'\s*(.*)/i && !$conf->{'table'}) {
+
+	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'\s*(.*)/i &&
+	    !$conf->{'table'}) {
 		# Try to extract table and fields from the query
 		$conf->{'select_field'} = $1;
 		$conf->{'table'} = $2;
@@ -2315,7 +2317,8 @@ else {
 		my $v = &get_real_value($value."_".$k);
 		$conf->{$k} = $v;
 		}
-	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'\s*(.*)/i && !$conf->{'table'}) {
+	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'\s*(.*)/i &&
+	    !$conf->{'table'}) {
 		# Try to extract table and fields from the query
 		$conf->{'select_field'} = $1;
 		$conf->{'table'} = $2;
@@ -2368,9 +2371,9 @@ sub supports_map_type
 {
 my ($type) = @_;
 if (!scalar(@supports_map_type_cache)) {
-	@supports_map_type_cache = ( );
+	@supports_map_type_cache = ();
 	open(my $postconffh, "-|", "$config{'postfix_config_command'} -m");
-	while(<$postconffh>) {
+	while (<$postconffh>) {
 		s/\r|\n//g;
 		push(@supports_map_type_cache, $_);
 		}
@@ -2386,20 +2389,20 @@ sub split_props
 my ($text) = @_;
 my %pmap;
 foreach my $p (split(/\t+/, $text)) {
-        if ($p =~ /^(\S+):\s*(.*)/) {
-                push(@{$pmap{$1}}, $2);
-                }
-        }
+	if ($p =~ /^(\S+):\s*(.*)/) {
+		push(@{$pmap{$1}}, $2);
+		}
+	}
 my @rv;
 foreach my $k (keys %pmap) {
-        my $v = $pmap{$k};
-        if (@$v == 1) {
-                push(@rv, $k, $v->[0]);
-                }
-        else {
-                push(@rv, $k, $v);
-                }
-        }
+	my $v = $pmap{$k};
+	if (@$v == 1) {
+		push(@rv, $k, $v->[0]);
+		}
+	else {
+		push(@rv, $k, $v);
+		}
+	}
 return @rv;
 }
 
@@ -2409,14 +2412,14 @@ sub list_smtpd_restrictions
 {
 return ( "permit_mynetworks",
 	 "permit_inet_interfaces",
-	 &compare_version_numbers($postfix_version, 2.3) < 0 ?
-		"reject_unknown_client" :
-		"reject_unknown_reverse_client_hostname",
+	 &compare_version_numbers($postfix_version, 2.3) < 0
+		? "reject_unknown_client"
+		: "reject_unknown_reverse_client_hostname",
 	 "permit_sasl_authenticated",
 	 "reject_unauth_destination",
-	 &compare_version_numbers($postfix_version, 3.9) < 0 ?
-		("check_relay_domains", "permit_mx_backup") : ( ),
-       );
+	 &compare_version_numbers($postfix_version, 3.9) < 0
+		? ( "check_relay_domains", "permit_mx_backup" ) : (),
+);
 }
 
 # list_client_restrictions()
@@ -2425,12 +2428,12 @@ sub list_client_restrictions
 {
 return ( "permit_mynetworks",
 	 "permit_inet_interfaces",
-	 &compare_version_numbers($postfix_version, 2.3) < 0 ?
-		"reject_unknown_client" :
-		"reject_unknown_reverse_client_hostname",
+	 &compare_version_numbers($postfix_version, 2.3) < 0
+		? "reject_unknown_client"
+		: "reject_unknown_reverse_client_hostname",
 	 "permit_tls_all_clientcerts",
 	 "permit_sasl_authenticated",
-	);
+);
 }
 
 # list_multi_client_restrictions()
@@ -2440,7 +2443,7 @@ sub list_multi_client_restrictions
 return ( "check_client_access",
 	 "reject_rbl_client",
 	 "reject_rhsbl_client",
-       );
+);
 }
 
 sub file_map_type
@@ -2457,9 +2460,9 @@ return 0;
 sub in_props
 {
 my ($props, $name) = @_;
-for(my $i=0; $i<@$props; $i++) {
+for (my $i = 0; $i < @$props; $i++) {
 	if (lc($props->[$i]) eq lc($name)) {
-		return $props->[$i+1];
+		return $props->[$i + 1];
 		}
 	}
 return;
@@ -2512,7 +2515,8 @@ foreach my $f (readdir($cdirh)) {
 closedir($cdirh);
 
 # Add TLS files
-foreach my $o ("smtpd_tls_cert_file", "smtpd_tls_key_file","smtpd_tls_CAfile") {
+foreach my $o ("smtpd_tls_cert_file", "smtpd_tls_key_file",
+	      "smtpd_tls_CAfile") {
 	my $v = &get_current_value($o);
 	push(@rv, $v) if ($v);
 	}
