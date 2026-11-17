@@ -37,18 +37,49 @@ return ($html, $@);
 }
 
 subtest 'Actions Log subtitle' => sub {
+	# Stop both pages at their header without accessing live action logs.
+	local *main::get_action = sub {
+		return { user => 'test', module => 'test' };
+		};
+	local *main::can_user = local *main::can_mod = sub { 1 };
 	local *main::ui_print_header = sub {
 		print main::ui_post_header($_[0]);
 		die "HEADER_DONE\n";
 		};
-	foreach my $subtitle ('Domain example.test', q{O'Reilly & Partners},
-		'<img src=x onerror="alert(1)">') {
-		my ($html, $error) = render_cgi('webminlog/search.cgi',
-			{ tall => 1, search_sub_title => $subtitle });
-		is($error, "HEADER_DONE\n", 'request reaches the heading');
-		like($html, qr/\Q@{[main::html_escape($subtitle)]}\E/,
-			'subtitle appears as text');
-		unlike($html, qr/<img\b/, 'subtitle cannot introduce an HTML tag');
+	my @cases = (
+		[ 'Domain example.test', 'Domain example.test' ],
+		[ q{O'Reilly & Partners}, 'O&#39;Reilly &amp; Partners' ],
+		[ 'in <tt>a.test</tt>', 'in <tt>a.test</tt>' ],
+		[ 'in <b>a.test</b>', 'in <b>a.test</b>' ],
+		[ '<span class="domain" title="a > b">a.test</span>',
+		  '<span>a.test</span>' ],
+		[ '<STRONG>a.test</STRONG>', '<strong>a.test</strong>' ],
+		[ '<custom-tag>a.test</custom-tag>', 'a.test' ],
+		[ '<span><b>a.test</b></span>',
+		  '<span><b>a.test</b></span>' ],
+		[ 'guest &amp; &lt;one&gt;', 'guest &amp; &lt;one&gt;' ],
+		[ '&amp;lt;literal&amp;gt;', '&amp;lt;literal&amp;gt;' ],
+		[ '<tt onclick=x>name</tt>', '<tt>name</tt>' ],
+		[ 'name<img src=x onerror="alert(1)">', 'name' ],
+		[ '<iframe srcdoc="&lt;script&gt;alert(1)&lt;/script&gt;">'.
+		  'name</iframe>', 'name' ],
+		[ '<a href="java&#115;cript:alert(1)">name</a>',
+		  '<a>name</a>' ],
+		[ '<script>alert(1)</script>name', 'alert(1)name' ],
+		[ '<tt>a<img src=x onerror=alert(1)>.test</tt>',
+		  '<tt>a.test</tt>' ],
+		[ '<tt title="unfinished', '&lt;tt title&#61;&quot;unfinished' ],
+		[ undef, undef ],
+		);
+	# Both pages must render the same safe subtitle.
+	foreach my $page ('search.cgi', 'view.cgi') {
+		foreach my $case (@cases) {
+			my ($html, $error) = render_cgi("webminlog/$page",
+				{ tall => 1, search_sub_title => $case->[0] });
+			is($error, "HEADER_DONE\n", "$page reaches the heading");
+			is($html, main::ui_post_header($case->[1]),
+				"$page keeps formatting without active HTML or attributes");
+			}
 		}
 	};
 

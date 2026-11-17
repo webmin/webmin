@@ -15,8 +15,8 @@ my $act = &get_action($in{'id'});
 &can_user($act->{'user'}) || &error($text{'view_ecannot'});
 &can_mod($act->{'module'}) || &error($text{'view_ecannot'});
 
-# display info about the action
-&ui_print_header(&html_escape($in{'search_sub_title'}) || undef,
+# Keep formatting while removing attributes and active tags.
+&ui_print_header(&html_sanitize($in{'search_sub_title'}) || undef,
 	$text{'view_title'}, "", undef, undef, $in{'no_return'});
 
 my @files = &list_files($act);
