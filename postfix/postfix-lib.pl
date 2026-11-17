@@ -2022,6 +2022,33 @@ sub unlock_postfix_files
 &unlock_file($config{'postfix_master'});
 }
 
+# can_edit_map(mapname)
+# Returns whether the user can edit the settings for this map parameter.
+sub can_edit_map
+{
+my ($mapname) = @_;
+my %acl = (
+	alias_maps => 'aliases',
+	alias_database => 'aliases',
+	canonical_maps => 'canonical',
+	recipient_canonical_maps => 'canonical',
+	sender_canonical_maps => 'canonical',
+	virtual_maps => 'virtual',
+	virtual_alias_maps => 'virtual',
+	transport_maps => 'transport',
+	relocated_maps => 'relocated',
+	header_checks => 'header',
+	mime_header_checks => 'header',
+	body_checks => 'body',
+	sender_bcc_maps => 'bcc',
+	recipient_bcc_maps => 'bcc',
+	sender_dependent_default_transport_maps => 'dependent',
+	tls_server_sni_maps => 'sni',
+	relay_recipient_maps => 'smtpd',
+	check_client_access => 'client' );
+return $acl{$mapname} && $access{$acl{$mapname}};
+}
+
 # map_chooser_button(field, mapname)
 # Returns HTML for a button for popping up a map file chooser
 sub map_chooser_button

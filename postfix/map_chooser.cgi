@@ -4,12 +4,17 @@
 require './postfix-lib.pl';    ## no critic
 use strict;
 use warnings;
-our ($i, $lconf, $ltable, $mtable, $myconf, $postfix_version, $t, %in, @maps, @opts, @sources, %text);
+our ($i, $lconf, $ltable, $mtable, $myconf, $postfix_version, $t, %access, %in, @maps, @opts, @sources, %text);
 &ReadParse();
-&popup_header($text{'chooser_title'});
+&can_edit_map($in{'mapname'}) || &error($text{'chooser_ecannot'});
 
-# Parse into files
+# Check map paths before reading backend settings.
 @maps = &get_maps_types_files($in{'map'});
+foreach my $map (@maps) {
+	&is_under_directory($access{'dir'}, $map->[1]) ||
+		&error(&text('mapping_ecannot', $access{'dir'}));
+	}
+&popup_header($text{'chooser_title'});
 push(@maps, [ ]);
 @sources = &list_mysql_sources();
 

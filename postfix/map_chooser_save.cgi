@@ -1,12 +1,18 @@
 #!/usr/local/bin/perl
-# Show a form for selecting the source for a map
+# Save the source and backend settings for a map.
 
 require './postfix-lib.pl';    ## no critic
 use strict;
 use warnings;
-our ($file, $i, $postfix_version, $str, $t, @files, %in, @maps, @newfiles, @oldmaps, %text);
+our ($file, $i, $postfix_version, $str, $t, %access, @files, %in, @maps, @newfiles, @oldmaps, %text);
 &ReadParse();
 &error_setup($text{'chooser_err'});
+&can_edit_map($in{'mapname'}) || &error($text{'chooser_ecannot'});
+
+# Each field must stay within one backend configuration line.
+foreach my $value (values %in) {
+	$value !~ /[\r\n\0]/ || &error($text{'chooser_eline'});
+	}
 @oldmaps = &get_maps_types_files($in{'map'});
 
 # Build a list of maps from inputs
@@ -47,6 +53,8 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 			$file = &guess_config_dir()."/".$in{'mapname'}.
 				($i ? ".$i" : "").".mysql.conf";
 			}
+		&is_under_directory($access{'dir'}, $file) ||
+			&error(&text('mapping_ecannot', $access{'dir'}));
 		# Validate and save MySQL settings, starting with host
 		if ($in{"mhosts_${i}_def"}) {
 			&save_backend_config($file, "hosts", undef);
@@ -128,6 +136,8 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 			$file = &guess_config_dir()."/".$in{'mapname'}.
 				($i ? ".$i" : "").".ldap.conf";
 			}
+		&is_under_directory($access{'dir'}, $file) ||
+			&error(&text('mapping_ecannot', $access{'dir'}));
 
 		# Save LDAP server hostname
 		if ($in{"lserver_host_${i}_def"}) {
@@ -220,7 +230,7 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 		push(@maps, $in{"other_$i"});
 		}
 	else {
-		&error("Unknown type $t");
+		&error("Unknown type ".&html_escape($t));
 		}
 	}
 @maps || &error($text{'chooser_enone'});
@@ -240,7 +250,7 @@ foreach my $f (@files) {
 	}
 
 # Create final string for map
-$str = join(",", @maps);
+$str = &quote_javascript(join(",", @maps));
 &popup_header($text{'chooser_title'});
 
 print <<EOF;
