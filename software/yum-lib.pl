@@ -81,7 +81,7 @@ $update =~ s/\.\*/\*/g;
 local $enable;
 # Add the repository selected on the install form.
 if ($in->{'enablerepo'}) {
-	$enable = "enablerepo=".quotemeta($in->{'enablerepo'});
+	$enable = "--enablerepo=".quotemeta($in->{'enablerepo'});
 	}
 local (@rv, @newpacks);
 
