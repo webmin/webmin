@@ -13,7 +13,8 @@ $main::cron_cmd = '/fixture/webalizer.pl';
 my (@jobs, @actions, @saved, @audit, %configs, %locks);
 
 # Load the real ACL, schedule-copy and restore helpers without module startup.
-for my $source (['webalizer-lib.pl', qw(can_edit_log lconf_to_cron)],
+for my $source (['webalizer-lib.pl', qw(can_edit_log lconf_to_cron
+					 cron_log_command)],
 		['backup_config.pl', 'post_restore']) {
 	my ($file, @subs) = @$source;
 	open(my $fh, '<', "$root/webalizer/$file") or die $!;
@@ -105,11 +106,18 @@ is_deeply(\%locks, {}, 'all locks are released');
 }
 
 for my $mode ('enable', 'already enabled', 'restore') {
-	subtest "$mode normalizes legacy jobs" => sub {
+	subtest "$mode normalizes existing jobs" => sub {
+		# Quote unsafe paths and keep plain paths for older Virtualmin.
 		for my $file ('/var/log/access.log', '/var/log/site-name.access',
+			'/var/log/virtualmin/example.com_access_log',
 			'/var/log/with spaces', q{/var/log/a;'"$()&|<>}, '/var/log/100%done') {
-			my $command = $main::cron_cmd.' '.quotemeta($file);
-			seed_case($file, $mode eq 'enable' ? 0 : 1, "$main::cron_cmd $file");
+			my $plain = "$main::cron_cmd $file";
+			my $quoted = $main::cron_cmd.' '.quotemeta($file);
+			my $safe = $file =~ /^[\w\/.\-]+$/;
+			my $command = $safe ? $plain : $quoted;
+			is(main::cron_log_command($file), $command,
+				$safe ? 'a safe path stays plain' : 'an unsafe path is quoted');
+			seed_case($file, $mode eq 'enable' ? 0 : 1, $safe ? $quoted : $plain);
 			my $before = { %{$jobs[1]} };
 			run_action($mode);
 			is_deeply($jobs[1], { %$before, command => $command },
@@ -129,26 +137,33 @@ for my $mode ('enable', 'already enabled', 'restore') {
 		};
 	}
 
-subtest 'new and already quoted jobs keep their behavior' => sub {
-	my $file = '/var/log/site with spaces';
-	my $command = $main::cron_cmd.' '.quotemeta($file);
-	for my $mode ('enable', 'restore') {
-		seed_case($file, $mode eq 'restore' ? 1 : 0, undef);
-		run_action($mode);
-		is_deeply([map { $_->[0] } @actions], ['create'], 'a missing job is created');
-		is($jobs[1]->{'command'}, $command, 'new jobs use the same quoted form');
-		is($jobs[1]->{'user'}, 'root', 'the new job still runs as root');
-		my %schedule;
-		main::lconf_to_cron($configs{$file}, \%schedule);
-		is_deeply({ map { $_ => $jobs[1]->{$_} } keys %schedule }, \%schedule,
-			'a new job uses the configured schedule');
+subtest 'new and already correct jobs keep their behavior' => sub {
+	for my $file ('/var/log/site with spaces',
+		'/var/log/virtualmin/example.com_access_log') {
+		my $command = main::cron_log_command($file);
+		is($command, $file =~ / / ? $main::cron_cmd.' '.quotemeta($file)
+					  : "$main::cron_cmd $file",
+			'the expected command form is used');
+		for my $mode ('enable', 'restore') {
+			# Create a missing job with the saved schedule.
+			seed_case($file, $mode eq 'restore' ? 1 : 0, undef);
+			run_action($mode);
+			is_deeply([map { $_->[0] } @actions], ['create'], 'a missing job is created');
+			is($jobs[1]->{'command'}, $command, 'new jobs use the same command form');
+			is($jobs[1]->{'user'}, 'root', 'the new job still runs as root');
+			my %schedule;
+			main::lconf_to_cron($configs{$file}, \%schedule);
+			is_deeply({ map { $_ => $jobs[1]->{$_} } keys %schedule }, \%schedule,
+				'a new job uses the configured schedule');
 
-		seed_case($file, $mode eq 'restore' ? 1 : 0, $command);
-		my $before = { %{$jobs[1]} };
-		run_action($mode);
-		is_deeply(\@actions, [], 'already quoted jobs are not rewritten');
-		is_deeply($jobs[1], $before, 'the existing job is unchanged');
-		is($configs{$file}->{'sched'}, 1, 'bulk enable still sets the schedule flag');
+			# Keep jobs whose commands are already correct.
+			seed_case($file, $mode eq 'restore' ? 1 : 0, $command);
+			my $before = { %{$jobs[1]} };
+			run_action($mode);
+			is_deeply(\@actions, [], 'already correct jobs are not rewritten');
+			is_deeply($jobs[1], $before, 'the existing job is unchanged');
+			is($configs{$file}->{'sched'}, 1, 'bulk enable still sets the schedule flag');
+			}
 		}
 	};
 
