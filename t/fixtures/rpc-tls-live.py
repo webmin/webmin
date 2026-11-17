@@ -256,6 +256,15 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
         check(str(result.get('after_errors')) == '42', 'TLS session survives file errors', result)
         check(result.get('preserved') == 'preserved',
               'TLS missing source preserves the destination', result)
+        # The server must keep the cause even after reporting it to the client.
+        errors = (peers['new']['var']/'errors').read_text()
+        transfer_errors = [line for line in errors.splitlines()
+                           if 'TLS file transfer failed:' in line]
+        check(any('No space left' in line for line in transfer_errors),
+              'TLS upload logs the remote disk error', errors[-3000:])
+        check(any('Failed to open' in line and 'No such file' in line
+                  for line in transfer_errors),
+              'TLS upload logs the destination open error', errors[-3000:])
 
         # Remote exceptions must preserve both session state and return values.
         result = run('new', mode='rpc_errors')

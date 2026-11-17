@@ -566,15 +566,21 @@ if (!$pid) {
 		&write_ssl_connection($con, "OK\n");
 		1;
 		};
-	if (!$ok && $con) {
-		# Send one error line when the TLS connection is still usable.
+	if (!$ok) {
+		# Log the transfer error even if the client cannot receive it.
 		my $error = $@;
+		print STDERR "fastrpc[$$]: TLS file transfer failed: $error";
 		$error =~ s/[\r\n]+/ /g;
-		eval { &write_ssl_connection($con, "ERROR $error\n"); };
+		if ($con) {
+			# Try to notify the client without skipping cleanup.
+			eval { &write_ssl_connection($con, "ERROR $error\n"); };
+			print STDERR "fastrpc[$$]: Error reply failed: $@"
+				if ($@);
+			}
 		}
 	# Close only this child's file connection.
 	&rpc_tls_close($con) if ($con);
-	exit;
+	exit($ok ? 0 : 1);
 	}
 # Track the child while releasing the parent's copies of its handles.
 $xfer_kids{$pid} = 1;
