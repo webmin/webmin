@@ -23,6 +23,28 @@ $main::remote_error_handler = sub { die $_[0]."\n"; };
 my $s = $mode eq 'local' ? '' : $case->{'server'};
 my %result;
 my $ok = eval {
+	if ($mode eq 'first_write' || $mode eq 'first_read') {
+		# A file transfer must work before any other RPC operation.
+		my $path = $case->{'path'};
+		open(my $fh, '>', "$path/first-input") or die $!;
+		print $fh 'first RPC transfer';
+		close($fh) or die $!;
+		if ($mode eq 'first_write') {
+			# Upload first, then download over the same session.
+			remote_write($s, "$path/first-input", "$path/first-remote");
+			remote_read($s, "$path/first-output", "$path/first-remote");
+			}
+		else {
+			# Download first from the shared fixture directory,
+			# then upload over the same session.
+			remote_read($s, "$path/first-output", "$path/first-input");
+			remote_write($s, "$path/first-output", "$path/first-remote");
+			}
+		# Return the downloaded bytes for the parent fixture to check.
+		open($fh, '<', "$path/first-output") or die $!;
+		$result{'first_transfer'} = do { local $/; <$fh> };
+		close($fh);
+		}
 	# Establish a session and verify both a simple call and a large reply.
 	remote_foreign_require($s, 'webmin');
 	$result{'call'} = remote_eval($s, undef, '21 * 2');

@@ -9060,9 +9060,9 @@ if ($sn eq "" && ref($s) && $s->{'local'}) {
 else {
 	# Remote uploads follow the server's configured transport.
 	return undef if (&is_readonly_mode());
-	# Refresh the transport in case the caller changed this server's SSL
-	# settings since its last RPC call. Never reuse a stale file transport.
-	{
+	# A file transfer can be the first RPC call. Send a setup ping only
+	# when no fast RPC connection is open.
+	if (!$fast_fh_cache{$sn}) {
 		my $failed;
 		my $handler = $main::remote_error_handler;
 		{
@@ -9089,6 +9089,8 @@ else {
 					   'file' => $remotefile,
 					   'name' => $remotebase,
 					   'xferauth' => 1 } );
+	# Stop after an RPC error even if the error handler returns.
+	return undef if (!ref($rv));
 	my $error;
 	# Local RPC listens only on loopback, whatever host the hash names.
 	my $serv = $sn eq ""
@@ -9148,9 +9150,9 @@ if ($sn eq "" && ref($s) && $s->{'local'}) {
 	}
 else {
 	# Remote downloads follow the server's configured transport.
-	# Refresh the transport in case the caller changed this server's SSL
-	# settings since its last RPC call. Never reuse a stale file transport.
-	{
+	# A file transfer can be the first RPC call. Send a setup ping only
+	# when no fast RPC connection is open.
+	if (!$fast_fh_cache{$sn}) {
 		my $failed;
 		my $handler = $main::remote_error_handler;
 		{
@@ -9175,6 +9177,8 @@ else {
 	my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
 					   'file' => $remotefile,
 					   'xferauth' => 1 } );
+	# Stop after an RPC error even if the error handler returns.
+	return undef if (!ref($rv));
 	if (!$rv->[0]) {
 		return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
 		}

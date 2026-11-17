@@ -194,6 +194,18 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
             check(result.get('temporary_name') == 1 and result.get('base_name') == 1,
                   label+' temporary and requested base filenames', result)
 
+        # Either file direction can be the first operation in a fresh process.
+        # Cover TLS, plaintext HTTP and HTTPS fallback to an older peer.
+        for name, tls, https in [('new', 1, 0), ('http', 0, 0), ('old', 0, 1)]:
+            for mode in ('first_write', 'first_read'):
+                result = run(name, mode=mode)
+                check(result.get('first_transfer') == 'first RPC transfer' and
+                      not result.get('error'), name+' '+mode+' round trip', result)
+                # Later RPC calls must still use the expected transport.
+                check(result.get('tls') == tls and result.get('https') == https and
+                      str(result.get('call')) == '42',
+                      name+' '+mode+' keeps the negotiated session', result)
+
         # Disk and open errors must propagate through TLS and HTTPS fallback.
         for name in ('new', 'old'):
             result = run(name, mode='errors')

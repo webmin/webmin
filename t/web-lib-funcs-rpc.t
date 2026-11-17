@@ -202,6 +202,60 @@ is_deeply($connect_args[7],
 		}
 }
 
+# A first file operation connects once; later transfers reuse that connection.
+for my $transfer (\&main::remote_write, \&main::remote_read) {
+	local %main::fast_fh_cache;
+	local %main::remote_rpc_ssl;
+	# is_readonly_mode(): allow uploads in this fixture.
+	local *main::is_readonly_mode = sub { 0 };
+	my $pings = 0;
+	# remote_rpc_call(server, request): model TLS setup and count probes.
+	local *main::remote_rpc_call = sub {
+		# File requests must use the encrypted transfer helper below.
+		die "Unexpected transfer request\n" if ($_[1]->{'action'} ne 'ping');
+		$pings++;
+		$main::remote_rpc_ssl{'remote.example:10000.test'} = 1;
+		$main::fast_fh_cache{'remote.example:10000.test'} = [ 'sid' ];
+		return 1;
+		};
+	# remote_rpc_transfer(server, localfile, [remotefile], [basename],
+	#                     writing): identify the encrypted path without I/O.
+	local *main::remote_rpc_transfer = sub { 'encrypted' };
+	# The first transfer sets up the session; the second must reuse it.
+	my $server = { host => 'remote.example', port => 10000, ssl => 1 };
+	is($transfer->($server, '/unused', '/unused'), 'encrypted',
+		'first file operation selects the encrypted transport');
+	is($pings, 1, 'first file operation establishes its connection');
+	is($transfer->($server, '/unused', '/unused'), 'encrypted',
+		'later file operation keeps the encrypted transport');
+	is($pings, 1, 'existing fast connection needs no extra ping');
+}
+
+# The transfer request still checks changed settings without a preceding ping.
+for my $transfer (\&main::remote_write, \&main::remote_read) {
+	# Model a cached plaintext connection with different settings.
+	open(my $fh, '<', \my $empty) or die $!;
+	local %main::fast_fh_cache = (
+		'remote.example:10000.test' => [ $fh, '2.670', undef, 'old-settings' ]);
+	local %main::remote_rpc_ssl = ( 'remote.example:10000.test' => 0 );
+	# is_readonly_mode(): allow uploads in this fixture.
+	local *main::is_readonly_mode = sub { 0 };
+	my ($error, $sockets);
+	# remote_error_handler(message): save the error without throwing.
+	local $main::remote_error_handler = sub { $error = $_[0] };
+	# open_socket(host, port, handle, [&error], [bind-ip],
+	#             [address-family]):
+	# Count file connections that should never be attempted after failure.
+	local *main::open_socket = sub { $sockets++ };
+	# Enabling SSL must reject the old session before any file I/O.
+	my $rv = $transfer->({ host => 'remote.example', port => 10000,
+		ssl => 1, fast => 1, user => 'root', pass => 'fixture' },
+		'/not-opened', '/not-created');
+	like($error, qr/settings changed/, 'transfer rejects changed settings');
+	ok(!defined($rv), 'returning error handler cannot report success');
+	ok(!$sockets, 'failed transfer request opens no file socket');
+}
+
 # Existing plaintext sessions cannot survive an SSL or trust setting change.
 {
 	open(my $fh, '<', \my $empty) or die $!;
@@ -336,7 +390,6 @@ for my $lost_session (0, 1) {
 			{ host => '192.0.2.1', peer => 'p', sni => 'fixture' } ] );
 		my $entry = $fast_fh_cache{$sn};
 		my $pings = 0;
-		my $probe = 1;
 		no warnings 'redefine';
 		*is_readonly_mode = sub { 0 };
 		*open_socket = sub { };
@@ -344,11 +397,6 @@ for my $lost_session (0, 1) {
 		# return a file port.
 		*remote_rpc_call = sub {
 			if ($_[1]->{'action'} eq 'ping') {
-				# The initial transport probe is not a keepalive.
-				if ($probe) {
-					$probe = 0;
-					return 1;
-					}
 				# Count pings before simulating a timeout.
 				$pings++;
 				# Model a timeout closing the original control session.
@@ -378,7 +426,6 @@ for my $lost_session (0, 1) {
 			&$progress();
 			$now += 31;
 			&$progress();
-			$probe = 1;
 			};
 		# Start both transfers with the same session state.
 		remote_write($server, "$root_directory/version", '/remote');
