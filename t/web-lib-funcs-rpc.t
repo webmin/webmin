@@ -231,42 +231,32 @@ for my $transfer (\&main::remote_write, \&main::remote_read) {
 	is($pings, 1, 'existing fast connection needs no extra ping');
 }
 
-# The transfer request still checks changed settings without a preceding ping.
+# Failed transfer requests must stop even when the error hook returns.
 for my $transfer (\&main::remote_write, \&main::remote_read) {
-	# Model a cached plaintext connection with different settings.
-	open(my $fh, '<', \my $empty) or die $!;
+	# Reuse an open connection so the transfer needs no setup ping.
 	local %main::fast_fh_cache = (
-		'remote.example:10000.test' => [ $fh, '2.670', undef, 'old-settings' ]);
+		'remote.example:10000.test' => [ 'sid', '2.670' ]);
 	local %main::remote_rpc_ssl = ( 'remote.example:10000.test' => 0 );
 	# is_readonly_mode(): allow uploads in this fixture.
 	local *main::is_readonly_mode = sub { 0 };
 	my ($error, $sockets);
 	# remote_error_handler(message): save the error without throwing.
 	local $main::remote_error_handler = sub { $error = $_[0] };
+	# remote_rpc_call(server, request): reject the file transfer request.
+	local *main::remote_rpc_call = sub {
+		return $main::remote_error_handler->('transfer rejected');
+		};
 	# open_socket(host, port, handle, [&error], [bind-ip],
 	#             [address-family]):
 	# Count file connections that should never be attempted after failure.
 	local *main::open_socket = sub { $sockets++ };
-	# Enabling SSL must reject the old session before any file I/O.
+	# A rejected request must not open a file or a transfer socket.
 	my $rv = $transfer->({ host => 'remote.example', port => 10000,
-		ssl => 1, fast => 1, user => 'root', pass => 'fixture' },
+		ssl => 0, fast => 1, user => 'root', pass => 'fixture' },
 		'/not-opened', '/not-created');
-	like($error, qr/settings changed/, 'transfer rejects changed settings');
+	is($error, 'transfer rejected', 'transfer reports the RPC error');
 	ok(!defined($rv), 'returning error handler cannot report success');
 	ok(!$sockets, 'failed transfer request opens no file socket');
-}
-
-# Existing plaintext sessions cannot survive an SSL or trust setting change.
-{
-	open(my $fh, '<', \my $empty) or die $!;
-	local %main::fast_fh_cache = (
-		'remote.example:10000.test' => [ $fh, '2.670', undef, 'old-settings' ]);
-	local *main::make_http_connection = sub { die "Unexpected connection\n" };
-	eval { main::remote_rpc_call({ host => 'remote.example', port => 10000,
-		ssl => 1, fast => 1, user => 'root', pass => 'fixture' },
-		{ action => 'ping' }); };
-	like($@, qr/settings changed/, 'changed settings invalidate the old session');
-	ok(!%main::fast_fh_cache, 'old connection is removed before another call');
 }
 
 # Missing Net::SSLeay must be reported clearly.

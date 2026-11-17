@@ -9626,27 +9626,6 @@ else {
 	$pass = $serv->{'pass'};
 	}
 
-# Do not reuse a session after its endpoint, user or trust changes.
-# Password changes do not invalidate an already authenticated session.
-my $profile = join("\0", $ip // '', $serv->{'port'} // '',
-	$serv->{'ssl'} ? 1 : 0, $serv->{'checkssl'} ? 1 : 0,
-	$serv->{'fast'} ? 1 : 0, $reqs ? $reqs->{'capath'} // '' : '',
-	$user // '');
-if ($sn && $fast_fh_cache{$sn} && $fast_fh_cache{$sn}->[3] ne $profile) {
-	# Close the old session and require an explicit reconnect.
-	my $old = delete($fast_fh_cache{$sn});
-	if ($old->[2]) {
-		# Release the old TLS session without affecting forked users.
-		&rpc_tls_close($old->[2]);
-		}
-	else {
-		# Also invalidate plaintext sessions when SSL is enabled.
-		close($old->[0]);
-		}
-	return &$main::remote_error_handler(
-		"RPC server settings changed; reconnect before making more calls");
-	}
-
 if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 	# Negotiate fast RPC unless this peer already selected HTTPS fallback.
 	if (!$fast_fh_cache{$sn} && $sn) {
@@ -9726,8 +9705,8 @@ if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 				Net::SSLeay::CTX_free($ctx) if ($ctx);
 				return &$main::remote_error_handler($error) if ($error);
 				}
-			# Cache the connection and its settings.
-			$fast_fh_cache{$sn} = [ $sid, $version, $tls_con, $profile ];
+			# Cache the connection for later RPC calls.
+			$fast_fh_cache{$sn} = [ $sid, $version, $tls_con ];
 			$remote_server_version{$sn} = $version;
 			}
 		else {
