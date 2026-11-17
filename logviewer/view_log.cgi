@@ -278,7 +278,7 @@ else {
 	// Update log viewer with new data from the server
 	(async function () {
 		const progressUrl =
-			"view_log_progress.cgi?idx=$in{'idx'}&filter=" +
+			"view_log_progress.cgi?idx=@{[&urlize($in{'idx'})]}&filter=" +
 			"@{[&urlize($jfilter)]}&regex=$use_regex";
 		const logviewer_progress_abort = new AbortController();
 		const logDataElement = document.getElementById("logdata"),
