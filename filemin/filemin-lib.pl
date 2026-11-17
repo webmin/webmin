@@ -920,7 +920,15 @@ sub plain_dialogs
 my $rv = "";
 my $hidden_path = &ui_hidden('path', $path);
 my $cancel = $text{'dialog_cancel'};
-my $recursive = &ui_checkbox('recursive', 'true', $text{'dialog_recursive'}, 0);
+# recursive(dialog)
+# Gives each checkbox and its label a matching, dialog-specific ID.
+my $recursive = sub {
+	my ($dialog) = @_;
+	my $box = &ui_checkbox('recursive', 'true',
+			       $text{'dialog_recursive'}, 0);
+	$box =~ s/recursive_true/recursive_true_$dialog/g;
+	return $box;
+	};
 my $apply = sub {
 	# A form sent to the selection, closed natively if the script fails
 	my ($script, $name) = @_;
@@ -1121,7 +1129,7 @@ $rv .= &ui_dialog({
 		  &ui_textbox('owner', '', 20, 0, undef, 'required') ],
 		[ $text{'group_name'},
 		  &ui_textbox('group', '', 20, 0, undef, 'required') ],
-		[ undef, $recursive ],
+		[ undef, &$recursive('chown') ],
 		]),
 	'buttons' => $change,
 	'close' => $cancel });
@@ -1139,7 +1147,7 @@ foreach my $tool ([ 'chattr', 'tag', 'attr_label' ],
 		'body' => &plain_dialog_table([
 			[ $text{$label},
 			  &ui_textbox('label', '', 25, 0, undef, 'required') ],
-			[ undef, $recursive ],
+			[ undef, &$recursive($what) ],
 			]),
 		'buttons' => $change,
 		'close' => $cancel });
