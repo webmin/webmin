@@ -83,6 +83,46 @@ subtest 'Actions Log subtitle' => sub {
 		}
 	};
 
+subtest 'Apache group file headings and return links' => sub {
+	# Isolate Apache lookups while keeping the real HTML helpers.
+	local $INC{'./apache-lib.pl'} = 1;
+	local $INC{'./auth-lib.pl'} = 1;
+	local *main::get_config = sub { [] };
+	local *main::allowed_auth_file = sub { 1 };
+	local *main::server_root = sub { $_[0] };
+	local *main::this_url = sub { '/apache/list_authgroups.cgi' };
+	local *main::list_authgroups = sub {
+		return { group => 'test', members => [ 'user' ] };
+		};
+	local *main::get_authgroup = sub {
+		return { group => 'test', members => [ 'user' ] };
+		};
+	local *main::ui_print_header = sub {
+		print main::ui_post_header($_[0]);
+		};
+	# Render the real footer, then stop before unrelated page cleanup.
+	local *main::ui_print_footer = sub {
+		main::footer(@_);
+		die "REQUEST_DONE\n";
+		};
+	local %main::text = (authg_header => 'In file $1',
+		authg_header2 => 'Groups from file $1', auth_return => 'Return');
+	my $file = '/fixture/<marker>.groups';
+	my $url = q{list_authgroups.cgi?name="><marker>};
+	# Exercise both pages with markup in the filename and return URL.
+	foreach my $page ('list_authgroups.cgi', 'edit_authgroup.cgi') {
+		my ($html, $error) = render_cgi("apache/$page",
+			{ file => $file, group => 'test', url => $url });
+		is($error, "REQUEST_DONE\n", "$page renders completely");
+		like($html, qr{<tt>/fixture/&lt;marker&gt;\.groups</tt>},
+			'file heading escapes markup');
+		unlike($html, qr{<tt>/fixture/<marker>},
+			'table heading also escapes the filename');
+		like($html, qr/href="\Q@{[main::html_escape($url)]}\E"/,
+			'return URL cannot escape its attribute');
+		}
+	};
+
 subtest 'Cluster ACL names' => sub {
 	local *CORE::GLOBAL::pipe = sub { die "HOST_DONE\n" };
 	local *main::remote_error_setup = sub { };

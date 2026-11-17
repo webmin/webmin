@@ -1857,7 +1857,8 @@ $cache{'mods'} = join(" ", @mods);
 return ($ver, \@mods, $fullver);
 }
 
-# print_line(directive, text, indent, link)
+# print_line(&directive, &text-parts, indent, [link])
+# Prints a directive with its source filename and an optional edit link.
 sub print_line
 {
 local $line = $_[0]->{'line'} + 1;
@@ -1865,17 +1866,20 @@ local $lstr = "$_[0]->{'file'} ($line)";
 local $txt = join("", @{$_[1]});
 local $left = 85 - length($lstr) - $_[2];
 if (length($txt) > $left) {
+	# Leave room for the source filename.
 	$txt = substr($txt, 0, $left)." ..";
 	}
 local $txtlen = length($txt);
 $txt = &html_escape($txt);
 print " " x $_[2];
 if ($_[3]) {
+	# Link directives that can be edited.
 	print &ui_link($_[3], $txt);
 	}
+# Other directives remain plain text.
 else { print $txt; }
 print " " x (90 - $txtlen - $_[2] - length($lstr));
-print $lstr,"\n";
+print &html_escape($lstr),"\n";
 }
 
 # can_edit_virt(struct)

@@ -8,7 +8,7 @@ require './auth-lib.pl';
 &ReadParse();
 &allowed_auth_file($in{'file'}) ||
 	&error(&text('authg_ecannot', &html_escape($in{'file'})));
-$desc = &text('authg_header', "<tt>$in{'file'}</tt>");
+$desc = &text('authg_header', "<tt>".&html_escape($in{'file'})."</tt>");
 if (defined($in{'group'})) {
 	# editing existing group
 	&ui_print_header($desc, $text{'authg_edit'}, "");
@@ -24,9 +24,10 @@ else {
 	}
 
 print "<form method=post action=save_authgroup.cgi>\n";
-print "<input type=hidden name=file value=\"$in{'file'}\">\n";
-print "<input type=hidden name=url value=\"$in{'url'}\">\n";
-if (!$new) { print "<input type=hidden name=oldgroup value=$in{'group'}>\n"; }
+print &ui_hidden("file", $in{'file'}),"\n";
+print &ui_hidden("url", $in{'url'}),"\n";
+# Keep the original group name when editing or renaming an entry.
+if (!$new) { print &ui_hidden("oldgroup", $in{'group'}),"\n"; }
 print "<table border> <tr $tb><td colspan=2><b>",
       ($new ? $text{'authg_create'} : $text{'authg_edit'}),
       "</b></td> </tr>\n";
@@ -42,5 +43,5 @@ print "&nbsp; <input type=submit value=\"$text{'delete'}\" name=delete>\n"
 	if (!$new);
 print "</form>\n";
 
-&ui_print_footer($in{'url'}, $text{'auth_return'});
+&ui_print_footer(&html_escape($in{'url'}), $text{'auth_return'});
 

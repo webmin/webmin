@@ -6,7 +6,7 @@ require './apache-lib.pl';
 &ReadParse();
 &allowed_auth_file($in{'file'}) || &error($text{'htindex_ecannot'});
 $conf = &get_htaccess_config($in{'file'});
-$desc = &text('htindex_header', "<tt>$in{'file'}</tt>");
+$desc = &text('htindex_header', "<tt>".&html_escape($in{'file'})."</tt>");
 &ui_print_header($desc, $text{'show_title'}, "");
 
 for($i=0; $i<$directive_type_count; $i++) {
@@ -24,7 +24,7 @@ print "<table border><tr><td $cb><pre>\n\n";
 print "</pre></td></tr></table><p>\n";
 
 print "<form action=edit_htaccess.cgi>\n";
-print "<input type=hidden name=file value=\"$in{'file'}\">\n";
+print &ui_hidden("file", $in{'file'}),"\n";
 print "<b>$text{'show_edit'}</b>\n";
 print "<select name=type>\n";
 foreach $e (@elist) {
@@ -35,9 +35,11 @@ foreach $e (@elist) {
 print "</select> <input type=submit value=\"$text{'show_ok'}\">\n";
 print "</form>\n";
 
-&ui_print_footer("htaccess_index.cgi?file=$in{'file'}", $text{'htindex_return'});
+&ui_print_footer("htaccess_index.cgi?file=".&urlize($in{'file'}),
+		 $text{'htindex_return'});
 
-# show_directives(list, indent)
+# show_directives(&directives, indent)
+# Prints directives with edit links where access permits.
 sub show_directives
 {
 local ($list, $ind) = @_;
@@ -51,8 +53,9 @@ for($idx=0; $idx<@$list; $idx++) {
 		local ($ed1, $ed2);
 		print " " x $ind;
 		if ($d->{'name'} =~ /Files/) {
+			# Files sections have their own editor.
 			$ed1 = "<a href=\"files_index.cgi?idx=$idx&".
-			       "file=$in{'file'}\">";
+			       "file=".&urlize($in{'file'})."\">";
 			$ed2 = "</a>";
 			}
 		print $ed1,"&lt;",$d->{'name'}," ",$d->{'value'},
@@ -66,9 +69,11 @@ for($idx=0; $idx<@$list; $idx++) {
 		&print_line($d, [ $d->{'name'}," ",$d->{'value'} ], $ind);
 		}
 	else {
+		# Link editable directives to their option editor.
 		next if (!$t);
 		&print_line($d, [ $d->{'name'}," ",$d->{'value'} ], $ind,
-			    "edit_htaccess.cgi?file=$in{'file'}&type=$t->{'type'}");
+			    "edit_htaccess.cgi?file=".&urlize($in{'file'}).
+			    "&type=$t->{'type'}");
 		}
 	}
 }
