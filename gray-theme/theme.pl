@@ -291,12 +291,9 @@ $tconfig{'inbody'} = (@cls ? "class='".join(" ", @cls)."'" : "").
 }
 
 # theme_scheme_script([forced-scheme])
-# Returns the scheme bootstrap and frame-wide keyboard shortcuts. The optional
-# forced scheme is the configured default. Alt+T stores a per-tab override
-# without changing that setting, and Alt+R reloads only the content frame.
-# Scheme changes reach the frameset and both frames. An automatic scheme uses
-# its last value before first paint, follows system changes, and is checked
-# again after load.
+# Returns color scheme scripts and Alt+T/Alt+R shortcuts for all frames.
+# forced-scheme sets light or dark; omitting it follows the system.
+# Alt+T overrides the scheme for this tab; Alt+R reloads the content frame.
 sub theme_scheme_script
 {
 my ($forced) = @_;
@@ -406,6 +403,13 @@ document.addEventListener('keydown', function(event) {
 	/* Ignore other modifiers, repeats, composition and handled events. */
 	if (event.defaultPrevented || event.repeat || event.isComposing ||
 	    !event.altKey || event.ctrlKey || event.metaKey || event.shiftKey)
+		return;
+	/* Leave typing alone, as Alt enters characters on some keyboards. */
+	var target = event.target || { };
+	if (target.isContentEditable || target.tagName == 'TEXTAREA' ||
+	    (target.tagName == 'INPUT' &&
+	     !/^(button|checkbox|radio|submit|reset|image|file|range|color)$/
+	      .test(target.type)))
 		return;
 	/* Alt+T toggles the palette throughout the frameset. */
 	if (event.code == 'KeyT' || event.keyCode == 84) {
