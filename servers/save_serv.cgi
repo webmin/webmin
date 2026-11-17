@@ -61,10 +61,14 @@ else {
 		&remote_rpc_call($probe, { action => 'ping' });
 		&remote_finished();
 		}
-		# Reject bad logins; other failures select regular RPC.
+		# Keep the usual message for a rejected login.
 		&error($text{'save_elogin'})
 			if ($probe_error &&
 			    $probe_error =~ /login to RPC server.*rejected/);
+		# Stop on SSL probe errors instead of saving regular RPC.
+		&error(&html_escape($probe_error))
+			if ($probe_error && $in{'ssl'});
+		# Failed plain HTTP probes still select regular RPC.
 		$in{'fast'} = $probe_error ? 0 : 1;
 		}
 	elsif ($in{'fast'} == 2) {

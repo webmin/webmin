@@ -9041,6 +9041,7 @@ Transfers some local file to another server via Webmin's RPC protocol, and
 returns the resulting remote filename. If the remotefile parameter is given,
 that is the destination filename which will be used. Otherwise a randomly
 selected temporary filename will be used, and returned by the function.
+Remote transfers require fast RPC.
 
 =cut
 sub remote_write
@@ -9078,6 +9079,11 @@ else {
 			delete($remote_rpc_ssl{$sn});
 			return undef;
 			}
+		}
+	if (!$fast_fh_cache{$sn}) {
+		# Regular RPC has no file-transfer listener.
+		&$main::remote_error_handler("File transfers require fast RPC");
+		return undef;
 		}
 	if ($remote_rpc_ssl{$sn}) {
 		# SSL targets require encrypted file transfers.
@@ -9135,7 +9141,8 @@ else {
 
 Transfers remotefile to localfile using Webmin's RPC protocol. The server
 can be a registered hostname or a server hash. An explicit local server
-hash with local set copies the file without RPC.
+hash with local set copies the file without RPC. Remote transfers require
+fast RPC.
 
 =cut
 sub remote_read
@@ -9168,6 +9175,11 @@ else {
 			delete($remote_rpc_ssl{$sn});
 			return undef;
 			}
+		}
+	if (!$fast_fh_cache{$sn}) {
+		# Regular RPC has no file-transfer listener.
+		&$main::remote_error_handler("File transfers require fast RPC");
+		return undef;
 		}
 	if ($remote_rpc_ssl{$sn}) {
 		# SSL targets require encrypted file transfers.
@@ -9217,19 +9229,19 @@ else {
 }
 
 # remote_rpc_transfer(server, localfile, remotefile, basename, writing)
-# Transfer a file over TLS fast RPC or HTTPS, returning its remote path.
-# writing selects upload; otherwise download. On upload, remotefile and
-# basename may be undef to request a temporary path.
+# Transfer a file over the caller's open TLS fast RPC session and return
+# the remote file path. writing selects upload; false selects download.
+# For uploads, an undef remotefile requests a temporary file, named after
+# basename when given.
 sub remote_rpc_transfer
 {
 my ($host, $localfile, $remotefile, $basename, $writing) = @_;
 my $sn = &remote_session_name($host);
 my $entry = $fast_fh_cache{$sn};
-my ($con, $local, $result, $remote_handle);
+my ($con, $local, $result);
 local *RPC_TLS_TRANSFER;
 my $ok = eval {
-	# Turn remote errors into exceptions so failed transfers stop
-	# immediately.
+	# remote_error_handler(message): abort the transfer on RPC errors.
 	local $main::remote_error_handler = sub { die $_[0]."\n"; };
 	if ($writing) {
 		# Open the upload source before creating a remote destination.
@@ -9237,128 +9249,69 @@ my $ok = eval {
 			die "Failed to open $localfile : $!\n";
 		binmode($local);
 		}
-	if ($entry && $entry->[2]) {
-		# Ask the TLS control session to start a separate file listener.
-		my $control = $entry->[2];
-		my $rv = &remote_rpc_call($host, {
-			action => $writing ? 'tcpwrite' : 'tcpread',
-			file => $remotefile, name => $basename, xferauth => 1 });
-		die "Failed to start RPC transfer\n" if (!$rv || !$rv->[0]);
-		my $socket = \*RPC_TLS_TRANSFER;
-		my $error;
-		&open_socket($control->{'host'}, $rv->[1], $socket, \$error);
-		die "$error\n" if ($error);
-		# Match the HTTPS certificate before sending the transfer token.
-		my $ctx = &rpc_tls_context();
+	# Ask the TLS control session to start a separate file listener.
+	my $control = $entry->[2];
+	my $rv = &remote_rpc_call($host, {
+		action => $writing ? 'tcpwrite' : 'tcpread',
+		file => $remotefile, name => $basename, xferauth => 1 });
+	die "Failed to start RPC transfer\n" if (!$rv || !$rv->[0]);
+	# Connect to the file port returned by the control session.
+	my $socket = \*RPC_TLS_TRANSFER;
+	my $error;
+	&open_socket($control->{'host'}, $rv->[1], $socket, \$error);
+	die "$error\n" if ($error);
+	# Match the HTTPS certificate before sending the transfer token.
+	my $ctx = &rpc_tls_context();
+	eval {
+		$con = &rpc_tls_start($socket, $ctx, 0,
+			$gconfig{'rpc_timeout'}, $control->{'peer'},
+			$control->{'sni'});
+		};
+	$error = $@;
+	Net::SSLeay::CTX_free($ctx);
+	die $error if ($error);
+	&write_ssl_connection($con, "$rv->[2]\n");
+	# Ping the idle control session during long transfers, so NAT does
+	# not drop it before the next call.
+	my $last_ping = time();
+	my $ping_every = int(($gconfig{'rpc_timeout'} || 60) / 2);
+	$ping_every = 30 if ($ping_every < 30);
+	# keepalive(): ping the control session when due.
+	my $keepalive = sub {
+		return if (time() - $last_ping < $ping_every);
+		# Reconnecting a lost session could stall the transfer.
+		return if (!$fast_fh_cache{$sn});
 		eval {
-			$con = &rpc_tls_start($socket, $ctx, 0,
-				$gconfig{'rpc_timeout'}, $control->{'peer'},
-				$control->{'sni'});
+			# remote_error_handler(error): ignore ping errors.
+			local $main::remote_error_handler =
+				sub { return undef; };
+			&remote_rpc_call($host, { 'action' => 'ping' });
 			};
-		$error = $@;
-		Net::SSLeay::CTX_free($ctx);
-		die $error if ($error);
-		&write_ssl_connection($con, "$rv->[2]\n");
-		# Ping the idle control session during a long transfer, so NAT
-		# does not drop it before the next call.
-		my $last_ping = time();
-		my $ping_every = int(($gconfig{'rpc_timeout'} || 60) / 2);
-		$ping_every = 30 if ($ping_every < 30);
-		# keepalive(): ping the control session when due.
-		my $keepalive = sub {
-			return if (time() - $last_ping < $ping_every);
-			# Reconnecting a lost session could block the file
-			# transfer.
-			return if (!$fast_fh_cache{$sn});
-			# Continue the file transfer if the ping fails.
-			eval {
-				local $main::remote_error_handler =
-					sub { return undef; };
-				&remote_rpc_call($host, { 'action' => 'ping' });
-				};
-			$last_ping = time();
-			};
-		if ($writing) {
-			# Wait until the remote destination opens.
-			my $ready = &read_ssl_connection($con);
-			die "RPC transfer failed : $ready" if ($ready ne "OK\n");
-			&rpc_tls_send_file($con, $local, $keepalive);
-			}
-		else {
-			# Do not truncate the destination until the peer is
-			# verified.
-			open($local, '>', $localfile) or
-				die "Failed to open $localfile : $!\n";
-			binmode($local);
-			&rpc_tls_receive_file($con, $local, $keepalive);
-			}
-		# Require confirmation that the remote file closed successfully.
-		my $reply = &read_ssl_connection($con);
-		die "RPC transfer failed : $reply" if ($reply ne "OK\n");
-		$result = $rv->[0];
+		$last_ping = time();
+		};
+	if ($writing) {
+		# Wait until the remote destination opens.
+		my $ready = &read_ssl_connection($con);
+		die "RPC transfer failed : $ready" if ($ready ne "OK\n");
+		&rpc_tls_send_file($con, $local, $keepalive);
 		}
 	else {
-		# Keep a remote file handle across HTTPS requests.
-		&remote_foreign_require($host, 'webmin');
-		my $id = $$.'-'.++$remote_rpc_transfer_id;
-		$remote_handle = "\$main::rpc_transfer_files{'$id'}";
-		my $file = "'".&quote_literal_escape($remotefile)."'";
-		my $base = "'".&quote_literal_escape($basename)."'";
-		my $mode = $writing ? '>' : '<';
-		# Quote paths before inserting them into remote code.
-		$result = &remote_eval($host, undef,
-			"my \$file = $file || ($base ? &tempname($base) : &tempname()); ".
-			"open(my \$fh, '$mode', \$file) or die \$!; ".
-			"binmode(\$fh); $remote_handle = \$fh; \$file;");
-		if (!$writing) {
-			# Open locally only after the remote source opens.
-			open($local, '>', $localfile) or
-				die "Failed to open $localfile : $!\n";
-			binmode($local);
-			}
-		# Use 1 MiB chunks to limit the number of HTTPS requests.
-		while(1) {
-			if ($writing) {
-				# Hex safely embeds file bytes in remote code.
-				my $n = read($local, my $buf, 1048576);
-				die "Failed to read $localfile : $!\n" if (!defined($n));
-				last if (!$n);
-				my $hex = unpack('H*', $buf);
-				&remote_eval($host, undef,
-					"my \$fh = $remote_handle; ".
-					"print {\$fh} pack('H*', '$hex') or die \$!; 1;");
-				}
-			else {
-				# An empty chunk marks EOF. Errors fail the RPC.
-				my $hex = &remote_eval($host, undef,
-					"my \$n = read($remote_handle, my \$buf, 1048576); ".
-					"die \$! if (!defined(\$n)); unpack('H*', \$buf);");
-				last if ($hex eq '');
-				print $local pack('H*', $hex) or
-					die "Failed to write $localfile : $!\n";
-				}
-			}
-		# Closing checks delayed filesystem errors before reporting
-		# success.
-		&remote_eval($host, undef,
-			"my \$fh = delete($remote_handle); close(\$fh) or die \$!; 1;");
-		$remote_handle = undef;
-		close($local) or die "Failed to close $localfile : $!\n";
+		# Open only now, so an unverified peer cannot truncate the file.
+		open($local, '>', $localfile) or
+			die "Failed to open $localfile : $!\n";
+		binmode($local);
+		&rpc_tls_receive_file($con, $local, $keepalive);
 		}
+	# Require confirmation that the remote file closed successfully.
+	my $reply = &read_ssl_connection($con);
+	die "RPC transfer failed : $reply" if ($reply ne "OK\n");
+	$result = $rv->[0];
 	1;
 	};
 # Release local handles before reporting the original transfer error.
 my $error = $@;
 &rpc_tls_close($con) if ($con);
 close($local) if ($local && defined(fileno($local)));
-if ($remote_handle) {
-	# Release an old peer's open file even after a local I/O failure.
-	eval {
-		local $main::remote_error_handler = sub { die $_[0]."\n"; };
-		&remote_eval($host, undef,
-			"my \$fh = delete($remote_handle); close(\$fh) if (\$fh); 1;");
-		};
-	}
 return &$main::remote_error_handler($error) if (!$ok);
 return $result;
 }
@@ -9389,10 +9342,9 @@ foreach my $entry (values %fast_fh_cache) {
 		close($entry->[0]);
 		}
 	}
-# A later connection must negotiate its transport again after an upgrade.
+# A later connection must negotiate its transport again.
 %fast_fh_cache = ( );
 %remote_rpc_ssl = ( );
-%remote_rpc_https = ( );
 }
 
 =head2 remote_error_setup(&function)
@@ -9568,7 +9520,8 @@ CORE::close($con->{'fh'}) if (defined(fileno($con->{'fh'})));
 
 Sends a request hash using the server's RPC transport and returns its result.
 The server may be a registered hostname, a server hash or an empty string
-for local RPC. SSL servers use TLS fast RPC when supported, otherwise HTTPS.
+for local RPC. Fast RPC requires TLS when the server is configured with SSL.
+If TLS is unavailable, the call fails without changing RPC mode.
 This internal function is called by the other remote_* functions.
 
 =cut
@@ -9626,8 +9579,8 @@ else {
 	$pass = $serv->{'pass'};
 	}
 
-if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
-	# Negotiate fast RPC unless this peer already selected HTTPS fallback.
+if ($serv->{'fast'} || !$sn) {
+	# Negotiate the selected fast RPC transport on the first call.
 	if (!$fast_fh_cache{$sn} && $sn) {
 		# Apply the server's SSL and certificate settings.
 		my $con = &make_http_connection(
@@ -9660,24 +9613,22 @@ if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 			} while($line);
 		$line = &read_http_connection($con);
 		if ($line =~ /^0\s+(.*)/) {
-			return &$main::remote_error_handler("RPC error : $1");
-			}
-		elsif ($serv->{'ssl'} && $line =~ /^2 HTTPS\s*$/) {
-			# A TLS-terminating proxy requires RPC over HTTPS
-			# throughout.
+			# Close the startup connection before reporting failure.
+			my $error = $1;
 			&close_http_connection($con);
-			$remote_rpc_https{$sn} = 1;
-			return &remote_rpc_call($serv_host, $str);
+			return &$main::remote_error_handler(
+				"RPC error : $error");
 			}
 		elsif ($line =~ /^1 (\d+) (\S+)(?: (\S+))?(?: (TLS1))?\s*$/) {
 			# Use the peer's advertised protocol.
 			my ($port, $sid, $version, $tls) = ($1, $2, $3, $4);
 			if ($serv->{'ssl'} && !$tls) {
-				# Old peers can still be upgraded over their
-				# HTTPS RPC API.
+				# Older peers need upgrading for TLS fast RPC.
 				&close_http_connection($con);
-				$remote_rpc_https{$sn} = 1;
-				return &remote_rpc_call($serv_host, $str);
+				return &$main::remote_error_handler(
+					"TLS fast RPC is not supported by ".
+					"this server; ".
+					"upgrade Webmin");
 				}
 			my ($peer, $tls_con, $error);
 			if ($serv->{'ssl'}) {
@@ -9710,10 +9661,11 @@ if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 			$remote_server_version{$sn} = $version;
 			}
 		else {
-			# Reject a malformed fast RPC startup response
+			# Collect the bad response, then release the connection.
 			while($stuff = &read_http_connection($con)) {
 				$line .= $stuff;
 				}
+			&close_http_connection($con);
 			return &$main::remote_error_handler(
 				"Bad response from fastrpc.cgi : $line");
 			}
@@ -9874,40 +9826,8 @@ if (($serv->{'fast'} || !$sn) && !$remote_rpc_https{$sn}) {
 		}
 	}
 else {
-	# Call rpc.cgi on remote server
+	# Call rpc.cgi only when the server is configured for regular RPC.
 	my $error = 0;
-	my $wrapped = $serv->{'ssl'} &&
-		$str->{'action'} =~ /^(require|call|eval)$/;
-	if ($wrapped) {
-		# Old HTTPS workers lose exceptions or exit on error(). Return
-		# an explicit result while preserving list context and the
-		# session.
-		my $code;
-		if ($str->{'action'} eq 'eval') {
-			# Use fast RPC's rules for the module package name.
-			my $pkg = $str->{'module'} || 'main';
-			$pkg =~ s/[^A-Za-z0-9]/_/g;
-			$code = "package $pkg;\n".$str->{'code'};
-			}
-		else {
-			# Preserve arguments and any module session result.
-			my $args = &quote_literal_escape(&serialise_variable($str));
-			$code = "my \$a = &unserialise_variable('$args'); ";
-			$code .= $str->{'action'} eq 'require'
-				? '&foreign_require($a->{module}, $a->{file}); '.
-				  '({ session => [ $fifo1, $fifo2 ] });'
-				: '&foreign_call($a->{module}, $a->{func}, @{$a->{args}});';
-			}
-		$code = &quote_literal_escape($code);
-		# Fast RPC evaluates code in scalar context, even over this
-		# fallback.
-		my $context = $remote_rpc_https{$sn} && $str->{'action'} eq 'eval'
-			? 'scalar ' : '';
-		$str = { %$str, action => 'eval', module => undef,
-			code => 'local $main::error_must_die = 1; '.
-				"my \@rv = ${context}eval '$code'; ".
-				'{ error => $@, values => \@rv };' };
-		}
 	my $tostr = &serialise_variable($str);
 	my $con = &make_http_connection($ip, $serv->{'port'},
 					$serv->{'ssl'}, "POST", "/rpc.cgi",
@@ -9943,16 +9863,6 @@ else {
 	&close_http_connection($con);
 	my $from = &unserialise_variable($fromstr);
 	return &$main::remote_error_handler("Invalid RPC login to $serv->{'host'}") if (!$from->{'status'});
-	if ($wrapped) {
-		# Unwrap the HTTPS worker's error and return values.
-		my $result = $from->{'rv'};
-		return &$main::remote_error_handler("Invalid HTTPS RPC response")
-			if (ref($result) ne 'HASH' || ref($result->{'values'}) ne 'ARRAY');
-		return &$main::remote_error_handler($result->{'error'})
-			if ($result->{'error'});
-		return @{$result->{'values'}} == 1
-			? $result->{'values'}->[0] : @{$result->{'values'}};
-		}
 	if (defined($from->{'arv'})) {
 		return @{$from->{'arv'}};
 		}

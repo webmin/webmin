@@ -48,11 +48,19 @@ WEBMIN_RPC_TLS_LEGACY=/tmp/webmin-old \
 timeout 400 prove -v t/rpc-tls-vm.t
 ```
 
-The fixture starts isolated Webmin servers and tests both upgrade orders, binary and empty files, certificate and cipher checks, remote errors, interrupted transfers and slow writes. It tests local RPC with IPv6 disabled inside a private network namespace. It also upgrades a temporary installation with the tar installer and removes its service configuration afterward.
+The fixture starts isolated Webmin servers and tests TLS fast RPC, older clients, binary and empty files, certificates, ciphers, remote errors, interrupted transfers and slow writes. It also tests local RPC with IPv6 disabled in a private network namespace.
+
+The fixture checks that TLS setup failures never select regular RPC, including with older SSL peers, HTTPS-to-HTTP proxies and automatic server detection. Explicit regular RPC calls still work, while file transfers over regular RPC fail without changing destination files.
 
 To compare file-transfer speed, set `WEBMIN_RPC_TLS_BENCHMARK=1` as well and point `WEBMIN_RPC_TLS_LEGACY` at a TLS-capable baseline tree. This runs 256 MiB uploads and downloads with both trees, verifies the downloaded hashes, discards a warmup pair, and reports seven alternating measurements per tree. File creation and hashing are excluded from the timings. The output includes median, minimum and maximum throughput. Loopback results measure local overhead; use a private network namespace with a bandwidth limit to compare behavior on a slower link.
 
-For a server configured with SSL, the client requests `fastrpc.cgi?tls=1`. A `TLS1` reply selects TLS for control and file connections. Both must present the certificate used for HTTPS. Older servers and Webmin running without TLS behind a proxy use HTTPS RPC, with files sent in chunks of up to 1 MiB per request. If a TLS proxy presents a different certificate from a TLS-enabled Webmin backend, disable fast RPC to keep requests on HTTPS.
+For a server configured with SSL and fast RPC, the client requests `fastrpc.cgi?tls=1`. A `TLS1` reply selects TLS for control and file connections. Both must present the certificate used for HTTPS. Setup failures return an error without switching to regular RPC. Automatic server detection leaves the server record unchanged after a failed SSL probe.
+
+Upgrade remote peers before the controlling server. Older clients can still use unencrypted fast RPC with upgraded peers. New clients reject older SSL peers when fast RPC is enabled. Calls to those peers fail, including those used for cluster upgrades, Cloudmin status checks and Virtualmin Pro remote DNS setup. Cluster Webmin cannot upgrade peers over regular RPC. If the controlling server is upgraded first, run the upgrade on each affected peer.
+
+For TLS fast RPC through an HTTPS proxy, Webmin must also receive HTTPS and present the same certificate as the proxy. A plain-HTTP backend fails, even when the proxy runs on the same host. The client must reach Webmin's separate RPC ports at the registered address, with port forwarding if needed.
+
+The fixture checks RPC compatibility and rejection behavior. It does not run complete Cluster Webmin, Cloudmin or Virtualmin Pro workflows.
 
 TLS file transfers use chunks of up to 65,536 bytes, a zero-length end marker and a final `OK` reply. Uploads also wait for an `OK` confirming that the destination opened successfully.
 

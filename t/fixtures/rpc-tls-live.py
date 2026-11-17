@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Run isolated old/new miniserv RPC peers on a disposable Linux VM."""
 import base64
-import io
 import http.client
+import http.server
 import ssl
 import json
 import os
@@ -15,7 +15,6 @@ import statistics
 import subprocess
 import sys
 import tempfile
-import tarfile
 import threading
 import time
 import urllib.parse
@@ -23,10 +22,11 @@ import urllib.parse
 source, legacy = map(Path, sys.argv[1:3])
 benchmark = os.environ.get('WEBMIN_RPC_TLS_BENCHMARK') == '1'
 if sys.platform != 'linux' or os.geteuid() != 0:
-    # Namespace and installer tests require an explicitly selected Linux guest.
+    # Namespace tests require an explicitly selected Linux guest.
     raise SystemExit('Run on a disposable root Linux VM')
 fixture = Path(__file__).with_name('rpc-tls-client.pl')
 processes = []
+proxy = None
 count = 0
 failures = 0
 
@@ -102,7 +102,6 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
             config(conf/'servers/config', dict(capath=other_cert))
             (conf/'perl-path').write_text('/usr/bin/perl\n')
             (conf/'version').write_text((root/'version').read_text())
-            (conf/'bootscript-name').write_text(f'webmin-rpc-tls-test-{os.getpid()}\n')
             # Listen on loopback and vary TLS restrictions for targeted checks.
             config(conf/'miniserv.conf', dict(port=port, bind='127.0.0.1',
                    root=root, ssl=use_ssl, keyfile=key, certfile=signed if name == 'ca' else cert,
@@ -154,10 +153,7 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
             settings = path/'settings.json'
             settings.write_text(json.dumps(dict(server=server, path=str(path),
                                                 blocks=4096 if benchmark else 512 if name == 'new' else 32,
-                                                other_key=str(other_key), other_cert=str(other_cert),
-                                                package=str(task/'upgrade.tar.gz'),
-                                                extract=str(task/'upgraded'),
-                                                boot=f'webmin-rpc-tls-test-{os.getpid()}')))
+                                                other_key=str(other_key), other_cert=str(other_cert))))
             settings.chmod(0o600)
             # Load the chosen client with its matching module configuration.
             client_peer = peers['old' if client == legacy else 'new']
@@ -220,12 +216,12 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
             print(f'1..{count}', flush=True)
             sys.exit(0)
 
-        # Cover both upgrade orders and the unchanged plaintext HTTP path.
-        for name, client, tls, https in [('new', source, 1, 0),
-                 ('old', source, 0, 1), ('http', source, 0, 0),
-                 ('new', legacy, 0, 0)]:
+        # Cover TLS, plain HTTP fast RPC and older clients.
+        for name, client, fast, tls, https in [('new', source, 1, 1, 0),
+                 ('http', source, 1, 0, 0),
+                 ('new', legacy, 1, 0, 0)]:
             label = f'{"old" if client == legacy else "new"} client / {name} server'
-            result = run(name, client=client)
+            result = run(name, client=client, fast=fast)
             check(str(result.get('call')) == '42' and not result.get('error'), label+' RPC', result)
             check(result.get('large_reply') == 1048576, label+' multi-record RPC response', result)
             check(result.get('tls') == tls and result.get('https') == https,
@@ -238,8 +234,8 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                   label+' temporary and requested base filenames', result)
 
         # Either file direction can be the first operation in a fresh process.
-        # Cover TLS, plaintext HTTP and HTTPS fallback to an older peer.
-        for name, tls, https in [('new', 1, 0), ('http', 0, 0), ('old', 0, 1)]:
+        # Cover TLS and plaintext HTTP fast RPC.
+        for name, tls, https in [('new', 1, 0), ('http', 0, 0)]:
             for mode in ('first_write', 'first_read'):
                 result = run(name, mode=mode)
                 check(result.get('first_transfer') == 'first RPC transfer' and
@@ -249,34 +245,29 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                       str(result.get('call')) == '42',
                       name+' '+mode+' keeps the negotiated session', result)
 
-        # Disk and open errors must propagate through TLS and HTTPS fallback.
-        for name in ('new', 'old'):
-            result = run(name, mode='errors')
-            for error in ('remote_full', 'local_full', 'missing', 'unwritable'):
-                check(bool(result.get(error)), name+' reports '+error, result)
-            check('No space left' in result.get('remote_full', ''),
-                  name+' upload reports the remote disk error', result)
-            check('No such file' in result.get('unwritable', ''),
-                  name+' upload reports the destination open error', result)
-            check(str(result.get('after_errors')) == '42', name+' session survives file errors', result)
-            check(result.get('preserved') == 'preserved',
-                  name+' missing source preserves the destination', result)
+        # TLS transfers must report disk and open errors.
+        result = run('new', mode='errors')
+        for error in ('remote_full', 'local_full', 'missing', 'unwritable'):
+            check(bool(result.get(error)), 'TLS reports '+error, result)
+        check('No space left' in result.get('remote_full', ''),
+              'TLS upload reports the remote disk error', result)
+        check('No such file' in result.get('unwritable', ''),
+              'TLS upload reports the destination open error', result)
+        check(str(result.get('after_errors')) == '42', 'TLS session survives file errors', result)
+        check(result.get('preserved') == 'preserved',
+              'TLS missing source preserves the destination', result)
 
         # Remote exceptions must preserve both session state and return values.
-        for name in ('new', 'old'):
-            result = run(name, mode='rpc_errors')
-            for error_key, expected in [('eval_die', 'eval failure'), ('call_die', 'call failure'),
-                                        ('call_error', 'module failure')]:
-                check(expected in result.get(error_key, ''), name+' returns '+error_key, result)
-            if name == 'old':
-                # Missing modules previously killed the old HTTPS worker.
-                check(bool(result.get('require_error')), name+' returns a module load error', result)
-            check(result.get('values') == [None, '0', "quote'\\\n"] or
-                  result.get('values') == [None, 0, "quote'\\\n"],
-                  name+' preserves list values and quoting', result)
-            check(result.get('context') == 'list' and result.get('eval_context') == 'scalar' and
-                  str(result.get('after_rpc_errors')) == '42',
-                  name+' preserves call context and survives remote errors', result)
+        result = run('new', mode='rpc_errors')
+        for error_key, expected in [('eval_die', 'eval failure'), ('call_die', 'call failure'),
+                                    ('call_error', 'module failure')]:
+            check(expected in result.get(error_key, ''), 'TLS returns '+error_key, result)
+        check(result.get('values') == [None, '0', "quote'\\\n"] or
+              result.get('values') == [None, 0, "quote'\\\n"],
+              'TLS preserves list values and quoting', result)
+        check(result.get('context') == 'list' and result.get('eval_context') == 'scalar' and
+              str(result.get('after_rpc_errors')) == '42',
+              'TLS preserves call context and survives remote errors', result)
 
         # The built-in client needs no IPv6 listener, even when configured.
         local_config = peers['new']['conf']/'miniserv.conf'
@@ -393,13 +384,101 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                 check(all(b"'status' => 1" in body for body in received),
                       'pending TLS requests do not wait for another TCP packet', received)
 
-        # A non-TLS backend tells a terminating proxy to retain HTTPS RPC.
+        # A non-TLS backend rejects TLS setup before starting an RPC listener.
         connection = http.client.HTTPConnection('127.0.0.1', peers['http']['port'])
         connection.request('GET', '/fastrpc.cgi?tls=1',
                            headers={'Authorization': 'Basic '+auth})
         startup = connection.getresponse().read().decode().strip()
         connection.close()
-        check(startup == '2 HTTPS', 'non-TLS backend requires HTTPS RPC fallback', startup)
+        check(startup == '0 TLS fast RPC requires HTTPS and a TLS key on Webmin itself',
+              'non-TLS backend rejects TLS fast RPC', startup)
+
+        # Test HTTPS requests reaching a plain HTTP backend.
+        proxy_requests = []
+
+        # RPCProxy(request, address, server): forward requests to the HTTP peer.
+        class RPCProxy(http.server.BaseHTTPRequestHandler):
+            # forward(): send this request to the HTTP backend.
+            def forward(self):
+                proxy_requests.append(self.path)
+                body = self.rfile.read(int(self.headers.get('Content-Length', '0')))
+                backend = http.client.HTTPConnection('127.0.0.1', peers['http']['port'], timeout=10)
+                try:
+                    # Use the backend's Host header when forwarding.
+                    headers = dict(self.headers)
+                    headers['Host'] = f"localhost:{peers['http']['port']}"
+                    backend.request(self.command, self.path, body, headers)
+                    # Buffer the reply to determine its length.
+                    response = backend.getresponse()
+                    data = response.read()
+                    self.send_response(response.status)
+                    for name, value in response.getheaders():
+                        if name.lower() not in ('connection', 'content-length', 'transfer-encoding'):
+                            # Preserve other response headers.
+                            self.send_header(name, value)
+                    # Replace the backend's framing with a known length.
+                    self.send_header('Content-Length', str(len(data)))
+                    self.end_headers()
+                    self.wfile.write(data)
+                finally:
+                    # Close the backend even if forwarding fails.
+                    backend.close()
+
+            do_GET = do_POST = forward
+
+            # log_message(format, [args...]): keep logs out of TAP output.
+            def log_message(self, format, *args):
+                pass
+
+        # Terminate TLS here; the backend receives plain HTTP.
+        proxy = http.server.ThreadingHTTPServer(('127.0.0.1', 0), RPCProxy)
+        proxy_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        proxy_context.load_cert_chain(cert, key)
+        proxy.socket = proxy_context.wrap_socket(proxy.socket, server_side=True)
+        proxy_thread = threading.Thread(target=proxy.serve_forever, daemon=True)
+        proxy_thread.start()
+        peers['proxy'] = dict(peers['http'], port=proxy.server_address[1], ssl=1)
+
+        # Calls and first-use transfers must fail without switching modes.
+        for name, expected in [('old', 'not supported by this server; upgrade Webmin'),
+                               ('proxy', 'requires HTTPS and a TLS key on Webmin itself')]:
+            for mode in ('calls', 'first_write', 'first_read'):
+                proxy_requests.clear()
+                result = run(name, mode=mode)
+                check(expected in result.get('error', ''), name+' rejects '+mode, result)
+                check(result.get('requests') == ['/fastrpc.cgi?tls=1'],
+                      name+' / '+mode+': no regular RPC request', result)
+                if mode != 'calls':
+                    # Reject setup before touching either destination.
+                    check(result.get('destination_created') == 0,
+                          name+' / '+mode+': no destination created', result)
+                if name == 'proxy':
+                    # Check the proxy saw no retry through rpc.cgi.
+                    check(proxy_requests == ['/fastrpc.cgi?tls=1'],
+                          'proxy / '+mode+': only the fast RPC setup request', proxy_requests)
+
+        # Regular RPC calls still work, but file transfers fail.
+        for name in ('new', 'old', 'http', 'proxy'):
+            result = run(name, mode='regular_files', fast=0)
+            check(not result.get('error') and str(result.get('call')) == '42',
+                  name+' explicit regular RPC still handles calls', result)
+            # Check both directions with an existing regular RPC session.
+            for direction in ('write', 'read'):
+                check('File transfers require fast RPC' in
+                      result.get(direction+'_error', ''),
+                      name+' regular RPC rejects '+direction, result)
+            # Failed transfers must preserve files and the session.
+            check(result.get('remote') == 'remote' and result.get('output') == 'output',
+                  name+' rejected transfers preserve existing files', result)
+            check(str(result.get('after_rejection')) == '42',
+                  name+' regular RPC session survives rejected transfers', result)
+            # Also reject transfers made before any other RPC call.
+            for mode in ('first_write', 'first_read'):
+                result = run(name, mode=mode, fast=0)
+                check('File transfers require fast RPC' in result.get('error', ''),
+                      name+' regular RPC rejects '+mode, result)
+                check(result.get('destination_created') == 0,
+                      name+' regular RPC / '+mode+': no destination created', result)
 
         # The secondary listener must enforce the HTTPS protocol restrictions.
         connection = http.client.HTTPSConnection('127.0.0.1', peer['port'], context=context)
@@ -467,49 +546,30 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
               'server auto-detection enables fast TLS',
               f'HTTP {response.status}: {output[:500]}')
 
-        # Build a real tar installer and upload it through the old peer's HTTPS RPC.
-        boot = f'webmin-rpc-tls-test-{os.getpid()}'
-        with tarfile.open(task/'upgrade.tar.gz', 'w:gz') as archive:
-            for item in source.iterdir():
-                if item.is_file() and item.name not in ('version', 'install-type'):
-                    # Keep root files while supplying a distinct test version.
-                    archive.add(item, arcname='webmin-2.671.999/'+item.name)
-            for directory in ('vendor_perl', 'lang', 'images', 'webmin', 'servers',
-                              'acl', 'init'):
-                archive.add(source/directory, arcname='webmin-2.671.999/'+directory)
-            # Make the installer recognize this temporary package as an upgrade.
-            version = tarfile.TarInfo('webmin-2.671.999/version')
-            version.size = len(b'2.671.999\n')
-            archive.addfile(version, io.BytesIO(b'2.671.999\n'))
-        result = run('old', mode='upgrade')
-        install = result.get('installer') or [1, result]
-        check(int(install[0]) == 0 and
-              (peers['old']['conf']/'version').read_text().strip() == '2.671.999',
-              'updated master uploads and runs the Webmin installer on an old peer', install)
-        check(result.get('https') == 1 and result.get('fallback_cleared') == 1,
-              'upgrade uses HTTPS and clears its negotiated fallback afterward', result)
-        if int(install[0]) == 0:
-            # Restart only the fixture peer using its newly installed source.
-            peer = peers['old']
-            os.killpg(peer['process'].pid, signal.SIGTERM)
-            peer['process'].wait(timeout=10)
-            upgraded = task/'upgraded/webmin-2.671.999'
-            log = open(peer['var']/'upgraded.log', 'w')
-            process = subprocess.Popen(['perl', str(upgraded/'miniserv.pl'), '--nofork',
-                str(peer['conf']/'miniserv.conf')], stdin=subprocess.DEVNULL,
-                stdout=log, stderr=log, start_new_session=True)
-            processes.append(process)
-            # Wait for the replacement before checking that TLS is negotiated.
-            for _ in range(100):
-                try:
-                    with socket.create_connection(('127.0.0.1', peer['port']), timeout=.1):
-                        break
-                except OSError:
-                    time.sleep(.1)
-            result = run('old', mode='calls')
-            check(str(result.get('call')) == '42' and result.get('tls') == 1,
-                  'upgraded peer negotiates fast TLS after reconnecting', result)
+        # Failed SSL detection must leave the saved server unchanged.
+        for name, expected in [('old', 'not supported by this server'),
+                               ('proxy', 'requires HTTPS and a TLS key')]:
+            before = record.read_text()
+            body = urllib.parse.urlencode(dict(id=number, host='localhost',
+                port=peers[name]['port'], ssl=1, checkssl=0, mode=1, fast=2,
+                wuser='admin', wpass=password))
+            connection = http.client.HTTPSConnection('127.0.0.1', peer['port'], context=context)
+            connection.request('POST', '/servers/save_serv.cgi', body, headers={
+                'Authorization': 'Basic '+auth, 'Content-Type': 'application/x-www-form-urlencoded'})
+            response = connection.getresponse()
+            output = response.read().decode(errors='replace')
+            connection.close()
+            check(response.status != 302 and expected in output,
+                  name+' automatic detection reports TLS setup failure')
+            check(record.read_text() == before,
+                  name+' automatic detection does not save regular RPC')
+
     finally:
+        # Stop the fixture proxy before shutting down its HTTP backend.
+        if proxy is not None:
+            proxy.shutdown()
+            proxy.server_close()
+            proxy_thread.join(timeout=10)
         # Stop fixture process groups before deleting their configurations.
         for process in processes:
             try:
@@ -518,15 +578,5 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                 pass
         for process in processes:
             process.wait(timeout=10)
-        # The installer may create a unit for this isolated fixture only.
-        boot = f'webmin-rpc-tls-test-{os.getpid()}'
-        subprocess.run(['systemctl', 'disable', boot], stdout=subprocess.DEVNULL,
-                       stderr=subprocess.DEVNULL)
-        for directory in ('/etc/systemd/system', '/usr/lib/systemd/system',
-                          '/lib/systemd/system', '/etc/init.d'):
-            for suffix in ('', '.service'):
-                (Path(directory)/(boot+suffix)).unlink(missing_ok=True)
-        subprocess.run(['systemctl', 'daemon-reload'], check=True,
-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 print(f'1..{count}', flush=True)
 sys.exit(1 if failures else 0)

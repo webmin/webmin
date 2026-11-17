@@ -40,9 +40,11 @@ if ($miniserv{'ipv6'} && !$local_rpc) {
 my $tls = !$local_rpc && $in{'tls'} eq '1';
 my ($tls_ctx, $tls_con);
 if ($tls) {
-	# A reverse proxy may handle HTTPS while miniserv receives plain HTTP.
+	# If a proxy forwards plain HTTP, this request has no TLS key.
+	# The RPC sockets need Webmin to handle HTTPS itself.
 	if ($ENV{'HTTPS'} ne 'ON' || !$ENV{'MINISERV_KEYFILE'}) {
-		print "2 HTTPS\n";
+		print "0 TLS fast RPC requires HTTPS and a TLS key ".
+		      "on Webmin itself\n";
 		exit;
 		}
 	# Use the certificate selected for this HTTPS request, including SNI.

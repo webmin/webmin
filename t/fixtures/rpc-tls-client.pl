@@ -22,6 +22,13 @@ $main::error_must_die = 1;
 $main::remote_error_handler = sub { die $_[0]."\n"; };
 my $s = $mode eq 'local' ? '' : $case->{'server'};
 my %result;
+# make_http_connection(args): record endpoints without logging credentials.
+my @requests;
+my $connect = \&WebminCore::make_http_connection;
+local *WebminCore::make_http_connection = sub {
+	push(@requests, $_[4]);
+	return &$connect(@_);
+	};
 my $ok = eval {
 	if ($mode eq 'first_write' || $mode eq 'first_read') {
 		# A file transfer must work before any other RPC operation.
@@ -50,11 +57,12 @@ my $ok = eval {
 	$result{'call'} = remote_eval($s, undef, '21 * 2');
 	$result{'large_reply'} = length(remote_eval($s, undef, q{'x' x 1048576}));
 	my $sn = remote_session_name($s);
-	# Read transport state from the package used by WebminCore.
+	# Identify TLS fast RPC and regular RPC over HTTPS separately.
 	no strict 'refs';
 	my $cache = \%WebminCore::fast_fh_cache;
 	$result{'tls'} = $cache->{$sn} && $cache->{$sn}->[2] ? 1 : 0;
-	$result{'https'} = $WebminCore::remote_rpc_https{$sn} ? 1 : 0;
+	$result{'https'} = ref($s) && $s->{'ssl'} &&
+		grep($_ eq '/rpc.cgi', @requests) ? 1 : 0;
 	if ($mode eq 'local') {
 		# Inspect the address the listener is bound to.
 		$result{'bind'} = remote_eval($s, undef,
@@ -105,6 +113,27 @@ my $ok = eval {
 		my $named = remote_write($s, "$path/empty", undef, 'rpc-fixture.dat');
 		$result{'base_name'} = -f $named && $named =~ /rpc-fixture\.dat$/ ? 1 : 0;
 		}
+	elsif ($mode eq 'regular_files') {
+		# Reject transfers without changing existing destination files.
+		my $path = $case->{'path'};
+		for my $file (qw(input remote output)) {
+			open(my $fh, '>', "$path/$file") or die $!;
+			print $fh $file;
+			close($fh) or die $!;
+			}
+		# Both directions must fail without changing either file.
+		eval { remote_write($s, "$path/input", "$path/remote"); };
+		$result{'write_error'} = $@;
+		eval { remote_read($s, "$path/output", "$path/input"); };
+		$result{'read_error'} = $@;
+		for my $file (qw(remote output)) {
+			open(my $fh, '<', "$path/$file") or die $!;
+			$result{$file} = do { local $/; <$fh> };
+			close($fh);
+			}
+		# A rejected transfer must leave the regular RPC session usable.
+		$result{'after_rejection'} = remote_eval($s, undef, '6 * 7');
+		}
 	elsif ($mode eq 'benchmark') {
 		# Time real file transfers after establishing the control session.
 		die "Benchmark requires fast TLS\n" if (!$result{'tls'});
@@ -145,7 +174,7 @@ my $ok = eval {
 			$cache->{$sn}->[2]->{'ssl_con'});
 		}
 	elsif ($mode eq 'rpc_errors') {
-		# Exercise the old HTTPS worker's exception handling and list context.
+		# Check fast RPC exceptions, session state and call context.
 		eval { remote_eval($s, undef, q{die "eval failure\n"}); };
 		$result{'eval_die'} = $@;
 		remote_eval($s, 'webmin', q{
@@ -169,11 +198,6 @@ my $ok = eval {
 			'rpc_fixture_values', "quote'\\\n") ];
 		$result{'context'} = remote_foreign_call($s, 'webmin', 'rpc_fixture_context');
 		$result{'eval_context'} = remote_eval($s, undef, q{wantarray ? 'list' : 'scalar'});
-		if ($result{'https'}) {
-			# Catch module loading errors over HTTPS too.
-			eval { remote_foreign_require($s, 'rpc-fixture-missing'); };
-			$result{'require_error'} = $@;
-			}
 		$result{'after_rpc_errors'} = remote_eval($s, undef, '6 * 7');
 		}
 	elsif ($mode eq 'password_change') {
@@ -198,33 +222,6 @@ my $ok = eval {
 		$con->{'timeout'} = 30;
 		$result{'slow_reply'} = WebminCore::read_ssl_connection($con);
 		WebminCore::rpc_tls_close($con);
-		}
-	elsif ($mode eq 'upgrade') {
-		# Use Cluster Webmin's upload + remote setup sequence on a tar install.
-		my $package = remote_write($s, $case->{'package'});
-		my $extract = $case->{'extract'};
-		my $boot = $case->{'boot'};
-		# Install only into the fixture tree, without starting or
-		# stopping Webmin.
-		$result{'installer'} = remote_eval($s, undef, qq{
-			mkdir('$extract', 0700) or die \$!;
-			system('tar', '-xzf', '$package', '-C', '$extract') == 0 or die 'tar failed';
-			\$ENV{'config_dir'} = \$config_directory;
-			\$ENV{'webmin_upgrade'} = 1;
-			\$ENV{'autothird'} = 1;
-			\$ENV{'bootscript'} = '$boot';
-			\$ENV{'nostop'} = \$ENV{'nostart'} = \$ENV{'nopostinstall'} = 1;
-			\$ENV{'noperlpath'} = 1;
-			\$ENV{'tempdir'} = '$extract/tmp';
-			mkdir(\$ENV{'tempdir'}, 0700);
-			my \$out = `cd '$extract/webmin-2.671.999' && sh setup.sh </dev/null 2>&1`;
-			my \$exit = \$? >> 8;
-			unlink('$package');
-			[ \$exit, \$out ];
-			});
-		# Recheck the peer's capabilities after upgrading it.
-		remote_finished();
-		$result{'fallback_cleared'} = %WebminCore::remote_rpc_https ? 0 : 1;
 		}
 	elsif ($mode eq 'handshake') {
 		# A peer accepting TCP but never speaking TLS must not hang a caller.
@@ -345,4 +342,11 @@ my $ok = eval {
 # Always attempt session cleanup, retaining the case's original error.
 $result{'error'} = $@ if (!$ok);
 eval { remote_finished(); };
+$result{'requests'} = \@requests;
+if ($mode eq 'first_write' || $mode eq 'first_read') {
+	# Rejected setup must not create either transfer destination.
+	$result{'destination_created'} =
+		-e "$case->{'path'}/first-remote" ||
+		-e "$case->{'path'}/first-output" ? 1 : 0;
+	}
 print encode_json(\%result), "\n";

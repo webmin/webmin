@@ -82,7 +82,7 @@ is_deeply($connect_args[7],
 		@response = ("HTTP/1.0 404 Not Found\r\n");
 		($saved, $writes, $reject) = ( undef, '', $invalid );
 		do "$FindBin::Bin/../servers/save_serv.cgi";
-		die $@ if ($@);
+		my $error = $@;
 		is_deeply($connect_args[7], $reqs,
 			  "$name: certificate settings");
 		is(scalar(@connect_args) ? 1 : 0, $fast == 2 ? 1 : 0,
@@ -90,20 +90,45 @@ is_deeply($connect_args[7],
 		is($writes =~ /Authorization: basic / ? 1 : 0,
 		   $fast == 2 && !$invalid ? 1 : 0,
 		   "$name: login requires an accepted connection");
-		is($saved->{'fast'}, $fast == 2 ? 0 : $fast,
-		   "$name: existing RPC fallback is preserved");
+		if ($fast == 2) {
+			# Failed SSL detection must leave the record untouched.
+			like($error, $invalid ? qr/Invalid SSL certificate/ :
+				qr/HTTP error/,
+				"$name: probe error reaches the caller");
+			ok(!defined($saved),
+			   "$name: failed probe saves nothing");
+			}
+		else {
+			# Explicit choices do not run an automatic probe.
+			is($error, '', "$name: save succeeds");
+			is($saved->{'fast'}, $fast,
+			   "$name: explicit mode is preserved");
+			}
 		}
+	# Text from the remote server must not reach the error page as markup.
+	local %main::config = ( capath => '' );
+	local %main::in = ( id => 123, host => 'remote.example',
+		port => 10000, ssl => 1, checkssl => 0, mode => 1,
+		fast => 2, wuser => 'fixture', wpass => 'fixture-password' );
+	@response = ( "HTTP/1.0 200 OK\r\n", "\r\n",
+		      "<script>alert(1)</script>\n", undef );
+	($saved, $writes, $reject) = ( undef, '', 0 );
+	do "$FindBin::Bin/../servers/save_serv.cgi";
+	like($@, qr/Bad response.*&lt;script&gt;/,
+	     'remote text in a probe error is escaped');
+	unlike($@, qr/<script>/, 'probe error carries no remote markup');
+	ok(!defined($saved), 'bad probe reply saves nothing');
 	}
 
 
-# An SSL client selects HTTPS before sending application calls to an old peer.
+# Reject peers without TLS fast RPC before sending application calls.
 {
 	local %main::fast_fh_cache;
-	local %main::remote_rpc_https;
 	local %main::remote_rpc_ssl;
-	local *main::close_http_connection = sub { };
-	my (@connections, @writes);
-	# make_http_connection(args): record each negotiated HTTP transport.
+	my (@connections, @writes, $closed);
+	# close_http_connection(connection): count released startup connections.
+	local *main::close_http_connection = sub { $closed++ };
+	# make_http_connection(args): record attempted connections.
 	local *main::make_http_connection = sub {
 		push(@connections, [ @_ ]);
 		return { mock => 1 };
@@ -112,26 +137,53 @@ is_deeply($connect_args[7],
 	local *main::open_socket = sub { die "Unexpected plaintext socket\n" };
 	my $server = { host => 'remote.example', port => 10000, ssl => 1,
 		fast => 1, user => 'root', pass => 'fixture' };
-	# Legacy greetings and explicit HTTPS replies both select HTTPS RPC.
-	for my $startup ("1 10001 token 2.670\n", "2 HTTPS\n") {
-		%main::remote_rpc_https = ();
-		@connections = ();
-		@writes = ();
-		@response = ("HTTP/1.0 200 OK\r\n", "\r\n", $startup,
-			"HTTP/1.0 200 OK\r\n", "\r\n", $reply, undef);
-		is(main::remote_rpc_call($server, { action => 'ping' }), 'ok',
-			'unsupported fast TLS falls back to HTTPS RPC');
-		is_deeply([ map { [ $_->[2], $_->[4] ] } @connections ],
-			[ [ 1, '/fastrpc.cgi?tls=1' ], [ 1, '/rpc.cgi' ] ],
-			'both startup and fallback require HTTPS');
+	# Cover old greetings and the new TLS setup error.
+	for my $case (
+		[ "1 10001 token 2.670\n", qr/not supported.*upgrade Webmin/ ],
+		[ "0 TLS fast RPC requires HTTPS and a TLS key ".
+		  "on Webmin itself\n",
+		  qr/requires HTTPS and a TLS key/ ]) {
+		for my $throws (0, 1) {
+			# remote_error_handler(error): test returning and dying.
+			my $error;
+			local $main::remote_error_handler = sub {
+				$error = $_[0];
+				die "$error\n" if ($throws);
+				return undef;
+				};
+			# Keep fast RPC selected even after repeated failures.
+			for (1..2) {
+				@connections = @writes = ();
+				$closed = 0;
+				@response = ( "HTTP/1.0 200 OK\r\n",
+					      "\r\n", $case->[0] );
+				my $result = eval {
+					main::remote_rpc_call($server,
+						{ action => 'ping' });
+					};
+				# Failure keeps fast RPC and closes HTTPS.
+				like($error, $case->[1],
+				     'unsupported fast TLS reports its cause');
+				ok(!defined($result), 'no result on failure');
+				is_deeply([ map {
+					[ $_->[2], $_->[4] ]
+					} @connections ],
+					[ [ 1, '/fastrpc.cgi?tls=1' ] ],
+					'failure never calls regular RPC');
+				is($closed, 1, 'failed startup closes HTTPS');
+				is($server->{'fast'}, 1, 'fast RPC stays set');
+				ok(!%main::fast_fh_cache, 'no session cached');
+				}
+			}
 		}
-	# Errors are not evidence of an old server and must not trigger fallback.
+	# Invalid replies must fail without another connection attempt.
 	for my $startup ("0 Invalid user for RPC\n", "garbled\n") {
-		%main::remote_rpc_https = ();
 		@connections = ();
+		$closed = 0;
 		@response = ("HTTP/1.0 200 OK\r\n", "\r\n", $startup, undef);
 		eval { main::remote_rpc_call($server, { action => 'ping' }); };
 		ok($@, 'invalid startup fails');
+		is($closed, 1, 'invalid startup closes the HTTPS connection');
 		is(scalar(@connections), 1, 'invalid startup does not retry over HTTPS');
 		}
 }
@@ -139,13 +191,17 @@ is_deeply($connect_args[7],
 # A certificate mismatch must stop the client before sending its token.
 {
 	local %main::fast_fh_cache;
-	local %main::remote_rpc_https;
 	local *main::close_http_connection = sub { };
 	local *main::open_socket = sub { };
 	local *main::rpc_tls_fingerprint = sub { 'bootstrap-certificate' };
 	local *main::rpc_tls_context = sub { 1 };
 	local *Net::SSLeay::CTX_free = sub { };
-	my $writes = 0;
+	my ($writes, $connections) = (0, 0);
+	# make_http_connection(args): count startup and any unwanted fallback.
+	local *main::make_http_connection = sub {
+		$connections++;
+		return { mock => 1 };
+		};
 	# Count writes after start(socket, ...) rejects the certificate.
 	local *main::write_ssl_connection = sub { $writes++ };
 	local *main::rpc_tls_start = sub {
@@ -159,7 +215,7 @@ is_deeply($connect_args[7],
 		{ action => 'ping' }); };
 	like($@, qr/certificate differs/, 'secondary certificate mismatch is fatal');
 	is($writes, 0, 'no RPC data is sent before certificate matching');
-	ok(!%main::remote_rpc_https, 'certificate failure cannot select fallback');
+	is($connections, 1, 'certificate failure cannot select fallback');
 }
 
 
@@ -182,23 +238,46 @@ is_deeply($connect_args[7],
 	ok(!defined($rv), 'failed probe cannot report a successful filename');
 }
 
-# A server switched to SSL must not reuse its plaintext file transport.
-{
-	local %main::remote_rpc_ssl = ( 'remote.example:10000.test' => 0 );
-	local *main::is_readonly_mode = sub { 0 };
-	local *main::remote_rpc_call = sub {
-		die "Unexpected plaintext transfer\n" if ($_[1]->{'action'} ne 'ping');
-		$main::remote_rpc_ssl{'remote.example:10000.test'} = 1;
-		return 1;
-		};
-	local *main::remote_rpc_transfer = sub { 'encrypted' };
-	my $server = { host => 'remote.example', port => 10000, ssl => 1 };
-	for my $transfer (\&main::remote_write, \&main::remote_read) {
-		# Model a previous HTTP call in the same process before enabling SSL.
-		$main::remote_rpc_ssl{'remote.example:10000.test'} = 0;
-		my $result = eval { $transfer->($server, '/unused', '/unused'); };
-		is($@, '', 'changed SSL settings do not select plaintext transfer');
-		is($result, 'encrypted', 'file data uses the refreshed SSL transport');
+# Regular RPC cannot transfer files, with or without SSL.
+for my $transfer (\&main::remote_write, \&main::remote_read) {
+	for my $ssl (0, 1) {
+		for my $throws (0, 1) {
+			local %main::fast_fh_cache;
+			local %main::remote_rpc_ssl;
+			# is_readonly_mode(): allow uploads for this test.
+			local *main::is_readonly_mode = sub { 0 };
+			# close_http_connection(con): no real handle to close.
+			local *main::close_http_connection = sub { };
+			my ($error, $sockets, $writes);
+			# remote_error_handler(error): test returning and dying.
+			local $main::remote_error_handler = sub {
+				$error = $_[0];
+				die "$error\n" if ($throws);
+				return 'error hook returned';
+				};
+			# open_socket(args): count unwanted file connections.
+			local *main::open_socket = sub { $sockets++ };
+			# write_http_connection(con, data...): record writes.
+			local *main::write_http_connection = sub {
+				$writes .= join('', @_[1..$#_]);
+				};
+			# A successful regular-RPC ping creates no fast session.
+			@response = ("HTTP/1.0 200 OK\r\n", "\r\n",
+				$reply, undef);
+			my $result = eval {
+				$transfer->({ host => 'remote.example',
+					port => 10000, ssl => $ssl,
+					fast => 0, user => 'fixture' },
+					'/not-opened', '/not-created');
+				};
+			# Reject transfers before sending a file command.
+			is($error, 'File transfers require fast RPC',
+				'regular RPC reports the unsupported transfer');
+			ok(!defined($result), 'no filename after rejection');
+			ok(!$sockets, 'regular RPC opens no file socket');
+			unlike($writes, qr/tcpwrite|tcpread/,
+				'regular RPC receives no transfer command');
+			}
 		}
 }
 
@@ -309,7 +388,6 @@ for my $without_hires (0, 1) {
 # A ping must be answered within a bounded time. Other commands wait as before.
 {
 	local %main::fast_fh_cache;
-	local %main::remote_rpc_https;
 	local %main::remote_rpc_ssl;
 	local *main::close_http_connection = sub { };
 	local *main::open_socket = sub { };
