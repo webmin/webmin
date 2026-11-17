@@ -10,6 +10,9 @@ our (%access, %in, %text);
 
 $access{'smtpd'} || &error($text{'smtpd_ecannot'});
 &ReadParse();
+
+# Only show maps that the user is allowed to edit
+&can_edit_map($in{'name'}) || &error($text{'chooser_ecannot'});
 &ui_print_header(undef, &html_escape($in{'title'}), "");
 
 if (&get_current_value($in{'name'}) eq "")

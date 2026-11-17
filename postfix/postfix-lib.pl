@@ -2023,7 +2023,7 @@ sub unlock_postfix_files
 }
 
 # can_edit_map(mapname)
-# Returns whether the user can edit the settings for this map parameter.
+# Checks the ACL for a known map parameter. Unknown names are denied.
 sub can_edit_map
 {
 my ($mapname) = @_;
@@ -2045,6 +2045,8 @@ my %acl = (
 	sender_dependent_default_transport_maps => 'dependent',
 	tls_server_sni_maps => 'sni',
 	relay_recipient_maps => 'smtpd',
+	smtpd_sender_restrictions => 'smtpd',
+	'smtpd_client_restrictions:check_client_access' => 'client',
 	check_client_access => 'client' );
 return $acl{$mapname} && $access{$acl{$mapname}};
 }

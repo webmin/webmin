@@ -8,8 +8,9 @@
 require './postfix-lib.pl';    ## no critic
 use strict;
 use warnings;
-our (%in, %text);
+our (%access, %in, %text);
 &ReadParse();
+$access{'canonical'} || &error($text{'canonical_ecannot'});
 
 &ui_print_header(undef, $text{'canonical_edit_title'}, "", "canonical");
 
