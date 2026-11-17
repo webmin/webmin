@@ -793,6 +793,14 @@ else {
 return undef;
 }
 
+# can_edit_alias_files(type)
+# Allows the shared alias editors. Qmail has no alias-type ACL;
+# the type argument is unused.
+sub can_edit_alias_files
+{
+return 1;
+}
+
 # Returns the PID of qmail-send if running
 sub is_qmail_running
 {

@@ -7,8 +7,11 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 			     './postfix-lib.pl');
 &ReadParseMime();
 &error_setup($text{'ffile_err'});
-if (!&is_under_directory($access{'apath'}, $in{'file'})) {
-	&error(&text('ffile_efile', $in{'file'}));
+
+# Needs permission for filter aliases, and for the file's directory
+if (!&can_edit_alias_files(6) ||
+    !&is_under_directory($access{'apath'}, $in{'file'})) {
+	&error(&text('ffile_efile', &html_escape($in{'file'})));
 	}
 
 for($i=0; defined($in{"field_$i"}); $i++) {

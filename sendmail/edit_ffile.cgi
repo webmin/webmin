@@ -6,8 +6,11 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 	 -r 'qmail-lib.pl' ? './qmail-lib.pl' :
 			     './postfix-lib.pl');
 &ReadParse();
-if (!&is_under_directory($access{'apath'}, $in{'file'})) {
-	&error(&text('ffile_efile', $in{'file'}));
+
+# Needs permission for filter aliases, and for the file's directory
+if (!&can_edit_alias_files(6) ||
+    !&is_under_directory($access{'apath'}, $in{'file'})) {
+	&error(&text('ffile_efile', &html_escape($in{'file'})));
 	}
 
 &ui_print_header(undef, $text{'ffile_title'}, "");
