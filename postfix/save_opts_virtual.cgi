@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special because for virtual tables
+# Save virtual alias map settings.
 
 
 require './postfix-lib.pl';    ## no critic
@@ -23,7 +23,7 @@ $access{'virtual'} || &error($text{'virtual_ecannot'});
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in);
+&save_options(\%in, [ ], [ $virtual_maps, "virtual_alias_domains" ]);
 &ensure_map($virtual_maps);
 &after_save();
 &unlock_postfix_files();

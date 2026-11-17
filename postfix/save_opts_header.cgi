@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special because for virtual tables
+# Save message header filter settings.
 
 
 require './postfix-lib.pl';    ## no critic
@@ -28,7 +28,7 @@ $in{'header_checks_def'} ||
 $in{'mime_header_checks_def'} ||
     $in{'mime_header_checks'} =~ /^(regexp|pcre):\/\S+$/ ||
 	&error($text{'header_eregexp'});
-&save_options(\%in);
+&save_options(\%in, [ ], [ "header_checks", "mime_header_checks" ]);
 &ensure_map("header_checks");
 &ensure_map("mime_header_checks");
 &after_save();

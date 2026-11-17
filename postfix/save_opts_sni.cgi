@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special because for sni tables
+# Save TLS certificate map settings.
 
 
 require './postfix-lib.pl';    ## no critic
@@ -21,7 +21,7 @@ $access{'sni'} || &error($text{'sni_ecannot'});
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in);
+&save_options(\%in, [ ], [ "tls_server_sni_maps" ]);
 &ensure_map("tls_server_sni_maps");
 &after_save();
 &unlock_postfix_files();

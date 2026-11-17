@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special because for virtual tables
+# Save message body filter settings.
 
 
 require './postfix-lib.pl';    ## no critic
@@ -24,7 +24,7 @@ $access{'body'} || &error($text{'body_ecannot'});
 &before_save();
 $in{'body_checks'} =~ /^(regexp|pcre):\/\S+$/ ||
 	&error($text{'body_eregexp'});
-&save_options(\%in);
+&save_options(\%in, [ ], [ "body_checks" ]);
 &ensure_map("body_checks");
 &after_save();
 &unlock_postfix_files();

@@ -14,7 +14,7 @@ $access{'bcc'} || &error($text{'bcc_ecannot'});
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in);
+&save_options(\%in, [ ], [ "sender_bcc_maps", "recipient_bcc_maps" ]);
 &ensure_map("sender_bcc_maps");
 &ensure_map("recipient_bcc_maps");
 &after_save();

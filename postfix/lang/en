@@ -15,6 +15,7 @@ index_startmsg=Click this button to start the Postfix mail server. Until this is
 index_reloadmsg=Click this button to have Postfix re-read all of its configuration files. This can be useful if the Postfix configuration files have been manually modified.
 index_version=Postfix version $1
 opts_err=Failed to save options
+opts_eoption=The option $1 cannot be changed here
 
 check_error=Error while checking current Postfix configuration. Please manually fix Postfix configuration.
 check_manual=Manually edit the Postfix configuration file.

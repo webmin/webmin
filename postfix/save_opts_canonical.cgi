@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special because for canonical tables
+# Save address rewriting map settings.
 
 
 require './postfix-lib.pl';    ## no critic
@@ -23,7 +23,8 @@ $access{'canonical'} || &error($text{'canonical_ecannot'});
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in);
+&save_options(\%in, [ ], [ "canonical_maps", "recipient_canonical_maps",
+			    "sender_canonical_maps" ]);
 &ensure_map("canonical_maps");
 &ensure_map("recipient_canonical_maps");
 &ensure_map("sender_canonical_maps");

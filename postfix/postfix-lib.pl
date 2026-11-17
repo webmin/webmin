@@ -639,13 +639,26 @@ foreach my $e (@{$_[0]}) {
 	}
 }
 
-# save_options(%options, [&always-save])
-#
+# save_options(&options, [&always-save], [&allowed-options])
+# Save form options. always-save keeps explicit defaults.
+# allowed-options limits parameter names. Omit it to allow all.
 sub save_options
 {
-    if (check_postfix()) { &error("$text{'check_error'}"); }
-
     my %options = %{$_[0]};
+
+    # Reject disallowed parameters before saving any changes.
+    if ($_[2]) {
+	my %allowed = map { $_, 1 } @{$_[2]};
+	foreach my $key (keys %options) {
+	    if ($key =~ /_def$/) {
+		(my $param = $key) =~ s/_def$//;
+		$allowed{$param} ||
+		    &error(&text('opts_eoption', &html_escape($param)));
+		}
+	    }
+    }
+
+    if (check_postfix()) { &error("$text{'check_error'}"); }
 
     foreach my $key (keys %options)
     {

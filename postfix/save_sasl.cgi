@@ -30,7 +30,10 @@ if (!$in{'login_none'}) {
 	}
 
 &lock_postfix_files();
-&save_options(\%in);
+&save_options(\%in, [ ], [ "smtpd_sasl_auth_enable", "smtpd_tls_auth_only",
+	"broken_sasl_auth_clients", "smtpd_delay_reject", "smtpd_use_tls",
+	"smtpd_tls_cert_file", "smtpd_tls_key_file", "smtpd_tls_CAfile",
+	"relayhost", "smtp_sasl_auth_enable" ]);
 
 # Save security options
 @opts = split(/\0/, $in{'sasl_opts'});
