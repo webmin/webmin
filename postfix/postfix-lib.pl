@@ -644,11 +644,12 @@ foreach my $e (@{$_[0]}) {
 # allowed-options limits parameter names. Omit it to allow all.
 sub save_options
 {
-    my %options = %{$_[0]};
+    my ($options, $always_save, $allowed_options) = @_;
+    my %options = %$options;
 
     # Reject disallowed parameters before saving any changes.
-    if ($_[2]) {
-	my %allowed = map { $_, 1 } @{$_[2]};
+    if ($allowed_options) {
+	my %allowed = map { $_, 1 } @$allowed_options;
 	foreach my $key (keys %options) {
 	    if ($key =~ /_def$/) {
 		(my $param = $key) =~ s/_def$//;
@@ -676,7 +677,7 @@ sub save_options
 		}
             }
 	    &set_current_value($param, $value,
-			       &indexof($param, @{$_[1]}) >= 0);
+			       &indexof($param, @$always_save) >= 0);
 	}
     }
 }
