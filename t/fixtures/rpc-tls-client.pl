@@ -105,6 +105,45 @@ my $ok = eval {
 		my $named = remote_write($s, "$path/empty", undef, 'rpc-fixture.dat');
 		$result{'base_name'} = -f $named && $named =~ /rpc-fixture\.dat$/ ? 1 : 0;
 		}
+	elsif ($mode eq 'benchmark') {
+		# Time real file transfers after establishing the control session.
+		die "Benchmark requires fast TLS\n" if (!$result{'tls'});
+		require Time::HiRes;
+		my $clock = Time::HiRes::CLOCK_MONOTONIC();
+		my $path = $case->{'path'};
+		my $blocks = $case->{'blocks'};
+		my $block = pack('C*', 0..255) x 256;
+		my $hash = Digest::SHA->new(256);
+		open(my $fh, '>', "$path/input") or die $!;
+		binmode($fh);
+		# Prepare and hash the payload outside the transfer timings.
+		for (1..$blocks) {
+			print $fh $block or die $!;
+			$hash->add($block);
+			}
+		close($fh) or die $!;
+		my $expected = $hash->hexdigest;
+		my $start = Time::HiRes::clock_gettime($clock);
+		remote_write($s, "$path/input", "$path/remote");
+		$result{'upload_seconds'} =
+			Time::HiRes::clock_gettime($clock) - $start;
+		# Free the upload source before allocating the download copy.
+		unlink("$path/input") or die $!;
+		$start = Time::HiRes::clock_gettime($clock);
+		remote_read($s, "$path/output", "$path/remote");
+		$result{'download_seconds'} =
+			Time::HiRes::clock_gettime($clock) - $start;
+		# Reject fast but incomplete or corrupted transfers.
+		open($fh, '<', "$path/output") or die $!;
+		binmode($fh);
+		$result{'verified'} = Digest::SHA->new(256)->addfile($fh)
+			->hexdigest eq $expected ? 1 : 0;
+		close($fh);
+		$result{'bytes'} = $blocks * length($block);
+		$result{'buffer_bytes'} = $cache->{$sn}->[2]->{'bufsize'};
+		$result{'cipher'} = Net::SSLeay::get_cipher(
+			$cache->{$sn}->[2]->{'ssl_con'});
+		}
 	elsif ($mode eq 'rpc_errors') {
 		# Exercise the old HTTPS worker's exception handling and list context.
 		eval { remote_eval($s, undef, q{die "eval failure\n"}); };

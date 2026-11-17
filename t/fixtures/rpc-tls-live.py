@@ -8,8 +8,10 @@ import json
 import os
 from pathlib import Path
 import secrets
+import shutil
 import signal
 import socket
+import statistics
 import subprocess
 import sys
 import tempfile
@@ -19,6 +21,7 @@ import time
 import urllib.parse
 
 source, legacy = map(Path, sys.argv[1:3])
+benchmark = os.environ.get('WEBMIN_RPC_TLS_BENCHMARK') == '1'
 if sys.platform != 'linux' or os.geteuid() != 0:
     # Namespace and installer tests require an explicitly selected Linux guest.
     raise SystemExit('Run on a disposable root Linux VM')
@@ -76,9 +79,12 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
         peers = {}
+        # Benchmarks need only the two peers being compared.
+        peer_specs = [('new', source, 1), ('old', legacy, 1)]
+        if not benchmark:
+            peer_specs.extend([('http', source, 0), ('ca', source, 1)])
         # Each protocol/version combination gets its own configuration and port.
-        for name, root, use_ssl in [('new', source, 1), ('old', legacy, 1),
-                                ('http', source, 0), ('ca', source, 1)]:
+        for name, root, use_ssl in peer_specs:
             conf = task/name/'config'
             var = task/name/'var'
             conf.mkdir(parents=True)
@@ -90,7 +96,8 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                 sock.bind(('127.0.0.1', 0))
                 port = sock.getsockname()[1]
             config(conf/'config', dict(os_type='generic-linux', os_version=0,
-                   lang='en', log=0, tempdir=var/'tmp', rpc_timeout=3, rpc_idle_factor=2))
+                   lang='en', log=0, tempdir=var/'tmp',
+                   rpc_timeout=60 if benchmark else 3, rpc_idle_factor=2))
             (conf/'var-path').write_text(str(var)+'\n')
             config(conf/'servers/config', dict(capath=other_cert))
             (conf/'perl-path').write_text('/usr/bin/perl\n')
@@ -102,7 +109,8 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                    pidfile=var/'pid', logfile=var/'requests', errorlog=var/'errors',
                    userfile=conf/'miniserv.users', env_WEBMIN_CONFIG=conf,
                    env_WEBMIN_VAR=var, session=0, passdelay=0, no_pam=1, syslog=0,
-                   log=0, forkcgis=0, addtype_cgi='internal/cgi', no_tls1_2=int(name == 'new'),
+                   log=0, forkcgis=0, addtype_cgi='internal/cgi',
+                   no_tls1_2=int(benchmark or name == 'new'),
                    ssl_cipher_list='ECDHE-RSA-AES128-GCM-SHA256' if name == 'ca' else '',
                    allow='127.0.0.1', precache='none', no_ssl2=1, no_ssl3=1))
             (conf/'miniserv.users').write_text(f'admin:{hashed}:0\ndenied:{hashed}:0\n')
@@ -145,7 +153,7 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
             # Save per-case paths and credentials for the Perl client only.
             settings = path/'settings.json'
             settings.write_text(json.dumps(dict(server=server, path=str(path),
-                                                blocks=512 if name == 'new' else 32,
+                                                blocks=4096 if benchmark else 512 if name == 'new' else 32,
                                                 other_key=str(other_key), other_cert=str(other_cert),
                                                 package=str(task/'upgrade.tar.gz'),
                                                 extract=str(task/'upgraded'),
@@ -176,6 +184,41 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
                 # Attach only the failing peer's recent fixture diagnostics.
                 result['server_log'] = (peer['var']/'errors').read_text()[-3000:]
             return result
+
+        if benchmark:
+            # Compare two TLS-capable trees using identical 256 MiB payloads.
+            samples = {'current': [], 'baseline': []}
+            for trial in range(8):
+                # Discard one warmup pair and alternate order to limit drift.
+                order = ('new', 'old') if trial % 2 else ('old', 'new')
+                for name in order:
+                    label = 'current' if name == 'new' else 'baseline'
+                    case_path = task/f'case-{count}'
+                    result = run(name, mode='benchmark',
+                                 client=source if name == 'new' else legacy)
+                    valid = result.get('verified') == 1 and not result.get('error')
+                    check(valid, f'benchmark {label} trial {trial}', result)
+                    print('# sample '+json.dumps(dict(variant=label,
+                          warmup=trial == 0, **result)), flush=True)
+                    # Keep only one round trip on disk at a time.
+                    shutil.rmtree(case_path)
+                    if not valid:
+                        raise RuntimeError('Benchmark transfer failed')
+                    if trial:
+                        samples[label].append(result)
+            summary = {}
+            for label, results in samples.items():
+                summary[label] = {'buffer_bytes': results[0]['buffer_bytes'],
+                                  'cipher': results[0]['cipher'], 'runs': len(results)}
+                for direction in ('upload', 'download'):
+                    rates = [r['bytes'] / 1048576 / r[direction+'_seconds']
+                             for r in results]
+                    summary[label][direction+'_mib_s'] = {
+                        'median': statistics.median(rates),
+                        'min': min(rates), 'max': max(rates)}
+            print('# benchmark_summary '+json.dumps(summary), flush=True)
+            print(f'1..{count}', flush=True)
+            sys.exit(0)
 
         # Cover both upgrade orders and the unchanged plaintext HTTP path.
         for name, client, tls, https in [('new', source, 1, 0),

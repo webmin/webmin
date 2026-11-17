@@ -10,6 +10,8 @@ require "$FindBin::Bin/../web-lib-funcs.pl";
 my $now = 100;
 local *main::ssl_connection_time = sub { $now };
 local *Net::SSLeay::ERR_clear_error = sub { };
+# Use the default buffer size without reading the workstation's configuration.
+local *main::get_miniserv_config = sub { };
 
 subtest 'Timed reads preserve frame boundaries and deadlines' => sub {
 	my $h = { ssl_con => 1, timeout => 5 };
@@ -52,7 +54,35 @@ subtest 'Timed reads reject malformed and incomplete frames' => sub {
 	like($@, qr/timed out/, 'expired deadline fails before waiting');
 	};
 
+subtest 'Timed reads use the configured buffer and preserve the next frame' => sub {
+	# get_miniserv_config(config): supply an 8 KiB buffer.
+	my $config_reads = 0;
+	local *main::get_miniserv_config = sub {
+		$config_reads++;
+		$_[0]->{'bufsize'} = 8192;
+		};
+	my $h = { ssl_con => 1, timeout => 5 };
+	my $data = 'x' x 70000;
+	my $input = $data.'NEXT';
+	my @sizes;
+	# Net::SSLeay::read(session, size): consume only the requested bytes.
+	local *Net::SSLeay::read = sub {
+		push(@sizes, $_[1]);
+		my $chunk = substr($input, 0, $_[1], '');
+		return ($chunk, length($chunk));
+		};
+	is(main::read_ssl_connection($h, 70000),
+		$data, 'reads the complete body across configured buffers');
+	is_deeply(\@sizes, [ (8192) x 8, 4464 ],
+		'limits reads to the configured buffer and remaining body');
+	is($input, 'NEXT', 'leaves the next frame unread');
+	is(main::read_ssl_connection($h, 4), 'NEXT', 'reads the next frame');
+	is($config_reads, 1, 'reads buffer settings once per connection');
+	};
+
 subtest 'Timed writes retry the same bytes and retain partial progress' => sub {
+	# get_miniserv_config(config): supply a 64 KiB buffer.
+	local *main::get_miniserv_config = sub { $_[0]->{'bufsize'} = 65536 };
 	my $h = { ssl_con => 1, timeout => 5 };
 	my (@attempts, @waits);
 	my $received = '';
@@ -67,12 +97,14 @@ subtest 'Timed writes retry the same bytes and retain partial progress' => sub {
 		return $size;
 		};
 	local *main::wait_ssl_connection = sub { push(@waits, $_[2]); };
-	my $data = 'abc' x 40000;
+	my $data = 'abc' x 100000;
 	my $start = $now;
 	ok(main::write_ssl_connection($h, $data), 'large write completes');
 	is($received, $data, 'partial writes neither drop nor repeat bytes');
 	is($attempts[0], $attempts[1], 'initial retry preserves its buffer');
 	is($attempts[2], $attempts[3], 'later retry preserves its remainder');
+	is(bytes::length($attempts[0]), 65536,
+		'uses the configured buffer for each full write');
 	ok(!grep(bytes::length($_) > 65536, @attempts), 'writes are bounded');
 	is_deeply(\@waits, [ $start+5, $start+7 ],
 		'only successful writes renew the deadline');

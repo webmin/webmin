@@ -50,6 +50,8 @@ timeout 400 prove -v t/rpc-tls-vm.t
 
 The fixture starts isolated Webmin servers and tests both upgrade orders, binary and empty files, certificate and cipher checks, remote errors, interrupted transfers and slow writes. It tests local RPC with IPv6 disabled inside a private network namespace. It also upgrades a temporary installation with the tar installer and removes its service configuration afterward.
 
+To compare file-transfer speed, set `WEBMIN_RPC_TLS_BENCHMARK=1` as well and point `WEBMIN_RPC_TLS_LEGACY` at a TLS-capable baseline tree. This runs 256 MiB uploads and downloads with both trees, verifies the downloaded hashes, discards a warmup pair, and reports seven alternating measurements per tree. File creation and hashing are excluded from the timings. The output includes median, minimum and maximum throughput. Loopback results measure local overhead; use a private network namespace with a bandwidth limit to compare behavior on a slower link.
+
 For a server configured with SSL, the client requests `fastrpc.cgi?tls=1`. A `TLS1` reply selects TLS for control and file connections. Both must present the certificate used for HTTPS. Older servers and Webmin running without TLS behind a proxy use HTTPS RPC, with files sent in chunks of up to 1 MiB per request. If a TLS proxy presents a different certificate from a TLS-enabled Webmin backend, disable fast RPC to keep requests on HTTPS.
 
 TLS file transfers use chunks of up to 65,536 bytes, a zero-length end marker and a final `OK` reply. Uploads also wait for an `OK` confirming that the destination opened successfully.

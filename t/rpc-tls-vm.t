@@ -9,6 +9,7 @@ plan skip_all => 'Set WEBMIN_RPC_TLS_VM_TEST=1 on a disposable Linux VM'
 	unless ($ENV{'WEBMIN_RPC_TLS_VM_TEST'} || '') eq '1';
 $^O eq 'linux' && $< == 0 or die 'Disposable root Linux VM required';
 # Compare a changed source tree with a separate installation lacking RPC TLS.
+# Benchmark mode instead expects a TLS-capable baseline.
 my $source = $ENV{'WEBMIN_RPC_TLS_SOURCE'} || "$FindBin::Bin/..";
 my $legacy = $ENV{'WEBMIN_RPC_TLS_LEGACY'} or die 'Set WEBMIN_RPC_TLS_LEGACY';
 # The Python fixture emits TAP directly and owns its cleanup.

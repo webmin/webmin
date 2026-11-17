@@ -10811,6 +10811,7 @@ These blocking reads preserve read_http_connection's EOF and error results.
 
 With a timeout, reads exactly bytes, including zero, or a line of at most
 4096 bytes when bytes is omitted. The socket must already be nonblocking.
+Timed reads use chunks of up to get_buffer_size().
 Data progress renews the timeout, but a partial line has one fixed deadline. Optional wait-for-command delays the line timeout
 until its first byte. Timed reads die on timeout, EOF or a TLS error.
 
@@ -10822,13 +10823,15 @@ if ($h->{'timeout'}) {
 	# Read complete frames without consuming bytes from the next frame.
 	my $line = !defined($want);
 	my $buffer = '';
+	# Reuse the configured size without rereading it for every frame.
+	my $bs = $h->{'bufsize'} ||= &get_buffer_size();
 	my $deadline = $line && $command ? undef :
 		&ssl_connection_time() + $h->{'timeout'};
 	my $limit = $line ? 4096 : $want;
 	while(bytes::length($buffer) < $limit) {
 		# One-byte header reads leave following records in OpenSSL.
 		my $size = $line ? 1 : $want - bytes::length($buffer);
-		$size = 65536 if ($size > 65536);
+		$size = $bs if ($size > $bs);
 		Net::SSLeay::ERR_clear_error();
 		my ($data, $result) = Net::SSLeay::read($h->{'ssl_con'}, $size);
 		if (defined($data) && bytes::length($data)) {
@@ -10907,12 +10910,16 @@ Writes each supplied string to handle's ssl_con, retrying partial writes
 with the remaining bytes. Returns 1 on success, including when no data is
 supplied, or 0 when a blocking write fails. A positive timeout field enables
 nonblocking retries, renews the deadline after progress, and dies on failure.
+Timed writes use chunks of up to get_buffer_size().
 
 =cut
 sub write_ssl_connection
 {
 my $h = shift(@_);
 local $SIG{'PIPE'} = 'IGNORE' if ($h->{'timeout'});
+# Reuse the configured size without rereading it for every write.
+my $bs = $h->{'timeout'}
+	? ($h->{'bufsize'} ||= &get_buffer_size()) : undef;
 # TLS reports byte counts even when a supplied string is UTF-8 flagged.
 foreach my $s (@_) {
 	my $len = bytes::length($s);
@@ -10924,7 +10931,7 @@ foreach my $s (@_) {
 		# Keep the same buffer across WANT_READ and WANT_WRITE retries.
 		if (!bytes::length($chunk)) {
 			my $size = $len - $got;
-			$size = 65536 if ($h->{'timeout'} && $size > 65536);
+			$size = $bs if ($h->{'timeout'} && $size > $bs);
 			$chunk = bytes::substr($s, $got, $size);
 			}
 		Net::SSLeay::ERR_clear_error() if ($h->{'timeout'});
