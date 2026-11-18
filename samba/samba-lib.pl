@@ -655,7 +655,7 @@ if ($has_pdbedit) {
 	local $out = &backquote_logged(
 		"cd / && $config{'pdbedit'} -a -s $config{'smb_conf'} -t -u ".
 		quotemeta($user->{'name'}).
-		($config{'sync_gid'} ? " -g $config{'sync_gid'}" : "").
+		($config{'sync_gid'} ? " -g ".quotemeta($config{'sync_gid'}) : "").
 		" -c ".quotemeta("[".join("", @opts)."]").
 		" $ws <$temp 2>&1");
 	$? && &error("$config{'pdbedit'} failed : <pre>$out</pre>");
