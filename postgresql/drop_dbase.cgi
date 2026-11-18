@@ -4,6 +4,7 @@
 
 require './postgresql-lib.pl';
 &ReadParse();
+$access{'delete'} || &error($text{'dbase_ecannot'});
 &error_setup($text{'ddrop_err'});
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 if ($in{'confirm'}) {

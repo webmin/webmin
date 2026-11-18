@@ -3,6 +3,7 @@
 
 require './postgresql-lib.pl';
 &ReadParse();
+$access{'delete'} || &error($text{'dbase_ecannot'});
 &error_setup($text{'ddrops_err'});
 @dbs = split(/\0/, $in{'d'});
 foreach $db (@dbs) {
