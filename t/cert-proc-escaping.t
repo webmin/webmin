@@ -272,28 +272,53 @@ subtest 'single-process permission error heading' => sub {
 	};
 
 subtest 'process output and return link' => sub {
-	my @signals;
-	local *main::list_processes = sub { return map { +{user => 'fixture'} } @_ };
-	local *main::can_edit_process = sub { 1 };
+	my (@signals, $logged);
+	# Return processes out of order and owned by different users, so each
+	# PID must be matched to its own process before checking access.
+	local *main::list_processes = sub {
+		return ({ pid => '12347', user => 'other', args => 'other' },
+			{ pid => '12346', user => 'fixture', args => 'b' },
+			{ pid => '12345', user => 'fixture', args => 'a' });
+		};
+	local *main::can_edit_process = sub { $_[0] eq 'fixture' };
 	local *main::kill_logged = sub { push @signals, [@_]; return 1 };
+	local *main::webmin_log = sub { $logged = { %{$_[3]} } };
 	my $query = 'search=worker%20name&match=1';
 	my ($html, $error) = render_cgi('proc/kill_proc_list.cgi',
-		{pidlist => '12345 12346', signal => 'TERM', args => $query});
+		{pidlist => '12347 12345 12348 12346', signal => 'TERM',
+		 args => $query});
 	is($error, '', 'ordinary request renders successfully');
 	is_deeply(\@signals, [['TERM', '12345'], ['TERM', '12346']],
-		'signal and PID arguments are unchanged');
+		'only allowed PIDs are signaled, with unchanged arguments');
+	is_deeply([ @$logged{'args0', 'args1', 'args2', 'args3'} ],
+		  [ 'other', 'a', undef, 'b' ],
+		  'each PID is logged with its own command');
+	my $denied = () = $html =~ /\Q$main::text{'kill_ecannot'}\E/g;
+	is($denied, 2, 'other users and missing PIDs are refused');
 	$html =~ /href="(index_search\.cgi\?[^"]+)"/;
 	is(main::html_unescape($1), "index_search.cgi?$query",
 		'HTML escaping preserves the return query');
 
 	my $payload = '<script>alert(1)</script>';
+	@signals = ( );
 	($html, $error) = render_cgi('proc/kill_proc_list.cgi',
-		{pidlist => $payload, signal => $payload, args => '">'.$payload});
+		{pidlist => '12345', signal => $payload,
+		 args => '">'.$payload});
 	is($error, '', 'hostile values render successfully');
-	unlike($html, qr/\Q$payload\E/, 'PID, signal and return link cannot inject scripts');
+	unlike($html, qr/\Q$payload\E/,
+	       'signal and return link cannot inject scripts');
 	like($html, qr/SIG&lt;script&gt;/, 'signal output is escaped');
 	like($html, qr/href="index_search.cgi\?&quot;&gt;&lt;script&gt;/,
 		'return link cannot escape its quoted attribute');
+
+	for my $pidlist ($payload, '12345 0', '12345 -1', '', '12345 1x') {
+		@signals = ( );
+		($html, $error) = render_cgi('proc/kill_proc_list.cgi',
+			{pidlist => $pidlist, signal => 'TERM'});
+		is($error, "$main::text{'kill_ecannot'}\n",
+		   'invalid PID lists are refused');
+		ok(!@signals, 'no signal is sent for an invalid PID list');
+		}
 	};
 
 done_testing();
