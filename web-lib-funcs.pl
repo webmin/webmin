@@ -1993,8 +1993,9 @@ if ($module_prefs_acls && -r $current_user_prefs) {
 	else {
 		my %newconfigtmp;
 		&read_file($current_user_prefs, \%newconfigtmp);
+		my %allowed = map { $_ => 1 } split(/,/, $module_prefs_acls);
 		foreach my $key (keys %newconfigtmp) {
-		if (grep(/^$key$/, split(",", $module_prefs_acls))) {
+			if ($allowed{$key}) {
 				$curr_config->{$key} = $newconfigtmp{$key};
 				}
 			}

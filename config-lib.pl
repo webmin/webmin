@@ -399,12 +399,11 @@ if (-r $module_prefs_conf) {
 		}
 	else {
 		my %newconfigtmp;
-		foreach my $key (keys %{$curr_config}) {
-			if (grep(/^$key$/, split(",", $module_prefs_conf_allowed{'allowed'}))) {
-				$newconfigtmp->{$key} = $curr_config->{$key};
-				}
+		foreach my $key (split(/,/, $module_prefs_conf_allowed{'allowed'})) {
+			$newconfigtmp{$key} = $curr_config->{$key}
+				if (exists($curr_config->{$key}));
 			}
-		&write_file($user_prefs_file, \%$newconfigtmp);
+		&write_file($user_prefs_file, \%newconfigtmp);
 		}
 	&unlock_file($user_prefs_file);
 	}
