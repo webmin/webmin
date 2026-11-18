@@ -1143,6 +1143,77 @@ SKIP: {
        'unreadable system configuration leaves deprecated rules in place');
 }
 
+# Saving a rule checks the text that is applied, so top-level defines and
+# included files stay in scope, and nothing is written before the check
+{
+    my $vdir = "$confdir/validate";
+    mkdir($vdir);
+    my $vinc = write_ruleset($vdir, 'web.nft', <<'EOF');
+table inet vweb {
+	chain input {
+		tcp dport $vport accept
+	}
+}
+EOF
+    my $vmain = write_ruleset($vdir, 'main.nft', <<'EOF');
+flush ruleset
+define vport = 8080
+include "web.nft"
+table inet vmain {
+	chain input {
+		type filter hook input priority 0; policy drop;
+	}
+}
+EOF
+    my $capture = "$vdir/checked.nft";
+    my $fake = write_ruleset($vdir, 'fake-nft', <<"EOF");
+#!/bin/sh
+if [ "\$1" = "list" ]; then
+	printf 'table inet vmain {\\n}\\n'
+	exit 0
+fi
+cat "\$3" > '$capture'
+if grep -q BAD "\$3"; then
+	echo 'Error: <BAD>'
+	exit 1
+fi
+exit 0
+EOF
+    chmod(0755, $fake);
+    local $nftables_rules_file_cache = $vmain;
+    local $nftables_include_paths_cache = [ $vdir ];
+    local $nftables_include_cwd_cache = $vdir;
+    local $nftables_include_basedir_cache = 1;
+    no warnings qw(redefine once);
+    local *get_nft_command = sub { return $fake; };
+
+    my @vtables = get_nftables_save();
+    my ($vweb) = grep { $_->{name} eq 'vweb' } @vtables;
+    push(@{$vweb->{rules}}, { 'text' => 'tcp dport $vport counter accept',
+                              'chain' => 'input', 'index' => 99 });
+    my $main_before = read_file_contents($vmain);
+    my $inc_before = read_file_contents($vinc);
+    is(validate_nftables_tables(@vtables), undef,
+       'a rule using a top-level define is accepted');
+    my $checked = read_file_contents($capture);
+    like($checked, qr/^delete table inet vmain$/m,
+         'active saved tables are deleted first, as when applying');
+    like($checked,
+         qr/define vport = 8080.*table inet vweb \{.*\$vport counter accept/s,
+         'the define and the pending rule in an included file are checked');
+    unlike($checked, qr/flush\s+ruleset/,
+           'flush ruleset is left out, as when applying');
+    is(read_file_contents($vmain), $main_before,
+       'checking does not write the main file');
+    is(read_file_contents($vinc), $inc_before,
+       'checking does not write the included file');
+
+    push(@{$vweb->{rules}}, { 'text' => 'BAD', 'chain' => 'input',
+                              'index' => 100 });
+    like(validate_nftables_tables(@vtables), qr/^<pre>.*&lt;BAD&gt;/s,
+         'a rejected ruleset returns the escaped nft output');
+}
+
 # Form fields that are written into a rule cannot end it. Valid rules shown
 # in the form, and the hidden field used only by the preview, are accepted
 {

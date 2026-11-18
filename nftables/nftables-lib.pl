@@ -4261,8 +4261,24 @@ return $rv;
 
 # rewrite_nftables_file(file, &tables)
 # Replaces only changed table spans. Text outside tables and byte-for-byte
-# copies of untouched tables stay in their original positions
+# copies of untouched tables stay in their original positions. Returns 1 if
+# the file was changed
 sub rewrite_nftables_file
+{
+my ($file, $tables) = @_;
+my ($out, $data) = nftables_rewrite_text($file, $tables);
+return 0 if ($out eq $data);
+
+open_lock_tempfile(my $fh, ">$file");
+print_tempfile($fh, $out);
+close_tempfile($fh);
+return 1;
+}
+
+# nftables_rewrite_text(file, &tables)
+# Returns the new contents that rewrite_nftables_file would write, followed by
+# the current contents of the file
+sub nftables_rewrite_text
 {
 my ($file, $tables) = @_;
 my @current = parse_nftables_file($file);
@@ -4327,30 +4343,29 @@ else {
 		$out .= $added;
 		}
 	}
-return 0 if ($out eq $data);
-
-open_lock_tempfile(my $fh, ">$file");
-print_tempfile($fh, $out);
-close_tempfile($fh);
-return 1;
+return ($out, $data);
 }
 
-# nftables_apply_text(file, [&stack], [root-file])
+# nftables_apply_text(file, [&stack], [root-file], [&contents])
 # Expands includes into an apply-time copy of the saved ruleset. The usual
 # top-level flush is omitted so applying Webmin-visible tables cannot remove
-# active tables owned by fail2ban, firewalld or another service
+# active tables owned by fail2ban, firewalld or another service. The optional
+# contents hash maps simplified file paths to text used instead of the file
 sub nftables_apply_text
 {
-my ($file, $stack, $root) = @_;
+my ($file, $stack, $root, $contents) = @_;
 $stack ||= {};
-return "" if (!$file || $file =~ /\|\s*$/ || !-r $file);
-$file = simplify_path($file);
+return "" if (!$file || $file =~ /\|\s*$/);
+my $simple = simplify_path($file);
+my $override = $contents && defined($simple) && exists($contents->{$simple});
+return "" if (!$override && !-r $file);
+$file = $simple;
 if ($stack->{$file}) {
 	error(text('apply_einclude_loop', html_escape($file)));
 	}
 $root ||= $file;
 $stack->{$file} = 1;
-my $data = read_file_contents($file);
+my $data = $override ? $contents->{$file} : read_file_contents($file);
 if (!defined($data)) {
 	delete($stack->{$file});
 	return "";
@@ -4378,8 +4393,8 @@ foreach my $line (@lines) {
 			my @includes = nftables_resolve_include($spec, $root);
 			if (@includes || $spec =~ /[*?\[]/) {
 				foreach my $inc (@includes) {
-					my $included =
-					    nftables_apply_text($inc, $stack, $root);
+					my $included = nftables_apply_text(
+					    $inc, $stack, $root, $contents);
 					$rv .= $included;
 					$rv .= "\n"
 					    if ($included ne "" && $included !~ /\n\z/);
@@ -4396,9 +4411,10 @@ delete($stack->{$file});
 return $rv;
 }
 
-# write_configuration(@tables)
-# Writes the configuration to the save file
-sub write_configuration
+# nftables_tables_by_file(@tables)
+# Returns the files to write, in order, and a hash ref of the tables that
+# belong in each one
+sub nftables_tables_by_file
 {
 my (@tables) = @_;
 my $main = nftables_rules_file();
@@ -4422,15 +4438,72 @@ foreach my $f (@known) {
 	$byfile{$f} ||= [ ];
 	}
 
-my $changed;
 my %done;
-foreach my $f (@known, sort keys %byfile) {
-	next if ($done{$f}++);
-	my $file_changed = rewrite_nftables_file($f, $byfile{$f} || [ ]);
+my @files = grep { !$done{$_}++ } (@known, sort keys %byfile);
+return (\@files, \%byfile);
+}
+
+# write_configuration(@tables)
+# Writes the configuration to the save file
+sub write_configuration
+{
+my (@tables) = @_;
+my ($files, $byfile) = nftables_tables_by_file(@tables);
+my $changed;
+foreach my $f (@$files) {
+	my $file_changed = rewrite_nftables_file($f, $byfile->{$f});
 	$changed ||= $file_changed;
 	}
 update_last_config_change() if ($changed);
 return;
+}
+
+# validate_nftables_tables(@tables)
+# Returns an error if nft rejects the ruleset that saving these tables would
+# produce. Nothing is written. The check loads the same text as apply_restore,
+# so top-level defines and included files stay in scope
+sub validate_nftables_tables
+{
+my (@tables) = @_;
+my $cmd = get_nft_command();
+return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
+my $main = nftables_rules_file();
+my $rules;
+if ($main =~ /\|\s*$/) {
+	# A command cannot be re-read with new tables, so check the tables alone
+	$rules = dump_nftables_save(@tables);
+	}
+else {
+	# Expand the main file using each file's new contents instead of the
+	# copy on disk
+	my ($files, $byfile) = nftables_tables_by_file(@tables);
+	my %contents;
+	foreach my $f (@$files) {
+		my ($out) = nftables_rewrite_text($f, $byfile->{$f});
+		$contents{simplify_path($f)} = $out;
+		}
+	$rules = nftables_apply_text($main, undef, undef, \%contents);
+	}
+
+# Like apply_restore, delete saved tables that are active first, so changed
+# chain or set definitions do not conflict with the running ruleset
+my ($active) = get_active_nftables_save();
+my %active = map { table_key($_) => 1 } @{$active || [ ]};
+my $tmp = tempname();
+open_tempfile(my $fh, ">$tmp");
+foreach my $t (@tables) {
+	print_tempfile($fh, "delete table ".nft_table_spec($t)."\n")
+	    if ($active{table_key($t)});
+	}
+print_tempfile($fh, $rules);
+close_tempfile($fh);
+
+my $cwd = quotemeta(nftables_include_cwd());
+my $out = backquote_logged(
+	"cd $cwd && $cmd -c -f ".quotemeta($tmp)." 2>&1");
+my $failed = $?;
+unlink_file($tmp);
+return $failed ? "<pre>".html_escape($out)."</pre>" : undef;
 }
 
 # save_table(&table)

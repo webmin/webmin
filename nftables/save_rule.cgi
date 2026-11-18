@@ -241,17 +241,12 @@ else {
 		push(@{$table->{'rules'}}, $rule);
 		}
 
-	if ($in{'edit_direct'}) {
-		my $cmd = get_nft_command();
-		if ($cmd) {
-			my $tmp = tempname();
-			open_tempfile(my $fh, ">$tmp");
-			print_tempfile($fh, dump_nftables_save(@tables));
-			close_tempfile($fh);
-			my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
-			unlink_file($tmp);
-			error(text('save_invalid_rule', "<pre>$out</pre>")) if ($?);
-			}
+	# Check raw and restricted edits in context. An unrestricted admin
+	# can save ordinary form edits while repairing a ruleset in stages.
+	if (($in{'edit_direct'} || !check_acl('raw') ||
+	     !check_unrestricted_table_acl()) && get_nft_command()) {
+		my $err = validate_nftables_tables(@tables);
+		error(text('save_invalid_rule', $err)) if ($err);
 		}
 
 	webmin_log("save", $in{'new'} ? "create" : "modify", $rule->{'text'});
