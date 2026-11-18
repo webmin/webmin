@@ -252,6 +252,7 @@ share_title3=Create File Share
 share_info=Share Information
 share_copy=This share is a copy of <i>$1</i>
 share_name=Share name
+share_evalue=Invalid share name or setting
 share_home=Home Directories Share
 share_dir=Directory to share
 share_create=Automatically create directory?

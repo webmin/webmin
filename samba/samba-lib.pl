@@ -54,7 +54,9 @@ $arr = (@_==2 ? $_[1] : "share");
 undef(%$arr);
 &open_readfile(SAMBA, $config{smb_conf});
 while(<SAMBA>) {
-	chop; s/^\s*;.*$//g; s/^\s*#.*$//g;
+	# Drop the line ending, including the CR of a CRLF file, so that
+	# saved values do not carry it back into smb.conf
+	chop; s/\r$//; s/^\s*;.*$//g; s/^\s*#.*$//g;
 	if (/^\s*\[([^\]]+)\]/) {
 		# Start of share section
 		$first = 1;
@@ -88,10 +90,23 @@ return $found;
 }
 
 
+# check_share_fields(name)
+# Each share and setting occupies one line of smb.conf.
+sub check_share_fields
+{
+my ($name) = @_;
+$name =~ /[\r\n\0\]]/ && &error($text{'share_evalue'});
+foreach my $key (keys %share) {
+	($key =~ /[\r\n\0=]/ || $share{$key} =~ /[\r\n\0]/) &&
+		&error($text{'share_evalue'});
+	}
+}
+
 # create_share(name)
 # Add an entry to the config file
 sub create_share
 {
+&check_share_fields($_[0]);
 &open_tempfile(CONF, ">> $config{smb_conf}");
 &print_tempfile(CONF, "\n");
 &print_tempfile(CONF, "[$_[0]]\n");
@@ -106,6 +121,7 @@ foreach $k (grep {!/share_name/} (keys %share)) {
 # Change a share (and maybe it's name)
 sub modify_share
 {
+&check_share_fields($_[1]);
 local($_, @conf, $replacing, $first);
 &open_readfile(CONF, $config{smb_conf});
 @conf = <CONF>;

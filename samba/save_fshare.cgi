@@ -41,6 +41,9 @@ else {
 		&error($text{'savefshare_nopath'});
 		}
 	}
+$name =~ /[\r\n\0]/ && &error(&text('savefshare_mode', $name));
+$name eq "global" && $in{'old_name'} ne "global" &&
+	&error($text{'savefshare_global'});
 &setval("path", $in{"path"});
 &setval("available", $in{"available"});
 &setval("browseable", $in{"browseable"});
