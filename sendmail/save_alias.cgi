@@ -31,7 +31,7 @@ elsif ($access{'amax'}) {
 		@cliases = grep { $_->{'name'} eq $remote_user } @aliases;
 		}
 	&error(&text('asave_emax', $access{'amax'}))
-		if (@caliases >= $access{'amax'});
+		if (@cliases >= $access{'amax'});
 	}
 
 if ($in{'delete'}) {
