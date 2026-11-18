@@ -176,6 +176,11 @@ else {
 	$access{'syslog'} || &error($text{'edit_ecannot'});
 	&error_setup($text{'save_err'});
 
+	# A field in the structured editor cannot start another log entry.
+	foreach my $key (keys %in) {
+		$in{$key} =~ /[\r\n]/ && &error($text{'save_eline'});
+		}
+
 	# Validate destination section
 	if ($in{'mode'} == 0) {
 		# Logging to a local file

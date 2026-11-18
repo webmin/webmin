@@ -66,6 +66,7 @@ view_empty=Log file is empty
 view_refresh=Refresh
 view_filter=Only show lines with text $1
 
+save_eline=Log settings must fit on one line
 save_err=Failed to save log
 save_efile='$1' is not a valid filename : $2
 save_epipe='$1' is not a valid named pipe
