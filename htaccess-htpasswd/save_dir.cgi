@@ -112,7 +112,7 @@ else {
 	# Parse groups file option
 	if (!$can_htgroups) {
 		# Groups file is always fixed, or none
-		$gfile = $in{'new'} ? undef : $dir->[3];
+		$gfile = $in{'new'} ? undef : $dir->[4];
 		}
 	elsif ($in{'gauto'} == 2) {
 		# No groups file
