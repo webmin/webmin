@@ -87,7 +87,7 @@ if (!$in{'clear'}) {
 			if (&supports_users() && $user ne "root") {
 				$cmd = &command_as_user(
 					$user, $access{'shellenv'} ? 2 : 0,
-					"cd $pwd && $cmd");
+					"cd ".quotemeta($pwd)." && $cmd");
 				@uinfo = getpwnam($user);
 				}
 			else {
@@ -95,7 +95,7 @@ if (!$in{'clear'}) {
 				}
 			if ($chroot && $uinfo[8] !~ /\/jk_chrootsh$/) {
 				$cmd = "chroot ".quotemeta($access{'chroot'}).
-				       " sh -c ".quotemeta("cd $pwd ; $cmd");
+				       " sh -c ".quotemeta("cd ".quotemeta($pwd)." && $cmd");
 				}
 			$pid = &open_execute_command(OUTPUT, $cmd, 2, 0);
 			$out = "";
