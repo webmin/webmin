@@ -3,6 +3,7 @@
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+use Text::ParseWords ();
 no warnings 'redefine';
 no warnings 'uninitialized';
 use WebminCore;
@@ -728,8 +729,9 @@ $action eq 'add' || $action eq 'remove' || &error($text{'list_rule_actionerr'});
 my $permanent = delete($opts->{'permanent'});
 
 # Get rule
-my $rule = $opts->{'rule'};
-$rule =~ s/\s+/ /g;
+my @args = Text::ParseWords::shellwords($opts->{'rule'});
+@args >= 5 || &error($text{'save_rule_erule'});
+my $rule = join(' ', map { quotemeta($_) } @args);
 
 # Add/remove direct rule
 my $get_cmd = sub {
