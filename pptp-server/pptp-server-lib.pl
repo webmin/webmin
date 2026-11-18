@@ -87,14 +87,16 @@ return $dir;
 
 # ppp_options_file_ok(file)
 # Returns 1 if a file can be used as the PPP options file. It must be the
-# global or PPTP options file, or a file directly in the PPP options directory.
+# global or PPTP options file, a local options file, or a peer profile.
 sub ppp_options_file_ok
 {
 my ($file) = @_;
 return 0 if (!$file);
 return 1 if ($file eq $config{'ppp_options'} || $file eq $options_pptp);
 my $dir = &ppp_options_dir();
-return $dir ne '' && $file =~ /^\Q$dir\E\/[A-Za-z0-9_\-][A-Za-z0-9\._\-]*\z/;
+return 0 unless ($dir ne '' &&
+	$file =~ m{^\Q$dir\E/(?:peers/)?[A-Za-z0-9_-][A-Za-z0-9._-]*\z});
+return !-d $file && &is_under_directory($dir, $file);
 }
 
 # ppp_options_file([&config])
@@ -113,7 +115,8 @@ return &ppp_options_file_ok($option) ? $option : undef;
 sub get_ppp_hostname
 {
 local $conf = &get_config();
-local $option = &ppp_options_file($conf) || $config{'ppp_options'};
+local $option = &ppp_options_file($conf) ||
+	&error(&text('conf_eoptiondir', &html_escape(&ppp_options_dir())));
 local @opts = &parse_ppp_options($option);
 local $name = &find("name", \@opts);
 return $name ? $name->{'value'} : &get_system_hostname(1);
