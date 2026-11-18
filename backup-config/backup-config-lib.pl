@@ -413,7 +413,7 @@ my $ex = $?;
 &unlink_file($filestemp);
 if ($ex) {
 	&unlink_file($file) if ($mode != 0);
-	return &text('backup_etar', "<pre>$out</pre>");
+	return &text('backup_etar', "<pre>".&html_escape($out)."</pre>");
 	}
 my @st = stat($file);
 ${$_[2]} = $st[7] if ($_[2]);
@@ -508,7 +508,7 @@ my $out;
 &execute_command($cmd, undef, \$out, \$out, 0, 1);
 if ($?) {
 	&unlink_file($file) if ($mode != 0);
-	return &text('backup_euntar', "<pre>$out</pre>");
+	return &text('backup_euntar', "<pre>".&html_escape($out)."</pre>");
 	}
 my @tarfiles = map { "/$_" } split(/\r?\n/, $out);
 my %tarfiles = map { $_, 1 } @tarfiles;
@@ -605,7 +605,7 @@ if (!$show) {
 # Check for tar error
 if ($ex) {
 	&unlink_file($file) if ($mode != 0);
-	return &text('backup_euntar', "<pre>$out</pre>");
+	return &text('backup_euntar', "<pre>".&html_escape($out)."</pre>");
 	}
 
 if ($apply && !$show) {
