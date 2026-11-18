@@ -83,7 +83,8 @@ $redirect_url = "";
 $form_hiddens = "";
 if (!$module_info{'usermin'} && $in{'file'}) {
 	&set_config_file($in{'file'});
-	$header_subtext = $in{'title'} || "<tt>$in{'file'}</tt>";
+	$header_subtext = $in{'title'} ? &html_escape($in{'title'}) :
+			  "<tt>".&html_escape($in{'file'})."</tt>";
 	$redirect_url = "index.cgi?file=".&urlize($in{'file'}).
 			"&title=".&urlize($in{'title'});
 	$form_hiddens = &ui_hidden("file", $in{'file'}).
