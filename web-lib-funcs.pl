@@ -10646,6 +10646,8 @@ if (!$server) {
 		};
 	}
 if ($rv->{'timeout'}) {
+	# Report a closed peer as a TLS error instead of killing the caller.
+	local $SIG{'PIPE'} = 'IGNORE';
 	# Nonblocking handshakes and later I/O share the caller's timeout.
 	my $ok = eval {
 		require Fcntl;
