@@ -15,7 +15,7 @@ $server = &foreign_call("servers", "get_server", $in{'id'});
 @groups = @{$host->{'groups'}};
 
 # Show host details
-print "<input type=hidden name=id value=$in{'id'}>\n";
+print &ui_hidden("id", $in{'id'}),"\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'host_header'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
@@ -45,10 +45,12 @@ print "<td><b>$text{'host_tcount'}</b></td>\n";
 printf "<td>%d</td> </tr>\n", scalar(@themes);
 
 print "<tr> <td><b>$text{'host_os'}</b></td>\n";
-print "<td>$host->{'real_os_type'} $host->{'real_os_version'}</td>\n";
+# OS and version details come from the managed server
+print "<td>",&html_escape("$host->{'real_os_type'} $host->{'real_os_version'}"),
+      "</td>\n";
 
 print "<td><b>$text{'host_version'}</b></td>\n";
-printf "<td>%s</td> </tr>\n", $host->{'version'};
+printf "<td>%s</td> </tr>\n", &html_escape($host->{'version'});
 
 print "</table></td></tr></table>\n";
 
@@ -56,12 +58,12 @@ print "</table></td></tr></table>\n";
 print "<p></p><table width=100%><tr>\n";
 
 print "<td><form action=delete_host.cgi>\n";
-print "<input type=hidden name=id value=$in{'id'}>\n";
+print &ui_hidden("id", $in{'id'}),"\n";
 print "<input type=submit value='$text{'host_delete'}'>\n";
 print "</form></td>\n";
 
 print "<td align=right><form action=refresh.cgi>\n";
-print "<input type=hidden name=id value=$in{'id'}>\n";
+print &ui_hidden("id", $in{'id'}),"\n";
 print "<input type=submit value='$text{'host_refresh'}'>\n";
 print "</form></td>\n";
 
@@ -84,7 +86,9 @@ foreach $m (sort { $a->{'desc'} cmp $b->{'desc'} } @modules) {
 		}
 	}
 	print "<tr>\n" if ($i%3 == 0);
-	print "<td $colspan width=33%><a href='edit_mod.cgi?mod=$m->{'dir'}&host=$in{'id'}'>",$m->{'desc'},"</td>\n";
+	print "<td $colspan width=33%><a href='edit_mod.cgi?mod=",
+	      &urlize($m->{'dir'}),"&host=",&urlize($in{'id'}),"'>",
+	      &html_escape($m->{'desc'}),"</td>\n";
 	print "</tr>\n" if ($i%3 == 2);
 	$i++;
 	}
@@ -104,7 +108,9 @@ if (@themes) {
 			}
 		}
 		print "<tr>\n" if ($i%3 == 0);
-		print "<td $colspan width=33%><a href='edit_mod.cgi?theme=$t->{'dir'}$in{'id'}'>",$t->{'desc'},"</td>\n";
+		print "<td $colspan width=33%><a href='edit_mod.cgi?theme=",
+		      &urlize($t->{'dir'}),"&host=",&urlize($in{'id'}),"'>",
+		      &html_escape($t->{'desc'}),"</td>\n";
 		print "</tr>\n" if ($i%3 == 2);
 		$i++;
 		}
@@ -118,7 +124,9 @@ print "<tr $cb> <td><table width=100%>\n";
 $i = 0;
 foreach $u (@users) {
 	print "<tr>\n" if ($i%4 == 0);
-	print "<td width=25%><a href='edit_user.cgi?user=$u->{'name'}&host=$in{'id'}'>$u->{'name'}</td>\n";
+	print "<td width=25%><a href='edit_user.cgi?user=",
+	      &urlize($u->{'name'}),"&host=",&urlize($in{'id'}),"'>",
+	      &html_escape($u->{'name'}),"</td>\n";
 	print "</tr>\n" if ($i%4 == 3);
 	$i++;
 	}
@@ -133,7 +141,9 @@ if (@groups) {
 	print "<tr $cb> <td><table width=100%>\n";
 	foreach $g (@groups) {
 		print "<tr>\n" if ($i%4 == 0);
-		print "<td width=25%><a href='edit_group.cgi?group=$g->{'name'}&host=$in{'id'}'>$g->{'name'}</td>\n";
+		print "<td width=25%><a href='edit_group.cgi?group=",
+		      &urlize($g->{'name'}),"&host=",&urlize($in{'id'}),"'>",
+		      &html_escape($g->{'name'}),"</td>\n";
 		print "</tr>\n" if ($i%4 == 3);
 		$i++;
 		}
