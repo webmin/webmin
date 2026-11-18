@@ -23,7 +23,7 @@ my $pass = $uinfo->{'plainpass'};
 
 my $conf = &get_config();
 my $file = &get_auth_file($conf);
-return if (!$file);
+return if (!&valid_auth_file($file));
 
 &lock_file($file);
 my @users = &list_auth_users($file);
@@ -51,7 +51,7 @@ my $name = $uinfo->{'user'};
 
 my $conf = &get_config();
 my $file = &get_auth_file($conf);
-return if (!$file);
+return if (!&valid_auth_file($file));
 
 &lock_file($file);
 my @users = &list_auth_users($file);
@@ -83,7 +83,7 @@ if ($config{'crypt_conf'} == 1) {
         }
 my $conf = &get_config();
 my $file = &get_auth_file($conf);
-return if (!$file);
+return if (!&valid_auth_file($file));
 
 my $name = $_[0]->{'user'};
 my $oldname = $_[1]->{'user'};
