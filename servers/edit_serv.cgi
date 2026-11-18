@@ -18,6 +18,7 @@ if ($in{'new'}) {
 	&get_miniserv_config(\%miniserv);
 	my $ts = &this_server();
 	$s = { 'port' => $miniserv{'port'},
+	       'ssl' => 1,
 	       'type' => $config{'auto_type'} || $ts->{'type'}, };
 	}
 else {
