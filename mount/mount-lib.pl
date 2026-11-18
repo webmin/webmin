@@ -9,6 +9,18 @@ use WebminCore;
 $filesystem_users_file = "$module_config_directory/filesystem-users";
 @access_fs = split(/\s+/, $access{'fs'});
 
+# local_return_url(url)
+# Returns a return link if it stays on this server, or an empty string for
+# URLs with a scheme, a host or control characters
+sub local_return_url
+{
+my ($url) = @_;
+return "" if (!defined($url));
+return "" if ($url =~ /^\s*([a-z][a-z0-9+.\-]*:|\/\/|\\)/i ||
+	      $url =~ /[\\\0-\037]/);
+return $url;
+}
+
 # get_mount(directory|'swap', device)
 # Returns the index of this mount, or -1 if not known
 sub get_mount

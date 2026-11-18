@@ -446,7 +446,7 @@ else {
 	}
 &save_filesystem_users($users);
 
-&redirect($in{'return'});
+&redirect(&local_return_url($in{'return'}));
 
 # undo_changes
 # Put back any changes to the fstab file
