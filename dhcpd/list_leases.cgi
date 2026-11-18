@@ -12,8 +12,9 @@ $timenow = time();
 &error("$text{'eacl_np'} $text{'eacl_psl'}") unless $access{'r_leases'};
 
 if ($in{'network'}) {
-	$desc = &text('listl_network', "<tt>$in{'network'}</tt>",
-			       "<tt>$in{'netmask'}</tt>");
+	$desc = &text('listl_network',
+		      "<tt>".&html_escape($in{'network'})."</tt>",
+		      "<tt>".&html_escape($in{'netmask'})."</tt>");
 	}
 print "Refresh: $config{'lease_refresh'}\r\n"
 	if ($config{'lease_refresh'});
@@ -139,7 +140,7 @@ else {
 				}
 			$used = scalar(keys %used);
 			print &ui_columns_row([
-				$subnet->{'values'}->[0],
+				&html_escape($subnet->{'values'}->[0]),
 				&html_escape($subnet->{'comment'}),
 				$subnet->{'ips'},
 				$used,
@@ -158,7 +159,7 @@ else {
 				}
 			$used = scalar(keys %used);
 			print &ui_columns_row([
-				$shared->{'values'}->[0],
+				&html_escape($shared->{'values'}->[0]),
 				&html_escape($shared->{'comment'}),
 				$shared->{'ips'},
 				$used,
@@ -210,21 +211,29 @@ else {
 			    int($leased*100/scalar(keys %ranges))),"<p>\n";
 			}
 
-		# Table header, with sorting
+		# Table header, with sorting. Deleting leases also restarts
+		# the DHCP server, so it needs the apply right too.
+		$candelete = $access{'w_leases'} && $access{'apply'};
 		@tds = ( "width=5" );
-		print &ui_form_start("delete_leases.cgi", "post");
-		print &ui_hidden("all", $in{'all'});
-		print &ui_hidden("network", $in{'network'});
-		print &ui_hidden("netmask", $in{'netmask'});
 		@links = ( &select_all_link("d"), &select_invert_link("d") );
+		if ($candelete) {
+			print &ui_form_start("delete_leases.cgi", "post");
+			print &ui_hidden("all", $in{'all'});
+			print &ui_hidden("network", $in{'network'});
+			print &ui_hidden("netmask", $in{'netmask'});
+			}
+		else {
+			@links = ( );
+			}
 		$links = "<table width=100%><tr><td>".
 			 &ui_links_row(\@links).
 			 "</td><td align=right>".
-			 &ui_links_row([ &ui_link("list_leases.cgi?$in",$text{'listl_refresh'}) ]).
+			 &ui_links_row([ &ui_link("list_leases.cgi?".
+				&quote_escape($in), $text{'listl_refresh'}) ]).
 			 "</td></tr></table>\n";
 		print $links;
 		print &ui_columns_start([
-			"",
+			$candelete ? ( "" ) : ( ),
 			&sort_link("ipaddr"),
 			&sort_link("ether"),
 			$config{'lease_vendor'} ? ( &sort_link("vendor") ) : (),
@@ -240,10 +249,13 @@ else {
 			local $ends = &find('ends', $mems);
 			local $ht = $lease->{'expired'} ||
 				    $lease->{'obsolete'} ? "i" : "tt";
-			push(@cols, "<$ht>$lease->{'values'}->[0]</$ht>");
+			push(@cols, "<$ht>".
+				    &html_escape($lease->{'values'}->[0]).
+				    "</$ht>");
 			local $hard = &find('hardware', $mems);
 			push(@cols,$hard->{'values'}->[1] ?
-				"<tt>$hard->{'values'}->[1]</tt>" :
+				"<tt>".&html_escape($hard->{'values'}->[1]).
+				"</tt>" :
 				 "<i>$text{'listl_unknown'}</i>");
 			if ($config{'lease_vendor'}) {
 				my $v = &lookup_mac_vendor(
@@ -266,14 +278,20 @@ else {
 				     $ends->{'values'}->[2];
 				}
 
-			push(@cols, "<tt>$s</tt>");
-			push(@cols, "<tt>$e</tt>");
-			print &ui_checked_columns_row(\@cols, \@tds, "d",
-						      $lease->{'index'});
+			push(@cols, "<tt>".&html_escape($s)."</tt>");
+			push(@cols, "<tt>".&html_escape($e)."</tt>");
+			if ($candelete) {
+				print &ui_checked_columns_row(\@cols, \@tds,
+					"d", $lease->{'index'});
+				}
+			else {
+				print &ui_columns_row(\@cols);
+				}
 			}
 		print &ui_columns_end();
 		print $links;
-		print &ui_form_end([ [ undef, $text{'listl_delete'} ] ]);
+		print &ui_form_end([ [ undef, $text{'listl_delete'} ] ])
+			if ($candelete);
 		}
 	else {
 		print "<b>",&text($in{'all'} ? 'listl_lfnotcont' :
@@ -342,7 +360,10 @@ if ($in{'sort'} eq $c) {
 	return $text{'listl_'.$c};
 	}
 else {
-    return &ui_link("list_leases.cgi?all=$in{'all'}&network=$in{'network'}&netmask=$in{'netmask'}&sort=$c",$text{'listl_'.$c});
+    return &ui_link("list_leases.cgi?all=".&urlize($in{'all'}).
+		    "&network=".&urlize($in{'network'}).
+		    "&netmask=".&urlize($in{'netmask'})."&sort=$c",
+		    $text{'listl_'.$c});
 	}
 }
 

@@ -6,7 +6,7 @@ require './dhcpd-lib.pl';
 
 %access = &get_module_acl();
 &error_setup($text{'listl_err'});
-if( !($access{'w_leases'} && $access{'r_leases'}) ) {
+if( !($access{'w_leases'} && $access{'r_leases'} && $access{'apply'}) ) {
 	&error("$text{'eacl_np'} $text{'eacl_pdl'}");
 	}       
 @d = split(/\0/, $in{'d'});
