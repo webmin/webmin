@@ -472,6 +472,24 @@ sub check_ipaddress_any
 return &check_ipaddress($_[0]) || &check_ip6address($_[0]);
 }
 
+# valid_iface_name(name)
+# Returns 1 if a name is safe to use as an interface name in configuration
+# files, commands and file names, such as eth0, enp0s3, br-1 or eth0.100
+sub valid_iface_name
+{
+my ($name) = @_;
+return defined($name) && $name =~ /\A[A-Za-z0-9_][A-Za-z0-9_.:-]*\z/ ? 1 : 0;
+}
+
+# valid_env_value(value)
+# Returns 1 if a free-text value can be written to a file that the shell
+# sources, without the shell running or redirecting anything when it does
+sub valid_env_value
+{
+my ($value) = @_;
+return defined($value) && $value =~ /[\$`\\"';&|<>\r\n\0]/ ? 0 : 1;
+}
+
 # common_order_input(name, value, &opts)
 # Returns a field for a standard DNS resolution order input
 sub common_order_input

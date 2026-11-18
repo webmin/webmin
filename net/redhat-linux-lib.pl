@@ -716,7 +716,7 @@ if (!$supports_dev_gateway) {
 	else { $conf{'GATEWAY'} = $in{'gateway'}; }
 
 	if ($in{'gatewaydev_def'}) { delete($conf{'GATEWAYDEV'}); }
-	elsif ($in{'gatewaydev'} !~ /^\S+$/) {
+	elsif (!&valid_iface_name($in{'gatewaydev'})) {
 		&error(&text('routes_edevice', &html_escape($in{'gatewaydev'})));
 		}
 	else { $conf{'GATEWAYDEV'} = $in{'gatewaydev'}; }
@@ -737,6 +737,13 @@ else {
 		next if (!$in{"gatewaydev$r"});
 		&check_ipaddress($in{"gateway$r"}) ||
 			&error(&text('routes_edefault2', $r+1));
+
+		# The IPv6 gateway may name its interface after a %
+		my $gw6 = $in{"gateway6$r"};
+		$gw6 eq '' ||
+		    $gw6 =~ /\A([0-9a-f:.]+)(?:%([\w.:-]+))?\z/i &&
+		    &check_ip6address($1) ||
+			&error(&text('routes_edefault6', &html_escape($gw6)));
 		if ($in{"gatewaydev$r"} eq "*") {
 			# For any interface
 			$conf{'GATEWAY'} && &error(&text('routes_eclash'));
@@ -771,7 +778,8 @@ else {
 for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	next if (!$dev);
 	$net = $in{"net_$i"}; $netmask = $in{"netmask_$i"}; $gw = $in{"gw_$i"};
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	&valid_iface_name($dev) ||
+		&error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) || &error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress($netmask) || &error(&text('routes_emask', &html_escape($netmask)));
 	&to_ipaddress($gw) || &error(&text('routes_egateway', &html_escape($gw)));
@@ -786,7 +794,8 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	$net = $in{"lnet_$i"}; $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	&valid_iface_name($dev) ||
+		&error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) ||
 	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
 		&error(&text('routes_enet', &html_escape($net)));
@@ -1073,11 +1082,15 @@ sub parse_range
 {
 my %in = %{$_[1]};
 if ($in{'new'}) {
+	&valid_iface_name($in{'iface'}) || &error($text{'bifc_ename'});
 	$_[0]->{'name'} = $in{'iface'};
 	$in{'range'} =~ /^[a-z0-9\.\_]+$/ || &error($text{'range_ename'});
 	$_[0]->{'range'} = $in{'range'};
 	$_[0]->{'fullname'} = $in{'iface'}."-range".$in{'range'};
 	}
+
+# The description is written to a file that the shell sources
+&valid_env_value($in{'desc'}) || &error($text{'bifc_edesc'});
 $_[0]->{'desc'} = $in{'desc'};
 
 &check_ipaddress($in{'start'}) || &error($text{'range_estart'});

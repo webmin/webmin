@@ -173,8 +173,10 @@ else {
 		$b->{'address'} = $in{'address'};
 		}
 
-	# Set description if possible
+	# Set description if possible. Some systems write it to a file that the
+	# shell sources
 	if (defined($in{'desc'})) {
+		&valid_env_value($in{'desc'}) || &error($text{'bifc_edesc'});
 		$b->{'desc'} = $in{'desc'};
 		}
 	else {
@@ -309,11 +311,15 @@ else {
 	# Save bonding settings
 	if ($in{'bond'}) {
 		$b->{'bond'} = 1;
-		$in{'partner'} =~ /^\S+( +\S+)*$/ || &error($text{'bonding_epartner'});
+		my @partners = split(/ +/, $in{'partner'});
+		$in{'partner'} =~ /\A\S+( +\S+)*\z/ &&
+		    !(grep { !&valid_iface_name($_) } @partners) ||
+			&error($text{'bonding_epartner'});
 		$b->{'partner'} = $in{'partner'};
 		$in{'bondmode'} =~ /^[0-6]$/ || &error($text{'bonding_ebondmode'});
 		$b->{'mode'} = $in{'bondmode'};
-		$in{'primary'} =~ /^\S*$/ || &error($text{'bonding_eprimary'});
+		$in{'primary'} eq '' || &valid_iface_name($in{'primary'}) ||
+			&error($text{'bonding_eprimary'});
 		$b->{'primary'} = $in{'primary'};
 		$in{'miimon'} =~ /^\d*$/ || &error($text{'bonding_emiimon'});
 		$b->{'miimon'} = $in{'miimon'};
@@ -328,6 +334,9 @@ else {
 	
 	# Save VLAN settings
 	if ($in{'vlan'}) {
+		$in{'physical'} =~ /\A[\w][\w.-]*\z/ &&
+		    $in{'vlanid'} =~ /\A[0-9]{1,4}\z/ && $in{'vlanid'} <= 4094 ||
+			&error($text{'bifc_evlan'});
 		$b->{'vlan'} = 1;
 		if ($in{'physical'}) {
 			$b->{'physical'} = $in{'physical'};
@@ -352,14 +361,14 @@ else {
 		($bt->{'address'} || $bt->{'dhcp'} || $bt->{'bootp'}) &&
 			&error($text{'bifc_ebridgeto2'});
 		$b->{'bridgeto'} = $in{'bridgeto'};
-		if (&can_edit("bridgestp")) {
-			$b->{'bridgestp'} = $in{'bridgestp'};
-			}
-		if (&can_edit("bridgefd")) {
-			$b->{'bridgefd'} = $in{'bridgefd'};
-			}
-		if (&can_edit("bridgewait")) {
-			$b->{'bridgewait'} = $in{'bridgewait'};
+
+		# Bridge options are single words, such as on or a delay
+		foreach my $f ("bridgestp", "bridgefd", "bridgewait") {
+			next if (!&can_edit($f));
+			$in{$f} =~ /\A[\w.]*\z/ ||
+				&error(&text('bifc_ebridgeopt',
+					     &html_escape($in{$f})));
+			$b->{$f} = $in{$f};
 			}
 		}
 	else {
@@ -372,6 +381,7 @@ else {
 	# Save the interface with its final name
 	if ($b->{'vlan'}) {
 		$b->{'fullname'} = $in{'physical'}.".".$in{'vlanid'};
+		&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 		}
 	else {
 		$b->{'fullname'} = $b->{'name'}.
