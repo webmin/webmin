@@ -17,6 +17,8 @@ foreach $d (@d) {
 		$htaccess = "$dir->[0]/$config{'htaccess'}";
 		&can_access_dir($htaccess) || &error($text{'dir_ecannot'});
 		if ($in{'remove'}) {
+			!$dir->[1] || &can_access_dir($dir->[1]) || &error($text{'dir_ecannotfile'});
+			!$dir->[4] || &can_access_dir($dir->[4]) || &error($text{'dir_ecannotgfile'});
 			# Block away the whole file
 			&unlink_logged($htaccess);
 			&unlink_logged($dir->[1])
