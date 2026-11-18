@@ -48,7 +48,8 @@ if ($ty != 2) {
 
 # Action name
 if ($ac =~ /^\// || $access{'bootup'} == 2) {
-	print &ui_table_row($text{'edit_name'}, "<tt>$ac</tt>");
+	print &ui_table_row($text{'edit_name'},
+			    "<tt>".&html_escape($ac)."</tt>");
 	print &ui_hidden("name", $ac);
 	print &ui_hidden("extra", 1);
 	}
@@ -92,7 +93,9 @@ if ($ty == 1 && $access{'bootup'} == 1) {
 	# Display a message about the script being bogus
 	print &ui_table_end();
 	print "<b>",&text("edit_bad$ss", $rl),"</b><br>\n";
-	print &ui_link("fix_action.cgi?$rl+$ss+$num+$ac", $text{'edit_fix'});
+	print &ui_link("fix_action.cgi?".join("+", map { &urlize($_) }
+					      ($rl, $ss, $num, $ac)),
+		       $text{'edit_fix'});
 	print "<p>\n";
 	}
 elsif (!$config{'expert'} || $access{'bootup'} == 2) {
