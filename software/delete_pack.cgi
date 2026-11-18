@@ -7,7 +7,7 @@ require './software-lib.pl';
 $p = $in{'package'};
 $v = $in{'version'};
 &error_setup(&text('delete_err', &html_escape($p)));
-(@pinfo = &package_info($p, $v)) ||
+&valid_package_name($p, $v) && (@pinfo = &package_info($p, $v)) ||
 	&error(&text('delete_epack', &html_escape($p)));
 
 if ($in{'sure'}) {

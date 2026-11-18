@@ -110,6 +110,18 @@ elsif ($two eq "\037\213") {
 return $_[0];
 }
 
+# valid_package_name(package, [version])
+# Returns 1 if a package name and optional version can be passed to a package
+# manager. Real names never start with a dash, which would make them options.
+sub valid_package_name
+{
+my ($name, $ver) = @_;
+return 0 if (!defined($name) || $name eq "" || $name =~ /^-/ ||
+	     $name =~ /[\0-\037]/);
+return 0 if (defined($ver) && ($ver =~ /^-/ || $ver =~ /[\0-\037]/));
+return 1;
+}
+
 # show_package_info(package, version, [no-installed-message])
 sub show_package_info
 {
@@ -307,6 +319,7 @@ sub is_package_file
 my ($package, $version, $path) = @_;
 return 0 if (!defined($package) || $package eq "" ||
 	     !defined($path) || $path eq "");
+return 0 if (!&valid_package_name($package, $version));
 
 # Match the path against the package manager's file list.
 local %files;

@@ -5,6 +5,8 @@
 
 require './software-lib.pl';
 &ReadParse();
+&valid_package_name($in{'package'}, $in{'version'}) ||
+	&error($text{'edit_egone'});
 @pinfo = &package_info($in{'package'}, $in{'version'});
 $pinfo[0] || &error($text{'edit_egone'});
 &ui_print_header(undef, $text{'IPKG-edit_title'}, "", "edit_pack");

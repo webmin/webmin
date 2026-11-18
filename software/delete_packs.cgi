@@ -9,7 +9,7 @@ require './software-lib.pl';
 foreach $d (split(/\0/, $in{'del'})) {
 	local ($p, $v) = split(/\s/, $d);
 	local @pinfo;
-	(@pinfo = &package_info($p, $v)) ||
+	&valid_package_name($p, $v) && (@pinfo = &package_info($p, $v)) ||
 		&error(&text('delete_epack', &html_escape($p)));
 	push(@packs, $p);
 	push(@vers, $v);
