@@ -10,7 +10,7 @@ $access{'delete'} || &error($text{'dbase_ecannot'});
 if ($in{'confirm'}) {
 	# Drop the database
 	&execute_sql_logged($config{'basedb'},
-			    "drop database ".&quote_table($in{'db'}));
+			    "drop database ".&pg_quote_ident($in{'db'}));
 	&delete_database_backup_job($in{'db'});
 	&webmin_log("delete", "db", $in{'db'});
 	&redirect("");
