@@ -23,6 +23,8 @@ if ($in{'start'} || $in{'stop'}) {
 	exit;
 	}
 
+$access{'bootup'} == 1 || &error($text{'edit_ecannot'});
+
 if ($in{'delete'}) {
 	# Delete the service
 	&disable_at_boot($in{'name'});

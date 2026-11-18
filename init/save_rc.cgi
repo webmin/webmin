@@ -4,6 +4,9 @@
 require './init-lib.pl';
 &ReadParse();
 $access{'bootup'} || &error($text{'edit_ecannot'});
+if ($in{'delete'} || !($in{'start'} || $in{'stop'} || $in{'status'})) {
+	$access{'bootup'} == 1 || &error($text{'edit_ecannot'});
+	}
 &foreign_require("proc", "proc-lib.pl");
 
 @rcs = &list_rc_scripts();
