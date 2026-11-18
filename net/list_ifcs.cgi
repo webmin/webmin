@@ -232,7 +232,10 @@ foreach $a (@boot) {
 print &ui_columns_end();
 print &ui_links_row(\@links);
 if($access{"delete"}) {
-print &ui_form_end([ [ "delete", $text{'index_delete2'} ],
+# Users who must change boot-time and active interfaces together can only
+# delete and deactivate at once
+print &ui_form_end([ $access{'bootonly'} ? ( ) :
+			( [ "delete", $text{'index_delete2'} ] ),
                      [ "deleteapply", $text{'index_delete3'} ],
                      undef,
                      [ "apply", $text{'index_apply2'} ] ]);

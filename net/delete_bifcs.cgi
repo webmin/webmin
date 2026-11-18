@@ -6,6 +6,13 @@ require './net-lib.pl';
 &error_setup($in{'apply'} ? $text{'dbifcs_err2'} : $text{'dbifcs_err'});
 @d = split(/\0/, $in{'b'});
 @d || &error($text{'daifcs_enone'});
+if (!$in{'apply'}) {
+	# Deleting needs the delete permission, and users who must change
+	# boot-time and active interfaces together must also deactivate them
+	$access{'delete'} || &error($text{'ifcs_ecannot_delete'});
+	!$access{'bootonly'} || $in{'deleteapply'} ||
+		&error($text{'ifcs_ecannot_active'});
+	}
 
 # Do the deletes
 @boot = &boot_interfaces();

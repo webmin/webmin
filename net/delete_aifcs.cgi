@@ -6,6 +6,8 @@ require './net-lib.pl';
 &ReadParse();
 
 &error_setup($text{'daifcs_err'});
+$access{'delete'} || &error($text{'ifcs_ecannot_delete'});
+!$access{'bootonly'} || &error($text{'ifcs_ecannot_active'});
 
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'daifcs_enone'});
