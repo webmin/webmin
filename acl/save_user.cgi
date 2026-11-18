@@ -44,7 +44,12 @@ elsif ($in{'but_forgot'}) {
 	}
 
 # Check global ACL access before saving any user or group changes.
-$in{'acl_security_form'} && !$access{'acl'} && &error($text{'acl_emod'});
+$in{'acl_security_form'} && (!$access{'acl'} || $access{'mode'} != 0) &&
+	&error($text{'acl_emod'});
+
+# Limited admins cannot change their own global ACL, which includes RPC
+$in{'acl_security_form'} && $in{'old'} &&
+	!&can_change_own_acl("", $in{'old'}) && &error($text{'acl_eself'});
 
 # Get the user object
 my (%user, $old);

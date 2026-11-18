@@ -22,7 +22,12 @@ elsif ($in{'but_delete'}) {
 	}
 
 # Check global ACL access before saving any group changes.
-$in{'acl_security_form'} && !$access{'acl'} && &error($text{'acl_emod'});
+$in{'acl_security_form'} && (!$access{'acl'} || $access{'mode'} != 0) && &error($text{'acl_emod'});
+
+# Limited admins cannot change global permissions for their own group
+$in{'acl_security_form'} && $in{'old'} &&
+	!&can_change_own_acl("", undef, $in{'old'}) &&
+	&error($text{'acl_eself'});
 
 # Find logged-in webmin user
 my @ulist = &list_users();

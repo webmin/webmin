@@ -10,6 +10,9 @@ require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $base_remote_user, %gconfig);
 &ReadParse();
 my $who = &acl_edit_target($in{'mod'}, $in{'user'}, $in{'group'});
+# Admins with limited ACL access cannot raise their own permissions
+&can_change_own_acl($in{'mod'}, $in{'user'}, $in{'group'}) ||
+	&error($text{'acl_eself'});
 
 my %minfo = $in{'mod'} ? &get_module_info($in{'mod'})
 		       : ( 'desc' => $text{'index_global'} );

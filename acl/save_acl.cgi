@@ -11,6 +11,10 @@ our (%in, %text, %config, %access, $base_remote_user, %gconfig,
      $config_directory);
 &ReadParse();
 my $who = &acl_edit_target($in{'_acl_mod'}, $in{'_acl_user'}, $in{'_acl_group'});
+# Admins with limited ACL access cannot raise their own permissions
+&can_change_own_acl($in{'_acl_mod'}, $in{'_acl_user'},
+		    $in{'_acl_group'}) ||
+	&error($text{'acl_eself'});
 
 my $aclfile = $in{'_acl_group'} ? "$config_directory/$in{'_acl_mod'}/$who.gacl"
 			        : "$config_directory/$in{'_acl_mod'}/$who.acl";

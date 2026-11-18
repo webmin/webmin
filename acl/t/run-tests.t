@@ -1495,14 +1495,15 @@ subtest 'save_user.cgi rejected module escaping' => sub {
 
 # Both save handlers must enforce the global ACL editor's permission check.
 subtest 'user and group global ACL permissions' => sub {
-    for my $allowed (0, 1) {
+    for my $case ([0, 0], [1, 0], [1, 1], [1, 2]) {
+        my ($allowed, $mode) = @$case;
         _reset_fixture();
         create_user({ name => 'operator', pass => 'x', modules => ['acl', 'proc'] });
         create_user({ name => 'target', pass => 'x', modules => ['proc'] });
         create_group({ name => 'limited', members => [], modules => ['proc'] });
         _seed_user_acl('operator', {
             users => 'target', acl => $allowed, groups => 1,
-            mode => 2, mods => 'proc', times => 0,
+            mode => $mode, mods => 'proc', times => 0,
         });
         my %before = (root => '/restricted', fileunix => 'nobody',
                       download_address_mode => 'public');
@@ -1520,8 +1521,8 @@ subtest 'user and group global ACL permissions' => sub {
             my $file = $kind eq 'user' ? 'target.acl' : 'limited.gacl';
             my %saved;
             read_file("$confdir/$file", \%saved);
-            if (!$allowed) {
-                like($r->{out}, qr/\Q$text{'acl_emod'}\E/, "$kind rejects acl=0");
+            if (!$allowed || $mode) {
+                like($r->{out}, qr/\Q$text{'acl_emod'}\E/, "$kind rejects global settings with acl=$allowed, mode=$mode");
                 is_deeply(\%saved, \%before, "$kind keeps existing restrictions");
             }
             else {
@@ -2125,6 +2126,89 @@ subtest 'switch.cgi gating' => sub {
         is($switched_ip, $ip, 'switch.cgi stores caller IP');
     }
     delete_user('target');
+};
+
+# Limited ACL admins must not raise their own Webmin Users or global ACL,
+# directly or through a group they belong to.
+subtest 'own ACL escalation gates' => sub {
+    my $self_err = qr/cannot change your own access to manage Webmin users/;
+    my %limited = (acl => 1, users => 'operator target', mode => 1,
+                   groups => 1);
+    _reset_fixture();
+    create_user({ name => 'operator', pass => 'x', modules => ['acl'] });
+    create_user({ name => 'target', pass => 'x', modules => ['acl'] });
+    _seed_user_acl('operator', \%limited);
+
+    for my $form ({ users_def => 1, mode => 0 }, { reset => 1 }) {
+        my $r = run_cgi('save_acl.cgi', { _acl_user => 'operator',
+                                          _acl_mod => 'acl', %$form },
+                        user => 'operator');
+        ok(!$r->{location}, 'own Webmin Users ACL cannot be changed');
+        like($r->{out}, $self_err, 'own ACL change explains the refusal');
+        _clear_caches();
+        my %saved;
+        read_file("$cgidir/operator.acl", \%saved);
+        is($saved{users}, 'operator target', 'own ACL file is unchanged');
+    }
+    my $r = run_cgi('edit_acl.cgi', { user => 'operator', mod => 'acl' },
+                    user => 'operator');
+    like($r->{out}, $self_err, 'own Webmin Users ACL form is refused');
+
+    # Other editable users can still be managed.
+    $r = run_cgi('save_acl.cgi', { _acl_user => 'target', _acl_mod => 'acl',
+                                   users_def => 2, mode => 1 },
+                 user => 'operator');
+    ok($r->{location}, 'Webmin Users ACL of another user can be saved')
+        or diag("stdout: $r->{out}");
+    my %saved;
+    read_file("$cgidir/target.acl", \%saved);
+    is($saved{users}, '~', 'other user ACL is written');
+    unlink("$cgidir/target.acl");
+
+    # Group ACLs are copied to members, so the admin's own group is refused.
+    create_group({ name => 'ops', members => [ 'target' ], modules => ['acl'] });
+    create_group({ name => 'parent', members => [ '@ops' ],
+                   modules => ['acl'] });
+    $r = run_cgi('save_acl.cgi', { _acl_group => 'parent', _acl_mod => 'acl',
+                                   users_def => 2, mode => 1 },
+                 user => 'operator');
+    ok($r->{location}, 'group ACL without the admin can be saved')
+        or diag("stdout: $r->{out}");
+    my $ops = get_group('ops');
+    $ops->{members} = [ 'target', 'operator' ];
+    modify_group('ops', $ops);
+    _clear_caches();
+    $r = run_cgi('save_acl.cgi', { _acl_group => 'parent', _acl_mod => 'acl',
+                                   users_def => 1, mode => 0 },
+                 user => 'operator');
+    ok(!$r->{location}, 'nested group with the admin is refused');
+    like($r->{out}, $self_err, 'group refusal explains the reason');
+    delete_group('parent');
+    delete_group('ops');
+
+    # The global ACL, including RPC, is refused for the admin's own account.
+    _seed_user_acl('operator', { %limited, mode => 0, users => '~' });
+    $r = run_cgi('save_user.cgi', { old => 'operator', name => 'operator',
+                                    pass_def => 1, logouttime_def => 1,
+                                    minsize_def => 1, mod => 'acl',
+                                    acl_security_form => 1, rpc => 1 },
+                 user => 'operator');
+    ok(!$r->{location}, 'own global ACL cannot be saved');
+    like($r->{out}, $self_err, 'global ACL refusal explains the reason');
+    ok(!-e "$confdir/operator.acl", 'own global ACL is not written');
+    $r = run_cgi('edit_user.cgi', { user => 'operator' }, user => 'operator');
+    unlike($r->{out}, qr/name="acl_security_form"|name="rpc"/,
+           'own global ACL fields are not shown');
+
+    # Admins who can already manage every user and module are unaffected.
+    _seed_user_acl('operator', { %limited, mode => 0, users => '*' });
+    $r = run_cgi('save_acl.cgi', { _acl_user => 'operator', _acl_mod => 'acl',
+                                   users_def => 1, mode => 0, acl => 1 },
+                 user => 'operator');
+    ok($r->{location}, 'unrestricted admins can save their own ACL')
+        or diag("stdout: $r->{out}");
+    delete_user('target');
+    delete_user('operator');
 };
 
 done_testing();

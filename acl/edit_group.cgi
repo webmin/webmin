@@ -141,8 +141,9 @@ print &ui_table_row(undef, &ui_links_row(\@links).
                            &ui_links_row(\@links), 2);
 print &ui_hidden_table_end("mods");
 
-# Add global ACL section
-if ($access{'acl'} && $in{'group'}) {
+# Add global ACL section, unless it would apply to this limited admin
+if ($access{'acl'} && !$access{'mode'} && $in{'group'} &&
+    &can_change_own_acl("", undef, $in{'group'})) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
 	my %uaccess = &get_group_module_acl($in{'group'}, "");

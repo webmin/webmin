@@ -1371,6 +1371,41 @@ if ($group) {
 return $user;
 }
 
+# can_change_own_acl(module, user, [group])
+# Returns 0 if saving the global or Webmin Users ACL for this user or group
+# would change the current admin's own access to manage Webmin users.
+sub can_change_own_acl
+{
+my ($mod, $user, $group) = @_;
+
+# Admins who can manage every user and module cannot gain more access
+return 1 if ($access{'users'} eq '*' && $access{'mode'} == 0);
+
+# Only the global and Webmin Users ACLs control user management and RPC
+return 1 if ($mod ne '' && $mod ne 'acl');
+
+# A user ACL only matters when it is the admin's own
+return $user ne $base_remote_user if (!$group);
+
+# Group ACLs are copied to all members, including those of nested groups
+my %groups = map { $_->{'name'}, $_ } &list_groups();
+my @todo = ($group);
+my %seen;
+while (@todo) {
+	my $g = $groups{pop(@todo)};
+	next if (!$g || $seen{$g->{'name'}}++);
+	foreach my $member (@{$g->{'members'}}) {
+		if ($member =~ /^\@(.+)/) {
+			push(@todo, $1);
+			}
+		elsif ($member eq $base_remote_user) {
+			return 0;
+			}
+		}
+	}
+return 1;
+}
+
 =head2 can_module_acl(&mod)
 
 Returns 1 if the given module has ability to manage its own ACLs.
