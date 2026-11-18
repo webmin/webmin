@@ -37,11 +37,11 @@ else {
 	$cmd = &command_as_user($remote_user, 0, $cmd);
 	}
 
-print &text('test_exec', "<tt>$cmd</tt>"),"<br>\n";
+print &text('test_exec', "<tt>".&html_escape($cmd)."</tt>"),"<br>\n";
 print "<pre>";
 &open_execute_command(CMD, $cmd, 1);
 while(<CMD>) {
-	print;
+	print &html_escape($_);
 	}
 close(CMD);
 print "</pre>\n";
