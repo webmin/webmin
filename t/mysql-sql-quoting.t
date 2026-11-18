@@ -177,6 +177,30 @@ subtest 'new MariaDB users quote the account name' => sub {
 	is($tail, '', 'nothing follows the password');
 };
 
+subtest 'table searches quote values and offsets' => sub {
+	local %main::displayconfig = ( 'perpage' => 25 );
+	for my $match (0..5) {
+		for my $value (@values,
+			       q{x" union select user from mysql.user#}) {
+			my $cond = main::make_like($match, $value);
+			$cond =~ s/^(not )?(like|>|<) // or
+				die "Unexpected $cond";
+			my ($got, $rest) = mysql_literal($cond);
+			my $want = $match == 0 || $match == 2 ?
+				"%$value%" : $value;
+			is($got, $want, "mode $match quotes the search value");
+			is($rest, '', 'nothing follows the value');
+			}
+		}
+	is(main::get_search_limit({ 'start' => '1;drop table x' }),
+	   'limit 0,25', 'a non-numeric offset starts from the first row');
+	is(main::get_search_limit({ 'start' => ' 50 ' }), 'limit 50,25',
+	   'a numeric offset is kept');
+	local $main::module_name = 'postgresql';
+	is(main::get_search_limit({ 'start' => '-1' }), 'limit 25 offset 0',
+	   'a negative offset starts from the first row');
+};
+
 subtest 'privilege updates use the supplied account permissions' => sub {
 	no warnings 'redefine';
 	my @calls;

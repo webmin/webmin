@@ -107,6 +107,23 @@ subtest 'string constants keep their value under both string modes' => sub {
 	   'values without backslashes keep the plain form');
 };
 
+subtest 'table searches quote the search value' => sub {
+	for my $match (0..5) {
+		for my $value (@values) {
+			my $cond = main::make_like($match, $value);
+			$cond =~ s/^(not )?(like|>|<) // or
+				die "Unexpected $cond";
+			for my $standard (0, 1) {
+				my ($got, $rest) = pg_literal($cond, $standard);
+				my $want = $match == 0 || $match == 2 ?
+					"%$value%" : $value;
+				is($got, $want, "mode $match quotes the value");
+				is($rest, '', 'nothing follows the value');
+				}
+			}
+		}
+};
+
 subtest 'SQL file runner quotes the database name' => sub {
 	no warnings 'redefine';
 	my $tmp = tempdir(CLEANUP => 1);

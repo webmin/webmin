@@ -91,9 +91,9 @@ if ($in{'delete'}) {
 							     " is null");
 						}
 					else {
-						$r[$i] =~ s/'/''/g;
-						push(@where, &quotestr($t[$i]).
-							     " = '$r[$i]'");
+						push(@where,
+						     &quotestr($t[$i])." = ".
+						     &quote_sql_value($r[$i]));
 						}
 					}
 				}
@@ -131,9 +131,9 @@ elsif ($in{'save'}) {
 							     " is null");
 						}
 					else {
-						$r[$i] =~ s/'/''/g;
-						push(@where, &quotestr($t[$i]).
-							     " = '$r[$i]'");
+						push(@where,
+						     &quotestr($t[$i])." = ".
+						     &quote_sql_value($r[$i]));
 						}
 					}
 				}

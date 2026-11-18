@@ -50,12 +50,14 @@ return ($search, $searchhids, $searchargs, scalar(@adv));
 sub get_search_limit
 {
 local %in = %{$_[0]};
-$in{'start'} ||= 0;
+# Only a non-negative whole number can be an offset
+local $start = $in{'start'} =~ /^\s*(\d+)\s*$/ ? $1 : 0;
+local $perpage = int($displayconfig{'perpage'});
 if ($module_name eq "mysql") {
-	return "limit $in{'start'},$displayconfig{'perpage'}";
+	return "limit $start,$perpage";
 	}
 else {
-	return "limit $displayconfig{'perpage'} offset $in{'start'}";
+	return "limit $perpage offset $start";
 	}
 }
 
@@ -80,17 +82,29 @@ else {
 }
 
 # make_like(mode, for)
+# Returns an SQL condition comparing a column with the search value
 sub make_like
 {
 local ($match, $for) = @_;
-local $qu = $module_name eq "mysql" ? '"' : "'";
-return $match == 0 ? "like $qu%$for%$qu" :
-       $match == 1 ? "like $qu$for$qu" :
-       $match == 2 ? "not like $qu%$for%$qu" :
-       $match == 3 ? "not like $qu$for$qu" :
-       $match == 4 ? "> $for" :
-       $match == 5 ? "< $for" :
-		     " = \"\"";
+return $match == 0 ? "like ".&quote_sql_value("%$for%") :
+       $match == 1 ? "like ".&quote_sql_value($for) :
+       $match == 2 ? "not like ".&quote_sql_value("%$for%") :
+       $match == 3 ? "not like ".&quote_sql_value($for) :
+       $match == 4 ? "> ".&quote_sql_value($for) :
+       $match == 5 ? "< ".&quote_sql_value($for) :
+		     " = ''";
+}
+
+# quote_sql_value(value)
+# Returns a value as a string literal for the current database's SQL
+sub quote_sql_value
+{
+my ($value) = @_;
+if (defined(&pg_quote_lit)) {
+	# PostgreSQL module
+	return &pg_quote_lit($value);
+	}
+return "'".&escapestr($value)."'";
 }
 
 # get_databases_return_link(db-name)
