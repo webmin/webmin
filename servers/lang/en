@@ -43,6 +43,7 @@ edit_user=username
 edit_luser=Username for remote server
 edit_lpass=Password for remote server
 edit_pass=password
+edit_passkeep=saved password
 edit_ecannot=You are not allowed to edit servers
 edit_desc=Description
 edit_desc_def=From hostname and port

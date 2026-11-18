@@ -75,4 +75,15 @@ $record->{'type'} = 'legacy';
 is(&save({ %base, type => 'legacy' }), '', 'an unchanged saved type is kept');
 $record->{'type'} = 'debian';
 
+# The stored password is kept only for the same destination.
+is(&save({ %base, mode => 1, wuser => 'admin', wpass => '' }), '',
+   'empty password keeps the saved one');
+is($saved->{'pass'}, 'stored-secret', 'saved password is unchanged');
+like(&save({ %base, host => 'new.test', mode => 1, wuser => 'admin',
+	     wpass => '' }),
+     qr/\Q$text{'save_epass'}\E/, 'a new host needs the password again');
+is(&save({ %base, mode => 1, wuser => 'admin', wpass => 'new-secret' }), '',
+   'a new password can be entered');
+is($saved->{'pass'}, 'new-secret', 'entered password is saved');
+
 done_testing();

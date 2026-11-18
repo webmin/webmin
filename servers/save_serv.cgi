@@ -21,6 +21,9 @@ else {
 	$access{'add'} || &error($text{'edit_ecannot'});
 	$serv = { 'id' => time() };
 	}
+my $oldmode = !$in{'id'} ? $config{'deflink'} :
+	      $serv->{'autouser'} ? 2 :
+	      $serv->{'sameuser'} ? 3 : $serv->{'user'} ? 1 : 0;
 
 if ($in{'delete'}) {
 	# delete the server
@@ -44,6 +47,14 @@ else {
 		&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
 			&error($text{'save_ehost2'});
 		$in{'wuser'} =~ /\S/ || &error($text{'save_euser'});
+
+		# The stored password is not sent to the browser, so keep it
+		# when the field is left empty, unless the destination changed
+		if ($in{'wpass'} eq '' && $in{'id'} && $oldmode == 1 &&
+		    $in{'host'} eq $serv->{'host'} &&
+		    ($in{'port_def'} ? '' : $in{'port'}) eq $serv->{'port'}) {
+			$in{'wpass'} = $serv->{'pass'};
+			}
 		$in{'wpass'} =~ /\S/ || &error($text{'save_epass'});
 		}
 	# Probe only automatic mode; leave explicit transport choices unchanged.
