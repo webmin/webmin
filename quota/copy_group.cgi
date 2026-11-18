@@ -51,5 +51,5 @@ foreach $c (@copyto) {
 # Do the copy
 &copy_group_quota($in{'group'}, @copyto);
 &webmin_log("copy", "group", $in{'group'}, \%in);
-&redirect("group_filesys.cgi?group=$in{'group'}");
+&redirect("group_filesys.cgi?group=".&urlize($in{'group'}));
 

@@ -45,5 +45,5 @@ foreach $c (@copyto) {
 # Do the copy
 &copy_user_quota($in{'user'}, @copyto);
 &webmin_log("copy", "user", $in{'user'}, \%in);
-&redirect("user_filesys.cgi?user=$in{'user'}");
+&redirect("user_filesys.cgi?user=".&urlize($in{'user'}));
 
