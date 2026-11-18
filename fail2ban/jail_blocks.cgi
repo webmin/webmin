@@ -16,7 +16,7 @@ my ($jail_list) = $out =~ /jail\s+list:\s*(.*)/im;
 my @jails = split(/,\s*/, $jail_list);
 &indexof($jail, @jails) > -1 || error($text{'status_err_unknownjail'});
 
-&ui_print_header("$jail", $text{'status_title3'}, "");
+&ui_print_header(&html_escape($jail), $text{'status_title3'}, "");
 my $fh = 'jailinfo';
 my @jail_blocks;
 &open_execute_command($fh, "$config{'client_cmd'} get @{[quotemeta($jail)]} banip --with-time 2>&1 </dev/null", 1);
@@ -47,7 +47,10 @@ if (@jail_blocks) {
 				  $text{'status_head_blocks_etime'} ]);
 	if (@jail_blocks) {
 		foreach my $r (@jail_blocks) {
-			print &ui_checked_columns_row($r, [ 'width=5' ], "ip", $r->[0]);
+			# Banned IDs can be any text matched by a filter
+			print &ui_checked_columns_row(
+				[ map { &html_escape($_) } @$r ],
+				[ 'width=5' ], "ip", $r->[0]);
 			}
 		}
 	else {
@@ -65,7 +68,7 @@ if (@jail_blocks) {
 	print $pagination->{'paginator'}->{'form'};
 	}
 else {
-	print &text('status_jail_noactiveips', $jail);
+	print &text('status_jail_noactiveips', &html_escape($jail));
 	}
 
 &ui_print_footer("list_status.cgi", $text{'status_return'},
