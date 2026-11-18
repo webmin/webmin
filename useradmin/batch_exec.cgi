@@ -24,12 +24,12 @@ elsif ($in{'source'} == 2) {
 
 &ui_print_unbuffered_header(undef, $text{'batch_title'}, "");
 
-# Force defaults for save options
-$in{'makehome'} = 1 if (!$access{'makehome'});
-$in{'copy'} = 1 if (!$access{'copy'} && $config{'user_files'} =~ /\S/);
-$in{'movehome'} = 1 if (!$access{'movehome'});
-$in{'chuid'} = 1 if (!$access{'chuid'});
-$in{'chgid'} = 1 if (!$access{'chgid'});
+# Apply the same forced choices as the individual account editor.
+foreach my $option (qw(makehome copy movehome chuid chgid)) {
+	$in{$option} = !$access{$option} if ($access{$option} != 1);
+	}
+$in{'copy'} = 0 if ($config{'user_files'} !~ /\S/);
+$in{'delhome'} = $access{'delhome'} == 1 if ($access{'delhome'} != 2);
 
 # Work out a good base UID for new users
 &build_user_used(\%used, undef, \%taken);
