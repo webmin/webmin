@@ -1,5 +1,5 @@
 ## Changelog
-#### 2.680 (November 14, 2026)
+#### 2.680 (November 18, 2026)
 * Add TLS to fast RPC calls and file transfers on SSL servers, requiring remote peers to be upgraded first and rejecting unsupported peers or HTTPS-to-HTTP proxies without falling back to regular RPC
 * Add an SQLite database browser and editor with schema inspection, table management, row editing and direct SQL execution [forum.virtualmin.com/t/137508](https://forum.virtualmin.com/t/sqlite-database-browser-and-editor/137508/)
 * Add color schemes to the Terminal module
