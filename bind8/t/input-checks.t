@@ -131,4 +131,22 @@ foreach my $bad ("1.2.3.4;", "x}", "{", "a\"b", "a\nb", "a\\") {
 	ok(!eval { &check_conf_value($bad); 1 }, "value $label is rejected");
 	}
 
+# --- WKS records can be saved ---------------------------------------------
+my ($out, $err) = &run_cgi('save_record.cgi', {
+	'zone' => 'example.com', 'view' => '', 'type' => 'WKS',
+	'new' => 1, 'name' => 'www', 'ttl_def' => 1,
+	'value0' => '192.0.2.1', 'value1' => 'tcp',
+	'value2' => "smtp\nftp" });
+is($err, '', 'a WKS record is saved');
+like(&read_text($zonefile), qr/\tWKS\t192\.0\.2\.1 tcp \(\n\t+smtp\n\t+ftp \)/,
+     'WKS services are written one per line');
+($out, $err) = &run_cgi('save_record.cgi', {
+	'zone' => 'example.com', 'view' => '', 'type' => 'WKS',
+	'new' => 1, 'name' => 'mail', 'ttl_def' => 1,
+	'value0' => '192.0.2.2', 'value1' => "tcp\n\t\tmail IN A 192.0.2.9",
+	'value2' => 'smtp' });
+isnt($err, '', 'a WKS protocol with a line break is rejected');
+unlike(&read_text($zonefile), qr/192\.0\.2\.9/,
+       'the rejected WKS record adds nothing');
+
 done_testing();

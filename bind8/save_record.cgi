@@ -262,6 +262,8 @@ else {
 		if (!$in{'value2'}) {
 			&error($text{'edit_eserv'});
 			}
+		$in{'value1'} =~ /^(tcp|udp)\z/i ||
+			&error($text{'edit_ewksproto'});
 		my @ws = split(/[\r\n]+|\s+/, $in{'value2'});
 		$vals = "$in{'value0'} $in{'value1'} (";
 		foreach my $ws (@ws) {
@@ -508,6 +510,15 @@ else {
 	else {
 		$name = $fullname;
 		}
+	}
+
+# The form represents one record. Multiline text fields have been joined above.
+# WKS services are checked words, which are written one per line on purpose.
+my $linevals = $vals;
+$linevals =~ s/\n\t+/ /g if ($in{'type'} eq "WKS");
+if (grep { defined($_) && /[\r\n\0]/ }
+    ($name, $ttl, $in{'type'}, $linevals, $in{'comment'})) {
+	&error($text{'edit_eline'});
 	}
 
 # check for CNAME collision
