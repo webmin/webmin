@@ -83,6 +83,9 @@ sub save_directories
 {
 my $d;
 my $fh = "DIRS";
+foreach my $dir (@{$_[0]}) {
+	grep { defined($_) && /[\t\r\n\0]/ } @$dir and &error($text{'dir_edir'});
+	}
 &open_tempfile($fh, ">$directories_file");
 foreach $d (@{$_[0]}) {
 	my @safed = map { defined($_) ? $_ : "" } @$d;
