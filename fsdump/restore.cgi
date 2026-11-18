@@ -13,7 +13,7 @@ $cmd = &parse_restore($in{'fs'});
 
 &create_wrappers();
 
-print "<b>",&text('restore_now', "<tt>$cmd</tt>"),"</b> <p>\n";
+print "<b>",&text('restore_now', "<tt>".&html_escape($cmd)."</tt>"),"</b> <p>\n";
 print "<pre>";
 $rv = &restore_backup($in{'fs'}, $cmd);
 print "</pre>\n";
