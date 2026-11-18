@@ -433,12 +433,15 @@ else {
 			        $line !~ /\S/ && defined($line));
 		unlink($temp);
 		if ($line =~ /^ERROR:\s+(.*)/ || $line =~ /FATAL.*:\s+(.*)/) {
-			&error(&text('esql', "<tt>$sql</tt>", "<tt>$1</tt>"));
+			local $err = $1;
+			&error(&text('esql', "<tt>".&html_escape($sql)."</tt>",
+				     "<tt>".&html_escape($err)."</tt>"));
 			}
 		elsif (!defined($line)) {
 			# Un-expected end of output ..
-			&error(&text('esql', "<tt>$sql</tt>",
-				     "<tt>$config{'psql'} failed</tt>"));
+			&error(&text('esql', "<tt>".&html_escape($sql)."</tt>",
+				     "<tt>".&html_escape($config{'psql'}).
+				     " failed</tt>"));
 			}
 		else {
 			# Read HTML-format output
@@ -476,7 +479,7 @@ else {
 		$emsg  = &read_file_contents($emsgf);
 		&unlink_file($emsgf) ;
 		if ($rc) {
-			&error("<pre>$emsg</pre>");
+			&error("<pre>".&html_escape($emsg)."</pre>");
 			}
 		else {
 			@titles = ( "     Command Invocation      " ) ;

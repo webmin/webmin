@@ -27,7 +27,8 @@ else {
 				     &postgresql_command_unix_user()) ||
 		&error($text{'exec_efile'});
 	&ui_print_header(undef, $text{'exec_title'}, "");
-	print &text('exec_fileout', "<tt>$in{'file'}</tt>"),"<p>\n";
+	print &text('exec_fileout', "<tt>".&html_escape($in{'file'})."</tt>"),
+	      "<p>\n";
 	$need_unlink = 1;
 	}
 
@@ -64,7 +65,8 @@ print "</pre>\n";
 					    'file' => $in{'file'} });
 unlink($file) if ($need_unlink);
 
-&ui_print_footer("exec_form.cgi?db=$in{'db'}&mode=file", $text{'exec_return'},
-		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("exec_form.cgi?db=".&urlize($in{'db'})."&mode=file",
+		 $text{'exec_return'},
+		 "edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 "", $text{'index_return'});
 

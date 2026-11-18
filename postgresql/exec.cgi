@@ -10,7 +10,7 @@ require './postgresql-lib.pl';
 if ($in{'clear'}) {
 	# Delete the history file
 	&unlink_file($commands_file.".".$in{'db'});
-	&redirect("exec_form.cgi?db=$in{'db'}");
+	&redirect("exec_form.cgi?db=".&urlize($in{'db'}));
 	}
 else {
 	# Run some SQL
@@ -22,7 +22,8 @@ else {
 	print &text('exec_out', "<tt>".&html_escape($cmd)."</tt>"),"<p>\n";
 	@data = @{$d->{'data'}};
 	if (@data) {
-		print &ui_columns_start($d->{'titles'});
+		print &ui_columns_start(
+			[ map { &html_escape($_) } @{$d->{'titles'}} ]);
 		foreach $r (@data) {
 			@prow = map { ref($_) eq 'ARRAY' ? join(", ", @$_)
 							 : $_ } @$r;
@@ -51,7 +52,7 @@ else {
 	&webmin_log("exec", undef, $in{'db'}, \%in);
 	}
 
-&ui_print_footer("exec_form.cgi?db=$in{'db'}", $text{'exec_return'},
-		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("exec_form.cgi?db=".&urlize($in{'db'}), $text{'exec_return'},
+		 "edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 "", $text{'index_return'});
 

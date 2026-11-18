@@ -76,14 +76,16 @@ if ($in{'dest'}) {
 	else {
 		&close_tempfile(OUT);
 		}
-	$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+	$desc = &text('table_header', "<tt>".&html_escape($in{'table'})."</tt>",
+		      "<tt>".&html_escape($in{'db'})."</tt>");
 	&ui_print_header($desc, $text{'csv_title'}, "", "csv");
 
 	@st = stat($in{'file'});
-	print &text('csv_done', "<tt>$in{'file'}</tt>",
+	print &text('csv_done', "<tt>".&html_escape($in{'file'})."</tt>",
 				&nice_size($st[7])),"<p>\n";
 
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+	&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}),
+		$text{'dbase_return'},
 		&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 

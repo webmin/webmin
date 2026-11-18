@@ -70,8 +70,10 @@ elsif (@tables) {
 		$tname = $g->[2] eq "public" ? $g->[0] : $g->[2].".".$g->[0];
 		$d = $g->[6];
 		local @cols;
-		push(@cols, "<a href='edit_grant.cgi?db=$d&table=$g->[0]&".
-		      "ns=$g->[2]&type=$type&search=".&urlize($in{'search'}).
+		push(@cols, "<a href='edit_grant.cgi?db=".&urlize($d).
+		      "&table=".&urlize($g->[0])."&ns=".&urlize($g->[2]).
+		      "&type=".&urlize($type).
+		      "&search=".&urlize($in{'search'}).
 		      "'>".&html_escape($tname)."</a>");
 		push(@cols, $text{"grant_$type"});
 		push(@cols, &html_escape($d));
