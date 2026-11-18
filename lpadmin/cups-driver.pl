@@ -106,7 +106,7 @@ else {
 	else {
 		&copy_source_dest($_[1]->{'ppd'}, $drv);
 		}
-	chmod(0777, $drv);
+	chmod(0644, $drv);
 	$cups_driver_options = $_[1]->{'opts'};	# for modify_printer
 	return $drv;
 	}
