@@ -460,9 +460,7 @@ my $pos = -1;
 foreach my $p (@params) {
 	$pos = index($sql, '?', $pos+1);
 	&error("Incorrect number of parameters") if ($pos < 0);
-	local $qp = $p;
-	$qp =~ s/'/''/g;
-	$qp = !defined($qp) ? 'NULL' : "'$qp'";
+	local $qp = !defined($p) ? 'NULL' : "'".&escapestr($p)."'";
 	$sql = substr($sql, 0, $pos).$qp.substr($sql, $pos+1);
 	$pos += length($qp)-1;
 	}
@@ -753,11 +751,14 @@ return $db;
 }
 
 # escapestr(string)
-# Returns a string with quotes escaped, for use in SQL
+# Returns a string escaped for use inside single quotes in SQL. Backslashes are
+# escaped first, so that a backslash cannot escape the closing quote.
 sub escapestr
 {
 my ($rv) = @_;
+$rv =~ s/\\/\\\\/g;
 $rv =~ s/'/''/g;
+$rv =~ s/\0/\\0/g;
 return $rv;
 }
 
@@ -2145,12 +2146,13 @@ my $supauth =
    $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
 if ($plugin && $supauth) {
 	my $sp = &get_plugin_sql($ver, $variant, $unescaped_plainpass, $plugin);
-	$sql = "alter user '$user'\@'$host' $sp";
+	$sql = "alter user '".&escapestr($user)."'\@'".
+	       &escapestr($host)."' $sp";
 	}
 else {
 	my $escaped_pass = &escapestr($unescaped_plainpass);
-	$sql = "set password for '".$user."'\@'".$host."' = ".
-	       "$password_func('$escaped_pass')";
+	$sql = "set password for '".&escapestr($user)."'\@'".
+	       &escapestr($host)."' = $password_func('$escaped_pass')";
 	}
 return $sql;
 }
@@ -2232,19 +2234,23 @@ if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 	my $col_to_priv_map = &perms_column_to_privilege_map();
 	foreach my $grant (keys %{ $perms }) {
 		my $grant_priv = &perms_column_to_privilege_map($grant);
-		&execute_sql_logged($mysql::master_db, "grant $grant_priv on *.* to '$user'\@'$host'");
+		&execute_sql_logged($mysql::master_db,
+			"grant $grant_priv on *.* to '".&escapestr($user).
+			"'\@'".&escapestr($host)."'");
 		delete $col_to_priv_map->{$grant};
 		}
 	foreach my $revoke_priv (values %{ $col_to_priv_map }) {
-		&execute_sql_logged($mysql::master_db, "revoke $revoke_priv on *.* from '$user'\@'$host'");
+		&execute_sql_logged($mysql::master_db,
+			"revoke $revoke_priv on *.* from '".&escapestr($user).
+			"'\@'".&escapestr($host)."'");
 		}
 	}
 else {
-	$sql = "update user set ".
+	my $sql = "update user set ".
 	       join(", ",map { "$_ = ?" } @{ $pfields }).
 	       " where host = ? and user = ?";
 	&execute_sql_logged($master_db, $sql,
-		(map { $perms{$_} ? 'Y' : 'N' } @{ $pfields }),
+		(map { $perms->{$_} ? 'Y' : 'N' } @{ $pfields }),
 		$host, $user);
 	}
 &execute_sql_logged($master_db, 'flush privileges');
@@ -2264,7 +2270,10 @@ my $oldhost = $sc->{'oldhost'};
 my ($ver, $variant) = &get_remote_mysql_variant();
 my $sql;
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-	&execute_sql_logged($master_db, "rename user '$olduser'\@'$oldhost' to '$user'\@'$host'");
+	&execute_sql_logged($master_db,
+		"rename user '".&escapestr($olduser)."'\@'".
+		&escapestr($oldhost)."' to '".&escapestr($user)."'\@'".
+		&escapestr($host)."'");
 	}
 else {
 	&execute_sql_logged($master_db,
@@ -2301,7 +2310,8 @@ if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 	my $auth = $plugin ?
 		&get_plugin_sql($ver, $variant, $pass, $plugin) :
 		"identified by '".&escapestr($pass)."'";
-	my $sql = "create user '$user'\@'$host' $auth";
+	my $sql = "create user '".&escapestr($user)."'\@'".
+		  &escapestr($host)."' $auth";
 	&execute_sql_logged($master_db, $sql);
 	&execute_sql_logged($master_db, 'flush privileges');
 
@@ -2329,7 +2339,8 @@ else {
 	if ($variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0) {
 		$plugin = $plugin ? "with $plugin" : "";
 		&execute_sql_logged($master_db,
-		    "alter user '$user'\@'$host' identified $plugin by ".
+		    "alter user '".&escapestr($user)."'\@'".
+		    &escapestr($host)."' identified $plugin by ".
 		        "'".&escapestr($pass)."'");
 		&execute_sql_logged($master_db, 'flush privileges');
 		}
