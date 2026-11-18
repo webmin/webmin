@@ -92,4 +92,19 @@ subtest 'DBI receives one quoted database name' => sub {
 	   'spaces, quotes, backslashes and punctuation stay in the name');
 };
 
+subtest 'string constants keep their value under both string modes' => sub {
+	for my $value (@values) {
+		for my $standard (0, 1) {
+			my ($got, $rest) = pg_literal(
+				main::pg_quote_lit($value)." TAIL", $standard);
+			is($got, $value,
+			   "value read back with standard=$standard");
+			is($rest, ' TAIL',
+			   'the closing quote is the one added');
+			}
+		}
+	is(main::pg_quote_lit("it's"), "'it''s'",
+	   'values without backslashes keep the plain form');
+};
+
 done_testing();

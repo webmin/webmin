@@ -829,6 +829,12 @@ sub pg_quote_lit
 {
 my ($value) = @_;
 $value =~ s/'/''/g;
+if ($value =~ /\\/) {
+	# An escape string reads backslashes the same way whatever the
+	# server's standard_conforming_strings setting is
+	$value =~ s/\\/\\\\/g;
+	return "E'$value'";
+	}
 return "'$value'";
 }
 
