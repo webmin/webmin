@@ -161,6 +161,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		local $grp = &my_getgrgid($gids[0]);
 
 		$real_home = undef;
+		$manual_home = 0;
 		if ($access{'autohome'}) {
 			# Assign home dir automatically based on ACL
 			$user{'home'} = &auto_home_dir($access{'home'},
@@ -191,6 +192,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			else {
 				# Use given home dir
 				$user{'home'} = $line[6];
+				$manual_home = 1;
 				}
 			}
 		$real_home ||= $user{'home'};
@@ -201,9 +203,25 @@ foreach $line (split(/[\r\n]+/, $data)) {
 				    $text{'usave_ecreate'});
 			next;
 			}
-		local $ch = &check_user(\%user);
+		local @ulist = &list_users();
+		local $ch = &check_user(\%user) ||
+			    &check_user_uid_owner(\%access, $user{'uid'},
+						  $user{'user'}, \@ulist);
+		if (!$ch && $manual_home) {
+			# Restricted admins cannot use the base or another
+			# user's home directory
+			$ch = &check_user_home(\%access, $user{'home'}, undef,
+					       $user{'user'}, \@ulist);
+			}
 		if ($ch) {
 			print &text('batch_ecaccess', $lnum, $ch),"\n";
+			next;
+			}
+
+		# The new user must still be within this admin's limits
+		if (!&can_edit_user(\%access, \%user)) {
+			print &text('batch_ecaccess', $lnum,
+				    $text{'usave_eeditafter'}),"\n";
 			next;
 			}
 
@@ -310,8 +328,10 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		$other_err = $@;
 		$error_must_die = 0;
 
-		if ($in{'copy'} && $in{'makehome'}) {
-			# Copy files to user's home directory
+		if ($in{'copy'} && $in{'makehome'} &&
+		    &can_change_home_directory(\%access, \%user)) {
+			# Copy files to user's home directory, unless it is
+			# an existing directory owned by someone else
 			local $groupname = &my_getgrgid($user{'gid'});
 			local $uf = &get_skel_directory(\%user, $groupname);
 			&copy_skel_files($uf, $user{'home'},
@@ -392,12 +412,18 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			}
 		&made_changes();
 
-		# Delete his home directory
+		# Delete his home directory, if this admin may
 		if ($in{'delhome'} &&
 		    $user->{'home'} &&
 		    $user->{'home'} !~ /^\/+$/ &&
 		    $access{'delhome'}) {
-			&delete_home_directory($user);
+			if (&can_change_home_directory(\%access, $user)) {
+				&delete_home_directory($user);
+				}
+			else {
+				print &text('udel_ehomeowner',
+				    &html_escape($user->{'home'})),"\n";
+				}
 			}
 
 		print "<b>",&text('batch_deleted',$user->{'user'}),"</b>\n";
@@ -505,6 +531,17 @@ foreach $line (split(/[\r\n]+/, $data)) {
 
 		# Check access control restrictions
 		local $ch = &check_user(\%user, \%olduser);
+		if (!$ch && $user{'uid'} != $olduser{'uid'}) {
+			$ch = &check_user_uid_owner(\%access, $user{'uid'},
+						    $olduser{'user'}, \@ulist);
+			}
+		$ch ||= &check_user_home(\%access, $user{'home'},
+					 $olduser{'home'}, $olduser{'user'},
+					 \@ulist);
+		if (!$ch && !&can_edit_user(\%access, \%user)) {
+			# The changed user must still be within the limits
+			$ch = $text{'usave_eeditafter'};
+			}
 		if ($ch) {
 			print &text('batch_emaccess', $lnum, $ch),"\n";
 			next;
@@ -621,6 +658,10 @@ if (!$access{'autohome'}) {
 	if (!&is_under_directory($access{'home'}, $_[0]->{'home'})) {
 		return &text('usave_ehomepath', $_[0]->{'home'});
 		}
+	}
+elsif ($_[1] && $_[1]->{'home'} ne $_[0]->{'home'}) {
+	# Automatic homes cannot be changed by hand
+	return &text('usave_ehomepath', $_[0]->{'home'});
 	}
 
 # check for invalid shell

@@ -1782,6 +1782,82 @@ chdir($previous) || &error("Cannot return to $previous: $!");
 &error($err) if ($err);
 }
 
+=head2 check_user_uid_owner(&acl, uid, username, &users)
+
+For restricted admins, returns an error message if the UID already belongs to
+a user other than username that this admin cannot edit, such as root. The
+users list is checked, plus the system password database.
+
+=cut
+sub check_user_uid_owner
+{
+my ($acl, $uid, $username, $users) = @_;
+return undef if (!&restricted_user_acl($acl));
+
+# Find every known user with this UID
+my @owners = grep { $_->{'uid'} == $uid } @$users;
+my @pw = getpwuid($uid);
+push(@owners, { 'user' => $pw[0], 'uid' => $pw[2], 'gid' => $pw[3] })
+	if (@pw);
+
+# Another account with the same UID would share its identity
+foreach my $u (@owners) {
+	next if ($u->{'user'} eq $username);
+	return &text('usave_euidowner', $uid) if (!&can_edit_user($acl, $u));
+	}
+return undef;
+}
+
+=head2 check_user_home(&acl, home, old-home, username, &users)
+
+For restricted admins, returns an error message if a manually entered home
+directory is the allowed or configured base directory itself, or is already
+the home of a user other than username. An unchanged home is always accepted.
+
+=cut
+sub check_user_home
+{
+my ($acl, $home, $oldhome, $username, $users) = @_;
+return undef if (!&restricted_user_acl($acl));
+return undef if (defined($oldhome) && $home eq $oldhome);
+
+# Compare cleaned-up paths, so that /home/ and /home/./ match /home
+my $canon = sub {
+	my $p = &simplify_path($_[0]);
+	return defined($p) ? &resolve_links($p) : $_[0];
+	};
+my $chome = &$canon($home);
+foreach my $base ($acl->{'home'} || "/", $config{'home_base'}) {
+	next if ($base eq '');
+	return &text('usave_ehomebase', &html_escape($home))
+		if ($chome eq &$canon($base));
+	}
+
+# Deleting one of two users would remove the other user's files
+foreach my $u (@$users) {
+	next if ($u->{'user'} eq $username || $u->{'home'} eq '');
+	return &text('usave_ehomeused', &html_escape($home))
+		if (&$canon($u->{'home'}) eq $chome);
+	}
+return undef;
+}
+
+=head2 can_change_home_directory(&acl, &user, [directory])
+
+Returns 1 if the user's home directory may be chowned or deleted on behalf of
+an admin with the given ACL. This is always allowed for admins who can edit
+every user. Otherwise the directory must be missing or owned by the user.
+
+=cut
+sub can_change_home_directory
+{
+my ($acl, $user, $dir) = @_;
+return 1 if (!&restricted_user_acl($acl));
+$dir ||= $user->{'home'};
+my @st = stat(&resolve_links($dir));
+return !@st || $st[4] == $user->{'uid'};
+}
+
 =head2 refresh_nscd
 
 Sends a HUP signal to the nscd process, so that any caches are reloaded.

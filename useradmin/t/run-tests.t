@@ -204,4 +204,74 @@ subtest 'global ACL home fallback for Webmin-only users' => sub {
 	   'explicit otherdirs still permits configured paths');
 	};
 
+# Admins limited to some users must not take over other users' identities,
+# home directories or files.
+subtest 'restricted admin UID and home helpers' => sub {
+	my %full = ( 'uedit_mode' => 0, 'home' => '/' );
+	my %named = ( 'uedit_mode' => 2, 'uedit' => 'alice bob',
+		      'home' => $tmp );
+	my @users = (
+		{ 'user' => 'alice', 'uid' => 50001, 'home' => "$tmp/a" },
+		{ 'user' => 'bob', 'uid' => 50002, 'home' => "$tmp/b" },
+		{ 'user' => 'carol', 'uid' => 50003, 'home' => "$tmp/c" },
+		{ 'user' => 'root', 'uid' => 0, 'home' => '/root' } );
+	ok(!restricted_user_acl(\%full), 'all-user admins are unrestricted');
+	ok(restricted_user_acl(\%named), 'name-limited admins are restricted');
+
+	# UIDs of uneditable users, including root, are refused
+	like(check_user_uid_owner(\%named, 0, 'alice', \@users), qr/UID 0/,
+	     'root UID is refused for a name-limited admin');
+	ok(check_user_uid_owner(\%named, 50003, 'alice', \@users),
+	   'UID of an uneditable user is refused');
+	ok(!check_user_uid_owner(\%named, 50002, 'alice', \@users),
+	   'UID of an editable user is allowed');
+	ok(!check_user_uid_owner(\%named, 50001, 'alice', \@users),
+	   'own UID is allowed');
+	ok(!check_user_uid_owner(\%named, 59999, 'alice', \@users),
+	   'unused UID is allowed');
+	ok(!check_user_uid_owner(\%full, 0, 'alice', \@users),
+	   'unrestricted admins keep full UID choice');
+
+	# The home base and other users' homes are refused
+	for my $home ($tmp, "$tmp/", "$tmp/./") {
+		ok(check_user_home(\%named, $home, undef, 'alice', \@users),
+		   "home base $home is refused");
+		}
+	{
+		no warnings 'once';
+		local $main::config{'home_base'} = "$tmp/homes";
+		ok(check_user_home(\%named, "$tmp/homes", undef, 'alice',
+				   \@users),
+		   'configured home base is refused');
+	}
+	ok(check_user_home(\%named, "$tmp/c", "$tmp/a", 'alice', \@users),
+	   'another user home is refused');
+	ok(check_user_home(\%named, "$tmp/c/", undef, 'dave', \@users),
+	   'another user home with a trailing slash is refused');
+	ok(!check_user_home(\%named, "$tmp/a", "$tmp/a", 'alice', \@users),
+	   'unchanged home is accepted');
+	ok(!check_user_home(\%named, "$tmp/nested/alice", undef, 'alice',
+			    \@users),
+	   'new home below the base is accepted');
+	ok(!check_user_home(\%full, '/', undef, 'alice', \@users),
+	   'unrestricted admins keep full home choice');
+
+	# Existing directories are only changed when owned by the user
+	my $owned = "$tmp/owned";
+	make_path($owned);
+	my $uid = (stat($owned))[4];
+	ok(can_change_home_directory(\%named,
+		{ 'uid' => $uid, 'home' => $owned }),
+	   'own directory can be changed');
+	ok(!can_change_home_directory(\%named,
+		{ 'uid' => $uid + 1, 'home' => $owned }),
+	   'directory owned by another UID is protected');
+	ok(can_change_home_directory(\%named,
+		{ 'uid' => $uid + 1, 'home' => "$tmp/missing" }),
+	   'missing directory can be created');
+	ok(can_change_home_directory(\%full,
+		{ 'uid' => $uid + 1, 'home' => $owned }),
+	   'unrestricted admins keep existing behaviour');
+	};
+
 done_testing();

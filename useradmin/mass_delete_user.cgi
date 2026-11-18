@@ -223,7 +223,15 @@ else {
 			&unlock_user_files();
 
 			if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
-			    $access{'delhome'}) {
+			    $access{'delhome'} &&
+			    !&can_change_home_directory(\%access, $user)) {
+				# Keep directories the user did not own
+				print &text('udel_ehomeowner', "<tt>".
+				    &html_escape($user->{'home'})."</tt>"),
+				    "<p>\n";
+				}
+			elsif ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
+			       $access{'delhome'}) {
 				print "$text{'udel_home'}<br>\n";
 				&lock_file($user->{'home'});
 				&delete_home_directory($user);
