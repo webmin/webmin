@@ -49,6 +49,7 @@ else {
 	}
 my $lnum = 0;
 my ($gotsoa, $aftersoa) = (0, 0);
+my %generators;
 while($line = <$FILE>) {
 	my ($glen, $merged_2, $merge);
 	$glen = 0;
@@ -74,6 +75,11 @@ while($line = <$FILE>) {
 		}
 	else { 
 		$comment = "";
+		}
+
+	# Keep the original RDATA, including quotes around values with spaces.
+	if ($line =~ /^\s*\$generate\s+(\S+)\s+(\S+)\s+((?:(?:[0-9][0-9wdhms]*|IN|CH|HS)\s+)*)(\S+)\s+(.+?)\s*\z/i) {
+		$generators{$lnum} = [ $1, $2, $4, $5, $comment, $3 ];
 		}
 
 	# split line into tokens
@@ -168,10 +174,10 @@ while($i < @tok) {
 			    'num' => $num++,
 			    'type' => '' };
 		my @gv;
-		while($lnum[++$i] == $gen->{'line'}) {
+		while(++$i < @tok && $lnum[$i] == $gen->{'line'}) {
 			push(@gv, $tok[$i]);
 			}
-		$gen->{'generate'} = \@gv;
+		$gen->{'generate'} = $generators{$gen->{'line'}} || \@gv;
 		push(@rv, $gen);
 		}
 	elsif ($tok[$i] =~ /^\$ttl$/i) {
@@ -418,24 +424,24 @@ foreach my $r (sort { $b->{'line'} <=> $a->{'line'} } @$recs) {
 &flush_file_lines($fn);
 }
 
-# create_generator(file, range, lhs, type, rhs, [comment])
+# create_generator(file, range, lhs, type, rhs, [comment], [ttl/class prefix])
 # Add a new $generate line to some zone file
 sub create_generator
 {
 my $f = &make_chroot(&absolute_path($_[0]));
 my $lref = &read_file_lines($f);
-push(@$lref, join(" ", '$generate', @_[1..4]).
+push(@$lref, join(" ", '$generate', @_[1..2], ($_[6] || "").$_[3], $_[4]).
 	     ($_[5] ? " ;$_[5]" : ""));
 &flush_file_lines($f);
 }
 
-# modify_generator(file, &old, range, lhs, type, rhs, [comment])
+# modify_generator(file, &old, range, lhs, type, rhs, [comment], [ttl/class prefix])
 # Updates an existing $generate line in some zone file
 sub modify_generator
 {
 my $f = &make_chroot(&absolute_path($_[0]));
 my $lref = &read_file_lines($f);
-$lref->[$_[1]->{'line'}] = join(" ", '$generate', @_[2..5]).
+$lref->[$_[1]->{'line'}] = join(" ", '$generate', @_[2..3], ($_[7] || "").$_[4], $_[5]).
 			   ($_[6] ? " ;$_[6]" : "");
 &flush_file_lines($f);
 }

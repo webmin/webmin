@@ -58,9 +58,10 @@ if ($in{'show'}) {
 			#$rhs =~ s/\$/$i/g;
 			$rhs =~ s/(\$(\{[^\}]*\})?)/&expand_mods($i,$2)/ge;
 			$rhs =~ s/\0/\$/g;
-			my $rhsfull = &check_ipaddress($rhs) ? $rhs :
-				   $rhs =~ /\.$/ ? $rhs :
-				    $dom eq "." ? "$rhs." : "$rhs.$dom";
+			my $rhsfull = $rhs;
+			if ($gv[2] =~ /^(?:NS|CNAME|DNAME|PTR)\z/i && $rhs !~ /\.$/) {
+				$rhsfull = $dom eq "." ? "$rhs." : "$rhs.$dom";
+				}
 
 			# Generator lines come from the zone file
 			print &ui_columns_row([
@@ -99,19 +100,23 @@ for(my $i=0; defined($in{"type_$i"}); $i++) {
 		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+\z/ ||
 			&error(&text('gen_ename', $i+1));
 		push(@gv, $in{"name_$i"});
-		# BIND can only generate these record types
-		$in{"type_$i"} =~ /^(PTR|CNAME|NS|A|AAAA|DNAME)\z/i ||
+		# A generator accepts a single DNS record type.
+		$in{"type_$i"} =~ /\A[A-Za-z][A-Za-z0-9-]*\z/ ||
 			&error(&text('gen_etype', $i+1));
 		push(@gv, $in{"type_$i"});
-		$in{"value_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+\z/ ||
+		# BIND takes one RDATA token, which can be quoted to include spaces.
+		my $atom = qr/(?:[^\s();"\\\0]|\\[^\r\n\0])+/;
+		my $quoted = qr/"(?:[^"\\\r\n\0]|\\[^\r\n\0])*"/;
+		$in{"value_$i"} =~ /\A(?:$atom|$quoted)\z/ ||
 			&error(&text('gen_evalue', $i+1));
 		push(@gv, $in{"value_$i"});
 		# The comment ends the generator line
 		$in{"cmt_$i"} =~ /[\r\n\0]/ &&
 			&error(&text('gen_ecmt', $i+1));
-		push(@gv, $in{"cmt_$i"}) if ($in{"cmt_$i"});
+		push(@gv, $in{"cmt_$i"});
 		if ($i < @gens) {
-			&modify_generator($gens[$i]->{'file'}, $gens[$i], @gv);
+			&modify_generator($gens[$i]->{'file'}, $gens[$i], @gv,
+					  $gens[$i]->{'generate'}->[5]);
 			}
 		else {
 			&create_generator($file, @gv);

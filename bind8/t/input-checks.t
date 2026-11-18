@@ -169,6 +169,32 @@ is($err, '', 'a valid generator is saved');
 like(&read_text($zonefile), qr/^\$generate 1-2 \$ PTR h\$ ;hosts$/m,
      'the generator line is written');
 
+my $gen_zone = read_text($zonefile);
+$gen_zone =~ s/^\$generate.*$/\$GENERATE 1-2 tag-\$ 300 IN TXT branch-\$ ;branches/m;
+write_text($zonefile, $gen_zone);
+($out, $err) = run_cgi('list_gen.cgi', { zone => 'example.com', view => '' });
+like($out, qr/<option[^>]+value="TXT"[^>]*selected/i, 'existing TXT type is selected');
+($out, $err) = run_cgi('save_gen.cgi', {
+	zone => 'example.com', view => '', type_0 => 'TXT', start_0 => 1,
+	stop_0 => 2, name_0 => 'tag-$', value_0 => 'branch-$', cmt_0 => 'branches',
+	type_1 => 'MX', start_1 => 1, stop_1 => 2, name_1 => 'mail-$',
+	value_1 => '"10 mx$.example.com."' });
+is($err, '', 'TXT and quoted MX generators save');
+like(read_text($zonefile), qr/300 IN TXT branch-\$ ;branches/, 'TTL, class and comment kept');
+like(read_text($zonefile), qr/MX "10 mx\$\.example\.com\."/, 'MX preference and host kept');
+
+SKIP: {
+	my $check = &has_command('named-checkzone');
+	skip 'named-checkzone is not installed', 1 unless $check;
+	my $test = "$zonedir/generators.test";
+	write_text($test, "\$TTL 3600\n".
+		"\@ IN SOA ns1.example.com. hostmaster.example.com. (1 3600 600 86400 3600)\n".
+		"\@ IN NS ns1.example.com.\nns1 IN A 192.0.2.1\n".
+		"mx1 IN A 192.0.2.2\nmx2 IN A 192.0.2.3\n".
+		join("\n", grep { /^\$generate/i } split(/\n/, read_text($zonefile)))."\n");
+	is(system($check, '-q', 'example.com', $test), 0, 'BIND loads the saved generators');
+	}
+
 # --- delete_view only deletes views ----------------------------------------
 my $parent = &get_config_parent();
 my @names = map { $_->{'name'} } @{$parent->{'members'}};
