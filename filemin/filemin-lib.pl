@@ -545,10 +545,12 @@ for (my $count = 1 + $pagelimit * ($page - 1);
 		'%Y/%m/%d - %T',
 		localtime($list[$count - 1][10]));
 
+	# Encode the filename for JavaScript, then for the HTML attribute.
+	my $rename_args = html_escape(convert_to_json([ $link ]));
 	$actions =
 		"<a class='action-link' " .
 		"href='javascript:void(0)' " .
-		"onclick='renameDialog(\"$vlink\")' " .
+		"onclick='renameDialog(" . $rename_args . "[0])' " .
 		"title='$text{'rename'}' " .
 		"data-container='body'>" .
 		"$rename_icon</a>";
@@ -918,7 +920,15 @@ sub plain_dialogs
 my $rv = "";
 my $hidden_path = &ui_hidden('path', $path);
 my $cancel = $text{'dialog_cancel'};
-my $recursive = &ui_checkbox('recursive', 'true', $text{'dialog_recursive'}, 0);
+# recursive(dialog)
+# Gives each checkbox and its label a matching, dialog-specific ID.
+my $recursive = sub {
+	my ($dialog) = @_;
+	my $box = &ui_checkbox('recursive', 'true',
+			       $text{'dialog_recursive'}, 0);
+	$box =~ s/recursive_true/recursive_true_$dialog/g;
+	return $box;
+	};
 my $apply = sub {
 	# A form sent to the selection, closed natively if the script fails
 	my ($script, $name) = @_;
@@ -1119,7 +1129,7 @@ $rv .= &ui_dialog({
 		  &ui_textbox('owner', '', 20, 0, undef, 'required') ],
 		[ $text{'group_name'},
 		  &ui_textbox('group', '', 20, 0, undef, 'required') ],
-		[ undef, $recursive ],
+		[ undef, &$recursive('chown') ],
 		]),
 	'buttons' => $change,
 	'close' => $cancel });
@@ -1137,7 +1147,7 @@ foreach my $tool ([ 'chattr', 'tag', 'attr_label' ],
 		'body' => &plain_dialog_table([
 			[ $text{$label},
 			  &ui_textbox('label', '', 25, 0, undef, 'required') ],
-			[ undef, $recursive ],
+			[ undef, &$recursive($what) ],
 			]),
 		'buttons' => $change,
 		'close' => $cancel });

@@ -119,10 +119,10 @@ else {
 	# Create or delete the cron job
 	my $oldjob = $job;
 	if ($lconf->{'sched'}) {
-		# Create cron job and script
+		# Prepare the scheduled command and its wrapper script.
 		$job->{'user'} = 'root';
 		$job->{'active'} = 1;
-		$job->{'command'} = $cron_cmd." ".quotemeta($in{'file'});
+		$job->{'command'} = &cron_log_command($in{'file'});
 		&lconf_to_cron($lconf, $job);
 		&lock_file($cron_cmd);
 		&cron::create_wrapper($cron_cmd, $module_name, "webalizer.pl");

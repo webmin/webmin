@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special because for sender transport maps
+# Save transport map settings for sender addresses.
 
 
 require './postfix-lib.pl';    ## no critic
@@ -21,7 +21,7 @@ $access{'dependent'} || &error($text{'dependent_ecannot'});
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in);
+&save_options(\%in, [ ], [ "sender_dependent_default_transport_maps" ]);
 &ensure_map("sender_dependent_default_transport_maps");
 &after_save();
 &unlock_postfix_files();

@@ -354,6 +354,47 @@ $str =~ s/<(?:[^>'"]*|(['"]).*?\1)*>/$replacement/gs;
 return $str;
 }
 
+=head2 html_sanitize(string, [allowed-tags])
+
+Keeps basic HTML formatting, removes all tag attributes, and escapes text
+without double-escaping entities. Unsupported tags are removed, leaving their
+contents. The result is for use in HTML body content, not attribute values.
+
+allowed-tags is an optional array reference that narrows the supported tags.
+It cannot enable active elements such as script, style or iframe.
+
+=cut
+sub html_sanitize
+{
+my ($str, $tags) = @_;
+# Only formatting elements can be emitted, even when tags are requested.
+my %safe = map { $_ => 1 } qw(a abbr b bdi bdo blockquote br caption code
+	col colgroup dd del div dl dt em h1 h2 h3 h4 h5 h6 hr i ins kbd li mark
+	ol p pre q s samp small span strong sub sup table tbody td tfoot th
+	thead tr tt u ul var);
+if (defined($tags)) {
+	# Callers may restrict the supported formatting tags.
+	my %requested = map { lc($_) => 1 } @$tags;
+	delete($safe{$_}) foreach grep { !$requested{$_} } keys %safe;
+	}
+
+# Separate complete tags from text, allowing quoted > in attributes.
+my @parts = split(m{(<(?:[^>'"]|"[^"]*"|'[^']*')*>)}s, $str // "");
+foreach my $i (0 .. $#parts) {
+	if ($i % 2) {
+		# Rebuild supported tags using only their name and closing slash.
+		my ($close, $tag) = $parts[$i] =~ m{^<(/?)([a-z][a-z0-9:-]*)\b}i;
+		$tag = lc($tag || "");
+		$parts[$i] = $safe{$tag} ? "<$close$tag>" : "";
+		}
+	else {
+		# Escape text and incomplete markup without decoding entities.
+		$parts[$i] = &html_escape($parts[$i], 1);
+		}
+	}
+return join("", @parts);
+}
+
 =head2 quote_escape(string, [only-quote])
 
 Converts ' and " characters in a string into HTML entities, and returns it.
@@ -5356,44 +5397,50 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
 
-		# Replace ACLs for user
+		# Replace ACLs only for users found in the database.
 		if ($foundindb) {
-			# Prepare the SQL commands
+			# Prepare both commands, stopping on the first error.
 			my $delcmd = $dbh->prepare(
 				"delete from webmin_user_acl ".
 				"where id = ? and module = ?");
-			my $inscmd = $dbh->prepare(
+			my $inscmd = $delcmd && $dbh->prepare(
 				"insert into webmin_user_acl ".
 				"(id,module,attr,value) values (?,?,?,?)");
 			if (!$delcmd || !$inscmd) {
+				# Save the error before cleanup can clear it.
+				my $err = $dbh->errstr;
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('euserdbacl', $err));
 				}
 
-			# Delete old permissions and add new ones inside
-			# an SQL transaction
-			my $trans = $dbh->{'AutoCommit'};
-			$dbh->begin_work() if ($trans);
+			# Start a transaction only if AutoCommit is enabled.
+			# disconnect_userdb commits it and reports failures.
+			$dbh->begin_work() if ($dbh->{'AutoCommit'});
 			if (!$delcmd->execute($id, $m)) {
+				# Keep the SQL error before rolling back.
+				my $err = $dbh->errstr;
 				$dbh->rollback();
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('euserdbacl', $err));
 				}
 			$delcmd->finish();
 			if ($acl) {
+				# Insert new entries unless this is a reset.
 				foreach my $a (keys %$acl) {
 					if (!$inscmd->execute($id,$m,$a,
 							   $acl->{$a})) {
+						# Undo the whole replacement
+						# and keep the insert error.
+						my $err = $dbh->errstr;
 						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('euserdbacl2',
-							     $dbh->errstr));
+							     $err));
 						}
 					$inscmd->finish();
 					}
 				}
-			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
@@ -5470,7 +5517,7 @@ if (!$foundindb) {
 
 Updates the acl hash for some group and module. The parameters are :
 
-=item acl - Hash reference for the new access control options.
+=item acl - Hash reference for the new access control options, or undef to clear.
 
 =item group - Group name to update.
 
@@ -5491,7 +5538,7 @@ if (!$nogroup && &foreign_check("acl")) {
 	foreach my $pg (&acl::list_groups()) {
 		if (&indexof('@'.$g, @{$pg->{'members'}}) >= 0 &&
 		    &indexof($m, @{$pg->{'modules'}}) >= 0) {
-			$group = $g;
+			$group = $pg;
 			last;
 			}
 		}
@@ -5518,44 +5565,50 @@ if ($userdb) {
 		$foundindb = 1 if (defined($id));
 		$cmd->finish();
 
-		# Replace ACLs for group
+		# Replace ACLs only for groups found in the database.
 		if ($foundindb) {
-			# Prepare the SQL commands
+			# Prepare both commands, stopping on the first error.
 			my $delcmd = $dbh->prepare(
 				"delete from webmin_group_acl ".
 				"where id = ? and module = ?");
-			my $inscmd = $dbh->prepare(
+			my $inscmd = $delcmd && $dbh->prepare(
 				"insert into webmin_group_acl ".
 				"(id,module,attr,value) values (?,?,?,?)");
 			if (!$delcmd || !$inscmd) {
+				# Save the error before cleanup can clear it.
+				my $err = $dbh->errstr;
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('euserdbacl', $dbh->errstr));
+				&error(&text('egroupdbacl', $err));
 				}
 
-			# Delete old permissions and add new ones inside
-			# an SQL transaction
-			my $trans = $dbh->{'AutoCommit'};
-			$dbh->begin_work() if ($trans);
+			# Start a transaction only if AutoCommit is enabled.
+			# disconnect_userdb commits it and reports failures.
+			$dbh->begin_work() if ($dbh->{'AutoCommit'});
 			if (!$delcmd->execute($id, $m)) {
+				# Keep the SQL error before rolling back.
+				my $err = $dbh->errstr;
 				$dbh->rollback();
 				&disconnect_userdb($userdb, $dbh);
-				&error(&text('egroupdbacl', $dbh->errstr));
+				&error(&text('egroupdbacl', $err));
 				}
 			$delcmd->finish();
 			if ($acl) {
+				# Insert new entries unless this is a reset.
 				foreach my $a (keys %$acl) {
 					if (!$inscmd->execute($id,$m,$a,
 							   $acl->{$a})) {
+						# Undo the whole replacement
+						# and keep the insert error.
+						my $err = $dbh->errstr;
 						$dbh->rollback();
 						&disconnect_userdb(
 							$userdb, $dbh);
 						&error(&text('egroupdbacl2',
-							     $dbh->errstr));
+							     $err));
 						}
 					$inscmd->finish();
 					}
 				}
-			$dbh->commit() if ($trans);
 			}
 		}
 	elsif ($proto eq "ldap") {
@@ -9565,6 +9618,15 @@ if ($serv->{'checkssl'}) {
 		$reqs->{'capath'} = $sconfig{'capath'};
 		}
 	}
+# Enforce saved pins even without CA checks. Cloudmin guests must have a pin.
+my $fingerprint;
+if (defined($serv->{'sslfingerprint'}) || $serv->{'cloudmin_uuid'}) {
+	# Add the pin without replacing any requested CA or hostname checks.
+	&foreign_require("servers");
+	$fingerprint = &servers::server_ssl_fingerprints($serv);
+	$reqs ||= { 'host' => $serv->{'host'}, 'nocheckhost' => 1 };
+	$reqs->{'fingerprint'} = $fingerprint;
+	}
 
 # Work out the username and password
 my ($user, $pass);
@@ -9579,6 +9641,7 @@ else {
 	$pass = $serv->{'pass'};
 	}
 
+# Keep the selected RPC mode while checking the initial HTTPS connection.
 if ($serv->{'fast'} || !$sn) {
 	# Negotiate the selected fast RPC transport on the first call.
 	if (!$fast_fh_cache{$sn} && $sn) {
@@ -10327,7 +10390,9 @@ The parameters are :
 
 =item bindip - IP address to bind to for outgoing HTTP connection
 
-=item certreqs - A hash ref containing options for remote cert verification
+=item certreqs - A hash ref containing remote certificate checks. fingerprint
+is a comma-separated list of lower-case SHA-256 hex values and requires SSL.
+nocheckhost skips hostname matching without disabling the fingerprint check.
 
 =item address-family - If set to 4 or 6, connects only using that IP family.
 
@@ -10336,6 +10401,9 @@ sub make_http_connection
 {
 my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs,
     $family) = @_;
+# A caller cannot bypass a required certificate check by disabling SSL.
+return "SSL is required for a pinned certificate"
+	if (!$ssl && $certreqs && $certreqs->{'fingerprint'});
 my $htxt;
 if (ref($headers) eq 'ARRAY') {
 	# Headers are name-value pairs
@@ -10620,8 +10688,10 @@ return undef;
 
 =head2 validate_ssl_connection(&ssl-handle, hostname, &requirements)
 
-Validates the SSL certificate presented by a remote server, and returns an
-error message if any requirements were not met.
+Validates the peer certificate on an SSL handle. Returns an error message on
+failure or undef on success. requirements can include fingerprint, a list of
+comma-separated lower-case SHA-256 hex values. nocheckhost skips matching the
+hostname but keeps the pin check and any other requested checks.
 
 =cut
 sub validate_ssl_connection
@@ -10630,8 +10700,18 @@ my ($ssl, $host, $reqs) = @_;
 $host = lc($host);
 my $x509 = Net::SSLeay::get_peer_certificate($ssl);
 $x509 || return "Could not fetch peer certificate";
-if ($reqs->{'host'} || $reqs->{'checkhost'}) {
-	# Check for sensible hostname
+if ($reqs->{'fingerprint'}) {
+	# Compare the certificate's SHA-256 digest with the trusted pins.
+	# A missing digest also fails; it must never disable verification.
+	my $got = lc(eval { Net::SSLeay::X509_get_fingerprint($x509,
+							      "sha256") });
+	$got =~ s/://g;
+	$got && &indexof($got, split(/,/, $reqs->{'fingerprint'})) >= 0 ||
+		return "Certificate fingerprint does not match the one saved ".
+		       "for this server";
+	}
+if (($reqs->{'host'} || $reqs->{'checkhost'}) && !$reqs->{'nocheckhost'}) {
+	# Apply the requested hostname check in addition to any pin check.
 	my @subjects;
 	my $subject = Net::SSLeay::X509_NAME_oneline(
 		Net::SSLeay::X509_get_subject_name($x509));
@@ -14135,9 +14215,11 @@ my ($str, $h, $force) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 my $err;
-# Finish this operation even when the connection stays in the cache.
-if ($str =~ /^(mysql|postgresql):/ && !$h->{'AutoCommit'} && !$h->commit()) {
-	# Discard a failed transaction and report its error after closing.
+# Commit SQL changes even when the connection stays in the cache.
+# DBI can return success after a failed commit when restoring AutoCommit.
+if ($str =~ /^(mysql|postgresql):/ && !$h->{'AutoCommit'} &&
+    (!$h->commit() || $h->err())) {
+	# Keep the error before closing and removing the failed handle.
 	$err = "Failed to commit user database changes : ".$h->errstr;
 	$force = 1;
 	}

@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special because for transport tables
+# Save mail routing map settings.
 
 
 require './postfix-lib.pl';    ## no critic
@@ -23,7 +23,7 @@ $access{'transport'} || &error($text{'transport_ecannot'});
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in);
+&save_options(\%in, [ ], [ "transport_maps" ]);
 &ensure_map("transport_maps");
 &after_save();
 &unlock_postfix_files();

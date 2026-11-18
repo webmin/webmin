@@ -8,8 +8,15 @@
 require './postfix-lib.pl';    ## no critic
 use strict;
 use warnings;
-our ($nfunc, $vfunc, $virtual_maps, %in, %text);
+our ($nfunc, $vfunc, $virtual_maps, %access, %in, %text);
 &ReadParse();
+&can_edit_map($in{'map_name'}) || &error($text{'chooser_ecannot'});
+
+# Check map paths before displaying their entries.
+foreach my $file (&get_maps_files(&get_real_value($in{'map_name'}))) {
+	&is_under_directory($access{'dir'}, $file) ||
+		&error(&text('mapping_ecannot', $access{'dir'}));
+	}
 
 &ui_print_header(undef, $text{'edit_map_title'}, "");
 

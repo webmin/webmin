@@ -71,6 +71,8 @@ for($i=0; $i<$max; $i++) {
 $rv .= "</table>\n";
 return (2, $text{'mod_band_bandwidth'}, $rv);
 }
+# save_BandWidth(&editor)
+# Validates submitted client limits and returns BandWidth values.
 sub save_BandWidth
 {
 local ($i, $bw, $client, $all, @rv);
@@ -80,7 +82,7 @@ for($i=0; defined($bw = $in{"BandWidth_bw_$i"}); $i++) {
 	next if ($bw eq "");
 	$bw =~ /^\d+$/ || &error(&text('mod_band_ebw', &html_escape($bw)));
 	$all || $client =~ /^[a-z0-9\.\-\_\/]+$/i ||
-		&error(&text('mod_band_eclient', $bw));
+		&error(&text('mod_band_eclient', &html_escape($client)));
 	push(@rv, ($all ? "all" : $client)." ".$bw);
 	}
 return ( \@rv );
@@ -104,6 +106,8 @@ for($i=0; $i<$max; $i++) {
 $rv .= "</table>\n";
 return (2, $text{'mod_band_sizelimit'}, $rv);
 }
+# save_LargeFileLimit(&editor)
+# Validates submitted size limits and returns LargeFileLimit values.
 sub save_LargeFileLimit
 {
 local ($i, $bw, $size, @rv);
@@ -111,7 +115,7 @@ for($i=0; defined($bw = $in{"LargeFileLimit_bw_$i"}); $i++) {
 	$size = $in{"LargeFileLimit_$i"};
 	next if ($bw eq "");
 	$bw =~ /^\d+$/ || &error(&text('mod_band_ebw', &html_escape($bw)));
-	$size =~ /^\d+$/ || $size == -1 || &error(&text('mod_band_esize', $bw));
+	$size =~ /^\d+$/ || $size == -1 || &error(&text('mod_band_esize', &html_escape($size)));
 	push(@rv, "$size $bw");
 	}
 return ( \@rv );

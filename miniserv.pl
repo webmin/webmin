@@ -770,13 +770,14 @@ while(1) {
 		}
 
 	if ($config{'session'} && (++$remove_session_count%50) == 0) {
-		# Remove sessions with more than 7 days of inactivity,
+		# Remove sessions after more than seven days of inactivity.
 		local $s;
 		foreach $s (keys %sessiondb) {
 			local ($user, $ltime, $lip) =
 				split(/\s+/, $sessiondb{$s});
 			if ($ltime && $time_now - $ltime > 7*24*60*60) {
-				&run_logout_script($s, $user, undef, undef);
+				# Notify hooks before deleting the session.
+				&run_logout_script($user, $s, $lip, undef);
 				&write_logout_utmp($user, $lip);
 				if ($user =~ /^\!/ || $sessiondb{$s} eq '') {
 					# Don't log anything for logged out

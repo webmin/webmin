@@ -88,4 +88,15 @@ is($directory->{'eline'}, 15, 'outer block includes the nested closing line');
 is($alias->{'line'}, 16, 'following directive starts after the outer block');
 is($next, 10 + scalar(@lines), 'returned line follows serialized output');
 
+# Source filenames are shown beside directives and must remain plain text.
+my $html = '';
+{
+	open(my $out, '>', \$html) or die $!;
+	local *STDOUT = $out;
+	main::print_line({ file => '/tmp/<marker>&.conf', line => 0 },
+		[ 'Options Indexes' ], 0);
+}
+like($html, qr{/tmp/&lt;marker&gt;&amp;\.conf \(1\)},
+	'directive source filename is escaped without changing its line number');
+
 done_testing();

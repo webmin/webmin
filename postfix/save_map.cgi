@@ -17,6 +17,7 @@ our ($action, $err, $logmap, $nfunc, $vfunc, $whatfailed, %access, %in, %text);
 #     &ui_print_header(undef, $text{'aliases_title'}, "");
 
 &error_setup($text{'map_save_err'});
+&can_edit_map($in{'map_name'}) || &error($text{'chooser_ecannot'});
 
 
 my $maps = &get_maps($in{'map_name'});

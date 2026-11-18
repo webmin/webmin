@@ -9,11 +9,12 @@ require "$FindBin::Bin/../web-lib-funcs.pl";
 
 {
 	package UserdbFixture;
-	# commit(): publish pending changes, or simulate a deferred SQL failure.
+	# commit(self): publish pending changes or simulate a failed commit.
 	sub commit {
 		my ($self) = @_;
 		$self->{'commits'}++;
-		return 0 if ($self->{'fail'});
+		# Simulate DBI returning true or false after a failed commit.
+		return $self->{'commit_result'} if ($self->{'fail'});
 		$self->{'visible'} = delete($self->{'pending'});
 		return 1;
 	}
@@ -23,6 +24,8 @@ require "$FindBin::Bin/../web-lib-funcs.pl";
 	sub unbind { $_[0]->{'unbound'}++; }
 	# errstr(): return the simulated commit error.
 	sub errstr { return 'deferred constraint failed'; }
+	# err(self): report the error regardless of commit()'s return value.
+	sub err { return $_[0]->{'fail'}; }
 }
 
 local *main::get_miniserv_config = sub { %{$_[0]} = ( ); };
@@ -58,15 +61,18 @@ for my $proto ('postgresql', 'ldap') {
 	is($dbh->{'unbound'}, 1, 'LDAP unbinds before closing') if ($proto eq 'ldap');
 }
 
-# Commit failures must be reported and the failed handle must not be reused.
-{
+# Detect failed commits even when DBI returns a true result.
+for my $result (0, 1) {
 	my $str = 'postgresql://fixture:unused@localhost/test';
-	my $dbh = bless { AutoCommit => 0, fail => 1 }, 'UserdbFixture';
+	my $dbh = bless { AutoCommit => 0, fail => 1, commit_result => $result },
+		'UserdbFixture';
 	local %main::connect_userdb_cache = ( $str => [ $dbh ] );
 	local %main::connect_userdb_cache_time = ( $str => time() );
+	# Report the SQL cause and discard the failed connection and its cache.
 	eval { main::disconnect_userdb($str, $dbh); };
-	like($@, qr/deferred constraint failed/, 'commit failure is reported');
-	ok($dbh->{'closed'}, 'failed connection is closed');
-	ok(!exists($main::connect_userdb_cache{$str}), 'failed connection is removed from cache');
+	like($@, qr/deferred constraint failed/, "commit result=$result reports failure");
+	ok($dbh->{'closed'}, "commit result=$result closes failed connection");
+	ok(!exists($main::connect_userdb_cache{$str}),
+		"commit result=$result removes failed connection from cache");
 }
 done_testing();

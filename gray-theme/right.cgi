@@ -221,7 +221,8 @@ foreach my $info (@blocks) {
 		foreach my $t (@$rows) {
 			print &ui_columns_row([
 				$t->{'desc'},
-				&make_bar_chart($t->{'chart'}),
+				# Compare rows without capacity warnings.
+				&make_bar_chart($t->{'chart'}, 1),
 				$t->{'value'},
 				], [ "width='30%'", "width='40%'", "" ]);
 			}
@@ -276,20 +277,21 @@ sub section_end
 return &ui_tag_end('div').&ui_tag_end('details')."\n";
 }
 
-# make_bar_chart(&chart)
-# Returns a bar for a chart of [ total, used, [also-used] ]. The used
-# amount fills the bar in the accent color, turning amber above 75% and
-# red above 90% of the total; the extra amount follows in a lighter tint.
+# make_bar_chart(&chart, [no-warning])
+# Renders [ total, used, [extra] ], with extra in a neutral color.
+# At 75% used the bar turns amber, and at 90% red. no-warning keeps
+# the accent color at every level.
 sub make_bar_chart
 {
-my ($c) = @_;
+my ($c, $nowarn) = @_;
 my ($total, $used, $extra) = @$c;
 $used ||= 0;
 $extra ||= 0;
 $total = $used + $extra if (!$total || $total < $used + $extra);
 return "" if (!$total);
 my $pct = $used * 100 / $total;
-my $state = $pct >= 90 ? 'danger' : $pct >= 75 ? 'warning' : 'info';
+my $state = $nowarn ? 'info' :
+	    $pct >= 90 ? 'danger' : $pct >= 75 ? 'warning' : 'info';
 my @segments = ( { 'pct' => $pct, 'state' => $state } );
 if ($extra) {
 	# The second segment, drawn in the neutral tint

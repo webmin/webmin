@@ -6,8 +6,11 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 	 -r 'qmail-lib.pl' ? './qmail-lib.pl' :
 			     './postfix-lib.pl');
 &ReadParseMime();
-if (!&is_under_directory($access{'apath'}, $in{'file'})) {
-	&error(&text('rfile_efile', $in{'file'}));
+
+# Needs permission for autoreply aliases, and for the file's directory
+if (!&can_edit_alias_files(5) ||
+    !&is_under_directory($access{'apath'}, $in{'file'})) {
+	&error(&text('rfile_efile', &html_escape($in{'file'})));
 	}
 $in{'replies_def'} || $in{'replies'} =~ /^\/\S+/ ||
     $in{'replies'} =~ /^~\/\S+/ ||

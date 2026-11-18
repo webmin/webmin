@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use Test::More;
 use Cwd qw(abs_path getcwd);
+use Encode qw(encode);
 use File::Path qw(make_path);
 use File::Spec;
 use File::Temp qw(tempdir);
@@ -904,6 +905,101 @@ like($rename_bad->{'out'}, qr/Invalid table name/,
 my $rename_back = run_cgi('rename_table.cgi', 'POST', {
 	'db' => $database, 'table' => 'notes_renamed', 'name' => 'notes' });
 is($rename_back->{'err'}, '', 'renaming back emits no warnings');
+
+# Exercise UTF-8 form values, names and row identities through the real CGIs.
+subtest 'Unicode round trips' => sub {
+	my $table = "caf\x{e9}\x{4e2d}";
+	my $column = "val\x{e9}";
+	my $value = "caf\x{e9} \x{4e2d}\x{1f600}";
+	my $unicode_db = File::Spec->catfile($data_dir, 'unicode.db');
+	my $handle = DBI->connect('dbi:SQLite:dbname='.$unicode_db, '', '', {
+		'RaiseError' => 1, 'PrintError' => 0, 'sqlite_unicode' => 1 });
+	$handle->do('CREATE TABLE "'.$table.'" ("'.$column.
+		'" TEXT PRIMARY KEY, note TEXT) WITHOUT ROWID');
+	$handle->do('INSERT INTO "'.$table.'" VALUES (?, ?)', undef,
+		$value, $value);
+	my $listing = run_cgi('database.cgi', 'GET', { 'db' => $unicode_db });
+	like($listing->{'out'}, qr/table=\Q@{[url_encode($table)]}\E/,
+		'table links use UTF-8 URL encoding');
+	my $page = run_cgi('table.cgi', 'GET', {
+		'db' => $unicode_db, 'table' => $table, 'sort' => $column });
+	is($page->{'err'}, '', 'Unicode table emits no warnings');
+	like($page->{'out'}, qr/\Q@{[encode('UTF-8', $value)]}\E/,
+		'Unicode table displays its value as UTF-8');
+	my ($key) = $page->{'out'} =~ /[&;]key=([^&"<>]+)/;
+	ok(defined($key), 'Unicode primary key has an edit link');
+	$key =~ s/%(..)/chr(hex($1))/ge if (defined($key));
+	my $edit = run_cgi('edit_row.cgi', 'GET', {
+		'db' => $unicode_db, 'table' => $table, 'key' => $key });
+	like($edit->{'out'}, qr/\Q@{[encode('UTF-8', $value)]}\E/,
+		'row editor loads the Unicode primary key');
+	my $save = run_cgi('save_row.cgi', 'POST', {
+		'db' => $unicode_db, 'table' => $table, 'key' => $key,
+		'value_0' => $value, 'value_1' => $value.' updated' });
+	like($save->{'out'}, qr/^Location:/mi, 'Unicode row update succeeds');
+	is($save->{'err'}, '', 'Unicode row update emits no warnings');
+	my ($stored, $type) = $handle->selectrow_array(
+		'SELECT note, typeof(note) FROM "'.$table.'"');
+	is($stored, $value.' updated', 'saved text is not encoded twice');
+	is($type, 'text', 'saved text remains TEXT, not BLOB');
+	my $sql = run_cgi('exec.cgi', 'POST', {
+		'db' => $unicode_db,
+		'sql' => 'SELECT "'.$column.'" FROM "'.$table.'"' });
+	like($sql->{'out'}, qr/\Q@{[encode('UTF-8', $value)]}\E/,
+		'direct SQL handles Unicode identifiers and results');
+	my $insert = run_cgi('save_row.cgi', 'POST', {
+		'db' => $unicode_db, 'table' => $table, 'new' => 1,
+		'value_0' => $value.' new', 'value_1' => $value });
+	like($insert->{'out'}, qr/^Location:/mi, 'Unicode row insert succeeds');
+	my ($inserted) = $handle->selectrow_array('SELECT note FROM "'.$table.
+		'" WHERE "'.$column.'" = ?', undef, $value.' new');
+	is($inserted, $value, 'inserted text round trips unchanged');
+	$handle->disconnect();
+	};
+
+# Global demo mode must override every module write permission.
+subtest 'Demo mode protects databases' => sub {
+	my $global_acl = File::Spec->catfile($config_dir, 'admin.acl');
+	write_text($global_acl, "readonly=1\n");
+	my $page = run_cgi('table.cgi', 'GET', {
+		'db' => $database, 'table' => 'sample' });
+	like($page->{'out'}, qr/first/, 'demo user can still browse rows');
+	unlike($page->{'out'}, qr/edit_row\.cgi|drop_table\.cgi/,
+		'demo user has no row editing or table drop controls');
+	my $save = run_cgi('save_row.cgi', 'POST', {
+		'db' => $database, 'table' => 'sample', 'new' => 1,
+		'default_0' => 1, 'value_1' => 'demo-write' });
+	like($save->{'out'}, qr/do not have write access/,
+		'demo mode refuses a direct row save');
+	my $sql = run_cgi('exec.cgi', 'POST', {
+		'db' => $database,
+		'sql' => "INSERT INTO sample (name) VALUES ('demo-write')" });
+	like($sql->{'out'}, qr/readonly database/,
+		'demo SQL uses a read-only database connection');
+	my $read = run_cgi('exec.cgi', 'POST', {
+		'db' => $database, 'sql' => 'SELECT name FROM sample' });
+	like($read->{'out'}, qr/first/, 'demo SQL can still read data');
+	my $handle = DBI->connect('dbi:SQLite:dbname='.$database, '', '', {
+		'RaiseError' => 1, 'PrintError' => 0 });
+	my ($writes) = $handle->selectrow_array(
+		"SELECT count(*) FROM sample WHERE name = 'demo-write'");
+	is($writes, 0, 'neither form nor SQL changed the database');
+	$handle->do('CREATE TABLE demo_victim (id INTEGER)');
+	my $drop = run_cgi('drop_table.cgi', 'POST', {
+		'db' => $database, 'table' => 'demo_victim', 'confirm' => 1 });
+	like($drop->{'out'}, qr/do not have write access/,
+		'demo mode refuses a direct table drop');
+	my ($exists) = $handle->selectrow_array(
+		"SELECT count(*) FROM sqlite_master WHERE name = 'demo_victim'");
+	is($exists, 1, 'demo table was not dropped');
+	$handle->disconnect();
+	my $new_db = File::Spec->catfile($data_dir, 'demo-create.db');
+	my $open = run_cgi('open.cgi', 'POST', { 'db' => $new_db });
+	like($open->{'out'}, qr/does not exist/,
+		'demo mode refuses database creation');
+	ok(!-e $new_db, 'demo mode leaves no new database file');
+	unlink($global_acl) or die "unlink $global_acl: $!";
+	};
 
 # Without write access there is no table form, no drop button, and no
 # new-file switch, since a new file could not be given a table.

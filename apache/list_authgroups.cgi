@@ -9,14 +9,16 @@ $conf = &get_config();
 &ReadParse();
 &allowed_auth_file($in{'file'}) ||
 	&error(&text('authg_ecannot', &html_escape($in{'file'})));
-$desc = &text('authg_header', "<tt>$in{'file'}</tt>");
+$desc = &text('authg_header', "<tt>".&html_escape($in{'file'})."</tt>");
 &ui_print_header($desc, $text{'authg_title'}, "");
 $f = &server_root($in{'file'});
 
 @groups = sort { $a->{'name'} cmp $b->{'name'} } &list_authgroups($in{'file'});
 if (@groups) {
+	# Show the file and its existing groups.
 	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>",&text('authg_header2', "<tt>$f</tt>"),
+	print "<tr $tb> <td><b>",&text('authg_header2',
+		"<tt>".&html_escape($f)."</tt>"),
 	      "</b></td></tr>\n";
 	print "<tr $cb> <td><table width=100%>\n";
 	print "<tr> <td><b>$text{'authg_group'}</b></td> ",
@@ -35,11 +37,12 @@ if (@groups) {
 	print "</table></td></tr></table>\n";
 	}
 else {
-	print "<b>",&text('authg_none', "<tt>$f</tt>"),"</b><p>\n";
+	# Keep the filename visible when the group file is empty.
+	print "<b>",&text('authg_none', "<tt>".&html_escape($f)."</tt>"),"</b><p>\n";
 	}
 print &ui_link("edit_authgroup.cgi?file=".
         &urlize($f)."&url=".&urlize(&this_url()), $text{'authg_add'});
 print "<p>\n";
 
-&ui_print_footer($in{'url'}, $text{'auth_return'});
+&ui_print_footer(&html_escape($in{'url'}), $text{'auth_return'});
 

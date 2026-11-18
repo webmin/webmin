@@ -738,6 +738,7 @@ csv_cols=Columns to include in CSV
 csv_ecols=No columns selected
 
 cnf_title=MySQL Server Configuration
+cnf_ecannot=You are not allowed to edit the MySQL server configuration
 cnf_efile=The MySQL configuration file $1 was not found on your system. You may need to adjust the <a href='$2'>module configuration</a> to use the correct path.
 cnf_header=MySQL server options
 cnf_port=MySQL server port

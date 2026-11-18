@@ -1997,7 +1997,7 @@ my $forcesql = $force ? "--force" : "";
 my $quicksql = $quick ? "--quick" : "";
 my $parameterssql = $parameters ?
 	join(" ", map { quotemeta($_) } split(/\s+/, $parameters)) : "";
-my $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
+my $wheresql = $where ? "--where=".quotemeta($where) : "";
 my $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
 # Quote compatibility values and table names as single shell arguments.

@@ -65,7 +65,10 @@ if ($in{'csv'}) {
 	&PrintHeader(undef, "text/csv");
 	}
 else {
-	&ui_print_header($in{'search_sub_title'} || undef, &html_escape($in{'search_title'} || $text{'search_title'}), "", undef, undef, $in{'no_return'});
+	# Keep formatting while removing attributes and active tags.
+	&ui_print_header(&html_sanitize($in{'search_sub_title'}) || undef,
+		&html_escape($in{'search_title'} || $text{'search_title'}),
+		"", undef, undef, $in{'no_return'});
 	}
 
 # Perform initial search in index

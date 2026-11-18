@@ -47,7 +47,7 @@ if ($in{'all'}) {
 		push(@hosts, $h) if (&indexof($in{'_acl_mod'}, @m) >= 0 ||
 				     !$in{'_acl_mod'});
 		}
-	print "<b>",&text('acl_doing', $who),"</b><p>\n";
+	print "<b>",&text('acl_doing', &html_escape($who)),"</b><p>\n";
 	}
 else {
 	# Doing on just one host
@@ -56,10 +56,12 @@ else {
 		# Direct submissions must also target a managed account.
 		my ($user) = grep { $_->{'name'} eq $in{'_acl_user'} }
 				 @{$hosts[0]->{'users'}};
-		$user || &error(&text('acl_efound', $who, $in{'_acl_mod'}));
+		$user || &error(&text('acl_efound', &html_escape($who),
+				     &html_escape($in{'_acl_mod'})));
 		}
 	local ($s) = grep { $_->{'id'} == $hosts[0]->{'id'} } @servers;
-	print "<b>",&text('acl_doing2', $who, &server_name($s)),"</b><p>\n";
+	print "<b>",&text('acl_doing2', &html_escape($who),
+			 &server_name($s)),"</b><p>\n";
 	}
 $p = 0;
 foreach $h (@hosts) {
@@ -122,6 +124,12 @@ foreach $h (@hosts) {
 print "<p><b>$text{'acl_done'}</b><p>\n";
 
 &remote_finished();
+
+# Keep submitted account names and host IDs inside their URL parameters.
 &ui_print_footer("", $text{'index_return'},
-	$in{'_acl_user'} ? ( "edit_user.cgi?user=$in{'_acl_user'}&host=$in{'_acl_host'}", $text{'user_return'} ) : ( "edit_group.cgi?group=$in{'_acl_group'}&host=$in{'_acl_host'}", $text{'group_return'} ));
+	$in{'_acl_user'} ?
+	  ( "edit_user.cgi?user=".&urlize($in{'_acl_user'}).
+	    "&host=".&urlize($in{'_acl_host'}), $text{'user_return'} ) :
+	  ( "edit_group.cgi?group=".&urlize($in{'_acl_group'}).
+	    "&host=".&urlize($in{'_acl_host'}), $text{'group_return'} ));
 

@@ -267,6 +267,7 @@ return $resolved;
 # or through SQL. Otherwise a new file would be a dead end.
 sub sqlite_can_create
 {
+return 0 if (&is_readonly_mode());
 return $access{'create'} && ($access{'write'} || $access{'sql'}) ? 1 : 0;
 }
 
@@ -275,8 +276,8 @@ return $access{'create'} && ($access{'write'} || $access{'sql'}) ? 1 : 0;
 sub sqlite_can_write
 {
 my ($path) = @_;
-# The module ACL takes precedence over filesystem permissions.
-return 0 if (!$access{'write'});
+# Demo mode and the module ACL take precedence over filesystem permissions.
+return 0 if (&is_readonly_mode() || !$access{'write'});
 return &sqlite_file_writable($path);
 }
 
@@ -287,7 +288,7 @@ return &sqlite_file_writable($path);
 sub sqlite_can_sql_write
 {
 my ($path) = @_;
-return 0 if (!$access{'sql'});
+return 0 if (&is_readonly_mode() || !$access{'sql'});
 return &sqlite_file_writable($path);
 }
 
@@ -499,6 +500,10 @@ return 'SELECT '.join(', ', @select).' '.$from;
 sub sqlite_connect
 {
 my ($path, $write, $create, $sql_write) = @_;
+# DBI writes bypass Webmin's file helpers, so enforce demo mode here too.
+if (($write || $create) && &is_readonly_mode()) {
+	&error($text{'error_readonly'});
+	}
 $path = &sqlite_database_path($path, $create);
 # An existing path always uses normal open semantics, even if create was set.
 $create = 0 if (-e $path);
@@ -527,7 +532,8 @@ my %attributes = (
 	'RaiseError' => 1,
 	'PrintError' => 0,
 	'AutoCommit' => 1,
-	'sqlite_unicode' => 1,
+	# Keep UTF-8 bytes unchanged, as Webmin's forms and output expect.
+	'sqlite_unicode' => 0,
 	'sqlite_open_flags' => $flags,
 	'sqlite_allow_multiple_statements' => 0,
 	);
@@ -839,7 +845,8 @@ if (defined($storage_type) && $storage_type eq 'blob') {
 return &ui_tag('i', $text{'value_null'}) if (!defined($value));
 # Hide binary values when no SQLite storage class was supplied.
 return &text('value_blob', length($value)) if (&sqlite_value_is_binary($value));
-my $shown = $value;
+# Count and split characters, then return UTF-8 bytes to Webmin's HTML helpers.
+my $shown = utf8::is_utf8($value) ? $value : decode('UTF-8', $value);
 my $max = int($config{'max_text'} || 0);
 my $truncated;
 # Table queries provide the original character count after shortening text
@@ -856,6 +863,7 @@ $truncated = 1 if ($original_length > length($shown));
 my $preview_length = 128;
 # Short values need no expandable details control.
 if (length($shown) <= $preview_length) {
+	utf8::encode($shown);
 	return &ui_tag('span', &html_escape($shown).
 		($truncated ? $text{'value_more'} : ''), {
 			'style' => 'white-space:normal;overflow-wrap:anywhere;'.
@@ -871,6 +879,8 @@ my $remaining = $original_length - $preview_length;
 my $summary = $truncated ?
 	&text('value_more_chars_truncated', length($remainder), $remaining) :
 	&text('value_more_chars', $remaining);
+utf8::encode($preview);
+utf8::encode($remainder);
 my $content = &html_escape($remainder).
 	($truncated ? $text{'value_more'} : '');
 return &ui_tag('span', &html_escape($preview).' '.&ui_details({

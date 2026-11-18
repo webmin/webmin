@@ -223,6 +223,8 @@ for($i=0; $i<@IndexOptions_v; $i++) {
 $rv .= "</table></td></tr></table>\n";
 return (2, "$text{'autoindex_diropt'}", $rv);
 }
+# save_IndexOptions_FancyIndexing(&editor)
+# Returns directory listing options supported by the editor's Apache version.
 sub save_IndexOptions_FancyIndexing
 {
 local($i, $o, @rv, %opts);
@@ -239,9 +241,10 @@ for($i=0; $i<@IndexOptions_v; $i++) {
 		$opts{$o} = $in{"Index_${o}_wh"};
 		}
 	elsif ($o =~ /NameWidth|DescriptionWidth/ && $in{"Index_${o}"}) {
+		# Accept a positive column width or * for automatic sizing.
 		$in{"Index_${o}_w"} =~ /^[1-9]\d*$/ ||
 		    $in{"Index_${o}_w"} eq '*' ||
-			&error(&text('autoindex_ewidth', &html_escape($in{"Index_$(o)_h"})));
+			&error(&text('autoindex_ewidth', &html_escape($in{"Index_${o}_w"})));
 		$opts{$o} = $in{"Index_${o}_w"};
 		}
 	if ($IndexOptions_i[$i]) { $opts{$o} = -$opts{$o}-1; }

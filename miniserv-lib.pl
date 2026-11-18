@@ -4831,6 +4831,10 @@ my $backend_fail = sub {
 	return 0;
 	};
 
+# A pinned route cannot fall back to an unverified plain connection.
+return &$backend_fail(500, "SSL is required for a pinned websocket backend")
+	if ($ws->{'sslfingerprint'} && !$ws->{'ssl'});
+
 # Connect to the configured backend
 my $fh = "WEBSOCKET";
 my ($backend_ssl, $backend_ssl_ctx);
@@ -4874,10 +4878,13 @@ if ($ws->{'host'}) {
 			return &$backend_fail(500,
 				"SSL connect to websockets backend failed");
 			}
-		if ($ws->{'checkssl'}) {
+		if ($ws->{'checkssl'} || $ws->{'sslfingerprint'}) {
+			# Verify the peer before forwarding the websocket login.
 			my $err = &check_websocket_backend_ssl(
-				$backend_ssl, $sslhost);
+				$backend_ssl, $ws->{'checkssl'} ? $sslhost : undef,
+				$ws->{'sslfingerprint'});
 			if ($err) {
+				# Remove the credential route before aborting.
 				return &$backend_fail(500,
 				    "Invalid SSL certificate from websockets ".
 				    "backend : $err");
@@ -6468,35 +6475,56 @@ foreach my $p (@$hosts) {
 return 0;
 }
 
-# check_websocket_backend_ssl(ssl-handle, host)
-# Returns an error if the websocket backend certificate is not for host.
+# check_websocket_backend_ssl(ssl-handle, host, [fingerprints])
+# Returns an error on a failed certificate check, or undef on success.
+# Pass undef for host to skip hostname matching. Optional fingerprints are
+# comma-separated lower-case SHA-256 hex values; omit them to check only host.
 sub check_websocket_backend_ssl
 {
-my ($ssl, $host) = @_;
-if ($host =~ /^\[([^\]]+)\](?::\d+)?$/) {
+my ($ssl, $host, $fingerprints) = @_;
+if (defined($host) && $host =~ /^\[([^\]]+)\](?::\d+)?$/) {
+	# Match an IPv6 literal without its URL brackets or optional port.
 	$host = $1;
 	}
-elsif ($host =~ /^([^:]+):\d+$/) {
+elsif (defined($host) && $host =~ /^([^:]+):\d+$/) {
+	# Remove a port from a hostname or IPv4 address before matching.
 	$host = $1;
 	}
+# Read the peer certificate once for both pin and hostname checks.
 my $cert = Net::SSLeay::get_peer_certificate($ssl);
 return "Could not fetch peer certificate" if (!$cert);
+my $fingerprint = $fingerprints &&
+	lc(eval { Net::SSLeay::X509_get_fingerprint($cert, "sha256") });
 my @hosts;
 my $subject = Net::SSLeay::X509_get_subject_name($cert);
 if ($subject) {
+	# Include the common name only when OpenSSL returns a usable value.
 	my $cn = Net::SSLeay::X509_NAME_get_text_by_NID($subject, 13);
 	push(@hosts, $cn) if (defined($cn) && $cn ne "" && $cn ne "-1");
 	}
+# DNS names and IP addresses are the alternative names relevant to a host.
 my @alts = Net::SSLeay::X509_get_subjectAltNames($cert);
 while(my ($type, $val) = splice(@alts, 0, 2)) {
 	push(@hosts, $val) if ($type == 2 || $type == 7);
 	}
 Net::SSLeay::X509_free($cert);
+# Check the pin even when no hostname check was requested.
+if ($fingerprints) {
+	# Normalize OpenSSL's digest and reject a missing digest or a mismatch.
+	$fingerprint =~ s/://g;
+	return "Certificate fingerprint does not match the one saved for this server"
+		if (!$fingerprint ||
+		    &indexof($fingerprint, split(/,/, $fingerprints)) < 0);
+	}
+# A pin-only request needs no certificate name match.
+return undef if (!defined($host));
 if (&check_ipaddress($host) || &check_ip6address($host)) {
+	# IP literals require an exact match; DNS wildcard rules do not apply.
 	return undef if (grep { lc($_) eq lc($host) } @hosts);
 	return @hosts ? "Certificate is for ".join(", ", @hosts).", not $host"
 		      : "No certificate names found";
 	}
+# DNS names use the same wildcard matching rules as other miniserv checks.
 return undef if (@hosts && &ssl_hostname_match($host, \@hosts));
 return @hosts ? "Certificate is for ".join(", ", @hosts).", not $host"
 	      : "No certificate names found";

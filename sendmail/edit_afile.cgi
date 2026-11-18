@@ -6,8 +6,11 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 	 -r 'qmail-lib.pl' ? './qmail-lib.pl' :
 			     './postfix-lib.pl');
 &ReadParse();
-if (!&is_under_directory($access{'apath'}, $in{'file'})) {
-	&error(&text('afile_efile', $in{'file'}));
+
+# Needs permission for address file aliases, and for the file's directory
+if (!&can_edit_alias_files(2) ||
+    !&is_under_directory($access{'apath'}, $in{'file'})) {
+	&error(&text('afile_efile', &html_escape($in{'file'})));
 	}
 
 &ui_print_header(undef, $text{'afile_title'}, "");
@@ -15,17 +18,19 @@ if (!&is_under_directory($access{'apath'}, $in{'file'})) {
 @lines = <FILE>;
 close(FILE);
 
-print "<b>",&text('afile_desc', "<tt>$in{'file'}</tt>"),"</b><p>\n";
+print "<b>",&text('afile_desc',
+		  "<tt>".&html_escape($in{'file'})."</tt>"),"</b><p>\n";
 
 print "<form action=save_afile.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=hidden name=file value=\"$in{'file'}\">\n";
-print "<input type=hidden name=num value=\"$in{'num'}\">\n";
-print "<input type=hidden name=name value=\"$in{'name'}\">\n";
+print &ui_hidden("file", $in{'file'}),"\n";
+print &ui_hidden("num", $in{'num'}),"\n";
+print &ui_hidden("name", $in{'name'}),"\n";
 print "<textarea name=text rows=20 cols=80>",
-	join("", @lines),"</textarea><p>\n";
+	&html_escape(join("", @lines)),"</textarea><p>\n";
 print "<input type=submit value=\"$text{'save'}\"> ",
       "<input type=reset value=\"$text{'afile_undo'}\">\n";
 print "</form>\n";
 
-&ui_print_footer("edit_alias.cgi?name=$in{'name'}&num=$in{'num'}",$text{'aform_return'});
+&ui_print_footer("edit_alias.cgi?name=".&urlize($in{'name'}).
+		 "&num=".&urlize($in{'num'}), $text{'aform_return'});
 

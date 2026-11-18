@@ -3,16 +3,17 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# Save Postfix options ; special case in which we need to regenerate the relocated table
+# Save general Postfix settings and rebuild the relocated map.
 
 
 require './postfix-lib.pl';    ## no critic
 use strict;
 use warnings;
-our ($err, %in, %text);
+our ($err, %access, %in, %text);
 
 &ReadParse();
 
+$access{'general'} || &error($text{'general_ecannot'});
 
 #      &ui_print_header(undef, $text{'opts_title'}, "");
 

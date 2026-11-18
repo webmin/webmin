@@ -8,8 +8,9 @@
 require './postfix-lib.pl';    ## no critic
 use strict;
 use warnings;
-our ($cancmt, %in, %text);
+our ($cancmt, %access, %in, %text);
 &ReadParse();
+$access{'aliases'} || &error($text{'aliases_ecannot'});
 
 &ui_print_header(undef, $text{'edit_alias_title'}, "");
 

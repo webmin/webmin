@@ -26,13 +26,16 @@ else {
 	&error($text{'view_epath'});
 	}
 
-$file =~ /\.\./ || $file =~ /\<|\>|\||\0/ && &error($text{'view_efile'});
+($file =~ /\.\./ || $file =~ /\<|\>|\||\0/) && &error($text{'view_efile'});
 &can_edit_log($log) || &error($text{'view_ecannot'});
 
 my $lconf = &get_log_config($log) ||
 	&error($text{'view_elog'}." : ".&html_escape($log));
 my $full = $lconf->{'dir'}.$file;
-&is_under_directory($lconf->{'dir'}, &resolve_links($full)) ||
+# Resolve symlinks before removing .. from either path.
+my $dir = &simplify_path(&resolve_links($lconf->{'dir'}));
+my $path = &simplify_path(&resolve_links($full));
+$dir && $path && &is_under_directory($dir, $path) ||
 	&error($text{'view_ecanpath'});
 my $fh;
 my $data = &eval_as_unix_user($lconf->{'user'} || 'root',

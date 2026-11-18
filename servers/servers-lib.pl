@@ -202,6 +202,26 @@ foreach my $s (split(/\s+/, $access{'servers'})) {
 return 0;
 }
 
+=head2 server_ssl_fingerprints(&server)
+
+Normalizes a server record's sslfingerprint field to comma-separated
+lower-case hex for comparison with SHA-256 certificate fingerprints. Returns
+an empty string for an unpinned server, except for Cloudmin guests, which
+require a pin. If normalization leaves nothing from a nonblank or required
+pin, returns the nonmatching value "invalid" to keep verification enabled.
+
+=cut
+sub server_ssl_fingerprints
+{
+my ($s) = @_;
+# Keep only hex and separators so the value is safe in a websocket route.
+my $rv = lc($s->{'sslfingerprint'});
+$rv =~ s/[^a-f0-9,]//g;
+# Missing required pins and nonblank values that normalize to empty must fail.
+return $rv || ($s->{'sslfingerprint'} =~ /\S/ || $s->{'cloudmin_uuid'} ?
+		"invalid" : "");
+}
+
 =head2 list_all_groups([&servers])
 
 Returns a list of all Webmin server groups and their members, each of

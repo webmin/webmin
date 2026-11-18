@@ -4,6 +4,7 @@
 * Add an SQLite database browser and editor with schema inspection, table management, row editing and direct SQL execution [forum.virtualmin.com/t/137508](https://forum.virtualmin.com/t/sqlite-database-browser-and-editor/137508/)
 * Add color schemes to the Terminal module
 * Add per-user Terminal preferences for color scheme, font size, screen reader mode and terminal dimensions
+* Add NTFS3 mount support and fix missing dashboard disk-space warnings for NTFS3 filesystems [#2928](https://github.com/webmin/webmin/issues/2928)
 * Add protection against infinite loops resolving recursive symlinks (thanks to Carl Zuzart, Zedden I.T.)
 * Add a Cloudmin virtualization host profile to the nftables module
 * Add drop-down menu, dialog, breadcrumb and page link widgets to the UI library, built on native `details` and `dialog` elements
@@ -24,6 +25,12 @@
 * Fix path traversal and command injection in parameterized Custom Commands file editors
 * Fix MySQL/MariaDB manual editor ACL bypass
 * Fix MySQL/MariaDB database backups allowing restricted users to write files or save root-run settings outside their access limits
+* Fix PostgreSQL backups and CSV exports to enforce directory and Unix user restrictions, and prevent restricted users from saving or scheduling backups
+* Fix Postfix option pages allowing restricted users to change settings from other pages
+* Fix Postfix map, mapping and mail queue pages bypassing module permissions
+* Fix Postfix allowed map directory bypass through extra maps, parameter references and relative paths
+* Fix Postfix map source settings being corrupted when several are saved at once
+* Fix Postfix and Sendmail alias file editors allowing users without alias permissions to read and overwrite files
 * Fix MySQL/MariaDB imports to use server-accessible temporary files with restricted permissions, including when systemd isolates temporary directories or Webmin connects through a loopback address
 * Fix the logged in users list in Users and Groups module showing nobody when `who` prints ISO dates under a non-C locale or `sshd pts/N` lines from the logind backend [forum.virtualmin.com/t/138162](https://forum.virtualmin.com/t/138162)
 * Fix missing SSH logins in the Users and Groups module on Ubuntu 26.04 by using systemd-logind when `utmp` is absent

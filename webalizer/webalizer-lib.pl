@@ -20,6 +20,17 @@ if (!-r $config{'webalizer_conf'} && $config{'alt_conf'} &&
 	&copy_source_dest($config{'alt_conf'}, $config{'webalizer_conf'});
 	}
 
+# cron_log_command(logfile)
+# Returns a cron command, quoting the path only when needed.
+# Plain paths keep older Virtualmin job lookups working (can be removed after
+# Virtualmin 8.4.0 release).
+sub cron_log_command
+{
+my ($file) = @_;
+return $cron_cmd." ".
+       ($file =~ /^[A-Za-z0-9_\/\.\-\+\@\:\,=]+$/ ? $file : quotemeta($file));
+}
+
 # get_config([logfile])
 # Parse the webalizer config file for a single logfile or global
 sub get_config

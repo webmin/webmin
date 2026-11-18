@@ -481,8 +481,10 @@ foreach my $a (@{$cmd->{'args'}}) {
 		&error(&text('run_emust', $a->{'desc'}));
 		}
 	$rv =~ /\0/ && &error($text{'run_ezero'});
-	# Stop non-path parameters from changing the editor's directory
+	# Allow paths from file fields, configured options and validated menus.
+	# resolve_editor_file still enforces the editor's fixed directory.
 	if ($cmd->{'edit'} && $a->{'type'} != 5 && $a->{'type'} != 6 &&
+	    $a->{'type'} != 7 && ($a->{'type'} != 9 || $skipfound) &&
 	    ($rv =~ /[\/\\\r\n]/ || $rv =~ /^\.\.?$/)) {
 		&error($text{'view_ecannot'});
 		}

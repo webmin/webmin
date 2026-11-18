@@ -958,7 +958,7 @@ sub list_fstypes
 {
 local @sup = ("ext2", "msdos", "nfs", "nfs4", "iso9660", "ext",
 	      "hpfs", "fat", "vfat", "umsdos", "sysv", "reiserfs",
-	      "ntfs", "hfs", "fatx");
+	      "ntfs", "ntfs3", "hfs", "fatx");
 push(@sup, $smbfs_fs) if ($smbfs_support);
 push(@sup, "cifs") if ($cifs_support);
 push(@sup, "auto") if ($amd_support);
@@ -1022,6 +1022,7 @@ local(%fsmap);
 	  "xfs","Linux XFS Filesystem",
 	  "jfs","IBM Journalling Filesystem",
 	  "ntfs","Windows NT Filesystem",
+	  "ntfs3","Windows NTFS3 Filesystem",
 	  "bind","Loopback Filesystem",
 	  "hfs","Apple Filesystem",
 	  "fatx","XBOX Filesystem",
@@ -1663,8 +1664,8 @@ elsif ($type eq "xfs") {
 elsif ($type eq "jfs") {
 	# No other JFS options yet!
 	}
-elsif ($type eq "ntfs") {
-	# Windows NT/XP/2000 filesystem
+elsif ($type eq "ntfs" || $type eq "ntfs3") {
+	# NTFS file ownership
 	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_uid'},
@@ -2255,7 +2256,7 @@ elsif ($_[0] eq "xfs") {
 	$options{'gquota'} = "" if ($in{'xfs_grpquota'} == 1);
 	$options{'gqnoenforce'} = "" if ($in{'xfs_grpquota'} == 2);
 	}
-elsif ($_[0] eq "ntfs") {
+elsif ($_[0] eq "ntfs" || $_[0] eq "ntfs3") {
 	# Save NTFS options
 	delete($options{"uid"}); delete($options{"gid"});
 	if ($in{ntfs_uid} ne "")

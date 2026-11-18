@@ -47,15 +47,18 @@ else {
 	print &text('import_fileout', "<tt>".&html_escape($in{'file'})."</tt>"),"<p>\n";
 	}
 
-# Build the import command
+# mysqlimport uses the filename to choose the destination table.
 if ($in{'table'}) {
 	$nfile = &mysql_import_tempname($import_tmpdir, "$in{'table'}.txt");
-	&copy_source_dest($file, $nfile);
-	&set_mysql_command_file_permissions($nfile) ||
-		&error($text{'import_efile'});
-	unlink($file) if ($need_unlink);
-	$file = $nfile;
-	$need_unlink = 1;
+	if ($nfile ne $file) {
+		# Avoid deleting an upload that already has the target name.
+		&copy_source_dest($file, $nfile);
+		&set_mysql_command_file_permissions($nfile) ||
+			&error($text{'import_efile'});
+		unlink($file) if ($need_unlink);
+		$file = $nfile;
+		$need_unlink = 1;
+		}
 	}
 # A server-side import needs the local database server to read the file
 if ($< == 0 && &supports_users() && &is_mysql_local()) {

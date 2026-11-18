@@ -93,6 +93,24 @@ subtest 'HTTPS setup preserves hostname and request handling' => sub {
 	ok(!defined($verification), 'nocheckhost still skips validation');
 	};
 
+subtest 'Certificate pins are checked when hostname checks are disabled' => sub {
+	my $reqs = { host => 'remote.example', nocheckhost => 1,
+		fingerprint => 'ab' x 32 };
+	my $result = request($reqs);
+	is(ref($result), 'HASH', 'matching pin permits the HTTPS request');
+	is_deeply(\@sent,
+		[ "GET /fixture HTTP/1.0\r\nHost: remote.example\r\n\r\n" ],
+		'HTTP is sent after successful certificate verification');
+	is_deeply($verification, [ 22, 'remote.example', $reqs ],
+		'the shared TLS helper retains the pin requirement');
+	# A rejected pin must stop before any HTTP headers or credentials.
+	$certificate_error = 'fingerprint mismatch';
+	is(request($reqs), 'Invalid SSL certificate : fingerprint mismatch',
+		'pin failure is returned to the caller');
+	is_deeply(\@sent, [ ], 'pin rejection prevents HTTP writes');
+	$certificate_error = undef;
+	};
+
 subtest 'HTTPS setup failures preserve their original results' => sub {
 	for my $case (
 		[ \$available, 0, 'TLS module unavailable' ],

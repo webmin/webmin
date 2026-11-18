@@ -277,6 +277,15 @@ else {
 	}
 }
 
+# can_edit_alias_files(type)
+# Checks alias and type permissions: 2 for address files, 5 for autoreplies,
+# or 6 for filters.
+sub can_edit_alias_files
+{
+local ($type) = @_;
+return $access{'amode'} && $access{"aedit_$type"};
+}
+
 # can_view_qfile(&mail)
 # Returns 1 if some queued message can be viewed, 0 if not
 sub can_view_qfile

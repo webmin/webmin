@@ -6,8 +6,11 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 	 -r 'qmail-lib.pl' ? './qmail-lib.pl' :
 			     './postfix-lib.pl');
 &ReadParse();
-if (!&is_under_directory($access{'apath'}, $in{'file'})) {
-	&error(&text('rfile_efile', $in{'file'}));
+
+# Needs permission for autoreply aliases, and for the file's directory
+if (!&can_edit_alias_files(5) ||
+    !&is_under_directory($access{'apath'}, $in{'file'})) {
+	&error(&text('rfile_efile', &html_escape($in{'file'})));
 	}
 
 &ui_print_header(undef, $text{'rfile_title'}, "");
@@ -34,15 +37,15 @@ while(<FILE>) {
 	}
 close(FILE);
 
-print &text('rfile_desc', "<tt>$in{'file'}</tt>"),"<p>\n";
+print &text('rfile_desc', "<tt>".&html_escape($in{'file'})."</tt>"),"<p>\n";
 print "$text{'rfile_desc2'}<p>\n";
 
 print "<form action=save_rfile.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=hidden name=file value=\"$in{'file'}\">\n";
-print "<input type=hidden name=num value=\"$in{'num'}\">\n";
-print "<input type=hidden name=name value=\"$in{'name'}\">\n";
+print &ui_hidden("file", $in{'file'}),"\n";
+print &ui_hidden("num", $in{'num'}),"\n";
+print &ui_hidden("name", $in{'name'}),"\n";
 print "<textarea name=text rows=20 cols=80 $config{'wrap_mode'}>",
-	join("", @lines),"</textarea>\n";
+	&html_escape(join("", @lines)),"</textarea>\n";
 
 print "<table>\n";
 
@@ -53,7 +56,7 @@ printf "<td><input type=radio name=from_def value=1 %s> %s\n",
 printf "<input type=radio name=from_def value=0 %s>\n",
 	$from eq '' ? "" :"checked";
 printf "<input name=from size=30 value='%s'></td> </tr>\n",
-	$from;
+	&quote_escape($from, "'");
 print "<tr> <td></td> <td><font size=-1>$text{'rfile_fromdesc'}</font></td> </tr>\n";
 
 # Show reply-tracking file
@@ -63,7 +66,7 @@ printf "<td><input type=radio name=replies_def value=1 %s> %s\n",
 printf "<input type=radio name=replies_def value=0 %s> %s\n",
 	$replies eq '' ? "" :"checked", $text{'rfile_file'};
 printf "<input name=replies size=30 value='%s'> %s</td> </tr>\n",
-	$replies, &file_chooser_button("replies");
+	&quote_escape($replies, "'"), &file_chooser_button("replies");
 print "&nbsp;" x 3;
 
 # Show reply-tracking period
@@ -73,12 +76,12 @@ printf "<td><input type=radio name=period_def value=1 %s> %s\n",
 printf "<input type=radio name=period_def value=0 %s>\n",
 	$period eq '' ? "" :"checked";
 printf "<input name=period size=5 value='%s'> %s</td> </tr>\n",
-	$period, $text{'rfile_secs'};
+	&quote_escape($period, "'"), $text{'rfile_secs'};
 
 # Show people to not autoreply to
 print "<tr> <td>$text{'rfile_no_autoreply'}</td>\n";
 printf "<td><input name=no_autoreply size=40 value='%s'></td> </tr>\n",
-	$no_autoreply;
+	&quote_escape($no_autoreply, "'");
 
 # Show regexps to not autoreply to
 print "<tr> <td>$text{'rfile_no_regexp'}</td>\n";
@@ -90,5 +93,6 @@ print "<input type=submit value=\"$text{'save'}\"> ",
       "<input type=reset value=\"$text{'rfile_undo'}\">\n";
 print "</form>\n";
 
-&ui_print_footer("edit_alias.cgi?name=$in{'name'}&num=$in{'num'}", $text{'aform_return'});
+&ui_print_footer("edit_alias.cgi?name=".&urlize($in{'name'}).
+		 "&num=".&urlize($in{'num'}), $text{'aform_return'});
 

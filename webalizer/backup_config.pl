@@ -44,21 +44,23 @@ return undef;
 }
 
 # post_restore(&files)
-# Called after the files are restored from a backup
+# Restores scheduled jobs after a backup restore. The file list is unused.
 sub post_restore
 {
-# Re-setup all needed cron jobs
+# Match both plain and quoted commands from earlier versions.
 &foreign_require("cron", "cron-lib.pl");
 my @jobs = &cron::list_cron_jobs();
 foreach my $log (&get_all_logs()) {
 	my $lconf = &get_log_config($log->{'file'});
 	if ($lconf->{'sched'}) {
-		my $command = $cron_cmd." ".quotemeta($log->{'file'});
+		# Restore only logs with scheduled reporting enabled.
+		my $command = &cron_log_command($log->{'file'});
 		my ($job) = grep {
 			$_->{'command'} eq "$cron_cmd $log->{'file'}" ||
-			$_->{'command'} eq $command } @jobs;
+			$_->{'command'} eq
+			  $cron_cmd." ".quotemeta($log->{'file'}) } @jobs;
 		if (!$job) {
-			# Need to create!
+			# Create a missing job with the restored schedule.
 			$job->{'user'} = 'root';
 			$job->{'active'} = 1;
 			$job->{'special'} = $lconf->{'special'};
@@ -71,7 +73,7 @@ foreach my $log (&get_all_logs()) {
 			&cron::create_cron_job($job);
 			}
 		elsif ($job->{'command'} ne $command) {
-			# Quote the path without changing the existing schedule
+			# Update quoting while keeping the existing schedule.
 			&lock_file(&cron::cron_file($job));
 			$job->{'command'} = $command;
 			&cron::change_cron_job($job);

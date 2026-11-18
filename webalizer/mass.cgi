@@ -25,17 +25,19 @@ foreach my $file (@d) {
 
 my $count = 0;
 if ($in{'enable'}) {
-	# Add cron jobs or quote legacy commands for selected logs
+	# Add cron jobs or correct existing commands for selected logs
 	foreach my $file (@d) {
 		my $cfile = &config_file_name($file);
 		my $lconf = &get_log_config($file);
 		my $job = $job{$file};
-		my $command = $cron_cmd." ".quotemeta($file);
+		my $command = &cron_log_command($file);
 		if (!$lconf->{'sched'} ||
 		    ($job && $job->{'command'} ne $command)) {
+			# Enable reporting or update the command's quoting.
 			&lock_file($cfile);
 			$lconf->{'sched'} = 1;
 			if (!$job) {
+				# Use the saved schedule for a missing job.
 				$job = { 'user' => 'root',
 					 'active' => 1,
 					 'command' => $command };
@@ -45,7 +47,7 @@ if ($in{'enable'}) {
 				&unlock_file(&cron::cron_file($job));
 				}
 			elsif ($job->{'command'} ne $command) {
-				# Quote the path without changing the existing schedule
+				# Keep the schedule while updating quoting.
 				&lock_file(&cron::cron_file($job));
 				$job->{'command'} = $command;
 				&cron::change_cron_job($job);
