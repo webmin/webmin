@@ -20,11 +20,11 @@ $drh || &error($text{'srun_edriver'});
 $dbh = $drh->connect($driver->{'dbparam'}."=".$cmd->{'db'}.
 		     ($cmd->{'host'} ? ";host=$cmd->{'host'}" : ""),
 		     $cmd->{'user'}, $cmd->{'pass'}, { });
-$dbh || &error(&text('srun_econnect', $drh->errstr));
+$dbh || &error(&text('srun_econnect', &html_escape($drh->errstr)));
 
 # Show header
 &ui_print_unbuffered_header(undef, $text{'srun_title'}, "");
-print &text('srun_cmd', "<tt>$cmd->{'sql'}</tt>"),"<p>\n";
+print &text('srun_cmd', "<tt>".&html_escape($cmd->{'sql'})."</tt>"),"<p>\n";
 
 # Work out params
 ($env, $export, $str, $displaystr, $args) = &set_parameter_envs($cmd, $cmd->{'sql'}, undef);
@@ -32,19 +32,20 @@ print &text('srun_cmd', "<tt>$cmd->{'sql'}</tt>"),"<p>\n";
 # Run it
 $cmd = $dbh->prepare($cmd->{'sql'});
 if (!$cmd) {
-	print &text('srun_eprepare', $dbh->errstr),"<p>\n";
+	print &text('srun_eprepare', &html_escape($dbh->errstr)),"<p>\n";
 	}
 elsif (!$cmd->execute(@$args)) {
-	print &text('srun_eexecute', $dbh->errstr),"<p>\n";
+	print &text('srun_eexecute', &html_escape($dbh->errstr)),"<p>\n";
 	}
 else {
 	# Show results
 	if (@titles = @{$cmd->{'NAME'}}) {
-		print &ui_columns_start(\@titles);
+		# Column names and values are data, so show them as text
+		print &ui_columns_start([ map { &html_escape($_) } @titles ]);
 
 		# Show results
 		while(my @r = $cmd->fetchrow()) {
-			print &ui_columns_row(\@r);
+			print &ui_columns_row([ map { &html_escape($_) } @r ]);
 			}
 
 		print &ui_columns_end();
