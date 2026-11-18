@@ -117,7 +117,7 @@ elsif (@$rules && !$in{'reset'}) {
 			  $config{'view_condition'} ?
 				( &describe_rule($r) ) : ( ),
 			  $config{'view_comment'} ?
-				( $r->{'cmt'} || "<br>" ) : ( ),
+				( &html_escape($r->{'cmt'}) || "<br>" ) : ( ),
 			  $mover,
 			  $adder ],
 			\@widths, "d", $r->{'index'});
@@ -190,7 +190,8 @@ elsif (@$rules && !$in{'reset'}) {
 				  $config{'view_condition'} ?
 					( &describe_from($r), &describe_to($r) ) : ( ),
 				  $config{'view_comment'} ?
-					( $r->{'cmt'} || "<br>" ) : ( ),
+					( &html_escape($r->{'cmt'}) ||
+					  "<br>" ) : ( ),
 				  $mover ],
 				\@widths);
 			}
