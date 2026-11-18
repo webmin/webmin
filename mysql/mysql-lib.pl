@@ -756,6 +756,9 @@ return $db;
 sub can_edit_grant_db
 {
 my ($db) = @_;
+return 1 if (!$module_info{'usermin'} && $access{'dbs'} eq '*');
+# Only escaped wildcards can identify one database in a grant.
+return 0 if ($db =~ /(?:\A|[^\\])(?:\\\\)*[_%]/);
 return &can_edit_db(&unquote_mysql_database($db));
 }
 

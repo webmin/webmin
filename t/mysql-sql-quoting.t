@@ -206,14 +206,16 @@ subtest 'restricted grants match only the selected database' => sub {
 	local %main::access = ( 'dbs' => 'my_db _____' );
 	ok(main::can_edit_grant_db('my\_db'),
 	   'an escaped own database is allowed');
-	ok(main::can_edit_grant_db('my_db'),
-	   'the plain own database is allowed');
+	ok(!main::can_edit_grant_db('my_db'),
+	   'a pattern covering other databases is refused');
 	ok(!main::can_edit_grant_db('mysql'), 'another database is refused');
 	ok(!main::can_edit_grant_db('my%'), 'a wildcard pattern is refused');
 	is(main::quote_mysql_database(main::unquote_mysql_database('_____')),
 	   '\_\_\_\_\_', 'stored grants escape every wildcard');
 	is(main::quote_mysql_database(main::unquote_mysql_database('my\_db')),
 	   'my\_db', 'an already escaped name is not escaped twice');
+	$main::access{'dbs'} = '*';
+	ok(main::can_edit_grant_db('my_db'), 'all-database access allows patterns');
 };
 
 subtest 'privilege updates use the supplied account permissions' => sub {
