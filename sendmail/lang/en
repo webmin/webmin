@@ -137,6 +137,7 @@ rfile_efrom=Missing From: address
 rfile_fromdesc=A From: address should always be specified where possible, as the automatic method may not be reliable.
 
 asave_err=Failed to save alias
+asave_efile=Choose a configured aliases file
 asave_ecannot2=You are not allowed to edit aliases
 asave_ecannot=You are not allowed to edit this alias
 asave_emax=You are not allowed to create more than $1 aliases

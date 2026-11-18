@@ -41,6 +41,9 @@ if ($in{'delete'}) {
 	}
 else {
 	# saving or creating .. check inputs
+	if ($in{'new'} && $in{'afile'} && &indexof($in{'afile'}, @$afile) < 0) {
+		&error($text{'asave_efile'});
+		}
 	$in{'name'} =~ /^[^:@ ]+$/ ||
 		&error(&text('asave_eaddr', $in{'name'}));
 	if ($in{'new'} || uc($a->{'name'}) ne uc($in{'name'})) {
