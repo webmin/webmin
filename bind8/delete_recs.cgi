@@ -44,6 +44,13 @@ else {
 	&before_editing($zone);
 	my @recs = &read_zone_file($zone->{'file'}, $dom);
 
+	# Check every selected record before deleting any of them.
+	foreach my $d (@d) {
+		my ($num, $id) = split(/\//, $d, 2);
+		my $r = &find_record_by_id(\@recs, $id, $num);
+		!$r || &can_edit_type($r->{'type'}) || &error($text{'recs_ecannottype'});
+		}
+
 	my %bumpedrev;
 	my @delr;
 	foreach my $d (sort { ($b =~ /^(\d+)/)[0] <=> ($a =~ /^(\d+)/)[0] } @d) {
