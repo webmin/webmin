@@ -1,3 +1,4 @@
+save_eline=A PHP setting contains an invalid line break or null character
 index_title=PHP Configuration
 index_eaccess=You do not have access to any PHP configuration files.
 index_efiles=None of the PHP configuration files you have access to exist.
