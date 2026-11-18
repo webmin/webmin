@@ -441,6 +441,38 @@ return 1 if (!$j);	# always allow 'do nothing'
 return $can_jumps_cache{lc($j)};
 }
 
+# args_set_target(args)
+# Returns 1 if extra iptables arguments contain an option that sets the rule
+# target. iptables-restore drops quotes and backslashes, and iptables accepts
+# abbreviated long options and combined short options, so all are covered
+sub args_set_target
+{
+my ($args) = @_;
+$args =~ s/["\\]//g;
+foreach my $w (split(/\s+/, $args)) {
+	return 1 if ($w =~ /^--(j|ju|jum|jump|g|go|got|goto)(=|$)/ ||
+		     $w =~ /^-[^-]*[jg]/);
+	}
+return 0;
+}
+
+# check_rule_inputs(&in)
+# Returns 1 if no rule form field contains a line break, which would add
+# lines to the save file. Only the address lists may span several lines, and
+# only the extra parameters may use quotes or backslashes, as other values
+# are quoted when written
+sub check_rule_inputs
+{
+my ($in) = @_;
+foreach my $k (keys %$in) {
+	next if ($k eq 'source' || $k eq 'dest');
+	return 0 if ($in->{$k} =~ /[\r\n]/);
+	next if ($k eq 'args');
+	return 0 if ($in->{$k} =~ /["\\]/);
+	}
+return 1;
+}
+
 # run_before_command()
 # Runs the before-saving command, if any
 sub run_before_command
