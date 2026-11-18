@@ -424,6 +424,23 @@ else {
 	}
 }
 
+=head2 check_quota_limit(field, value)
+
+Checks a requested limit in blocks or files against the module ACL. Zero
+means unlimited.
+
+=cut
+sub check_quota_limit
+{
+my ($field, $value) = @_;
+my $kind = $field =~ /blocks$/ ? 'blocks' : 'files';
+my $max = $access{'max'.$kind};
+return if (!$max);
+defined($value) && $value =~ /\A\d+\z/ && $value > 0 && $value <= $max ||
+	&error(&text('suser_emax'.$kind, $max));
+}
+
+
 =head2 can_edit_filesys(filesys)
 
 Returns 1 if the current Webmin user can manage quotas on some filesystem.
@@ -431,6 +448,7 @@ Returns 1 if the current Webmin user can manage quotas on some filesystem.
 =cut
 sub can_edit_filesys
 {
+return 0 if (!length($_[0]) || $_[0] =~ /[\r\n\0]/);
 local $fs;
 foreach $fs (split(/\s+/, $access{'filesys'})) {
 	return 1 if ($fs eq "*" || $fs eq $_[0]);
@@ -455,51 +473,119 @@ return scalar(grep { $_ eq "*" } split(/\s+/, $access{'filesys'})) ? 1 : 0;
 =head2 can_edit_user(user)
 
 Returns 1 if the current Webmin user can manage quotas for some Unix user.
+Quota commands take #UID, or a number that is not a username, as a UID, so
+those are checked as the account that owns the UID.
 
 =cut
 sub can_edit_user
 {
-if ($access{'umode'} == 0) {
-	return 1;
-	}
-elsif ($access{'umode'} == 3) {
-	local @u = getpwnam($_[0]);
-	return $access{'users'} == $u[3];
+my ($user) = @_;
+return 1 if ($access{'umode'} == 0);
+my ($uid, @u) = &quota_target_id($user, 0);
+my $name = @u ? $u[0] : undef;
+if ($access{'umode'} == 3) {
+	return @u && $access{'users'} == $u[3] ? 1 : 0;
 	}
 elsif ($access{'umode'} == 4) {
-	local @u = getpwnam($_[0]);
-	return (!$access{'umin'} || $u[2] >= $access{'umin'}) &&
-	       (!$access{'umax'} || $u[2] <= $access{'umax'});
+	return 0 if (!defined($uid));
+	return (!$access{'umin'} || $uid >= $access{'umin'}) &&
+	       (!$access{'umax'} || $uid <= $access{'umax'}) ? 1 : 0;
 	}
 else {
-	local %ucan = map { $_, 1 } split(/\s+/, $access{'users'});
-	return $access{'umode'} == 1 && $ucan{$_[0]} ||
-	       $access{'umode'} == 2 && !$ucan{$_[0]};
+	# Match the given name or the account name behind a UID
+	my %ucan = map { $_, 1 } split(/\s+/, $access{'users'});
+	my $listed = $ucan{$user} || defined($name) && $ucan{$name};
+	return $access{'umode'} == 1 && $listed ||
+	       $access{'umode'} == 2 && !$listed ? 1 : 0;
 	}
 }
 
 =head2 can_edit_group(group)
 
 Returns 1 if the current Webmin user can manage quotas for some Unix group.
+Numeric group IDs are checked as the group that owns the GID.
 
 =cut
 sub can_edit_group
 {
-if ($access{'gmode'} == 0) {
-	return 1;
-	}
-elsif ($access{'gmode'} == 3) {
-	return 0;
-	}
-elsif ($access{'gmode'} == 4) {
-	local @g = getgrnam($_[0]);
-	return (!$access{'gmin'} || $g[2] >= $access{'gmin'}) &&
-	       (!$access{'gmax'} || $g[2] <= $access{'gmax'});
+my ($group) = @_;
+return 1 if ($access{'gmode'} == 0);
+return 0 if ($access{'gmode'} == 3);
+my ($gid, @g) = &quota_target_id($group, 1);
+my $name = @g ? $g[0] : undef;
+if ($access{'gmode'} == 4) {
+	return 0 if (!defined($gid));
+	return (!$access{'gmin'} || $gid >= $access{'gmin'}) &&
+	       (!$access{'gmax'} || $gid <= $access{'gmax'}) ? 1 : 0;
 	}
 else {
-	local %gcan = map { $_, 1 } split(/\s+/, $access{'groups'});
-	return $access{'gmode'} == 1 && $gcan{$_[0]} ||
-	       $access{'gmode'} == 2 && !$gcan{$_[0]};
+	# Match the given name or the group name behind a GID
+	my %gcan = map { $_, 1 } split(/\s+/, $access{'groups'});
+	my $listed = $gcan{$group} || defined($name) && $gcan{$name};
+	return $access{'gmode'} == 1 && $listed ||
+	       $access{'gmode'} == 2 && !$listed ? 1 : 0;
+	}
+}
+
+=head2 quota_target_id(name, is-group)
+
+Returns the numeric ID that quota commands would act on for a user or group
+name, followed by the getpwuid or getgrgid details for that ID. Like
+edit_user_quota, #ID always means an ID, and a plain number is an ID only when
+no user or group has that name. The ID is undef for unknown names.
+
+=cut
+sub quota_target_id
+{
+my ($name, $isgroup) = @_;
+return (undef) if (!defined($name) || $name eq "");
+my @info;
+if ($name =~ /^#(\d+)$/) {
+	# Always a numeric ID
+	my $id = $1;
+	@info = $isgroup ? getgrgid($id) : getpwuid($id);
+	return ($id, @info);
+	}
+@info = $isgroup ? getgrnam($name) : getpwnam($name);
+if (@info) {
+	# Known user or group name
+	return ($info[2], @info);
+	}
+if ($name =~ /^\d+$/) {
+	# A number that is not a name is used as an ID
+	@info = $isgroup ? getgrgid($name) : getpwuid($name);
+	return ($name, @info);
+	}
+return (undef);
+}
+
+=head2 check_copy_limits(name, is-group)
+
+Checks that copying the quotas of some user or group keeps every copied limit
+within the module ACL maximums. On a filesystem with active quotas where the
+source has no entry, the copy would be unlimited, so that fails too.
+
+=cut
+sub check_copy_limits
+{
+my ($name, $isgroup) = @_;
+return if (!$access{'maxblocks'} && !$access{'maxfiles'});
+local %filesys;
+my $n = $isgroup ? &group_filesystems($name) : &user_filesystems($name);
+my %seen;
+for(my $i=0; $i<$n; $i++) {
+	$seen{$filesys{$i,'filesys'}}++;
+	foreach my $field ('sblocks', 'hblocks', 'sfiles', 'hfiles') {
+		&check_quota_limit($field, $filesys{$i,$field});
+		}
+	}
+
+# Filesystems with active quotas that the source has no limits on
+my $bit = $isgroup ? 2 : 1;
+foreach my $fs (&list_filesystems()) {
+	next if (!($fs->[5] & $bit) || $seen{$fs->[0]});
+	&check_quota_limit('hblocks', 0);
+	&check_quota_limit('hfiles', 0);
 	}
 }
 

@@ -10,6 +10,8 @@ $access{'filesys'} eq "*" ||
 &can_edit_group($in{'group'}) ||
 	&error($text{'cgroup_egallow'});
 $access{'ro'} && &error($text{'cgroup_egallow'});
+# Copied limits must stay within this user's maximums
+&check_copy_limits($in{'group'}, 1);
 
 if ($in{'dest'} == 0) {
 	# Copy to all groups

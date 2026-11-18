@@ -15,14 +15,9 @@ if ($bsize) {
 	$in{'sblocks'} = &quota_parse("sblocks", $bsize);
 	$in{'hblocks'} = &quota_parse("hblocks", $bsize);
 	}
-!$access{'maxblocks'} ||
-	!$in{'sblocks_def'} && $in{'sblocks'} <= $access{'maxblocks'} &&
-	!$in{'hblocks_def'} && $in{'hblocks'} <= $access{'maxblocks'} ||
-		&error(&text('suser_emaxblocks', $access{'maxblocks'}));
-!$access{'maxfiles'} ||
-	!$in{'sfiles_def'} && $in{'sfiles'} <= $access{'maxfiles'} &&
-	!$in{'hfiles_def'} && $in{'hfiles'} <= $access{'maxfiles'} ||
-		&error(&text('suser_emaxfiles', $access{'maxfiles'}));
+foreach my $field (qw(sblocks hblocks sfiles hfiles)) {
+	&check_quota_limit($field, $in{$field.'_def'} ? 0 : $in{$field});
+	}
 &edit_group_quota($in{'group'}, $in{'filesys'},
 		  $in{'sblocks_def'} ? 0 : $in{'sblocks'},
 		  $in{'hblocks_def'} ? 0 : $in{'hblocks'},
