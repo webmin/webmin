@@ -127,6 +127,7 @@ mgetty_espeed=Missing or invalid speed
 mgetty_eanswer=Missing or invalid number of rings
 mgetty_eback=Missing or invalid number of ringback seconds
 mgetty_eclash=The serial port $1 is already in use
+mgetty_eprompt=The login prompt cannot contain line breaks, or a single quote together with a double quote, dollar sign, backtick or backslash
 mgetty_apply=Apply Configuration
 mgetty_applydesc=Click this button to apply the current serial port configuration by running the command $1 and killing all Mgetty processes.
 mgetty_applyerr=Failed to apply configuration

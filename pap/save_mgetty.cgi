@@ -25,10 +25,10 @@ else {
 	$cmd = $in{'new'} ? &has_command($config{'mgetty'}) : $init->{'mgetty'};
 	$cmd .= " -r" if ($in{'direct'});
 	if (!$in{'speed_def'}) {
-		$in{'speed'} =~ /^\d+$/ || &error($text{'mgetty_espeed'});
+		$in{'speed'} =~ /^\d+\z/ || &error($text{'mgetty_espeed'});
 		$cmd .= " -s $in{'speed'}";
 		}
-	$in{'rings'} =~ /^\d+$/ || &error($text{'mgetty_eanswer'});
+	$in{'rings'} =~ /^\d+\z/ || &error($text{'mgetty_eanswer'});
 	$cmd .= " -n $in{'rings'}" if ($in{'rings'} != 1);
 	if ($in{'mode'} == 1) {
 		$cmd .= " -D";
@@ -37,23 +37,37 @@ else {
 		$cmd .= " -F";
 		}
 	if (!$in{'back_def'}) {
-		$in{'back'} =~ /^\d+$/ || &error($text{'mgetty_eback'});
+		$in{'back'} =~ /^\d+\z/ || &error($text{'mgetty_eback'});
 		$cmd .= " -R $in{'back'}";
 		}
 	if (!$in{'prompt_def'}) {
-		$cmd .= $in{'prompt'} =~ /"/ ? " -p '$in{'prompt'}'"
-					     : " -p \"$in{'prompt'}\"";
+		# The command is run by a shell, so quote the prompt in a way
+		# that keeps it literal
+		$in{'prompt'} =~ /[\r\n\0]/ && &error($text{'mgetty_eprompt'});
+		if ($in{'prompt'} !~ /'/) {
+			$cmd .= " -p '$in{'prompt'}'";
+			}
+		elsif ($in{'prompt'} !~ /["\$`\\]/) {
+			$cmd .= " -p \"$in{'prompt'}\"";
+			}
+		else {
+			&error($text{'mgetty_eprompt'});
+			}
 		}
 	if ($init->{'args'}) {
 		$init->{'args'} =~ s/^\s+//;
 		$cmd .= " $init->{'args'}";
 		}
+	# Device names end up in inittab, so only allow plain paths
 	if ($in{'tty'}) {
+		$in{'tty'} =~ /^[A-Za-z0-9\/][A-Za-z0-9\/\._\-]*\z/ &&
+		    $in{'tty'} !~ /\.\./ || &error($text{'mgetty_etty'});
 		$cmd .= " $in{'tty'}";
 		$init->{'tty'} = $in{'tty'};
 		}
 	else {
-		-r $in{'other'} || &error($text{'mgetty_etty'});
+		$in{'other'} =~ /^\/[A-Za-z0-9\/\._\-]+\z/ && -r $in{'other'} ||
+			&error($text{'mgetty_etty'});
 		$cmd .= " $in{'other'}";
 		$init->{'tty'} = $in{'other'};
 		}
