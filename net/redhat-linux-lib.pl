@@ -69,7 +69,7 @@ while($f = readdir(CONF)) {
 	my (%conf, $b);
 	if ($f =~ /^ifcfg-([a-z0-9:\.]+)\-range([a-z0-9\.\_]+)$/) {
 		# A range of addresses
-		&read_env_file("$net_scripts_dir/$f", \%conf);
+		&read_interface_config("$net_scripts_dir/$f", \%conf);
 		$b->{'fullname'} = "$1-range$2";
 		$b->{'name'} = $1;
 		$b->{'range'} = $2;
@@ -86,7 +86,7 @@ while($f = readdir(CONF)) {
 	elsif ($f !~ /\.(bak|old)$/i && $f =~ /^ifcfg-([a-zA-Z_0-9:\.\-]+)$/) {
 		# Normal interface
 		my $fname = $1;
-		&read_env_file("$net_scripts_dir/$f", \%conf);
+		&read_interface_config("$net_scripts_dir/$f", \%conf);
 		if ($conf{'DEVICE'}) {
 			# Device is set in the file
 			$b->{'fullname'} = $conf{'DEVICE'};
@@ -248,12 +248,12 @@ if ($pmode) {
 	$name =~ s/:\d+$//;
 	my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
 	&lock_file($file);
-	&read_env_file($file, \%conf);
+	&read_interface_config($file, \%conf);
 	my $n = $b->{'virtual'} + 1;
 	$conf{'IPADDR'.$n} = $b->{'address'};
 	$conf{'PREFIX'.$n} = &mask_to_prefix($b->{'netmask'});
 	delete($conf{'NETMASK'.$n});
-	&write_env_file($file, \%conf);
+	&write_interface_config($file, \%conf);
 	&unlock_file($file);
 	$b->{'parent'} ||= $b->{'name'};
 	}
@@ -262,7 +262,7 @@ else {
 	local(%conf);
 	my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
 	&lock_file($file);
-	&read_env_file($file, \%conf);
+	&read_interface_config($file, \%conf);
 	if ($b->{'range'} ne "") {
 		# Special case - saving a range
 		$conf{'IPADDR_START'} = $b->{'start'};
@@ -352,25 +352,25 @@ else {
 		# New interfaces shouldn't be controller by network manager
 		$conf{'NM_CONTROLLED'} = 'no';
 		}
-	&write_env_file($file, \%conf);
+	&write_interface_config($file, \%conf);
 
 	# If this is a bridge, set BRIDGE in real interface
 	if ($b->{'bridge'}) {
 		foreach my $efile (glob("$net_scripts_dir/ifcfg-e*")) {
 			my %bconf;
 			&lock_file($efile);
-			&read_env_file($efile, \%bconf);
+			&read_interface_config($efile, \%bconf);
 			if ($bconf{'DEVICE'} eq $b->{'bridgeto'} &&
 			    $b->{'bridgeto'}) {
 				# Correct device for bridge
 				$bconf{'BRIDGE'} = $b->{'fullname'};
-				&write_env_file($efile, \%bconf);
+				&write_interface_config($efile, \%bconf);
 				}
 			elsif ($bconf{'BRIDGE'} eq $b->{'fullname'} &&
 			       $bconf{'BRIDGE'}) {
 				# Was using this bridge, shouldn't be
 				delete($bconf{'BRIDGE'});
-				&write_env_file($efile, \%bconf);
+				&write_interface_config($efile, \%bconf);
 				}
 			&unlock_file($efile);
 			}
@@ -407,7 +407,7 @@ if ($b->{'virtual'} ne '' && $b->{'parent'}) {
 	my %conf;
 	my $i = $b->{'virtual'}+1;
 	&lock_file($file);
-	&read_env_file($file, \%conf);
+	&read_interface_config($file, \%conf);
 	for($n=$i; defined($conf{'IPADDR'.$n}); $n++) {
 		$conf{'IPADDR'.$n} = $conf{'IPADDR'.($n+1)};
 		$conf{'NETMASK'.$n} = $conf{'NETMASK'.($n+1)};
@@ -416,7 +416,7 @@ if ($b->{'virtual'} ne '' && $b->{'parent'}) {
 		delete($conf{'NETMASK'.($n+1)});
 		delete($conf{'PREFIX'.($n+1)});
 		}
-	&write_env_file($file, \%conf);
+	&write_interface_config($file, \%conf);
 	&unlock_file($file);
 	}
 else {
@@ -494,11 +494,11 @@ $conf{'HOSTNAME'} = $_[0];
 # If any ifcfg-XXX files have the old hostname in DHCP_HOSTNAME, fix it
 foreach my $b (&boot_interfaces()) {
 	my %ifc;
-	&read_env_file($b->{'file'}, \%ifc);
+	&read_interface_config($b->{'file'}, \%ifc);
 	if ($ifc{'DHCP_HOSTNAME'} eq $old) {
 		$ifc{'DHCP_HOSTNAME'} = $_[0];
 		&lock_file($b->{'file'});
-		&write_env_file($b->{'file'}, \%ifc);
+		&write_interface_config($b->{'file'}, \%ifc);
 		&unlock_file($b->{'file'});
 		}
 	}
@@ -1107,7 +1107,7 @@ if ($in{'new'}) {
 	}
 
 # The description is written to a file that the shell sources
-&valid_env_value($in{'desc'}) || &error($text{'bifc_edesc'});
+$in{'desc'} =~ /[\r\n\0]/ && &error($text{'bifc_edesc'});
 $_[0]->{'desc'} = $in{'desc'};
 
 &check_ipaddress($in{'start'}) || &error($text{'range_estart'});
@@ -1209,13 +1209,13 @@ my ($conf) = @_;
 my @boot = &boot_interfaces();
 foreach my $b (@boot) {
 	my %ifc;
-	&read_env_file($b->{'file'}, \%ifc);
+	&read_interface_config($b->{'file'}, \%ifc);
 	next if (!&supports_dns_interface(\%ifc));
 	&lock_file($b->{'file'});
 	foreach my $k (keys %ifc) {
 		delete($ifc{$k}) if ($k =~ /^DNS\d+$/);
 		}
-	&write_env_file($b->{'file'}, \%ifc);
+	&write_interface_config($b->{'file'}, \%ifc);
 	my $i = 1;
 	foreach my $ns (@{$conf->{'nameserver'}}) {
 		$ifc{'DNS'.$i} = $ns;
@@ -1233,7 +1233,7 @@ foreach my $b (@boot) {
 	else {
 		delete($ifc{'DOMAIN'});
 		}
-	&write_env_file($b->{'file'}, \%ifc);
+	&write_interface_config($b->{'file'}, \%ifc);
 	&unlock_file($b->{'file'});
 	}
 return (0, 0);

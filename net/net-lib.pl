@@ -481,13 +481,41 @@ my ($name) = @_;
 return defined($name) && $name =~ /\A[A-Za-z0-9_][A-Za-z0-9_.:-]*\z/ ? 1 : 0;
 }
 
-# valid_env_value(value)
-# Returns 1 if a free-text value can be written to a file that the shell
-# sources, without the shell running or redirecting anything when it does
-sub valid_env_value
+# read_interface_config(file, &config)
+# Reads an ifcfg file, preserving punctuation in the quoted interface name.
+sub read_interface_config
 {
-my ($value) = @_;
-return defined($value) && $value =~ /[\$`\\"';&|<>\r\n\0]/ ? 0 : 1;
+my ($file, $conf) = @_;
+my %lines;
+my $rv = &read_env_file($file, $conf, 0, \%lines);
+if (defined($lines{'NAME'})) {
+	my $line = &read_file_lines($file, 1)->[$lines{'NAME'}];
+	if ($line =~ /^\s*(?:export\s+)?NAME\s*=\s*"((?:[^"\\]|\\.)*)"/) {
+		my $name = $1;
+		$name =~ s/\\([\\"\$`])/$1/g;
+		$conf->{'NAME'} = $name;
+		}
+	elsif ($line =~ /^\s*(?:export\s+)?NAME\s*=\s*'([^']*)'/) {
+		$conf->{'NAME'} = $1;
+		}
+	}
+return $rv;
+}
+
+# write_interface_config(file, &config)
+# Quotes the interface description as one shell string in an ifcfg file.
+sub write_interface_config
+{
+my ($file, $conf) = @_;
+my %values = %$conf;
+if (defined($values{'NAME'})) {
+	my $name = $values{'NAME'};
+	$name !~ /[\r\n\0]/ || &error($text{'bifc_edesc'});
+	$name =~ s/([\\"\$`])/\\$1/g;
+	# write_env_file supplies the quotes itself for empty values or spaces.
+	$values{'NAME'} = $name =~ /^\S+\z/ ? qq{"$name"} : $name;
+	}
+return &write_env_file($file, \%values);
 }
 
 # common_order_input(name, value, &opts)

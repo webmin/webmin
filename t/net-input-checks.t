@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use Test::More;
+use File::Temp qw(tempdir);
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
 
@@ -11,7 +12,9 @@ my $root = abs_path(dirname(__FILE__)."/..") or die "rootdir: $!";
 open(my $lib, '<', "$root/net/net-lib.pl") or die "net-lib.pl: $!";
 my $source = do { local $/; <$lib> };
 close($lib);
-foreach my $sub ('valid_iface_name', 'valid_env_value') {
+require "$root/web-lib-funcs.pl";
+our %text;
+foreach my $sub (qw(valid_iface_name read_interface_config write_interface_config)) {
 	$source =~ /(^sub \Q$sub\E\n\{.*?^\})/ms or die "Missing $sub";
 	eval $1;
 	die $@ if ($@);
@@ -26,13 +29,28 @@ foreach my $bad ('', '-eth0', 'eth0;id', 'eth0 eth1', '$(id)', "eth0\n",
 	ok(!valid_iface_name($bad), "interface name '$bad' is rejected");
 	}
 
-foreach my $ok ('System eth0', 'Uplink (primary)', 'Office #2', 'a+b=c',
-		'') {
-	ok(valid_env_value($ok), "description '$ok' is accepted");
+my $tmp = tempdir(CLEANUP => 1);
+my $file = "$tmp/ifcfg-eth0";
+for my $name ("Sales & Support", "Owner's uplink", "R&D", 'Office #2',
+	      'Cost $5', 'Uplink (primary)', 'Path "C:\Docs"', '') {
+	write_interface_config($file, { NAME => $name, DEVICE => 'eth0' });
+	my %config;
+	read_interface_config($file, \%config);
+	is($config{'NAME'}, $name, 'Webmin reads the original description');
+	open(my $sh, '-|', 'sh', '-c', '. "$1"; printf %s "$NAME"', 'sh', $file)
+		or die $!;
+	my $got = do { local $/; <$sh> };
+	ok(close($sh), 'shell can read the interface file');
+	is($got, $name, 'shell reads the original description');
 	}
-foreach my $bad ('$(id>/tmp/p)', '`id`', 'a;b', 'a&b', 'a|b', 'a>b',
-		 'a<b', 'a"b', "a'b", 'a\\b', "a\nb") {
-	ok(!valid_env_value($bad), "description '$bad' is rejected");
+
+{
+	no warnings qw(once redefine);
+	local *main::error = sub { die "Invalid description\n" };
+	for my $bad ("first\nsecond", "first\0second") {
+		ok(!eval { write_interface_config($file, { NAME => $bad }); 1 },
+		   'a multiline or binary description is rejected before writing');
+		}
 	}
 
 done_testing();

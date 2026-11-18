@@ -176,7 +176,7 @@ else {
 	# Set description if possible. Some systems write it to a file that the
 	# shell sources
 	if (defined($in{'desc'})) {
-		&valid_env_value($in{'desc'}) || &error($text{'bifc_edesc'});
+		$in{'desc'} =~ /[\r\n\0]/ && &error($text{'bifc_edesc'});
 		$b->{'desc'} = $in{'desc'};
 		}
 	else {
