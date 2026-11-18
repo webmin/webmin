@@ -865,6 +865,42 @@ if ($acc->{'per_' . $stype . '_acls'}) {
 return 1;
 }
 
+# can_kill_connections([share])
+# Returns 1 if the current user can disconnect clients from a share, or from
+# all shares when no share is given
+sub can_kill_connections
+{
+my ($sname) = @_;
+if ($sname eq '') {
+	return $access{'view_all_con'} && $access{'kill_con'};
+	}
+return 0 if (!&can('rvV', \%access, $sname));
+
+# The per-share view and kill rights are only set when per-share ACLs are
+# enabled. Otherwise the global right to remove connections applies.
+local %share;
+&get_share($sname);
+my $stype = &istrue('printable') ? 'ps' : 'fs';
+return $access{'per_'.$stype.'_acls'} || $access{'kill_con'};
+}
+
+# kill_connection_pids(share, pid, ...)
+# Sends TERM to Samba processes serving a share, or any share when it is empty.
+# Calls error for a PID that does not belong to a current connection.
+sub kill_connection_pids
+{
+my ($sname, @pids) = @_;
+my %conpids = map { $_->[3], 1 }
+		  &list_connections($sname eq '' ? undef : $sname);
+foreach my $pid (@pids) {
+	$pid =~ /^\d+$/ && $pid > 1 && $conpids{$pid} ||
+		&error(&text('viewu_epid', &html_escape($pid)));
+	}
+foreach my $pid (@pids) {
+	&kill_logged('TERM', $pid);
+	}
+}
+
 # save_samba_acl($permissions_string, \%access, $share_name)
 sub save_samba_acl
 {

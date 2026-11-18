@@ -434,6 +434,7 @@ viewu_none=None
 viewu_ecmd=The Samba status program $1 does not appear to be installed on your system. Maybe the <a href='$2'>module configuration</a> is incorrect.
 viewu_kill=Disconnect Selected Users
 viewu_enone=No users selected
+viewu_epid=Process ID $1 is not a current Samba connection
 viewu_refresh=Refresh page.
 
 log_apply=Restarted Samba servers

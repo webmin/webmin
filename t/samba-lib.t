@@ -64,4 +64,50 @@ subtest 'CRLF configuration files can still be saved' => sub {
 	like($@, qr/share_evalue/, 'a carriage return from a form is refused');
 };
 
+subtest 'connections are removed only with the right to do so' => sub {
+	local %main::access = ( 'r_fs' => 1, 'r_ps' => 1, 'kill_con' => 0,
+				'view_all_con' => 1, 'per_fs_acls' => 0 );
+	ok(!main::can_kill_connections('my share'),
+	   'read access alone cannot remove share connections');
+	ok(!main::can_kill_connections(), 'nor all connections');
+	$main::access{'kill_con'} = 1;
+	ok(main::can_kill_connections('my share'),
+	   'the global right applies without per-share ACLs');
+	ok(main::can_kill_connections(), 'and for all connections');
+	$main::access{'kill_con'} = 0;
+	$main::access{'per_fs_acls'} = 1;
+	$main::access{'ACLfs_my share'} = 'rv';
+	ok(!main::can_kill_connections('my share'),
+	   'a per-share ACL without the kill right is refused');
+	$main::access{'ACLfs_my share'} = 'rvV';
+	ok(main::can_kill_connections('my share'),
+	   'a per-share ACL with the kill right is allowed');
+	ok(!main::can_kill_connections('printer'),
+	   'printer shares use their own ACL setting');
+};
+
+subtest 'only processes of listed connections are killed' => sub {
+	no warnings 'redefine';
+	my @killed;
+	my @listed;
+	local *main::list_connections = sub {
+		push(@listed, $_[0]);
+		return ( [ 'my share', 'bob', 'users', '4242', 'pc', 'now' ] );
+		};
+	local *main::kill_logged = sub { push(@killed, [ @_ ]); };
+	for my $pid ('-1', '0', '1', '999', '4242 ', '42x') {
+		@killed = ( );
+		eval { main::kill_connection_pids('my share', '4242', $pid) };
+		like($@, qr/viewu_epid/, "PID '$pid' is refused");
+		is_deeply(\@killed, [ ], 'and nothing is killed');
+		}
+	@killed = @listed = ( );
+	main::kill_connection_pids('my share', '4242');
+	is_deeply(\@killed, [ [ 'TERM', '4242' ] ], 'a listed PID is killed');
+	is_deeply(\@listed, [ 'my share' ], 'only that share is listed');
+	@listed = ( );
+	main::kill_connection_pids('', '4242');
+	is_deeply(\@listed, [ undef ], 'all shares are listed without a share');
+};
+
 done_testing();
