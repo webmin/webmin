@@ -5,6 +5,7 @@
 require './pap-lib.pl';
 $access{'options'} || &error($text{'options_ecannot'});
 &ReadParse();
+&checked_ppp_options_file($in{'file'});
 &ui_print_header(undef, $text{'options_title'}, "");
 $of = $config{'ppp_options'};
 if ($in{'file'} =~ /^\Q$of\E\.ttyS(\d+)$/) {

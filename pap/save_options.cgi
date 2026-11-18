@@ -6,7 +6,7 @@ require './pap-lib.pl';
 $access{'options'} || &error($text{'options_ecannot'});
 &ReadParse();
 &error_setup($text{'options_err'});
-$file = $in{'file'} || $config{'ppp_options'};
+$file = &checked_ppp_options_file($in{'file'});
 &lock_file($file);
 @opts = &parse_ppp_options($file);
 
