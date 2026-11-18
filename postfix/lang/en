@@ -16,6 +16,7 @@ index_reloadmsg=Click this button to have Postfix re-read all of its configurati
 index_version=Postfix version $1
 opts_err=Failed to save options
 opts_eoption=The option $1 cannot be changed here
+opts_ecannot=You are not allowed to edit these options
 
 check_error=Error while checking current Postfix configuration. Please manually fix Postfix configuration.
 check_manual=Manually edit the Postfix configuration file.

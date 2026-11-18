@@ -23,7 +23,8 @@ $access{'general'} || &error($text{'general_ecannot'});
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in, [ "myhostname", "mydomain" ]);
+&save_options(\%in, [ "myhostname", "mydomain" ],
+	      &options_for_section("general"));
 &ensure_map("relocated_maps");
 &after_save();
 &unlock_postfix_files();
