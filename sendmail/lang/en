@@ -235,6 +235,7 @@ vsave_eaddr='$1' is not a valid address
 vsave_ecannot4=You are not allowed to create mappings to domains
 vsave_edomdom=Only a domain can be mapped to another domain
 vsave_ecannot5=You are not allowed to create mappings that return an error
+vsave_eline=An address mapping field contains an invalid line break or null character
 
 vdelete_err=Failed to delete address mappings
 vdelete_ecannot=You are not allowed to delete the mapping for $1
@@ -313,6 +314,7 @@ gsave_efrom='$1' is not a valid from address
 gsave_ematch=The from address does not match '$1'
 gsave_eto='$1' is not a valid new address
 gsave_ealready=An outgoing address mapping for '$1' already exists
+gsave_eline=An outgoing address field contains an invalid line break or null character
 
 gdelete_err=Failed to delete outgoing address mappings
 gdelete_ecannot=You are not allowed to delete the mapping for $1
@@ -393,6 +395,7 @@ ssave_etype3='$1' is not a valid domain
 ssave_ecode='$1' is not a valid SMTP error code
 ssave_ealready=A spam control rule for '$1' already exists
 ssave_ecannot2=You are not allowed to save this spam control rule
+ssave_eline=A spam control field contains an invalid line break or null character
 
 sdelete_err=Failed to delete spam control rules
 sdelete_ecannot=You are not allowed to delete the rule for $1

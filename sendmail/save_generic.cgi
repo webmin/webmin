@@ -25,6 +25,11 @@ if ($in{'delete'}) {
 else {
 	# Saving or creating.. check inputs
 	&error_setup($text{'gsave_err'});
+
+	# Each field must stay on its map or comment line
+	foreach my $k ("from", "to", "cmt") {
+		$in{$k} =~ /[\r\n\0]/ && &error($text{'gsave_eline'});
+		}
 	$in{'from'} =~ /^\S+$/ ||
 		&error(&text('gsave_efrom', $in{'from'}));
 	$access{'omode'} == 1 || $in{'from'} =~ /$access{'oaddrs'}/ ||
