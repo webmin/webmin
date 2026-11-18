@@ -146,8 +146,8 @@ MAINLOOP: while (index($line, "$boundary--") == -1) {
 		my $newfile = !-e $full;
 		if (!open(OUTFILE, ">$full")) {
 			push @errors,
-				"$text{'error_opening_file_for_writing'}" .
-				" $path/$file - $!";
+				"$text{'error_opening_file_for_writing'} " .
+				&html_escape("$path/$file")." - $!";
 			next;
 			}
 		else {
@@ -193,7 +193,7 @@ MAINLOOP: while (index($line, "$boundary--") == -1) {
 					    $prevline) {
 						push @errors,
 						  "$text{'error_writing_file'} " .
-						  "$path/$file";
+						  &html_escape("$path/$file");
 						last MAINLOOP;
 						}
 					last;
@@ -203,7 +203,7 @@ MAINLOOP: while (index($line, "$boundary--") == -1) {
 					    $prevline) {
 						push @errors,
 						  "$text{'error_writing_file'} " .
-						  "$path/$file";
+						  &html_escape("$path/$file");
 						last MAINLOOP;
 						}
 					$prevline = $line;

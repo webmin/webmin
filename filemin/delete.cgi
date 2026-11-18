@@ -11,12 +11,12 @@ foreach $name (split(/\0/, $in{'name'})) {
 	my $full = &validate_filename_path($name);
 	if (!can_write($full)) {
 		push @errors,
-			"$name - $text{'error_write'}";
+			&html_escape($name)." - $text{'error_write'}";
 		next;
 		}
 	if (!&unlink_file($full)) {
 		push @errors,
-			"$name - $text{'error_delete'}: $!";
+			&html_escape($name)." - $text{'error_delete'}: $!";
 		}
 	}
 

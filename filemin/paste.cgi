@@ -37,7 +37,7 @@ else {
 		if ($act eq "copy") {
 			if (-e $target) {
 				push @errors,
-					"$target " .
+					&html_escape($target)." " .
 					"$text{'error_exists'}";
 				}
 			else {
@@ -54,13 +54,13 @@ else {
 		elsif ($act eq "cut") {
 			if (!can_move($source, $from, $cwd)) {
 				push @errors,
-					"$source" .
+					&html_escape($source) .
 					" - " .
 					"$text{'error_move'}";
 				}
 			elsif (-e $target) {
 				push @errors,
-					"$target " .
+					&html_escape($target)." " .
 					"$text{'error_exists'}";
 				}
 			else {
