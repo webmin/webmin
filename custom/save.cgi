@@ -31,20 +31,13 @@ if ($edit->{'before'}) {
 
 # Save the file
 $in{'data'} =~ s/\r//g;
-&open_lock_tempfile(FILE, ">$file", 1) ||
-	&error(&text('view_efile', &html_escape($file), &html_escape("$!")));
-&print_tempfile(FILE, $in{'data'});
-&close_tempfile(FILE);
-
-# Set file ownership and permissions without invoking a shell
-if ($edit->{'user'}) {
-	# Apply the configured owner and group
-	&set_ownership_permissions($edit->{'user'}, $edit->{'group'},
-				   undef, $file);
+$homeuser = &editor_home_user($edit);
+if ($homeuser) {
+	# Write the file in the user's home directory with his permissions
+	&eval_as_unix_user($homeuser, \&save_editor_file);
 	}
-if ($edit->{'perms'}) {
-	# Apply the configured file permissions
-	&set_ownership_permissions(undef, undef, oct($edit->{'perms'}), $file);
+else {
+	&save_editor_file();
 	}
 
 # Run the after-command
@@ -56,3 +49,23 @@ if ($edit->{'after'}) {
 &webmin_log("save", "edit", $cmd->{'id'}, $edit);
 &redirect("");
 
+# save_editor_file()
+# Writes the edited data, then applies the configured owner and permissions
+# without invoking a shell
+sub save_editor_file
+{
+&open_lock_tempfile(FILE, ">$file", 1) ||
+	&error(&text('view_efile', &html_escape($file), &html_escape("$!")));
+&print_tempfile(FILE, $in{'data'});
+&close_tempfile(FILE);
+&unlock_file($file);
+if ($edit->{'user'}) {
+	# Apply the configured owner and group
+	&set_ownership_permissions($edit->{'user'}, $edit->{'group'},
+				   undef, $file);
+	}
+if ($edit->{'perms'}) {
+	# Apply the configured file permissions
+	&set_ownership_permissions(undef, undef, oct($edit->{'perms'}), $file);
+	}
+}

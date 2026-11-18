@@ -39,7 +39,15 @@ print &ui_table_start(&text('view_header', "<tt>$displayfile</tt>"), undef, 2);
 foreach my $i (keys %in) {
 	print &ui_hidden($i, $in{$i}),"\n";
 	}
-$data = &read_file_contents($file);
+$homeuser = &editor_home_user($edit);
+if ($homeuser) {
+	# Read the file in the user's home directory with his permissions
+	$data = &eval_as_unix_user($homeuser,
+				   sub { &read_file_contents($file) });
+	}
+else {
+	$data = &read_file_contents($file);
+	}
 print &ui_table_row(undef, &ui_textarea("data", $data, $h, $w, $config{'wrap'}),
 		    2);
 print &ui_table_end();

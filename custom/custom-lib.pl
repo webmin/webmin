@@ -242,6 +242,19 @@ if (-r $cf) {
 	}
 }
 
+# editor_home_user(&editor)
+# Returns the Unix user whose home directory holds a file editor's relative
+# path, when running as root. That file must be read and written with the
+# user's permissions, so that links in the home directory to system files are
+# not followed as root.
+sub editor_home_user
+{
+my ($edit) = @_;
+return undef if ($edit->{'edit'} =~ /^\// || $< != 0);
+my @uinfo = getpwnam($remote_user);
+return @uinfo ? $uinfo[0] : undef;
+}
+
 sub can_run_command
 {
 if ($module_info{'usermin'}) {
