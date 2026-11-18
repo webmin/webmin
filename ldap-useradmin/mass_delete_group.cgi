@@ -8,7 +8,7 @@ require './ldap-useradmin-lib.pl';
 foreach $name (split(/\0/, $in{'gd'})) {
 	$group = $glist{$name};
 	if ($group) {
-		&can_edit_group(\%access, $group) ||
+		&can_edit_group($group) ||
 			&error(&text('gmass_egroup', $name));
 		push(@dlist, $group);
 		}
