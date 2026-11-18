@@ -39,6 +39,7 @@ my $r;
 if (defined($in{'num'})) {
 	$r = &find_record_by_id(\@recs, $in{'id'}, $in{'num'});
 	$r || &error($text{'edit_egone'});
+	&can_edit_type($r->{'type'}) || &error($text{'recs_ecannottype'});
 	}
 
 # check for deletion
