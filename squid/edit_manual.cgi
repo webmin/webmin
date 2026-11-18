@@ -22,7 +22,7 @@ if (@files > 1) {
 $data = &read_file_contents($file);
 print &ui_form_start("save_manual.cgi", "form-data");
 print &ui_hidden("file", $file);
-print &text('manual_editing', "<tt>$file</tt>"),"<br>\n";
+print &text('manual_editing', "<tt>".&html_escape($file)."</tt>"),"<br>\n";
 print &ui_textarea("data", $data, 20, 80);
 print &ui_form_end([ [ "save", $text{'save'} ] ] );
 

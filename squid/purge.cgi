@@ -32,7 +32,7 @@ else {
 	}
 
 # Run it
-print &text('purge_doing', "<tt>$in{'url'}</tt>"),"\n";
+print &text('purge_doing', "<tt>".&html_escape($in{'url'})."</tt>"),"\n";
 my $cmd = "$config{'squidclient'} -p $port -m PURGE ".quotemeta($in{'url'});
 my $out = &backquote_logged("$cmd 2>&1");
 print "<pre>".&html_escape($out)."</pre>\n";
