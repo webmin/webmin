@@ -496,6 +496,7 @@ core_syslog=System Log
 core_filelog=File
 core_proglog=Program
 core_errfile=Error log file
+core_managedlog=The administrator manages this piped log.
 core_logto=Error log to
 core_efilelog=Invalid error log file
 core_edirlog=Error log file is not under the allowed directory

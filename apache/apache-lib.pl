@@ -1463,10 +1463,38 @@ sub parse_inputs
 &before_changing();
 &lock_apache_files();
 foreach $e (@{$_[0]}) {
+	# A delegated log editor cannot replace an administrator's piped error log.
+	next if ($e->{'name'} eq 'ErrorLog' && !$access{'pipe'} &&
+		 grep { $_->{'words'}->[0] =~ /^\|/ }
+		 &find_directive_struct('ErrorLog', $_[1]));
 	@dirs = split(/\s+/, $e->{'name'});
 	$func = "save_".join('_', @dirs);
 	@rv = &$func($e);
 	for($i=0; $i<@dirs; $i++) {
+		# Each editor returns one element per physical directive.
+		foreach my $value (@{$rv[$i] || [ ]}) {
+			$value =~ /[\r\n\0]|\\\z/ && &error($text{'enewline'});
+			# Apache accepts a quoted pipe destination in file mode too.
+			if (!$access{'pipe'} &&
+			    $dirs[$i] =~ /^(?:CustomLog|TransferLog|ErrorLog|AgentLog|RefererLog)$/ &&
+			    $value =~ /^\s*["']?\|/) {
+				&error($text{'core_eperm'});
+				}
+			}
+		# The file-log editor omits administrator-managed piped logs.
+		if (!$access{'pipe'} && $dirs[$i] =~ /^(?:CustomLog|TransferLog)$/) {
+			my @new = @{$rv[$i] || [ ]};
+			my @merged;
+			foreach my $old (&find_directive_struct($dirs[$i], $_[1])) {
+				if ($old->{'words'}->[0] =~ /^\|/) {
+					push(@merged, $old->{'value'});
+					}
+				elsif (@new) {
+					push(@merged, shift(@new));
+					}
+				}
+			$rv[$i] = [ @merged, @new ];
+			}
 		push(@chname, $dirs[$i]);
 		push(@chval, $rv[$i]);
 		}
