@@ -40,7 +40,10 @@ while(<DFS>) {
 		if ($line =~ /\s(\/\S+)/) {
 			$share->{'dir'} = $1;
 			}
-		if ($line =~ /-d\s+"([^"]+)"/) { $share->{'desc'} = $1; }
+		if ($line =~ /-d\s+"((?:[^"\\]|\\.)*)"/) {
+			$share->{'desc'} = $1;
+			$share->{'desc'} =~ s/\\(["\\\$\x60])/$1/g;
+			}
 		elsif ($line =~ /-d\s+(\S+)/) { $share->{'desc'} = $1; }
 		if ($line =~ /-o\s+"([^"]+)"/) { $share->{'opts'} = $1; }
 		elsif ($line =~ /-o\s+(\S+)/) { $share->{'opts'} = $1; }
@@ -77,7 +80,12 @@ splice(@$lref, $_[0]->{'line'}, $_[0]->{'eline'} - $_[0]->{'line'} + 1,
 sub share_line
 {
 local $s = "share";
-$s .= " -d \"$_[0]->{'desc'}\"" if ($_[0]->{'desc'});
+if ($_[0]->{'desc'}) {
+	my $desc = $_[0]->{'desc'};
+	$desc =~ /[\r\n\0]/ && &error($text{'save_edesc'});
+	$desc =~ s/(["\\\$\x60])/\\$1/g;
+	$s .= " -d \"$desc\"";
+	}
 $s .= " -o $_[0]->{'opts'}" if ($_[0]->{'opts'});
 $s .= " -F $_[0]->{'type'}" if ($_[0]->{'type'} &&
 				$_[0]->{'type'} ne $default_type);
