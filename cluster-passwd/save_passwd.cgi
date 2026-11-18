@@ -60,7 +60,8 @@ elsif ($_[0] == -4) {
 	print "</ul>\n";
 	}
 elsif ($_[0] > 0) {
-	print "$_[1]<p>\n";
+	# Failure messages can include errors from the managed server
+	print &html_escape($_[1]),"<p>\n";
 	print "</ul>\n";
 	}
 }
