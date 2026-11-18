@@ -358,21 +358,22 @@ if ($gconfig{'debug_what_sql'}) {
 $sql = &escape_backslashes_in_quotes($sql);
 if ($driver_handle && !$config{'nodbi'}) {
 	# Use the DBI interface
-	local $cstr = "database=$_[0]";
+	# Keep the database name out of the driver's option string.
+	my @options;
 	local $drv = $driver_info->{opt};
-	$cstr .= ";host=$config{'host'}" if ($config{'host'});
-	$cstr .= ";port=$config{'port'}" if ($config{'port'});
-	$cstr .= ";${drv}_socket=$config{'sock'}" if ($config{'sock'});
-	$cstr .= ";${drv}_read_default_file=$config{'my_cnf'}"
+	push(@options, "host=$config{'host'}") if ($config{'host'});
+	push(@options, "port=$config{'port'}") if ($config{'port'});
+	push(@options, "${drv}_socket=$config{'sock'}") if ($config{'sock'});
+	push(@options, "${drv}_read_default_file=$config{'my_cnf'}")
 		if (-r $config{'my_cnf'});
 	if ($config{'ssl'}) {
-		$cstr .= ";${drv}_ssl=1";
+		push(@options, "${drv}_ssl=1");
 		if ($DBD::mysql::VERSION >= 4.043) {
-			$cstr .= ";${drv}_ssl_optional=1";
+			push(@options, "${drv}_ssl_optional=1");
 			}
 		}
-	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
-					     { });
+	local $dbh = $driver_handle->connect(join(";", @options), $mysql_login,
+					     $mysql_pass, { database => $_[0] });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
 	if ($disable_session_binlog) {
 		# A point-in-time restore must not add its own SQL to the log that
