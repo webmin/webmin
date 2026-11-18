@@ -50,7 +50,10 @@ if (defined($in{old})) {
 	# Saving an existing mount
 	if ($in{temp}) { @mlist = &list_mounted(); }
 	else { @mlist = &list_mounts(); }
+	$in{'old'} =~ /\A\d+\z/ && $mlist[$in{'old'}] ||
+		&error($text{'edit_egone'});
 	@mold = @{$mlist[$in{old}]};
+	&can_edit_fs(@mold[0..3]) || &error($text{'edit_ecannot'});
 
 	if (!$mnow && !$in{oldmnow} && !$msave) {
 		# Not mounted, so remove from fstab without checking
@@ -245,7 +248,10 @@ elsif (defined($in{'old'})) {
 		$msave = 1;
 		$now = 1 if ($in{'oldmnow'});
 		}
+	$in{'old'} =~ /\A\d+\z/ && $mlist[$in{'old'}] ||
+		&error($text{'edit_egone'});
 	@mold = @{$mlist[$in{old}]};
+	&can_edit_fs(@mold[0..3]) || &error($text{'edit_ecannot'});
 
 	if ($in{'umount'}) {
 		# Just unmount the filesystem
