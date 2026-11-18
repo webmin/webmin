@@ -991,7 +991,7 @@ if ($has_smbgroupedit) {
 		" -c ".quotemeta($_[0]->{'sid'}).
 		($_[0]->{'unix'} == -1 ? "" :" -u ".quotemeta($_[0]->{'unix'})).
 		($_[0]->{'desc'} ? " -d ".quotemeta($_[0]->{'desc'}) :" -d ''").
-		" -t ".$_[0]->{'type'}.
+		" -t ".quotemeta($_[0]->{'type'}).
 		" 2>&1");
 	$? && &error("$config{'smbgroupedit'} failed : <pre>$out</pre>");
 	}
@@ -1020,7 +1020,7 @@ if ($has_smbgroupedit) {
 		" -n ".quotemeta($_[0]->{'name'}).
 		($_[0]->{'priv'} ? " -p ".quotemeta($_[0]->{'priv'}) : "").
 		($_[0]->{'desc'} ? " -d ".quotemeta($_[0]->{'desc'}) :" -d ''").
-		" -t ".$_[0]->{'type'}." 2>&1");
+		" -t ".quotemeta($_[0]->{'type'})." 2>&1");
 	$? && &error("$config{'smbgroupedit'} failed : <pre>$out</pre>");
 	}
 else {
