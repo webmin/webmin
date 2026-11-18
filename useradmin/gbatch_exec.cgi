@@ -85,10 +85,11 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		$gused{$group{'gid'}}++;
 		$group{'members'} = $line[4];
 
-		# Check access control restrictions
-		if (!$access{'gcreate'}) {
+		# Check access control restrictions. A gcreate value of 2 only
+		# allows personal groups for new users
+		if ($access{'gcreate'} != 1) {
 			print &text('gbatch_ecaccess', $lnum,
-				    $text{'gsave_ecreate'});
+				    $text{'gsave_ecreate'}),"\n";
 			next;
 			}
 		local $ch = &check_group(\%group);
@@ -150,14 +151,14 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			}
 
 		# Check if deletion is allowed
-		if (!&can_edit_group(\%access, $group)) {
+		if (!$access{'gdelete'} || !&can_edit_group(\%access, $group)) {
 			print &text('gbatch_edaccess', $lnum,
 				    $text{'gdel_egroup'}),"\n";
 			next;
 			}
 		if (!$config{'delete_root'} && $group->{'gid'} <= 10) {
 			print &text('gbatch_edaccess', $lnum,
-				    $text{'gdel_egroup'}),"\n";
+				    $text{'gdel_eroot'}),"\n";
 			next;
 			}
 
@@ -226,6 +227,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			if (!$access{'grename'}) {
 				print &text('gbatch_erename',
 					    $lnum, $line[1]),"\n";
+				next;
 				}
 			$group{'group'} = $line[2];
 			}
