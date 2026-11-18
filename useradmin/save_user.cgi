@@ -292,15 +292,16 @@ if ($access{'ugroups'} ne "*") {
 				}
 			}
 		}
-	elsif (!$in{'gidmode'}) {
-		# new users can only be added to allowed groups
-		# This is skipped if we are creating a new group for
-		# new users
-		&can_use_group(\%access, $in{'gid'}) ||
-			&error(&text('usave_eprimary', $in{'gid'}));
+	else {
+		# new users can only be added to allowed groups. The primary
+		# group check is skipped when creating a new group for them
+		if (!$in{'gidmode'}) {
+			&can_use_group(\%access, $in{'gid'}) ||
+				&error(&text('usave_eprimary', $in{'gid'}));
+			}
 		foreach $gname (@sgnames) {
 			&can_use_group(\%access, $gname) ||
-				&error(&text('usave_esecondary', $group));
+				&error(&text('usave_esecondary', $gname));
 			}
 		}
 	}

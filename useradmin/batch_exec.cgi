@@ -218,6 +218,13 @@ foreach $line (split(/[\r\n]+/, $data)) {
 				}
 			}
 
+		my ($denied) = grep { !&can_use_group(\%access, $_->{'group'}) } @secs;
+		if ($denied) {
+			print &text('batch_ecaccess', $lnum,
+				    &text('usave_esecondary', &html_escape($denied->{'group'}))),"\n";
+			next;
+			}
+
 		# Work out the password
 		if ($in{'crypt'}) {
 			$user{'pass'} = $line[2];
