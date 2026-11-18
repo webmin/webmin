@@ -159,6 +159,7 @@ delete_eanonuser=This user is being used for anonymous module access
 cert_title=Request Certificate
 cert_issue=Issue Certificate
 cert_header=New certificate details
+cert_ecannot=You do not have permission to request a certificate
 cert_msg=This form allows you to request an SSL client certificate that will be used in future to grant you access to Webmin instead of your username and password. This is more secure, but because the authentication is automatic you will not be able to switch to a different user when using the certificate.
 cert_ebrowser=Webmin does not know how to issue client certificates for your browser ( $1 )
 cert_cn=Your name

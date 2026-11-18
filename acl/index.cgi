@@ -198,7 +198,7 @@ if ($access{'sessions'} && $miniserv{'session'}) {
 	push(@links, "list_sessions.cgi");
 	push(@titles, $text{'index_sessions'});
 	}
-if (uc($ENV{'HTTPS'}) eq "ON" && $miniserv{'ca'}) {
+if ($access{'cert'} && uc($ENV{'HTTPS'}) eq "ON" && $miniserv{'ca'}) {
 	push(@icons, "images/cert.gif");
 	push(@links, "cert_form.cgi");
 	push(@titles, $text{'index_cert'});
