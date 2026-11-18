@@ -4,6 +4,8 @@
 
 require './usermin-lib.pl';
 $access{'umods'} || &error($text{'acl_ecannot'});
+# A new module can replace any installed one, so require access to all of them.
+$access{'mods'} eq '*' || &error($text{'install_emods'});
 if ($ENV{REQUEST_METHOD} eq "POST") { &ReadParseMime(); }
 else { &ReadParse(); $no_upload = 1; }
 

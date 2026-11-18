@@ -8,6 +8,10 @@ $access{'umods'} || &error($text{'acl_ecannot'});
 &error_setup($text{'delete_err'});
 @mods = split(/\0/, $in{'mod'});
 @mods || &error($text{'delete_enone'});
+foreach my $mod (@mods) {
+	$mod =~ /\A[\w-]+\z/ && &can_use_module($mod) ||
+		&error($text{'acl_ecannot'});
+	}
 
 local %miniserv;
 &get_usermin_miniserv_config(\%miniserv);

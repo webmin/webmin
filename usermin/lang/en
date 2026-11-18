@@ -192,6 +192,7 @@ defacl_err=Failed to save access control options
 
 install_err1=Failed to install module from $1
 install_efile=File does not exist
+install_emods=You can only install modules if you can manage all Usermin modules
 install_err2=Failed to install uploaded module
 install_ebrowser=Your browser does not support file uploads
 install_err3=Failed to install module from $1

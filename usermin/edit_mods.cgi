@@ -7,40 +7,46 @@ $access{'umods'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'mods_title'}, "");
 
 # Show tabs
-@tabs = ( [ "install", $text{'mods_tabinstall'}, "edit_mods.cgi?mode=install" ],
+# Installing is only offered to admins who can manage every module.
+$caninstall = $access{'mods'} eq '*';
+@tabs = ( $caninstall ? ( [ "install", $text{'mods_tabinstall'},
+			    "edit_mods.cgi?mode=install" ] ) : ( ),
           [ "clone", $text{'mods_tabclone'}, "edit_mods.cgi?mode=clone" ],
           [ "delete", $text{'mods_tabdelete'}, "edit_mods.cgi?mode=delete" ],
           [ "export", $text{'mods_tabexport'}, "edit_mods.cgi?mode=export" ],
         );
-print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || "install", 1);
+print &ui_tabs_start(\@tabs, "mode",
+		    $in{'mode'} || ($caninstall ? "install" : "clone"), 1);
 
 # Display installation form
-print &ui_tabs_start_tab("mode", "install");
-print "$text{'mods_desc1'}<p>";
+if ($caninstall) {
+	print &ui_tabs_start_tab("mode", "install");
+	print "$text{'mods_desc1'}<p>";
 
-print &ui_form_start("install_mod.cgi", "form-data");
-print &ui_table_start($text{'mods_install'}, undef, 2);
+	print &ui_form_start("install_mod.cgi", "form-data");
+	print &ui_table_start($text{'mods_install'}, undef, 2);
 
-print &ui_table_row($text{'mods_installsource'},
-        &ui_radio_table("source", 0,
-                [ [ 0, $text{'mods_local'},
-                    &ui_textbox("file", undef, 40)." ".
-                    &file_chooser_button("file", 0) ],
-                  [ 1, $text{'mods_uploaded'},
-                    &ui_upload("upload", 40) ],
-                  [ 2, $text{'mods_ftp'},
-                    &ui_textbox("url", undef, 40) ] ]));
+	print &ui_table_row($text{'mods_installsource'},
+		&ui_radio_table("source", 0,
+			[ [ 0, $text{'mods_local'},
+			    &ui_textbox("file", undef, 40)." ".
+			    &file_chooser_button("file", 0) ],
+			  [ 1, $text{'mods_uploaded'},
+			    &ui_upload("upload", 40) ],
+			  [ 2, $text{'mods_ftp'},
+			    &ui_textbox("url", undef, 40) ] ]));
 
-print &ui_table_row($text{'mods_nodeps'},
-        &ui_yesno_radio("nodeps", 0));
+	print &ui_table_row($text{'mods_nodeps'},
+		&ui_yesno_radio("nodeps", 0));
 
-print &ui_table_end();
-print &ui_form_end([ [ "", $text{'mods_installok'} ] ]);
-print &ui_tabs_end_tab();
+	print &ui_table_end();
+	print &ui_form_end([ [ "", $text{'mods_installok'} ] ]);
+	print &ui_tabs_end_tab();
+	}
 
 # Display cloning form
 print &ui_tabs_start_tab("mode", "clone");
-@mlist = &list_modules();
+@mlist = grep { &can_use_module($_->{'dir'}) } &list_modules();
 print "$text{'mods_desc2'}<p>";
 
 print &ui_form_start("clone_mod.cgi", "post");
