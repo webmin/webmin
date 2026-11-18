@@ -135,10 +135,19 @@ subtest 'CSV writer and permissions' => sub {
 };
 
 subtest 'administrator and form compatibility' => sub {
-	my ($error) = run_cgi('backup', {save => 1}, {buser => 'root'});
+	# The fixture's default ACL limits the backup folder, so saving,
+	# scheduling and the save button are refused.
+	for my $action ('save', 'sched') {
+		my ($error) = run_cgi('backup', {$action => 1}, {buser => 'root'});
+		like($error, qr/backup_esave/, "directory limit prevents $action");
+	}
+	my (undef, $limited) = run_cgi('backup_form', {}, {buser => 'root'});
+	is_deeply($limited, ['backup'], 'directory-limited form only offers backup');
+	# Without a folder limit, root backups can still save settings.
+	my ($error) = run_cgi('backup', {save => 1}, {buser => 'root', bpath => '/'});
 	is($error, "SAVED\n", 'administrator can still save settings');
 	for my $user ('nobody', 'root') {
-		my ($error, $buttons) = run_cgi('backup_form', {}, {buser => $user});
+		my ($error, $buttons) = run_cgi('backup_form', {}, {buser => $user, bpath => '/'});
 		is($error, "FORM\n", "$user form renders");
 		is_deeply($buttons, $user eq 'root' ? ['backup', 'save'] : ['backup'],
 			"$user gets only permitted actions");

@@ -73,8 +73,9 @@ if (!$in{'save'} || $in{'sched'}) {
 	}
 @compat = $in{'compatible_def'} ? ( ) : ( $in{'compatible'} );
 push(@compat, split(/\0/, $in{'options'}));
+# Root cron jobs use the module login and do not retain per-user limits.
 $cron = !$module_info{'usermin'} && $access{'buser'} eq 'root' &&
-	!$access{'user'} && &foreign_installed("cron");
+	$access{'bpath'} eq '/' && !$access{'user'} && &foreign_installed("cron");
 # Only root-backup schedulers may save shared settings.
 if (($in{'save'} || $in{'sched'}) && !$cron) {
 	&error($text{'backup_esave'});

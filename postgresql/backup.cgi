@@ -24,8 +24,11 @@ foreach $p ($in{'path'}, &date_subs($in{'path'})) {
 			     "<tt>".&html_escape($bpath)."</tt>"));
 	}
 
-# Scheduled backups do not retain the restricted Unix user's permissions.
-if ($buser && ($in{'save'} || $in{'sched'})) {
+# Root cron jobs use the module login and do not retain per-user limits.
+$cron = !$module_info{'usermin'} && !$buser && $bpath eq '/' &&
+        !$access{'user'} && &foreign_installed("cron");
+# Usermin saves personal settings. Only Webmin can manage root schedules.
+if (!$cron && ($in{'sched'} || ($in{'save'} && !$module_info{'usermin'}))) {
 	&error($text{'backup_esave'});
 	}
 
@@ -44,8 +47,6 @@ if (!$in{'save'} || $in{'sched'}) {
 		@tables || &error($text{'backup_etables'});
 		}
 	}
-$cron = !$module_info{'usermin'} && !$buser &&
-        !$access{'user'} && &foreign_installed("cron");
 $cmode = 0;
 if ($cron) {
 	if ($access{'cmds'}) {

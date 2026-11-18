@@ -22,9 +22,9 @@ $desc = "<tt>$in{'db'}</tt>";
 &ui_print_header($desc, $in{'all'} ? $text{'backup_title2'}
 		   : $text{'backup_title'}, "", "backup_form" ) ;
 
-# Backups written as another Unix user cannot be saved or scheduled
 ($bpath, $buser) = &get_backup_limits();
-$cron = !$module_info{'usermin'} && !$buser &&
+# Root cron jobs use the module login and do not retain per-user limits.
+$cron = !$module_info{'usermin'} && !$buser && $bpath eq '/' &&
         !$access{'user'} && &foreign_installed("cron");
 if ($in{'all'}) {
 	print "$text{'backup_desc3'}\n";

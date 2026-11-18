@@ -39,6 +39,8 @@ else {
 	# Webmin connects to the database as the user specified in the per-user
 	# or global config
 	%access = &get_module_acl();
+	# A blank backup folder allows the same destinations as /.
+	$access{'bpath'} = '/' if ($access{'bpath'} eq '');
 	if ($access{'user'} && !$use_global_login) {
 		$mysql_login = $access{'user'};
 		$mysql_pass = $access{'pass'};

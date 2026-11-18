@@ -22,7 +22,7 @@ BEGIN {
 	my $caller = caller;
 	no strict 'refs';
 	*{$caller.'::init_config'} = sub { };
-	*{$caller.'::get_module_acl'} = sub { return (); };
+	*{$caller.'::get_module_acl'} = sub { return (bpath => ''); };
 	*{$caller.'::read_file_contents'} = sub { return "10.5.29-MariaDB\n"; };
 	*{$caller.'::compare_version_numbers'} = sub {
 		my ($left, $right) = @_;
@@ -434,6 +434,7 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 	local *main::save_module_config = sub { die "SAVED\n"; };
 	local *main::ui_print_header = sub { die "VALIDATED\n"; };
 	local *main::list_databases = sub { return ('testdb'); };
+	is($main::access{'bpath'}, '/', 'a blank backup folder means unrestricted');
 
 	# Test each restriction independently and in representative combinations.
 	foreach my $case (
@@ -447,6 +448,12 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		  { save => 1, all => 1, before => 'id' }, 'backup_esave' ],
 		[ 'parameter with restricted output path', 'root', '/allowed',
 		  { parameters => '--result-file=/outside/dump' }, 'backup_eparameters' ],
+		[ 'directory-limited global login cannot save settings', 'root', '/allowed',
+		  { save => 1 }, 'backup_esave', '' ],
+		[ 'directory-limited global login cannot schedule', 'root', '/allowed',
+		  { sched => 1 }, 'backup_esave', '' ],
+		[ 'blank folder permits saving a schedule with the global login',
+		  'root', $main::access{'bpath'}, { save => 1, sched => 1 }, 'SAVED', '' ],
 		[ 'restricted user parameter', 'nobody', '/',
 		  { parameters => '-r/outside/dump' }, 'backup_eparameters' ],
 		[ 'valid confined backup', 'nobody', '/allowed',
@@ -454,11 +461,12 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		[ 'valid root backup without cron access', 'root', '/',
 		  {}, 'VALIDATED' ],
 		) {
-		my ($name, $user, $path, $input, $expected) = @$case;
+		# A sixth field, if given, replaces the user's database login.
+		my ($name, $user, $path, $input, $expected, $login) = @$case;
 		local %main::module_info;
 		local %main::config;
 		local %main::access = ( dbs => 'testdb', buser => $user,
-			bpath => $path, user => 'dbuser' );
+			bpath => $path, user => $login // 'dbuser' );
 		local %main::in = ( db => 'testdb', file => '/allowed/backup.sql',
 			where_def => 1, charset_def => 1, compatible_def => 1,
 			tables_def => 1, %$input );
