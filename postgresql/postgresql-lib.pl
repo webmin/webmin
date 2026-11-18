@@ -76,11 +76,11 @@ local $out;
 local $temp = &transname();
 local $cmd = &quote_path($config{'psql'}).
 	     &host_port_flags().
-	     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
+	     (!&supports_pgpass() ? " -u" : " -U ".quotemeta($postgres_login)).
 	     " -c ''".
-	     " ".$config{'basedb'};
+	     " ".quotemeta($config{'basedb'});
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
-	$cmd = "su $postgres_login -c ".quotemeta($cmd);
+	$cmd = "su ".quotemeta($postgres_login)." -c ".quotemeta($cmd);
 	}
 $cmd = &command_with_login($cmd);
 if (&foreign_check("proc")) {
@@ -941,8 +941,8 @@ local $cmd = &quote_path($config{'psql'}).
 	     quotemeta("\\restrict $restrict_key").
 	     " -f ".&quote_path($file).
 	     &host_port_flags().
-	     (&supports_pgpass() ? " -U $user" : " -u").
-	     " ".$db;
+	     (&supports_pgpass() ? " -U ".quotemeta($user) : " -u").
+	     " ".quotemeta($db);
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
 	}
@@ -1418,12 +1418,12 @@ if ($sslmode) {
 	push(@rv, "host=".$config{'host'}) if ($config{'host'});
 	push(@rv, "port=".$config{'port'}) if ($config{'port'});
 	push(@rv, "sslmode=".$sslmode) if ($sslmode);
-	return @rv ? " '".join(" ", @rv)."'" : "";
+	return @rv ? " ".quotemeta(join(" ", @rv)) : "";
 	}
 else {
 	my $rv = "";
-	$rv .= " -h $config{'host'}" if ($config{'host'});
-	$rv .= " -p $config{'port'}" if ($config{'port'});
+	$rv .= " -h ".quotemeta($config{'host'}) if ($config{'host'});
+	$rv .= " -p ".quotemeta($config{'port'}) if ($config{'port'});
 	return $rv;
 	}
 }

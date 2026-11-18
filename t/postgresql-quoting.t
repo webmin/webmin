@@ -107,4 +107,43 @@ subtest 'string constants keep their value under both string modes' => sub {
 	   'values without backslashes keep the plain form');
 };
 
+subtest 'SQL file runner quotes the database name' => sub {
+	no warnings 'redefine';
+	my $tmp = tempdir(CLEANUP => 1);
+	my $file = "$tmp/input.sql";
+	open(my $fh, '>', $file) or die $!;
+	print $fh "select 1;\n";
+	close($fh);
+	my $cmd;
+	local $main::postgres_sameunix = 0;
+	local $main::postgres_login = 'pg admin;echo x';
+	local %main::config = ( 'psql' => '/usr/bin/psql',
+				'host' => 'db;echo x',
+				'port' => '5432;echo x' );
+	local *main::is_readonly_mode = sub { 0 };
+	local *main::supports_psql_restrict = sub { 1 };
+	local *main::supports_pgpass = sub { 1 };
+	local *main::generate_miniserv_websocket_token = sub { 'abc123' };
+	local *main::quote_path = sub { "'$_[0]'" };
+	local *main::command_with_login = sub { $_[0] };
+	local *main::clean_language = sub { };
+	local *main::reset_environment = sub { };
+	local *main::backquote_logged = sub { $cmd = $_[0]; return ''; };
+	my $db = 'x;echo injected;#';
+	main::execute_sql_file($db, $file);
+	$cmd =~ s/ 2>&1$// or die "Unexpected command $cmd";
+	my @words = shell_words($cmd);
+	is($words[-1], $db, 'the database is one shell word');
+	ok((grep { $_ eq 'pg admin;echo x' } @words),
+	   'the login is one shell word');
+	ok((grep { $_ eq 'db;echo x' } @words), 'the host is one shell word');
+	ok((grep { $_ eq '5432;echo x' } @words), 'the port is one shell word');
+
+	local $main::config{'sslmode'} = 'require';
+	main::execute_sql_file($db, $file);
+	$cmd =~ s/ 2>&1$//;
+	ok((grep { $_ eq 'host=db;echo x port=5432;echo x sslmode=require' }
+		 shell_words($cmd)), 'the connection string is one shell word');
+};
+
 done_testing();
