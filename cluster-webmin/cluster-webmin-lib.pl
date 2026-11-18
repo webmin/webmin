@@ -75,10 +75,14 @@ return @rv;
 }
 
 # save_webmin_host(&host)
+# Writes the cached modules, themes, users and groups of a managed server.
+# Records whose name cannot be used as a file name are skipped, so one bad
+# record does not stop the others from being cached.
 sub save_webmin_host
 {
 local $hdir = "$module_config_directory/hosts";
 local %oldfile;
+&servers::cache_path_component($_[0]->{'id'}) || &error($text{'host_einvalid'});
 mkdir($hdir, 0700);
 if (-d "$hdir/$_[0]->{'id'}") {
 	opendir(DIR, "$hdir/$_[0]->{'id'}");
@@ -90,28 +94,34 @@ else {
 	}
 local $m;
 foreach $m (@{$_[0]->{'modules'}}) {
-	&write_file("$hdir/$_[0]->{'id'}/$m->{'dir'}.mod", $m);
-	delete($oldfile{"$m->{'dir'}.mod"});
+	local $cm = &clean_cache_record($m, 'dir') || next;
+	&write_file("$hdir/$_[0]->{'id'}/$cm->{'dir'}.mod", $cm);
+	delete($oldfile{"$cm->{'dir'}.mod"});
 	}
 foreach $m (@{$_[0]->{'themes'}}) {
-	&write_file("$hdir/$_[0]->{'id'}/$m->{'dir'}.theme", $m);
-	delete($oldfile{"$m->{'dir'}.theme"});
+	local $cm = &clean_cache_record($m, 'dir') || next;
+	&write_file("$hdir/$_[0]->{'id'}/$cm->{'dir'}.theme", $cm);
+	delete($oldfile{"$cm->{'dir'}.theme"});
 	}
 foreach $m (@{$_[0]->{'users'}}) {
+	next if (ref($m) ne 'HASH');
 	local %u = %$m;
 	$u{'modules'} = join(" ", @{$u{'modules'}});
 	$u{'ownmods'} = join(" ", @{$u{'ownmods'}});
 	$u{'olds'} = join(" ", @{$u{'olds'}});
-	&write_file("$hdir/$_[0]->{'id'}/$u{'name'}.user", \%u);
-	delete($oldfile{"$u{'name'}.user"});
+	local $cu = &clean_cache_record(\%u, 'name') || next;
+	&write_file("$hdir/$_[0]->{'id'}/$cu->{'name'}.user", $cu);
+	delete($oldfile{"$cu->{'name'}.user"});
 	}
 foreach $m (@{$_[0]->{'groups'}}) {
+	next if (ref($m) ne 'HASH');
 	local %g = %$m;
 	$g{'modules'} = join(" ", @{$g{'modules'}});
 	$g{'ownmods'} = join(" ", @{$g{'ownmods'}});
 	$g{'members'} = join(" ", @{$g{'members'}});
-	&write_file("$hdir/$_[0]->{'id'}/$g{'name'}.group", \%g);
-	delete($oldfile{"$g{'name'}.group"});
+	local $cg = &clean_cache_record(\%g, 'name') || next;
+	&write_file("$hdir/$_[0]->{'id'}/$cg->{'name'}.group", $cg);
+	delete($oldfile{"$cg->{'name'}.group"});
 	}
 local %webmin = %{$_[0]};
 delete($webmin{'modules'});
@@ -119,15 +129,40 @@ delete($webmin{'themes'});
 delete($webmin{'users'});
 delete($webmin{'groups'});
 delete($webmin{'id'});
-&write_file("$hdir/$_[0]->{'id'}/webmin", \%webmin);
+&write_file("$hdir/$_[0]->{'id'}/webmin", &clean_cache_record(\%webmin));
 delete($oldfile{"webmin"});
 unlink(map { "$hdir/$_[0]->{'id'}/$_" } keys %oldfile);
+}
+
+# clean_cache_record(&record, [name-field])
+# Returns a copy of a record from a managed server that is safe to write with
+# write_file, or undef if the record is not a hash or its name field is not a
+# safe file name. Keys that would break the file format are dropped. Trailing
+# line breaks are removed from values, and other line breaks become spaces.
+sub clean_cache_record
+{
+my ($rec, $field) = @_;
+return undef if (ref($rec) ne 'HASH' ||
+		 $field && !&servers::cache_path_component($rec->{$field}));
+my %clean;
+foreach my $k (keys %$rec) {
+	# Skip keys that cannot be read back from the cache file
+	next if ($k eq '' || $k =~ /[=\r\n\0]/);
+	my $v = $rec->{$k};
+	if (defined($v) && !ref($v)) {
+		$v =~ s/[\r\n\0]+$//;
+		$v =~ s/[\r\n\0]+/ /g;
+		}
+	$clean{$k} = $v;
+	}
+return \%clean;
 }
 
 # delete_webmin_host(&host)
 sub delete_webmin_host
 {
-system("rm -rf '$module_config_directory/hosts/$_[0]->{'id'}'");
+&servers::cache_path_component($_[0]->{'id'}) || &error($text{'host_einvalid'});
+system("rm -rf ".quotemeta("$module_config_directory/hosts/$_[0]->{'id'}"));
 }
 
 # list_servers()

@@ -42,11 +42,15 @@ return @rv;
 }
 
 # save_useradmin_host(&host)
+# Writes the cached users and groups of a managed server. Records whose name
+# cannot be used as a file name are skipped, so one bad record does not stop
+# the others from being cached.
 sub save_useradmin_host
 {
 my ($host) = @_;
 my $hdir = "$module_config_directory/hosts";
 my %oldfile;
+&servers::cache_path_component($host->{'id'}) || &error($text{'host_einvalid'});
 mkdir($hdir, 0700);
 if (-d "$hdir/$host->{'id'}") {
 	opendir(DIR, "$hdir/$host->{'id'}");
@@ -57,20 +61,47 @@ else {
 	mkdir("$hdir/$host->{'id'}", 0700);
 	}
 foreach my $u (@{$host->{'users'}}) {
-	&write_file("$hdir/$host->{'id'}/$u->{'user'}.user", $u);
-	delete($oldfile{"$u->{'user'}.user"});
+	my $cu = &clean_cache_record($u, 'user') || next;
+	&write_file("$hdir/$host->{'id'}/$cu->{'user'}.user", $cu);
+	delete($oldfile{"$cu->{'user'}.user"});
 	}
 foreach my $g (@{$host->{'groups'}}) {
-	&write_file("$hdir/$host->{'id'}/$g->{'group'}.group", $g);
-	delete($oldfile{"$g->{'group'}.group"});
+	my $cg = &clean_cache_record($g, 'group') || next;
+	&write_file("$hdir/$host->{'id'}/$cg->{'group'}.group", $cg);
+	delete($oldfile{"$cg->{'group'}.group"});
 	}
 unlink(map { "$hdir/$host->{'id'}/$_" } keys %oldfile);
+}
+
+# clean_cache_record(&record, [name-field])
+# Returns a copy of a record from a managed server that is safe to write with
+# write_file, or undef if the record is not a hash or its name field is not a
+# safe file name. Keys that would break the file format are dropped. Trailing
+# line breaks are removed from values, and other line breaks become spaces.
+sub clean_cache_record
+{
+my ($rec, $field) = @_;
+return undef if (ref($rec) ne 'HASH' ||
+		 $field && !&servers::cache_path_component($rec->{$field}));
+my %clean;
+foreach my $k (keys %$rec) {
+	# Skip keys that cannot be read back from the cache file
+	next if ($k eq '' || $k =~ /[=\r\n\0]/);
+	my $v = $rec->{$k};
+	if (defined($v) && !ref($v)) {
+		$v =~ s/[\r\n\0]+$//;
+		$v =~ s/[\r\n\0]+/ /g;
+		}
+	$clean{$k} = $v;
+	}
+return \%clean;
 }
 
 # delete_useradmin_host(&host)
 sub delete_useradmin_host
 {
 my ($host) = @_;
+&servers::cache_path_component($host->{'id'}) || &error($text{'host_einvalid'});
 &unlink_file("$module_config_directory/hosts/$host->{'id'}");
 }
 
