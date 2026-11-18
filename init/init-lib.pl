@@ -173,6 +173,40 @@ foreach $f (split(/\s+/, $config{'extra_init'})) {
 return @rv;
 }
 
+=head2 is_init_action(name)
+
+Returns 1 if some name is an action returned by list_actions, such as httpd
+or an absolute path from the extra_init setting.
+
+=cut
+sub is_init_action
+{
+my ($name) = @_;
+return 0 if (!defined($name) || $name eq "");
+my @found = grep { (split(/\s+/, $_))[0] eq $name } &list_actions();
+return @found ? 1 : 0;
+}
+
+=head2 is_runlevel_action(level, S|K, order, name)
+
+Returns 1 if a runlevel script with this order and name exists, as listed by
+runlevel_actions. This stops crafted names from reaching other files.
+
+=cut
+sub is_runlevel_action
+{
+my ($rl, $ss, $num, $name) = @_;
+return 0 if (!defined($rl) || !defined($ss) || $ss !~ /^[SK]$/);
+return 0 if (!defined($num) || !defined($name) || $name =~ /\//);
+return 0 if (&indexof($rl, &list_runlevels()) < 0);
+foreach my $a (&runlevel_actions($rl, $ss)) {
+	# Entries are order, name and inode number
+	return 1 if ($a =~ /^(\S+)\s+(.*)\s+\d+$/ && $1 eq $num &&
+		     $2 eq $name);
+	}
+return 0;
+}
+
 
 =head2 action_levels(S|K, action)
 

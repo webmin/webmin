@@ -11,6 +11,7 @@ $ty = $ARGV[0];
 if ($ty == 0) {
 	# Editing an action in init.d, linked to from various runlevels
 	$ac = $ARGV[1];
+	&is_init_action($ac) || &error($text{'edit_ecannot'});
 	&ui_print_header(undef, $text{'edit_title'}, "");
 	$file = &action_filename($ac);
 	$data = &read_file_contents($file);
@@ -23,6 +24,8 @@ elsif ($ty == 1) {
 	$ac = $ARGV[3];
 	$inode = $ARGV[4];
 	$ss = $ARGV[5];
+	&is_runlevel_action($rl, $ss, $num, $ac) ||
+		&error($text{'edit_ecannot'});
 	&ui_print_header(undef, $text{'edit_title'}, "");
 	$file = &runlevel_filename($rl, $ss, $num, $ac);
 	$data = &read_file_contents($file);
