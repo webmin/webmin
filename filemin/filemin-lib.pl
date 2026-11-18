@@ -170,7 +170,7 @@ $cwd = &simplify_path($base.$path);
 my $error = 1;
 for $allowed_path (@allowed_paths) {
 	if (&is_under_directory($allowed_path, $cwd) ||
-		$allowed_path =~ /^\Q$cwd\E/) {
+		&filemin_lexical_path_under_directory($cwd, $allowed_path)) {
 		$error = 0;
 		}
 	}
