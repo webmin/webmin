@@ -10,6 +10,11 @@ require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 &foreign_require("webmin", "webmin-lib.pl");
 &ReadParse();
+if ($in{'clone'}) {
+	$access{'acl'} && !$access{'mode'} && &get_user($in{'clone'}) &&
+		&can_edit_user($in{'clone'}) ||
+		&error($text{'save_euser'});
+	}
 
 # Check for special button clicks, and redirect
 if ($in{'but_clone'}) {

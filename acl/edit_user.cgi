@@ -11,6 +11,11 @@ our (%in, %text, %config, %gconfig, %access, $config_directory, $base_remote_use
 &foreign_require("webmin", "webmin-lib.pl");
 
 &ReadParse();
+if ($in{'clone'}) {
+	$access{'acl'} && !$access{'mode'} && &get_user($in{'clone'}) &&
+		&can_edit_user($in{'clone'}) ||
+		&error($text{'save_euser'});
+	}
 my ($u, %user,  $safe);
 if ($in{'user'}) {
 	# Editing an existing user
@@ -489,7 +494,7 @@ if ($access{'acl'} && !$memg->{'name'} && !$safe) {
 my @buts = ( );
 push(@buts, [ undef, $in{'user'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'user'}) {
-	if ($access{'create'}) {
+	if ($access{'create'} && $access{'acl'} && !$access{'mode'}) {
 		push(@buts, [ "but_clone", $text{'edit_clone'} ]);
 		}
 	if (&foreign_available("webminlog")) {
