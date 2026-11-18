@@ -3,6 +3,7 @@
 # Save unix-mysql synchronization options
 
 require './mysql-lib.pl';
+$access{'perms'} == 1 || &error($text{'perms_ecannot'});
 &ReadParse();
 
 $config{'sync_create'} = $in{'sync_create'};

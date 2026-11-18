@@ -3,6 +3,7 @@
 # Save unix-postgresql synchronization options
 
 require './postgresql-lib.pl';
+$access{'users'} || &error($text{'user_ecannot'});
 &ReadParse();
 
 $config{'sync_create'} = $in{'sync_create'};
