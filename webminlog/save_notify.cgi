@@ -10,6 +10,8 @@ our (%text, %gconfig, %access, %in, $config_file);
 &ReadParse();
 &error_setup($text{'notify_err'});
 $access{'notify'} || &error($text{'notify_ecannot'});
+# Notifications cover every user and module, so limited viewers cannot set them
+&can_notify() || &error($text{'notify_ecannot'});
 
 if ($in{'notify'}) {
 	$in{'email'} =~ /\S/ || &error($text{'notify_eemail'});

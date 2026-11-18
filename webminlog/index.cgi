@@ -13,7 +13,7 @@ our (%text, %gconfig, %access_users, %in, %config, %access);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 my @tabs = ( [ 'search', $text{'index_searchtab'} ] );
-if ($access{'notify'}) {
+if (&can_notify()) {
 	push(@tabs, [ 'notify', $text{'index_notifytab'} ]);
 	}
 print &ui_tabs_start(\@tabs, 'mode', $in{'mode'} || 'search', 1);
@@ -120,7 +120,7 @@ print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
 print &ui_tabs_end_tab('mode', 'search');
 
-if ($access{'notify'}) {
+if (&can_notify()) {
 	print &ui_tabs_start_tab('mode', 'notify');
 
 	print $text{'index_notifydesc'},"<p>\n";
