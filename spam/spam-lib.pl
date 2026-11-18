@@ -253,6 +253,14 @@ if (!ref($nameold)) {
 	}
 my @old = ref($nameold) ? @$nameold : &find($nameold, $conf);
 my @new = $vonly ? &make_directives($nameold, $newv) : @$newv;
+
+# Each directive must stay on one line, or it could add other directives
+foreach my $n (grep { $_ } @new) {
+	if ($n->{'name'} =~ /[\r\n\0]/ || $n->{'value'} =~ /[\r\n\0]/) {
+		&error($text{'save_eline'});
+		}
+	}
+
 for(my $i=0; $i<@old || $i<@new; $i++) {
 	my $line;
 	if ($new[$i]) {
