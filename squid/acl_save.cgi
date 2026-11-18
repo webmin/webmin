@@ -175,13 +175,15 @@ else {
 		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "myport") {
-		$in{'vals'} =~ /^\d+$/ ||
-			&error("'$in{'vals'}' is not a valid port number");
+		$in{'vals'} =~ /^\d+\z/ ||
+			&error(&text('aclsave_eport',
+				     &html_escape($in{'vals'})));
 		push(@vals, $in{'vals'});
 		}
 	elsif ($in{'type'} eq "maxconn") {
-		$in{'vals'} =~ /^\d+$/ ||
-		    &error("'$in{'vals'}' is not a valid number of requests");
+		$in{'vals'} =~ /^\d+\z/ ||
+		    &error(&text('aclsave_emaxconn',
+				 &html_escape($in{'vals'})));
 		push(@vals, $in{'vals'});
 		}
 	elsif ($in{'type'} eq "arp") {

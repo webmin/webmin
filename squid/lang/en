@@ -132,6 +132,8 @@ aclsave_eemin=Invalid ending min
 aclsave_efile=You are not allowed to write to the ACL file '$1'
 aclsave_enofile=No ACL filename entered
 aclsave_ealready=ACL file already exists
+aclsave_eport='$1' is not a valid port number
+aclsave_emaxconn='$1' is not a valid number of requests
 
 cach_ecannot=You are not allowed to access cache manager statistics
 cach_err=Error
