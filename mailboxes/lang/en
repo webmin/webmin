@@ -435,6 +435,7 @@ ham_report=Reporting this message as non-spam to Razor and other SpamAssassin da
 black_title=Denying Sender
 black_done=Added the email address $1 to SpamAssassin's denied addresses list.
 black_already=The email address $1 is already on SpamAssassin's denied addresses list.
+black_ecannot=You are not allowed to change SpamAssassin's allowed and denied addresses
 
 white_title=Allowing Sender
 white_done=Added the email address $1 to SpamAssassin's allowed addresses list.

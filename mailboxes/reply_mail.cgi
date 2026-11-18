@@ -190,9 +190,9 @@ else {
 		}
 	elsif ($in{'black'}) {
 		# Add sender to global SpamAssassin blacklist, and tell user
+		&can_edit_spam_lists() || &error($text{'black_ecannot'});
 		&mail_page_header($text{'black_title'});
 
-		&foreign_require("spam", "spam-lib.pl");
 		local $conf = &spam::get_config();
 		local @from = map { @{$_->{'words'}} }
 			    	  &spam::find("blacklist_from", $conf);
