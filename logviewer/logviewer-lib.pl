@@ -206,6 +206,36 @@ closedir(DIR);
 return sort { $mtime{$a}->[9] <=> $mtime{$b}->[9] } @rv;
 }
 
+# can_read_log_file(file)
+# Returns 1 if the current user may read a log file as root. For users limited
+# to some logs, the real file after following symlinks must be a listed path
+# or under one. Listed paths are compared as written, because a listed path in
+# a user's own directory could itself be replaced by a symlink.
+sub can_read_log_file
+{
+my ($file) = @_;
+return 0 if (!&can_edit_log($file));
+return 1 if (!$access{'logs'});
+my $real = &resolve_links($file);
+foreach my $f (split(/\s+/, $access{'logs'})) {
+	(my $d = $f) =~ s/\/+$//;
+	return 1 if ($d eq "" || $real eq $d || index($real, "$d/") == 0);
+	}
+return 0;
+}
+
+# readable_log_files(file)
+# Returns a log file and its rotated copies that the current user may read,
+# oldest first. For users limited to some logs, a rotated copy that is a
+# symlink must point to an allowed file.
+sub readable_log_files
+{
+my ($file) = @_;
+my @rv = &all_log_files($file);
+return @rv if (!$access{'logs'});
+return grep { $_ eq $file || !-l $_ || &can_read_log_file($_) } @rv;
+}
+
 # get_other_module_logs([module])
 # Returns a list of logs supplied by other modules
 sub get_other_module_logs
