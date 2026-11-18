@@ -117,6 +117,7 @@ else {
 	elsif ($in{'detach'}) {
 		# Detach some attachment to a directory on the server
 		&error_setup($text{'detach_err'});
+		$access{'candetach'} || &error($text{'detach_ecannot'});
 		$in{'dir'} || &error($text{'detach_edir'});
 		$in{'dir'} = "$uinfo[7]/$in{'dir'}"
 			if ($in{'dir'} !~ /^\//);

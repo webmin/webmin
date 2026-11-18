@@ -339,6 +339,7 @@ folder_spam=Spam
 
 detach_err=Failed to detach file
 detach_edir=No file or directory to save to entered
+detach_ecannot=You are not allowed to save attachments to files on the server
 detach_eopen=Failed to open $1 : $2
 detach_ewrite=Failed to write to $1 : $2
 detach_title=Detach File
