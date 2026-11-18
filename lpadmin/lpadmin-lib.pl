@@ -159,7 +159,7 @@ else {
 	&print_tempfile(DRV, "$_[1]->{'program'} \"\$1\" \"\$2\" \"\$3\" \"\$4\" ",
 		  "\"\$5\" \"\$6\" \"\$7\" \"\$8\" \"\$9\" ",
 		  "\"\$10\" \"\$11\" \"\$12\" \"\$13\" >/tmp/\$\$.smb\n");
-	&system_logged("chmod a+rx '$_[1]->{'program'}'");
+	&system_logged("chmod a+rx ".quotemeta($_[1]->{'program'}));
 	}
 &print_tempfile(DRV, "$config{'smbclient_path'} '//$_[1]->{'server'}/$_[1]->{'share'}' ",
 	  $_[1]->{'pass'} ? $_[1]->{'pass'} : "-N",
@@ -211,7 +211,7 @@ else {
 	&print_tempfile(DRV, "$_[1]->{'program'} \"\$1\" \"\$2\" \"\$3\" \"\$4\" ",
 		  "\"\$5\" \"\$6\" \"\$7\" \"\$8\" \"\$9\" ",
 		  "\"\$10\" \"\$11\" \"\$12\" \"\$13\" >/tmp/\$\$.hpnp\n");
-	&system_logged("chmod a+rx '$_[1]->{'program'}'");
+	&system_logged("chmod a+rx ".quotemeta($_[1]->{'program'}));
 	}
 &print_tempfile(DRV, "$config{'hpnp_path'} -x $_[1]->{'server'}",
 	  $_[1]->{'port'} ? " -p $_[1]->{'port'}" : "",
