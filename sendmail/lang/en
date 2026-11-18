@@ -137,6 +137,8 @@ rfile_efrom=Missing From: address
 rfile_fromdesc=A From: address should always be specified where possible, as the automatic method may not be reliable.
 
 asave_err=Failed to save alias
+asave_eline=An alias field contains an invalid line break or null character
+asave_esplit=Alias destination $1 contains a double quote, or a comma without spaces, which would split it into several destinations
 asave_efile=Choose a configured aliases file
 asave_ecannot2=You are not allowed to edit aliases
 asave_ecannot=You are not allowed to edit this alias
