@@ -152,7 +152,7 @@ if ($in{'sig'}) {
 			if ($?) {
 				$ec = 3;
 				$emsg = &webmin::text('upgrade_echecksig',
-					      "<pre>$out</pre>");
+				      "<pre>".&html_escape($out)."</pre>");
 				}
 			}
 		else {
