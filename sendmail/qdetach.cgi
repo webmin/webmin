@@ -17,6 +17,8 @@ $ok || &error($text{'mailq_ecannot'});
 $qfile = $in{'file'};
 ($dfile = $qfile) =~ s/\/(qf|hf|Qf)/\/df/;
 $mail = &mail_from_queue($qfile, $dfile);
+$mail || &error($text{'view_egone'});
+&can_view_qfile($mail) || &error($text{'mailq_ecannot'});
 &parse_mail($mail);
 @sub = split(/\0/, $in{'sub'});
 foreach $s (@sub) {
