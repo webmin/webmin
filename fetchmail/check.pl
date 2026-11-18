@@ -15,6 +15,9 @@ while(@ARGV > 0) {
 	elsif ($a eq "--file") {
 		$file = shift(@ARGV);
 		}
+	elsif ($a eq "--file-user") {
+		$file_user = shift(@ARGV);
+		}
 	elsif ($a eq "--output") {
 		$output = 1;
 		}
@@ -79,10 +82,18 @@ if ($errors && $ex <= 1) {
 	# No error occurred, so do nothing
 	}
 elsif ($file) {
-	# Just write to a file
+	# Just write to a file. If a user was chosen for it, write with his
+	# permissions, so that symlinks cannot redirect the write.
+	local @fuinfo = $file_user ? getpwnam($file_user) : ();
+	if ($file_user && !@fuinfo) {
+		print STDERR "Output file user $file_user does not exist\n";
+		return;
+		}
+	&switch_to_rc_user(\@fuinfo) if (@fuinfo);
 	open(FILE, ">$file");
 	print FILE $out;
 	close(FILE);
+	&restore_rc_user() if (@fuinfo);
 	}
 elsif ($mail) {
 	# Capture output and email

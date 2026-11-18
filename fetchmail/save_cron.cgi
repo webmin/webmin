@@ -18,11 +18,18 @@ if ($in{'output'} == 0) {
 	$cmd .= " --null";
 	}
 elsif ($in{'output'} == 1) {
-	$in{'file'} =~ /^\/.+$/ || &error($text{'cron_efile'});
+	$in{'file'} =~ /^\/[^\r\n\0]+\z/ || &error($text{'cron_efile'});
 	$cmd .= " --file ".quotemeta($in{'file'});
+	if ($access{'mode'} && $cron_user eq "root") {
+		# Users limited to some Unix users can only write output under
+		# the home directory of one of them, as that user
+		my $fuser = &output_file_user($in{'file'});
+		defined($fuser) || &error($text{'cron_efilehome'});
+		$cmd .= " --file-user ".quotemeta($fuser);
+		}
 	}
 elsif ($in{'output'} == 2) {
-	$in{'mail'} =~ /^\S+$/ || &error($text{'cron_efile'});
+	$in{'mail'} =~ /^\S+\z/ || &error($text{'cron_efile'});
 	$cmd .= " --mail ".quotemeta($in{'mail'});
 	}
 elsif ($in{'output'} == 3) {

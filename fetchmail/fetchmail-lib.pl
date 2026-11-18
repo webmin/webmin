@@ -287,6 +287,26 @@ $rc_saved_egid = undef;
 return 1;
 }
 
+# output_file_user(file)
+# Returns the name of a user whose Fetchmail settings can be edited and whose
+# home directory contains a file. The deepest home directory wins.
+sub output_file_user
+{
+my ($file) = @_;
+my ($best, $bestlen);
+setpwent();
+while(my @uinfo = getpwent()) {
+	next if ($uinfo[7] eq '' || !&can_edit_user($uinfo[0]));
+	next if (!&is_under_directory($uinfo[7], $file));
+	if (!defined($best) || length($uinfo[7]) > $bestlen) {
+		$best = $uinfo[0];
+		$bestlen = length($uinfo[7]);
+		}
+	}
+endpwent();
+return $best;
+}
+
 # get_fetchmail_version([&out])
 sub get_fetchmail_version
 {

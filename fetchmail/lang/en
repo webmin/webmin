@@ -125,6 +125,7 @@ cron_owner=Email to user whose configuration is being checked
 cron_user=Run Fetchmail as user
 cron_err=Failed to save scheduled checking
 cron_efile=Missing or invalid output filename
+cron_efilehome=The output file must be under the home directory of a user whose Fetchmail configuration you can edit
 cron_email=Missing or invalid email address
 cron_euser=Missing or invalid Unix user
 cron_errors=Only output if an error occurs?
