@@ -79,6 +79,12 @@ else {
 			$in{'extra'} =~ /[;&|`\$<>\r\n\0]/) {
 			&error("Invalid extra command-line parameters");
 			}
+		# Check new parameters for options that reach beyond this
+		# user's limits
+		if ($in{'extra'} ne $dump->{'extra'}) {
+			$err = &extra_args_error($in{'fs'}, 0, $in{'extra'});
+			&error($err) if ($err);
+			}
 		$dump->{'extra'} = $in{'extra'};
 		}
 	if ($access{'cmds'}) {
@@ -91,6 +97,18 @@ else {
 	$in{'file'} =~ s/^\s+//; $in{'file'} =~ s/\s+$//;
 	$in{'hfile'} =~ s/^\s+//; $in{'hfile'} =~ s/\s+$//;
 	&parse_dump($dump);
+	if ($dump->{'file'}) {
+		&can_use_dump_file(&date_subs($dump->{'file'})) ||
+			&error($text{'dump_ecannot3'});
+		}
+
+	# Remember directory limits, so each run checks the destination again
+	if ($access{'dirs'} eq '*') {
+		delete($dump->{'ownerdirs'});
+		}
+	else {
+		$dump->{'ownerdirs'} = $access{'dirs'};
+		}
 	$dump->{'reverify'} = $in{'reverify'} if (defined(&verify_dump));
 	$dump->{'enabled'} = $in{'enabled'};
 	$dump->{'follow'} = $in{'enabled'} == 2 ? $in{'follow'} : undef;

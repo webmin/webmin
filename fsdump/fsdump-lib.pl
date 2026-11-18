@@ -28,7 +28,7 @@ sub list_dumps
 local (@rv, $f);
 opendir(DIR, $module_config_directory);
 foreach $f (sort { $a cmp $b } readdir(DIR)) {
-	next if ($f !~ /^(\S+)\.dump$/);
+	next if ($f !~ /^(\d+)\.dump$/);
 	push(@rv, &get_dump($1));
 	}
 closedir(DIR);
@@ -38,6 +38,7 @@ return @rv;
 # get_dump(id)
 sub get_dump
 {
+return undef if (!defined($_[0]) || $_[0] !~ /\A\d+\z/);
 local %dump;
 &read_file("$module_config_directory/$_[0].dump", \%dump) || return undef;
 $dump{'id'} = $_[0];
@@ -209,23 +210,175 @@ closedir(DIR);
 return @rv;
 }
 
-# can_edit_dir(dir)
-# Returns 1 if some backup can be used or edited
+# can_edit_dir(path-or-dump)
+# A job is accessible only if every source is within the user's directory grant.
 sub can_edit_dir
 {
+return 0 if (!defined($_[0]) || !length($_[0]));
 return 1 if ($access{'dirs'} eq '*');
-local ($d, $dd);
-local @ddirs = !ref($_[0]) ? ( $_[0] ) :
-	       $supports_multiple ? split(/\s+/, $_[0]->{'dir'}) :
-				    ( $_[0]->{'dir'} );
-foreach $dd (@ddirs) {
-	local $anyok = 0;
-	foreach $d (split(/\t+/, $access{'dirs'})) {
-		$anyok = 1 if (&is_under_directory($d, $dd));
+my @ddirs = ref($_[0]) ? &dump_directories($_[0]) : ( $_[0] );
+return 0 if (!@ddirs);
+foreach my $dd (@ddirs) {
+	return 0 if (!defined($dd) || $dd !~ m{^/});
+	my $anyok = 0;
+	foreach my $d (split(/\t+/, $access{'dirs'})) {
+		if (&is_under_directory($d, $dd) && &real_path_under($d, $dd)) {
+			$anyok = 1;
+			last;
+			}
 		}
 	return 0 if (!$anyok);
 	}
 return 1;
+}
+
+# real_path_under(dir, path)
+# Returns 1 if path, after following symlinks, is dir or under it. The allowed
+# directory is compared as written, so replacing it with a symlink does not
+# grant access to the link target.
+sub real_path_under
+{
+my ($dir, $path) = @_;
+(my $d = $dir) =~ s/\/+$//;
+my $real = &resolve_links($path);
+return $d eq "" || $real eq $d || index($real, "$d/") == 0 ? 1 : 0;
+}
+
+# split_shell_words(string)
+# Splits command-line text to shell words while rejecting line breaks
+sub split_shell_words
+{
+my ($str) = @_;
+return () if (!defined($str) || $str !~ /\S/);
+my @words = &split_quoted_string($str);
+foreach my $w (@words) {
+	$w =~ /[\r\n\0]/ && &error("Invalid command-line parameter");
+	}
+return @words;
+}
+
+# restore_file_arguments(files)
+# Restore utilities accept a list of archive members after their options.
+sub restore_file_arguments
+{
+my ($files) = @_;
+my @names = &split_shell_words($files);
+@names && !grep { !length($_) || /^-/ || /[\r\n\0]/ } @names or
+	&error($text{'restore_efiles'});
+if ($access{'dirs'} ne '*' &&
+    grep { m{^/|(?:^|/)\.\.(?:/|\z)} } @names) {
+	&error($text{'restore_ecannot'});
+	}
+return join(" ", map { quotemeta($_) } @names);
+}
+
+# is_tape_device(path)
+# Returns 1 if path is a tape drive character device under /dev. Only root
+# can create entries there, so the name identifies the device type.
+sub is_tape_device
+{
+my ($path) = @_;
+return 0 if (!defined($path));
+return 0 if ($path !~ m{^/dev/(rmt/[^/.][^/]*|rmt\d+(\.\d+)?|tape|
+			     tape/by-(id|path)/[^/.][^/]*|
+			     n?(st|osst|ht)\d+[lma]?|[enr]?sa\d+(\.\d+)?)\z}x);
+return -c $path ? 1 : 0;
+}
+
+# can_use_dump_file(path)
+# Returns 1 if the current user may back up to or restore from a local file
+# or device. Directory-restricted users get tape drives and files under
+# their directories, but not other devices.
+sub can_use_dump_file
+{
+my ($path) = @_;
+return 0 if (!defined($path) || !length($path));
+return 1 if ($access{'dirs'} eq '*');
+return 1 if (&is_tape_device($path));
+return &can_edit_dir($path);
+}
+
+# dump_dest_allowed(&dump, [time])
+# Returns 1 if a backup saved by a directory-restricted user still writes
+# under that user's directories. Scheduled backups run as root, so check
+# the destination again before each run.
+sub dump_dest_allowed
+{
+my ($dump, $time) = @_;
+return 1 if (!$dump->{'ownerdirs'} || !$dump->{'file'});
+local $access{'dirs'} = $dump->{'ownerdirs'};
+return &can_use_dump_file(&date_subs($dump->{'file'}, $time));
+}
+
+# extra_args_error(fs, restoring, extra)
+# Checks extra command-line parameters. Users who cannot run commands may
+# not use options that start programs. Directory-restricted users may also
+# not name other files or directories, or keep owners and setuid bits.
+# Returns an error message, or undef if the parameters are allowed.
+sub extra_args_error
+{
+my ($fs, $restoring, $extra) = @_;
+my $nocmds = !$access{'cmds'};
+my $nodirs = $access{'dirs'} ne '*';
+return undef if (!$nocmds && !$nodirs);
+
+# Short option letters and long option names that run a program or name a
+# file, per archive tool
+my ($sexec, $sfile, @lexec, @lfile);
+if ($fs eq 'tar') {
+	$sexec = "IF";
+	$sfile = "fCTgPhp";
+	@lexec = ( 'checkpoint-action', 'to-command', 'use-compress-program',
+		   'rsh-command', 'rmt-command', 'info-script',
+		   'new-volume-script' );
+	@lfile = ( 'file', 'directory', 'files-from', 'listed-incremental',
+		   'index-file', 'volno-file', 'absolute-names', 'dereference',
+		   'keep-directory-symlink', 'one-top-level', 'same-owner',
+		   'preserve-permissions', 'same-permissions', 'preserve' );
+	}
+elsif ($fs eq 'xfs') {
+	$sexec = "c";
+	$sfile = $restoring ? "afO" : "fO";
+	}
+else {
+	$sexec = "F";
+	$sfile = $restoring ? "AfPQT" : "ADfQ";
+	}
+
+foreach my $w (&split_shell_words($extra)) {
+	my $err;
+	if ($w =~ /^--([^=]*)/) {
+		# Long option. tar accepts unambiguous abbreviations, so match
+		# prefixes, except --checkpoint which only sets an interval.
+		# Other tools have no long options.
+		my $name = $1;
+		my $pfx = sub { $name ne "checkpoint" &&
+				grep { index($_, $name) == 0 } @_ };
+		if ($nocmds && ($fs ne 'tar' || $pfx->(@lexec))) {
+			$err = 'dump_eextracmd';
+			}
+		elsif ($nodirs && ($fs ne 'tar' || $pfx->(@lexec, @lfile))) {
+			$err = 'dump_eextradir';
+			}
+		}
+	elsif ($w =~ /^-(.+)$/) {
+		# Cluster of short options. Option values in the same word are
+		# checked too, which errs on the safe side.
+		my $letters = $1;
+		if ($nocmds && $letters =~ /[\Q$sexec\E]/) {
+			$err = 'dump_eextracmd';
+			}
+		elsif ($nodirs && $letters =~ /[\Q$sexec$sfile\E]/) {
+			$err = 'dump_eextradir';
+			}
+		}
+	elsif ($nodirs) {
+		# A bare word can add another file or directory to the backup
+		$err = 'dump_eextradir';
+		}
+	return &text($err, "<tt>".&html_escape($w)."</tt>") if ($err);
+	}
+return undef;
 }
 
 sub create_wrappers
@@ -323,11 +476,13 @@ if ($r == 2) {
 return &ui_radio($selname, $r, \@opts);
 }
 
-# rsh_command_parse(selname, textname)
-# Returns the rsh command to use for a backup/restore, based on %in
+# rsh_command_parse(selname, textname, [old-command])
+# Returns the rsh command to use for a backup/restore, based on %in. A custom
+# program runs as root, so only users who can run commands may set one; an
+# unchanged old command is kept.
 sub rsh_command_parse
 {
-local ($selname, $textname) = @_;
+local ($selname, $textname, $old) = @_;
 if ($in{$selname} == 0) {
 	return undef;
 	}
@@ -342,6 +497,8 @@ elsif ($in{$selname} == 3) {
 else {
 	$in{$textname} =~ /^(\S+)/ && &has_command("$1") ||
 		&error($text{'dump_ersh'});
+	$access{'cmds'} || $in{$textname} eq $old ||
+		&error($text{'dump_ecmdprog'});
 	return $in{$textname};
 	}
 }

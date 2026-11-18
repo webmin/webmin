@@ -41,9 +41,16 @@ else {
 		print "<b>$text{'backup_beforefailed'}</b><p>\n";
 		}
 	else {
-		# Do the dump
+		# Do the dump, unless the destination now leaves the
+		# directories of the user who saved it
 		$now = time();
-		$ok = &execute_dump($dump, STDOUT, 1, 0, $now);
+		if (&dump_dest_allowed($dump, $now)) {
+			$ok = &execute_dump($dump, STDOUT, 1, 0, $now);
+			}
+		else {
+			print "$text{'backup_edest'}\n";
+			$ok = 0;
+			}
 		print "</pre>\n";
 		if (!$bok) {
 			print "<b>$text{'backup_afterfailed'}</b><p>\n";

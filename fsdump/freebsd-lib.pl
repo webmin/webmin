@@ -125,7 +125,7 @@ else {
 
 if ($_[0]->{'fs'} eq 'tar') {
 	# Parse tar options
-	$_[0]->{'rsh'} = &rsh_command_parse("rsh_def", "rsh");
+	$_[0]->{'rsh'} = &rsh_command_parse("rsh_def", "rsh", $_[0]->{'rsh'});
 	$_[0]->{'pass'} = $in{'pass'};
 	$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 16 ||
 		&error($text{'dump_elabel'});
@@ -140,6 +140,9 @@ if ($_[0]->{'fs'} eq 'tar') {
 		}
 	$_[0]->{'gzip'} = $in{'gzip'};
 	$_[0]->{'multi'} = $in{'multi'};
+	# Following symlinks as root would read files outside the allowed
+	# directories
+	$in{'links'} && $access{'dirs'} ne '*' && &error($text{'dump_elinks'});
 	$_[0]->{'links'} = $in{'links'};
 	$_[0]->{'xdev'} = $in{'xdev'};
 	if ($in{'multi'}) {
@@ -197,7 +200,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " -L $_[0]->{'blocks'}" if ($_[0]->{'blocks'});
 	$cmd .= " -z" if ($_[0]->{'gzip'});
 	$cmd .= " -M" if ($_[0]->{'multi'});
-	$cmd .= " -h" if ($_[0]->{'links'});
+	$cmd .= " -h" if ($_[0]->{'links'} && !$_[0]->{'ownerdirs'});
 	$cmd .= " -l" if ($_[0]->{'xdev'});
 	$cmd .= " -F ".quotemeta("$tapecmd $_[0]->{'id'}")
 		if (!$_[0]->{'gzip'} && ($_[0]->{'file'} =~ /^\/dev/ ||
@@ -293,7 +296,8 @@ if ($_[0] eq 'tar') {
 
 	# Restore permissions?
 	print &ui_table_row(&hlink($text{'restore_perms'},"perms"),
-		      &ui_yesno_radio("perms", 1), 1, $tds);
+		      &ui_yesno_radio("perms", 1), 1, $tds)
+		if ($access{'dirs'} eq '*');
 
 	# Uncompress?
 	print &ui_table_row(&hlink($text{'restore_gzip'},"rgzip"),
@@ -367,37 +371,44 @@ else {
 
 if ($_[0] eq 'tar') {
 	# parse tar options
-	$cmd .= " -p" if ($in{'perms'});
+	if ($access{'dirs'} ne '*') {
+		# Use tar's restricted ownership and permission settings.
+		$cmd .= " --no-same-owner --no-same-permissions";
+		}
+	elsif ($in{'perms'}) {
+		$cmd .= " -p";
+		}
 	$cmd .= " -z" if ($in{'gzip'});
 	$cmd .= " -k" if ($in{'keep'});
 	if ($in{'multi'}) {
 		!-c $in{'file'} && !-b $in{'file'} ||
 			&error($text{'restore_emulti'});
 		$in{'mode'} == 0 || &error($text{'restore_emulti2'});
-		$cmd .= " -M -F ".quotemeta("$rmulti_cmd $in{'file'}");
+		my $callback = quotemeta($rmulti_cmd)." ".quotemeta($in{'file'});
+		$cmd .= " -M -F ".quotemeta($callback);
 		}
 	local $rsh = &rsh_command_parse("rsh_def", "rsh");
 	if ($rsh) {
 		$cmd .= " --rsh-command=".quotemeta($rsh);
 		}
-	$cmd .= " $in{'extra'}" if ($in{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } &split_shell_words($in{'extra'})) if ($in{'extra'});
 	if (!$in{'files_def'}) {
 		$in{'files'} || &error($text{'restore_efiles'});
-		$cmd .= " $in{'files'}";
+		$cmd .= " ".&restore_file_arguments($in{'files'});
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
 	$cmd = "cd ".quotemeta($in{'dir'})." && $cmd";
 	if ($in{'multi'}) {
-		$cmd = "$rmulti_cmd ".quotemeta($in{'file'})." 1 && $cmd";
+		$cmd = quotemeta($rmulti_cmd)." ".quotemeta($in{'file'})." 1 && $cmd";
 		}
 	}
 else {
 	# parse ufs options
 	$cmd .= " -N" if ($in{'nothing'});
-	$cmd .= " $in{'extra'}" if ($in{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } &split_shell_words($in{'extra'})) if ($in{'extra'});
 	if (!$in{'files_def'}) {
 		$in{'files'} || &error($text{'restore_efiles'});
-		$cmd .= " $in{'files'}";
+		$cmd .= " ".&restore_file_arguments($in{'files'});
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
 	}
@@ -415,7 +426,7 @@ $ENV{'DUMP_PASSWORD'} = $in{'pass'};
 # Need to supply prompts
 &foreign_require("proc", "proc-lib.pl");
 local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
-	"cd ".quotemeta($in{'dir'})." ; $_[1]");
+	"cd ".quotemeta($in{'dir'})." && $_[1]");
 local $donevolume;
 while(1) {
 	local $rv = &wait_for($fh, "(next volume #)", "(set owner.mode for.*\\[yn\\])", "((.*)\\[yn\\])", "password:", "yes\\/no", "(.*\\n)");

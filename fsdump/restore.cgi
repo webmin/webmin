@@ -6,6 +6,22 @@ require './fsdump-lib.pl';
 &ReadParse();
 &error_setup($text{'restore_err'});
 $access{'restore'} || &error($text{'restore_ecannot'});
+if ($access{'dirs'} ne '*') {
+	# XFS can list a backup without opening a destination directory.
+	if (length($in{'dir'}) || $in{'fs'} ne 'xfs' || !$in{'test'}) {
+		&can_edit_dir($in{'dir'}) || &error($text{'restore_ecannot'});
+		}
+	if ($in{'mode'} == 0) {
+		&can_use_dump_file($in{'file'}) ||
+			&error($text{'restore_ecannot'});
+		}
+	}
+$in{'extra'} && !$access{'extra'} && &error($text{'restore_ecannot'});
+if ($in{'extra'}) {
+	# Extra options cannot reach beyond this user's limits
+	$err = &extra_args_error($in{'fs'}, 1, $in{'extra'});
+	&error($err) if ($err);
+	}
 
 $cmd = &parse_restore($in{'fs'});
 
@@ -13,6 +29,8 @@ $cmd = &parse_restore($in{'fs'});
 
 &create_wrappers();
 
+# The volume-change callback opens each numbered archive separately.
+local $ENV{'FSDUMP_RESTORE_DIRS'} = $access{'dirs'};
 print "<b>",&text('restore_now', "<tt>".&html_escape($cmd)."</tt>"),"</b> <p>\n";
 print "<pre>";
 $rv = &restore_backup($in{'fs'}, $cmd);
