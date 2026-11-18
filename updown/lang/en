@@ -55,6 +55,7 @@ upload_done=Successfully uploaded the following files :
 upload_eaccess=You are not allowed to upload files to $1
 upload_ecannot=You are not allowed to upload files at all
 upload_eucannot=You are not allowed to upload files as user $1
+upload_eunix=There is no Unix user named $1 to transfer files as
 upload_egcannot=The selected group does not contain the selected user
 upload_ecmd=Missing command $1
 upload_eextract=, which could not be extracted : $1

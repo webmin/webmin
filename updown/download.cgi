@@ -60,7 +60,7 @@ if ($can_mode != 3) {
 else {
 	# User is fixed
 	if (&supports_users()) {
-		@uinfo = getpwnam($remote_user);
+		@uinfo = &get_remote_unix_user();
 		$download{'uid'} = $uinfo[2];
 		$download{'gid'} = $uinfo[3];
 		}

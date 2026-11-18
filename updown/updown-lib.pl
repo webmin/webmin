@@ -263,6 +263,17 @@ foreach $s (&other_groups($_[0]->[0])) {
 return 0;
 }
 
+# get_remote_unix_user()
+# Returns the getpwnam details of the Unix user with the same name as the
+# Webmin login, for the mode in which transfers run as that user. Calls error
+# when there is no such user, so that transfers never fall back to root.
+sub get_remote_unix_user
+{
+my @uinfo = getpwnam($remote_user);
+@uinfo || &error(&text('upload_eunix', &html_escape($remote_user)));
+return @uinfo;
+}
+
 # switch_uid_to(uid, gid)
 # Temporarily sets the effective UID and GID, if appropriate
 sub switch_uid_to

@@ -39,7 +39,7 @@ if ($can_mode != 3) {
 	}
 elsif (&supports_users()) {
 	# User to upload as is set in the ACL
-	@uinfo = getpwnam($remote_user);
+	@uinfo = &get_remote_unix_user();
 	}
 for($i=0; defined($in{"upload$i"}); $i++) {
 	for(my $j=0; $j<@{$in{"upload$i"}}; $j++) {

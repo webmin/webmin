@@ -28,8 +28,8 @@ if ($file eq "/" || $file =~ /^[a-z]:\/$/) {
 
 if ($ENV{'PATH_INFO'}) {
 	# Switch to the correct user
-	if ($can_mode == 3) {
-		@uinfo = getpwnam($remote_user);
+	if ($can_mode == 3 && &supports_users()) {
+		@uinfo = &get_remote_unix_user();
 		&switch_uid_to($uinfo[2], $uinfo[3]);
 		}
 	elsif ($can_mode == 1 && @can_users == 1) {
