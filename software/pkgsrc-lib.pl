@@ -35,8 +35,8 @@ my $ex = $?;
 my $err = &read_file_contents($errtemp);
 &unlink_file($errtemp);
 if ($err || $?) {
-	&error("SQL command $sql failed : ".
-	       ($err || $headline || "Unknown error"));
+	&error(&html_escape("SQL command $sql failed : ".
+			    ($err || $headline || "Unknown error")));
 	}
 return @rv;
 }
