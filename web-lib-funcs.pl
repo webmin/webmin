@@ -10674,8 +10674,9 @@ else {
 			: Net::SSLeay::connect($rv->{'ssl_con'});
 	return "SSL connect() failed" if (!$ok);
 	}
-if ($certreqs && !$certreqs->{'nocheckhost'}) {
-	# Preserve the caller's hostname, self-signed and CA requirements.
+if ($certreqs && (!$certreqs->{'nocheckhost'} ||
+		 $certreqs->{'fingerprint'})) {
+	# Check pins even when hostname checks are disabled.
 	my $err = &validate_ssl_connection(
 		$rv->{'ssl_con'},
 		$certreqs->{'checkhost'} ||

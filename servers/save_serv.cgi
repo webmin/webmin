@@ -65,10 +65,11 @@ else {
 		&error($text{'save_elogin'})
 			if ($probe_error &&
 			    $probe_error =~ /login to RPC server.*rejected/);
-		# Stop on SSL probe errors instead of saving regular RPC.
+		# Stop on SSL or pin errors instead of saving regular RPC.
 		&error(&html_escape($probe_error))
-			if ($probe_error && $in{'ssl'});
-		# Failed plain HTTP probes still select regular RPC.
+			if ($probe_error && ($in{'ssl'} ||
+					     &server_ssl_fingerprints($probe)));
+		# Failed unpinned HTTP probes still select regular RPC.
 		$in{'fast'} = $probe_error ? 0 : 1;
 		}
 	elsif ($in{'fast'} == 2) {

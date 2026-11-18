@@ -135,10 +135,10 @@ like(miniserv::check_websocket_backend_ssl('ssl', undef, ','), qr/fingerprint/,
 	for my $case (
 		[ 'pinned', { sslfingerprint => $pinned }, '/rpc.cgi', $pinned ],
 		[ 'pinned fast', { sslfingerprint => $pinned, fast => 1 },
-		  '/fastrpc.cgi', $pinned ],
+		  '/fastrpc.cgi?tls=1', $pinned ],
 		[ 'unverified guest', { cloudmin_uuid => 'fixture', fast => 1 },
-		  '/fastrpc.cgi', 'invalid' ],
-		[ 'ordinary fast', { fast => 1 }, '/fastrpc.cgi', undef ],
+		  '/fastrpc.cgi?tls=1', 'invalid' ],
+		[ 'ordinary fast', { fast => 1 }, '/fastrpc.cgi?tls=1', undef ],
 		[ 'pinned with CA checks', { sslfingerprint => $pinned,
 					    checkssl => 1 }, '/rpc.cgi', $pinned ]) {
 		# Stop at connection setup so no fixture request opens a socket.
@@ -166,6 +166,11 @@ like(miniserv::check_websocket_backend_ssl('ssl', undef, ','), qr/fingerprint/,
 	local $INC{'./servers-lib.pl'} = 1;
 	local %access = ( edit => 1, servers => '*' );
 	local %main::config = ( capath => '/fixture/ca' );
+	local %WebminCore::fast_fh_cache;
+	local *servers::server_ssl_fingerprints = \&server_ssl_fingerprints;
+	# The probe now uses the RPC client, which loads helpers in this package.
+	local *WebminCore::foreign_require = sub { };
+	local *WebminCore::foreign_config = sub { %main::config };
 	# ReadParse() preserves the input hash supplied by each test case.
 	local *main::ReadParse = sub { };
 	# error_setup(message) suppresses CGI error-page configuration.
@@ -184,22 +189,38 @@ like(miniserv::check_websocket_backend_ssl('ssl', undef, ','), qr/fingerprint/,
 	# save_server(record) captures the record without writing a file.
 	local *main::save_server = sub { $saved = { %{$_[0]} } };
 	# make_http_connection(args...) records verification and may refuse TLS.
-	local *main::make_http_connection = sub {
+	local *WebminCore::make_http_connection = sub {
 		$probes++;
 		@connection = @_;
+		return 'SSL is required for a pinned certificate'
+			if (!$_[2] && $_[7] && $_[7]->{'fingerprint'});
 		return $reject ? 'fixture certificate rejected' : { };
 		};
 	# write_http_connection(args...) counts writes after certificate checks.
-	local *main::write_http_connection = sub { $writes++ };
+	local *WebminCore::write_http_connection = sub { $writes++ };
 	# read_http_connection(handle) advertises an available fast RPC worker.
-	local *main::read_http_connection = sub { shift(@response) };
+	local *WebminCore::read_http_connection = sub { shift(@response) };
 	# close_http_connection(handle) has no real connection to release.
-	local *main::close_http_connection = sub { };
+	local *WebminCore::close_http_connection = sub { };
 	# open_socket(host, port, handle, error) supplies an in-memory probe handle.
-	local *main::open_socket = sub {
+	local *WebminCore::open_socket = sub {
 		no strict 'refs';
-		open($_[2], '<', \my $empty) or die $!;
+		open("WebminCore::".$_[2], '<', \my $empty) or die $!;
 		};
+	# Supply a successful TLS ping without opening a real socket.
+	local *WebminCore::rpc_tls_fingerprint = sub { $pinned };
+	local *WebminCore::rpc_tls_context = sub { 1 };
+	local *WebminCore::rpc_tls_start = sub {
+		+{ fh => $_[0], ssl_con => 1, timeout => 3 };
+		};
+	local *Net::SSLeay::CTX_free = sub { };
+	local *WebminCore::write_ssl_connection = sub { length($_[1]) };
+	my $reply = serialise_variable({ status => 1, rv => 1 });
+	local *WebminCore::read_ssl_connection = sub {
+		defined($_[1]) ? $reply : length($reply)."\n";
+		};
+	# rpc_tls_close(handle) releases only the fixture's in-memory handle.
+	local *WebminCore::rpc_tls_close = sub { close($_[0]->{'fh'}) };
 	for my $case (
 		[ 'pinned automatic', { sslfingerprint => $pinned }, 2, 1, 1 ],
 		[ 'pinned explicit fast', { sslfingerprint => $pinned }, 1, 0, 1 ],
@@ -215,7 +236,7 @@ like(miniserv::check_websocket_backend_ssl('ssl', undef, ','), qr/fingerprint/,
 		$saved = undef;
 		($probes, $writes) = (0, 0);
 		@response = ("HTTP/1.0 200 OK\r\n", "\r\n",
-			     "1 10001 fixtureprobe 2.670\n");
+			     "1 10001 fixtureprobe 2.670 TLS1\n");
 		local %in = ( id => 123, host => 'guest.test', port => 10000,
 			ssl => 1, mode => 1, fast => $fast,
 			checkssl => $fields->{'checkssl'},
@@ -257,6 +278,19 @@ like(miniserv::check_websocket_backend_ssl('ssl', undef, ','), qr/fingerprint/,
 		   'probe keeps missing required pins enforced');
 		is($writes, 0, 'refused probe sends no credentials');
 		ok(!defined($saved), 'refused probe cannot save regular RPC mode');
+		}
+	for my $fields ({ sslfingerprint => $pinned },
+			{ cloudmin_uuid => 'fixture' }) {
+		# Disabling SSL must not turn a required pin into regular RPC.
+		$record = { id => 123, %$fields };
+		($saved, $probes, $writes, $reject) = (undef, 0, 0, 0);
+		local %in = ( id => 123, host => 'guest.test', port => 10000,
+			ssl => 0, mode => 1, fast => 2,
+			wuser => 'fixture', wpass => 'synthetic-secret' );
+		do "$Bin/../servers/save_serv.cgi";
+		like($@, qr/SSL is required/, 'pinned HTTP probe reports the error');
+		is($writes, 0, 'pinned HTTP probe sends no credentials');
+		ok(!defined($saved), 'pinned HTTP probe leaves the record unchanged');
 		}
 	}
 

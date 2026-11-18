@@ -275,7 +275,7 @@ def main():
                     assert result['login'], label + ': login did not arrive'
                     if mode in ('rpc', 'probe'):
                         # Fast calls and probes retain the fast RPC endpoint.
-                        expected = b'/fastrpc.cgi' if fast else b'/rpc.cgi'
+                        expected = b'/fastrpc.cgi?tls=1' if fast else b'/rpc.cgi'
                         assert result['path'] == expected, label
                     if mode == 'link':
                         # The page proxy must return the fixture response body.

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run isolated old/new miniserv RPC peers on a disposable Linux VM."""
 import base64
+import hashlib
 import http.client
 import http.server
 import ssl
@@ -232,6 +233,19 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
             check(result.get('empty') == 1, label+' empty file round trip', result)
             check(result.get('temporary_name') == 1 and result.get('base_name') == 1,
                   label+' temporary and requested base filenames', result)
+
+        # Saved pins must work with TLS calls and both file-transfer sockets.
+        for name, certificate, check_ca in [('new', cert, 0), ('ca', signed, 1)]:
+            pin = hashlib.sha256(ssl.PEM_cert_to_DER_cert(
+                certificate.read_text())).hexdigest()
+            result = run(name, sslfingerprint=pin, checkssl=check_ca)
+            label = 'pinned '+name+' server'
+            check(str(result.get('call')) == '42' and not result.get('error'),
+                  label+' RPC', result)
+            check(result.get('tls') == 1 and result.get('https') == 0,
+                  label+' keeps TLS fast RPC', result)
+            check(result.get('input') and result.get('input') == result.get('output'),
+                  label+' binary file round trip', result)
 
         # Either file direction can be the first operation in a fresh process.
         # Cover TLS and plaintext HTTP fast RPC.
@@ -554,6 +568,22 @@ with tempfile.TemporaryDirectory(prefix='rpc-tls-live-') as temporary:
         check(response.status == 302 and saved.get('fast') == '1',
               'server auto-detection enables fast TLS',
               f'HTTP {response.status}: {output[:500]}')
+
+        # The same probe must preserve and verify a saved certificate pin.
+        saved['sslfingerprint'] = hashlib.sha256(ssl.PEM_cert_to_DER_cert(
+            cert.read_text())).hexdigest()
+        config(record, saved)
+        connection = http.client.HTTPSConnection('127.0.0.1', peer['port'], context=context)
+        connection.request('POST', '/servers/save_serv.cgi', body, headers={
+            'Authorization': 'Basic '+auth, 'Content-Type': 'application/x-www-form-urlencoded'})
+        response = connection.getresponse()
+        output = response.read().decode(errors='replace')
+        connection.close()
+        updated = dict(line.split('=', 1) for line in record.read_text().splitlines() if '=' in line)
+        check(response.status == 302 and updated.get('fast') == '1',
+              'pinned server auto-detection enables fast TLS', output[:500])
+        check(updated.get('sslfingerprint') == saved['sslfingerprint'],
+              'server auto-detection preserves the saved pin')
 
         # Failed SSL detection must leave the saved server unchanged.
         for name, expected in [('old', 'not supported by this server'),
