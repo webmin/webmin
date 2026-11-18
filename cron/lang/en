@@ -84,6 +84,7 @@ save_ecmd=You did not enter a command to execute
 save_enewline=The command and comment cannot contain line breaks
 save_especial=Invalid special time selected
 save_etime=Invalid $1 selected
+save_ehourly=Jobs can run at most once an hour, so only one minute can be selected
 save_ename=Missing or invalid environment variable name
 save_evalue=Invalid environment variable value
 save_euser=You must select a user
