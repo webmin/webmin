@@ -10,22 +10,7 @@ require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $base_remote_user, %gconfig,
      $config_directory);
 &ReadParse();
-$access{'acl'} || &error($text{'acl_emod'});
-
-my $who;
-if ($in{'_acl_group'}) {
-	$access{'groups'} || &error($text{'acl_egroup'});
-	$who = $in{'_acl_group'};
-	}
-else {
-	my $me = &get_user($base_remote_user);
-	my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
-		   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-				          ( &list_modules(), "" );
-	&indexof($in{'_acl_mod'}, @mcan) >= 0 || &error($text{'acl_emod'});
-	&can_edit_user($in{'_acl_user'}) || &error($text{'acl_euser'});
-	$who = $in{'_acl_user'};
-	}
+my $who = &acl_edit_target($in{'_acl_mod'}, $in{'_acl_user'}, $in{'_acl_group'});
 
 my $aclfile = $in{'_acl_group'} ? "$config_directory/$in{'_acl_mod'}/$who.gacl"
 			        : "$config_directory/$in{'_acl_mod'}/$who.acl";

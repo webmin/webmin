@@ -1352,6 +1352,25 @@ while (@todo) {
 return 1;
 }
 
+# acl_edit_target(module, user, group)
+# Validate the module and account before resolving any ACL files.
+sub acl_edit_target
+{
+my ($mod, $user, $group) = @_;
+$access{'acl'} || &error($text{'acl_emod'});
+my @mods = $access{'mode'} == 1 ? @{(&get_user($base_remote_user) || { })->{'modules'} || [ ]} :
+	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+				  ( &list_modules(), "" );
+&indexof($mod, @mods) >= 0 || &error($text{'acl_emod'});
+if ($group) {
+	$access{'groups'} && &can_edit_group_members($group) ||
+		&error($text{'acl_egroup'});
+	return $group;
+	}
+&get_user($user) && &can_edit_user($user) || &error($text{'acl_euser'});
+return $user;
+}
+
 =head2 can_module_acl(&mod)
 
 Returns 1 if the given module has ability to manage its own ACLs.
