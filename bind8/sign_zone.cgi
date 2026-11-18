@@ -9,6 +9,8 @@ our (%access, %text, %in);
 require './bind8-lib.pl';    ## no critic
 &error_setup($text{'sign_err'});
 &ReadParse();
+$access{'ro'} && &error($text{'master_ero'});
+$access{'dnssec'} || &error($text{'master_ecannot'});
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
