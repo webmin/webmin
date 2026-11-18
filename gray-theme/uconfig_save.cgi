@@ -7,9 +7,15 @@ require './config-lib.pl';
 &ReadParse();
 $m = $in{'module'};
 &error_setup($text{'config_err'});
+
+# Reject paths before resolving or loading module files
+defined($m) && $m =~ /\A[A-Za-z0-9_-]+\z/ || &error($text{'config_emodule'});
 &foreign_available($m) || &error($text{'config_eaccess'});
 &switch_to_remote_user();
 &create_user_config_dirs();
+
+# Personal preferences exist only where per-user config directories do
+$user_config_directory || &error($text{'config_ecannot'});
 
 mkdir("$user_config_directory/$m", 0700);
 &lock_file("$user_config_directory/$m/config");
@@ -42,7 +48,8 @@ if (defined(&$pfn)) {
 	}
 
 if ($in{'save_next'}) {
-	&redirect("uconfig.cgi?module=$in{'module'}&section=$in{'section_next'}");
+	&redirect("uconfig.cgi?module=".&urlize($m).
+		  "&section=".&urlize($in{'section_next'}));
 	}
 else {
 	&redirect("/$m/");

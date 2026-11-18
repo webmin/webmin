@@ -6,9 +6,15 @@ require "gray-theme/gray-theme-lib.pl";
 require './config-lib.pl';
 &ReadParse();
 $m = $in{'module'} || $ARGV[0];
+
+# Reject paths before resolving or loading module files
+defined($m) && $m =~ /\A[A-Za-z0-9_-]+\z/ || &error($text{'config_emodule'});
 &foreign_available($m) || &error($text{'config_eaccess'});
 &switch_to_remote_user();
 &create_user_config_dirs();
+
+# Personal preferences exist only where per-user config directories do
+$user_config_directory || &error($text{'config_ecannot'});
 
 %module_info = &get_module_info($m);
 if (-r &help_file($m, "config_intro")) {

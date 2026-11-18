@@ -7,6 +7,12 @@ require './config-lib.pl';
 &ReadParse();
 $m = $in{'module'};
 &error_setup($text{'config_err'});
+
+# Usermin accounts may change only their personal module preferences
+&get_product_name() eq 'webmin' || &error($text{'config_ecannot'});
+
+# Reject paths before resolving or loading module files
+defined($m) && $m =~ /\A[A-Za-z0-9_-]+\z/ || &error($text{'config_emodule'});
 %module_info = &get_module_info($m);
 %module_info || &error($text{'config_emodule'});
 &foreign_available($m) || $module_info{'noacl'} ||
@@ -47,8 +53,8 @@ if (&foreign_require($m) &&
 if ($in{'save_next'}) {
 	$redir = &link_config_cparams($m, \%in, 1);
 	$params = $redir =~ /\?(.*)$/ ? "&".$1 : "";
-	&redirect("config.cgi?module=$in{'module'}&section=$in{'section_next'}".
-		  $params);
+	&redirect("config.cgi?module=".&urlize($m).
+		  "&section=".&urlize($in{'section_next'}).$params);
 	}
 elsif ($m eq "virtual-server") {
 	&redirect("/right.cgi");
