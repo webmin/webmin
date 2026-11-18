@@ -130,7 +130,8 @@ if ($allow_add) {
 if ($allow_add && defined(&supports_bridges) && &supports_bridges()) {
 	push(@links, &ui_link("edit_bifc.cgi?new=1&bridge=1",$text{'ifcs_badd'}));
 	}
-if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
+if ($allow_add && $access{'virt'} && defined(&supports_ranges) &&
+    &supports_ranges()) {
 	push(@links, &ui_link("edit_range.cgi?new=1",$text{'ifcs_radd'}));
 	}
 print &ui_links_row(\@links);
@@ -154,18 +155,9 @@ foreach $a (@boot) {
 	if ($a->{'range'} ne "") {
 		# A range of addresses
 		local $rng = &text('ifcs_range', $a->{'range'});
-		if ($can && ($gconfig{'os_type'} eq 'debian-linux') && &has_command("")) {
-			$link = "edit_bifc.cgi?idx=$a->{'index'}";
-			if(&iface_type($a->{'name'}) eq 'Bonded'){
-				$link = $link . "&bond=1";
-			} elsif (&iface_type($a->{'name'}) =~ /^(.*) (VLAN)$/) {
-				$link = $link . "&vlan=1";
-			}
-			push(@cols, "<a href='$link'" . &html_escape($a->{'fullname'})."</a>");
-			}
-		elsif($can) {
-			$link = "edit_bifc.cgi?idx=$a->{'index'}";
-			push(@cols, "<a href='$link'" . &html_escape($a->{'fullname'})."</a>");
+		if ($can) {
+			push(@cols, &ui_link("edit_range.cgi?idx=$a->{'index'}",
+					    &html_escape($a->{'fullname'})));
 		}
 		else {
 			push(@cols, &html_escape($rng));

@@ -1021,6 +1021,23 @@ return ($gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 3.0);
 }
 
+# unapply_range(&range)
+# Remove the live IPv4 aliases belonging to this boot-time range.
+sub unapply_range
+{
+my ($range) = @_;
+&check_ipaddress($range->{'start'}) && &check_ipaddress($range->{'end'}) ||
+	&error($text{'range_err'});
+my $start = &ip_to_integer($range->{'start'});
+my $end = &ip_to_integer($range->{'end'});
+foreach my $active (&active_interfaces()) {
+	next if ($active->{'name'} ne $range->{'name'} ||
+		 $active->{'virtual'} eq '' || !$active->{'address'});
+	my $addr = &ip_to_integer($active->{'address'});
+	&deactivate_interface($active) if ($addr >= $start && $addr <= $end);
+	}
+}
+
 sub supports_bonding
 {
 return $gconfig{'os_type'} eq 'redhat-linux' &&

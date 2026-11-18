@@ -43,6 +43,10 @@ foreach $d (reverse(@d)) {
 		}
 	else {
 		# Deleting
+		if ($in{'deleteapply'} && $b->{'range'} ne '' &&
+		    defined(&unapply_range)) {
+			&unapply_range($b);
+			}
 		if ($in{'deleteapply'} && $act &&
 		    !defined(&unapply_interface_after_delete)) {
 			# De-activate first for legacy immediate-action backends.
