@@ -149,4 +149,24 @@ isnt($err, '', 'a WKS protocol with a line break is rejected');
 unlike(&read_text($zonefile), qr/192\.0\.2\.9/,
        'the rejected WKS record adds nothing');
 
+# --- record generators ----------------------------------------------------
+($out, $err) = &run_cgi('save_gen.cgi', {
+	'zone' => 'example.com', 'view' => '',
+	'type_0' => "PTR\n\@ IN NS evil.example.", 'start_0' => 1,
+	'stop_0' => 2, 'skip_0' => '', 'name_0' => '$', 'value_0' => 'h$' });
+isnt($err, '', 'a generator type with a line break is rejected');
+($out, $err) = &run_cgi('save_gen.cgi', {
+	'zone' => 'example.com', 'view' => '', 'type_0' => 'PTR',
+	'start_0' => 1, 'stop_0' => 2, 'skip_0' => '', 'name_0' => '$',
+	'value_0' => 'h$', 'cmt_0' => "note\n\@ IN NS evil.example." });
+isnt($err, '', 'a generator comment with a line break is rejected');
+unlike(&read_text($zonefile), qr/evil/, 'rejected generators add nothing');
+($out, $err) = &run_cgi('save_gen.cgi', {
+	'zone' => 'example.com', 'view' => '', 'type_0' => 'PTR',
+	'start_0' => 1, 'stop_0' => 2, 'skip_0' => '', 'name_0' => '$',
+	'value_0' => 'h$', 'cmt_0' => 'hosts' });
+is($err, '', 'a valid generator is saved');
+like(&read_text($zonefile), qr/^\$generate 1-2 \$ PTR h\$ ;hosts$/m,
+     'the generator line is written');
+
 done_testing();

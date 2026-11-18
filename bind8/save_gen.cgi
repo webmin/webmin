@@ -84,25 +84,31 @@ if ($in{'show'}) {
 for(my $i=0; defined($in{"type_$i"}); $i++) {
 	if ($in{"type_$i"}) {
 		my @gv;
-		$in{"start_$i"} =~ /^\d+$/ ||
+		$in{"start_$i"} =~ /^\d+\z/ ||
 			&error(&text('gen_estart', $i+1));
-		$in{"stop_$i"} =~ /^\d+$/ ||
+		$in{"stop_$i"} =~ /^\d+\z/ ||
 			&error(&text('gen_estop', $i+1));
 		$in{"start_$i"} <= $in{"stop_$i"} ||
 			&error(&text('gen_erange', $i+1));
-		$in{"skip_$i"} =~ /^\d*$/ ||
+		$in{"skip_$i"} =~ /^\d*\z/ ||
 			&error(&text('gen_eskip', $i+1));
 		push(@gv, $in{"start_$i"}."-".$in{"stop_$i"});
 		if ($in{"skip_$i"}) {
 			$gv[$#gv] .= "/".$in{"skip_$i"};
 			}
-		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
+		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+\z/ ||
 			&error(&text('gen_ename', $i+1));
 		push(@gv, $in{"name_$i"});
+		# BIND can only generate these record types
+		$in{"type_$i"} =~ /^(PTR|CNAME|NS|A|AAAA|DNAME)\z/i ||
+			&error(&text('gen_etype', $i+1));
 		push(@gv, $in{"type_$i"});
-		$in{"value_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
+		$in{"value_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+\z/ ||
 			&error(&text('gen_evalue', $i+1));
 		push(@gv, $in{"value_$i"});
+		# The comment ends the generator line
+		$in{"cmt_$i"} =~ /[\r\n\0]/ &&
+			&error(&text('gen_ecmt', $i+1));
 		push(@gv, $in{"cmt_$i"}) if ($in{"cmt_$i"});
 		if ($i < @gens) {
 			&modify_generator($gens[$i]->{'file'}, $gens[$i], @gv);
