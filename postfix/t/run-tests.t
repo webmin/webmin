@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use Test::More;
+use Text::ParseWords qw(shellwords);
 use Cwd qw(abs_path);
 use File::Temp qw(tempdir);
 
@@ -134,7 +135,7 @@ is_deeply([ get_maps_types_files('garbage-without-colon') ], [],
     regenerate_transport_table();
     is(scalar(@commands), 4, 'only indexed maps are rebuilt');
     foreach my $type ('hash', 'lmdb', 'btree', 'dbm') {
-        ok(scalar(grep { index($_, "$type:/fixture/$type") >= 0 } @commands),
+        ok(scalar(grep { $_ eq "$type:/fixture/$type" } map { shellwords($_) } @commands),
            "$type map keeps its configured type");
     }
     @commands = ();

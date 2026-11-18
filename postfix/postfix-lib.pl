@@ -704,10 +704,10 @@ else {
 		if (&file_map_type($map->[0])) {
 			my $cmd = $config{'postfix_aliases_table_command'};
 			if ($cmd =~ /newaliases/) {
-				$cmd .= " -oA$map->[1]";
+				$cmd .= " -oA".quotemeta($map->[1]);
 				}
 			else {
-				$cmd .= " $map->[1]";
+				$cmd .= " ".quotemeta($map->[1]);
 				}
 			$out = &backquote_logged("$cmd 2>&1");
 			if ($?) {
@@ -836,7 +836,7 @@ foreach my $map (@files) {
 			$config{'postfix_lookup_table_command'}.
 			" -c $config_dir".
 			($base64 ? " -F" : "").
-			" $map->[0]:$map->[1] 2>&1");
+			" ".quotemeta("$map->[0]:$map->[1]")." 2>&1");
 		if ($?) {
 			&error(&text('regenerate_table_efailed',
 				     $map->[1], $out));
