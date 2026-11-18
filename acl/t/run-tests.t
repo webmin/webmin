@@ -2211,4 +2211,88 @@ subtest 'own ACL escalation gates' => sub {
     delete_user('operator');
 };
 
+# Unix login mappings grant the mapped Webmin user's access, so new mappings
+# are limited to users the admin can edit.
+subtest 'save_unix.cgi mapped user limits' => sub {
+    my $write_conf = sub {
+        open(my $fh, ">", $miniservconf) or die "$miniservconf: $!";
+        print $fh $_[0];
+        close($fh);
+    };
+    _reset_fixture();
+    create_user({ name => 'operator', pass => 'x', modules => ['acl'] });
+    create_user({ name => 'root', pass => 'x', modules => ['acl'] });
+    _seed_user_acl('operator', { unix => 1, create => 1, delete => 1,
+                                 users => '~' });
+    my $before = read_file_contents($miniservconf);
+    my %form = (unix_def => 0, mode_0 => 1, who_0 => '', to_0 => 'root');
+    my $r = run_cgi('save_unix.cgi', \%form, user => 'operator');
+    ok(!$r->{location}, 'logins cannot be mapped to an uneditable user');
+    like($r->{out}, qr/not allowed to map logins in row 1/,
+         'mapping refusal names the row');
+    is(read_file_contents($miniservconf), $before, 'miniserv config is unchanged');
+
+    $r = run_cgi('save_unix.cgi', { unix_def => 1, pamany => 1,
+                                    pamany_user => 'root' },
+                 user => 'operator');
+    ok(!$r->{location}, 'PAM-only logins cannot map to an uneditable user');
+    like($r->{out}, qr/not allowed to map PAM-only logins/,
+         'PAM mapping refusal is explained');
+
+    # Existing mappings can be kept, and editable users can be selected.
+    $write_conf->($before."unixauth=root\n");
+    $r = run_cgi('save_unix.cgi', { %form, mode_1 => 3, who_1 => 'alice',
+                                    to_1 => 'operator' },
+                 user => 'operator');
+    ok($r->{location}, 'existing and editable mappings are saved')
+        or diag("stdout: $r->{out}");
+    like(read_file_contents($miniservconf), qr/^unixauth=root alice=operator$/m,
+         'mappings are written');
+
+    # User, group and wildcard rows must survive a save and reload as entered.
+    $r = run_cgi('save_unix.cgi', { %form, mode_1 => 2, who_1 => 'mail-team',
+                                    to_1 => 'operator', mode_2 => 3, who_2 => 'sam',
+                                    to_2 => 'operator', pamany => 1, pamany_user => 'operator' },
+                 user => 'operator');
+    ok($r->{location}, 'an editable target works for Unix and PAM-only logins');
+    {
+        no warnings qw(once redefine);
+        require "$rootdir/miniserv-lib.pl";
+        local *miniserv::open_debug_to_log = sub { };
+        local %miniserv::config = miniserv::read_config_file($miniservconf);
+        miniserv::build_config_mappings();
+        is_deeply(\%miniserv::unixauth, {'*' => 'root', '@mail-team' => 'operator',
+                                        sam => 'operator'}, 'MiniServ loads the three mappings as saved');
+        is($miniserv::config{pamany}, 'operator', 'MiniServ loads the intended PAM-only user');
+    }
+    my $unchanged = read_file_contents($miniservconf);
+    for my $bad ([3, 'two names', 'operator'], [3, '@mail-team', 'operator'],
+                 [3, '*', 'operator'], [2, "two\tgroups", 'operator'],
+                 [3, 'sam', 'two=names'], [4, 'sam', 'operator']) {
+        $r = run_cgi('save_unix.cgi', { %form, mode_1 => $bad->[0],
+                                        who_1 => $bad->[1], to_1 => $bad->[2] },
+                     user => 'operator');
+        like($r->{out}, qr/Invalid Unix login mapping in row 2/, 'the invalid row is identified');
+        is(read_file_contents($miniservconf), $unchanged, 'a rejected row leaves the config intact');
+    }
+
+    # The last row for a Unix name wins, even in older hand-written configs.
+    $write_conf->($before."unixauth=sam=root sam=operator\npamany=root\n");
+    my %repeated = (unix_def => 0, mode_0 => 3, who_0 => 'sam', to_0 => 'root',
+                    mode_1 => 3, who_1 => 'sam', to_1 => 'operator',
+                    pamany => 1, pamany_user => 'root');
+    $r = run_cgi('save_unix.cgi', \%repeated, user => 'operator');
+    ok($r->{location}, 'unchanged duplicate rows and an existing PAM mapping can be kept');
+    $unchanged = read_file_contents($miniservconf);
+    $r = run_cgi('save_unix.cgi', { %repeated, mode_1 => 0 }, user => 'operator');
+    like($r->{out}, qr/not allowed to map logins in row 1/, 'activating a previous target needs permission');
+    is(read_file_contents($miniservconf), $unchanged, 'the previous target stays inactive');
+    $r = run_cgi('save_unix.cgi', { %repeated, pamany_user => '' }, user => 'operator');
+    like($r->{out}, qr/not allowed to map PAM-only logins/, 'enabled PAM-only logins require a target');
+    is(read_file_contents($miniservconf), $unchanged, 'the saved PAM target is preserved');
+    $write_conf->($before);
+    delete_user('root');
+    delete_user('operator');
+};
+
 done_testing();
