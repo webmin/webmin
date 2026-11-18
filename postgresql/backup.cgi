@@ -32,6 +32,11 @@ if (!$cron && ($in{'sched'} || ($in{'save'} && !$module_info{'usermin'}))) {
 	&error($text{'backup_esave'});
 	}
 
+# Keep the table selection when saving without running a backup.
+my @tables;
+if (!$in{'all'} && !$in{'tables_def'}) {
+	@tables = split(/\0/, $in{'tables'});
+	}
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
 		-d $in{'path'} || -d &date_subs($in{'path'}) || $in{'mkdir'} ||
@@ -43,7 +48,6 @@ if (!$in{'save'} || $in{'sched'}) {
 		    &error(&text('backup_pe3', $in{'path'})) ;
 		}
 	if (!$in{'all'} && !$in{'tables_def'}) {
-		@tables = split(/\0/, $in{'tables'});
 		@tables || &error($text{'backup_etables'});
 		}
 	}
@@ -83,7 +87,9 @@ if (!$in{'all'}) {
 # Save choices for next time the form is visited (and for the cron job)
 if ($module_info{'usermin'}) {
 	$userconfig{'backup_'.$in{'db'}} = $in{'path'};
+	$userconfig{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$userconfig{'backup_format_'.$in{'db'}} = $in{'format'};
+	$userconfig{'backup_compress_'.$in{'db'}} = $in{'compress'};
 	$userconfig{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	if ($in{'save'}) {
 		&save_user_module_config();

@@ -150,7 +150,7 @@ if ($cron) {
 	print &ui_hidden_table_end("sched");
 	}
 
-if ($cron) {
+if ($cron || $module_info{'usermin'}) {
 	print &ui_form_end([ [ "backup", $text{'backup_ok'} ],
 			     [ "save", $text{'backup_ok2'} ] ]);
 	}

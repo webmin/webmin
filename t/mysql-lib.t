@@ -475,6 +475,23 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		like($@, qr/^\Q$expected\E\b/, $name);
 		}
 
+	{
+		local $main::module_info{'usermin'} = 1;
+		local $main::config{'access'} = '*: testdb';
+		local %main::access = (dbs => '*', buser => 'root', bpath => '/');
+		local %main::userconfig;
+		local %main::in = (db => 'testdb', file => '/backup.sql', save => 1,
+			tables => "t1\0t2", where_def => 1, charset_def => 1);
+		local *main::save_user_module_config = sub { die "PERSONAL\n" };
+		do './mysql/backup_db.cgi';
+		is($@, "PERSONAL\n", 'Usermin saves to the personal config');
+		is($main::userconfig{'backup_tables_testdb'}, 't1 t2',
+		   'personal save keeps the selected tables');
+		$main::in{'sched'} = 1;
+		do './mysql/backup_db.cgi';
+		like($@, qr/^backup_esave/, 'Usermin cannot schedule a backup');
+	}
+
 	# Reject the generated filename in the mock before mkdir can run.
 	my $dir = tempdir(CLEANUP => 1);
 	local %main::module_info;

@@ -45,6 +45,11 @@ if ($in{'parameters'} &&
 	&error($text{'backup_eparameters'});
 	}
 
+# Keep the table selection when saving without running a backup.
+my @tables;
+if (!$in{'all'} && !$in{'tables_def'}) {
+	@tables = split(/\0/, $in{'tables'});
+	}
 # Validate fields required to run a backup now or from a schedule.
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
@@ -67,7 +72,6 @@ if (!$in{'save'} || $in{'sched'}) {
 		&error(&text('backup_eccmd', "<tt>$ccmd</tt>"));
 	if (!$in{'all'} && !$in{'tables_def'}) {
 		# A custom table selection must include at least one table.
-		@tables = split(/\0/, $in{'tables'});
 		@tables || &error($text{'backup_etables'});
 		}
 	}
@@ -76,8 +80,8 @@ push(@compat, split(/\0/, $in{'options'}));
 # Root cron jobs use the module login and do not retain per-user limits.
 $cron = !$module_info{'usermin'} && $access{'buser'} eq 'root' &&
 	$access{'bpath'} eq '/' && !$access{'user'} && &foreign_installed("cron");
-# Only root-backup schedulers may save shared settings.
-if (($in{'save'} || $in{'sched'}) && !$cron) {
+# Usermin saves personal settings. Only Webmin can manage root schedules.
+if (!$cron && ($in{'sched'} || ($in{'save'} && !$module_info{'usermin'}))) {
 	&error($text{'backup_esave'});
 	}
 $commands = &can_run_backup_commands($cron);
@@ -119,7 +123,9 @@ if ($cron) {
 if ($module_info{'usermin'}) {
 	if (!$in{'dest'}) {
 		$userconfig{'backup_'.$in{'db'}} = $in{'file'};
+		$userconfig{'backup_prefix_'.$in{'db'}} = $in{'prefix'};
 		}
+	$userconfig{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$userconfig{'backup_where_'.$in{'db'}} =
 		$in{'where_def'} ? undef : $in{'where'};
 	$userconfig{'backup_charset_'.$in{'db'}} =

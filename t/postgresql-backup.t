@@ -45,6 +45,7 @@ symlink("$tmp/outside", "$tmp/allowed/escape") or die $!;
 	sub backup_database { @written = ('backup', @_); die "BACKUP\n" }
 	sub make_backup_dir { @written = ('mkdir', @_); die "MKDIR\n" }
 	sub save_module_config { die "SAVED\n" }
+	sub save_user_module_config { die "PERSONAL\n" }
 	sub quote_table { $_[0] }
 	sub execute_sql { { titles => ['value'], data => [['fixture']] } }
 	sub open_tempfile { @written = ('direct', @_); die "WRITE\n" }
@@ -72,7 +73,6 @@ local %PgBackupFixture::in = (db => 'fixture', tables_def => 1,
 local %PgBackupFixture::access = (backup => 1, bpath => "$tmp/allowed",
 	buser => 'nobody', %{$acl || {}});
 local %PgBackupFixture::config = (dump_cmd => 'pg_dump');
-local %PgBackupFixture::module_info;
 local %PgBackupFixture::text = map { $_ => $_ }
 	qw(backup_ecannot backup_esave csv_ebuser cvs_ebpath);
 local $PgBackupFixture::expanded = $expanded;
@@ -152,5 +152,21 @@ subtest 'administrator and form compatibility' => sub {
 		is_deeply($buttons, $user eq 'root' ? ['backup', 'save'] : ['backup'],
 			"$user gets only permitted actions");
 	}
+};
+
+subtest 'Usermin personal backup settings' => sub {
+	local $PgBackupFixture::module_info{'usermin'} = 1;
+	local %PgBackupFixture::userconfig;
+	my (undef, $buttons) = run_cgi('backup_form', {});
+	is_deeply($buttons, ['backup', 'save'], 'Usermin offers a personal save');
+	my ($error) = run_cgi('backup', {save => 1, tables_def => 0,
+		tables => "t1\0t2", compress => 1});
+	is($error, "PERSONAL\n", 'Usermin saves to the personal config');
+	is($PgBackupFixture::userconfig{'backup_tables_fixture'}, 't1 t2',
+	   'personal save keeps the selected tables');
+	is($PgBackupFixture::userconfig{'backup_compress_fixture'}, 1,
+	   'personal save keeps compression');
+	($error) = run_cgi('backup', {save => 1, sched => 1});
+	like($error, qr/backup_esave/, 'Usermin cannot schedule a backup');
 };
 done_testing();
