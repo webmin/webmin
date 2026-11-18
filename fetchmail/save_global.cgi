@@ -12,8 +12,13 @@ if ($config{'config_file'}) {
 else {
 	&can_edit_user($in{'user'}) || &error($text{'poll_ecannot'});
 	@uinfo = getpwnam($in{'user'});
+	@uinfo || &error($text{'poll_ecannot'});
 	$file = "$uinfo[7]/.fetchmailrc";
 	}
+
+# Access a user's file with his permissions, so that a symlink cannot make
+# root read or write another file
+&switch_to_rc_user(\@uinfo) if (@uinfo);
 
 &lock_file($file);
 @conf = &parse_config_file($file);
@@ -50,12 +55,14 @@ if ($found) {
 	}
 else {
 	&create_poll($poll, $file);
-	if ($in{'user'} && $< == 0) {
+	if ($in{'user'} && $> == 0) {
+		# Created as root, so give the file to the user
 		&system_logged("chown ".quotemeta($in{'user'})." ".quotemeta($file));
 		}
-	&system_logged("chmod 700 ".quotemeta($file));
+	&set_ownership_permissions(undef, undef, 0700, $file);
 	}
 &unlock_file($file);
+&restore_rc_user();
 &webmin_log("global", undef, $config{'config_file'} ? $file : $in{'user'},
 	    \%in);
 &redirect("");
