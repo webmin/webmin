@@ -30,11 +30,6 @@ elsif ($in{'clone'}) {
 	return;
 	}
 
-# Build list of used UIDs and GIDs
-&build_user_used(\%used);
-&build_group_used(\%used) if ($config{'new_user_gid'});
-&build_group_used(\%gused);
-
 # Strip out \n characters in inputs
 $in{'real'} =~ s/\r|\n//g;
 $in{'user'} =~ s/\r|\n//g;
@@ -56,6 +51,11 @@ $err = &check_username_restrictions($in{'user'});
 &error($err) if ($err);
 
 &lock_user_files();
+# Build list of used UIDs and GIDs
+&build_user_used(\%used);
+&build_group_used(\%used) if ($config{'new_user_gid'});
+&build_group_used(\%gused);
+
 @ulist = &list_users();
 @glist = &list_groups();
 if ($in{'old'} ne "") {
@@ -147,7 +147,8 @@ elsif ($in{'uid_def'} == 2) {
 	else {
 		$in{'uid'} = &berkeley_cksum($in{'user'});
 		}
-        &error($text{'usave_euidcalc'}) if ($in{'uid'} < 0);
+	&error($text{'usave_euidcalc'}) if ($in{'uid'} < 0);
+	$in{'uid'} = $access{'lowuid'} if ($in{'uid'} < $access{'lowuid'});
 	while($used{$in{'uid'}}) {
 		$in{'uid'}++;
 		}
