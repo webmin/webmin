@@ -86,6 +86,7 @@ download_eatd=Scheduled downloads are not possible unless the At daemon is runni
 cancel_err=Failed to cancel downloads
 cancel_enone=None selected
 cancel_ecannot=You are not allowed to cancel downloads for user $1
+cancel_eid=Invalid download ID
 
 log_cancel=Cancelled $1 download(s)
 log_upload_l=Uploaded file(s) $1

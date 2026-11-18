@@ -15,10 +15,12 @@ if ($can_schedule) {
 	@ats = &at::list_atjobs();
 	}
 foreach $i (@ids) {
+	# Download IDs are numbers, so they cannot name other files
+	$i =~ /^\d+$/ || &error($text{'cancel_eid'});
 	$down = &get_download($i);
-	&can_as_user($down->{'user'}) ||
-		&error(&text('cancel_ecannot', $down->{'user'}));
 	next if (!$down);
+	&can_as_user($down->{'user'}) ||
+		&error(&text('cancel_ecannot', &html_escape($down->{'user'})));
 	&delete_download($down);
 
 	foreach $a (@ats) {
