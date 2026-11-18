@@ -10,18 +10,19 @@ require './webminlog-lib.pl';
 our (%text, %in, %access);
 &ReadParse();
 my $act = &get_action($in{'id'});
+$act && &can_user($act->{'user'}) || &error($text{'view_ecannot'});
+&can_mod($act->{'module'}) || &error($text{'view_ecannot'});
 
 if ($in{'annosave'}) {
-	# Just saving an annotation
+	# Just saving an annotation, for an action this user can view
 	$in{'anno'} =~ s/\r//g;
 	&save_annotation($act, $in{'anno'});
-	&redirect("view.cgi?id=$in{'id'}&search=".&urlize($in{'search'}));
+	&redirect("view.cgi?id=".&urlize($act->{'id'}).
+		  "&search=".&urlize($in{'search'}));
 	exit;
 	}
 
 $access{'rollback'} ||  &error($text{'rollback_ecannot'});
-&can_user($act->{'user'}) || &error($text{'view_ecannot'});
-&can_mod($act->{'module'}) || &error($text{'view_ecannot'});
 my %r = map { $_, 1 } split(/\0/, $in{'r'});
 %r || &error($text{'rollback_enone'});
 my @files = grep { $r{$_->{'file'}} } &list_files($act);
