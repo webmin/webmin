@@ -57,6 +57,10 @@ else {
 	$user = &find_user($in{'user'});
 
 	if ($user) {
+		&can_edit_passwd([ $user->{'user'}, $user->{'pass'},
+				   $user->{'uid'}, $user->{'gid'} ]) ||
+			&error($text{'passwd_ecannot'});
+
 		# Validate inputs
 		if ($access{'old'} == 1 ||
 		    $access{'old'} == 2 && $user->{'user'} ne $remote_user) {
@@ -71,11 +75,10 @@ else {
 			$in{'new'}, $in{'user'}, $user);
 		&error($err) if ($err);
 
-		&can_edit_passwd([ $user->{'user'}, $user->{'pass'},
-				   $user->{'uid'}, $user->{'gid'} ]) ||
-			&error($text{'passwd_ecannot'});
+
 
 		# Actually do the change
+		delete($in{'expire'}) if (!$access{'expire'});
 		&change_password($user, $in{'new'}, 
 			$access{'others'} == 1 ||
 			$access{'others'} == 2 && $in{'others'});
