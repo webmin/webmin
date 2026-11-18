@@ -26,7 +26,7 @@ else {
 	$out = &try_cmd("thaw '$dom' 2>&1 </dev/null");
 	}
 if ($? || $out =~ /failed|not found|error/i) {
-	&error(&text('restart_endc', "<tt>$out</tt>"));
+	&error(&text('restart_endc', "<tt>".&html_escape($out)."</tt>"));
 	}
 &webmin_log("thaw", $dom);
 

@@ -32,7 +32,7 @@ if ($in{'rev'}) {
 	($ipv4 = &check_net_ip($in{'zone'})) ||
 	    $config{'support_aaaa'} &&
 	    ($in{'zone'} =~ /^([\w:]+)(\/\d+)?$/ && &check_ip6address($1)) ||
-		&error(&text('create_enet', $in{'zone'}));
+		&error(&text('create_enet', &html_escape($in{'zone'})));
 	if ($ipv4) {
 		$in{'zone'} = &ip_to_arpa($in{'zone'});
 		}
@@ -42,25 +42,25 @@ if ($in{'rev'}) {
 	}
 else {
 	($in{'zone'} =~ /^[\d\.]+$/ || $in{'zone'} =~ /^[\d\:]+(\/[\d]+)?$/) &&
-		&error(&text('create_edom2', $in{'zone'}));
+		&error(&text('create_edom2', &html_escape($in{'zone'})));
 	&valdnsname($in{'zone'}, 0, ".") ||
-		&error(&text('create_edom', $in{'zone'}));
+		&error(&text('create_edom', &html_escape($in{'zone'})));
 	}
 $in{'zone'} =~ s/\.$//;
 &valdnsname($in{'master'}, 0, ".") ||
-	&error(&text('master_emaster', $in{'master'}));
+	&error(&text('master_emaster', &html_escape($in{'master'})));
 if ($in{'master'} !~ /\.$/) { $in{'master'} .= "."; }
 &valemail($in{'email'}) || &valemail(&dotted_to_email($in{'email'})) ||
-	&error(&text('master_eemail', $in{'email'}));
+	&error(&text('master_eemail', &html_escape($in{'email'})));
 $in{'email'} = &email_to_dotted($in{'email'});
 $in{'refresh'} =~ /^\d+$/ ||
-        &error(&text('master_erefresh', $in{'refresh'}));
+        &error(&text('master_erefresh', &html_escape($in{'refresh'})));
 $in{'retry'} =~ /^\d+$/ ||
-        &error(&text('master_eretry', $in{'retry'}));
+        &error(&text('master_eretry', &html_escape($in{'retry'})));
 $in{'expiry'} =~ /^\d+$/ ||
-        &error(&text('master_eexpiry', $in{'expiry'}));
+        &error(&text('master_eexpiry', &html_escape($in{'expiry'})));
 $in{'minimum'} =~ /^\d+$/ ||
-        &error(&text('master_eminimum', $in{'minimum'}));
+        &error(&text('master_eminimum', &html_escape($in{'minimum'})));
 my $base = $access{'dir'} ne '/' ? $access{'dir'} :
 	$config{'master_dir'} ? $config{'master_dir'} :
 				&base_directory($conf);
@@ -84,24 +84,26 @@ foreach my $z (&find("zone", $vconf)) {
 	}
 if (!$in{'file_def'}) {
 	$in{'file'} =~ /^\S+$/ ||
-		&error(&text('create_efile', $in{'file'}));
+		&error(&text('create_efile', &html_escape($in{'file'})));
 	if ($in{'file'} !~ /^\//) {
 		$in{'file'} = $base."/".$in{'file'};
 		}
 	&allowed_zone_file(\%access, $in{'file'}) ||
-		&error(&text('create_efile2', $in{'file'}));
+		&error(&text('create_efile2', &html_escape($in{'file'})));
 	}
 else {
 	$in{'file'} = &automatic_filename($in{'zone'}, $in{'rev'}, $base,
 					  $view ? $view->{'value'} : undef);
 	}
--r &make_chroot($in{'file'}) && &error(&text('create_efile4', $in{'file'}));
+-r &make_chroot($in{'file'}) &&
+	&error(&text('create_efile4', &html_escape($in{'file'})));
 my @mips;
 if ($in{'onslave'}) {
 	@mips = split(/\s+/, $in{'mip'});
 	@mips || &error($text{'master_emips'});
 	foreach my $m (@mips) {
-		&check_ipaddress($m) || &error(&text('master_emip', $m));
+		&check_ipaddress($m) ||
+			&error(&text('master_emip', &html_escape($m)));
 		}
 	}
 

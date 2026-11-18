@@ -42,7 +42,7 @@ if (!$in{'confirm'}) {
 	# Show confirm form
 	print &ui_confirmation_form("delete_view.cgi",
 		&text(@zones ? 'vdelete_mesg' : 'vdelete_mesg2',
-		      "<tt>$vconf->{'value'}</tt>"),
+		      "<tt>".&html_escape($vconf->{'value'})."</tt>"),
 		[ [ 'index', $in{'index'} ] ],
 		[ [ 'confirm', $text{'view_delete'} ] ],
 		$movefield);

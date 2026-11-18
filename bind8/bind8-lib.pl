@@ -732,7 +732,7 @@ sub save_port_address {
   my ($port, @vals, $dir, $n);
   my @sp = split(/\s+/, $in{$_[0]});
   for(my $i=0; $i<@sp; $i++) {
-	$sp[$i] =~ /^\S+$/ || &error(&text('eipacl', $sp[$i]));
+	$sp[$i] =~ /^\S+$/ || &error(&text('eipacl', &html_escape($sp[$i])));
 	if (lc($sp[$i+1]) eq "key") {
 		push(@vals, { 'name' => $sp[$i++],
 			      'values' => [ "key", $sp[++$i] ] });
@@ -753,7 +753,8 @@ sub save_address
 my ($addr, @vals, $dir);
 my @sp = split(/\s+/, $in{$_[0]});
 for(my $i=0; $i<@sp; $i++) {
-	!$_[3] || &check_ipaddress($sp[$i]) || &error(&text('eip', $sp[$i]));
+	!$_[3] || &check_ipaddress($sp[$i]) ||
+		&error(&text('eip', &html_escape($sp[$i])));
 	if (lc($sp[$i]) eq "key") {
 		push(@vals, { 'name' => $sp[$i],
 			      'values' => [ "\"".$sp[++$i]."\"" ] });

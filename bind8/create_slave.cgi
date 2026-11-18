@@ -36,7 +36,7 @@ if ($in{'rev'}) {
 	($ipv4 = &check_net_ip($in{'zone'})) ||
 	$config{'support_aaaa'} &&
 	($in{'zone'} =~ /^([\w:]+)(\/\d+)$/ || &check_ip6address($1)) ||
-                &error(&text('create_enet', $in{'zone'}));
+                &error(&text('create_enet', &html_escape($in{'zone'})));
 	if ($ipv4) {
 		$in{'zone'} = &ip_to_arpa($in{'zone'});
 		}
@@ -46,9 +46,9 @@ if ($in{'rev'}) {
 	}
 else {
 	($in{'zone'} =~ /^[\d\.]+$/ || $in{'zone'} =~ /^[\d\:]+(\/[\d]+)?$/) &&
-		&error(&text('create_edom2', $in{'zone'}));
+		&error(&text('create_edom2', &html_escape($in{'zone'})));
 	&valdnsname($in{'zone'}, 0, ".") ||
-		&error(&text('create_edom', $in{'zone'}));
+		&error(&text('create_edom', &html_escape($in{'zone'})));
         }
 $in{'zone'} =~ s/\.$//;
 foreach my $z (&find("zone", $vconf)) {
@@ -61,7 +61,7 @@ my $masterkey = $in{'key_def'} ? undef : $in{'key'};
 my @masters = split(/\s+/, $in{'masters'});
 foreach my $m (@masters) {
 	&check_ipaddress($m) || &check_ip6address($m) ||
-		&error(&text('create_emaster', $m));
+		&error(&text('create_emaster', &html_escape($m)));
 	}
 if (!@masters) {
 	&error($text{'create_enone'});
@@ -78,13 +78,13 @@ my $file;
 if ($in{'file_def'} == 0) {
 	# Use the entered filename
 	$in{'file'} =~ /^\S+$/ ||
-		&error(&text('create_efile', $in{'file'}));
+		&error(&text('create_efile', &html_escape($in{'file'})));
 	if ($in{'file'} !~ /^\//) {
 		$file = $base."/".$in{'file'};
 		}
 	else { $file = $in{'file'}; }
 	&allowed_zone_file(\%access, $file) ||
-		&error(&text('create_efile2', $file));
+		&error(&text('create_efile2', &html_escape($file)));
 	}
 elsif ($in{'file_def'} == 2) {
 	# Automatically choose a filename
@@ -94,7 +94,7 @@ elsif ($in{'file_def'} == 2) {
 if ($file) {
 	my $ZONE;
 	&open_tempfile($ZONE, ">". &make_chroot($file), 1, 1) ||
-		&error(&text('create_efile3', $file, $!));
+		&error(&text('create_efile3', &html_escape($file), $!));
 	&close_tempfile($ZONE);
 	&set_ownership(&make_chroot($file));
 	}
