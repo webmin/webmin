@@ -4,6 +4,7 @@
 require './cron-lib.pl';
 &ReadParse();
 &error_setup($text{'kill_err'});
+$access{'kill'} || &error($text{'kill_ecannot'});
 
 @jobs = &list_cron_jobs();
 $job = $jobs[$in{'idx'}];
@@ -19,7 +20,7 @@ if (!$in{'confirm'}) {
 	print &ui_hidden("idx", $in{'idx'}),"\n";
 	print "<center>",&text($config{'kill_subs'} ? 'kill_rusure2'
 						    : 'kill_rusure',
-		       "<tt>$proc->{'args'}</tt>", $proc->{'pid'}),"<p>\n";
+		       "<tt>".&html_escape($proc->{'args'})."</tt>", $proc->{'pid'}),"<p>\n";
 	print &ui_submit($text{'kill_ok'}, "confirm");
 	print "</center>\n";
 	&ui_print_footer("", $text{'index_return'});
