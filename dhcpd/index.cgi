@@ -10,20 +10,22 @@
 require './dhcpd-lib.pl';
 $display_max = $config{'display_max'} || 1000000000;
 &ReadParse();
-$horder = $in{'horder'};
-$norder = $in{'norder'};
+# Sort orders are numbers, and they are echoed into links and saved, so
+# anything else is ignored
+$horder = $in{'horder'} =~ /^\d+$/ ? $in{'horder'} : "";
+$norder = $in{'norder'} =~ /^\d+$/ ? $in{'norder'} : "";
 if ($horder eq "" && open(INDEX, "<$module_config_directory/hindex.".$remote_user)) {
 	chop($horder = <INDEX>);
 	close(INDEX);
 	}
-if (!$horder) {
+if ($horder !~ /^\d+$/) {
 	$horder = 0;
 	}
 if ($norder eq "" && open(INDEX, "<$module_config_directory/nindex.".$remote_user)) {
 	chop($norder = <INDEX>);
 	close(INDEX);
 	}
-if (!$norder) {
+if ($norder !~ /^\d+$/) {
 	$norder = 0;
 	}
 $nocols = $config{'dhcpd_nocols'} ? $config{'dhcpd_nocols'} : 5;
