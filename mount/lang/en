@@ -64,6 +64,7 @@ edit_3_or_lower=3 (or lower)
 edit_advanced=Advanced Mode
 
 save_err=Failed to save mount
+save_eline=Mount settings cannot contain tabs or line breaks
 save_edir='$1' is not a directory
 save_edirname='$1' is not a valid directory name
 save_ealready='$1' is already mounted

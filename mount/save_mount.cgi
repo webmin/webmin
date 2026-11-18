@@ -8,6 +8,11 @@ require './mount-lib.pl';
 &ReadParse();
 $| = 1;
 
+# Line breaks would add extra fstab entries, and tabs would split its fields
+foreach my $k (keys %in) {
+	$in{$k} =~ /[\r\n\t]/ && &error($text{'save_eline'});
+	}
+
 # Check for redirect to proc module to list processes on the FS
 if ($in{'lsof'}) {
 	&redirect("../proc/index_search.cgi?mode=3&fs=".&urlize($in{'lsoffs'}));
