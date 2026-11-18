@@ -1041,7 +1041,8 @@ print &ui_table_row($text{'ifcs_desc'},
 my $ifaceinput;
 if ($new) {
 	$ifaceinput = &ui_select("iface", $_[0]->{'name'},
-		[ map { $_->{'fullname'} } grep { $b->{'virtual'} eq '' }
+		[ map { $_->{'fullname'} }
+		  grep { $_->{'virtual'} eq '' && $_->{'range'} eq '' }
 		      &boot_interfaces() ]);
 	}
 else {
