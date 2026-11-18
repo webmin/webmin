@@ -119,6 +119,7 @@ jobs_test=Print Test Page
 jobs_cancelsel=Cancel Selected Jobs
 jobs_on=On printer $1
 jobs_return=list of print jobs
+jobs_ecannot=You are not allowed to view jobs on this printer
 
 cancel_ecannot=You are not allowed to cancel print jobs
 cancel_err=Failed to cancel print job

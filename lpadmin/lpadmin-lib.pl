@@ -442,6 +442,14 @@ foreach $p (split(/\s+/, $access{'printers'})) {
 return 0;
 }
 
+# can_view_printer(printer)
+# Returns 1 if a printer is listed for this user, which allows viewing its jobs
+# and printing test pages on it
+sub can_view_printer
+{
+return &can_edit_printer($_[0]) || &can_edit_jobs($_[0]) || $access{'view'};
+}
+
 # can_edit_jobs(printer, user)
 sub can_edit_jobs
 {

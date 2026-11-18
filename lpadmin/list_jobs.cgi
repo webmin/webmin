@@ -4,6 +4,7 @@
 
 require './lpadmin-lib.pl';
 &ReadParse();
+&can_view_printer($in{'name'}) || &error($text{'jobs_ecannot'});
 print "Refresh: $config{'queue_refresh'}\r\n"
 	if ($config{'queue_refresh'});
 &ui_print_header(&text('jobs_on', "<tt>".&html_escape($in{'name'})."</tt>"),

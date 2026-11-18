@@ -4,7 +4,8 @@
 
 require './lpadmin-lib.pl';
 &ReadParse();
-$access{'test'} || &error($text{'test_ecannot'});
+$access{'test'} && &can_view_printer($in{'name'}) ||
+	&error($text{'test_ecannot'});
 &ui_print_header(&text('jobs_on', "<tt>".&html_escape($in{'name'})."</tt>"),
 		 $text{'test_title'}, "");
 
