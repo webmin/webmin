@@ -5,10 +5,11 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-our (%text, %in, %config);
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';    ## no critic
 &ReadParse();
+$access{'ro'} && &error($text{'master_ero'});
 
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $z = &zone_to_config($zone);

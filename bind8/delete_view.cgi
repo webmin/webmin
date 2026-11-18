@@ -10,6 +10,7 @@ our (%access, %text, %in);
 
 require './bind8-lib.pl';    ## no critic
 &ReadParse();
+$access{'ro'} && &error($text{'master_ero'});
 my $parent = &get_config_parent();
 my $conf = $parent->{'members'};
 my $vconf = $conf->[$in{'index'}];

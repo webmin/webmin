@@ -12,6 +12,7 @@ require './bind8-lib.pl';    ## no critic
 &ReadParse();
 
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+&can_edit_zone($zone) || &error($text{'recs_ecannot'});
 my $dom = $zone->{'name'};
 my $file = $zone->{'file'};
 my $type = $zone->{'type'};

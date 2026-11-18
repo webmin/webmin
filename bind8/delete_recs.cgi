@@ -11,6 +11,7 @@ require './bind8-lib.pl';    ## no critic
 &ReadParse();
 &error_setup($text{'drecs_err'});
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+$access{'ro'} && &error($text{'master_ero'});
 my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'recs_ecannot'});
