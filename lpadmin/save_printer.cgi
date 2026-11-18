@@ -22,7 +22,7 @@ else {
 	}
 
 # validate and store printer details
-$in{'name'} =~ /^[A-z0-9\-\_\.]+$/ ||
+$in{'name'} =~ /^[A-Za-z0-9\-\_\.]+$/ ||
 	&error(&text('save_ename', $in{'name'}));
 if ($in{'new'} && &get_printer($in{'name'})) {
 	&error(&text('save_edup', $in{'name'}));
@@ -114,7 +114,7 @@ if ($in{'new'} || &printer_support('editdest')) {
 		&to_ipaddress($rhost) || &to_ip6address($rhost) ||
 			&error(&text('save_erhost', $rhost));
 		$rport =~ /^\d+$/ || &error(&text('save_erport', $rport));
-		$in{'rqueue'} =~ /^[A-z0-9\-\_\.\/]+$/ ||
+		$in{'rqueue'} =~ /^[A-Za-z0-9\-\_\.\/]+$/ ||
 			(!$in{'rqueue'} && &printer_support('rnoqueue')) ||
 			&error(&text('save_erqueue', $in{'rqueue'}));
 		$prn{'rhost'} = $in{'rhost'};
