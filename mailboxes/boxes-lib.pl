@@ -2452,21 +2452,24 @@ foreach my $dir (keys %dirs) {
 	}
 
 # Actually delete the files
+local @failed;
 foreach $m (@_) {
-	unlink($m->{'file'});
+	&unlink_mail_file($m->{'file'}) ||
+		push(@failed, [ $m->{'file'}, "$!" ]);
 	}
 
 # Refresh file lists even when directory timestamps have not changed.
 foreach my $dir (keys %dirs) {
 	&flush_maildir_cachefile($dir);
 	}
+&mail_delete_failed(@failed);
 }
 
 # modify_maildir(&oldmail, &newmail, textonly)
 # Replaces a message in a maildir directory
 sub modify_maildir
 {
-unlink($_[0]->{'file'});
+&unlink_old_mail_file($_[0]->{'file'});
 &send_mail($_[1], $_[0]->{'file'}, $_[2], 1);
 }
 
@@ -2550,15 +2553,18 @@ return $rv;
 sub empty_maildir
 {
 local $d;
+local @failed;
 foreach $d ("$_[0]/cur", "$_[0]/new") {
 	local $f;
 	&opendir_as_mail_user(DIR, $d) || &error("Failed to open $d : $!");
 	while($f = readdir(DIR)) {
-		unlink("$d/$f") if ($f ne '.' && $f ne '..');
+		next if ($f eq '.' || $f eq '..');
+		&unlink_mail_file("$d/$f") || push(@failed, [ "$d/$f", "$!" ]);
 		}
 	closedir(DIR);
 	}
 &flush_maildir_cachefile($_[0]);
+&mail_delete_failed(@failed);
 }
 
 # get_maildir_cachefile(dir)
@@ -2717,16 +2723,19 @@ return @rv;
 sub delete_mhdir
 {
 local $m;
+local @failed;
 foreach $m (@_) {
-	unlink($m->{'file'});
+	&unlink_mail_file($m->{'file'}) ||
+		push(@failed, [ $m->{'file'}, "$!" ]);
 	}
+&mail_delete_failed(@failed);
 }
 
 # modify_mhdir(&oldmail, &newmail, textonly)
 # Replaces a message in a maildir directory
 sub modify_mhdir
 {
-unlink($_[0]->{'file'});
+&unlink_old_mail_file($_[0]->{'file'});
 &send_mail($_[1], $_[0]->{'file'}, $_[2], 1);
 }
 
@@ -2748,10 +2757,13 @@ return $max;
 sub empty_mhdir
 {
 &opendir_as_mail_user(DIR, $_[0]) || &error("Failed to open $_[0] : $!");
+my @failed;
 foreach my $f (readdir(DIR)) {
-	unlink("$_[0]/$f") if ($f =~ /^\d+$/);
+	next if ($f !~ /^\d+$/);
+	&unlink_mail_file("$_[0]/$f") || push(@failed, [ "$_[0]/$f", "$!" ]);
 	}
 closedir(DIR);
+&mail_delete_failed(@failed);
 }
 
 # count_mhdir(file)
@@ -3271,19 +3283,36 @@ return !$ex;
 sub create_as_mail_user
 {
 my ($fh, $file) = @_;
-if (&should_switch_to_mail_user()) {
-	# Open the file as root, but ensure that it doesn't exist yet. Then
-	# make it owned by the user
+my $switch = &should_switch_to_mail_user();
+if ($switch || $file =~ /^>/) {
+	# Create the file, but only if it doesn't exist yet and is not a
+	# symlink, so that a link cannot redirect the write
 	$file =~ s/^>+//;
-	my $rv = sysopen($fh, $file, O_CREAT|O_WRONLY, 0700);
-	return $rv if (!$rv);
+	my $flags = O_CREAT|O_EXCL|O_WRONLY|(eval { O_NOFOLLOW() } || 0);
+	my $rv = sysopen($fh, $file, $flags, 0700);
+	if (!$rv && $!{EEXIST}) {
+		# Remove a file left by an earlier run, as the user or from a
+		# real root-owned directory only, then try once more
+		my $errno = $! + 0;
+		my ($dir, $name) = $file =~ /^(.*)\/([^\/]+)$/;
+		if (defined($name) &&
+		    (&unlink_as_mail_user($file) ||
+		     $switch && &unlink_in_root_dir($dir, $name))) {
+			$rv = sysopen($fh, $file, $flags, 0700);
+			}
+		else {
+			$! = $errno;
+			}
+		}
+	return $rv if (!$rv || !$switch);
+
+	# Change the owner of the open file, so that a swapped path is ignored
 	my @uinfo = &get_switch_user_info();
-	&set_ownership_permissions($uinfo[2], $uinfo[3], undef, $file);
-	return $rv;
+	return chown($uinfo[2], $uinfo[3], ref($fh) ? $fh : \*{$fh});
 	}
 else {
-	# Operating as root, so no special behaviour needed
-	if ($file =~ /^(<|>)/) {
+	# Just reading the file
+	if ($file =~ /^</) {
 		return open($fh, $file);
 		}
 	else {
@@ -3342,9 +3371,88 @@ my ($path) = @_;
 my $switched = &switch_to_mail_user();
 my $rv = unlink($path);
 if ($switched) {
+	my $errno = $! + 0;
 	$) = 0;
 	$> = 0;
+	$! = $errno;
 	}
+return $rv;
+}
+
+# unlink_mail_file(file)
+# Deletes a message file, as the user set by set_mail_open_user if there is
+# one. If that user cannot delete it, root deletes it only from a real
+# root-owned directory, such as a folder that root manages. Returns 1 if the
+# file was deleted or is already gone, or 0 with $! set on failure.
+sub unlink_mail_file
+{
+my ($file) = @_;
+return 1 if (&unlink_as_mail_user($file) || $!{ENOENT});
+my $errno = $! + 0;
+my ($dir, $name) = $file =~ /^(.*)\/([^\/]+)$/;
+if (&should_switch_to_mail_user() && defined($name)) {
+	# Retry as root, but never through a symlinked directory
+	return 1 if (&unlink_in_root_dir($dir, $name));
+	}
+$! = $errno;
+return 0;
+}
+
+# unlink_old_mail_file(file)
+# Deletes a message file before it is written again, as the user set by
+# set_mail_open_user. Root never retries, because the new copy is written as
+# that user too. Calls error on failure, so the message is kept.
+sub unlink_old_mail_file
+{
+my ($file) = @_;
+&unlink_as_mail_user($file) || $!{ENOENT} ||
+	&error("Failed to delete ".&html_escape($file)." : $!");
+}
+
+# mail_delete_failed([file, error], ...)
+# Calls error with the message files that could not be deleted, if any. Only
+# the first few are named.
+sub mail_delete_failed
+{
+my @failed = @_;
+return if (!@failed);
+my @show = @failed > 5 ? @failed[0..4] : @failed;
+&error("Failed to delete ".scalar(@failed)." message files : ".
+       join(", ", map { &html_escape("$_->[0] : $_->[1]") } @show).
+       (@failed > @show ? " .." : ""));
+}
+
+# unlink_in_root_dir(dir, name)
+# Deletes a file as root, only if its directory is a real root-owned directory
+# and not a symlink. The delete is done relative to the opened directory, so a
+# symlink swapped in after the check is not followed. Returns 1 on success.
+sub unlink_in_root_dir
+{
+my ($dir, $name) = @_;
+return 0 if ($< || $>);
+my @lst = lstat($dir);
+return 0 if (!@lst || -l _ || !-d _ || $lst[4] != 0);
+
+# Make sure the opened directory is the one that was checked
+my ($dh, $cwd);
+opendir($dh, $dir) || return 0;
+my @dst = stat($dh);
+if (!@dst || $dst[0] != $lst[0] || $dst[1] != $lst[1] ||
+    !opendir($cwd, ".")) {
+	closedir($dh);
+	return 0;
+	}
+
+# Delete the file relative to that directory, then return to the old one
+my $rv = 0;
+if (chdir($dh)) {
+	$rv = unlink($name);
+	my $errno = $! + 0;
+	chdir($cwd) || &error("Failed to return to working directory : $!");
+	$! = $errno;
+	}
+closedir($dh);
+closedir($cwd);
 return $rv;
 }
 
