@@ -50,6 +50,12 @@ else {
 	}
 
 # Validate and save inputs
+if ($in{'old'} eq '') {
+	my @modes = qw(usergid autogid calcgid);
+	my $mode = $in{'gid_def'} || 0;
+	$mode =~ /\A[012]\z/ && $access{$modes[$mode]} ||
+		&error($text{'gsave_egid_def'});
+	}
 if (!$in{'gid_def'} || $in{'old'} ne '') {
 	# Only do GID checks if not automatic
 	$in{'gid'} =~ /^[0-9]+$/ || &error(&text('gsave_egid', $in{'gid'}));

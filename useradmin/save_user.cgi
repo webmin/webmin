@@ -99,6 +99,12 @@ if (($in{'old'} eq '' || $user{'user'} ne $ouser{'user'}) &&
 	}
 
 # Validate and store basic inputs
+if ($in{'old'} eq '') {
+	my @modes = qw(useruid autouid calcuid);
+	my $mode = $in{'uid_def'} || 0;
+	$mode =~ /\A[012]\z/ && $access{$modes[$mode]} ||
+		&error($text{'usave_euid_def'});
+	}
 if (!$in{'uid_def'} || $in{'old'} ne '') {
 	# Only do UID checks if not automatic
 	$in{'uid'} =~ /^\-?[0-9]+$/ || &error(&text('usave_euid', $in{'uid'}));
