@@ -25,7 +25,9 @@ if ($in{'client'}) {
 	($msg, $ok, $run, $done) = &get_client_status($in{'client'});
 
 	if ($ok) {
-		print &text('clientstatus_msg', $in{'client'}, $msg),"<p>\n";
+		# Status text comes from the remote daemon
+		print &text('clientstatus_msg', &html_escape($in{'client'}),
+			    &html_escape($msg)),"<p>\n";
 
 		# Running jobs
 		print &ui_subheading($text{'dirstatus_run'});
@@ -43,8 +45,9 @@ if ($in{'client'}) {
 			foreach $j (@$run) {
 				print &ui_checked_columns_row([
 					&joblink($j->{'name'}),
-					$j->{'id'},
-					$j->{'date'} ], \@tds, "d", $j->{'id'});
+					&html_escape($j->{'id'}),
+					&html_escape($j->{'date'}) ],
+					\@tds, "d", $j->{'id'});
 				}
 			print &ui_columns_end();
 			print &ui_links_row(\@links);
@@ -68,12 +71,12 @@ if ($in{'client'}) {
 			foreach $j (@$done) {
 				print &ui_columns_row([
 					&joblink($j->{'name'}),
-					$j->{'id'},
-					$j->{'level'},
-					$j->{'date'},
+					&html_escape($j->{'id'}),
+					&html_escape($j->{'level'}),
+					&html_escape($j->{'date'}),
 					&nice_size($j->{'bytes'}),
-					$j->{'files'},
-					$j->{'status'} ]);
+					&html_escape($j->{'files'}),
+					&html_escape($j->{'status'}) ]);
 				}
 			print &ui_columns_end();
 			}
@@ -83,7 +86,9 @@ if ($in{'client'}) {
 		}
 	else {
 		# Couldn't connect!
-		print "<b>",&text('clientstatus_err', $in{'client'}, $msg),
+		print "<b>",&text('clientstatus_err',
+				  &html_escape($in{'client'}),
+				  &html_escape($msg)),
 		      "</b><p>\n";
 		}
 	}

@@ -1385,15 +1385,18 @@ if (!%joblink_jobs) {
 local ($name) = @_;
 local $job = $joblink_jobs{$name};
 local ($j, $c) = &is_oc_object($name);
+# Job names can come from daemon status output, so show them as text
 if (!$job) {
-	return $j ? "$j ($c)" : $name;
+	return &html_escape($j ? "$j ($c)" : $name);
 	}
 else {
 	if ($j) {
-		return &ui_link("edit_gjob.cgi?name=".&urlize($j)."","$j ($c)");
+		return &ui_link("edit_gjob.cgi?name=".&urlize($j)."",
+				&html_escape("$j ($c)"));
 		}
 	else {
-		return &ui_link("edit_job.cgi?name=".&urlize($name)."",$name);
+		return &ui_link("edit_job.cgi?name=".&urlize($name)."",
+				&html_escape($name));
 		}
 	}
 }
