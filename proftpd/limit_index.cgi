@@ -25,26 +25,29 @@ else {
 		}
 	}
 $l = $conf->[$in{'limit'}];
-$ln = $l->{'value'};
+$ln = &html_escape($l->{'value'});
 $desc = $in{'file'} ? &text('limit_header6', $ln, &html_escape($in{'file'})) :
-	$dir ? &text('limit_header4', $ln, $dir->{'words'}->[0]) :
+	$dir ? &text('limit_header4', $ln,
+		     &html_escape($dir->{'words'}->[0])) :
 	$in{'global'} ? &text('limit_header7', $ln) :
 	$in{'anon'} ? &text('limit_header5', $ln) :
-	$in{'virt'} ?  &text('limit_header1', $ln, $v->{'words'}->[0]) :
+	$in{'virt'} ?  &text('limit_header1', $ln,
+			     &html_escape($v->{'words'}->[0])) :
 	&text('limit_header2', $ln);
+$ufile = &urlize($in{'file'});
 &ui_print_header($desc, $text{'limit_title'}, "",
 	undef, undef, undef, undef, &restart_button());
 
 $limit_icon = { "icon" => "images/limit.gif",
 	        "name" => $text{'limit_limit'},
-	        "link" => "edit_lserv.cgi?virt=$in{'virt'}&idx=$in{'idx'}&limit=$in{'limit'}&anon=$in{'anon'}&global=$in{'global'}&file=$in{'file'}" };
+	        "link" => "edit_lserv.cgi?virt=$in{'virt'}&idx=$in{'idx'}&limit=$in{'limit'}&anon=$in{'anon'}&global=$in{'global'}&file=$ufile" };
 $ed_icon = { "icon" => "images/edit.gif",
 	     "name" => $text{'limit_edit'},
-	     "link" => $in{'file'} ? "manual_form.cgi?limit=$in{'limit'}&file=$in{'file'}" : "manual_form.cgi?virt=$in{'virt'}&idx=$in{'idx'}&limit=$in{'limit'}&anon=$in{'anon'}&global=$in{'global'}" };
-&config_icons("limit", "edit_limit.cgi?virt=$in{'virt'}&idx=$in{'idx'}&limit=$in{'limit'}&anon=$in{'anon'}&file=$in{'file'}&global=$in{'global'}&", $limit_icon, $ed_icon);
+	     "link" => $in{'file'} ? "manual_form.cgi?limit=$in{'limit'}&file=$ufile" : "manual_form.cgi?virt=$in{'virt'}&idx=$in{'idx'}&limit=$in{'limit'}&anon=$in{'anon'}&global=$in{'global'}" };
+&config_icons("limit", "edit_limit.cgi?virt=$in{'virt'}&idx=$in{'idx'}&limit=$in{'limit'}&anon=$in{'anon'}&file=$ufile&global=$in{'global'}&", $limit_icon, $ed_icon);
 
 if ($in{'file'}) {
-	&ui_print_footer("ftpaccess_index.cgi?file=$in{'file'}",$text{'ftpindex_return'},
+	&ui_print_footer("ftpaccess_index.cgi?file=$ufile",$text{'ftpindex_return'},
 		"ftpaccess.cgi", $text{'ftpaccess_return'},
 		"", $text{'index_return'});
 	}
