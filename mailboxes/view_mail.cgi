@@ -13,11 +13,15 @@ if (&is_user($in{'user'})) {
 $uuser = &urlize($in{'user'});
 $udom = &urlize($in{'dom'});
 @folders = &list_user_folders($in{'user'});
-$folder = $folders[$in{'folder'}];
+$in{'folder'} = 0 if (!length($in{'folder'}));
+$in{'folder'} =~ /\A[0-9]+\z/ || &error($text{'view_efolder'});
+$folder = $folders[$in{'folder'}] || &error($text{'view_efolder'});
+$in{'idx'} =~ /\A[0-9]+\z/ || &error($text{'view_egone'});
 @mail = &mailbox_list_mails($in{'idx'}, $in{'idx'}, $folder);
-$mail = $mail[$in{'idx'}];
+$mail = $mail[$in{'idx'}] || &error($text{'view_egone'});
 &parse_mail($mail, undef, $in{'raw'});
 @sub = split(/\0/, $in{'sub'});
+grep(!/\A[0-9]+\z/, @sub) && &error($text{'view_egone'});
 $subs = join("", map { "&sub=$_" } @sub);
 foreach $s (@sub) {
         # We are looking at a mail within a mail ..

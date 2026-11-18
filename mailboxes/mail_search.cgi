@@ -8,6 +8,8 @@ require './mailboxes-lib.pl';
 @folders = &list_user_folders($in{'user'});
 $uuser = &urlize($in{'user'});
 $udom = &urlize($in{'dom'});
+$in{'folder'} = 0 if (!length($in{'folder'}));
+$in{'folder'} =~ /\A(?:-1|-2|[0-9]+)\z/ || &error($text{'view_efolder'});
 
 if ($in{'simple'}) {
 	# Make sure a search was entered
