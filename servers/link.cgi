@@ -44,7 +44,8 @@ if ($s->{'autouser'}) {
 		# No - need to display a login form
 		&ui_print_header(undef, $text{'login_title'}, "");
 
-		print &text('login_desc', "<tt>$s->{'host'}</tt>"),"<p>\n";
+		print &text('login_desc',
+			    "<tt>".&html_escape($s->{'host'})."</tt>"),"<p>\n";
 
 		print &ui_form_start(
 			"@{[&get_webprefix()]}/$module_name/login.cgi", "post");
@@ -181,13 +182,14 @@ elsif ($header->{'www-authenticate'}) {
 	my $detail = &get_http_auth_reason($header);
 	if ($s->{'autouser'}) {
 		print "Set-Cookie: $id=; path=/\n";
-		my $msg = &text('link_eautologin', $s->{'host'},
+		my $msg = &text('link_eautologin', &html_escape($s->{'host'}),
 		     "@{[&get_webprefix()]}/$module_name/link.cgi/$id/");
 		$msg .= "<br>".&html_escape($detail) if ($detail);
 		&error($msg);
 		}
 	else {
-		my $msg = &text('link_elogin', $s->{'host'}, $user);
+		my $msg = &text('link_elogin', &html_escape($s->{'host'}),
+				&html_escape($user));
 		$msg .= " : ".&html_escape($detail) if ($detail);
 		&error($msg);
 		}
