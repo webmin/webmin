@@ -1130,6 +1130,8 @@ cdir_err2=Failed to save per-directory options
 cdir_epath=Missing path
 cdir_eproxy=Proxy options cannot be created with the match regexp option enabled
 cdir_ecannot=You are not allowed to create per-directory options for the given path
+cdir_echars=The path cannot contain line breaks, double quotes or a trailing backslash
+cdir_etype=The section type must be Directory, Files, Location or Proxy
 cdir_egone=The selected per-directory or per-file options no longer exist
 
 mod_band_enable=Bandwidth limiting enabled?

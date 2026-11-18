@@ -12,7 +12,9 @@ require './apache-lib.pl';
 &before_changing();
 
 # Validate inputs
+&valid_section_type($in{'type'}) || &error($text{'cdir_etype'});
 $in{'path'} || &error($text{'cdir_epath'});
+&valid_section_path($in{'path'}) || &error($text{'cdir_echars'});
 $in{'type'} eq 'Proxy' || $in{'type'} eq 'Location' ||
    &allowed_doc_dir($in{'path'}) || &error($text{'cdir_ecannot'});
 

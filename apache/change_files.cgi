@@ -21,6 +21,7 @@ if ($in{'delete'}) {
 	}
 else {
 	# changing a directive
+	&valid_section_path($in{'path'}) || &error($text{'cdir_echars'});
 	if ($in{'regexp'}) {
 		if ($httpd_modules{'core'} >= 1.3) {
 			$d->{'name'} = 'FilesMatch';

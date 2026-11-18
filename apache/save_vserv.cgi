@@ -91,7 +91,7 @@ else {
 
 	# Check document root
 	if (!$in{'root_def'}) {
-		(-d $in{'root'}) ||
+		(-d $in{'root'}) && &valid_section_path($in{'root'}) ||
 			&error(&text('vserv_eroot', &html_escape($in{'root'})));
 		$root = $in{'root'};
 		$root = "\"$root\"" if ($root =~ /\s/);

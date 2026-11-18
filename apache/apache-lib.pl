@@ -1977,6 +1977,25 @@ return $access{'aliasdir'} eq '/' ||
        &is_under_directory($access{'aliasdir'}, $_[0]);
 }
 
+# valid_section_path(path)
+# Returns 1 if a path can be written as one double-quoted directive argument.
+# A line break would start a new directive, a double quote would end the
+# quotes early, and a trailing backslash would escape the closing quote.
+sub valid_section_path
+{
+my ($path) = @_;
+return $path !~ /[\r\n\0"]|\\\z/ ? 1 : 0;
+}
+
+# valid_section_type(type)
+# Returns 1 if a per-directory section type from a form is Directory, Files,
+# Location or Proxy
+sub valid_section_type
+{
+my ($type) = @_;
+return $type =~ /^(Directory|Files|Location|Proxy)\z/ ? 1 : 0;
+}
+
 sub lock_apache_files
 {
 local $conf = &get_config();
