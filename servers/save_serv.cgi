@@ -7,7 +7,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './servers-lib.pl';
-our (%in, %access, %text, %config);
+our (%in, %access, %text, %config, $remote_error_handler);
 &ReadParse();
 $access{'edit'} || &error($text{'edit_ecannot'});
 &error_setup($text{'save_err'});
@@ -42,63 +42,38 @@ else {
 		$in{'wuser'} =~ /\S/ || &error($text{'save_euser'});
 		$in{'wpass'} =~ /\S/ || &error($text{'save_epass'});
 		}
+	# Probe only automatic mode; leave explicit transport choices unchanged.
 	if ($in{'fast'} == 2 && $in{'mode'} == 1) {
-		# Verify the submitted host before sending the probe's login.
-		my $reqs;
-		if ($in{'checkssl'}) {
-			# Preserve CA and hostname checks alongside the pin.
-			$reqs = { 'host' => $in{'host'}, 'self' => 1 };
-			$reqs->{'capath'} = $config{'capath'} if ($config{'capath'});
-			}
-		my $fingerprint = &server_ssl_fingerprints($serv);
-		if ($fingerprint) {
-			# Missing required pins must also fail verification.
-			$reqs ||= { 'host' => $in{'host'}, 'nocheckhost' => 1 };
-			$reqs->{'fingerprint'} = $fingerprint;
-			}
-		# Check fast RPC availability without overriding an explicit mode.
-		my $con = &make_http_connection($in{'host'}, $in{'port'},
-					   $in{'ssl'}, "GET", "/fastrpc.cgi",
-					   undef, undef, $reqs);
-		# A failed pinned connection must not save regular RPC mode.
-		&error($con) if ($fingerprint && !ref($con));
-		$in{'fast'} = 0;
-		if (ref($con)) {
-			&write_http_connection($con,
-				        "Host: $serv->{'host'}\r\n");
-			&write_http_connection($con,
-					"User-agent: Webmin\r\n");
-			my $auth = &encode_base64("$in{'wuser'}:$in{'wpass'}");
-			$auth =~ s/\n//g;
-			&write_http_connection($con,
-					"Authorization: basic $auth\r\n");
-			&write_http_connection($con, "\r\n");
-			my $line = &read_http_connection($con);
-			if ($line =~ /^HTTP\/1\..\s+401\s+/) {
-				&error($text{'save_elogin'});
-				}
-			elsif ($line =~ /^HTTP\/1\..\s+200\s+/) {
-				# It does .. tell the fastrpc.cgi process to die
-				do {
-					$line = &read_http_connection($con);
-					$line =~ s/\r|\n//g;
-					} while($line);
-				$line = &read_http_connection($con);
-				if ($line =~ /^1\s+(\S+)\s+(\S+)/) {
-					my ($port, $sid, $error) = ($1, $2);
-					&open_socket($in{'host'}, $port,
-						     $sid, \$error);
-					if (!$error) {
-						close($sid);
-						$in{'fast'} = 1;
-						}
-					}
-				}
-			&close_http_connection($con);
-			}
+		# Test the submitted login through the normal RPC client.
+		# Preserve saved fields, but resolve a changed hostname again.
+		my $probe = { %$serv, host => $in{'host'},
+			port => $in{'port'}, ip => undef,
+			ssl => $in{'ssl'}, checkssl => $in{'checkssl'},
+			fast => 1,
+			user => $in{'wuser'}, pass => $in{'wpass'},
+			sameuser => 0 };
+		my $probe_error;
+		{
+		# Capture failures, then close any probe sessions.
+		local $main::remote_error_handler = sub {
+			$probe_error = $_[0];
+			};
+		&remote_rpc_call($probe, { action => 'ping' });
+		&remote_finished();
+		}
+		# Keep the usual message for a rejected login.
+		&error($text{'save_elogin'})
+			if ($probe_error &&
+			    $probe_error =~ /login to RPC server.*rejected/);
+		# Stop on SSL or pin errors instead of saving regular RPC.
+		&error(&html_escape($probe_error))
+			if ($probe_error && ($in{'ssl'} ||
+					     &server_ssl_fingerprints($probe)));
+		# Failed unpinned HTTP probes still select regular RPC.
+		$in{'fast'} = $probe_error ? 0 : 1;
 		}
 	elsif ($in{'fast'} == 2) {
-		# No login provided, so we cannot say for now ..
+		# Without a saved login, defer automatic detection until later.
 		}
 
 	# save the server

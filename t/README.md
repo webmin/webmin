@@ -35,6 +35,39 @@ The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, pa
 
 By default, it tests the HTTP, TLS and socket helpers from this checkout with the installed Webmin environment. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` that provides the same helpers.
 
+## RPC TLS tests on a VM
+
+Run `prove t/web-lib-funcs-rpc.t t/web-lib-funcs-tls.t` for transport selection, TLS framing, timeout and failure checks without network access.
+
+For real connections, use root on a disposable Linux VM with Webmin, Python 3, OpenSSL, Net::SSLeay, Socket6, `unshare`, `ip` and `sysctl`. Set `WEBMIN_RPC_TLS_SOURCE` to a complete copy of the changed source and `WEBMIN_RPC_TLS_LEGACY` to a complete source tree without RPC TLS:
+
+```sh
+WEBMIN_RPC_TLS_VM_TEST=1 \
+WEBMIN_RPC_TLS_SOURCE=/tmp/webmin-new \
+WEBMIN_RPC_TLS_LEGACY=/tmp/webmin-old \
+timeout 400 prove -v t/rpc-tls-vm.t
+```
+
+The fixture starts isolated Webmin servers and tests TLS fast RPC, older clients, binary and empty files, certificates, ciphers, remote errors, interrupted transfers and slow writes. It also tests local RPC with IPv6 disabled in a private network namespace.
+
+The fixture checks that TLS setup failures never select regular RPC, including with older SSL peers, HTTPS-to-HTTP proxies and automatic server detection. Explicit regular RPC calls still work, while file transfers over regular RPC fail without changing destination files.
+
+To compare file-transfer speed, set `WEBMIN_RPC_TLS_BENCHMARK=1` as well and point `WEBMIN_RPC_TLS_LEGACY` at a TLS-capable baseline tree. This runs 256 MiB uploads and downloads with both trees, verifies the downloaded hashes, discards a warmup pair, and reports seven alternating measurements per tree. File creation and hashing are excluded from the timings. The output includes median, minimum and maximum throughput. Loopback results measure local overhead; use a private network namespace with a bandwidth limit to compare behavior on a slower link.
+
+For a server configured with SSL and fast RPC, the client requests `fastrpc.cgi?tls=1`. A `TLS1` reply selects TLS for control and file connections. Both must present the certificate used for HTTPS. Setup failures return an error without switching to regular RPC. Automatic server detection leaves the server record unchanged after a failed SSL probe.
+
+Upgrade remote peers before the controlling server. Older clients can still use unencrypted fast RPC with upgraded peers. New clients reject older SSL peers when fast RPC is enabled. Calls to those peers fail, including those used for cluster upgrades, Cloudmin status checks and Virtualmin Pro remote DNS setup. Cluster Webmin cannot upgrade peers over regular RPC. If the controlling server is upgraded first, run the upgrade on each affected peer.
+
+For TLS fast RPC through an HTTPS proxy, Webmin must also receive HTTPS and present the same certificate as the proxy. A plain-HTTP backend fails, even when the proxy runs on the same host. The client must reach Webmin's separate RPC ports at the registered address, with port forwarding if needed.
+
+The fixture checks RPC compatibility and rejection behavior. It does not run complete Cluster Webmin, Cloudmin or Virtualmin Pro workflows.
+
+TLS file transfers use chunks of up to 65,536 bytes, a zero-length end marker and a final `OK` reply. Uploads also wait for an `OK` confirming that the destination opened successfully.
+
+During file transfers, the client pings the control session every half RPC timeout, with a minimum interval of 30 seconds. A failed ping closes the control session and stops further pings while the file transfer continues. Other commands retain their caller-controlled timeouts.
+
+Built-in local RPC and its file transfers connect over IPv4 loopback. Programs started by local RPC do not inherit this listener restriction. Plain HTTP servers and older clients keep their existing protocol. TLS follows the server's existing certificate verification settings. Without certificate verification, it protects against passive eavesdropping but does not authenticate the initial HTTPS server.
+
 ## File Manager RPM extraction
 
 Run `prove -v filemin/t/rpm-extract.t` for isolated command and failure checks.

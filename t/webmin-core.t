@@ -20,8 +20,10 @@ copy("$root/$parser", "$work/override/$parser") or die $!;
 my $code = <<'PERL';
 use WebminCore;
 # Shared TLS helpers must be available to modules using the core API.
-for my $name (qw(init_ssl_connection connect_ssl_connection
-		read_ssl_connection write_ssl_connection)) {
+for my $name (qw(init_ssl_context init_ssl_connection connect_ssl_connection
+		read_ssl_connection write_ssl_connection rpc_tls_context
+		rpc_tls_start rpc_tls_fingerprint rpc_tls_send_file
+		rpc_tls_receive_file rpc_tls_close)) {
 	die "TLS helper $name was not exported\n" unless main->can($name);
 	}
 # Relative imports must still work when a caller later changes directories.

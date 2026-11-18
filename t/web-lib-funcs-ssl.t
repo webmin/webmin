@@ -5,6 +5,7 @@ use warnings;
 no warnings qw(once redefine);
 use Test::More;
 use FindBin;
+use Errno qw(EBADF EINVAL);
 
 # An alternate source lets the same checks run against the original code.
 require($ENV{'WEBMIN_SSL_SOURCE'} || "$FindBin::Bin/../web-lib-funcs.pl");
@@ -12,6 +13,7 @@ require($ENV{'WEBMIN_SSL_SOURCE'} || "$FindBin::Bin/../web-lib-funcs.pl");
 # Replace TLS and socket I/O so these checks need no workstation connections.
 my ($context, $session, $connected) = (11, 22, 1);
 my ($sni, $verification, $callback, @cas, @sent);
+my @freed;
 my $available = 1;
 my $certificate_error;
 local %main::gconfig;
@@ -29,6 +31,20 @@ local *Net::SSLeay::OpenSSL_add_all_algorithms = sub { };
 local *Net::SSLeay::load_error_strings = sub { };
 local *Net::SSLeay::CTX_new = sub { $context };
 local *Net::SSLeay::new = sub { $session };
+# These test functions change $! and return false to check that TLS cleanup
+# does not overwrite the filehandle's close result or error.
+# Net::SSLeay::free(session): track requests to free a TLS session.
+local *Net::SSLeay::free = sub {
+	push(@freed, [ session => $_[0] ]);
+	$! = EINVAL;
+	return 0;
+	};
+# Net::SSLeay::CTX_free(context): track requests to free a TLS context.
+local *Net::SSLeay::CTX_free = sub {
+	push(@freed, [ context => $_[0] ]);
+	$! = EINVAL;
+	return 0;
+	};
 local *Net::SSLeay::CTX_load_verify_locations = sub { push(@cas, [ @_ ]); };
 local *Net::SSLeay::VERIFY_PEER = sub { 1 };
 local *Net::SSLeay::CTX_set_verify = sub { $callback = $_[2]; };
@@ -117,6 +133,39 @@ subtest 'HTTPS setup failures preserve their original results' => sub {
 	$available = 0;
 	is(request(), undef, 'missing translated error still stops setup');
 	$available = 1;
+	};
+
+# Check plain handles, complete TLS connections and partial TLS setup.
+subtest 'HTTP close frees TLS state and preserves close results' => sub {
+	for my $fields ({ }, { ssl_con => 22, ssl_ctx => 11 },
+			{ ssl_ctx => 11 }) {
+		open(my $fh, '<', \my $empty) or die $!;
+		my $h = { fh => $fh, %$fields };
+		@freed = ();
+		# Expect cleanup only for TLS fields present in the handle.
+		my @expected;
+		push(@expected, [ session => 22 ]) if ($fields->{'ssl_con'});
+		push(@expected, [ context => 11 ]) if ($fields->{'ssl_ctx'});
+		ok(main::close_http_connection($h), 'returns successful close');
+		ok(!defined(fileno($fh)), 'filehandle is closed');
+		is_deeply(\@freed, \@expected, 'frees only the allocated TLS objects');
+		ok(!exists($h->{'ssl_con'}) && !exists($h->{'ssl_ctx'}),
+			'removes freed objects from the handle');
+		# Repeated closes must not free the same objects again.
+		ok(!main::close_http_connection($h), 'returns failed repeated close');
+		is_deeply(\@freed, \@expected, 'TLS objects are freed only once');
+		}
+	# TLS cleanup must still run if the filehandle was already closed.
+	open(my $fh, '<', \my $empty) or die $!;
+	close($fh) or die $!;
+	@freed = ();
+	my $rv = main::close_http_connection(
+		{ fh => $fh, ssl_con => 22, ssl_ctx => 11 });
+	my $error = 0 + $!;
+	ok(!$rv, 'TLS cleanup does not hide a close failure');
+	is($error, EBADF, 'cleanup preserves the close error');
+	is_deeply(\@freed, [ [ session => 22 ], [ context => 11 ] ],
+		'close failure still releases the TLS objects');
 	};
 
 subtest 'CA settings and callback errors are preserved' => sub {
