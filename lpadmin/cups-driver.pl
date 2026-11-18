@@ -186,7 +186,8 @@ if ($currppd) {
 	local $ppd = &parse_cups_ppd($currppd);
 	print "<br><b>",&text('cups_opts', &html_escape($ppd->{'NickName'})),
 	      "</b><table>\n";
-	open(OPTS, "$lpoptions -p '$_[0]->{'name'}' -l 2>/dev/null |");
+	open(OPTS, "$lpoptions -p ".quotemeta($_[0]->{'name'}).
+		   " -l 2>/dev/null |");
 	while(<OPTS>) {
 		if (/^(\S+)\/([^:]+):\s*(.*)/ && $1 ne "PageRegion") {
 			print "<tr>\n" if ($i%2 == 0);
