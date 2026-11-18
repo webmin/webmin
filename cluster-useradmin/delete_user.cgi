@@ -57,16 +57,8 @@ if ($in{'confirmed'}) {
 			}
 
 		# Run the before command
-		&remote_eval($serv->{'host'}, "useradmin", <<EOF
-\$ENV{'USERADMIN_USER'} = '$user->{'user'}';
-\$ENV{'USERADMIN_UID'} = '$user->{'uid'}';
-\$ENV{'USERADMIN_REAL'} = '$user->{'real'}';
-\$ENV{'USERADMIN_SHELL'} = '$user->{'shell'}';
-\$ENV{'USERADMIN_HOME'} = '$user->{'home'}';
-\$ENV{'USERADMIN_GID'} = '$user->{'gid'}';
-\$ENV{'USERADMIN_ACTION'} = 'DELETE_USER';
-EOF
-	);
+		&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+				     $user, "DELETE_USER");
 		$merr = &remote_foreign_call($serv->{'host'}, "useradmin",
 					     "making_changes");
 		if (defined($merr)) {

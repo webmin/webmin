@@ -248,17 +248,8 @@ foreach $host (@hosts) {
 
 	# Run the pre-change command
 	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : undef;
-	&remote_eval($serv->{'host'}, "useradmin", <<EOF
-\$ENV{'USERADMIN_USER'} = '$user->{'user'}';
-\$ENV{'USERADMIN_UID'} = '$user->{'uid'}';
-\$ENV{'USERADMIN_REAL'} = '$user->{'real'}';
-\$ENV{'USERADMIN_SHELL'} = '$user->{'shell'}';
-\$ENV{'USERADMIN_HOME'} = '$user->{'home'}';
-\$ENV{'USERADMIN_GID'} = '$user->{'gid'}';
-\$ENV{'USERADMIN_PASS'} = '$envpass';
-\$ENV{'USERADMIN_ACTION'} = 'MODIFY_USER';
-EOF
-	);
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+				     $user, "MODIFY_USER", $envpass);
 	$merr = &remote_foreign_call($serv->{'host'}, "useradmin",
 				     "making_changes");
 	if (defined($merr)) {
