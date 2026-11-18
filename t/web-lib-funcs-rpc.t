@@ -5,6 +5,7 @@ use warnings;
 no warnings qw(once redefine);
 use Test::More;
 use FindBin;
+use File::Temp qw(tempdir);
 
 require "$FindBin::Bin/../web-lib-funcs.pl";
 local $main::root_directory = "$FindBin::Bin/..";
@@ -35,6 +36,28 @@ is($connect_args[4], '/rpc.cgi', 'regular RPC uses the expected endpoint');
 is_deeply($connect_args[7],
 	{ 'host' => 'remote.example', 'self' => 1, 'capath' => '/test/ca' },
 	'regular RPC applies certificate verification requirements');
+
+# A local worker's startup error must reach the caller intact.
+{
+	my $root = tempdir('webmin-rpc-startup-XXXXXX', DIR => '/tmp',
+			   CLEANUP => 1);
+	# This worker only prints an error; it opens no sockets or config files.
+	open(my $worker, '>', "$root/fastrpc.cgi") or die $!;
+	print $worker "#!$^X\n",
+		'print "Content-type: text/plain\\n\\n0 Fixture startup failure\\n";',
+		"\n";
+	close($worker) or die $!;
+	chmod(0700, "$root/fastrpc.cgi") or die $!;
+	local $main::root_directory = $root;
+	local $main::base_remote_user = 'root';
+	local %main::fast_fh_cache;
+	local *main::remote_session_name = sub { '' };
+	eval { main::remote_rpc_call('', { action => 'ping' }) };
+	my $error = $@;
+	wait();
+	is($error, "RPC error : Fixture startup failure\n",
+	   'local RPC reports the worker startup error');
+	}
 
 # The automatic fast-RPC probe must use the submitted certificate settings.
 {

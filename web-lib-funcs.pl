@@ -9775,7 +9775,7 @@ if ($serv->{'fast'} || !$sn) {
 		$line = <RPCOUTr>;
 		if ($line =~ /^0\s+(.*)/) {
 			close(RPCOUTr);
-			return &$main::remote_error_handler("RPC error : $2");
+			return &$main::remote_error_handler("RPC error : $1");
 			}
 		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/) {
 			# Connect and cache the local fast RPC version
