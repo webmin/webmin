@@ -50,7 +50,7 @@ if ($in{"access"}) {
 		}
 	}
 if ($in{'shells_deny'}) {
-	-r $in{'shells'} || &error($text{'unix_eshell'});
+	-r $in{'shells'} || &error($text{'unix_eshells'});
 	}
 
 &lock_file($ENV{'MINISERV_CONFIG'});
