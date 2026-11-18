@@ -146,4 +146,30 @@ $err = &run_cgi('save_nuser.cgi', { 'new' => 1, 'user' => 'alice',
 is($err, '', 'a user is added to a new password file');
 like(&read_text("$squiddir/passwd"), qr/^alice:\S+$/m, 'the user is written');
 
+# --- line breaks in squid.conf values -------------------------------------
+write_text($squid_conf, "http_port 3128\n");
+@main::get_config_cache = ( );
+$err = &run_cgi('acl_save.cgi', { 'name' => 'browsers', 'type' => 'browser',
+				  'file_def' => 1,
+				  'vals' => "Mozilla\nhttp_access allow all" });
+isnt($err, '', 'an ACL value with a line break is rejected');
+$err = &run_cgi('acl_save.cgi', { 'name' => 'browsers', 'type' => 'browser',
+				  'file_def' => 1, 'vals' => 'Mozilla',
+				  'deny' => "http://x/\nhttp_access allow all" });
+isnt($err, '', 'a deny page with a line break is rejected');
+unlike(&read_text($squid_conf), qr/allow all/, 'squid.conf is unchanged');
+$err = &run_cgi('acl_save.cgi', { 'name' => 'browsers', 'type' => 'browser',
+				  'file_def' => 1, 'vals' => 'Mozilla' });
+is($err, '', 'a browser ACL is saved');
+like(&read_text($squid_conf), qr/^acl browsers browser Mozilla$/m,
+     'the ACL line is written');
+$err = &run_cgi('save_authparam.cgi', {
+	'b_auth_mode' => 0, 'd_auth_mode' => 0, 'n_auth_mode' => 0,
+	'b_children_def' => 1, 'b_ttl_def' => 1, 'b_aittl_def' => 1,
+	'd_children_def' => 1, 'd_realm_def' => 1, 'n_children_def' => 1,
+	'n_reuses_def' => 1, 'n_ttl_def' => 1,
+	'b_realm' => "Proxy\nhttp_access allow all" });
+isnt($err, '', 'an authentication realm with a line break is rejected');
+unlike(&read_text($squid_conf), qr/allow all/, 'squid.conf is still unchanged');
+
 done_testing();

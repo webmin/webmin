@@ -201,6 +201,12 @@ else {
 		push(@vals, $in{'vals'});
 		}
 
+	# Each ACL and deny_info is written on one line of squid.conf
+	foreach my $v ($in{'name'}, $in{'type'}, @aclopts, @vals,
+		       $in{'file_def'} ? ( ) : ( $in{'file'} ), $in{'deny'}) {
+		$v =~ /[\r\n\0]/ && &error($text{'aclsave_eline'});
+		}
+
 	if (!$in{'file_def'}) {
 		# Writing to an external file
 		$in{'file'} || &error($text{'aclsave_enofile'});
