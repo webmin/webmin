@@ -31,30 +31,35 @@ print "<tr $tb> <td><b>$text{'passwd_header1'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr> <td><b>$text{'passwd_name'}</b></td>\n";
-print "<td><input name=name size=10 value=\"$passwd->[0]\"></td>\n";
+print "<td><input name=name size=10 value=\"",
+      &quote_escape($passwd->[0]),"\"></td>\n";
 
 print "<td><b>$text{'passwd_uid'}</b></td>\n";
-print "<td><input name=uid size=10 value=\"$passwd->[2]\"></td> </tr>\n";
+print "<td><input name=uid size=10 value=\"",
+      &quote_escape($passwd->[2]),"\"></td> </tr>\n";
 
 print "<tr> <td><b>$text{'passwd_real'}</b></td>\n";
-print "<td><input name=real size=20 value=\"$passwd->[4]\"></td>\n";
+print "<td><input name=real size=20 value=\"",
+      &quote_escape($passwd->[4]),"\"></td>\n";
 
 print "<td><b>$text{'passwd_home'}</b></td>\n";
-print "<td><input name=home size=25 value=\"$passwd->[5]\"> ",
+print "<td><input name=home size=25 value=\"",
+      &quote_escape($passwd->[5]),"\"> ",
       &file_chooser_button("home", 1),"</td> </tr>\n";
 
 print "<tr> <td valign=top><b>$text{'passwd_shell'}</b></td>\n";
 print "<td valign=top><select name=shell>\n";
 foreach $s (&unique(@shlist)) {
 	printf "<option %s>%s</option>\n",
-		$passwd->[6] eq $s ? 'selected' : '', $s;
+		$passwd->[6] eq $s ? 'selected' : '', &html_escape($s);
 	$found++ if ($passwd->[6] eq $s);
 	}
 printf "<option value='' %s>%s</option>\n",
 	$found ? '' : 'selected', $text{'passwd_other'};
 print "</select><br>\n";
 printf "<input name=other size=20 value='%s'> %s</td>\n",
-	$found ? '' : $passwd->[6], &file_chooser_button("other");
+	$found ? '' : &quote_escape($passwd->[6]),
+	&file_chooser_button("other");
 
 $pass = $mode ? $shadow->[1] : $passwd->[1];
 %uconfig = &foreign_config("useradmin");
@@ -70,11 +75,12 @@ printf "<input %s name=pass size=15><br>\n",
 printf "<input type=radio name=passmode value=2 %s> $text{'passwd_encrypted'}\n",
 	$pass && $pass ne $uconfig{'lock_string'} ? "checked" :"";
 printf "<input name=encpass size=13 value=\"%s\">\n",
-	$pass && $pass ne $uconfig{'lock_string'} ? $pass : "";
+	$pass && $pass ne $uconfig{'lock_string'} ? &quote_escape($pass) : "";
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'passwd_gid'}</b></td>\n";
-print "<td><input name=gid size=10 value='$passwd->[3]'></td> </tr>\n";
+print "<td><input name=gid size=10 value='",
+      &quote_escape($passwd->[3]),"'></td> </tr>\n";
 
 if ($mode == 2) {
 	print "</table></td></tr></table><br>\n";
