@@ -1328,6 +1328,30 @@ foreach my $u (split(/\s+/, $access{'users'})) {
 return 0;
 }
 
+# can_edit_group_members(group)
+# Group changes propagate to nested members, all of whom must be editable.
+sub can_edit_group_members
+{
+my ($group) = @_;
+my @groups = &list_groups();
+my %groups = map { $_->{'name'}, $_ } @groups;
+my @todo = ($group);
+my %seen;
+while (@todo) {
+	my $name = pop(@todo);
+	return 0 if (!$groups{$name} || $seen{$name}++);
+	foreach my $member (@{$groups{$name}->{'members'}}) {
+		if ($member =~ /^\@(.+)/) {
+			push(@todo, $1);
+			}
+		elsif (!&can_edit_user($member, \@groups)) {
+			return 0;
+			}
+		}
+	}
+return 1;
+}
+
 =head2 can_module_acl(&mod)
 
 Returns 1 if the given module has ability to manage its own ACLs.

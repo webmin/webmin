@@ -52,7 +52,8 @@ die $@ if $@;
 load_routine('web-lib.pl', 'unique');
 load_routine('acl/acl-lib.pl', $_) for qw(
 	create_group modify_group list_groups get_group group_line update_members
-	copy_acl_files copy_group_acl_files copy_group_user_acl_files);
+	copy_acl_files copy_group_acl_files copy_group_user_acl_files
+	can_edit_group_members);
 
 # Use SQLite to execute the statements shared by MySQL and PostgreSQL.
 # Local storage also checks that moving creation preserves existing behavior.
@@ -86,6 +87,8 @@ for my $backend ('', 'mysql', 'postgresql') {
 		['cloned', 'parent', 'source', 'source', 1],
 		['standalone', '', 'source', 'source', 1]) {
 		my ($name, $parent, $clone, $expected, $rpc) = @$case;
+		$access{'acl'} = $clone ? 1 : 0;
+		$access{'mode'} = 0;
 		%in = (name => $name, desc => 'Fixture', group => $parent,
 			clone => $clone, mod => 'example');
 		do "$FindBin::Bin/../acl/save_group.cgi";

@@ -33,6 +33,7 @@ if ($in{'old'}) {
 	# Get the original group
 	$old = &get_group($in{'old'});
 	$old || &error($text{'gedit_egone'});
+	&can_edit_group_members($old->{'name'}) || &error($text{'acl_egroup'});
 	$group{'members'} = $old->{'members'};
 	$group{'proto'} = $old->{'proto'};
 	$group{'id'} = $old->{'id'};
@@ -63,6 +64,12 @@ foreach my $m (@mods) {
 	$mcan{$m} || $keep{$m} || &error(&text('save_emod', &html_escape($m)));
 	}
 @mods = &unique(@mods, keys %keep);
+
+# Cloning copies global and per-module ACL files.
+if ($in{'clone'}) {
+	$access{'acl'} && !$access{'mode'} && &can_edit_group_members($in{'clone'}) ||
+		&error($text{'acl_egroup'});
+	}
 
 # Find the current parent group
 my $oldgroup;

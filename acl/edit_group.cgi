@@ -10,6 +10,12 @@ require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 &ReadParse();
 $access{'groups'} || &error($text{'gedit_ecannot'});
+if ($in{'group'} || $in{'clone'}) {
+	&can_edit_group_members($in{'group'} || $in{'clone'}) || &error($text{'acl_egroup'});
+	}
+if ($in{'clone'}) {
+	$access{'acl'} && !$access{'mode'} || &error($text{'acl_emod'});
+	}
 my $g;
 my %group;
 if ($in{'group'}) {
@@ -150,7 +156,7 @@ if ($access{'acl'} && $in{'group'}) {
 my @buts = ( );
 push(@buts, [ undef, $in{'group'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'group'}) {
-	push(@buts, [ "but_clone", $text{'edit_clone'} ]);
+	push(@buts, [ "but_clone", $text{'edit_clone'} ]) if ($access{'acl'} && !$access{'mode'});
 	push(@buts, [ "but_delete", $text{'delete'} ]);
 	}
 print &ui_form_end(\@buts);
