@@ -92,7 +92,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 				    $text{'gsave_ecreate'}),"\n";
 			next;
 			}
-		local $ch = &check_group(\%group);
+		local $ch = &check_group(\%group) || &check_members(\%group);
 		if ($ch) {
 			print &text('gbatch_ecaccess', $lnum, $ch),"\n";
 			next;
@@ -251,7 +251,8 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			}
 
 		# Check access control restrictions
-		local $ch = &check_group(\%group, \%oldgroup);
+		local $ch = &check_group(\%group, \%oldgroup) ||
+			    &check_members(\%group, \%oldgroup);
 		if ($ch) {
 			print &text('gbatch_emaccess', $lnum, $ch),"\n";
 			next;
@@ -326,6 +327,24 @@ if ($access{'higid'} && $_[0]->{'gid'} > $access{'higid'}) {
 	}
 if ($_[1] && !$access{'ggid'} && $_[1]->{'gid'} != $_[0]->{'gid'}) {
 	return $text{'gsave_eggid'};
+	}
+return undef;
+}
+
+# check_members(\%group, [\%oldgroup])
+# Restricted admins can only add or remove users they are allowed to edit,
+# as in the group editor. Returns an error message, or undef if allowed.
+sub check_members
+{
+my ($group, $oldgroup) = @_;
+return undef if ($access{'uedit_mode'} == 0);
+my %omems = map { $_, 1 } split(/,/, $oldgroup ? $oldgroup->{'members'} : '');
+my %nmems = map { $_, 1 } split(/,/, $group->{'members'});
+foreach my $u (&list_users()) {
+	my $n = $u->{'user'};
+	next if (!$omems{$n} == !$nmems{$n} || &can_edit_user(\%access, $u));
+	return &text($omems{$n} ? 'gsave_ememberr' : 'gsave_emember',
+		     &html_escape($n));
 	}
 return undef;
 }
