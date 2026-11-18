@@ -17,10 +17,10 @@ $option ||= $config{'ppp_options'};
 @opts = &parse_ppp_options($option);
 
 if ($option eq $config{'ppp_options'}) {
-	print &text('options_desc0', "<tt>$option</tt>"),"\n";
+	print &text('options_desc0', "<tt>".&html_escape($option)."</tt>"),"\n";
 	}
 else {
-	print &text('options_desc1', "<tt>$option</tt>"),"\n";
+	print &text('options_desc1', "<tt>".&html_escape($option)."</tt>"),"\n";
 	}
 print "$text{'options_desc2'}<p>\n";
 
