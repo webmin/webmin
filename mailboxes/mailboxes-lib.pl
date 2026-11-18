@@ -1092,7 +1092,7 @@ sub view_mail_link
 local ($user, $folder, $idx, $txt, $dom) = @_;
 local $uuser = &urlize($user);
 local $url = "view_mail.cgi?user=$uuser&idx=$idx&folder=$folder->{'index'}".
-	     "&dom=$dom";
+	     "&dom=".&urlize($dom);
 if ($config{'open_mode'}) {
         return "<a href='' onClick='window.open(\"$url\", \"viewmail\", \"toolbar=no,menubar=no,scrollbars=yes,width=1024,height=768\"); return false'>".
                &simplify_from($txt)."</a>";

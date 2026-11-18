@@ -4133,7 +4133,7 @@ print &ui_columns_start([
 	], 100, 0, \@tds);
 for(my $i=0; $i<@files; $i++) {
 	local $type = $attach[$i]->{'type'} || "message/rfc822";
-	local $typedesc = $typemap{lc($type)} || $type;
+	local $typedesc = &html_escape($typemap{lc($type)} || $type);
 	local @cols = (
 		"<a href='$links[$i]'>".&html_escape($files[$i])."</a>",
 		$typedesc,

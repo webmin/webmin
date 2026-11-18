@@ -7,6 +7,7 @@ require './mailboxes-lib.pl';
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 @folders = &list_user_folders($in{'user'});
 $uuser = &urlize($in{'user'});
+$udom = &urlize($in{'dom'});
 
 if ($in{'simple'}) {
 	# Make sure a search was entered
@@ -34,7 +35,7 @@ elsif ($in{'folder'} == -1) {
 	}
 else {
 	$folder = $folders[$in{'folder'}];
-	$desc = &text('mail_for', $folder->{'name'});
+	$desc = &text('mail_for', &html_escape($folder->{'name'}));
 	}
 &ui_print_header($desc, $text{'search_title'}, "", undef, 0, 0, undef,
 	&folder_link($in{'user'}, $ofolder));
@@ -46,7 +47,8 @@ if ($in{'simple'}) {
 		@searchlist = ( [ $field, $what ] );
 		@rv = &mailbox_search_mail(\@searchlist, 0, $folder);
 		print "<p><b>",&text('search_results5', scalar(@rv),
-			    "<tt>$field</tt>", "<tt>$what</tt>")," ..</b><p>\n";
+			    "<tt>".&html_escape($field)."</tt>",
+			    "<tt>".&html_escape($what)."</tt>")," ..</b><p>\n";
 		}
 	else {
 		# Just search by Subject and From in one folder
@@ -73,7 +75,7 @@ if ($in{'simple'}) {
 			&error($text{'search_eboolean'});
 			}
 		print "<p><b>",&text('search_results2', scalar(@rv),
-				     "<tt>$in{'search'}</tt>")," ..</b><p>\n";
+				     "<tt>".&html_escape($in{'search'})."</tt>")," ..</b><p>\n";
 		}
 	foreach $mail (@rv) {
 		$mail->{'folder'} = $folder;
@@ -124,7 +126,7 @@ else {
 
 &ui_print_footer($in{'simple'} ? ( ) : ( "search_form.cgi?folder=$in{'folder'}",
 				$text{'sform_return'} ),
-	"list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}&dom=$in{'dom'}",
+	"list_mail.cgi?user=$uuser&folder=$in{'folder'}&dom=$udom",
 	  $text{'mail_return'},
 	&user_list_link(), $text{'index_return'});
 

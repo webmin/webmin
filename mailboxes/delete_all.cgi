@@ -23,7 +23,7 @@ else {
 	print &ui_confirmation_form(
 		"delete_all.cgi",
 		&text('delall_rusure',
-                    "<tt>$folder->{'file'}</tt>",
+                    "<tt>".&html_escape($folder->{'file'})."</tt>",
                     &mailbox_folder_size($folder),
                     &nice_size(&folder_size($folder))),
 		[ [ 'user', $in{'user'} ],

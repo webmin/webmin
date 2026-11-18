@@ -9,15 +9,18 @@ sub parse_webmin_log
 {
 local ($user, $script, $action, $type, $object, $p, $long) = @_;
 if ($action eq 'delmail') {
-	return &text("log_delmail", $p->{'count'}, "<tt>$p->{'from'}</tt>");
+	return &text("log_delmail", $p->{'count'},
+		     "<tt>".&html_escape($p->{'from'})."</tt>");
 	}
 elsif ($action eq 'movemail') {
-	return &text("log_movemail", $p->{'count'}, "<tt>$p->{'from'}</tt>",
-		     "<tt>$p->{'to'}</tt>");
+	return &text("log_movemail", $p->{'count'},
+		     "<tt>".&html_escape($p->{'from'})."</tt>",
+		     "<tt>".&html_escape($p->{'to'})."</tt>");
 	}
 elsif ($action eq 'copymail') {
-	return &text("log_copymail", $p->{'count'}, "<tt>$p->{'from'}</tt>",
-		     "<tt>$p->{'to'}</tt>");
+	return &text("log_copymail", $p->{'count'},
+		     "<tt>".&html_escape($p->{'from'})."</tt>",
+		     "<tt>".&html_escape($p->{'to'})."</tt>");
 	}
 elsif ($action eq 'send') {
 	return &text('log_send', &html_escape(&extract_email($p->{'to'})));
