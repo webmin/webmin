@@ -8,13 +8,7 @@ $edit = &get_command($in{'id'}, $in{'idx'});
 &error_setup($text{'view_err'});
 $edit->{'edit'} && &can_run_command($edit) || &error($text{'edit_ecannot'});
 
-# Work out proper filename
-$file = $edit->{'edit'};
-if ($file !~ /^\//) {
-	# File is relative to user's home directory
-	@uinfo = getpwnam($remote_user);
-	$file = "$uinfo[7]/$file" if (@uinfo);
-	}
+($file, $homeuser) = &editor_file($edit);
 
 # Set environment variables for parameters
 ($env, $export, $str, $displayfile) = &set_parameter_envs($edit, $file);
@@ -31,8 +25,7 @@ if ($edit->{'before'}) {
 
 # Save the file
 $in{'data'} =~ s/\r//g;
-$homeuser = &editor_home_user($edit);
-if ($homeuser) {
+if (defined($homeuser)) {
 	# Write the file in the user's home directory with his permissions
 	&eval_as_unix_user($homeuser, \&save_editor_file);
 	}

@@ -140,6 +140,7 @@ file_id=Editor ID
 
 view_err=Failed to edit file
 view_ecannot=You are not allowed to edit this file
+view_ehome=Editing a file relative to your home directory requires a matching Unix account with a home directory.
 view_title=Edit File
 view_efile=Write to $1 failed : $2
 view_header=Editing file $1

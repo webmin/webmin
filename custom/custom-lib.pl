@@ -242,17 +242,16 @@ if (-r $cf) {
 	}
 }
 
-# editor_home_user(&editor)
-# Returns the Unix user whose home directory holds a file editor's relative
-# path, when running as root. That file must be read and written with the
-# user's permissions, so that links in the home directory to system files are
-# not followed as root.
-sub editor_home_user
+# editor_file(&editor)
+# Resolves home-relative files and returns the Unix user to run as when root.
+sub editor_file
 {
 my ($edit) = @_;
-return undef if ($edit->{'edit'} =~ /^\// || $< != 0);
-my @uinfo = getpwnam($remote_user);
-return @uinfo ? $uinfo[0] : undef;
+my $file = $edit->{'edit'};
+return ($file, undef) if ($file =~ m{^/});
+my @user = getpwnam($remote_user);
+@user && $user[7] =~ m{^/} || &error($text{'view_ehome'});
+return ("$user[7]/$file", $> == 0 ? $user[0] : undef);
 }
 
 sub can_run_command

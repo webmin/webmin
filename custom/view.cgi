@@ -7,13 +7,7 @@ require './custom-lib.pl';
 $edit = &get_command($in{'id'}, $in{'idx'});
 $edit->{'edit'} && &can_run_command($edit) || &error($text{'edit_ecannot'});
 
-# Work out proper filename
-$file = $edit->{'edit'};
-if ($file !~ /^\//) {
-	# File is relative to user's home directory
-	@uinfo = getpwnam($remote_user);
-	$file = "$uinfo[7]/$file" if (@uinfo);
-	}
+($file, $homeuser) = &editor_file($edit);
 
 # Set environment variables for parameters
 ($env, $export, $str, $displayfile) = &set_parameter_envs($edit, $file);
@@ -39,8 +33,7 @@ print &ui_table_start(&text('view_header', "<tt>$displayfile</tt>"), undef, 2);
 foreach my $i (keys %in) {
 	print &ui_hidden($i, $in{$i}),"\n";
 	}
-$homeuser = &editor_home_user($edit);
-if ($homeuser) {
+if (defined($homeuser)) {
 	# Read the file in the user's home directory with his permissions
 	$data = &eval_as_unix_user($homeuser,
 				   sub { &read_file_contents($file) });
