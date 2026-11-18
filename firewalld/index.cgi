@@ -5,6 +5,8 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
+# Check the request origin before redirecting to zone-changing actions.
+our $unsafe_index_cgi = 1;
 require './firewalld-lib.pl';
 our (%in, %text, %config, %access, $base_remote_user);
 &ReadParse();
