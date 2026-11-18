@@ -12,8 +12,8 @@ if ($out =~ /version\s+(\S+)/i) {
 	&text('options_version', $vers));
 
 $conf = &get_config();
-$option = &find_conf("option", $conf);
-$option ||= $config{'ppp_options'};
+$option = &ppp_options_file($conf) ||
+	&error(&text('conf_eoptiondir', &html_escape(&ppp_options_dir())));
 @opts = &parse_ppp_options($option);
 
 if ($option eq $config{'ppp_options'}) {

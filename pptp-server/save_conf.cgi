@@ -34,6 +34,10 @@ elsif ($in{'mode'} == 1) {
 	}
 else {
 	$in{'option'} =~ /^\/\S+$/ || &error($text{'conf_eoption'});
+	# Only PPP options files can be used, as they are edited as root
+	&ppp_options_file_ok($in{'option'}) ||
+		&error(&text('conf_eoptiondir',
+			     &html_escape(&ppp_options_dir())));
 	&save_directive($conf, "option", $in{'option'});
 	}
 

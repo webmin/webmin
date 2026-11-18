@@ -8,8 +8,8 @@ $access{'options'} || &error($text{'options_ecannot'});
 &ReadParse();
 
 $conf = &get_config();
-$option = &find_conf("option", $conf);
-$option ||= $config{'ppp_options'};
+$option = &ppp_options_file($conf) ||
+	&error(&text('conf_eoptiondir', &html_escape(&ppp_options_dir())));
 &lock_file($option);
 @opts = &parse_ppp_options($option);
 

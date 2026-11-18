@@ -6,8 +6,7 @@ do 'pptp-server-lib.pl';
 sub backup_config_files
 {
 local $conf = &get_config();
-local $option = &find_conf("option", $conf);
-$option ||= $config{'ppp_options'};
+local $option = &ppp_options_file($conf) || $config{'ppp_options'};
 return ( $config{'file'}, $config{'pap_file'}, $option );
 }
 
