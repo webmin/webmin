@@ -200,7 +200,7 @@ my $type = $lconf->{'type'} == 1 ? "" :
 	      $lconf->{'type'} == 2 ? "-F squid" :
 	      $lconf->{'type'} == 3 ? "-F ftp" : "";
 my $cfile = &config_file_name($_[0]);
-my $conf = -r $cfile ? "-c $cfile" : "";
+my $conf = -r $cfile ? "-c ".quotemeta($cfile) : "";
 if ($lconf->{'over'} && !&is_readonly_mode()) {
 	unlink("$lconf->{'dir'}/webalizer.current");
 	unlink("$lconf->{'dir'}/webalizer.hist");
