@@ -16,30 +16,45 @@ $in{'key'} || &error($text{'cert_ekey'});
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 
+uc($ENV{'HTTPS'}) eq "ON" && $miniserv{'ca'} || &error($text{'cert_ecannot'});
+$in{'commonName'} = $base_remote_user;
+
 # Create the new key
 my $temp1 = &transname();
-my $temp2 = &tempname();
+my $temp2 = &transname();
 my $fh = "IN";
 &open_tempfile($fh, ">$temp1");
 foreach my $k ("emailAddress", "organizationalUnitName", "organizationName",
 	       "stateOrProvinceName", "countryName", "commonName") {
-	$in{$k} =~ /:|\n|\0/ && &error($text{'cert_echars'});
-	&print_tempfile($fh, "$k = $in{$k}\n");
+	# Colons split the users file, and line breaks would add SPKAC fields.
+	$in{$k} =~ s/^\s+|\s+$//g;
+	$in{$k} =~ /[:\r\n\0]/ && &error($text{'cert_echars'});
+
+	# OpenSSL parses this file as config, so escape its special characters
+	# to keep the signed DN identical to the DN stored for this account.
+	# Slashes are safe because logins match the whole DN string, which
+	# always ends with this account's forced common name.
+	(my $value = $in{$k}) =~ s/([\\'"#\$])/\\$1/g;
+	&print_tempfile($fh, "$k = $value\n");
 	}
 $in{'key'} =~ s/\s//g;
 &print_tempfile($fh, "SPKAC = $in{'key'}\n");
 &close_tempfile($fh);
 my $cmd = &get_ssleay();
 my $ssleay = &backquote_logged("$cmd ca -spkac $temp1 -out $temp2 -config $module_config_directory/openssl.cnf -days 1095 2>&1");
+my $status = $?;
 &unlink_file($temp1);
-if ($?) {
+if ($status) {
 	&error("<pre>".&html_escape($ssleay)."</pre>");
 	}
 else {
-	# Display status and redirect to actual cert file
+	# Publish the signed certificate only for the account that requested it.
+	my $pending = &pending_certificate_file();
+	&copy_source_dest($temp2, $pending) || &error($text{'cert_etempdir'});
+	&unlink_file($temp2);
 	&ui_print_unbuffered_header(undef, $text{'cert_title'}, "");
 	print &text('cert_done', &html_escape($in{'commonName'})),"<p>\n";
-	print &text('cert_pickup', "cert_output.cgi?file=$temp2"),"<p>\n";
+	print &text('cert_pickup', "cert_output.cgi"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
 
 	# Update the Webmin user

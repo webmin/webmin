@@ -20,7 +20,7 @@ use WebminCore;
 &init_config();
 do 'md5-lib.pl';
 our ($module_root_directory, %text, %sessiondb, %config, %gconfig,
-     $base_remote_user, %hash_session_id_cache, $session_hmac_key,
+     $module_config_directory, $base_remote_user, %hash_session_id_cache, $session_hmac_key,
      $loaded_session_keyfile, $use_hmac_sha256);
 eval {
 	require Digest::SHA;
@@ -1297,6 +1297,15 @@ sub acl_line
 {
 my ($user) = @_;
 return "$user->{'name'}: ".join(' ', @{$user->{'modules'} || []})."\n";
+}
+
+# pending_certificate_file()
+# Return a private pickup path for the current Webmin account.
+sub pending_certificate_file
+{
+my $dir = "$module_config_directory/pending-certs";
+&make_dir($dir, 0700) if (!-d $dir);
+return $dir."/".unpack("H*", $base_remote_user).".der";
 }
 
 =head2 can_edit_user(user, [&groups])

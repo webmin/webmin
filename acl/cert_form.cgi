@@ -25,7 +25,7 @@ if ($ENV{'HTTP_USER_AGENT'} =~ /Mozilla/i) {
 	print &ui_table_start($text{'cert_header'}, undef, 2);
 
 	print &ui_table_row($text{'cert_cn'},
-		&ui_textbox("commonName", undef, 30));
+		&html_escape($main::base_remote_user));
 
 	print &ui_table_row($text{'cert_email'},
 		&ui_textbox("emailAddress", undef, 30));
