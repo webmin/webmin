@@ -97,10 +97,22 @@ foreach $host (@{$_[0]}) {
 		next;
 		}
 
+	# The user may differ between servers, so check this server's own
+	# record before changing the password here
+	my %check = ( %$user, 'host' => $host );
+	if (!&can_edit_passwd(\%check)) {
+		&$pfunc(3, $text{'passwd_ehost'});
+		next;
+		}
+
 	# Update password fields in user
 	$user->{'olduser'} = $user->{'user'};
 	$user->{'pass'} = &remote_foreign_call($serv->{'host'}, "useradmin",
 					       "encrypt_password", $_[2]);
+	if ($passwd_error_msg || !length($user->{'pass'})) {
+		&$pfunc(1, $text{'passwd_eupdate'});
+		next;
+		}
 	$user->{'passmode'} = 3;
 	$user->{'plainpass'} = $_[2];
 	local $pft = &useradmin::passfiles_type();
@@ -112,14 +124,23 @@ foreach $host (@{$_[0]}) {
 		}
 
 	# Run the pre-change command
-	&remote_eval($serv->{'host'}, "useradmin", "set_user_envs", $user);
-	&remote_foreign_call($serv->{'host'}, "useradmin",
-			     "making_changes");
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+			     $user, 'MODIFY_USER', $_[2]);
+	my $before = !$passwd_error_msg && &remote_foreign_call(
+		$serv->{'host'}, "useradmin", "making_changes");
+	if ($passwd_error_msg || defined($before)) {
+		&$pfunc(1, $text{'passwd_ebefore'});
+		next;
+		}
 
 	# Update the user on the server
 	&$pfunc(-2, $cluster_useradmin::text{'usave_update'});
 	&remote_foreign_call($serv->{'host'}, "useradmin", "modify_user",
 			     $user, $user);
+	if ($passwd_error_msg) {
+		&$pfunc(1, $text{'passwd_eupdate'});
+		next;
+		}
 	&$pfunc(-3, $cluster_useradmin::text{'udel_done'});
 
 	# Run post-change command
@@ -137,6 +158,7 @@ foreach $host (@{$_[0]}) {
 		}
 
 	# Update in local list
+	delete($user->{'plainpass'});
 	$host->{'users'} = \@ulist;
 	&cluster_useradmin::save_useradmin_host($host);
 	&$pfunc(-4);
