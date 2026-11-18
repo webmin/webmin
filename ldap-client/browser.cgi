@@ -71,8 +71,8 @@ else {
 	($bo) = $rv2->all_entries;
 	foreach $a (sort { lc($a) cmp lc($b) } $bo->attributes()) {
 		@v = $bo->get_value($a);
-		print "<tr> <td>$a</td> <td>:</td> <td>",
-		      join(" , ", @v),"</td> </tr>\n";
+		print "<tr> <td>",&html_escape($a),"</td> <td>:</td> <td>",
+		      join(" , ", map { &html_escape($_) } @v),"</td> </tr>\n";
 		}
 	if (!$bo->attributes()) {
 		print "<tr> <td><i>$text{'browser_none'}</i></td> </tr>\n";

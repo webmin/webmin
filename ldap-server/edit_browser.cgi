@@ -206,7 +206,8 @@ else {
 			@alinks = ( "<a href='edit_browser.cgi?base=".
 				    &urlize($bo->dn())."&mode=attrs".
 				    "&edit=$a'>$text{'browser_edit'}</a>" );
-			@cols = ( $a, join(", ", @v),
+			@cols = ( &html_escape($a),
+				  join(", ", map { &html_escape($_) } @v),
 				  &ui_links_row(\@alinks),
 				);
 			if ($in{'edit'} eq $a) {
@@ -215,7 +216,7 @@ else {
 					    &urlize($bo->dn())."&mode=attrs".
 					    "'>$text{'browser_cancel'}</a>" );
 				print &ui_columns_row([
-				  $a, &ui_textarea("value", join("\n", @v),
+				  &html_escape($a), &ui_textarea("value", join("\n", @v),
 						   scalar(@v)+1, 60),
 				  &ui_links_row(\@alinks),
 				  ], \@tds);
