@@ -330,6 +330,13 @@ return @rv;
 sub save_directive
 {
 local ($conf, $name, @values) = @_;
+
+# Each directive is one line, so refuse values that would add more lines
+foreach my $v (@values) {
+	my @vl = ref($v) eq 'ARRAY' ? @$v :
+		 ref($v) eq 'HASH' ? @{$v->{'values'}} : ( $v );
+	&error($text{'slapd_eline'}) if (grep { /[\r\n\0]/ } @vl);
+	}
 local @old = &find($name, $conf);
 local $lref = &read_file_lines(@old ? $old[0]->{'file'}
 				    : $config{'config_file'});

@@ -13,11 +13,13 @@ $conf = &get_config();
 # Validate and store inputs
 
 # Top-level DN
-$in{'suffix'} =~ /=/ || &error($text{'slapd_esuffix'});
+$in{'suffix'} =~ /=/ && $in{'suffix'} !~ /[\r\n\0]/ ||
+	&error($text{'slapd_esuffix'});
 &save_directive($conf, 'suffix', $in{'suffix'});
 
 # Admin login
-$in{'rootdn'} =~ /=/ || &error($text{'slapd_erootdn'});
+$in{'rootdn'} =~ /=/ && $in{'rootdn'} !~ /[\r\n\0]/ ||
+	&error($text{'slapd_erootdn'});
 &save_directive($conf, 'rootdn', $in{'rootdn'});
 
 # Admin password
