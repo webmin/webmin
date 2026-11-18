@@ -35,7 +35,8 @@ if ($in{'confirm'}) {
 		next if ($done{$f->{'file'}});
 		if (-d $f->{'file'} || $f->{'type'} == 1) {
 			# Skip directory
-			print &text('rollback_skipdir',"<tt>$f->{'file'}</tt>");
+			print &text('rollback_skipdir',
+				    "<tt>".&html_escape($f->{'file'})."</tt>");
 			}
 		elsif (-l $f->{'file'} && $f->{'type'} == 2 ||
 		       !-e $f->{'file'} && $f->{'type'} == 2 ||
@@ -46,8 +47,8 @@ if ($in{'confirm'}) {
 			&symlink_file($f->{'data'}, $f->{'file'});
 			&unlock_file($f->{'file'});
 			print &text('rollback_madelink',
-				    "<tt>$f->{'file'}</tt>",
-				    "<tt>$f->{'data'}</tt>");
+				    "<tt>".&html_escape($f->{'file'})."</tt>",
+				    "<tt>".&html_escape($f->{'data'})."</tt>");
 			}
 		elsif (-e $f->{'file'} && -l $f->{'file'} &&
 		       $f->{'type'} == 0) {
@@ -60,18 +61,18 @@ if ($in{'confirm'}) {
 			&close_tempfile($fh);
 			&unlock_file($f->{'file'});
 			print &text('rollback_madefile',
-				    "<tt>$f->{'file'}</tt>");
+				    "<tt>".&html_escape($f->{'file'})."</tt>");
 			}
 		elsif ($f->{'type'} == -1) {
 			if (-e $f->{'file'}) {
 				# Remove file
 				&unlink_logged($f->{'file'});
-				print &text('rollback_deleted',
-					    "<tt>$f->{'file'}</tt>");
+				print &text('rollback_deleted', "<tt>".
+					&html_escape($f->{'file'})."</tt>");
 				}
 			else {
-				print &text('rollback_nodeleted',
-					    "<tt>$f->{'file'}</tt>");
+				print &text('rollback_nodeleted', "<tt>".
+					&html_escape($f->{'file'})."</tt>");
 				}
 			}
 		else {
@@ -81,7 +82,7 @@ if ($in{'confirm'}) {
 			&print_tempfile($fh, $f->{'data'});
 			&close_tempfile($fh);
 			print &text('rollback_modfile',
-				    "<tt>$f->{'file'}</tt>");
+				    "<tt>".&html_escape($f->{'file'})."</tt>");
 			}
 		print "<br>\n";
 		$done{$f->{'file'}}++;
@@ -104,7 +105,9 @@ else {
 	my $count = 0;
 	foreach my $f (@files) {
 		next if ($done{$f->{'file'}});
-		print &ui_table_start("<tt>$f->{'file'}</tt>", "width=100%", 2);
+		print &ui_table_start(
+			"<tt>".&html_escape($f->{'file'})."</tt>",
+			"width=100%", 2);
 		print "<tr> <td colspan=2>";
 		if (-d $f->{'file'} || $f->{'type'} == 1) {
 			# Is a directory
@@ -115,11 +118,14 @@ else {
 			# Was a link, and is one now
 			my $lnk = readlink($f->{'file'});
 			if (!-e $f->{'file'}) {
-				print &text('rollback_clink', "<tt>$f->{'data'}</tt>");
+				print &text('rollback_clink',
+				    "<tt>".&html_escape($f->{'data'})."</tt>");
 				$count++;
 				}
 			elsif ($lnk ne $f->{'data'}) {
-				print &text('rollback_link', "<tt>$f->{'data'}</tt>", "<tt>$lnk</tt>");
+				print &text('rollback_link',
+				    "<tt>".&html_escape($f->{'data'})."</tt>",
+				    "<tt>".&html_escape($lnk)."</tt>");
 				$count++;
 				}
 			else {
@@ -130,31 +136,33 @@ else {
 		       $f->{'type'} == 0) {
 			# Was a file, but is now a link
 			my $lnk = readlink($f->{'file'});
-			print &text('rollback_makefile', "<tt>$lnk</tt>");
-			print "<pre>$f->{'data'}</pre>";
+			print &text('rollback_makefile',
+				    "<tt>".&html_escape($lnk)."</tt>");
+			print "<pre>".&html_escape($f->{'data'})."</pre>";
 			$count++;
 			}
 		elsif (!-l $f->{'file'} && $f->{'type'} == 2) {
 			# Was a link, but is now a file
-			print &text('rollback_makelink', "<tt>$f->{'data'}</tt>");
+			print &text('rollback_makelink',
+				    "<tt>".&html_escape($f->{'data'})."</tt>");
 			$count++;
 			}
 		elsif ($f->{'type'} == -1) {
 			# Was created
 			if (-e $f->{'file'}) {
-				print &text('rollback_delete',
-					    "<tt>$f->{'file'}</tt>");
+				print &text('rollback_delete', "<tt>".
+					&html_escape($f->{'file'})."</tt>");
 				$count++;
 				}
 			else {
-				print &text('rollback_nodelete',
-					    "<tt>$f->{'file'}</tt>");
+				print &text('rollback_nodelete', "<tt>".
+					&html_escape($f->{'file'})."</tt>");
 				}
 			}
 		elsif (!-e $f->{'file'}) {
 			# No longer exists
 			print $text{'rollback_fillfile'};
-			print "<pre>$f->{'data'}</pre>";
+			print "<pre>".&html_escape($f->{'data'})."</pre>";
 			$count++;
 			}
 		else {
@@ -167,7 +175,7 @@ else {
 			my $out = &backquote_command("diff $qnew $temp");
 			if ($out) {
 				print $text{'rollback_changes'};
-				print "<pre>$out</pre>";
+				print "<pre>".&html_escape($out)."</pre>";
 				$count++;
 				}
 			else {
