@@ -27,7 +27,8 @@ if (!&has_command($config{samba_status_program})) {
 	}
 
 if ($in{share}) {
-	print &ui_subheading(&text('viewu_list',"<tt>$in{share}</tt>"));
+	print &ui_subheading(&text('viewu_list',
+				   "<tt>".&html_escape($in{share})."</tt>"));
 	@cons = &list_connections($in{'share'});
 	}
 else {
@@ -35,7 +36,9 @@ else {
 	}
 @locks = &list_locks();
 
-@rightlinks = ( &ui_link("view_users.cgi?$in",$text{'viewu_refresh'}) );
+@rightlinks = ( &ui_link("view_users.cgi?share=".&urlize($in{'share'}).
+			 ($in{'printer'} ? "&printer=1" : ""),
+			 $text{'viewu_refresh'}) );
 if (@cons) {
 	print &ui_form_start("kill_users.cgi");
 	print &ui_hidden("share", $in{'share'});
@@ -60,7 +63,9 @@ if (@cons) {
 	# Show each connected user
 	foreach $c (@cons) {
 		local @cols;
-		push(@cols, "<a href=\"kill_user.cgi?share=$in{'share'}&pid=$c->[3]\">".&html_escape($c->[3])."</a>");
+		push(@cols, "<a href=\"kill_user.cgi?share=".
+			    &urlize($in{'share'})."&pid=".&urlize($c->[3]).
+			    "\">".&html_escape($c->[3])."</a>");
 		if (!$in{'share'}) {
 			push(@cols, &html_escape($c->[0]));
 			}
@@ -100,8 +105,8 @@ else {
 print "<p>\n";
 
 if ($in{share}) {
-	&ui_print_footer($in{printer} ? "edit_pshare.cgi?share=$in{share}"
-			     : "edit_fshare.cgi?share=$in{share}",
+	&ui_print_footer(($in{printer} ? "edit_pshare.cgi" : "edit_fshare.cgi").
+			 "?share=".&urlize($in{share}),
 		$text{'index_shareconf'},
 		"", $text{'index_sharelist'});
 	}

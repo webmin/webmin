@@ -24,6 +24,6 @@ foreach $pid (@d) {
 	&kill_logged('TERM', $pid);
 	}
 &webmin_log("kills", undef, scalar(@d), \%in);
-if ($in{share}) { &redirect("view_users.cgi?share=$in{share}"); }
+if ($in{share}) { &redirect("view_users.cgi?share=".&urlize($in{share})); }
 else { &redirect("view_users.cgi"); }
 

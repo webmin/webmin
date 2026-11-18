@@ -20,6 +20,6 @@ else {
 	
 &kill_logged('TERM', $in{'pid'});
 &webmin_log("kill", undef, $in{'pid'}, \%in);
-if ($in{share}) { &redirect("view_users.cgi?share=$in{share}"); }
+if ($in{share}) { &redirect("view_users.cgi?share=".&urlize($in{share})); }
 else { &redirect("view_users.cgi"); }
 
