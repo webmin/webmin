@@ -218,6 +218,20 @@ print "</td> </tr>\n";
 return undef;
 }
 
+# cups_ppd_allowed(file)
+# Returns 1 if a PPD file is a regular file inside one of the configured
+# printer model directories, which are the ones the driver list comes from
+sub cups_ppd_allowed
+{
+my ($file) = @_;
+return 0 if (!$file || $file =~ /(^|\/)\.\.(\/|$)/ || !-f $file);
+foreach my $mp (split(/\s+/, $config{'model_path'})) {
+	$mp =~ s/\/+$//;
+	return 1 if ($mp ne '' && index($file, "$mp/") == 0);
+	}
+return 0;
+}
+
 # parse_driver()
 # Parse driver selection from %in and return a driver structure
 sub parse_driver
@@ -232,7 +246,8 @@ elsif ($in{'mode'} == 2) {
 		 'file' => $in{'program'} };
 	}
 elsif ($in{'mode'} == 1) {
-	# CUPS printer driver
+	# CUPS printer driver, which must be one of the listed PPD files
+	&cups_ppd_allowed($in{'ppd'}) || &error($text{'cups_eppd'});
 	local $ppd = &parse_cups_ppd($in{'ppd'});
 	local $rv = { 'mode' => 1,
 		      'ppd' => $in{'ppd'},

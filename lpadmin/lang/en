@@ -284,6 +284,7 @@ cups_nonemsg=Remote or raw printer
 cups_prog=Program
 cups_driver=CUPS driver
 cups_eprog='$1' is not a valid program
+cups_eppd=No CUPS driver was selected from the list of installed drivers
 cups_opts=Options for $1
 cups_ecmd=The command $1 was not found on your system, which indicates that the CUPS print system is not installed.
 
