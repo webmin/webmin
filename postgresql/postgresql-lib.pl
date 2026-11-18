@@ -288,7 +288,10 @@ if ($driver_handle &&
     !$force_nodbi) {
 	# Use the DBI interface
 	local $pid;
-	local $cstr = "dbname=$_[0]";
+	# Quote the name as a libpq connection value.
+	my $dbname = $_[0];
+	$dbname =~ s/(['\\])/\\$1/g;
+	local $cstr = "dbname='$dbname'";
 	$cstr .= ";host=$config{'host'}" if ($config{'host'});
 	$cstr .= ";port=$config{'port'}" if ($config{'port'});
 	local $sslmode = $config{'sslmode'};
