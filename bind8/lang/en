@@ -993,6 +993,7 @@ vdelete_newview=Zones within this view
 vdelete_root=Move out of views
 vdelete_delete=Delete totally
 vdelete_move=Move to view
+vdelete_egone=The selected view no longer exists
 
 gen_title=Record Generators
 gen_desc=This page allows you to define generators, each of which will create multiple records in this zone using an incrementing counter. This can be useful for delegating parts of the reverse zone to another server.

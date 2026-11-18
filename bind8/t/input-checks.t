@@ -169,4 +169,21 @@ is($err, '', 'a valid generator is saved');
 like(&read_text($zonefile), qr/^\$generate 1-2 \$ PTR h\$ ;hosts$/m,
      'the generator line is written');
 
+# --- delete_view only deletes views ----------------------------------------
+my $parent = &get_config_parent();
+my @names = map { $_->{'name'} } @{$parent->{'members'}};
+my ($optidx) = grep { $names[$_] eq 'options' } 0 .. $#names;
+my ($vidx) = grep { $names[$_] eq 'view' } 0 .. $#names;
+($out, $err) = &run_cgi('delete_view.cgi', { 'index' => $optidx,
+					     'confirm' => 1 });
+isnt($err, '', 'an index that is not a view is rejected');
+like(&read_text($named_conf), qr/^options \{/m, 'the options block remains');
+{
+	local $access{'vlist'} = 'other';
+	($out, $err) = &run_cgi('delete_view.cgi', { 'index' => $vidx,
+						     'confirm' => 1 });
+	isnt($err, '', 'a view the user cannot edit is not deleted');
+	like(&read_text($named_conf), qr/^view "inside"/m, 'the view remains');
+}
+
 done_testing();
