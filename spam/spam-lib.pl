@@ -57,10 +57,10 @@ $ldap_username_attr = $config{'uid'} || 'uid';
 sub set_config_file
 {
 local ($file) = @_;
-if (!$module_info{'usermin'}) {
+if (!$module_info{'usermin'} && !&can_edit_any_config_file()) {
 	# Check for valid file
 	local %cans;
-	$cans{$access{'file'}} = 1 if ($access{'file'});
+	$cans{$access{'file'} || $config{'local_cf'}} = 1;
 	foreach my $f (split(/\s+/, $access{'files'})) {
 		$cans{$f} = 1;
 		}
@@ -73,6 +73,17 @@ $local_cf = $file;
 $add_cf = !-d $local_cf ? $local_cf :
 	  $module_info{'usermin'} ? "$local_cf/user_prefs" :
 				    "$local_cf/local.cf";
+}
+
+# can_edit_any_config_file()
+# Returns 1 if the Webmin user may pick any SpamAssassin config file. This is
+# allowed only without a file limit, and when the user can already edit the
+# module config or the config files manually, which both control settings and
+# plugins used by root.
+sub can_edit_any_config_file
+{
+return 0 if ($access{'file'} || $access{'files'});
+return !$access{'noconfig'} || &can_use_page("manual") ? 1 : 0;
 }
 
 sub set_config_file_in
