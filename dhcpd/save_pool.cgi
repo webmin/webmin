@@ -28,6 +28,14 @@ else {
 # check acls
 %access = &get_module_acl();
 &error_setup($text{'eacl_aviol'});
+
+# Pools can only be in a subnet or shared network, and only a pool can be
+# changed here
+!$sha || $sha->{'name'} eq 'shared-network' ||
+	&error($text{'sgroup_echanged'});
+$sub && ($sub->{'name'} eq 'subnet' || $sub->{'name'} eq 'shared-network') ||
+	&error($text{'sgroup_echanged'});
+$pool && $pool->{'name'} eq 'pool' || &error($text{'sgroup_echanged'});
 &error("$text{'eacl_np'} $text{'eacl_pus'}") if !&can('rw', \%access, $sub);
 
 # save

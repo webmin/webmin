@@ -12,6 +12,8 @@ $parconf = $par->{'members'};
 # check acls
 %access = &get_module_acl();
 &error_setup($text{'eacl_aviol'});
+# Only a group can be changed here
+$group && $group->{'name'} eq 'group' || &error($text{'sgroup_echanged'});
 if ($in{'delete'}) {
 	&error("$text{'eacl_np'} $text{'eacl_pdg'}")
 		if !&can('rw', \%access, $group, 1);
@@ -28,7 +30,8 @@ elsif ($in{'new'}) {
 	}
 else {
 	&error("$text{'eacl_np'} $text{'eacl_pug'}")
-		unless !$npar || &can('rw', \%access, $npar);
+		unless &can('rw', \%access, $group) &&
+			(!$npar || &can('rw', \%access, $npar));
 	# for new and updated groups - per-host acls see below    
 	}
 # save
