@@ -7,6 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
+$access{'iptables'} || &error($text{'iptables_ecannot'});
 &foreign_require("firewall", "firewall-lib.pl");
 my $conf = &get_config();
 my $port = &get_squid_port();

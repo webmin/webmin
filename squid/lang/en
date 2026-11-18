@@ -960,6 +960,7 @@ iptables_enabled4=Port redirection is enabled, for clients on interface
 iptables_apply=Apply firewall and Squid configuration?
 iptables_save=Save and Apply
 iptables_err=Failed to save port forwarding
+iptables_ecannot=You are not allowed to change port redirection
 iptables_enet=Missing or invalid network address (should be like 192.168.1.0/24)
 iptables_eiface=Missing or invalid network interface
 iptables_eapply=Apply firewall failed : $1
