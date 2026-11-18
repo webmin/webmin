@@ -86,7 +86,7 @@ print &ui_table_row($text{'edit_user'},
 
 # Source user for clone
 if ($in{'clone'}) {
-	print &ui_table_row($text{'edit_cloneof'}, "<tt>$in{'clone'}</tt>");
+	print &ui_table_row($text{'edit_cloneof'}, "<tt>".&html_escape($in{'clone'})."</tt>");
 	}
 
 # Find and show parent group

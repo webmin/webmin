@@ -14,7 +14,8 @@ eval { require Net::SSLeay; Net::SSLeay->import; 1 };
 
 print "<p>$text{'cert_msg'}<p>\n";
 if ($ENV{'SSL_USER'}) {
-	print &text('cert_already', "<tt>$ENV{'SSL_USER'}</tt>"),
+	print &text('cert_already',
+		    "<tt>".&html_escape($ENV{'SSL_USER'})."</tt>"),
 	      "<p>\n";
 	}
 
