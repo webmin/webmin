@@ -2,7 +2,7 @@
 # Create a new active route
 
 require './net-lib.pl';
-$access{'routes'} || &error($text{'routes_ecannot'});
+$access{'routes'} == 2 || &error($text{'routes_ecannot'});
 &ReadParse();
 &error_setup($text{'routes_cerr'});
 
