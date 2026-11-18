@@ -32,7 +32,7 @@ if ($edit->{'before'}) {
 # Save the file
 $in{'data'} =~ s/\r//g;
 &open_lock_tempfile(FILE, ">$file", 1) ||
-	&error(&text('view_efile', $file, $!));
+	&error(&text('view_efile', &html_escape($file), &html_escape("$!")));
 &print_tempfile(FILE, $in{'data'});
 &close_tempfile(FILE);
 
