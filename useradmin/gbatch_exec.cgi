@@ -319,10 +319,10 @@ sub check_group
 {
 # check if gid is within range
 if ($access{'lowgid'} && $_[0]->{'gid'} < $access{'lowgid'}) {
-	return &text('usave_elowgid', $access{'lowuid'});
+	return &text('usave_elowgid', $access{'lowgid'});
 	}
-if ($access{'hiuid'} && $_[0]->{'uid'} > $access{'hiuid'}) {
-	return &text('usave_ehiuid', $access{'hiuid'});
+if ($access{'higid'} && $_[0]->{'gid'} > $access{'higid'}) {
+	return &text('usave_ehigid', $access{'higid'});
 	}
 if ($_[1] && !$access{'ggid'} && $_[1]->{'gid'} != $_[0]->{'gid'}) {
 	return $text{'gsave_eggid'};
