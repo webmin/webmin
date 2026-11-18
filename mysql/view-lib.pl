@@ -86,6 +86,9 @@ else {
 sub make_like
 {
 local ($match, $for) = @_;
+# A backslash in a substring search is part of the text. LIKE
+# patterns entered with "matches" retain their normal escape syntax.
+$for =~ s/\\/\\\\/g if ($match == 0 || $match == 2);
 return $match == 0 ? "like ".&quote_sql_value("%$for%") :
        $match == 1 ? "like ".&quote_sql_value($for) :
        $match == 2 ? "not like ".&quote_sql_value("%$for%") :

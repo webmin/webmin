@@ -20,12 +20,12 @@ foreach my $host (@hosts) {
 	$sql = get_change_pass_sql($in{'newpass1'}, $user, $host);
 	eval {
 		local $main::error_must_die = 1;
-		&execute_sql_logged($master_db, $sql);
+		&execute_account_sql($master_db, $sql);
 		};
 	if ($@) {
 		# Try again with the new password
 		local $config{'pass'} = $in{'newpass1'};
-		&execute_sql_logged($master_db, $sql);
+		&execute_account_sql($master_db, $sql);
 		}
 	}
 

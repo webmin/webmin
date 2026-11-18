@@ -7,6 +7,7 @@ no warnings 'once';
 use Test::More;
 use File::Basename qw(dirname);
 use File::Spec;
+use File::Temp qw(tempfile);
 use Cwd qw(abs_path);
 
 BEGIN {
@@ -106,18 +107,6 @@ subtest 'escaped strings cannot end the quoted value early' => sub {
 		}
 };
 
-subtest 'quoting also survives double-quote backslash handling' => sub {
-	# execute_sql doubles backslashes between double quotes. That may
-	# change a value, but must never end the string early.
-	for my $value (@values, q{a"b\\'c" or 1=1 -- }, q{"\\"}) {
-		my $sql = main::escape_backslashes_in_quotes(
-			"'".main::escapestr($value)."' TAIL");
-		my ($got, $rest) = mysql_literal($sql);
-		ok(defined($got), 'the value is still one string');
-		is($rest, ' TAIL', 'nothing escapes the string');
-		}
-};
-
 subtest 'command line parameters are quoted the same way' => sub {
 	for my $value (@values) {
 		my $sql = main::replace_sql_parameters(
@@ -186,10 +175,13 @@ subtest 'table searches quote values and offsets' => sub {
 			$cond =~ s/^(not )?(like|>|<) // or
 				die "Unexpected $cond";
 			my ($got, $rest) = mysql_literal($cond);
-			my $want = $match == 0 || $match == 2 ?
-				"%$value%" : $value;
+			my $want = $value;
+			if ($match == 0 || $match == 2) {
+				$want =~ s/\\/\\\\/g;
+				$want = "%$want%";
+				}
 			is($got, $want, "mode $match quotes the search value");
-			is($rest, '', 'nothing follows the value');
+			is($rest, '', 'nothing follows the literal');
 			}
 		}
 	is(main::get_search_limit({ 'start' => '1;drop table x' }),
@@ -230,6 +222,35 @@ subtest 'privilege updates use the supplied account permissions' => sub {
 		});
 	is_deeply([ @{$calls[0]}[2..5] ], [ 'Y', 'N', 'localhost', 'test' ],
 		  'only the requested permission is set');
+	};
+
+subtest 'live table search and bound values' => sub {
+	my $socket = $ENV{'WEBMIN_TEST_MYSQL_SOCKET'};
+	plan skip_all => 'set WEBMIN_TEST_MYSQL_SOCKET to a disposable database socket'
+		unless $socket;
+	my $cli = $ENV{'WEBMIN_TEST_MYSQL_CLIENT'} || 'mysql';
+	local %main::config = ( mysql => $cli, sock => $socket );
+	local $main::authstr = '--no-defaults --socket='.quotemeta($socket).' -u root';
+	local $main::mysql_login = 'root';
+	local $main::mysql_quoted_sql = 1;
+	local *main::transname = sub { my ($f, $path) = tempfile(); return $path };
+	local *main::html_escape = sub { $_[0] };
+	local *main::text = sub { join(' ', @_) };
+	local *main::error = sub { die join(' ', @_) };
+	for my $driver (qw(mysql MariaDB cli)) {
+		local $main::driver_handle = $driver eq 'cli' ? undef :
+			eval { require DBI; DBI->install_driver($driver) };
+		next if $driver ne 'cli' && !$main::driver_handle;
+		local $main::driver_info = { opt => lc($driver) };
+		for my $v (q{Path "C:\Docs"}, q{Owner's notes}) {
+			my $literal = main::quote_sql_value($v);
+			my $search = main::make_like(0, $v);
+			my $row = main::execute_sql_safe('information_schema',
+				"select hex(?) as bytes, $literal $search as found", $v);
+			is_deeply($row->{'data'}->[0], [ uc(unpack('H*', $v)), 1 ],
+				  "$driver keeps the bytes and finds the original text");
+			}
+		}
 	};
 
 done_testing();

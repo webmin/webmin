@@ -115,8 +115,11 @@ subtest 'table searches quote the search value' => sub {
 				die "Unexpected $cond";
 			for my $standard (0, 1) {
 				my ($got, $rest) = pg_literal($cond, $standard);
-				my $want = $match == 0 || $match == 2 ?
-					"%$value%" : $value;
+				my $want = $value;
+				if ($match == 0 || $match == 2) {
+					$want =~ s/\\/\\\\/g;
+					$want = "%$want%";
+					}
 				is($got, $want, "mode $match quotes the value");
 				is($rest, '', 'nothing follows the value');
 				}
