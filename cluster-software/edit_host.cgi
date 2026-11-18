@@ -40,7 +40,8 @@ print "<tr> <td><b>$text{'host_count'}</b></td>\n";
 printf "<td>%d</td>\n", scalar(@packages);
 
 print "<td><b>$text{'host_os'}</b></td>\n";
-print "<td>$host->{'real_os_type'} $host->{'real_os_version'}</td> </tr>\n";
+print "<td>",&html_escape("$host->{'real_os_type'} $host->{'real_os_version'}"),
+      "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'host_system'}</b></td>\n";
 $system = $host->{'package_system'} || $software::config{'package_system'};
@@ -54,12 +55,12 @@ print "</table></td></tr></table>\n";
 print "<p></p><table width=100%><tr>\n";
 
 print "<td><form action=delete_host.cgi>\n";
-print "<input type=hidden name=id value=$in{'id'}>\n";
+print &ui_hidden("id", $in{'id'}),"\n";
 print "<input type=submit value='$text{'host_delete'}'>\n";
 print "</form></td>\n";
 
 print "<td align=right><form action=refresh.cgi>\n";
-print "<input type=hidden name=id value=$in{'id'}>\n";
+print &ui_hidden("id", $in{'id'}),"\n";
 print "<input type=submit value='$text{'host_refresh'}'>\n";
 print "</form></td>\n";
 
@@ -92,8 +93,10 @@ print "<table width=100%>\n";
 print "</table>\n";
 if ($hasclasses) {
 	print "<p></p>";
-	print &ui_link("closeall.cgi?id=$in{'id'}",$text{'host_close'}),"\n";
-	print &ui_link("openall.cgi?id=$in{'id'}",$text{'host_open'}),"<p>\n";
+	print &ui_link("closeall.cgi?id=".&urlize($in{'id'}),
+		       $text{'host_close'}),"\n";
+	print &ui_link("openall.cgi?id=".&urlize($in{'id'}),
+		       $text{'host_open'}),"<p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
@@ -105,9 +108,11 @@ print "<tr style='border-top: 1px solid #aaaaaa28'> <td>", $spacer x $_[1];
 if ($_[0]) {
 	print "<a name=\"$_[0]\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";
-	print "<a href=\"$act.cgi?id=$in{'id'}&what=",&urlize($_[0]),"\">";
+	print "<a href=\"$act.cgi?id=",&urlize($in{'id'}),
+	      "&what=",&urlize($_[0]),"\">";
 	$_[0] =~ /([^\/]+)$/;
-	print "<img border=0 src=images/$act.gif></a>&nbsp; $1</td>\n",
+	print "<img border=0 src=images/$act.gif></a>&nbsp; ",
+	      &html_escape($1),"</td>\n",
 	}
 else { print "<img src=images/close.gif> <i>$text{'host_all'}</i></td>\n"; }
 print "<td><br></td> </tr>\n";
@@ -117,9 +122,11 @@ if ($heiropen{$_[0]}) {
 		if ($i->{'class'} eq $_[0]) {
 			print "<tr style='border-top: 1px solid #aaaaaa28'> <td>", $spacer x ($_[1]+1);
 			print "<img border=0 src=images/pack.gif></a>&nbsp;\n";
+			# Package details come from the managed server
 			print "<a href=\"edit_pack.cgi?package=",
-			     &urlize($i->{'name'}),"\">$i->{'name'}</a></td>\n";
-			print "<td>$i->{'desc'}</td>\n";
+			     &urlize($i->{'name'}),"\">",
+			     &html_escape($i->{'name'}),"</a></td>\n";
+			print "<td>",&html_escape($i->{'desc'}),"</td>\n";
 			print "</tr>\n";
 			}
 		}
