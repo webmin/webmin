@@ -70,6 +70,7 @@ else {
 		}
 	elsif (defined($in{'virtual'})) {
 		# creating a virtual interface
+		$access{'virt'} || &error($text{'ifcs_ecannot_virt'});
 		$in{'virtual'} =~ /^\d+$/ ||
 			&error($text{'bifc_evirt'});
 		$in{'virtual'} >= $min_virtual_number ||
@@ -90,6 +91,7 @@ else {
 	elsif ($in{'name'} =~ /^((?:[a-z]+\d*(?:s\d*)?(?:\.\d+)?)|(?:en[0-9a-z]+(?:s\d*)?(?:\.\d+)?)):(\d+)$/) {
 		# also creating a virtual interface
 		local ($vname, $vnum) = ($1, $2);
+		$access{'virt'} || &error($text{'ifcs_ecannot_virt'});
 		foreach $eb (@boot) {
 			if ($eb->{'name'} eq $vname &&
 			    $eb->{'virtual'} eq $vnum) {

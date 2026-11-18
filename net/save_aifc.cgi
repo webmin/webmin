@@ -32,6 +32,7 @@ else {
 		}
 	elsif (defined($in{'virtual'})) {
 		# creating a virtual interface
+		$access{'virt'} || &error($text{'ifcs_ecannot_virt'});
 		$in{'virtual'} =~ /^\d+$/ ||
 			&error($text{'aifc_evirt'});
 		$in{'virtual'} >= $min_virtual_number ||
@@ -51,6 +52,7 @@ else {
 		}
 	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/) {
 		# also creating a virtual interface
+		$access{'virt'} || &error($text{'ifcs_ecannot_virt'});
 		foreach $ea (@acts) {
 			if ($ea->{'name'} eq $1 &&
 			    $ea->{'virtual'} eq $4) {
