@@ -128,10 +128,11 @@ return ui_link($url, $label);
 }
 
 # this_url()
-# Returns the URL in the nftables module for the current script
+# Returns the current script and query string, relative to the module
 sub this_url
 {
 my $url = $ENV{'SCRIPT_NAME'} || "";
+$url =~ s/^.*\///;
 my $query = $ENV{'QUERY_STRING'} || "";
 $url .= "?$query" if ($query ne "");
 return $url;
