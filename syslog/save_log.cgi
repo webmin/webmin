@@ -73,7 +73,7 @@ elsif ($in{'view'}) {
 	print "Refresh: $config{'refresh'}\r\n"
 		if ($config{'refresh'});
 	&ui_print_header("<tt>".&html_escape($file || $cmd)."</tt>",
-			 $in{'linktitle'} || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
+			 &html_escape($in{'linktitle'}) || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
 
 	$lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 	$filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
