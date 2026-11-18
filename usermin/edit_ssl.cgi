@@ -3,6 +3,7 @@
 # Webserver SSL form
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'ssl_title'}, "");
 &ReadParse();
 &get_usermin_miniserv_config(\%miniserv);

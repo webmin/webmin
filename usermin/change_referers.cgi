@@ -3,6 +3,7 @@
 # Change referer checking settings
 
 require './usermin-lib.pl';
+$access{'referers'} || &error($text{'acl_ecannot'});
 &ReadParse();
 
 &get_usermin_config(\%ugconfig);

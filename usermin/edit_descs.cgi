@@ -2,6 +2,7 @@
 # Show module description overrides
 
 require './usermin-lib.pl';
+$access{'descs'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'descs_title'}, undef);
 print "$text{'descs_info'}<p>\n";
 

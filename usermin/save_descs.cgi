@@ -2,6 +2,7 @@
 # Save module description overrides
 
 require './usermin-lib.pl';
+$access{'descs'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'descs_err'});
 

@@ -2,6 +2,7 @@
 # Replace the existing Webmin SSL key
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ReadParseMime();
 &error_setup($text{'savekey_err'});
 

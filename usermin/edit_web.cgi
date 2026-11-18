@@ -2,6 +2,7 @@
 # Show the web serving options form
 
 require './usermin-lib.pl';
+$access{'web'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'web_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 &get_usermin_config(\%uconfig);

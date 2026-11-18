@@ -3,6 +3,7 @@
 # Enable or disable SSL support
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'ssl_err'});
 

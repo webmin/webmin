@@ -2,6 +2,7 @@
 # Output the certificate in PEM or PKCS12 format
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 
 &get_usermin_miniserv_config(\%miniserv);

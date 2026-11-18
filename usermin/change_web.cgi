@@ -2,6 +2,7 @@
 # Save webserver options
 
 require './usermin-lib.pl';
+$access{'web'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'web_err'});
 &get_usermin_miniserv_config(\%miniserv);

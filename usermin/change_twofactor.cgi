@@ -2,6 +2,7 @@
 # Enable two-factor authentication
 
 require './usermin-lib.pl';
+$access{'twofactor'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'twofactor_err'});
 &get_usermin_miniserv_config(\%miniserv);

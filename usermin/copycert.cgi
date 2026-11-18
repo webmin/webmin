@@ -2,6 +2,7 @@
 # Copy Webmin's SSL settings
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'copycert_err'});
 

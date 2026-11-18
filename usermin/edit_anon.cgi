@@ -3,6 +3,7 @@
 # Display anonymous access form
 
 require './usermin-lib.pl';
+$access{'anon'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'anon_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 

@@ -2,6 +2,7 @@
 # Show an IP-specific SSL key
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &get_usermin_miniserv_config(\%miniserv);
 if ($in{'new'}) {

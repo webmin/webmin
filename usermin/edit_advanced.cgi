@@ -2,6 +2,7 @@
 # Display the advanced options form
 
 require './usermin-lib.pl';
+$access{'advanced'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'advanced_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 &get_usermin_config(\%uconfig);

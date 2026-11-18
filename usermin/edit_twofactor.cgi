@@ -2,6 +2,7 @@
 # Show two-factor authentication options
 
 require './usermin-lib.pl';
+$access{'twofactor'} || &error($text{'acl_ecannot'});
 ui_print_header(undef, $text{'twofactor_title'}, "", "twofactor");
 get_usermin_miniserv_config(\%miniserv);
 $miniserv{'session'} || &error($text{'twofactor_esession'});
