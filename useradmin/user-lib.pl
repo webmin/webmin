@@ -1722,6 +1722,66 @@ else {
 	}
 }
 
+=head2 restricted_user_acl(&acl)
+
+Returns 1 if the given ACL does not allow editing every user. Such admins
+cannot take over the UIDs, home directories or files of other users.
+
+=cut
+sub restricted_user_acl
+{
+my ($acl) = @_;
+return $acl->{'uedit_mode'} != 0;
+}
+
+# can_export_users_to_file(&acl)
+# A delegated file export needs a directory limit because Webmin writes as root.
+sub can_export_users_to_file
+{
+my ($acl) = @_;
+return 0 if ($acl->{'export'} != 2);
+return 1 if (!&restricted_user_acl($acl));
+my $home = $acl->{'home'};
+return 0 if (!$home || $home !~ m{^/});
+my $base = &simplify_path($home);
+return $base && $base ne '/' && &simplify_path(&resolve_links($home)) eq $base;
+}
+
+# write_delegated_export(home, path, &lines)
+# Write a private batch file inside the granted directory. Keep its parent
+# open as the working directory until the completed file has been renamed.
+sub write_delegated_export
+{
+my ($home, $path, $lines) = @_;
+require Cwd;
+require File::Temp;
+my ($parent, $name) = $path =~ m{\A(/.*)/([^/]+)\z};
+&error($text{'export_efile'}) if (!$name || $name eq '.' || $name eq '..' ||
+				  $path =~ /[\0\r\n]/);
+my $base = &simplify_path($home);
+my $previous = Cwd::getcwd();
+$previous && chdir($parent) || &error(&text('export_eopen', &html_escape($!)));
+my $dir = Cwd::getcwd();
+my $err;
+if (!$base || $base eq '/' || !defined($dir) ||
+    ($dir ne $base && index($dir, "$base/") != 0)) {
+	$err = $text{'export_efile2'};
+	}
+elsif (-l $name || (-e $name && !-f $name)) {
+	$err = $text{'export_efile3'};
+	}
+elsif (!&is_readonly_mode()) {
+	eval {
+		my $tmp = File::Temp->new(DIR => '.');
+		$tmp->print(@$lines) && $tmp->close() &&
+			rename($tmp->filename(), $name) || die "$!\n";
+		};
+	$err = &text('export_eopen', &html_escape($@)) if ($@);
+	}
+chdir($previous) || &error("Cannot return to $previous: $!");
+&error($err) if ($err);
+}
+
 =head2 refresh_nscd
 
 Sends a HUP signal to the nscd process, so that any caches are reloaded.

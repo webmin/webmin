@@ -80,6 +80,33 @@ write_global_acl(
 	fileunix => $remote_user,
 	);
 
+subtest 'server-side user export grants' => sub {
+	my %acl = ( 'export' => 2, 'uedit_mode' => 2, 'home' => abs_path($allowed) );
+	ok(can_export_users_to_file(\%acl), 'named users can be exported in a granted directory');
+	my $path = abs_path($allowed)."/export.txt";
+	write_delegated_export($acl{'home'}, $path, [ "first\n" ]);
+	write_delegated_export($acl{'home'}, $path, [ "second\n" ]);
+	is(read_file_contents($path), "second\n", 'a second export replaces the first');
+	is((stat($path))[2] & 0777, 0600, 'exported account details stay private');
+	{
+		no warnings qw(redefine once);
+		local *main::error = sub { die join('', @_)."\n" };
+		my $outside = abs_path($other)."/export.txt";
+		ok(!eval { write_delegated_export($acl{'home'}, $outside, [ 'row' ]); 1 },
+		   'the writer checks the actual destination directory');
+		ok(!-e $outside, 'nothing is written outside the directory grant');
+		}
+	for my $home ('', '/', '/./') {
+		local $acl{'home'} = $home;
+		ok(!can_export_users_to_file(\%acl), 'delegated export needs a bounded directory');
+		}
+	local $acl{'uedit_mode'} = 0;
+	local $acl{'home'} = '/';
+	ok(can_export_users_to_file(\%acl), 'full administrator keeps unrestricted export');
+	local $acl{'export'} = 1;
+	ok(!can_export_users_to_file(\%acl), 'browser-only export cannot write a file');
+	};
+
 subtest 'local batch file path ACLs' => sub {
 	%access = ( 'batchdir' => $allowed );
 	ok(can_read_batch_local_file("$allowed/batch.txt"),

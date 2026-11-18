@@ -9,7 +9,7 @@ $access{'export'} || &error($text{'export_ecannot'});
 
 # Validate inputs
 if ($in{'to'}) {
-	$access{'export'} == 2 || &error($text{'export_ecannot'});
+	&can_export_users_to_file(\%access) || &error($text{'export_ecannot'});
 	$in{'file'} =~ /^\/.+$/ || &error($text{'export_efile'});
 	&is_under_directory($access{'home'}, $in{'file'}) ||
 		&error($text{'export_efile2'});
@@ -28,9 +28,11 @@ elsif ($in{'mode'} == 8) {
 	$in{'gid2'} =~ /^\d*$/ || &error($text{'export_egid2'});
 	}
 
-# Open the output file
+# Delegated exports are written privately once all selected rows are ready.
+my $delegated = $in{'to'} && &restricted_user_acl(\%access);
+my @export_lines;
 if ($in{'to'}) {
-	&open_tempfile(OUT, ">$in{'file'}", 1) ||
+	$delegated || &open_tempfile(OUT, ">$in{'file'}", 1) ||
 		&error(&text('export_eopen', $!));
 	$fh = "OUT";
 	&ui_print_header(undef, $text{'export_title'}, "");
@@ -85,6 +87,9 @@ foreach $u (@ulist) {
 	if ($fh eq "STDOUT") {
 		print $fh join(":", "create", @line),"\n";
 		}
+	elsif ($delegated) {
+		push(@export_lines, join(":", "create", @line)."\n");
+		}
 	else {
 		&print_tempfile($fh, join(":", "create", @line),"\n");
 		}
@@ -93,7 +98,12 @@ foreach $u (@ulist) {
 
 if ($in{'to'}) {
 	# All done
-	&close_tempfile($fh);
+	if ($delegated) {
+		&write_delegated_export($access{'home'}, $in{'file'}, \@export_lines);
+		}
+	else {
+		&close_tempfile($fh);
+		}
 	@st = stat($in{'file'});
 	print "<p>",&text('export_done',
 		  $count, "<tt>".&html_escape($in{'file'})."</tt>",
