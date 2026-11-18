@@ -4,6 +4,10 @@
 
 require './mount-lib.pl';
 &ReadParse();
+$access{'browse'} || &error($text{'browse_ecannot'});
+# A leading dash would be read as a showmount option
+$in{'server'} =~ /^-/ &&
+	&error(&text('nfs_failed', &html_escape($in{'server'}), ""));
 &popup_header(&text('nfs_choose', &html_escape($in{'server'})));
 print <<EOF;
 <script>
@@ -17,7 +21,7 @@ EOF
 
 if ($error = &exports_list($in{'server'}, \@dirs, \@clients)) {
 	print "<b>",&text('nfs_failed', &html_escape($in{'server'}),
-			  "<p><tt>$error</tt><p>"),"</b>\n";
+			  "<p><tt>".&html_escape($error)."</tt><p>"),"</b>\n";
 	exit;
 	}
 print "<b>$text{'nfs_seldir'}</b>\n";
@@ -30,7 +34,10 @@ print "<tr $tb> <td><b>$text{'nfs_dir'}</b></td> ",
       "<td><b>$text{'nfs_clients'}</b></td> </tr>\n";
 for($i=0; $i<@dirs; $i++) {
 	print "<tr $cb>\n";
-	print "<td>".&ui_link("#", $dirs[$i], undef, "onClick='choose(\"$dirs[$i]\"); return false;'" );
+	# Remote names are untrusted, so escape them for HTML and JavaScript
+	print "<td>".&ui_link("#", &html_escape($dirs[$i]), undef,
+		"onClick='choose(\"".&quote_javascript($dirs[$i]).
+		"\"); return false;'");
 	print "</td>\n";
 	printf "<td>%s</td>\n",
 		length($clients[$i]) > 45 ?

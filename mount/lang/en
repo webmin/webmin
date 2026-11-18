@@ -84,6 +84,7 @@ swap_err=Failed to create swap file
 swap_esize='$1' is not a valid size
 
 nfs_server=Choose NFS Server..
+browse_ecannot=You are not allowed to browse for file servers and shares
 nfs_select=Select an NFS server to mount from..
 nfs_ip=IP Address
 nfs_host=Hostname

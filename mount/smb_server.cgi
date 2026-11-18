@@ -5,6 +5,7 @@
 
 require './mount-lib.pl';
 use Socket;
+$access{'browse'} || &error($text{'browse_ecannot'});
 &popup_header($text{'smb_choose'});
 print <<EOF;
 <script>
@@ -76,7 +77,11 @@ if (@names) {
 	print &ui_columns_start([ $text{'smb_name'}, $text{'smb_desc'} ]);
 	for($i=0; $i<@names; $i++) {
 		print &ui_columns_row([
-            &ui_link("#", $names[$i], undef, "onClick='choose(\"$names[$i]\");return false;'"),
+			# Server names come from the network browse list
+			&ui_link("#", &html_escape($names[$i]), undef,
+				 "onClick='choose(\"".
+				 &quote_javascript($names[$i]).
+				 "\");return false;'"),
 			&html_escape($comms[$i])
 			]);
 		}

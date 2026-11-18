@@ -5,6 +5,7 @@
 
 require './mount-lib.pl';
 use Socket;
+$access{'browse'} || &error($text{'browse_ecannot'});
 &popup_header($text{'nfs_server'});
 print <<EOF;
 <script>
@@ -54,10 +55,14 @@ if (@fromip) {
 	for($i=0; $i<@fromip; $i++) {
 		$fromhost = gethostbyaddr($fromaddr[$i], AF_INET);
         print "<tr $cb><td>";
-        print &ui_link("#", $fromip[$i], undef, "onClick='choose(\"".($fromhost ? $fromhost : $fromip[$i])."\");return false;'" );
+		# Reverse DNS names are untrusted
+		my $choice = $fromhost ? $fromhost : $fromip[$i];
+		print &ui_link("#", &html_escape($fromip[$i]), undef,
+			       "onClick='choose(\"".&quote_javascript($choice).
+			       "\");return false;'");
         print "</td>\n";
 		printf "<td>%s</td> </tr>\n",
-			$fromhost ? $fromhost : "<br>";
+			$fromhost ? &html_escape($fromhost) : "<br>";
 		}
 	print "</table>\n";
 	}
