@@ -7,6 +7,10 @@ require './apache-lib.pl';
 ($vconf, $v) = &get_virtual_config($in{'virt'});
 &can_edit_virt($v) || &error($text{'virt_ecannot'});
 $d = $vconf->[$in{'idx'}];
+# Only per-directory sections can be changed or deleted here
+$d && $d->{'type'} &&
+    $d->{'name'} =~ /^(Directory|Files|Location|Proxy)(Match)?$/i ||
+	&error($text{'cdir_egone'});
 &lock_file($d->{'file'});
 &before_changing();
 $conf = &get_config();
