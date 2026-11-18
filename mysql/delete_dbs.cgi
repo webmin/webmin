@@ -24,13 +24,12 @@ if (!$in{'confirm'}) {
 else {
 	# Delete the database permissions
 	foreach $hdu (@d) {
-		($host, $db, $user) = split(/ /, $hdu);
-		$access{'perms'} == 1 || &can_edit_db($db) ||
+		($host, $db, $user) = split(/ /, $hdu, -1);
+		$access{'perms'} == 1 || &can_edit_grant_db($db) ||
 			&error($text{'perms_edb'});
 		&execute_sql_logged($master_db,
-			     "delete from db where user = '$user' ".
-			     "and host = '$host' ".
-			     "and db = '$db'");
+			     "delete from db where user = ? and host = ? ".
+			     "and db = ?", $user, $host, $db);
 		}
 	&execute_sql_logged($master_db, 'flush privileges');
 

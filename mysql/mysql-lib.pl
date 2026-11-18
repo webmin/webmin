@@ -750,6 +750,15 @@ $db =~ s/\\_/_/g;
 return $db;
 }
 
+# can_edit_grant_db(db)
+# Returns 1 if the current user can manage privileges stored for a database
+# column value, in which escaped wildcards stand for the literal characters
+sub can_edit_grant_db
+{
+my ($db) = @_;
+return &can_edit_db(&unquote_mysql_database($db));
+}
+
 # escapestr(string)
 # Returns a string escaped for use inside single quotes in SQL. Backslashes are
 # escaped first, so that a backslash cannot escape the closing quote.

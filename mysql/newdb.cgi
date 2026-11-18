@@ -14,7 +14,8 @@ if ($access{'create'} == 2 && @titles >= $access{'max'}) {
 	&error($text{'newdb_ecannot2'});
 	}
 
-$in{'db'} =~ /^[A-z0-9\.\-\s]+$/ || &error($text{'newdb_edb'});
+$in{'db'} =~ /\A[A-Za-z0-9_. -]+\z/ &&
+    ($access{'dbs'} eq '*' || $in{'db'} !~ / /) || &error($text{'newdb_edb'});
 if (!$in{'table_def'}) {
 	@sql = &parse_table_form([ ], $in{'table'});
 	}

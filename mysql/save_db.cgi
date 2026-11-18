@@ -8,7 +8,7 @@ $access{'perms'} || &error($text{'perms_ecannot'});
 
 if ($in{'delete'}) {
 	# Delete some database
-	$access{'perms'} == 1 || &can_edit_db($in{'olddb'}) ||
+	$access{'perms'} == 1 || &can_edit_grant_db($in{'olddb'}) ||
 		&error($text{'perms_edb'});
 	&execute_sql_logged($master_db,
 		"delete from db where user = ? and host = ? and db = ?",
@@ -22,7 +22,10 @@ else {
 	$in{'host'} < 2 || $in{'host'} =~ /^\S+$/ ||
 		&error($text{'db_ehost'});
 	if ($access{'perms'} == 2 && $access{'dbs'} ne '*') {
-		$db = $in{'dbs'};
+		# Escape wildcards, so that the privileges apply only to the
+		# selected database and not to others with matching names
+		$db = &quote_mysql_database(
+			&unquote_mysql_database($in{'dbs'}));
 		}
 	else {
 		$db = $in{'db_def'} == 1 ? "" :
@@ -30,9 +33,9 @@ else {
 		$db =~ /^\S*$/ || &error($text{'db_edb'});
 		}
 	if ($access{'perms'} == 2) {
-		$in{'new'} || &can_edit_db($in{'olddb'}) ||
+		$in{'new'} || &can_edit_grant_db($in{'olddb'}) ||
 			&error($text{'perms_edb'});
-		&can_edit_db($db) || &error($text{'perms_edb'});
+		&can_edit_grant_db($db) || &error($text{'perms_edb'});
 		}
 
 	%perms = map { $_, 1 } split(/\0/, $in{'perms'});

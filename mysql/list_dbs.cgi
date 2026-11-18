@@ -24,7 +24,7 @@ if (@{$d->{'data'}}) {
 	$i = -1;
 	foreach $u (@{$d->{'data'}}) {
 		$i++;
-		next if ($access{'perms'} == 2 && !&can_edit_db($u->[1]));
+		next if ($access{'perms'} == 2 && !&can_edit_grant_db($u->[1]));
 		local @cols;
 		my $dbname = &unquote_mysql_database($u->[1]);
 		my $big_style = ' style="position: absolute; margin-top: -2px;"';
