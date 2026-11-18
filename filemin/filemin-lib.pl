@@ -1440,7 +1440,7 @@ my ($path, $depth) = @_;
 &filemin_walk_tree($path, $depth || 0, \&filemin_drop_setid_file);
 }
 
-# extract_in_private_dir(directory, overwrite, &command, [uid, gid])
+# extract_in_private_dir(directory, overwrite, &command, [uid, gid], [tar archive])
 # Runs an archive extraction command in a new private directory inside
 # directory, then moves the extracted entries into directory. The command
 # runs in the private directory, must extract into it, and returns a status.
@@ -1451,7 +1451,7 @@ my ($path, $depth) = @_;
 # bits. Returns the command's status, then any errors.
 sub extract_in_private_dir
 {
-my ($dir, $overwrite, $command, $uid, $gid) = @_;
+my ($dir, $overwrite, $command, $uid, $gid, $tar) = @_;
 my @errors;
 
 # Only extract into a real directory, never through a symlink
@@ -1513,8 +1513,22 @@ else {
 		}) if (!$status && ($chown || $strip));
 
 	# Move the entries into place
-	&filemin_merge_extracted($dir, $overwrite, \@tst, \@errors)
-		if (!$status);
+	if (!$status) {
+		my $modes;
+		# Only list the archive when merging with existing directories.
+		# Finish reading it before any member can replace the archive.
+		if ($tar && $overwrite) {
+			rewinddir($xdh);
+			if (grep { $_ ne '.' && $_ ne '..' && -d $_ && -d "$dir/$_" }
+			    readdir($xdh)) {
+				$modes = &filemin_tar_dirs($tar, $dir);
+				push(@errors, &text('extract_ecommand', &html_escape($tar)))
+					if (!$modes);
+				}
+			}
+		&filemin_merge_extracted($dir, $overwrite, \@tst, \@errors, $modes)
+			if (!@errors);
+		}
 
 	# Remove anything that was kept back or written next to the extraction
 	# directory
@@ -1542,7 +1556,60 @@ return @$st1 && @$st2 && $st1->[0] == $st2->[0] &&
        $st1->[1] == $st2->[1] ? 1 : 0;
 }
 
-# filemin_merge_extracted(destination, overwrite, &private-stat, &errors)
+# filemin_tar_dirs(archive, directory)
+# Lists explicit tar directories once, so implicit parents keep their mode.
+sub filemin_tar_dirs
+{
+my ($archive, $dir) = @_;
+my %dirs;
+local $ENV{'LC_ALL'} = 'C';
+open(my $fh, '-|', 'tar', 'tf', $archive) || return undef;
+my %escape = ( n => "\n", r => "\r", t => "\t", b => "\b",
+	       f => "\f", v => "\013", a => "\007", '\\' => '\\' );
+while (my $name = <$fh>) {
+	chomp($name);
+	next unless ($name =~ s{/+\z}{});
+	# tar lists control characters and literal backslashes as C escapes.
+	$name =~ s/\\([0-7]{3}|[nrtbfva\\])/
+		length($1) == 3 ? chr(oct($1)) : $escape{$1}/ge;
+	$name = join('/', grep { length && $_ ne '.' } split('/', $name));
+	$dirs{"$dir/$name"} = 1 if ($name ne '');
+	}
+return close($fh) ? \%dirs : undef;
+}
+
+# filemin_merge_directory(target, overwrite, &private-stat, &errors, [&modes],
+#                        &source-stat, &destination-stat)
+# Close group and other access before installing private files. Keep owner
+# access until the entries have been moved, then set the archived mode.
+sub filemin_merge_directory
+{
+my ($target, $overwrite, $tst, $errors, $modes, $src, $dst) = @_;
+my ($fh, $mode);
+if ($modes && $modes->{$target}) {
+	$mode = $src->[2] & 07777;
+	if (&filemin_restricted_root()) {
+		# A restricted root operator may only narrow existing permissions.
+		$mode = ($dst->[2] & 07000) | ($mode & $dst->[2] & 0777);
+		}
+	$mode = undef if ($mode == ($dst->[2] & 07777));
+	}
+if (defined($mode)) {
+	my $flags = Fcntl::O_RDONLY() | Fcntl::O_NONBLOCK() |
+		    (eval { Fcntl::O_NOFOLLOW() } || 0);
+	sysopen($fh, $target, $flags) &&
+		&filemin_same_file([ stat($fh) ], $dst) &&
+		chmod(($dst->[2] & 07000) | ($dst->[2] & ($mode | 0700) & 0777) |
+		      ($mode & 01000), $fh) ||
+		return &text('extract_emove', &html_escape($target), &html_escape("$!"));
+	}
+&filemin_merge_extracted($target, $overwrite, $tst, $errors, $modes);
+return &text('extract_emove', &html_escape($target), &html_escape("$!"))
+	if (defined($mode) && !chmod($mode, $fh));
+return undef;
+}
+
+# filemin_merge_extracted(destination, overwrite, &private-stat, &errors, [&modes])
 # Moves each entry of the current directory into destination, merging
 # directories that exist in both. Existing files and symlinks are replaced if
 # overwrite is true and kept otherwise. With undef, report each collision.
@@ -1550,7 +1617,7 @@ return @$st1 && @$st2 && $st1->[0] == $st2->[0] &&
 # directory is never merged into.
 sub filemin_merge_extracted
 {
-my ($dst, $overwrite, $tst, $errors) = @_;
+my ($dst, $overwrite, $tst, $errors, $modes) = @_;
 opendir(my $dh, ".") || return;
 my @names = grep { $_ ne '.' && $_ ne '..' } readdir($dh);
 foreach my $name (@names) {
@@ -1578,8 +1645,8 @@ foreach my $name (@names) {
 		elsif (opendir($sub, $name) && chdir($sub)) {
 			# Merge from the extracted directory found by lstat above
 			if (&filemin_same_file([ stat(".") ], \@sst)) {
-				&filemin_merge_extracted($target, $overwrite,
-							 $tst, $errors);
+				$err = &filemin_merge_directory($target, $overwrite,
+					$tst, $errors, $modes, \@sst, \@dst);
 				}
 			chdir($dh) || die "Failed to return to directory : $!";
 			closedir($sub);
@@ -1727,7 +1794,7 @@ foreach my $fref (@{$files_to_extract}) {
 
 	# Commands that extract into the current directory are run in a
 	# private directory, then their output is moved into place
-	my $cmd;
+	my ($cmd, $tar_archive);
 	if ($archive_type =~ /x-tar/ ||
 	    $archive_type =~ /-compressed-tar/) {
 		my $tar_cmd = has_command('tar');
@@ -1740,6 +1807,7 @@ foreach my $fref (@{$files_to_extract}) {
 				   '<tt>tar</tt>'));
 			}
 		else {
+			$tar_archive = $archive;
 			$cmd = "$tar_cmd xpf ".quotemeta($archive);
 			}
 		}
@@ -1754,6 +1822,7 @@ foreach my $fref (@{$files_to_extract}) {
 				   '<tt>tar</tt>'));
 			}
 		else {
+			$tar_archive = $archive;
 			$cmd = "$tar_cmd xjfp ".quotemeta($archive);
 			}
 		}
@@ -1860,7 +1929,7 @@ foreach my $fref (@{$files_to_extract}) {
 		my @eerrors;
 		($status, @eerrors) = &extract_in_private_dir(
 			$extract_to, 1, sub { return system($cmd); },
-			$> == 0 ? @aperms[4, 5] : ());
+			($> == 0 ? @aperms[4, 5] : (undef, undef)), $tar_archive);
 		push(@errors, @eerrors);
 		if ($status && !@eerrors) {
 			push(@errors, &text('extract_ecommand', &html_escape($name)));

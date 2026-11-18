@@ -14,13 +14,15 @@ $archive_type = clean_mimetype($full);
 # Most commands extract into the current directory, which is a private
 # directory that is then merged into the target
 my $target = $cwd;
-my $rpm;
+my ($rpm, $tar_archive);
 my $overwrite = 1;
 if ($archive_type =~ /x-bzip/) {
+	$tar_archive = $full;
 	$cmd = "tar xvjfp ".quotemeta($full);
 	}
 elsif ($archive_type =~
        /x-tar|\/gzip|x-xz|zstd|x-compressed-tar/) {
+	$tar_archive = $full;
 	$cmd = "tar xfp ".quotemeta($full);
 	}
 elsif ($archive_type =~ /x-7z/ ||
@@ -72,7 +74,7 @@ else {
 		$out = &backquote_logged(
 			"$cmd 2>&1 >/dev/null </dev/null");
 		return $?;
-		});
+		}, undef, undef, $tar_archive);
 	if ($status && $out =~ /\S/) {
 		unshift(@errors, &html_escape($out));
 		}

@@ -9,6 +9,7 @@ use FindBin;
 use File::Temp qw(tempdir);
 use File::Path qw(make_path);
 use File::Spec;
+use File::Basename qw(dirname);
 use Cwd qw(getcwd);
 use POSIX ();
 use Fcntl ();
@@ -63,7 +64,7 @@ return $s;
 foreach my $name (qw(test_allowed_paths filemin_restricted_root
 		     filemin_walk_tree filemin_drop_setid_file
 		     filemin_drop_setid extract_in_private_dir
-		     filemin_same_file filemin_merge_extracted
+		     filemin_same_file filemin_tar_dirs filemin_merge_directory filemin_merge_extracted
 		     filemin_rename_extracted filemin_decompress_command)) {
 	load_sub("$root/filemin/filemin-lib.pl", $name);
 	}
@@ -103,9 +104,10 @@ return $archive;
 sub extract
 {
 my ($archive, $dir, $overwrite, $cmd) = @_;
+my $tarfile = $cmd ? undef : $archive;
 $cmd ||= "$tar xpf ".quotemeta($archive);
 return extract_in_private_dir($dir, $overwrite,
-	sub { return system("$cmd 2>/dev/null"); });
+	sub { return system("$cmd 2>/dev/null"); }, undef, undef, $tarfile);
 }
 
 # leftovers(dir) lists private extraction directories left behind.
@@ -159,6 +161,7 @@ subtest 'second archive cannot write through a symlink' => sub {
 subtest 'normal archive merges into existing directories' => sub {
 	my $archive = make_tar('normal', sub {
 		make_path("$_[0]/dir/sub");
+		chmod(0700, "$_[0]/dir") && chmod(01775, "$_[0]/dir/sub") or die $!;
 		write_file("$_[0]/dir/new.txt", 'new');
 		write_file("$_[0]/dir/sub/deep.txt", 'deep');
 		write_file("$_[0]/top.txt", 'top from archive');
@@ -167,12 +170,18 @@ subtest 'normal archive merges into existing directories' => sub {
 		});
 	for my $overwrite (1, 0) {
 		my $case = "$task/normal-$overwrite/work";
-		make_path("$case/dir");
+		make_path("$case/dir/sub");
+		chmod(0755, "$case/dir/sub") or die $!;
+		chmod(0755, "$case/dir") or die $!;
 		write_file("$case/dir/keep.txt", 'unrelated');
 		write_file("$case/top.txt", 'existing');
 		my ($st, @err) = extract($archive, $case, $overwrite);
 		is($st, 0, 'archive extracts');
 		is_deeply(\@err, [], 'no errors are reported');
+		is((stat("$case/dir"))[2] & 0777, $overwrite ? 0700 : 0755,
+		   'only overwrite restores the archived directory mode');
+		is((stat("$case/dir/sub"))[2] & 07777, $overwrite ? 01775 : 0755,
+		   'overwrite restores the sticky bit on a shared directory');
 		is(read_file("$case/dir/keep.txt"), 'unrelated',
 		   'unrelated file in a merged directory is kept');
 		is(read_file("$case/dir/new.txt"), 'new', 'new file is added');
@@ -188,6 +197,20 @@ subtest 'normal archive merges into existing directories' => sub {
 		is_deeply([ leftovers($case) ], [],
 			  'private directory is removed');
 		}
+	};
+
+subtest 'a tar containing only a file keeps its parent permissions' => sub {
+	my $src = "$task/implicit-src";
+	my $dst = "$task/implicit-dst";
+	make_path("$src/team", "$dst/team");
+	chmod(0700, "$dst/team") or die $!;
+	write_file("$src/team/note", 'hello');
+	my $tarfile = "$task/implicit.tar";
+	system($tar, 'cf', $tarfile, '-C', $src, 'team/note') == 0 or die $!;
+	my ($status, @errors) = extract($tarfile, $dst, 1);
+	is($status, 0, 'file extracted');
+	is_deeply(\@errors, [], 'no merge errors');
+	is((stat("$dst/team"))[2] & 0777, 0700, 'private parent stays private');
 	};
 
 subtest 'extraction requiring confirmation reports a collision' => sub {
@@ -374,7 +397,7 @@ subtest 'single-file uploads' => sub {
 	local *main::unlink_file = sub { unlink($_[0]) };
 	for my $ext ('gz', 'xz') {
 		my $tool = $ext eq 'gz' ? 'gzip' : 'xz';
-		my $bin = `command -v $tool`;
+		my $bin = `command -v $tool 2>/dev/null`;
 		chomp($bin);
 		SKIP: {
 		skip "$tool unavailable", 1 unless $bin;
@@ -465,9 +488,23 @@ SKIP: {
 			is_deeply([ leftovers($cwd) ], [],
 				  'private directory is removed');
 			}
+		my $saved = make_tar('theme-mode', sub {
+			make_path("$_[0]/team");
+			chmod(0700, "$_[0]/team") or die $!;
+			});
+		$name = 'team.tar';
+		$cwd = $path = "$task/theme-mode";
+		make_path("$cwd/team");
+		chmod(0755, "$cwd/team") or die $!;
+		system('cp', $saved, "$cwd/$name") == 0 or die;
+		%in = (overwrite_efiles => 'true');
+		do "$theme/extensions/file-manager/extract.cgi";
+		die $@ if ($@);
+		is((stat("$cwd/team"))[2] & 0777, 0700, 'theme restores archived mode');
+
 		for my $ext ('gz', 'xz') {
 			my $tool = $ext eq 'gz' ? 'gzip' : 'xz';
-			my $bin = qx(command -v $tool);
+			my $bin = qx(command -v $tool 2>/dev/null);
 			chomp($bin);
 			next unless $bin;
 			local *main::mimetype = sub {
