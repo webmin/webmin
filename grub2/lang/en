@@ -173,6 +173,7 @@ defaults_etheme_member=The theme archive contains an unsafe or unsupported membe
 defaults_etheme_terminal=GRUB themes require graphical terminal output. Change Terminal output to Graphical terminal before saving this theme.
 defaults_ebackground_file=The GRUB background image $1 does not exist or cannot be read.
 defaults_ebackground_type=The GRUB background image $1 must be a PNG, JPEG, or TGA file.
+defaults_ebackground_link=The GRUB background image $1 must be a regular file, not a symbolic link.
 defaults_theme_note=Enter an existing theme.txt, a theme directory, a local .tar.gz or .zip archive, or an HTTP, HTTPS, or FTP URL. Webmin installs the theme under the configured GRUB theme directory in <tt>/boot</tt>. Use graphical terminal output for themes.
 defaults_background_note=Webmin copies this image under the configured GRUB background directory in <tt>/boot</tt> before saving it.
 theme_title=GRUB theme and appearance

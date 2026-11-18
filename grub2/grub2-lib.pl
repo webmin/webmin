@@ -9,7 +9,7 @@ use Cwd qw(abs_path);
 use File::Basename qw(basename dirname);
 use File::Find;
 use File::Path qw(make_path remove_tree);
-use Fcntl qw(O_CREAT O_EXCL O_WRONLY);
+use Fcntl qw(O_CREAT O_EXCL O_WRONLY O_RDONLY O_NOFOLLOW O_NONBLOCK);
 use Errno qw(EEXIST);
 
 our (%config, %text);
@@ -665,17 +665,42 @@ return ('', $err) if ($err);
 return ($dest);
 }
 
+# grub2_image_handle_type(&handle)
+# Returns png, jpeg or tga if an open file starts like that image type, and
+# rewinds the handle.
+sub grub2_image_handle_type
+{
+my ($fh) = @_;
+my $head = '';
+read($fh, $head, 18);
+seek($fh, 0, 0);
+return 'png' if ($head =~ /\A\x89PNG\r\n\x1a\n/);
+return 'jpeg' if ($head =~ /\A\xff\xd8\xff/);
+
+# TGA has no signature, so check the colour map and image type fields
+return 'tga' if (length($head) == 18 && ord(substr($head, 1, 1)) <= 1 &&
+		 substr($head, 2, 1) =~ /\A[\x01\x02\x03\x09\x0a\x0b]\z/);
+return;
+}
+
 # grub2_copy_background_file(source, destination)
 # Copies one regular image file into a GRUB-readable location.
 sub grub2_copy_background_file
 {
 my ($source, $dest) = @_;
-my $real = eval { abs_path($source) };
-return &text('defaults_ebackground_file', $source)
-	if (!$real || !-f $real || !-r $real);
 my $in;
-return "$source : $!" if (!CORE::open($in, '<', $real));
+# The copy is world-readable, so refuse symlinks and anything that is not a
+# regular image file. The file is opened without following a symlink so it
+# cannot be swapped after the checks.
+return &text('defaults_ebackground_link', $source) if (-l $source);
+return &text('defaults_ebackground_file', $source)
+	if (!-f $source ||
+	    !sysopen($in, $source, O_RDONLY | O_NOFOLLOW | O_NONBLOCK));
 CORE::binmode($in);
+if (!-f $in || !&grub2_image_handle_type($in)) {
+	close($in);
+	return &text('defaults_ebackground_type', $source);
+	}
 my $dir = &grub2_dirname($dest);
 make_path($dir, { mode => oct("0755") }) if ($dir ne '' && !-d $dir);
 open_tempfile(my $out, ">$dest");
