@@ -208,7 +208,8 @@ else {
                 @rules = grep { lc($_->{'chain'}) eq lc($c) }
                               @{$table->{'rules'}};
                 print "<b>",$text{"index_chain_".lc($c)} ||
-                            &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
+                            &text('index_chain', "<tt>".&html_escape($c).
+				  "</tt>"),"</b><br>\n";
 
                 # check if chain is filtered out
                 if ($config{'filter_chain'}) {
@@ -274,7 +275,8 @@ else {
 				local @cols;
 				local $act =
 				  $text{"index_jump_".lc($r->{'j'}->[1])} ||
-				  &text('index_jump', $r->{'j'}->[1]);
+				  &text('index_jump',
+					&html_escape($r->{'j'}->[1]));
 
                                 # check if chain jump TO is filtered out
                                 local $chain_filtered;
@@ -301,7 +303,7 @@ else {
 					$cmt = $config{'comment_mod'} ||
 					       $r->{'comment'} ?
 					    $r->{'comment'}->[1] : $r->{'cmt'};
-					push(@cols, $cmt);
+					push(@cols, &html_escape($cmt));
 					}
 
 				# Up/down mover
@@ -446,12 +448,12 @@ else {
 			my @h = split(/ /, $s->{'Header'});
 			# print matching pínet version
 			if ($h[1] =~ /inet${ipvx}$/) {
-				my @cols = ( "$h[0] $h[1]",
-					     $s->{'Name'},
-					     $s->{'Type'},
+				my @cols = ( &html_escape("$h[0] $h[1]"),
+					     &html_escape($s->{'Name'}),
+					     &html_escape($s->{'Type'}),
 					     $s->{'Number'} || 0,
-					     $h[5],
-					     $s->{'Size'} );
+					     &html_escape($h[5]),
+					     &html_escape($s->{'Size'}) );
 				print &ui_columns_row(\@cols);
 				}
 			}
