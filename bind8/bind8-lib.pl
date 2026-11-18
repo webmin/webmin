@@ -636,13 +636,47 @@ for(my $i=3; $i<@_; $i+=2) {
 return &ui_table_row($_[0], &ui_radio($_[1], $v, \@opts));
 }
 
+# Values that choice_input offers for each option saved by save_choice
+my %choice_values = (
+	'forward' => [ 'first', 'only' ],
+	'transfer-format' => [ 'one-answer', 'many-answers' ],
+	'dnssec-enable' => [ 'yes', 'no' ],
+	'dnssec-validation' => [ 'auto', 'yes', 'no' ],
+	'recursion' => [ 'yes', 'no' ],
+	'multiple-cnames' => [ 'yes', 'no' ],
+	'fetch-glue' => [ 'yes', 'no' ],
+	'auth-nxdomain' => [ 'yes', 'no' ],
+	'notify' => [ 'yes', 'no', 'explicit' ],
+	'check-names' => [ 'warn', 'fail', 'ignore' ],
+	'masterfile-format' => [ 'raw', 'text' ],
+	);
+
 # save_choice(name, &parent, indent)
 # Updates the config from a multi-value option
 sub save_choice
 {
 my $nd;
-if ($in{$_[0]}) { $nd = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] }; }
+if ($in{$_[0]}) {
+	# Only accept one of the values offered for this option, or a plain
+	# word for an option without a known list
+	my $values = $choice_values{$_[0]};
+	($values ? &indexof($in{$_[0]}, @$values) >= 0
+		 : $in{$_[0]} =~ /^[\w\-]+\z/) ||
+		&error(&text('echoice', &html_escape($in{$_[0]})));
+	$nd = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] };
+	}
 &save_directive($_[1], $_[0], $nd ? [ $nd ] : [ ], $_[2]);
+}
+
+# check_conf_value(value, ...)
+# Calls error if a value from a form could end a named.conf string, statement
+# or block. A whole double-quoted value is allowed, such as a key name.
+sub check_conf_value
+{
+foreach my $v (@_) {
+	$v =~ /^"[^"\\\r\n\0]*"\z/ || $v !~ /[\r\n\0"{};]|\\\z/ ||
+		&error(&text('econfvalue', &html_escape($v)));
+	}
 }
 
 # addr_match_input(text, name, &config)
@@ -671,6 +705,7 @@ else {
 	$in{$_[0]} =~ s/\r//g;
 	foreach my $addr (split(/\n+/, $in{$_[0]})) {
 		my ($n, @v) = split(/\s+/, $addr);
+		&check_conf_value($n, @v);
 		push(@vals, { 'name' => $n, 'values' => \@v });
 		}
 	$dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
@@ -731,6 +766,7 @@ else {
 sub save_port_address {
   my ($port, @vals, $dir, $n);
   my @sp = split(/\s+/, $in{$_[0]});
+  &check_conf_value(@sp);
   for(my $i=0; $i<@sp; $i++) {
 	$sp[$i] =~ /^\S+$/ || &error(&text('eipacl', &html_escape($sp[$i])));
 	if (lc($sp[$i+1]) eq "key") {
@@ -743,7 +779,12 @@ sub save_port_address {
 	}
   $dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
   ($n = $_[1]) =~ s/[^A-Za-z0-9_]/_/g;
-  $dir->{'values'} = [ $_[1], $in{$_[1]} ] if (!$in{"${n}_def"});
+  if (!$in{"${n}_def"}) {
+	# The port follows the list name as a single number
+	$in{$_[1]} =~ /^\d+\z/ ||
+		&error(&text('eport', &html_escape($in{$_[1]})));
+	$dir->{'values'} = [ $_[1], $in{$_[1]} ];
+	}
   &save_directive($_[2], $_[0], @vals ? [ $dir ] : [ ], $_[3]);
 }
 
@@ -752,6 +793,7 @@ sub save_address
 {
 my ($addr, @vals, $dir);
 my @sp = split(/\s+/, $in{$_[0]});
+&check_conf_value(@sp);
 for(my $i=0; $i<@sp; $i++) {
 	!$_[3] || &check_ipaddress($sp[$i]) ||
 		&error(&text('eip', &html_escape($sp[$i])));
@@ -834,6 +876,7 @@ elsif ($err = &{$_[1]}($in{$n})) {
 	&error($err);
 	}
 else {
+	&check_conf_value($in{$n});
 	$dir = { 'name' => $_[0], 'values' => [ $in{$n} ] };
 	&save_directive($_[2], $_[0], [ $dir ], $_[3]);
 	}

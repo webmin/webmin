@@ -594,6 +594,8 @@ listed=Listed ..
 eip='$1' is not a valid IP address
 eport='$1' is not a valid port number
 eipacl='$1' is not a valid IP address or ACL name
+echoice='$1' is not one of the allowed options
+econfvalue='$1' cannot contain line breaks, double quotes, braces or semicolons
 
 acl_zones=Domains this user can edit
 acl_zall=All zones
