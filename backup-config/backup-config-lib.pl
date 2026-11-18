@@ -22,6 +22,8 @@ our (%text, $module_config_directory, %config);
 
 our $cron_cmd = "$module_config_directory/backup.pl";
 our $backups_dir = "$module_config_directory/backups";
+# Path of the module manifests inside backup archives. The files themselves are
+# written to a private temporary directory, under this path.
 our $manifests_dir = "/tmp/backup-config-manifests";
 
 =head2 list_backup_modules
@@ -267,6 +269,24 @@ elsif ($mode == 4) {
 	}
 }
 
+=head2 create_manifests_root
+
+Creates a private temporary directory for module manifests, and the
+$manifests_dir path inside it. Returns the private directory, or undef if it
+could not be created.
+
+=cut
+sub create_manifests_root
+{
+my $root = &transname();
+mkdir($root, 0700) || return undef;
+if (!&make_dir($root.$manifests_dir, 0700, 1)) {
+	&unlink_file($root);
+	return undef;
+	}
+return $root;
+}
+
 =head2 execute_backup(&modules, dest, &size, &files, include-webmin, exclude-files, &others)
 
 Backs up the configuration files for the modules to the selected destination.
@@ -348,33 +368,37 @@ foreach my $f (@{$_[6]}) {
 		foreach my $sf (&expand_directory($f)) {
 			next if (!$sf);
 			push(@files, $sf);
-			push(@{$manifestfiles{"other"}}, $sf);
+			push(@{$manifestfiles{"_others"}}, $sf);
 			}
 		}
 	else {
 		# Just one file
 		push(@files, $f);
-		push(@{$manifestfiles{"other"}}, $f);
+		push(@{$manifestfiles{"_others"}}, $f);
 		}
 	}
 
-# Save the manifest files
-&execute_command("rm -rf ".quotemeta($manifests_dir));
-mkdir($manifests_dir, 0755);
+# Save the manifest files in a private directory, so that other users cannot
+# replace them or redirect the writes
+my $manroot = &create_manifests_root();
+$manroot || return $text{'backup_emanifests'};
 my @manifests;
 foreach $m (@mods, "_others") {
 	next if (!defined($manifestfiles{$m}));
-	my $man = "$manifests_dir/$m";
+	my $man = "$manroot$manifests_dir/$m";
 	my $fh;
 	&open_tempfile($fh, ">$man");
 	&print_tempfile($fh, map { "$_\n" } @{$manifestfiles{$m}});
 	&close_tempfile($fh);
-	push(@manifests, $man);
+	push(@manifests, substr($manifests_dir, 1)."/$m");
 	}
 
 # Make sure we have something to do
 @files = grep { $_ && -e $_ } @files;
-@files || (return $text{'backup_enone'});
+if (!@files) {
+	&unlink_file($manroot);
+	return $text{'backup_enone'};
+	}
 
 if (!$_[5]) {
 	# Call all module pre functions
@@ -383,6 +407,7 @@ if (!$_[5]) {
 		if (&foreign_defined($m, "pre_backup")) {
 			my $err = &foreign_call($m, "pre_backup", \@files);
 			if ($err) {
+				&unlink_file($manroot);
 				return &text('backup_epre', $desc{$m}, $err);
 				}
 			}
@@ -393,24 +418,32 @@ if (!$_[5]) {
 my $filestemp = &transname();
 my $fh;
 &open_tempfile($fh, ">$filestemp");
-foreach my $f (&unique(@files), @manifests) {
-	my $frel = $f;
-	$frel =~ s/^\///;
-	&print_tempfile($fh, $frel."\n");
+foreach my $f (&unique(@files)) {
+	# tar reads from the filesystem root and strips the leading slash
+	# from archived names. Manifests are relative to the private directory.
+	&print_tempfile($fh, ($f =~ m!^/! ? $f : "/$f")."\n");
 	}
 &close_tempfile($fh);
+
 my $qfile = quotemeta($file);
-my $out;
+my $members = quotemeta($filestemp);
+if (@manifests) {
+	$members .= " ".join(" ", map { quotemeta($_) } @manifests);
+	}
+my $cmd = "tar cfT $qfile $members";
 if (&has_command("gzip")) {
-	&execute_command("cd / ; tar cfT - $filestemp | gzip -c >$qfile",
-			 undef, \$out, \$out);
+	# Stream into gzip. Publish the compressed copy only if both commands
+	# succeed, including on shells that report just the last pipe status.
+	my $ok = quotemeta("$manroot/tar-ok");
+	my $gz = quotemeta("$manroot/backup.gz");
+	$cmd = "(tar cfT - $members && touch $ok) | gzip -c >$gz".
+	       " && test -f $ok && cat $gz >$qfile";
 	}
-else {
-	&execute_command("cd / ; tar cfT $qfile $filestemp",
-			 undef, \$out, \$out);
-	}
+my $out;
+&execute_command("cd ".quotemeta($manroot)." && $cmd", undef, \$out, \$out);
 my $ex = $?;
 &unlink_file($filestemp);
+&unlink_file($manroot);
 if ($ex) {
 	&unlink_file($file) if ($mode != 0);
 	return &text('backup_etar', "<pre>".&html_escape($out)."</pre>");
@@ -513,38 +546,61 @@ if ($?) {
 my @tarfiles = map { "/$_" } split(/\r?\n/, $out);
 my %tarfiles = map { $_, 1 } @tarfiles;
 
-# Extract manifests for each module
+# Extract manifests for each module into a private directory
 my %hasmod = map { $_, 1 } @$mods;
 $hasmod{"_others"} = 1;
-&execute_command("rm -rf ".quotemeta($manifests_dir));
-my $rel_manifests_dir = $manifests_dir;
-$rel_manifests_dir =~ s/^\///;
-if ($gzipped) {
-	&execute_command("cd / ; gunzip -c $qfile | tar xf - $rel_manifests_dir", undef, \$out, \$out);
+my $manroot = &create_manifests_root();
+if (!$manroot) {
+	&unlink_file($file) if ($mode != 0);
+	return $text{'backup_emanifests'};
 	}
-else {
-	&execute_command("cd / ; tar xf $qfile $rel_manifests_dir", undef, \$out, \$out);
+my $qmanroot = quotemeta($manroot);
+my @manifests = grep { /^[\w.-]+\z/ && $_ ne "." && $_ ne ".." &&
+		       $tarfiles{"$manifests_dir/$_"} } keys %hasmod;
+if (@manifests) {
+	my $names = join(" ", map { quotemeta(substr($manifests_dir, 1)."/".$_) }
+				  @manifests);
+	my $extract = $gzipped ? "gunzip -c $qfile | tar xf -" : "tar xf $qfile";
+	&execute_command("cd $qmanroot && $extract $names", undef, \$out, \$out);
+	if ($?) {
+		&unlink_file($manroot);
+		&unlink_file($file) if ($mode != 0);
+		return &text('backup_euntar', "<pre>".&html_escape($out)."</pre>");
+		}
 	}
-opendir(DIR, $manifests_dir);
 my $m;
 my %mfiles;
 my @files;
-while($m = readdir(DIR)) {
-	next if ($m eq "." || $m eq ".." || !$hasmod{$m});
-	open(MAN, "<$manifests_dir/$m");
+foreach $m (@manifests) {
+	my $path = "$manroot$manifests_dir/$m";
+	my $man;
+	if (-l $path || !-f $path || !open($man, "<", $path)) {
+		&unlink_file($manroot);
+		&unlink_file($file) if ($mode != 0);
+		return &text('backup_ereadmanifest', &html_escape($m));
+		}
 	my @mfiles;
-	while(<MAN>) {
+	while(<$man>) {
 		s/\r|\n//g;
 		if ($tarfiles{$_}) {
 			push(@mfiles, $_);
 			}
 		}
-	close(MAN);
+	close($man);
 	$mfiles{$m} = \@mfiles;
-	push(@files, @mfiles);
+	push(@files, @mfiles) if ($m ne "_others");
 	}
-closedir(DIR);
-push(@files, @$others) if ($others);
+&unlink_file($manroot);
+# Restore only the requested extra files. A directory may be recorded as
+# individual files, without an entry for the directory itself.
+foreach my $other (@{$others || []}) {
+	my $prefix = $other;
+	$prefix =~ s!/*\z!/!;
+	my @members = grep { $_ eq $other || index($_, $prefix) == 0 }
+			   @{$mfiles{"_others"} || []};
+	push(@files, @members ? @members : $other);
+	}
+@files = &unique(@files);
 if (!@files) {
 	&unlink_file($file) if ($mode != 0);
 	return $text{'backup_enone2'};
@@ -618,6 +674,7 @@ if ($apply && !$show) {
 	}
 
 @$files = split(/\n/, $out);
+&unlink_file($file) if ($mode != 0);
 return undef;
 }
 
