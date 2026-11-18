@@ -21,10 +21,11 @@ $limitsql = &get_search_limit(\%in);
 $d = &execute_sql($in{'db'},
 	"select * from ".&quote_table($in{'table'})." $search $sortsql $limitsql");
 
-# Work out the MIME type based on the data
+# Work out the MIME type based on the data. HTML is sent as plain text, so
+# that stored markup cannot run scripts in Webmin's origin.
 $data = $d->{'data'}->[$in{'row'}]->[$in{'col'}];
 if ($data =~ /^\s*(<!doctype|<html|<head|<title)/i) {
-	$type = "text/html";
+	$type = "text/plain";
 	}
 elsif ($data =~ /^GIF89/) {
 	$type = "image/gif";
@@ -41,6 +42,7 @@ elsif ($data =~ /^[\040-\176\r\n\t]+$/) {
 else {
 	$type = "application/octet-stream";
 	}
+print "X-Content-Type-Options: nosniff\n";
 print "Content-type: $type\n\n";
 print $data;
 
