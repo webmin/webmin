@@ -4,8 +4,10 @@
 
 require './quota-lib.pl';
 &ReadParse();
+$access{'ro'} && &error($text{'suser_efs'});
 $access{'default'} && &can_edit_filesys($in{'filesys'}) ||
 	&error($text{'ssync_ecannot'});
+grep { $_->[0] eq $in{'filesys'} } &list_filesystems() or &error($text{'suser_efs'});
 $bsize = &block_size($in{'filesys'});
 &lock_file("$module_config_directory/config");
 $v = join(' ', &quota_parse("sblocks", $bsize),
