@@ -328,7 +328,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			print &text('batch_enouser', $lnum, $line[1]),"\n";
 			next;
 			}
-		if (!&can_edit_user(\%access, $user)) {
+		if (!$access{'udelete'} || !&can_edit_user(\%access, $user)) {
 			print &text('batch_edaccess', $lnum,
 				    $text{'udel_euser'}),"\n";
 			next;
@@ -426,6 +426,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		if ($line[2] ne '') {
 			if (!$access{'urename'}) {
 				print &text('batch_erename', $lnum, $line[1]),"\n";
+				next;
 				}
 			$user{'user'} = $line[2];
 			}
