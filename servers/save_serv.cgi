@@ -29,7 +29,11 @@ if ($in{'delete'}) {
 	}
 else {
 	# validate inputs
-	$in{'host'} =~ /^\S+$/ || &error($text{'save_ehost'});
+	$in{'host'} =~ /^[A-Za-z0-9_][A-Za-z0-9_\-\.]*$/ ||
+		&check_ip6address($in{'host'}) || &error($text{'save_ehost'});
+	$in{'type'} eq $serv->{'type'} ||
+	    &indexof($in{'type'}, map { $_->[0] } &get_server_types()) >= 0 ||
+		&error($text{'save_etype'});
 	if ($in{'port_def'}) {
 		$in{'mode'} == 0 || &error($text{'save_eport2'});
 		}

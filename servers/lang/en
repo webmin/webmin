@@ -63,6 +63,7 @@ edit_same=Only available not in session authentication mode, and when the passwo
 save_err=Failed to save server
 save_ehost=Missing or invalid hostname
 save_ehost2=Host does not exist
+save_etype=Invalid server type
 save_eport=Missing or invalid port
 save_eport2=A port must be given if a link type with a login is selected
 save_euser=Missing username
