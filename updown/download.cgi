@@ -154,7 +154,8 @@ else {
 		print "<p>$text{'download_done'}<p>\n";
 		foreach $p (@paths) {
 			@st = stat($p);
-			print "<tt>$p</tt> ($st[7] bytes)<br>\n";
+			print "<tt>",&html_escape($p),"</tt> ",
+			      "($st[7] bytes)<br>\n";
 			}
 		}
 	if ($error) {

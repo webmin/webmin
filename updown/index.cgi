@@ -125,7 +125,7 @@ if ($can_download) {
 				push(@cols, "<font color=#ff0000>".
 				   ($count > 1 ? &text('index_upto',
 					$d->{'upto'}+1, $count)." " : "").
-				   "$d->{'error'}</font>");
+				   &html_escape($d->{'error'})."</font>");
 				&delete_download($d);
 				}
 			elsif (!defined($d->{'upto'})) {
