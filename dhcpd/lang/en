@@ -482,3 +482,5 @@ hdelete_ok=Delete Now
 
 
 __norefs=1
+save_eline=A DHCP setting contains an invalid line break or null character
+save_evalue=The DHCP setting $1 contains a quote, backslash, semicolon, comment or brace that is not allowed there

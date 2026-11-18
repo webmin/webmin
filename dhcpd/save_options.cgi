@@ -102,7 +102,8 @@ if ($config{'dhcpd_version'} >= 3) {
 		if ($in{"dtype_$i"} =~ /^[a-z0-9\s\.\-\_]+$/i) {
 			@dtypes = ( $in{"dtype_$i"} );
 			}
-		elsif ($in{"dtype_$i"} =~ /^\{.*\}$/) {
+		elsif ($in{"dtype_$i"} =~ /^\{[a-z0-9\s\.\-\_,]+\}$/i) {
+			# Record type, such as { ip-address, string }
 			@dtypes = split(/\s+/, $in{"dtype_$i"});
 			}
 		else {
