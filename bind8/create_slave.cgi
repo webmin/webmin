@@ -58,6 +58,12 @@ foreach my $z (&find("zone", $vconf)) {
 	}
 my $masterport = $in{'port_def'} ? undef : $in{'port'};
 my $masterkey = $in{'key_def'} ? undef : $in{'key'};
+# The port must be a number, and the key one that the form offers
+!defined($masterport) ||
+    $masterport =~ /^\d+\z/ && $masterport > 0 && $masterport < 65536 ||
+	&error(&text('edit_eport', &html_escape($masterport)));
+!$masterkey || (grep { $_->{'value'} eq $masterkey } &find("key", $conf)) ||
+	&error(&text('screate_ekey', &html_escape($masterkey)));
 my @masters = split(/\s+/, $in{'masters'});
 foreach my $m (@masters) {
 	&check_ipaddress($m) || &check_ip6address($m) ||

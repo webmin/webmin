@@ -226,6 +226,7 @@ screate_rev=Reverse (Addresses to Names)
 screate_dom=Domain name / Network
 screate_err1=Failed to create slave zone
 screate_err2=Failed to create stub zone
+screate_ekey='$1' is not an existing TSIG key
 
 recs_ecannot=You are not allowed to edit records in this zone
 recs_ecannottype=You are not allowed to edit records of this type
