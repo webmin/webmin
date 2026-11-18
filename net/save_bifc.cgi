@@ -9,6 +9,12 @@ require './net-lib.pl';
 if ($in{'delete'} || $in{'unapply'}) {
 	# Delete interface
 	&error_setup($text{'bifc_err1'});
+
+	# Users who must change boot-time and active interfaces together have
+	# to deactivate an interface when deleting it
+	$access{'delete'} || &error($text{'ifcs_ecannot_delete'});
+	!$access{'bootonly'} || $in{'unapply'} ||
+		&error($text{'ifcs_ecannot_active'});
 	$b = $boot[$in{'idx'}];
 	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 
@@ -51,6 +57,11 @@ if ($in{'delete'} || $in{'unapply'}) {
 else {
 	# Save or create interface
 	&error_setup($text{'bifc_err2'});
+
+	# Users who must change boot-time and active interfaces together have
+	# to activate an interface when saving it
+	!$access{'bootonly'} || $in{'activate'} ||
+		&error($text{'ifcs_ecannot_active'});
 	if (!$in{'new'}) {
 		# Modifying an interface
 		$oldb = $boot[$in{'idx'}];
