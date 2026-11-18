@@ -2066,13 +2066,14 @@ my %acl = (
 return $acl{$mapname} && $access{$acl{$mapname}};
 }
 
-# can_edit_alias_files(type)
+# can_edit_alias_files(type, file)
 # Checks alias and type permissions: 2 for address files, 5 for autoreplies,
 # or 6 for filters.
 sub can_edit_alias_files
 {
-my ($type) = @_;
-return $access{'aliases'} && $access{"aedit_$type"};
+my ($type, $file) = @_;
+return $access{'aliases'} && $access{"aedit_$type"} &&
+       (!$access{'dir'} || &is_under_directory($access{'dir'}, $file));
 }
 
 # map_chooser_button(field, mapname)
