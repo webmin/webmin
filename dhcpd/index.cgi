@@ -352,11 +352,13 @@ foreach $h (@host) {
 		push(@htitles, &html_escape($t));
 		if ($config{'show_ip'}) {
 			$fv = &fixedaddr($h);
-			$htitles[$#htitles] .= "<br>".$fv if ($fv);
+			$htitles[$#htitles] .= "<br>".&html_escape($fv)
+				if ($fv);
 			}
 		if ($config{'show_mac'}) {
 			local $hard = &find("hardware", $h->{'members'});
-			$htitles[$#htitles] .= "<br>$hard->{'values'}->[1]"
+			$htitles[$#htitles] .= "<br>".
+				&html_escape($hard->{'values'}->[1])
 				if ($hard);
 			}
 		$t = $htitles[$#htitles];
@@ -646,9 +648,9 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 	if ($config{'desc_name'} && $par{$h}->{'comment'}) {
 	    $parent = $par{$h}->{'comment'};
 	}
-	push(@cols, "$par_type  $parent");
-	push(@cols, $_[3]->[$i] ? &hardware($h) : "");
-	push(@cols, $_[3]->[$i] ? &fixedaddr($h) : "");
+	push(@cols, "$par_type  ".&html_escape($parent));
+	push(@cols, $_[3]->[$i] ? &html_escape(&hardware($h)) : "");
+	push(@cols, $_[3]->[$i] ? &html_escape(&fixedaddr($h)) : "");
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $_[5]->[$i]);
 	}
 print &ui_columns_end();
@@ -691,10 +693,10 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		}
 	push(@cols, $first);
 	push(@cols, $cmt) if ($hascmt);
-	push(@cols, $_[3]->[$i] ? &netmask($n) : "");
-	push(@cols, $n->{'comment'});
-	push(@cols, $par{$n} ? 
-		"$text{'index_toshared'} $par{$n}->{'values'}->[0]" : "");
+	push(@cols, $_[3]->[$i] ? &html_escape(&netmask($n)) : "");
+	push(@cols, &html_escape($n->{'comment'}));
+	push(@cols, $par{$n} ? "$text{'index_toshared'} ".
+			       &html_escape($par{$n}->{'values'}->[0]) : "");
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $_[5]->[$i]);
 	}
 print &ui_columns_end();

@@ -25,11 +25,12 @@ else {
 if ($in{'uidx'} ne '') {
 	my $s = $in{'sidx'} eq '' ? $conf->[$in{'uidx'}] :
 		   $conf->[$in{'sidx'}]->{'members'}->[$in{'uidx'}];
-	$desc = &text('ehost_subnet', $s->{'values'}->[0], $s->{'values'}->[2]);
+	$desc = &text('ehost_subnet', &html_escape($s->{'values'}->[0]),
+		      &html_escape($s->{'values'}->[2]));
 	}
 elsif ($in{'sidx'} ne '') {
 	local $s = $conf->[$in{'sidx'}];
-	$desc = &text('ehost_shared', $s->{'values'}->[0]);
+	$desc = &text('ehost_shared', &html_escape($s->{'values'}->[0]));
 	}
 &ui_print_header($desc, $in{'new'} ? $text{'ehost_crheader'} : $text{'ehost_eheader'}, "");
 
@@ -43,7 +44,8 @@ foreach $g (@group) {
 	push(@group_desc, &group_name($gm, $g));
 	$group_desc[$#group_desc-1] =~ s/&nbsp;/ /g;
 	$script3 .= "parent.options[$ig] = "
-		."new Option(\"$group_desc[$ig]\", $ig)\n"
+		."new Option(\""
+		.&quote_javascript($group_desc[$ig])."\", $ig)\n"
 		."parent.options[$ig].value = "
 		."new String(\"$g->{'index'}\")\n"
 			if &can('rw', \%access, $g);
@@ -56,7 +58,8 @@ foreach $g (@group) {
 foreach $u (@subn) {
 	push(@subn_desc, $u->{'values'}->[0]);
 	$script2 .= "parent.options[$iu] = "
-		."new Option(\"$subn_desc[$iu]\", $iu)\n"
+		."new Option(\""
+		.&quote_javascript($subn_desc[$iu])."\", $iu)\n"
 		."parent.options[$iu].value = "
 		."new String(\"$u->{'index'}\")\n"
 			if &can('rw', \%access, $u);
@@ -73,7 +76,8 @@ foreach $u (@subn) {
 		$group_desc[$#group_desc-1] =~ s/&nbsp;/ /g;
 		$subnet{$g} = $u->{'index'};
 		$script3 .= "parent.options[$ig] = "
-			."new Option(\"$group_desc[$ig]\", $ig)\n"
+			."new Option(\""
+			.&quote_javascript($group_desc[$ig])."\", $ig)\n"
 			."parent.options[$ig].value = "
 			."new String(\"$u->{'index'},$g->{'index'}\")\n"
 				if &can('rw', \%access, $g);
@@ -88,7 +92,8 @@ foreach $u (@subn) {
 foreach $s (@shar) {
 	push(@shar_desc, $s->{'values'}->[0]);
 	$script1 .= "parent.options[$is] = "
-		."new Option(\"$shar_desc[$is]\", $is)\n"
+		."new Option(\""
+		.&quote_javascript($shar_desc[$is])."\", $is)\n"
 		."parent.options[$is].value = "
 		."new String(\"$s->{'index'}\")\n"
 			if &can('rw', \%access, $s);
@@ -105,7 +110,8 @@ foreach $s (@shar) {
 		$group_desc[$#group_desc-1] =~ s/&nbsp;/ /g;
 		$shared{$g} = $s->{'index'};
 		$script3 .= "parent.options[$ig] = "
-			."new Option(\"$group_desc[$ig]\", $ig)\n"
+			."new Option(\""
+			.&quote_javascript($group_desc[$ig])."\", $ig)\n"
 			."parent.options[$ig].value = "
 			."new String(\"$s->{'index'},$g->{'index'}\")\n"
 				if &can('rw', \%access, $g);
@@ -120,7 +126,8 @@ foreach $s (@shar) {
 		push(@subn_desc, "$u->{'values'}->[0] $text{'ehost_in'} $s->{'values'}->[0]");
 		$shared{$u} = $s->{'index'};
 		$script2 .= "parent.options[$iu] = "
-			."new Option(\"$subn_desc[$iu]\", $iu)\n"
+			."new Option(\""
+			.&quote_javascript($subn_desc[$iu])."\", $iu)\n"
 			."parent.options[$iu].value = "
 			."new String(\"$s->{'index'},$u->{'index'}\")\n"
 				if &can('rw', \%access, $u);
@@ -139,7 +146,9 @@ foreach $s (@shar) {
 			$shared{$g} = $s->{'index'};
 			$subnet{$g} = $u->{'index'};
 			$script3 .= "parent.options[$ig] = "
-				."new Option(\"$group_desc[$ig]\", $ig)\n"
+				."new Option(\""
+				.&quote_javascript($group_desc[$ig])
+				."\", $ig)\n"
 				."parent.options[$ig].value = "
 				."new String(\"$s->{'index'},$u->{'index'},$g->{'index'}\")\n"
 					if &can('rw', \%access, $g);

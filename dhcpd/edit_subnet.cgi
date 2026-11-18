@@ -25,7 +25,7 @@ else {
 # display
 if ($in{'sidx'} ne "") {
 	local $s = $conf->[$in{'sidx'}];
-	$desc = &text('ehost_shared', $s->{'values'}->[0]);
+	$desc = &text('ehost_shared', &html_escape($s->{'values'}->[0]));
 	}
 &ui_print_header($desc, $in{'new'} ? $text{'esub_crheader'} : $text{'esub_edheader'}, "");
 

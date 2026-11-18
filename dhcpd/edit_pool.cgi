@@ -19,11 +19,11 @@ else { $sub = $conf->[$in{'uidx'}]; }
 
 # display
 if ($sub->{'name'} eq 'subnet') {
-	$desc = &text('ehost_subnet', $sub->{'values'}->[0],
-				      $sub->{'values'}->[2]);
+	$desc = &text('ehost_subnet', &html_escape($sub->{'values'}->[0]),
+				      &html_escape($sub->{'values'}->[2]));
 	}
 else {
-	$desc = &text('ehost_shared', $sub->{'values'}->[0]);
+	$desc = &text('ehost_shared', &html_escape($sub->{'values'}->[0]));
 	}
 if ($in{'new'}) {
 	&ui_print_header($desc, $text{'pool_create'}, "");

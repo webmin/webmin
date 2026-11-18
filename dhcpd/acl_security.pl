@@ -148,7 +148,8 @@ if (($nodetype eq 'hst')||($nodetype eq 'sub')||
 	my $sel = !$acc->{$aclname} || !&perm_to('r', $nodetype, $acc, $name) ? '' :
 		  &perm_to('rw', $nodetype, $acc, $name) ? 'rw' : 'r';
 	print &ui_table_row(
-		("&nbsp;" x $padding)." ".$node->{'name'}.": <b>$name</b>",
+		("&nbsp;" x $padding)." ".$node->{'name'}.": <b>".
+		&html_escape($name)."</b>",
 		&ui_radio($aclname, $sel,
 			  [ [ '', $text{'acl_na'} ],
 			    [ 'r', $text{'acl_r1'} ],
