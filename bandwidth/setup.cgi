@@ -5,9 +5,10 @@ require './bandwidth-lib.pl';
 &ReadParse();
 $access{'setup'} || &error($text{'setup_ecannot'});
 
-# Work out interface
+# Work out interface. The name goes into firewall commands and scripts, so
+# only allow characters used in interface names and the iptables + wildcard
 $iface = $in{'iface'} || $in{'other'};
-$iface =~ /^\S+$/ || &error($text{'setup_eiface'});
+$iface =~ /\A[A-Za-z0-9_][A-Za-z0-9_.:+-]*\z/ || &error($text{'setup_eiface'});
 
 # Add missing firewall rules
 $err = &setup_rules($iface);
