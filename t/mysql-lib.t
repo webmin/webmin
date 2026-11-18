@@ -428,6 +428,9 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		return $_[0] eq '/' || index($_[1], $_[0].'/') == 0;
 		};
 	local *main::foreign_installed = sub { return 1; };
+	local *main::foreign_require = sub { };
+	local *cron::list_cron_jobs = sub { () };
+	local *cron::parse_times_input = sub { };
 	local *main::save_module_config = sub { die "SAVED\n"; };
 	local *main::ui_print_header = sub { die "VALIDATED\n"; };
 	local *main::list_databases = sub { return ('testdb'); };
@@ -463,6 +466,27 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		do './mysql/backup_db.cgi';
 		like($@, qr/^\Q$expected\E\b/, $name);
 		}
+
+	# Reject the generated filename in the mock before mkdir can run.
+	my $dir = tempdir(CLEANUP => 1);
+	local %main::module_info;
+	local %main::access = (dbs => '*', buser => 'root', bpath => $dir);
+	local %main::in = (all => 1, file => $dir, mkdir => 1, where_def => 1,
+		charset_def => 1, compatible_def => 1);
+	local *main::date_subs = sub { $_[0] };
+	local *main::supports_backup_db = sub { 1 };
+	local *main::ui_print_header = sub { };
+	local *main::make_dir = sub { die "unexpected mkdir\n" };
+	local *main::is_under_directory = sub { $_[0] eq $_[1] };
+	do './mysql/backup_db.cgi';
+	like($@, qr/^backup_epath/, 'generated filename is checked before mkdir');
+	# Then a single-file destination that leaves the folder after date
+	# substitution must be refused.
+	local *main::date_subs = sub { '/elsewhere' };
+	$main::in{'all'} = 0;
+	$main::in{'db'} = 'testdb';
+	do './mysql/backup_db.cgi';
+	like($@, qr/^backup_epath/, 'expanded single-file destination is checked');
 };
 
 subtest 'binary log retention display round-trips exactly' => sub {

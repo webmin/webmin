@@ -17,16 +17,27 @@ $access{'buser'} || &error($text{'dbase_ecannot'});
 &error_setup($text{'backup_err'});
 
 # Cannot download all the DBs
-if ($in{'dest'} == 1 && $in{'all'}) {
+if ($in{'dest'} && $in{'all'}) {
 	&error($text{'backup_edownloadall'});
 	}
-if ($in{'dest'} == 1 && ($in{'sched'} || $in{'save'})) {
+# Downloads go to the browser, so they cannot be saved or scheduled
+if ($in{'dest'} && ($in{'sched'} || $in{'save'})) {
 	&error($text{'backup_edownloadsave'});
 	}
-# Apply the path restriction to both immediate and saved backups.
-if (!$in{'dest'} && !&is_under_directory($access{'bpath'}, $in{'file'})) {
-	&error($text{'backup_epath'}."<br>".
-	       &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
+# check_path(path)
+# Stops with an error unless the path is under the allowed backup folder.
+my $check_path = sub {
+	my ($path) = @_;
+	&is_under_directory($access{'bpath'}, $path) ||
+		&error($text{'backup_epath'}."<br>".
+		       &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
+	};
+# Check the destination before and after expanding dates and templates.
+my $local_path;
+if (!$in{'dest'}) {
+	$check_path->($in{'file'});
+	$local_path = &date_subs($in{'file'});
+	$check_path->($local_path);
 	}
 # Dump options can create files directly and bypass output restrictions.
 if ($in{'parameters'} &&
@@ -187,21 +198,31 @@ if (!$in{'save'}) {
 			goto donebackup;
 			}
 		}
+	# Keep the current Unix user unless the backup uses a different writer.
+	my $writer = &mysql_command_unix_user();
 	foreach $db (@dbs) {
 		my $deletefile = 0;
 		if ($in{'all'}) {
 			# File in a directory
-			$dir = &date_subs($in{'file'});
+			$dir = $local_path;
 			$prefix = &date_subs($in{'prefix'});
-			&make_dir($dir, 0755) if ($in{'mkdir'});
 			$file = $dir."/".$prefix.$db.".sql".
 				($in{'compress'} == 1 ? ".gz" :
 				 $in{'compress'} == 2 ? ".bz2" : "");
+			# The prefix and database name may hold path parts,
+			# so check the full filename too
+			$check_path->($file);
+			if ($in{'mkdir'}) {
+				# Create the folder as the dump writer, so only
+				# their permissions apply
+				my $mkdir = sub { &make_dir($dir, 0755) };
+				$writer ? &eval_as_unix_user($writer, $mkdir) : $mkdir->();
+				}
 			$deletefile = 1;
 			}
 		elsif (!$in{'dest'}) {
 			# Single file
-			$file = &date_subs($in{'file'});
+			$file = $local_path;
 			$deletefile = 1;
 			}
 		else {
@@ -231,7 +252,11 @@ if (!$in{'save'}) {
 				next;
 				}
 			}
-		&unlink_file($file) if ($deletefile);
+		if ($deletefile) {
+			# Remove the old dump as the writer.
+			my $unlink = sub { &unlink_file($file) };
+			$writer ? &eval_as_unix_user($writer, $unlink) : $unlink->();
+			}
 		local $err = &backup_database($db, $file, $in{'compress'},
 			$in{'drop'}, $in{'where_def'} ? undef : $in{'where'},
 			$in{'charset_def'} ? undef : $in{'charset'},
