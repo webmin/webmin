@@ -25,6 +25,13 @@ my $desc = &text('findfree_header', &zone_subhead($zone));
 &find_ips($in{'zone'}, $in{'from'}, $in{'to'}, $in{'cf'});
 
 if ($in{'from'} && $in{'to'}) {
+   # Bound both the result set and the number of generated records in memory.
+   &check_ipaddress($in{'from'}) && &check_ipaddress($in{'to'}) ||
+	&error($text{'findfree_erange'});
+   my ($first, $last) = map { unpack("N", pack("C4", split(/\./, $_))) }
+			    @in{'from', 'to'};
+   $last >= $first && $last - $first < 65536 || &error($text{'findfree_erange'});
+   my $generated = 0;
    # Do the search
    my @allrecs = &read_zone_file($file, $dom);
    my @recs = grep { ($_->{'type'} eq 'A') || ($_->{'type'} eq 'PTR')} @allrecs;
@@ -39,6 +46,9 @@ if ($in{'from'} && $in{'to'}) {
 		$start = $1; $end = $2; $skip = 1;
 		}
 	else { next; }
+	$skip > 0 && $end >= $start || &error($text{'findfree_egenerate'});
+	$generated += int(($end - $start) / $skip) + 1;
+	$generated <= 65536 || &error($text{'findfree_egenerate'});
 	for(my $i=$start; $i<=$end; $i+=$skip) {
 		my $lhs = $gv[1];
 		$lhs =~ s/\$\$/\0/g;
