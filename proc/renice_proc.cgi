@@ -5,7 +5,7 @@
 require './proc-lib.pl';
 &ReadParse();
 &switch_acl_uid();
-&error_setup(&text('renice_err', $in{pid}));
+&error_setup(&text('renice_err', &html_escape($in{pid})));
 %pinfo = &process_info($in{pid});
 
 # Set nice level
@@ -21,5 +21,5 @@ if (defined($in{'sclass'})) {
 	}
 
 &webmin_log("renice", undef, undef, \%in);
-&redirect("edit_proc.cgi?$in{pid}");
+&redirect("edit_proc.cgi?".&urlize($in{pid}));
 
