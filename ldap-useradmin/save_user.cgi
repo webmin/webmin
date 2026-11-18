@@ -105,7 +105,16 @@ elsif ($in{'delete'}) {
 		if ($in{'delhome'}) {
 			print "$text{'udel_home'}<br>\n";
 			$home = $uinfo->get_value("homeDirectory");
-			if (-d $home && $home ne "/") {
+			if (-d $home && $home ne "/" &&
+			    !&useradmin::can_change_home_directory(
+					\%access, \%uhash, $home)) {
+				# Restricted admins cannot delete a directory
+				# that the user did not own
+				print &text('udel_ehomeowner',
+				    "<tt>".&html_escape($home)."</tt>"),
+				    "<br>\n";
+				}
+			elsif (-d $home && $home ne "/") {
 				local $realhome = &resolve_links($home);
 				local $qhome = quotemeta($realhome);
 				system("rm -rf $qhome >/dev/null 2>&1");
@@ -231,6 +240,59 @@ else {
 		# Check for a clash
 		&check_group_used($ldap, $grp) &&
 			&error(&text('usave_einuseg', $grp));
+		$access{'gcreate'} || &error($text{'usave_egcreate'});
+		}
+
+	# Apply the same UID limits as the Users and Groups module
+	if ($in{'new'} || $uid != $ouser{'uid'}) {
+		!$access{'lowuid'} || $uid >= $access{'lowuid'} ||
+			&error(&text('usave_elowuid', $access{'lowuid'}));
+		!$access{'hiuid'} || $uid <= $access{'hiuid'} ||
+			&error(&text('usave_ehiuid', $access{'hiuid'}));
+		$in{'new'} || $access{'uuid'} || &error($text{'usave_euuid'});
+		if (!$in{'new'} && !$access{'umultiple'}) {
+			&check_uid_used($ldap, $uid) &&
+				&error($text{'usave_euidused2'});
+			}
+		$err = &useradmin::check_user_uid_owner(\%access, $uid,
+			$in{'new'} ? $user : $ouser{'user'}, [ &list_users() ]);
+		&error($err) if ($err);
+		}
+
+	# Check the shell, unless it is unchanged
+	if ($access{'shells'} ne '*' &&
+	    ($in{'new'} || $shell ne $ouser{'shell'})) {
+		&indexof($shell, split(/\s+/, $access{'shells'})) >= 0 ||
+			&error(&text('usave_eshell', &html_escape($shell)));
+		}
+
+	# Check the primary group, unless a new one is being created
+	if ($access{'ugroups'} ne '*' && $in{'gidmode'} == 0 &&
+	    ($in{'new'} || $gid != $ouser{'gid'})) {
+		&useradmin::can_use_group(\%access, $grp) ||
+			&error(&text('usave_eprimary', &html_escape($grp)));
+		if (!$in{'new'}) {
+			my $og = &all_getgrgid($ouser{'gid'});
+			&useradmin::can_use_group(\%access, $og) ||
+				&error(&text('usave_eprimaryr',
+					     &html_escape($og)));
+			}
+		}
+
+	# Secondary group changes must also use allowed groups
+	if ($config{'secmode'} != 1 && $access{'ugroups'} ne '*') {
+		my %wanted = map { $_, 1 } ($config{'secmode'} == 2 ?
+				split(/\s+/, $in{'sgid'}) :
+				split(/\r?\n/, $in{'sgid'}));
+		foreach my $g (&list_groups()) {
+			my $was = !$in{'new'} && &indexof($ouser{'user'},
+					split(/,/, $g->{'members'})) >= 0;
+			next if (!$was == !$wanted{$g->{'group'}});
+			&useradmin::can_use_group(\%access, $g->{'group'}) ||
+				&error(&text($was ? 'usave_esecondaryr' :
+						    'usave_esecondary',
+					     &html_escape($g->{'group'})));
+			}
 		}
 
 	# Compute and validate home directory
@@ -248,6 +310,12 @@ else {
 	else {
 		$home = $in{'home'};
 		$home =~ /^\// || &error(&text('usave_ehome', $home));
+
+		# Restricted admins cannot use the base or another user's home
+		$err = &useradmin::check_user_home(\%access, $home,
+			$in{'new'} ? undef : $ouser{'home'}, $ouser{'user'},
+			[ &list_users(), &useradmin::list_users() ]);
+		&error($err) if ($err);
 		}
 	if (!$access{'autohome'}) {
 		$home =~ /^\// || &error(&text('usave_ehome', $home));
@@ -303,6 +371,8 @@ else {
 			 'home' => $home,
 			 'firstname' => $firstname,
 			 'lastname' => $lastname );
+
+	&can_edit_user(\%uhash) || &error($text{'usave_eedit'});
 
 	if ($in{'new'}) {
 		defined(&all_getpwnam($user)) &&
@@ -428,8 +498,10 @@ else {
 			$ldap = &ldap_connect();
 			}
 
-		# Copy files into user's directory
-		if ($in{'makehome'} && $mconfig{'user_files'}) {
+		# Copy files into user's directory, unless it is an existing
+		# directory that belongs to someone else
+		if ($in{'makehome'} && $mconfig{'user_files'} &&
+		    &useradmin::can_change_home_directory(\%access, \%uhash)) {
 			local $uf = $mconfig{'user_files'};
 			local $shell = $user{'shell'}; $shell =~ s/^(.*)\///g;
 			$uf =~ s/\$group/$in{'gid'}/g;

@@ -35,9 +35,11 @@ $schema = $ldap->schema();
 $pft = $schema->attribute("shadowLastChange") ? 2 : 0;
 &lock_user_files();
 
-# Work out a good base UID for new users
-$newuid = $mconfig{'base_uid'};
-$newgid = $mconfig{'base_gid'};
+# Work out a good base UID and GID for new users, within the ACL limits
+$newuid = int($mconfig{'base_uid'} > $access{'lowuid'} ?
+	      $mconfig{'base_uid'} : $access{'lowuid'});
+$newgid = int($mconfig{'base_gid'} > $access{'lowgid'} ?
+	      $mconfig{'base_gid'} : $access{'lowgid'});
 @glist = &list_groups();
 
 # Process the file
@@ -128,7 +130,13 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		$user{'gid'} = $gids[0];
 		local $grp = &all_getgrgid($gids[0]);
 
-		if ($line[6] eq '' && $mconfig{'home_base'}) {
+		local $manual_home = 0;
+		if ($access{'autohome'}) {
+			# Home directory is forced by the ACL
+			$user{'home'} = &auto_home_dir(
+				$access{'home'}, $user{'user'}, $grp);
+			}
+		elsif ($line[6] eq '' && $mconfig{'home_base'}) {
 			# Choose home dir automatically
 			$user{'home'} = &auto_home_dir(
 				$mconfig{'home_base'}, $user{'user'}, $user{'gid'});
@@ -140,6 +148,7 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		else {
 			# Use given home dir
 			$user{'home'} = $line[6];
+			$manual_home = 1;
 			}
 
 		# Work out secondary group membership
@@ -151,6 +160,34 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 				    grep { $_->{'gid'} eq $gids[$i] } @glist;
 				push(@secs, $group) if ($group);
 				}
+			}
+
+		# Apply the same restrictions as the user editor
+		local @ulist = &list_users();
+		local $ch = &check_user(\%user) ||
+			    &useradmin::check_user_uid_owner(\%access,
+				$user{'uid'}, $user{'user'}, \@ulist);
+		if (!$ch && $manual_home) {
+			$ch = &useradmin::check_user_home(\%access,
+				$user{'home'}, undef, $user{'user'},
+				[ @ulist, &useradmin::list_users() ]);
+			}
+		if (!$ch && $user{'gid'} !~ /^\d+$/ && !$access{'gcreate'}) {
+			$ch = $text{'usave_egcreate'};
+			}
+		local ($denied) = grep { $access{'ugroups'} ne '*' &&
+			!&useradmin::can_use_group(\%access, $_->{'group'}) }
+			@secs;
+		if (!$ch && $denied) {
+			$ch = &text('usave_esecondary',
+				    &html_escape($denied->{'group'}));
+			}
+		if (!$ch && !&can_edit_user(\%user)) {
+			$ch = $text{'usave_eeditafter'};
+			}
+		if ($ch) {
+			print &text('batch_ecaccess', $lnum, $ch),"\n";
+			next;
 			}
 
 		# Work out password
@@ -271,8 +308,10 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		$other_err = $@;
 		$error_must_die = 0;
 
-		if ($in{'copy'} && $in{'makehome'}) {
-			# Copy files to user's home directory
+		if ($in{'copy'} && $in{'makehome'} &&
+		    &useradmin::can_change_home_directory(\%access, \%user)) {
+			# Copy files to user's home directory, unless it is
+			# an existing directory owned by someone else
 			local $uf = $mconfig{'user_files'};
 			local $shell = $user{'shell'}; $shell =~ s/^(.*)\///g;
 			if ($group = &all_getgrgid($user{'gid'})) {
@@ -363,17 +402,23 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 				"ou=$user->{'user'}, $config{'addressbook'}");
 			}
 
-		# Delete his home directory
-		if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/) {
+		# Delete his home directory, unless this restricted admin would
+		# remove a directory the user did not own
+		if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
+		    !&useradmin::can_change_home_directory(\%access, $user)) {
+			print &text('udel_ehomeowner',
+				    &html_escape($user->{'home'})),"\n";
+			}
+		elsif ($in{'delhome'} && $user->{'home'} !~ /^\/+$/) {
 			if ($mconfig{'delete_only'}) {
 				&lock_file($user->{'home'});
-				&system_logged("find \"$user->{'home'}\" ! -type d -user $user->{'uid'} | xargs rm -f >/dev/null 2>&1");
-				&system_logged("find \"$user->{'home'}\" -type d -user $user->{'uid'} | xargs rmdir >/dev/null 2>&1");
+				&system_logged("find ".quotemeta($user->{'home'})." ! -type d -uid ".quotemeta($user->{'uid'})." -exec rm -f {} \\; >/dev/null 2>&1");
+				&system_logged("find ".quotemeta($user->{'home'})." -depth -type d -uid ".quotemeta($user->{'uid'})." -exec rmdir {} \\; >/dev/null 2>&1");
 				rmdir($user->{'home'});
 				&unlock_file($user->{'home'});
 				}
 			else {
-				&system_logged("rm -rf \"$user->{'home'}\" >/dev/null 2>&1");
+				&system_logged("rm -rf ".quotemeta($user->{'home'})." >/dev/null 2>&1");
 				}
 			}
 
@@ -448,6 +493,23 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 			} elsif ($line[3] ne ''){
 			    $user{'change'}= int(time() / (60*60*24));
 			    }
+			}
+
+		# Apply the same restrictions as the user editor
+		local $ch = &check_user(\%user, \%olduser);
+		if (!$ch && $user{'uid'} != $olduser{'uid'}) {
+			$ch = &useradmin::check_user_uid_owner(\%access,
+				$user{'uid'}, $olduser{'user'}, \@ulist);
+			}
+		$ch ||= &useradmin::check_user_home(\%access, $user{'home'},
+			$olduser{'home'}, $olduser{'user'},
+			[ @ulist, &useradmin::list_users() ]);
+		if (!$ch && !&can_edit_user(\%user)) {
+			$ch = $text{'usave_eeditafter'};
+			}
+		if ($ch) {
+			print &text('batch_emaccess', $lnum, $ch),"\n";
+			next;
 			}
 
 		# Work out Samba properties
@@ -586,21 +648,26 @@ if (!$access{'autohome'}) {
 		return &text('usave_ehomepath', $_[0]->{'home'});
 		}
 	}
+elsif ($_[1] && $_[1]->{'home'} ne $_[0]->{'home'}) {
+	# Automatic homes cannot be changed by hand
+	return &text('usave_ehomepath', $_[0]->{'home'});
+	}
 
-# check for invalid shell
+# check for invalid shell, unless it is unchanged
 if ($access{'shells'} ne '*' &&
+    (!$_[1] || $_[1]->{'shell'} ne $_[0]->{'shell'}) &&
     &indexof($_[0]->{'shell'}, split(/\s+/, $access{'shells'})) < 0) {
 	return &text('usave_eshell', $_[0]->{'shell'});
 	}
 
 # check for invalid primary group (unless one is dynamically assigned)
-if ($user{'gid'} ne '') {
+if ($_[0]->{'gid'} =~ /^\d+$/ && $access{'ugroups'} ne '*') {
 	local $ng = &all_getgrgid($_[0]->{'gid'});
-	local $ni = &can_use_group(\%access, $ng);
+	local $ni = &useradmin::can_use_group(\%access, $ng);
 	if ($_[1]) {
 		if ($_[1]->{'gid'} != $_[0]->{'gid'}) {
 			local $og = &all_getgrgid($_[1]->{'gid'});
-			local $oi = &can_use_group(\%access, $og);
+			local $oi = &useradmin::can_use_group(\%access, $og);
 			if (!$ni) { return &text('usave_eprimary', $ng); }
 			if (!$oi) { return &text('usave_eprimaryr', $og); }
 			}
