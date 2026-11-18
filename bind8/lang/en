@@ -391,6 +391,7 @@ create_emaster='$1' is not a valid master server address
 create_enone=You must enter at least one master server
 
 boot_err=Download failed
+boot_ecannot=You are not allowed to initialize the DNS configuration
 boot_egzip=The root zone file is compressed, but the <tt>gzip</tt> command is not installed on your system!
 boot_egzip2=Uncompression of root zone file failed : $1
 

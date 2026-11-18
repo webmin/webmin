@@ -72,6 +72,8 @@ my $chroot = &get_chroot() || "";
 
 # If the named.conf file does not exist, offer to create it
 if ($need_create) {
+	$access{'defaults'} && !$access{'ro'} && !$access{'noconfig'} ||
+		&error($text{'boot_ecannot'});
 	print &text('index_eempty',
 		    "<tt>".&make_chroot($config{'named_conf'})."</tt>"),"<p>\n";
 
