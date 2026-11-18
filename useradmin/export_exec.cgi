@@ -96,7 +96,8 @@ if ($in{'to'}) {
 	&close_tempfile($fh);
 	@st = stat($in{'file'});
 	print "<p>",&text('export_done',
-		  $count, "<tt>$in{'file'}</tt>", &nice_size($st[7])),"<p>\n";
+		  $count, "<tt>".&html_escape($in{'file'})."</tt>",
+		  &nice_size($st[7])),"<p>\n";
 
 	&ui_print_footer("", $text{'index_return'});
 	}
