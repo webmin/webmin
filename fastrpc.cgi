@@ -625,7 +625,15 @@ while(1) {
 	if ($fh6) {
 		# Remote IPv6 clients must reach the same advertised port.
 		$pack6 = pack_sockaddr_in6($$port, in6addr_any());
-		next if (!bind($fh6, $pack6));
+		if (!bind($fh6, $pack6)) {
+			# IPv4 is already bound. Recreate it before trying
+			# another port. The IPv6 socket is still unbound.
+			close($fh);
+			socket($fh, PF_INET, SOCK_STREAM, $proto) ||
+				return "socket failed : $!";
+			setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
+			next;
+			}
 		}
 	last;
 	}
