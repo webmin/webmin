@@ -306,6 +306,7 @@ delete_failed=Failed to delete table: <pre>$1</pre>
 delete_confirm=Are you sure you want to delete table $1?
 delete_notable=No such table selected
 save_failed=Failed to save rule: <pre>$1</pre>
+save_badfield=A rule field contains a line break, quote, semicolon, hash, backslash or unbalanced brace.
 save_raw_empty=Raw rule cannot be empty.
 save_raw_multiline=Raw rule must be a single line.
 save_invalid_rule=Raw rule is invalid: $1

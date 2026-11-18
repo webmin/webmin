@@ -59,6 +59,7 @@ if ($in{'delete'}) {
 else {
 	my $rule = {};
 	if ($in{'new'}) {
+		exists($table->{'chains'}->{$in{'chain'}}) || error($text{'chain_nochain'});
 		$rule->{'chain'} = $in{'chain'};
 		$rule->{'index'} = scalar(@{$table->{'rules'}});
 		}
@@ -76,6 +77,12 @@ else {
 		$rule->{'text'} = $raw;
 		}
 	else {
+		# Fields written into the rule must not be able to end it.
+		# Hidden fields such as raw_extra are only used by the
+		# preview, so are not checked
+		my $field_err = check_rule_form_fields(\%in, check_acl('raw'));
+		error($field_err) if ($field_err);
+
 		$rule->{'comment'} = $in{'comment'};
 		my $action = $in{'action'} || 'accept';
 		$rule->{'action'} = undef;

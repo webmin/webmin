@@ -1143,6 +1143,49 @@ SKIP: {
        'unreadable system configuration leaves deprecated rules in place');
 }
 
+# Form fields that are written into a rule cannot end it. Valid rules shown
+# in the form, and the hidden field used only by the preview, are accepted
+{
+    my @valid = (
+        [ 'negated set', { 'daddr' => '!=', 'action' => 'drop',
+                           'raw_extra' => '{ 10.0.0.0/8 }' } ],
+        [ 'verdict map', { 'ct_state' => 'vmap', 'raw_extra' =>
+                           '{ established : accept, related : accept }' } ],
+        [ 'ether address set',
+          { 'raw_extra' => 'ether saddr { 00:11:22:33:44:55 }' } ],
+        [ 'quoted meta value', { 'raw_extra' => 'meta skuid "root"' } ],
+        [ 'anonymous sets', { 'saddr' => '{ 10.0.0.1, 10.0.0.2 }',
+                              'dport' => '{ 22, 80 }',
+                              'icmp_type' => '{ echo-request, echo-reply }',
+                              'daddr' => '!= { 10.0.0.0/8 }' } ],
+        [ 'variables and punctuation in quoted fields',
+          { 'saddr' => '$trusted', 'comment' => q{it's #1; {x}},
+            'iif' => 'eth0.100', 'ct_state' => "established\0related" } ],
+    );
+    foreach my $v (@valid) {
+        is(check_rule_form_fields($v->[1], 0), undef,
+           "form check accepts $v->[0]");
+    }
+    my @bad = (
+        [ 'line break', { 'saddr' => "1.1.1.1 accept\n}" } ],
+        [ 'closing braces', { 'dport' => '22 } }' } ],
+        [ 'include', { 'saddr' => '1.1.1.1 } } include "/etc/shadow"' } ],
+        [ 'separator', { 'action' => 'accept; flush ruleset' } ],
+        [ 'comment marker', { 'jump' => 'other #' } ],
+        [ 'quote in a quoted field',
+          { 'comment' => 'x" } } table ip evil { } #' } ],
+        [ 'line break in a quoted field', { 'log_prefix' => "a\nb" } ],
+    );
+    foreach my $case (@bad) {
+        ok(check_rule_form_fields($case->[1], 0),
+           "form check rejects $case->[0]");
+    }
+    is(check_rule_form_fields({ 'comment' => 'say "hi"' }, 1), undef,
+       'users with raw rule access can use quotes');
+    ok(check_rule_form_fields({ 'comment' => "a\nb" }, 1),
+       'line breaks are rejected for users with raw rule access too');
+}
+
 # The apply link returns to a page in this module
 {
     local $ENV{'SCRIPT_NAME'} = '/nftables/index.cgi';

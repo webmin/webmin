@@ -2828,6 +2828,45 @@ $text =~ s/\s+$//;
 return $text;
 }
 
+# check_rule_form_fields(&in, raw-allowed)
+# Returns an error if a rule form field that is written into the rule text
+# could end the rule. Line breaks are never allowed. Without raw rule access,
+# quoted fields cannot contain a double quote, as nft strings have no escape
+# for one. Other fields are single expressions, which cannot contain
+# separators, comments, quotes or braces that do not balance
+sub check_rule_form_fields
+{
+my ($in, $raw) = @_;
+my %quoted = map { $_ => 1 } qw(comment log_prefix iif oif iif_other
+				 oif_other);
+my @plain = qw(action jump goto nat_addr nat_port saddr daddr proto sport
+	       dport icmp_type ct_state tcp_flags tcp_flags_mask limit_rate
+	       limit_burst log_level);
+foreach my $field ((sort keys %quoted), @plain) {
+	next if (!defined($in->{$field}));
+	foreach my $v (split(/\0/, $in->{$field})) {
+		return text('save_badfield') if ($v =~ /[\r\n]/);
+		next if ($raw);
+
+		# Quoted fields only need to stay inside their quotes
+		if ($quoted{$field}) {
+			return text('save_badfield') if ($v =~ /"/);
+			next;
+			}
+		return text('save_badfield') if ($v =~ /[;#"'\\]/);
+
+		# Braces may only open and close anonymous sets or maps
+		my $depth = 0;
+		foreach my $ch ($v =~ /[{}]/g) {
+			$depth += $ch eq '{' ? 1 : -1;
+			return text('save_badfield') if ($depth < 0);
+			}
+		return text('save_badfield') if ($depth);
+		}
+	}
+return undef;
+}
+
 # parse_set_elements_string(string)
 # Parses a comma-separated nftables set elements string
 sub parse_set_elements_string
