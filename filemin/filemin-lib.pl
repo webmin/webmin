@@ -7,6 +7,7 @@ use WebminCore;
 use POSIX;
 use Encode qw(decode encode);
 use File::Basename;
+use Fcntl ();
 eval "use File::MimeInfo";
 
 our ($path, $quote_escaped_path, $urlized_path, $base, $cwd, $upload_max,
@@ -1341,6 +1342,101 @@ if (@allowed_paths == 1 && $allowed_paths[0] eq '/') {
 	return 0;
 	}
 return 1;
+}
+
+# filemin_restricted_root()
+# Returns 1 if the file manager runs as root for a user limited to some
+# directories. Such users must not create setuid or setgid files.
+sub filemin_restricted_root
+{
+return $> == 0 && &test_allowed_paths() ? 1 : 0;
+}
+
+# filemin_walk_tree(path, depth, &callback)
+# Calls callback with a name and lstat details for path if it is not a
+# directory. For a real directory, calls it for each entry up to depth levels
+# below, or at any level if depth is negative, but not for the directory
+# itself. Each directory is entered and checked before its entries are read,
+# so a symlink swapped in later cannot lead outside the tree. The callback
+# runs in the entry's directory, gets a name relative to it, and must not
+# change the current directory.
+sub filemin_walk_tree
+{
+my ($path, $depth, $callback) = @_;
+my @st = lstat($path);
+return if (!@st);
+if (!-d _) {
+	&$callback($path, \@st);
+	return;
+	}
+return if (!$depth);
+opendir(my $orig, ".") || return;
+
+# Process the entries of the current directory, then descend into each
+# subdirectory once it is confirmed to be the one found by lstat
+my $walk;
+$walk = sub {
+	my ($dh, $level) = @_;
+	my @names = grep { $_ ne '.' && $_ ne '..' } readdir($dh);
+	foreach my $name (@names) {
+		my @est = lstat($name);
+		next if (!@est);
+		my $isdir = -d _;
+		&$callback($name, \@est);
+		next if (!$isdir || ($depth > 0 && $level >= $depth));
+		my $sub;
+		next if (!opendir($sub, $name));
+		if (chdir($sub)) {
+			my @cst = stat(".");
+			&$walk($sub, $level + 1)
+				if ($cst[0] == $est[0] && $cst[1] == $est[1]);
+			chdir($dh) || die "Failed to return to directory : $!";
+			}
+		closedir($sub);
+		}
+	};
+
+# Enter the top directory the same way
+my $top;
+if (opendir($top, $path)) {
+	if (chdir($top)) {
+		my @cst = stat(".");
+		&$walk($top, 1) if ($cst[0] == $st[0] && $cst[1] == $st[1]);
+		}
+	closedir($top);
+	}
+chdir($orig) || die "Failed to return to directory : $!";
+closedir($orig);
+undef($walk);
+}
+
+# filemin_drop_setid_file(file, &lstat)
+# Removes setuid and setgid bits from a regular file, unless it has been
+# replaced since the given lstat details were read
+sub filemin_drop_setid_file
+{
+my ($file, $st) = @_;
+return if (($st->[2] & 0170000) != 0100000 || !($st->[2] & 06000));
+my $flags = Fcntl::O_RDONLY() | Fcntl::O_NONBLOCK() |
+	    (eval { Fcntl::O_NOFOLLOW() } || 0);
+my $fh;
+sysopen($fh, $file, $flags) || return;
+my @fst = stat($fh);
+if (@fst && $fst[0] == $st->[0] && $fst[1] == $st->[1]) {
+	chmod($fst[2] & 01777, $fh);
+	}
+close($fh);
+}
+
+# filemin_drop_setid(path, [depth])
+# Removes setuid and setgid bits from regular files at path or up to depth
+# directory levels below it, or at any level if depth is negative. Symlinks
+# are never followed. Directories keep their bits, as setgid only sets the
+# group of new files there.
+sub filemin_drop_setid
+{
+my ($path, $depth) = @_;
+&filemin_walk_tree($path, $depth || 0, \&filemin_drop_setid_file);
 }
 
 # extract_files(&files_to_extract, delete)
