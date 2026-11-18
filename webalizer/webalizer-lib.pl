@@ -65,6 +65,7 @@ return \@rv;
 sub save_directive
 {
 my ($conf, $name, @values) = @_;
+grep { /[\r\n\0]/ } @values and &error($text{'global_eline'});
 my @old = &find($name, $conf);
 my $lref = &read_file_lines($conf->[0]->{'file'});
 for(my $i=0; $i<@old || $i<@values; $i++) {
