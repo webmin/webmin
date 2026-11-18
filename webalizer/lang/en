@@ -139,6 +139,7 @@ global_includeagent=Browsers not to ignore
 
 global_err=Failed to save Webalizer options
 global_eline=A report setting contains an invalid line break or null character
+global_ecfile=This log has no configuration file you can edit
 global_ereport=Missing report title prefix
 global_ehost=Missing or invalid host name
 global_evisit=Missing or invalid visit length

@@ -23,7 +23,7 @@ if ($in{'delete'}) {
 	}
 
 &lock_file($cfile || $config{'webalizer_conf'});
-my $conf = &get_config($in{'file'});
+my $conf = &get_config($in{'file'}, 1);
 
 # Validate and store inputs
 if ($in{'report_def'}) {

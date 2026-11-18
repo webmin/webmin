@@ -31,14 +31,17 @@ return $cron_cmd." ".
        ($file =~ /^[A-Za-z0-9_\/\.\-\+\@\:\,=]+$/ ? $file : quotemeta($file));
 }
 
-# get_config([logfile])
+# get_config([logfile], [editing])
 # Parse the webalizer config file for a single logfile or global
 sub get_config
 {
-my ($logfile) = @_;
+my ($logfile, $editing) = @_;
 my $file;
 if ($logfile) {
 	$file = &config_file_name($logfile);
+	}
+if ($editing && $logfile && (!-f $file || (-l $file && $access{'noconfig'}))) {
+	&error($text{'global_ecfile'});
 	}
 $file = $config{'webalizer_conf'} if (!$file || !-r $file);
 -r $file || &error("Webalizer config file $file does not exist!");
@@ -207,7 +210,7 @@ if ($lconf->{'over'} && !&is_readonly_mode()) {
 	}
 unlink("$lconf->{'dir'}/__db.dns_cache.db");
 my $user = $lconf->{'user'} || "root";
-if ($user ne "root" && -r $cfile) {
+if ($user ne "root" && -r $cfile && !-l $cfile) {
 	chmod(0644, $cfile);
 	}
 if (!-d $lconf->{'dir'}) {
