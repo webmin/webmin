@@ -2334,7 +2334,16 @@ $qfile = quotemeta($_[0]);
 $bl = $_[1] * ($_[2] eq "t" ? 1024*1024*1024 :
 	       $_[2] eq "g" ? 1024*1024 :
 	       $_[2] eq "m" ? 1024 : 1);
-$out = &backquote_logged("dd if=/dev/zero of=$qfile bs=1024 count=$bl 2>&1");
+# Create the file exclusively, so an existing file or symlink is never
+# overwritten, then fill it in place. BusyBox dd has no conv=excl.
+require Fcntl;
+local $sfh;
+sysopen($sfh, $_[0], &Fcntl::O_WRONLY() | &Fcntl::O_CREAT() |
+		     &Fcntl::O_EXCL() | &Fcntl::O_NOFOLLOW(), 0600) ||
+	return "Failed to create $_[0] : $!";
+close($sfh);
+$out = &backquote_logged("dd if=/dev/zero of=$qfile conv=notrunc ".
+			 "bs=1024 count=$bl 2>&1");
 if ($?) { return "dd failed : $out"; }
 $out = &backquote_logged("mkswap $qfile $bl 2>&1");
 if ($?) { return "mkswap failed : $out"; }

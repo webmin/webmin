@@ -82,6 +82,7 @@ save_eremount=Remount failed : $1
 save_enone=You didn't choose to save or mount
 
 swap_err=Failed to create swap file
+swap_efile=Enter an absolute path for a new swap file
 swap_esize='$1' is not a valid size
 
 nfs_server=Choose NFS Server..
