@@ -97,7 +97,11 @@ subtest 'report errors and return links' => sub {
 	for my $case ({}, {raw_quote => 1}, {decoded_path => 1}) {
 		my $r = render_cgi('view_log', {name => q{access " onfocus="alert(1)}, %$case});
 		is($r->{'error'}, '', 'the report renders');
-		like($r->{'html'}, qr/Report body/, 'report contents are unchanged');
+		unlike($r->{'html'}, qr/Report body/, 'the themed page holds no report markup');
+		my $src = '/webalizer/view_log.cgi/'.main::urlize(main::urlize($r->{'file'})).
+			'/raw/index%2Ehtml';
+		like($r->{'html'}, qr/\Q<iframe src="$src" sandbox="allow-popups"\E/,
+			'the report is framed from its raw URL');
 		like($r->{'html'}, qr/\Qhref="\/webalizer\/edit_log.cgi?file=@{[main::urlize($r->{'file'})]}"\E/,
 			'the footer encodes the decoded path as a query value');
 		unlike(path_markup($r->{'html'}), qr/\bonfocus\s*=/i,
@@ -110,7 +114,7 @@ subtest 'report symlink boundaries' => sub {
 		for my $target ('', 'sub/../inside.html', '../outside.html') {
 			my $label = ($dir_link || 'plain')." directory, ".
 				($target || 'plain file');
-			my $r = render_cgi('view_log', { name => 'access.log',
+			my $r = render_cgi('view_log', { name => 'access.log', raw => 1,
 				dir_link => $dir_link, report_link => $target });
 			if ($target eq '../outside.html') {
 				# A link cannot expose files outside the report directory.
@@ -124,6 +128,30 @@ subtest 'report symlink boundaries' => sub {
 				like($r->{'html'}, qr/Report body/, "$label renders the report");
 				}
 			}
+		}
+	};
+
+subtest 'report markup stays sandboxed' => sub {
+	my $evil = "<TITLE>T<script>alert(1)</script></TITLE>\n<BODY>\n".
+		"<script>alert(2)</script>Report body\n</BODY>\n";
+	my $r = render_cgi('view_log', {name => 'access.log', report_html => $evil});
+	is($r->{'error'}, '', 'the themed page renders');
+	unlike($r->{'html'}, qr/<script|Report body/i, 'no report markup reaches the themed page');
+	$r = render_cgi('view_log', {name => 'access.log', xhr => 1});
+	like($r->{'html'}, qr/<iframe src=/, 'Ajax loads of the themed page still get the frame');
+	for my $case ({raw => 1}, {raw => 1, decoded_path => 1}, {naked => 1}) {
+		my $label = join(', ', sort keys %$case);
+		$r = render_cgi('view_log', {name => 'access.log', report_html => $evil, %$case});
+		is($r->{'error'}, '', "$label report is served");
+		my ($csp) = $r->{'html'} =~ /^Content-Security-Policy: (.*)$/m;
+		like($csp, qr/^sandbox allow-popups; default-src 'none';/, "$label report is sandboxed");
+		unlike($csp, qr/allow-scripts|allow-same-origin|allow-forms/, "$label report cannot run scripts");
+		like($r->{'html'}, qr/^X-Content-Type-Options: nosniff$/m, "$label report is not sniffed");
+		like($r->{'html'}, qr/^Content-type: text\/html$/m, "$label report is HTML");
+		like($r->{'html'}, qr/Report body/, "$label report contents are unchanged");
+		$r = render_cgi('view_log', {name => 'access.log', report_html => $evil, %$case, xhr => 1});
+		is($r->{'error'}, '', "$label Ajax request finishes");
+		unlike($r->{'html'}, qr/<script|Report body/i, "$label Ajax request gets no report markup");
 		}
 	};
 
