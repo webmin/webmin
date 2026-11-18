@@ -46,7 +46,9 @@ sub check_amavis_value
 my ($v, $numeric) = @_;
 return 0 if ($v =~ /[\r\n\0]/);
 return 1 if (!$numeric);
-return $v eq "undef" || $v =~ /^[0-9\.\,\*\-\+\/]+\z/ && $v =~ /\d/ ? 1 : 0;
+my $number = qr/[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)/;
+return $v eq "undef" ||
+       $v =~ m{\A[ \t]*$number(?:[ \t]*(?:\*\*|[+*/-])[ \t]*$number)*[ \t]*\z};
 }
 
 # amavis_quote_value(value)
@@ -65,6 +67,8 @@ sub save_amavis_directive
 {
 local ($c,$n,$v,$m) = @_;
 local $old = &amavis_find($n, $c);
+# Leave an unchanged Perl expression exactly as the administrator wrote it.
+return if ($old && $old->{'value'} eq $v);
 local $lref = &read_file_lines($config{'amavisdconf'});
 $v =~ s/\n$//;
 &check_amavis_value($v) || &error($text{'amavis_eline'});

@@ -94,6 +94,8 @@ subtest 'directives cannot contain line breaks' => sub {
 subtest 'Amavisd values cannot inject Perl code' => sub {
 	ok(main::check_amavis_value('6.31', 1), 'number accepted');
 	ok(main::check_amavis_value('10*1024*1024', 1), 'arithmetic accepted');
+	ok(main::check_amavis_value('200 * 1024', 1), 'spaced arithmetic accepted');
+	ok(!main::check_amavis_value('200 1024', 1), 'missing operator refused');
 	ok(main::check_amavis_value('undef', 1), 'undef accepted');
 	ok(!main::check_amavis_value('6;system("id")', 1), 'code refused');
 	ok(!main::check_amavis_value('undef;1', 1), 'suffix after undef refused');
@@ -102,17 +104,21 @@ subtest 'Amavisd values cannot inject Perl code' => sub {
 
 	my $file = "$tmp/amavisd.conf";
 	write_text($file, "\$sa_tag2_level_deflt = 6.31;\n".
-			  "\$sa_spam_subject_tag = '***SPAM*** ';\n1;\n");
+			  "\$sa_spam_subject_tag = '***SPAM*** ';\n".
+			  "\$sa_mail_body_size_limit = (200 * 1024); # bytes\n1;\n");
 	local $main::config{'amavisdconf'} = $file;
 	my $conf = main::get_amavis_config();
 	my $evil = '"; $main::pwned = 1; "@{[ $main::pwned = 1 ]}\\';
 	main::save_amavis_directive($conf, 'sa_spam_subject_tag', $evil);
 	main::save_amavis_directive($conf, 'sa_tag2_level_deflt', '6;$x=1');
 	main::save_amavis_directive($conf, 'sa_kill_level_deflt', '9.5');
+	main::save_amavis_directive($conf, 'sa_mail_body_size_limit', '(200 * 1024)');
 	main::flush_file_lines();
 
 	# Evaluate the written file, which must only assign the given values
 	my $code = read_text($file);
+	like($code, qr/^\$sa_mail_body_size_limit = \(200 \* 1024\); # bytes$/m,
+	     'unchanged expression and comment survive an unrelated edit');
 	our ($sa_spam_subject_tag, $sa_tag2_level_deflt, $sa_kill_level_deflt);
 	local $main::pwned;
 	ok(eval "no strict; package main; $code; 1", 'file is valid Perl')
