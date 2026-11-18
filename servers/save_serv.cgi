@@ -31,6 +31,24 @@ if ($in{'delete'}) {
 	&webmin_log("delete", "server", $serv->{'host'}, $serv); 
 	}
 else {
+	# Apply options that this admin is not allowed to change
+	if ($access{'forcetype'}) {
+		$in{'type'} = $in{'id'} ? $serv->{'type'} :
+			$config{'auto_type'} || &this_server()->{'type'};
+		}
+	if ($access{'forcelink'}) {
+		$in{'mode'} = $oldmode;
+		}
+	if ($access{'forcefast'}) {
+		$in{'fast'} = $in{'id'} ? $serv->{'fast'} : $config{'deffast'};
+		}
+	if ($access{'forcegroup'}) {
+		$in{'group'} = join("\0", split(/\t/, $serv->{'group'}));
+		$in{'newgroup'} = undef;
+		}
+	$in{'mode'} == 3 && $oldmode != 3 && !$access{'pass'} &&
+		&error($text{'edit_ecannot'});
+
 	# validate inputs
 	$in{'host'} =~ /^[A-Za-z0-9_][A-Za-z0-9_\-\.]*$/ ||
 		&check_ip6address($in{'host'}) || &error($text{'save_ehost'});

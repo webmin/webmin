@@ -75,6 +75,21 @@ $record->{'type'} = 'legacy';
 is(&save({ %base, type => 'legacy' }), '', 'an unchanged saved type is kept');
 $record->{'type'} = 'debian';
 
+# Options an admin cannot change keep their saved values.
+is(&save({ %base, type => 'windows', mode => 0, fast => 0,
+	   wuser => 'admin', wpass => '', group => 'green',
+	   newgroup => 'admins' },
+	 { forcetype => 1, forcelink => 1, forcefast => 1,
+	   forcegroup => 1 }), '', 'forced options save');
+is($saved->{'type'}, 'debian', 'forced type is kept');
+is($saved->{'user'}, 'admin', 'forced login mode is kept');
+is($saved->{'pass'}, 'stored-secret', 'forced login keeps the password');
+is($saved->{'fast'}, 1, 'forced fast RPC mode is kept');
+is($saved->{'group'}, "red\tblue", 'forced groups are kept');
+like(&save({ %base, mode => 3 }, { pass => 0 }),
+     qr/\Q$text{'edit_ecannot'}\E/,
+     'same-login mode needs password access');
+
 # The stored password is kept only for the same destination.
 is(&save({ %base, mode => 1, wuser => 'admin', wpass => '' }), '',
    'empty password keeps the saved one');
