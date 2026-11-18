@@ -23,7 +23,7 @@ if (!defined($gconfig{'noselfwebminup'})) {
 		if (&webmin::has_repos());
 	}
 else {
-	$access{'upgrade'} = !$gconfig{'noselfwebminup'};
+	$access{'upgrade'} = 0 if ($gconfig{'noselfwebminup'});
 	}
 my $can_http_ssl = &can_use_http_ssl();
 my $http_proto = $can_http_ssl ? "https" : "http";
