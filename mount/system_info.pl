@@ -25,9 +25,10 @@ foreach my $disk (@$disks) {
 	my $total = $disk->{'total'};
 	my $itotal = $disk->{'itotal'};
 	next if (!$total);
-	my $dev_id       = $disk->{'device'};
-	my $dir          = $disk->{'dir'};
-	my $type         = $disk->{'type'};
+	# Local users can name FUSE mounts, so escape these fields
+	my $dev_id       = &html_escape($disk->{'device'});
+	my $dir          = &html_escape($disk->{'dir'});
+	my $type         = &html_escape($disk->{'type'});
 	my $total_nice   = &nice_size($total);
 	my $free         = $disk->{'free'};
 	my $ifree        = $disk->{'ifree'};
