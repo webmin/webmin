@@ -75,12 +75,14 @@ else {
 			# New version uses a different syntax!
 			$cgiurl = "view_man.cgi?page=\${title}&sec=\${section}&opts=$uopts";
 			$cmd .= " $qout | nroff -mman | $config{'man2html_path'} --cgiurl ".quotemeta($cgiurl)." --bare";
-			$out = &backquote_command("$cmd 2>&1", 1);
+			$out = &backquote_command(
+				&render_man_command($cmd)." 2>&1", 1);
 			}
 		else {
 			# Old version of man2html
 			$cmd .= " $qout | $config{'man2html_path'} -H \"\" -M \"view_man.cgi\"";
-			$out = &backquote_command("$cmd 2>&1", 1);
+			$out = &backquote_command(
+				&render_man_command($cmd)." 2>&1", 1);
 			$out =~ s/^.*Content-type:.*\n//i;
 			$out =~ s/http:\/\///ig;
 			$out =~ s/\?/\?sec=/ig;
@@ -109,3 +111,12 @@ else {
 
 &ui_print_footer("", $text{'index_return'});
 
+# render_man_command(command)
+# Returns a command that renders a manual page as nobody when running as root.
+# A page found in a requested directory can include other files, which must
+# not be read with root's permissions.
+sub render_man_command
+{
+my ($cmd) = @_;
+return $< == 0 ? &command_as_user("nobody", 0, $cmd) : $cmd;
+}
