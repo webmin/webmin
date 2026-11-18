@@ -604,17 +604,22 @@ foreach my $f (@$qfiles) {
 	$mail->{'header'}->{'to'} ||= $text{'mailq_unknown'};
 	$mail->{'header'}->{'date'} ||= $text{'mailq_unknown'};
 	$mail->{'header'}->{'subject'} ||= $text{'mailq_unknown'};
-	$mail->{'header'}->{'cc'} ||= "&nbsp;";
+	$mail->{'header'}->{'cc'} =
+		&html_escape($mail->{'header'}->{'cc'}) || "&nbsp;";
 	if ($mail->{'quar'}) {
 		$mail->{'status'} = $text{'mailq_quar'};
 		$quarcount++;
 		}
 	$mail->{'status'} ||= $text{'mailq_sending'};
 
+	# Headers and status come from the sender or remote server
 	$mail->{'header'}->{'from'} =
 		&html_escape($mail->{'header'}->{'from'});
 	$mail->{'header'}->{'to'} =
 		&html_escape($mail->{'header'}->{'to'});
+	$mail->{'header'}->{'subject'} =
+		&html_escape($mail->{'header'}->{'subject'});
+	$mail->{'status'} = &html_escape($mail->{'status'});
 	$mail->{'header'}->{'date'} =~ s/\+.*//g;
 
 	local @cols;

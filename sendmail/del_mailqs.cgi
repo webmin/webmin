@@ -53,7 +53,9 @@ else {
 		$count = 0;
 		$conf = &get_sendmailcf();
 		foreach $file (@files) {
-			print &text('delq_file', "<tt>$file</tt>"),"&nbsp;&nbsp;&nbsp;\n";
+			print &text('delq_file',
+				    "<tt>".&html_escape($file)."</tt>"),
+			      "&nbsp;&nbsp;&nbsp;\n";
 
 			local $ok;
 			foreach $mqueue (&mailq_dir($conf)) {
