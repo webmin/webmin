@@ -1,5 +1,5 @@
 
-require 'dfsadmin-lib.pl';
+require 'dfs-lib.pl';
 
 # acl_security_form(&options)
 # Output HTML for editing security options for the format module
