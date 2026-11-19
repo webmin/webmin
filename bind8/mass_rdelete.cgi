@@ -21,6 +21,7 @@ foreach my $d (split(/\0/, $in{'d'})) {
 	push(@zones, $zone);
 	}
 $access{'ro'} && &error($text{'master_ero'});
+&can_edit_type($in{'type'}) || &error($text{'recs_ecannottype'});
 $in{'name_def'} || $in{'name'} || &error($text{'rdmass_ename'});
 
 # Do each one
