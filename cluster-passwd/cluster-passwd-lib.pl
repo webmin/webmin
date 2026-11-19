@@ -120,9 +120,15 @@ foreach $host (@{$_[0]}) {
 		}
 
 	# Run the pre-change command
-	&remote_eval($serv->{'host'}, "useradmin", "set_user_envs", $user);
-	&remote_foreign_call($serv->{'host'}, "useradmin",
-			     "making_changes");
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+			     $user, 'MODIFY_USER', $_[2]);
+	my $before = $passwd_error_msg || &remote_foreign_call(
+		$serv->{'host'}, "useradmin", "making_changes");
+	if ($passwd_error_msg || defined($before)) {
+		&$pfunc(1, &cluster_useradmin::text('usave_emaking',
+						    $passwd_error_msg || $before));
+		next;
+		}
 
 	# Update the user on the server
 	&$pfunc(-2, $cluster_useradmin::text{'usave_update'});
