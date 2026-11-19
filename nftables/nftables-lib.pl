@@ -2864,7 +2864,7 @@ foreach my $field ((sort keys %quoted), @plain) {
 		return text('save_badfield') if ($depth);
 		}
 	}
-return undef;
+return;
 }
 
 # parse_set_elements_string(string)
