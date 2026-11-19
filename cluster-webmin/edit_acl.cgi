@@ -69,15 +69,8 @@ $desc = &text($user ? 'acl_title2'.$ga : 'acl_title3'.$ga,
 
 # Get the host's ACL options
 &remote_foreign_require($serv->{'host'}, "acl", "acl-lib.pl");
-if ($user) {
-	$aref = &remote_eval($serv->{'host'}, "acl",
-		"\%rv = &get_module_acl('$who', '$mod->{'dir'}'); \\%rv");
-	}
-else {
-	$aref = &remote_eval($serv->{'host'}, "acl",
-		"\%rv = &get_group_module_acl('$who', '$mod->{'dir'}'); \\%rv");
-	}
-%access = %$aref;
+%access = &remote_foreign_call($serv->{'host'}, "acl",
+	$user ? "get_module_acl" : "get_group_module_acl", $who, $mod->{'dir'} || "");
 
 # Display the editor form from this host
 print &ui_form_start("save_acl.cgi", "post");
