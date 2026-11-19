@@ -106,7 +106,7 @@ sub traverse
 local($s, $act, $i);
 print "<tr style='border-top: 1px solid #aaaaaa28'> <td>", $spacer x $_[1];
 if ($_[0]) {
-	print "<a name=\"$_[0]\"></a>\n";
+	print "<a name=\"".&html_escape($_[0])."\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";
 	print "<a href=\"$act.cgi?id=",&urlize($in{'id'}),
 	      "&what=",&urlize($_[0]),"\">";
