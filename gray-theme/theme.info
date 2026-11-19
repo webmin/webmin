@@ -3,5 +3,5 @@ longdesc=A legacy framed theme that also supports Virtualmin and Cloudmin
 version=10.1
 webmin=1
 usermin=1
-depends=2.670 2.570
+depends=2.680 2.580
 config_link=edit_right.cgi

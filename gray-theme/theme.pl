@@ -22,6 +22,18 @@ our $ui_formcount;
 $main::WRAPPER_OPEN = 0;
 $main::COLUMNS_WRAPPER_OPEN = 0;
 
+# theme_config_return_link(module, url, [footer-label])
+# Return to the framed dashboard after editing Virtualmin settings.
+sub theme_config_return_link
+{
+my ($module, $url, $label) = @_;
+if ($module eq "virtual-server") {
+	my %lang = defined($label) ? &load_language($current_theme) : ( );
+	return ( "/right.cgi", $lang{'config_return'} );
+	}
+return ( $url, $label );
+}
+
 # theme_ui_print_header(subtext, header-args...)
 # Prints the page header like the core, but wraps the text under the
 # title in a span of its own, then prints the subtext block
