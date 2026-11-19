@@ -50,12 +50,14 @@ return ($search, $searchhids, $searchargs, scalar(@adv));
 sub get_search_limit
 {
 local %in = %{$_[0]};
-$in{'start'} ||= 0;
+# Only a non-negative whole number can be an offset
+local $start = $in{'start'} =~ /^\s*(\d+)\s*$/ ? $1 : 0;
+local $perpage = int($displayconfig{'perpage'});
 if ($module_name eq "mysql") {
-	return "limit $in{'start'},$displayconfig{'perpage'}";
+	return "limit $start,$perpage";
 	}
 else {
-	return "limit $displayconfig{'perpage'} offset $in{'start'}";
+	return "limit $perpage offset $start";
 	}
 }
 
@@ -80,17 +82,38 @@ else {
 }
 
 # make_like(mode, for)
+# Returns the SQL comparison for a search mode and the text searched for.
+# The text is always written as one SQL value.
 sub make_like
 {
 local ($match, $for) = @_;
-local $qu = $module_name eq "mysql" ? '"' : "'";
-return $match == 0 ? "like $qu%$for%$qu" :
-       $match == 1 ? "like $qu$for$qu" :
-       $match == 2 ? "not like $qu%$for%$qu" :
-       $match == 3 ? "not like $qu$for$qu" :
-       $match == 4 ? "> $for" :
-       $match == 5 ? "< $for" :
-		     " = \"\"";
+# A backslash in a substring search is part of the text. LIKE patterns entered
+# with "matches" retain their normal escape syntax.
+$for =~ s/\\/\\\\/g if ($match == 0 || $match == 2);
+return $match == 0 ? "like ".&quote_sql_value("%$for%") :
+       $match == 1 ? "like ".&quote_sql_value($for) :
+       $match == 2 ? "not like ".&quote_sql_value("%$for%") :
+       $match == 3 ? "not like ".&quote_sql_value($for) :
+       $match == 4 ? "> ".&quote_sql_value($for) :
+       $match == 5 ? "< ".&quote_sql_value($for) :
+		     " = ''";
+}
+
+# quote_sql_value(value)
+# Returns a value as an SQL string constant for MySQL or PostgreSQL. MySQL
+# writes backslashes with CHAR(), while PostgreSQL escapes them when executing
+# the complete query.
+sub quote_sql_value
+{
+local ($value) = @_;
+$value = "" if (!defined($value));
+$value =~ s/'/''/g;
+if ($module_name eq "mysql" && $value =~ /\\/) {
+	# CHAR(92) has the same value with or without NO_BACKSLASH_ESCAPES.
+	my @parts = split(/\\/, $value, -1);
+	return "concat(".join(",char(92),", map { "'$_'" } @parts).")";
+	}
+return $module_name eq "mysql" ? "'$value'" : "E'$value'";
 }
 
 # get_databases_return_link(db-name)
