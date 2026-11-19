@@ -1210,7 +1210,7 @@ else {
 }
 
 # nginx_param_input(name, &parent, [name-text, value-text])
-# Returns HTML for entering multiple name value paramters
+# Returns HTML for entering parameter names and values
 sub nginx_param_input
 {
 my ($name, $parent, $ntext, $vtext) = @_;
