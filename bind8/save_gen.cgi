@@ -20,6 +20,8 @@ my $dom = $zone->{'name'};
 
 my $file = $zone->{'file'};
 if (!$in{'show'}) {
+	# Saving changes the zone file, unlike showing the generated records
+	$access{'ro'} && &error($text{'master_ero'});
 	&lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 	&before_editing($zone);
 	}
