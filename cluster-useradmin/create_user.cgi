@@ -229,15 +229,18 @@ foreach $host (@hosts) {
 	local $made_home;
 	if ($in{'servs'} || $host eq $hosts[0]) {
 		if ($in{'makehome'}) {
+			# Quote the path for the code the other server runs
+			local $qhome = &remote_perl_string($user{'home'});
 			local $exists = &remote_eval($serv->{'host'},
-				"useradmin", "-e '$user{'home'}'");
+				"useradmin", "-e $qhome");
 			if (!$exists) {
 				print "$text{'usave_mkhome'}<br>\n";
 				local $rv = &remote_eval($serv->{'host'}, "useradmin",
-					"mkdir('$user{'home'}', oct('$uconfig{'homedir_perms'}')) && chmod(oct('$uconfig{'homedir_perms'}'), '$user{'home'}') ? undef : \$!");
+					"mkdir($qhome, oct('$uconfig{'homedir_perms'}')) && chmod(oct('$uconfig{'homedir_perms'}'), $qhome) ? undef : \$!");
 				$rv && &error(&text('usave_emkdir', $rv));
 				$rv = &remote_eval($serv->{'host'}, "useradmin",
-					"chown($user{'uid'}, $user{'gid'}, '$user{'home'}')");
+					"chown(".int($user{'uid'}).", ".
+					int($user{'gid'}).", $qhome)");
 				$rv || &error(&text('usave_echown', $rv));
 				$made_home = 1;
 				print "$text{'udel_done'}<p>\n";
