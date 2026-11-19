@@ -172,9 +172,9 @@ foreach $Username(sort split (" ",$UsedUsernames)){
     #print "User: $Username  Allowed=\"".$UserAllowedCommands{$Username}."\" Denied=\"".$UserDeniedCommands{$Username}."\"\n";
     print "<form action=userpermissions_form.cgi method=get>\n";
     print $NavigationData;
-    print "<input type=hidden name=\"ChangePermissions\" value=\"".$Username."\">\n";
+    print "<input type=hidden name=\"ChangePermissions\" value=\"".&html_escape($Username)."\">\n";
     print "<HR WIDTH=\"100%\">\n";
-    print "<H2>User: $Username</H2>\n";
+    print "<H2>User: ".&html_escape($Username)."</H2>\n";
     print "<table border=1>\n";
     $Column=0;
     $Row=0;
@@ -243,7 +243,7 @@ foreach $Username(sort split (" ",$UsedUsernames)){
 
     print "<form action=userpermissions_form.cgi method=get>\n";
     print $NavigationData;
-    print "<input type=hidden name=\"DeleteUser\" value=\"".$Username."\">\n";
+    print "<input type=hidden name=\"DeleteUser\" value=\"".&html_escape($Username)."\">\n";
     print "<input type=submit value=\"Delete User Permissions\">\n";
     print "<input type=checkbox name=\"Confirm Delete User\">I'm sure<br>\n";
     print "</form>\n";
@@ -254,7 +254,7 @@ foreach $Username(sort split (" ",$UsedUsernames)){
 # print textarea
 
 print "<HR WIDTH=100%>\n";
-print &text('manual_header', "<tt>$file</tt>"),"<p>\n";
+print &text('manual_header', "<tt>".&html_escape($file)."</tt>"),"<p>\n";
 
 print "<form action=manual_save.cgi method=post enctype=multipart/form-data>\n";
 print $NavigationData;
