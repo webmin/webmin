@@ -16,8 +16,14 @@ foreach my $o (@acl_pages) {
 	print &ui_table_row($text{'acl_'.$o} || $o,
 			    &ui_yesno_radio($o, $_[0]->{$o} ? 1 : 0));
 	}
+
 print &ui_table_row($text{'acl_dir'},
-		    &ui_textbox("dir", $_[0]->{'dir'}, 50));
+		    &ui_textbox("dir", $_[0]->{'dir'}, 50), 3);
+
+print &ui_table_row($text{'acl_apath'},
+	&ui_textbox("apath", $_[0]->{'apath'}, 50)." ".
+	&file_chooser_button("apath", 1),
+	3);
 }
 
 
@@ -29,6 +35,7 @@ foreach my $o (@acl_pages) {
 	$_[0]->{$o} = $in{$o};
 	}
 $_[0]->{'dir'} = $in{'dir'};
+$_[0]->{'apath'} = $in{'apath'};
 }
 
 

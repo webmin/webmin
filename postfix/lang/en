@@ -464,6 +464,7 @@ acl_dir=Allowed directory for map files
 acl_bcc=Can edit BCC mapping?
 acl_body=Can edit body checks?
 acl_dependent=Can edit sender dependent transport maps?
+acl_apath=Limit files and program to directory
 
 boxes_title=User Mailboxes
 boxes_user=User
