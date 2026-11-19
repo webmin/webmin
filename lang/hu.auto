@@ -1,3 +1,8 @@
+config_section=Konfigurációs kategória:
+config_change=változás
+config_next=Mentés és Következő
+config_nnext=Következő
+config_nprev=Előző
 category_=Eszközök
 
 longcategory_=Egyéb különféle feladatokat ellátó modulok

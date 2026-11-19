@@ -1,3 +1,8 @@
+config_section=فئة التكوين:
+config_change=يتغيرون
+config_next=حفظ ثم التالي
+config_nnext=التالى
+config_nprev=السابق
 category_=أدوات
 
 longcategory_=الوحدات التي تؤدي مهام متنوعة أخرى

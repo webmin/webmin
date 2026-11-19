@@ -1,3 +1,8 @@
+config_section=Catégorie de configuration:
+config_change=Changement
+config_next=Enregistrer et suivant
+config_nnext=Prochain
+config_nprev=Précédent
 main_title3=Webmin $1 ($2)
 main_unused=Modules inutilisés
 main_refreshmods=Rafraîchir les modules

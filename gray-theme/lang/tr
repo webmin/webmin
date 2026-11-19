@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Yapılandırma kategorisi:
-config_change=Değiştir
 config_return=sistem bilgileri
-config_next=Kaydet ve İleri
-config_nnext=İleri
-config_nprev=Geri
 
 edright_title=Sistem Bilgileri Yapılandırması
 edright_header=Sistem bilgileri sayfası ayarları

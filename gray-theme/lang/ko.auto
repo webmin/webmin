@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=구성 카테고리 :
-config_change=변화
 config_return=시스템 정보
-config_next=저장하고 다음
-config_nnext=다음
-config_nprev=이전
 
 edright_title=시스템 정보 구성
 edright_header=Virtualmin 시스템 정보 페이지 설정

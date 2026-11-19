@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Konfigurációs kategória:
-config_change=változás
 config_return=rendszer információ
-config_next=Mentés és Következő
-config_nnext=Következő
-config_nprev=Előző
 
 edright_title=Rendszerinformációk konfigurálása
 edright_header=A Virtualmin rendszer információs oldalának beállításai

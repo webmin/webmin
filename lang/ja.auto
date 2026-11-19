@@ -1,3 +1,8 @@
+config_section=構成カテゴリ：
+config_change=変化する
+config_next=保存して次へ
+config_nnext=次
+config_nprev=前へ
 category_=ツール
 
 longcategory_=その他のその他のタスクを実行するモジュール

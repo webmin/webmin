@@ -1,3 +1,8 @@
+config_section=구성 카테고리 :
+config_change=변화
+config_next=저장하고 다음
+config_nnext=다음
+config_nprev=이전
 main_title3=Webmin $1 ($2)
 
 category_=도구

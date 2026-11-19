@@ -1,3 +1,8 @@
+config_section=Categoria di configurazione:
+config_change=Modificare
+config_next=Salva e Avanti
+config_nnext=Il prossimo
+config_nprev=prev
 or=O
 help_efile3=Impossibile leggere la pagina della guida $1 dal modulo $2
 help_einclude3=Impossibile includere la pagina della guida $1

@@ -1,3 +1,8 @@
+config_section=Konfigureringskategori:
+config_change=Förändra
+config_next=Spara och Nästa
+config_nnext=Nästa
+config_nprev=Föregående
 main_logout=Logga ut
 main_title2=webmin
 main_title3=Webmin $1 ($2)

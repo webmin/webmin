@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Categoria de configuració:
-config_change=Canviar
 config_return=informació del sistema
-config_next=Desa i Següent
-config_nnext=Pròxim
-config_nprev=Anterior
 
 edright_title=Configuració de la informació del sistema
 edright_header=Configuració de la pàgina d'informació del sistema Virtualmin

@@ -1,3 +1,8 @@
+config_section=Kategori konfigurasi:
+config_change=Ubah
+config_next=Simpan dan Seterusnya
+config_nnext=Seterusnya
+config_nprev=Sebelumnya
 category_=Alat
 
 longcategory_=Modul yang menjalankan tugas lain-lain

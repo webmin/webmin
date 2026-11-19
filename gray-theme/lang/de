@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Konfigurationskategorie:
-config_change=Ändern
 config_return=Systeminformationen
-config_next=Speichern und Weiter
-config_nnext=Weiter
-config_nprev=Zurück
 
 edright_title=Konfiguration der Systeminformationsseite
 edright_header=Einstellungen für die Systeminformationsseite
