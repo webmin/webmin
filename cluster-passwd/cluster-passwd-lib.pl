@@ -96,6 +96,14 @@ foreach $host (@{$_[0]}) {
 		&$pfunc(2, $cluster_useradmin::text{'usave_gone'});
 		next;
 		}
+	# Apply the grant to this member's current UID and group memberships.
+	my @groups = $access{'mode'} == 5 ? &remote_foreign_call(
+		$serv->{'host'}, "useradmin", "list_groups") : ( );
+	if ($passwd_error_msg || !&can_edit_passwd(
+	    { %$user, 'host' => { 'groups' => \@groups } })) {
+		&$pfunc(1, $passwd_error_msg || $passwd::text{'passwd_ecannot'});
+		next;
+		}
 
 	# Update password fields in user
 	$user->{'olduser'} = $user->{'user'};
