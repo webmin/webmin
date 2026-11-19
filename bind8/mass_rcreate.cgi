@@ -21,6 +21,7 @@ foreach my $d (split(/\0/, $in{'d'})) {
 	push(@zones, $zone);
 	}
 $access{'ro'} && &error($text{'master_ero'});
+&can_edit_type($in{'type'}) || &error($text{'recs_ecannottype'});
 
 # Validate inputs
 &valdnsname($in{'name'}, 0, undef, $in{'type'}) || $in{'name'} eq '@' || &error($text{'rmass_ename'});
