@@ -1568,9 +1568,6 @@ return ( \@rv );
 # Logging directives
 sub edit_ErrorLog
 {
-if (!$access{'pipe'} && $_[0]->{'words'}->[0] =~ /^\|/) {
-	return (1, $text{'core_logto'}, $text{'core_managedlog'});
-	}
 if ($_[1]->{'version'} < 1.3) {
 	return (1, $text{'core_errfile'},
 		&opt_input($_[0]->{'value'}, "ErrorLog", $text{'core_default'}, 20).

@@ -20,7 +20,7 @@ use WebminCore;
 &init_config();
 do 'md5-lib.pl';
 our ($module_root_directory, %text, %sessiondb, %config, %gconfig,
-     $module_config_directory, $base_remote_user, %hash_session_id_cache, $session_hmac_key,
+     $base_remote_user, %hash_session_id_cache, $session_hmac_key,
      $loaded_session_keyfile, $use_hmac_sha256);
 eval {
 	require Digest::SHA;
@@ -1299,15 +1299,6 @@ my ($user) = @_;
 return "$user->{'name'}: ".join(' ', @{$user->{'modules'} || []})."\n";
 }
 
-# pending_certificate_file()
-# Return a private pickup path for the current Webmin account.
-sub pending_certificate_file
-{
-my $dir = "$module_config_directory/pending-certs";
-&make_dir($dir, 0700) if (!-d $dir);
-return $dir."/".unpack("H*", $base_remote_user).".der";
-}
-
 =head2 can_edit_user(user, [&groups])
 
 Returns 1 if the current Webmin user can edit some other user.
@@ -1335,84 +1326,6 @@ foreach my $u (split(/\s+/, $access{'users'})) {
 		}
 	}
 return 0;
-}
-
-# can_edit_group_members(group)
-# Group changes propagate to nested members, all of whom must be editable.
-sub can_edit_group_members
-{
-my ($group) = @_;
-my @groups = &list_groups();
-my %groups = map { $_->{'name'}, $_ } @groups;
-my @todo = ($group);
-my %seen;
-while (@todo) {
-	my $name = pop(@todo);
-	return 0 if (!$groups{$name} || $seen{$name}++);
-	foreach my $member (@{$groups{$name}->{'members'}}) {
-		if ($member =~ /^\@(.+)/) {
-			push(@todo, $1);
-			}
-		elsif (!&can_edit_user($member, \@groups)) {
-			return 0;
-			}
-		}
-	}
-return 1;
-}
-
-# acl_edit_target(module, user, group)
-# Validate the module and account before resolving any ACL files.
-sub acl_edit_target
-{
-my ($mod, $user, $group) = @_;
-$access{'acl'} || &error($text{'acl_emod'});
-my @mods = $access{'mode'} == 1 ? @{(&get_user($base_remote_user) || { })->{'modules'} || [ ]} :
-	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-				  ( &list_modules(), "" );
-&indexof($mod, @mods) >= 0 || &error($text{'acl_emod'});
-if ($group) {
-	$access{'groups'} && &can_edit_group_members($group) ||
-		&error($text{'acl_egroup'});
-	return $group;
-	}
-&get_user($user) && &can_edit_user($user) || &error($text{'acl_euser'});
-return $user;
-}
-
-# can_change_own_acl(module, user, [group])
-# Returns 0 if saving the global or Webmin Users ACL for this user or group
-# would change the current admin's own access to manage Webmin users.
-sub can_change_own_acl
-{
-my ($mod, $user, $group) = @_;
-
-# Admins who can manage every user and module cannot gain more access
-return 1 if ($access{'users'} eq '*' && $access{'mode'} == 0);
-
-# Only the global and Webmin Users ACLs control user management and RPC
-return 1 if ($mod ne '' && $mod ne 'acl');
-
-# A user ACL only matters when it is the admin's own
-return $user ne $base_remote_user if (!$group);
-
-# Group ACLs are copied to all members, including those of nested groups
-my %groups = map { $_->{'name'}, $_ } &list_groups();
-my @todo = ($group);
-my %seen;
-while (@todo) {
-	my $g = $groups{pop(@todo)};
-	next if (!$g || $seen{$g->{'name'}}++);
-	foreach my $member (@{$g->{'members'}}) {
-		if ($member =~ /^\@(.+)/) {
-			push(@todo, $1);
-			}
-		elsif ($member eq $base_remote_user) {
-			return 0;
-			}
-		}
-	}
-return 1;
 }
 
 =head2 can_module_acl(&mod)

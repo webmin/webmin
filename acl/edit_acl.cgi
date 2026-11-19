@@ -9,10 +9,22 @@ no warnings 'uninitialized';
 require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $base_remote_user, %gconfig);
 &ReadParse();
-my $who = &acl_edit_target($in{'mod'}, $in{'user'}, $in{'group'});
-# Admins with limited ACL access cannot raise their own permissions
-&can_change_own_acl($in{'mod'}, $in{'user'}, $in{'group'}) ||
-	&error($text{'acl_eself'});
+$access{'acl'} || &error($text{'acl_emod'});
+
+my $who;
+if ($in{'group'}) {
+	$access{'groups'} || &error($text{'acl_egroup'});
+	$who = $in{'group'};
+	}
+else {
+	my $me = &get_user($base_remote_user);
+	my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
+		   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+				          ( &list_modules() , "" );
+	&indexof($in{'mod'}, @mcan) >= 0 || &error($text{'acl_emod'});
+	&can_edit_user($in{'user'}) || &error($text{'acl_euser'});
+	$who = $in{'user'};
+	}
 
 my %minfo = $in{'mod'} ? &get_module_info($in{'mod'})
 		       : ( 'desc' => $text{'index_global'} );

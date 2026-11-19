@@ -30,7 +30,7 @@ foreach $i (@ids) {
 			}
 		}
 
-	if (&is_download_process($down)) {
+	if ($down->{'pid'}) {
 		&kill_logged('TERM', $down->{'pid'});
 		}
 	}

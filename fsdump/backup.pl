@@ -47,16 +47,9 @@ else {
 		$status{'status'} = 'failed';
 		}
 	else {
-		# Do the backup, unless the destination now leaves the
-		# directories of the user who saved it
+		# Do the backup
 		$now = time();
-		if (&dump_dest_allowed($dump, $now)) {
-			$ok = &execute_dump($dump, OUT, 0, 1, $now);
-			}
-		else {
-			print OUT "$text{'backup_edest'}\n";
-			$ok = 0;
-			}
+		$ok = &execute_dump($dump, OUT, 0, 1, $now);
 
 		# Re-update the status file
 		if ($ok) {

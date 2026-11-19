@@ -37,28 +37,14 @@ close(CONF);
 return \@rv;
 }
 
-# check_amavis_value(value, [numeric])
-# Returns 1 if a value can be saved in the Perl config file. Every value must
-# be a single line. Numeric values must be undef or a simple arithmetic
-# expression, because they are written without quotes.
+# amavis_check_value(value, numeric)
+# check if value is ok or not
 sub check_amavis_value
 {
-my ($v, $numeric) = @_;
-return 0 if ($v =~ /[\r\n\0]/);
-return 1 if (!$numeric);
-my $number = qr/[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)/;
-return $v eq "undef" ||
-       $v =~ m{\A[ \t]*$number(?:[ \t]*(?:\*\*|[+*/-])[ \t]*$number)*[ \t]*\z};
-}
-
-# amavis_quote_value(value)
-# Returns a value as a double-quoted Perl string, with characters that Perl
-# would interpolate escaped
-sub amavis_quote_value
-{
-my ($v) = @_;
-$v =~ s/([\\\"\$\@])/\\$1/g;
-return "\"$v\"";
+if ($_[1] && $_[1] eq "*") {
+	return $_[0] =~ m/^[0-9\.\,\*\-\+\/]+$|undef/;
+    }
+return 1;
 }
 
 # save_amavis_directive(&config, name, value, multiline)
@@ -67,18 +53,14 @@ sub save_amavis_directive
 {
 local ($c,$n,$v,$m) = @_;
 local $old = &amavis_find($n, $c);
-# Leave an unchanged Perl expression exactly as the administrator wrote it.
-return if ($old && $old->{'value'} eq $v);
 local $lref = &read_file_lines($config{'amavisdconf'});
-$v =~ s/\n$//;
-&check_amavis_value($v) || &error($text{'amavis_eline'});
 if (!$old) {
     pop(@$lref);
     push(@$lref, "# new config added by webmin");
     if (&check_amavis_value($v, 1)) {
 	push(@$lref, "\$$n = $v;");
     } else {
-	push(@$lref, "\$$n = ".&amavis_quote_value($v).";");
+	push(@$lref, "\$$n = \"$v\";");
     }
     push(@$lref, "1;");
     return;
@@ -86,13 +68,13 @@ if (!$old) {
 
 local $olen = $old->{'eline'} - $old->{'line'} + 1;
 local $pos = $old->{'line'};
+$v =~ s/\n$//;
 
-	# Only safe numeric values are written without quotes
-	if ($old->{'computed'} && $v ne "*" && &check_amavis_value($v, 1)) {
+	$v =~ s/\@/\\@/g;
+	if ($old->{'computed'} && $v ne "*") {
 		splice(@$lref, $pos, $olen, "\$$n = $v; # modified by webmin");
 	} else {
-		splice(@$lref, $pos, $olen, "\$$n = ".
-			&amavis_quote_value($v)."; # modified by webmin");
+		splice(@$lref, $pos, $olen, "\$$n = \"$v\"; # modified by webmin");
 	}
 }
 

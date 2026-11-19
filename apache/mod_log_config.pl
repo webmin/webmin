@@ -71,7 +71,6 @@ if ($_[2]->{'version'} >= 1.305) {
 	}
 $rv .= "</tr>\n";
 @all = (@{$_[0]}, @{$_[1]});
-@all = grep { $_->{'words'}->[0] !~ /^\|/ } @all if (!$access{'pipe'});
 for($i=0; $i<=@all; $i++) {
 	$d = $all[$i];
 	if (!$d) { $format = ""; $dest = ""; }
@@ -93,8 +92,7 @@ for($i=0; $i<=@all; $i++) {
 	$rv .= "<td><input type=radio name=Log_prog_$i value=0 ".
 	       ($dest =~ /^\|/ ? "" : "checked")."> $text{'mod_log_config_file'}&nbsp;\n";
 	$rv .= "<input type=radio name=Log_prog_$i value=1 ".
-	       ($dest =~ /^\|/ ? "checked" : "").
-	       ($access{'pipe'} ? "" : " disabled")."> $text{'mod_log_config_program'}</td>\n";
+	       ($dest =~ /^\|/ ? "checked" : "")."> $text{'mod_log_config_program'}</td>\n";
 
 	$dest =~ s/^\|//g;
 	$rv .= "<td><input name=Log_dest_$i size=30 value=\"".

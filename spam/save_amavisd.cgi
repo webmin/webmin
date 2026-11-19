@@ -7,8 +7,8 @@ require './spam-amavis-lib.pl';
 &error_setup($text{'score_err'});
 &ReadParse();
 &can_use_check("amavisd");
-&lock_file($config{'amavisdconf'});
 $conf = &get_amavis_config();
+&lock_file($config{'amavisdconf'});
 
 # check for default values
 local $tag2=$in{'sa_tag2_level_deflt'};
@@ -34,24 +34,23 @@ $local=0 if ($in{'sa_local_tests_only'}==-1);
 
 
 # Check inputs
-foreach my $field (
-	[ 'sa_tag2_level_deflt', $tag2, 'amavis_ehit' ],
-	[ 'sa_kill_level_deflt', $kill, 'amavis_ekill' ],
-	[ 'sa_dsn_cutoff_level', $dsn, 'amavis_edsn' ],
-	[ 'sa_quarantine_cutoff_level', $cut, 'amavis_ecut' ],
-	[ 'sa_spam_modifies_subj', $subj, 'amavis_esubject' ],
-	[ 'sa_spam_report_header', $head, 'amavis_eheader' ],
-	[ 'sa_mail_body_size_limit', $size, 'amavis_esize' ],
-	[ 'sa_local_tests_only', $local, 'amavis_elocal' ]) {
-	my ($name, $value, $error) = @$field;
-	my $old = &amavis_find($name, $conf);
-	next if ($old && $old->{'value'} eq $value);
-	&check_amavis_value($value, 1) || &error($text{$error});
-	}
-&check_amavis_value($subtag) ||
-	&error($text{'amavis_eline'});
-&error($text{'amavis_echar'})
-	if (length($char) != 1 || !&check_amavis_value($char));
+&check_amavis_value($tag2, 1) ||
+	&error($text{'amavis_ehit'});
+&check_amavis_value($kill, 1) ||
+	&error($text{'amavis_ekill'});
+&check_amavis_value($dsn, 1) ||
+	&error($text{'amavis_edsn'});
+&check_amavis_value($cut, 1) ||
+	&error($text{'amavis_ecut'});
+&check_amavis_value($subj, 1) ||
+	&error($text{'amavis_esubject'});
+&check_amavis_value($head, 1) ||
+	&error($text{'amavis_eheader'});
+&check_amavis_value($size, 1) ||
+	&error($text{'amavis_esize'});
+&check_amavis_value($size, 1) ||
+	&error($text{'amavis_elocal'});
+&error($text{'amavis_echar'}) if (length($char) != 1);
 
 # Save inputs
 &save_amavis_directive($conf, 'sa_tag2_level_deflt', $tag2);

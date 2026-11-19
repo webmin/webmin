@@ -21,6 +21,7 @@ else {
 	$access{'add'} || &error($text{'edit_ecannot'});
 	$serv = { 'id' => time() };
 	}
+
 my $oldmode = !$in{'id'} ? $config{'deflink'} :
 	      $serv->{'autouser'} ? 2 :
 	      $serv->{'sameuser'} ? 3 : $serv->{'user'} ? 1 : 0;
@@ -50,11 +51,7 @@ else {
 		&error($text{'edit_ecannot'});
 
 	# validate inputs
-	$in{'host'} =~ /^[A-Za-z0-9_][A-Za-z0-9_\-\.]*$/ ||
-		&check_ip6address($in{'host'}) || &error($text{'save_ehost'});
-	$in{'type'} eq $serv->{'type'} ||
-	    &indexof($in{'type'}, map { $_->[0] } &get_server_types()) >= 0 ||
-		&error($text{'save_etype'});
+	$in{'host'} =~ /^\S+$/ || &error($text{'save_ehost'});
 	if ($in{'port_def'}) {
 		$in{'mode'} == 0 || &error($text{'save_eport2'});
 		}
@@ -65,14 +62,6 @@ else {
 		&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
 			&error($text{'save_ehost2'});
 		$in{'wuser'} =~ /\S/ || &error($text{'save_euser'});
-
-		# The stored password is not sent to the browser, so keep it
-		# when the field is left empty, unless the destination changed
-		if ($in{'wpass'} eq '' && $in{'id'} && $oldmode == 1 &&
-		    $in{'host'} eq $serv->{'host'} &&
-		    ($in{'port_def'} ? '' : $in{'port'}) eq $serv->{'port'}) {
-			$in{'wpass'} = $serv->{'pass'};
-			}
 		$in{'wpass'} =~ /\S/ || &error($text{'save_epass'});
 		}
 	# Probe only automatic mode; leave explicit transport choices unchanged.

@@ -29,11 +29,7 @@ my $url = &get_webprefix()."/$module_name/link.cgi/$openurl";
 $| = 1;
 my $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
-	# Only the configured URL can be opened, as stored logins are sent to it
 	$openurl = &fix_end_url($config{'url'}) || &error($text{'seturl_eurl'});
-	&url_allowed($openurl, $protocol, $host, $port, $path) ||
-		&error(&text('link_ebadurl',
-			     "<tt>".&html_escape($ENV{'PATH_INFO'})."</tt>"));
 	}
 
 my ($user, $pass);
@@ -67,8 +63,7 @@ if ($config{'loginmode'} == 2) {
 		}
 	}
 elsif ($config{'loginmode'} == 1) {
-	# A stored login needs an administrator-selected destination.
-	$config{'url'} || &error($text{'link_efixedurl'});
+	# Login is fixed
 	$user = $config{'user'};
 	$pass = $config{'pass'};
 	}

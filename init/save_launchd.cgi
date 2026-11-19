@@ -22,8 +22,6 @@ if ($in{'start'} || $in{'stop'} || $in{'restart'}) {
 	exit;
 	}
 
-$access{'bootup'} == 1 || &error($text{'edit_ecannot'});
-
 if ($in{'delete'}) {
 	# Delete the service
 	&delete_launchd_agent($in{'name'});

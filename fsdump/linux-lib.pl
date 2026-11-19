@@ -231,7 +231,7 @@ else {
 
 if ($_[0]->{'fs'} eq 'tar') {
 	# Parse tar options
-	$_[0]->{'rsh'} = &rsh_command_parse("rsh_def", "rsh", $_[0]->{'rsh'});
+	$_[0]->{'rsh'} = &rsh_command_parse("rsh_def", "rsh");
 	$_[0]->{'pass'} = $in{'pass'};
 	$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 16 ||
 		&error($text{'dump_elabel'});
@@ -247,9 +247,6 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$_[0]->{'exclude'} = $in{'exclude'};
 	$_[0]->{'gzip'} = $in{'gzip'};
 	$_[0]->{'multi'} = $in{'multi'};
-	# Following symlinks as root would read files outside the allowed
-	# directories
-	$in{'links'} && $access{'dirs'} ne '*' && &error($text{'dump_elinks'});
 	$_[0]->{'links'} = $in{'links'};
 	$_[0]->{'xdev'} = $in{'xdev'};
 	if ($in{'update'} && $in{'rsh_def'} == 3) {
@@ -274,9 +271,6 @@ if ($_[0]->{'fs'} eq 'tar') {
 		}
 	else {
 		$in{'rmt'} =~ /^\S+$/ || &error($text{'dump_ermt'});
-		# A custom rmt program is a command, so keep only an old one
-		$access{'cmds'} || $in{'rmt'} eq $_[0]->{'rmt'} ||
-			&error($text{'dump_ecmdprog'});
 		$_[0]->{'rmt'} = $in{'rmt'};
 		}
 	}
@@ -309,7 +303,7 @@ elsif ($_[0]->{'fs'} eq 'xfs') {
 	}
 else {
 	# Parse ext2/3 dump options
-	$_[0]->{'rsh'} = &rsh_command_parse("rsh_def", "rsh", $_[0]->{'rsh'});
+	$_[0]->{'rsh'} = &rsh_command_parse("rsh_def", "rsh");
 	$_[0]->{'pass'} = $in{'pass'};
 	if ($in{'update'}) {
 		&is_mount_point($in{'dir'}) || &error($text{'dump_eupdatedir'});
@@ -349,6 +343,19 @@ else {
 $_[0]->{'remount'} = $in{'remount'};
 }
 
+# split_shell_words(string)
+# Splits command-line text to shell words while rejecting line breaks
+sub split_shell_words
+{
+my ($str) = @_;
+return () if (!defined($str) || $str !~ /\S/);
+my @words = &split_quoted_string($str);
+foreach my $w (@words) {
+	$w =~ /[\r\n\0]/ && &error("Invalid command-line parameter");
+	}
+return @words;
+}
+
 # execute_dump(&dump, filehandle, escape, background-mode, [time])
 # Executes a dump and displays the output
 sub execute_dump
@@ -372,7 +379,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " --bzip" if ($_[0]->{'gzip'} == 2);
 	$cmd .= " -J" if ($_[0]->{'gzip'} == 3);
 	$cmd .= " -M" if ($_[0]->{'multi'});
-	$cmd .= " -h" if ($_[0]->{'links'} && !$_[0]->{'ownerdirs'});
+	$cmd .= " -h" if ($_[0]->{'links'});
 	$cmd .= " --one-file-system" if ($_[0]->{'xdev'});
 	$cmd .= " -F ".quotemeta("$tapecmd $_[0]->{'id'}")
 		if (!$_[0]->{'gzip'} && $tapecmd);
@@ -590,8 +597,7 @@ if ($_[0] eq 'tar') {
 
 	# Restore permissions?
 	print &ui_table_row(&hlink($text{'restore_perms'},"perms"),
-		      &ui_yesno_radio("perms", 1), 1, $tds)
-		if ($access{'dirs'} eq '*');
+		      &ui_yesno_radio("perms", 1), 1, $tds);
 
 	# Uncompress?
 	print &ui_table_row(&hlink($text{'restore_gzip'},"rgzip"),
@@ -610,8 +616,8 @@ if ($_[0] eq 'tar') {
 
 	# rmt path option
 	print &ui_table_row(&hlink($text{'dump_rmt'},"rmt"),
-		&ui_opt_textbox("rmt", $dump->{'rmt'}, 30, $text{'default'}),
-		3, $tds) if ($access{'cmds'});
+		&ui_opt_textbox("rmt", $_[0]->{'rmt'}, 30, $text{'default'}),
+		3, $tds);
 	}
 elsif ($_[0] eq 'xfs') {
 	# xfs restore options
@@ -710,13 +716,7 @@ else {
 	}
 if ($_[0] eq 'tar') {
 	# parse tar options
-	if ($access{'dirs'} ne '*') {
-		# Use tar's restricted ownership and permission settings.
-		$cmd .= " --no-same-owner --no-same-permissions";
-		}
-	elsif ($in{'perms'}) {
-		$cmd .= " -p";
-		}
+	$cmd .= " -p" if ($in{'perms'});
 	$cmd .= " -z" if ($in{'gzip'} == 1);
 	$cmd .= " --bzip" if ($in{'gzip'} == 2);
 	$cmd .= " -J" if ($in{'gzip'} == 3);
@@ -725,16 +725,14 @@ if ($_[0] eq 'tar') {
 		!-c $in{'file'} && !-b $in{'file'} ||
 			&error($text{'restore_emulti'});
 		$in{'mode'} == 0 || &error($text{'restore_emulti2'});
-		my $callback = quotemeta($rmulti_cmd)." ".quotemeta($in{'file'});
-		$cmd .= " -M -F ".quotemeta($callback);
+		$cmd .= " -M -F ".quotemeta("$rmulti_cmd $in{'file'}");
 		}
 	local $rsh = &rsh_command_parse("rsh_def", "rsh");
 	if ($rsh) {
 		$cmd .= " --rsh-command=".quotemeta($rsh);
 		}
-	if (!$in{'rmt_def'} && ($access{'cmds'} || length($in{'rmt'}))) {
+	if (!$in{'rmt_def'}) {
 		$in{'rmt'} =~ /^\S+$/ || &error($text{'dump_ermt'});
-		$access{'cmds'} || &error($text{'dump_ecmdprog'});
 		$cmd .= " --rmt-command=".quotemeta($in{'rmt'});
 		}
 	if ($in{'extra'} && !$access{'extra'}) {
@@ -744,12 +742,14 @@ if ($_[0] eq 'tar') {
 	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	if (!$in{'files_def'}) {
 		$in{'files'} || &error($text{'restore_efiles'});
-		$cmd .= " ".&restore_file_arguments($in{'files'});
+		my @files = &split_shell_words($in{'files'});
+		@files || &error($text{'restore_efiles'});
+		$cmd .= " ".join(" ", map { quotemeta($_) } @files);
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
 	$cmd = "cd ".quotemeta($in{'dir'})." && $cmd";
 	if ($in{'multi'}) {
-		$cmd = quotemeta($rmulti_cmd)." ".quotemeta($in{'file'})." 1 && $cmd";
+		$cmd = "$rmulti_cmd ".quotemeta($in{'file'})." 1 && $cmd";
 		}
 	}
 elsif ($_[0] eq 'xfs') {
@@ -790,7 +790,9 @@ else {
 	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	if (!$in{'files_def'}) {
 		$in{'files'} || &error($text{'restore_efiles'});
-		$cmd .= " ".&restore_file_arguments($in{'files'});
+		my @files = &split_shell_words($in{'files'});
+		@files || &error($text{'restore_efiles'});
+		$cmd .= " ".join(" ", map { quotemeta($_) } @files);
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
 	}
@@ -816,7 +818,7 @@ else {
 	# Need to supply prompts
 	&foreign_require("proc", "proc-lib.pl");
 	local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
-		"cd ".quotemeta($in{'dir'})." && $_[1]");
+		"cd ".quotemeta($in{'dir'})." ; $_[1]");
 	local $donevolume;
 	while(1) {
 		local $rv = &wait_for($fh, "(.*next volume #)", "(.*set owner.mode for.*\\[yn\\])", "((.*)\\[yn\\])", "(.*enter volume name)", "password:", "yes\\/no", "(.*\\n)");

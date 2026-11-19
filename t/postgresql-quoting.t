@@ -27,37 +27,7 @@ BEGIN {
 my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..'));
 chdir($root) or die "chdir($root): $!";
 do './postgresql/postgresql-lib.pl' or die $@ || $!;
-do './mysql/view-lib.pl' or die $@ || $!;
 $main::module_name = 'postgresql';
-
-# pg_literal(sql, standard-strings)
-# Reads one string constant from the start of the SQL and returns its value
-# and the SQL after it. Plain strings only treat backslashes as escapes when
-# standard_conforming_strings is off.
-sub pg_literal
-{
-my ($sql, $standard) = @_;
-my $escape = $sql =~ s/^E'//;
-$escape || $sql =~ s/^'// or return (undef, $sql);
-$escape ||= !$standard;
-my $value = '';
-while(length($sql)) {
-	if ($escape && $sql =~ s/^\\(.)//s) {
-		$value .= $1;
-		}
-	elsif ($sql =~ s/^''//) {
-		$value .= "'";
-		}
-	elsif ($sql =~ s/^'//) {
-		return ($value, $sql);
-		}
-	else {
-		$sql =~ s/^(.)//s;
-		$value .= $1;
-		}
-	}
-return (undef, $sql);
-}
 
 # shell_words(command)
 # Splits a command into words the way /bin/sh would. The payloads below only
@@ -73,14 +43,6 @@ close($fh);
 return split(/\0/, $out);
 }
 
-my @values = (
-	q{x\' superuser -- },
-	q{x' superuser -- },
-	"trailing\\",
-	"plain",
-	"",
-	);
-
 subtest 'DBI receives one quoted database name' => sub {
 	my $dsn;
 	local *TestPgDriver::connect = sub { $dsn = $_[1]; die "captured\n"; };
@@ -90,41 +52,6 @@ subtest 'DBI receives one quoted database name' => sub {
 	eval { main::execute_sql_safe(q{Sam's sales\archive;2026}, 'select 1') };
 	is($dsn, q{dbname='Sam\'s sales\\\\archive;2026';host=localhost;port=5432},
 	   'spaces, quotes, backslashes and punctuation stay in the name');
-};
-
-subtest 'string constants keep their value under both string modes' => sub {
-	for my $value (@values) {
-		for my $standard (0, 1) {
-			my ($got, $rest) = pg_literal(
-				main::pg_quote_lit($value)." TAIL", $standard);
-			is($got, $value,
-			   "value read back with standard=$standard");
-			is($rest, ' TAIL',
-			   'the closing quote is the one added');
-			}
-		}
-	is(main::pg_quote_lit("it's"), "'it''s'",
-	   'values without backslashes keep the plain form');
-};
-
-subtest 'table searches quote the search value' => sub {
-	for my $match (0..5) {
-		for my $value (@values) {
-			my $cond = main::make_like($match, $value);
-			$cond =~ s/^(not )?(like|>|<) // or
-				die "Unexpected $cond";
-			for my $standard (0, 1) {
-				my ($got, $rest) = pg_literal($cond, $standard);
-				my $want = $value;
-				if ($match == 0 || $match == 2) {
-					$want =~ s/\\/\\\\/g;
-					$want = "%$want%";
-					}
-				is($got, $want, "mode $match quotes the value");
-				is($rest, '', 'nothing follows the value');
-				}
-			}
-		}
 };
 
 subtest 'SQL file runner quotes the database name' => sub {

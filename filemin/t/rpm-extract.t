@@ -105,16 +105,11 @@ return $mock_output;
 sub backquote_command { backquote_logged(@_) }
 
 load_sub("$root/web-lib-funcs.pl", 'simplify_path');
-sub resolve_links { return $_[0]; }
-load_sub("$root/filemin/filemin-lib.pl", 'filemin_path_under_directory');
-load_sub("$root/filemin/filemin-lib.pl", 'filemin_lexical_path_under_directory');
 load_sub("$root/filemin/filemin-lib.pl", 'rpm_extract_command');
 load_sub("$root/filemin/filemin-lib.pl", 'extract_files');
 $INC{'./filemin-lib.pl'} = 1;
 $ENV{'THEME_ROOT'} = $theme;
 $INC{"$theme/extensions/file-manager/file-manager-lib.pl"} = 1;
-load_sub("$theme/extensions/file-manager/file-manager-lib.pl", 'fm_path_is_allowed')
-	if (-f "$theme/extensions/file-manager/file-manager-lib.pl");
 my @routes = ('classic', 'upload');
 push(@routes, 'theme') if (-f "$theme/extensions/file-manager/extract.cgi");
 

@@ -274,21 +274,6 @@ my @uinfo = getpwnam($remote_user);
 return @uinfo;
 }
 
-# is_download_process(&download)
-# Returns 1 if the download's recorded PID is still running download.pl for
-# that download, so that no other process is ever killed when cancelling it
-sub is_download_process
-{
-my ($down) = @_;
-my $pid = $down->{'pid'};
-return 0 if ($pid !~ /^\d+$/ || $pid <= 1 || $down->{'id'} !~ /^\d+$/);
-return 0 if (!&foreign_check("proc"));
-&foreign_require("proc");
-my ($proc) = grep { $_->{'pid'} == $pid } &proc::list_processes($pid);
-return $proc &&
-       $proc->{'args'} =~ /download\.pl\s+\Q$down->{'id'}\E(\s|$)/ ? 1 : 0;
-}
-
 # switch_uid_to(uid, gid)
 # Temporarily sets the effective UID and GID, if appropriate
 sub switch_uid_to

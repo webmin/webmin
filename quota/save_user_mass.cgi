@@ -22,13 +22,6 @@ foreach $t ('sblocks', 'hblocks', 'sfiles', 'hfiles') {
 
 # Update the users
 $bsize = &block_size($fs);
-foreach my $field (qw(sblocks hblocks sfiles hfiles)) {
-	my $mode = $in{$field.'_def'};
-	next if (!$mode);
-	my $limit = $mode == 1 ? 0 : $field =~ /blocks$/
-		? &quota_parse($field, $bsize, 1) : $in{$field};
-	&check_quota_limit($field, $limit);
-	}
 $n = &filesystem_users($fs);
 foreach $u (@d) {
 	# Find the user

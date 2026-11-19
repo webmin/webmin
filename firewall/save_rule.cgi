@@ -13,18 +13,13 @@ else {
 &error_setup($text{'save_err'});
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
-$in{'table'} =~ /\A[0-9]+\z/ && $table && &can_edit_table($table->{'name'}) ||
-	&error($text{'etable'});
-if ($in{'new'} && !$in{'delete'} && !$in{'clone'}) {
-	# A new rule must go into an existing chain
-	exists($table->{'defaults'}->{$in{'chain'}}) ||
-		&error($text{'save_enochain'});
+&can_edit_table($table->{'name'}) || &error($text{'etable'});
+if ($in{'new'}) {
 	$rule = { 'chain' => $in{'chain'} };
 	}
 else {
 	$rule = $table->{'rules'}->[$in{'idx'}];
-	$in{'idx'} =~ /\A[0-9]+\z/ && $rule && &can_jump($rule) ||
-		&error($text{'ejump'});
+	&can_jump($rule) || &error($text{'ejump'});
 	}
 if ($in{'clone'}) {
 	# Go back to the editing page
@@ -41,7 +36,6 @@ if ($in{'delete'}) {
 	}
 else {
 	# Validate and store inputs
-	&check_rule_inputs(\%in) || &error($text{'save_echars'});
 	if ($config{'comment_mod'}) {
 		$in{'cmt'} =~ s/^\s+//;
 		$in{'cmt'} =~ s/\s+$//;
@@ -375,10 +369,7 @@ else {
 		push(@mods, "set");
 		}
 
-	# Add custom parameters and modules. If actions are limited, the
-	# parameters cannot set one
-	!$access{'jumps'} || !&args_set_target($in{'args'}) ||
-		&error($text{'save_eargsjump'});
+	# Add custom parameters and modules
 	$rule->{'args'} = $in{'args'};
 	push(@mods, split(/\s+/, $in{'mods'}));
 

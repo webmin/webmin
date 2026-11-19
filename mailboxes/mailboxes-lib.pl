@@ -76,32 +76,8 @@ sub list_user_folders
 {
 if ($_[0] =~ /^\//) {
 	# A path .. return a folder just for it
-	my $owner;
-	if ($access{'mmode'} != 1) {
-		my @st = stat($_[0]);
-		my @mailuser = @st ? &get_mail_uid($st[4]) : ();
-		if (@mailuser && &can_user(@mailuser)) {
-			# Owned by an allowed user, so read as that user
-			$owner = $st[4];
-			}
-		else {
-			# Allowed by directory. Use the owner of the path, of
-			# the symlink itself, or of the directory a new file
-			# goes in, so that a link cannot make root access a
-			# file that its creator cannot.
-			my $dir = &allowed_directory();
-			defined($dir) && &is_under_directory($dir, $_[0]) ||
-				&error($text{'view_ecannot'});
-			my @lst = lstat($_[0]);
-			my $islink = @lst && -l _;
-			my @pst = $_[0] =~ /^(.*)\/[^\/]+$/ ?
-					stat($1 || "/") : ();
-			$owner = $islink ? $lst[4] : @st ? $st[4] : $pst[4];
-			}
-		}
 	return ( { 'name' => $_[0],
 		   'file' => $_[0],
-		   'user' => $owner,
 		   'type' => &folder_type($_[0]),
 		   'mode' => 1,
 		   'index' => 0 } );
@@ -116,7 +92,6 @@ else {
 	# Check for user-specified mail store
 	if ($uinfo[10]) {
 		push(@rv, { 'name' => $uinfo[10],
-			    'user' => $uinfo[2],
 			    'file' => $uinfo[10],
 			    'type' => &folder_type($uinfo[10]),
 			    'mode' => 0,
@@ -310,7 +285,7 @@ if (!&is_user($_[0])) {
 	# For external files, check if the file is under an allowed
 	# directory, or owned by an allowed user.
 	local @st = stat($_[0]);
-	local @uinfo = @st ? &get_mail_uid($st[4]) : ();
+	local @uinfo = &get_mail_uid($st[4]);
 	return 1 if (@uinfo && &can_user(@uinfo));
 	local $dir = &allowed_directory();
 	return defined($dir) && &is_under_directory($dir, $_[0]);

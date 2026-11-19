@@ -45,21 +45,14 @@ $ipvx_todestpattern='^\[([0-9A-Fa-f:]+)\](\-([0-9A-Fa-f:]+))?(:(\d+)(\-(\d+))?)?
 &set_ipvx_version('ipv6');
 
 # IP V6 only functions
-
-# check_ipmask(addresses)
-# Returns 1 if each address in a comma or space separated list is an IPv6
-# address or hostname, optionally followed by a prefix length or an IPv6
-# netmask such as ffff:ffff::, as ip6tables accepts
 sub check_ipmask
 {
-foreach my $w (split(/[ \t\r\n,]+/, $_[0])) {
-	my ($addr, $mask) = split(/\//, $w, 2);
-	my $ok = &to_ip6address($addr) &&
-		 (!defined($mask) ||
-		  $mask =~ /^\d+$/ && $mask <= 128 ||
-		  $mask =~ /^[0-9a-f]*:[0-9a-f:]*$/i &&
-		  &check_ip6address($mask));
-	return 0 if (!$ok);
+foreach my $w (split(/,/, $_[0])) {
+	my $ok = &to_ipaddress($w) ||
+		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
+			&to_ipaddress("$1") &&
+			(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
+	return 1 if (!$ok);
 	}
 return 1;
 }

@@ -54,10 +54,7 @@ return $i;
 sub package_search
 {
 local $n = 0;
-# Leading dashes would turn the search text into emerge options
-local $s = $_[0];
-$s =~ s/^-+//;
-local $qm = quotemeta($s);
+local $qm = quotemeta($_[0]);
 &open_execute_command(SEARCH, "emerge search $qm", 1, 1);
 while(<SEARCH>) {
 	s/\r|\n//g;

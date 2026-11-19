@@ -229,7 +229,6 @@ eadm_buttsave=Save
 eadm_return=squid index
 
 eauth_ecannot=You are not allowed to edit proxy authentication
-eauth_efile=Proxy users cannot be saved to $1, because it is not a Squid password file in an allowed directory
 eauth_header=Proxy Authentication
 eauth_aopt=Authentication Options
 eauth_puf=Proxy users file

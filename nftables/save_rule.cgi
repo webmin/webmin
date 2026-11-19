@@ -59,7 +59,6 @@ if ($in{'delete'}) {
 else {
 	my $rule = {};
 	if ($in{'new'}) {
-		exists($table->{'chains'}->{$in{'chain'}}) || error($text{'chain_nochain'});
 		$rule->{'chain'} = $in{'chain'};
 		$rule->{'index'} = scalar(@{$table->{'rules'}});
 		}
@@ -77,12 +76,6 @@ else {
 		$rule->{'text'} = $raw;
 		}
 	else {
-		# Fields written into the rule must not be able to end it.
-		# Hidden fields such as raw_extra are only used by the
-		# preview, so are not checked
-		my $field_err = check_rule_form_fields(\%in, check_acl('raw'));
-		error($field_err) if ($field_err);
-
 		$rule->{'comment'} = $in{'comment'};
 		my $action = $in{'action'} || 'accept';
 		$rule->{'action'} = undef;
@@ -241,12 +234,17 @@ else {
 		push(@{$table->{'rules'}}, $rule);
 		}
 
-	# Check raw and restricted edits in context. An unrestricted admin
-	# can save ordinary form edits while repairing a ruleset in stages.
-	if (($in{'edit_direct'} || !check_acl('raw') ||
-	     !check_unrestricted_table_acl()) && get_nft_command()) {
-		my $err = validate_nftables_tables(@tables);
-		error(text('save_invalid_rule', $err)) if ($err);
+	if ($in{'edit_direct'}) {
+		my $cmd = get_nft_command();
+		if ($cmd) {
+			my $tmp = tempname();
+			open_tempfile(my $fh, ">$tmp");
+			print_tempfile($fh, dump_nftables_save(@tables));
+			close_tempfile($fh);
+			my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+			unlink_file($tmp);
+			error(text('save_invalid_rule', "<pre>$out</pre>")) if ($?);
+			}
 		}
 
 	webmin_log("save", $in{'new'} ? "create" : "modify", $rule->{'text'});

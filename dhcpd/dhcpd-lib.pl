@@ -74,13 +74,12 @@ open(FILE, "<".$_[0]);
 while($line = <FILE>) {
 	# strip comments
 	$line =~ s/\r|\n//g;
-	# Convert escaped quotes and backslashes to \042 and \134, pairing
-	# each backslash with the character after it as dhcpd does
-	$line =~ s/\\([\\"])/$1 eq '"' ? "\\042" : "\\134"/ge;
+	$line =~ s/([^\\])\\"/$1\\042/g;	# convert escaped quotes to \042
 	$line =~ s/^([^"#]*)#.*$/$1/g;
 	$line =~ s/^([^"]*)\/\/.*$/$1/g;
 	$line =~ s/^([^"]*)\s+#.*$/$1/g;	# remove stuff after #, unless
 	$line =~ s/^(.*".*".*)\s+#.*$/$1/g;	#  it is inside quotes
+	$line =~ s/\\\\/\\134/g;		# convert \\ into \134
 	while(1) {
 		if (!$cmode && $line =~ /\/\*/ && $line !~ /\".*\/\*.*\"/) {
 			# start of a C-style comment
@@ -426,28 +425,8 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 sub directive_lines
 {
 local(@rv, $v, $m, $i);
-grep { defined($_) && /[\r\n\0]/ }
-     ($_[0]->{'name'}, @{$_[0]->{'values'} || [ ]}) and
-	&error($text{'save_eline'});
-
-# Refuse names and values that would end the directive early or open a new
-# block, as they could add directives the user is not allowed to change
-&directive_value_safe($_[0]->{'name'}) ||
-	&error(&text('save_evalue', &html_escape($_[0]->{'name'})));
-for($i=0; $i<@{$_[0]->{'values'} || [ ]}; $i++) {
-	$v = $_[0]->{'values'}->[$i];
-	&directive_value_safe($v, $_[0]->{'quotes'}->[$i],
-			      $_[0]->{'name'} eq 'option') ||
-		&error(&text('save_evalue', &html_escape($v)));
-	}
-
 if ($_[0]->{'comment'}) {
-	# Write the comment as one line, because only the line just above a
-	# directive is read back as its comment
-	local $cmt = $_[0]->{'comment'};
-	$cmt =~ s/[\r\n\0]+$//;
-	$cmt =~ s/\s*[\r\n\0]+\s*/ /g;
-	push(@rv, ("\t" x $_[1])."# ".$cmt);
+	push(@rv, ("\t" x $_[1])."# ".$_[0]->{'comment'});
 	}
 local $first = "\t" x $_[1];
 $first .= "$_[0]->{'name'}";
@@ -467,21 +446,6 @@ if ($_[0]->{'type'}) {
 	}
 else { $rv[$#rv] .= ";"; }
 return @rv;
-}
-
-# directive_value_safe(value, [quoted], [allow-braces])
-# Returns 1 if a directive name or value can be written to dhcpd.conf without
-# changing the structure of the file. A quoted value must not contain a quote
-# or end with an unpaired backslash. Other values may contain complete quoted
-# strings, but no semicolons, comments or unquoted braces.
-sub directive_value_safe
-{
-my ($v, $quoted, $braces) = @_;
-return 1 if (!defined($v));
-my $str = '(?:[^"\\\\]|\\\\[^"])*';
-return $v =~ /^$str$/ if ($quoted);
-my $plain = $braces ? '[^";#\\\\]' : '[^";#{}\\\\]';
-return $v =~ /^(?:$plain|\\[^"]|"$str")*$/;
 }
 
 # renumber(&directives, line, file, count)

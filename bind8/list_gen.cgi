@@ -43,13 +43,13 @@ foreach my $g (@gens, { }) {
 	my @r = $gv[0] =~ /^(\d+)-(\d+)(\/(\d+))?$/ ? ( $1, $2, $4 ) : ( );
 	push(@cols, &ui_select("type_$i", uc($gv[2]),
 		[ [ '', '&nbsp;' ],
-		  map { uc($_) } @types ], 1, 0, 1));
+		  map { uc($_) } @types ]));
 	push(@cols, &ui_textbox("start_$i", $r[0], 3)." - ".
 		    &ui_textbox("stop_$i", $r[1], 3)." $text{'gen_skip'} ".
 		    &ui_textbox("skip_$i", $r[2], 3));
 	push(@cols, &ui_textbox("name_$i", $gv[1], 20));
 	push(@cols, &ui_textbox("value_$i", $gv[3], 20));
-	push(@cols, &ui_textbox("cmt_$i", $g->{'comment'}, 25));
+	push(@cols, &ui_textbox("cmt_$i", join(" ", @gv[4..$#gv]), 25));
 	print &ui_columns_row(\@cols);
 	$i++;
 	}

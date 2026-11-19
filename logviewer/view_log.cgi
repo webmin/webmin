@@ -117,11 +117,6 @@ else {
 	&error($text{'save_emissing'});
 	}
 
-# Logs are read as root, so check where symlinks lead
-if ($file) {
-	&can_read_log_file($file) || &error($text{'save_ecannot2'});
-	}
-
 # Run restricted extra logs with the permissions of their configured account
 my ($exec_uid, $exec_gid) = &extra_log_exec_ids($extra);
 defined($exec_uid) || &error($text{'save_ecannot2'});
@@ -182,7 +177,7 @@ if (!$follow) {
 			}
 		elsif ($config{'compressed'}) {
 			# All compressed versions
-			foreach $l (&readable_log_files($file)) {
+			foreach $l (&all_log_files($file)) {
 				$c = &catter_command($l);
 				push(@cats, $c) if ($c);
 				}
@@ -225,7 +220,7 @@ if (!$follow) {
 			# Cat all compressed files
 			my @cats;
 			$total = 0;
-			foreach $l (reverse(&readable_log_files($file))) {
+			foreach $l (reverse(&all_log_files($file))) {
 				next if (!-s $l);
 				$c = &catter_command($l);
 				if ($c) {

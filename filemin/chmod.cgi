@@ -15,13 +15,6 @@ foreach my $name (@names) {
 	push(@files, [ $name, &validate_filename_path($name) ]);
 	}
 
-# Users limited to some directories never set setuid, and keep setgid only on
-# directories, where it just sets the group of new files
-my $restricted = &filemin_restricted_root();
-if ($restricted && $perms =~ /^[0-7]{4}$/) {
-	$perms = sprintf("%04o", oct($perms) & 03777);
-	}
-
 # Selected directories and files only
 if ($in{'applyto'} eq '1') {
 	foreach my $file (@files) {
@@ -133,14 +126,6 @@ if ($in{'applyto'} eq '5') {
 					"$text{'error_chmod'}: $?";
 				}
 			}
-		}
-	}
-
-# Drop setuid and setgid from the files changed above, at the same depth
-my %strip_depth = ( 1 => 0, 2 => 1, 3 => -1, 4 => -1 );
-if ($restricted && defined($strip_depth{$in{'applyto'}})) {
-	foreach my $file (@files) {
-		&filemin_drop_setid($file->[1], $strip_depth{$in{'applyto'}});
 		}
 	}
 

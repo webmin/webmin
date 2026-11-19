@@ -22,12 +22,7 @@ elsif ($in{'but_delete'}) {
 	}
 
 # Check global ACL access before saving any group changes.
-$in{'acl_security_form'} && (!$access{'acl'} || $access{'mode'} != 0) && &error($text{'acl_emod'});
-
-# Limited admins cannot change global permissions for their own group
-$in{'acl_security_form'} && $in{'old'} &&
-	!&can_change_own_acl("", undef, $in{'old'}) &&
-	&error($text{'acl_eself'});
+$in{'acl_security_form'} && !$access{'acl'} && &error($text{'acl_emod'});
 
 # Find logged-in webmin user
 my @ulist = &list_users();
@@ -38,7 +33,6 @@ if ($in{'old'}) {
 	# Get the original group
 	$old = &get_group($in{'old'});
 	$old || &error($text{'gedit_egone'});
-	&can_edit_group_members($old->{'name'}) || &error($text{'acl_egroup'});
 	$group{'members'} = $old->{'members'};
 	$group{'proto'} = $old->{'proto'};
 	$group{'id'} = $old->{'id'};
@@ -69,12 +63,6 @@ foreach my $m (@mods) {
 	$mcan{$m} || $keep{$m} || &error(&text('save_emod', &html_escape($m)));
 	}
 @mods = &unique(@mods, keys %keep);
-
-# Cloning copies global and per-module ACL files.
-if ($in{'clone'}) {
-	$access{'acl'} && !$access{'mode'} && &can_edit_group_members($in{'clone'}) ||
-		&error($text{'acl_egroup'});
-	}
 
 # Find the current parent group
 my $oldgroup;

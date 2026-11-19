@@ -13,10 +13,7 @@ our ($err, %access, %in, %text);
 
 &ReadParse();
 
-my $section = $in{'_log_form'} eq 'local' ? 'local_delivery' :
-	      $in{'_log_form'} eq 'opts' ? 'address_rewriting' : $in{'_log_form'};
-my $options = &options_for_section($section);
-$options && $section ne 'general' && $access{$section} || &error($text{'opts_ecannot'});
+$access{'general'} || &error($text{'opts_ecannot'});
 
 &error_setup($text{'opts_err'});
 
@@ -25,12 +22,11 @@ if (defined($in{"debug_peer_level_def"})) {
 		&error($text{'opts_edebug'});
 	}
 if (defined($in{"inet_protocols"})) {
-	$in{'inet_protocols_def'} = $in{'inet_protocols'} ||
-		"__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__";
+	&set_current_value("inet_protocols", $in{"inet_protocols"} || "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__", 1);
 	}
 
 &lock_postfix_files();
-&save_options(\%in, [ "inet_protocols" ], $options);
+&save_options(\%in);
 &unlock_postfix_files();
 
 $err = &reload_postfix();

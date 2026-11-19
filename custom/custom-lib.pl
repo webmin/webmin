@@ -242,18 +242,6 @@ if (-r $cf) {
 	}
 }
 
-# editor_file(&editor)
-# Resolves home-relative files and returns the Unix user to run as when root.
-sub editor_file
-{
-my ($edit) = @_;
-my $file = $edit->{'edit'};
-return ($file, undef) if ($file =~ m{^/});
-my @user = getpwnam($remote_user);
-@user && $user[7] =~ m{^/} || &error($text{'view_ehome'});
-return ("$user[7]/$file", $> == 0 ? $user[0] : undef);
-}
-
 sub can_run_command
 {
 if ($module_info{'usermin'}) {

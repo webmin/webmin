@@ -30,18 +30,8 @@ open(my $lib, '<', "$root/mysql/mysql-lib.pl") or die $!;
 my $code = do { local $/; <$lib> };
 close($lib);
 for my $sub (qw(can_edit_db quotestr quote_table split_table show_table_form is_blob
-	       mysql_import_tempname escapestr)) {
+	       mysql_import_tempname)) {
 	$code =~ /(^sub \Q$sub\E\n\{.*?^\})/ms or die "Missing $sub";
-	eval 'no strict; no warnings; '.$1;
-	die $@ if $@;
-	}
-if ($module eq 'postgresql') {
-	# Search values use the PostgreSQL string quoting
-	open(my $pglib, '<', "$root/postgresql/postgresql-lib.pl") or die $!;
-	my $pgcode = do { local $/; <$pglib> };
-	close($pglib);
-	$pgcode =~ /(^sub pg_quote_lit\n\{.*?^\})/ms or
-		die "Missing pg_quote_lit";
 	eval 'no strict; no warnings; '.$1;
 	die $@ if $@;
 	}

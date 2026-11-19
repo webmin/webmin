@@ -157,7 +157,6 @@ menu_bookmarks=Bookmarks
 notallowed=You are not allowed to access $1. The only allowed directories are: $2
 error_upload_emax=Uploaded file is larger than the limit of $1
 extract_etype=Unsupported archive file type
-extract_ecommand=The extraction command failed for <tt>$1</tt>
 
 error_write=you do not have write permission to this file
 error_move=you do not have permission to move this file
@@ -187,10 +186,6 @@ extract_uploaded=Extract Compressed
 extract_cmd_not_avail=Could not extract $1 file as $2 command is missing
 extract_failed=Failed to extract <tt>$1</tt>: $2
 extract_missing_bsdtar=Cannot extract <tt>$1</tt> because <tt>bsdtar</tt> is not installed or not in PATH. Install the <tt>bsdtar</tt> package on RHEL-based systems, or <tt>libarchive-tools</tt> on Debian and Ubuntu.
-extract_edir=Cannot extract into <tt>$1</tt> because it is not a directory or is a symbolic link
-extract_etemp=Failed to create a temporary extraction directory in <tt>$1</tt> : $2
-extract_eisdir=Did not extract <tt>$1</tt> because a directory with that name already exists
-extract_emove=Failed to move extracted <tt>$1</tt> into place : $2
 overwrite_existing=Overwrite Existing
 
 __norefs=1

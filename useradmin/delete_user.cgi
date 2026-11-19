@@ -104,15 +104,7 @@ if ($in{'confirmed'}) {
 	&unlock_user_files();
 
 	if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
-	    $access{'delhome'} != 0 &&
-	    !&can_change_home_directory(\%access, $user)) {
-		# Restricted admins cannot delete a directory the user
-		# did not own
-		print &text('udel_ehomeowner',
-			"<tt>".&html_escape($user->{'home'})."</tt>"),"<p>\n";
-		}
-	elsif ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
-	       $access{'delhome'} != 0) {
+	    $access{'delhome'} != 0) {
 		# Delete home directory
 		print "$text{'udel_home'}<br>\n";
 		&lock_file($user->{'home'});

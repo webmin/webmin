@@ -205,26 +205,18 @@ else {
 					}
 				}
 
-			# Delete home directory, unless this restricted admin
-			# would remove a directory the user did not own
-			if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
-			    !&useradmin::can_change_home_directory(
-					\%access, $user)) {
-				print &text('udel_ehomeowner', "<tt>".
-				    &html_escape($user->{'home'})."</tt>"),
-				    "<p>\n";
-				}
-			elsif ($in{'delhome'} && $user->{'home'} !~ /^\/+$/) {
+			# Delete home directory
+			if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/) {
 				print "$text{'udel_home'}<br>\n";
 				if ($config{'delete_only'}) {
 					&lock_file($user->{'home'});
-					&system_logged("find ".quotemeta($user->{'home'})." ! -type d -uid ".quotemeta($user->{'uid'})." -exec rm -f {} \\; >/dev/null 2>&1");
-					&system_logged("find ".quotemeta($user->{'home'})." -depth -type d -uid ".quotemeta($user->{'uid'})." -exec rmdir {} \\; >/dev/null 2>&1");
+					&system_logged("find \"$user->{'home'}\" ! -type d -user $user->{'uid'} | xargs rm -f >/dev/null 2>&1");
+					&system_logged("find \"$user->{'home'}\" -type d -user $user->{'uid'} | xargs rmdir >/dev/null 2>&1");
 					rmdir($user->{'home'});
 					&unlock_file($user->{'home'});
 					}
 				else {
-					&system_logged("rm -rf ".quotemeta($user->{'home'})." >/dev/null 2>&1");
+					&system_logged("rm -rf \"$user->{'home'}\" >/dev/null 2>&1");
 					}
 				print "$text{'udel_done'}<p>\n";
 

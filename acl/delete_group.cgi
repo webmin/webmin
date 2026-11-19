@@ -13,10 +13,6 @@ our (%in, %text, %config, %access, $base_remote_user);
 $access{'groups'} || &error($text{'gdelete_ecannot'});
 my @glist = &list_groups();
 my ($group) = grep { $_->{'name'} eq $in{'group'} } @glist;
-$group || &error($text{'gedit_egone'});
-if (@{$group->{'members'}}) {
-	$access{'delete'} && &can_edit_group_members($group->{'name'}) || &error($text{'gdelete_ecannot'});
-	}
 my @mems = @{$group->{'members'}};
 foreach my $m (@mems) {
 	&error($text{'gdelete_esub'}) if ($m =~ /^\@/);

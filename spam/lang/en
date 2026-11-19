@@ -303,7 +303,6 @@ amavis_esize=Value for size above witch a message is not checked for Spam is not
 amavis_echar=A single character must be entered for the <tt>X-Spam-Level:</tt> header
 amavis_esubject=Value for Prepend text to <tt>Subject:</tt> header is not a value!
 amavis_elocal=Value for disable Internet sources is not a value!
-amavis_eline=An Amavisd setting contains an invalid line break or null character
 amavis_quarantine_level=Hits above which a Spam message is Quarantined.
 amavis_dsn_level=Hits above which no notification is sent to sender.
 amavis_delete_level=Hits above which a Spam message is deleted.

@@ -1463,38 +1463,10 @@ sub parse_inputs
 &before_changing();
 &lock_apache_files();
 foreach $e (@{$_[0]}) {
-	# A delegated log editor cannot replace an administrator's piped error log.
-	next if ($e->{'name'} eq 'ErrorLog' && !$access{'pipe'} &&
-		 grep { $_->{'words'}->[0] =~ /^\|/ }
-		 &find_directive_struct('ErrorLog', $_[1]));
 	@dirs = split(/\s+/, $e->{'name'});
 	$func = "save_".join('_', @dirs);
 	@rv = &$func($e);
 	for($i=0; $i<@dirs; $i++) {
-		# Each editor returns one element per physical directive.
-		foreach my $value (@{$rv[$i] || [ ]}) {
-			$value =~ /[\r\n\0]|\\\z/ && &error($text{'enewline'});
-			# Apache accepts a quoted pipe destination in file mode too.
-			if (!$access{'pipe'} &&
-			    $dirs[$i] =~ /^(?:CustomLog|TransferLog|ErrorLog|AgentLog|RefererLog)$/ &&
-			    $value =~ /^\s*["']?\|/) {
-				&error($text{'core_eperm'});
-				}
-			}
-		# The file-log editor omits administrator-managed piped logs.
-		if (!$access{'pipe'} && $dirs[$i] =~ /^(?:CustomLog|TransferLog)$/) {
-			my @new = @{$rv[$i] || [ ]};
-			my @merged;
-			foreach my $old (&find_directive_struct($dirs[$i], $_[1])) {
-				if ($old->{'words'}->[0] =~ /^\|/) {
-					push(@merged, $old->{'value'});
-					}
-				elsif (@new) {
-					push(@merged, shift(@new));
-					}
-				}
-			$rv[$i] = [ @merged, @new ];
-			}
 		push(@chname, $dirs[$i]);
 		push(@chval, $rv[$i]);
 		}
@@ -1975,25 +1947,6 @@ sub allowed_doc_dir
 return $access{'aliasdir'} eq '/' ||
        $_[0] !~ /^\// ||	# Relative path, like for <Files>
        &is_under_directory($access{'aliasdir'}, $_[0]);
-}
-
-# valid_section_path(path)
-# Returns 1 if a path can be written as one double-quoted directive argument.
-# A line break would start a new directive, a double quote would end the
-# quotes early, and a trailing backslash would escape the closing quote.
-sub valid_section_path
-{
-my ($path) = @_;
-return $path !~ /[\r\n\0"]|\\\z/ ? 1 : 0;
-}
-
-# valid_section_type(type)
-# Returns 1 if a per-directory section type from a form is Directory, Files,
-# Location or Proxy
-sub valid_section_type
-{
-my ($type) = @_;
-return $type =~ /^(Directory|Files|Location|Proxy)\z/ ? 1 : 0;
 }
 
 sub lock_apache_files

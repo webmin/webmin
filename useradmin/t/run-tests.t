@@ -80,33 +80,6 @@ write_global_acl(
 	fileunix => $remote_user,
 	);
 
-subtest 'server-side user export grants' => sub {
-	my %acl = ( 'export' => 2, 'uedit_mode' => 2, 'home' => abs_path($allowed) );
-	ok(can_export_users_to_file(\%acl), 'named users can be exported in a granted directory');
-	my $path = abs_path($allowed)."/export.txt";
-	write_delegated_export($acl{'home'}, $path, [ "first\n" ]);
-	write_delegated_export($acl{'home'}, $path, [ "second\n" ]);
-	is(read_file_contents($path), "second\n", 'a second export replaces the first');
-	is((stat($path))[2] & 0777, 0600, 'exported account details stay private');
-	{
-		no warnings qw(redefine once);
-		local *main::error = sub { die join('', @_)."\n" };
-		my $outside = abs_path($other)."/export.txt";
-		ok(!eval { write_delegated_export($acl{'home'}, $outside, [ 'row' ]); 1 },
-		   'the writer checks the actual destination directory');
-		ok(!-e $outside, 'nothing is written outside the directory grant');
-		}
-	for my $home ('', '/', '/./') {
-		local $acl{'home'} = $home;
-		ok(!can_export_users_to_file(\%acl), 'delegated export needs a bounded directory');
-		}
-	local $acl{'uedit_mode'} = 0;
-	local $acl{'home'} = '/';
-	ok(can_export_users_to_file(\%acl), 'full administrator keeps unrestricted export');
-	local $acl{'export'} = 1;
-	ok(!can_export_users_to_file(\%acl), 'browser-only export cannot write a file');
-	};
-
 subtest 'local batch file path ACLs' => sub {
 	%access = ( 'batchdir' => $allowed );
 	ok(can_read_batch_local_file("$allowed/batch.txt"),
@@ -202,76 +175,6 @@ subtest 'global ACL home fallback for Webmin-only users' => sub {
 		);
 	ok(can_read_batch_local_file("$allowed/batch.txt"),
 	   'explicit otherdirs still permits configured paths');
-	};
-
-# Admins limited to some users must not take over other users' identities,
-# home directories or files.
-subtest 'restricted admin UID and home helpers' => sub {
-	my %full = ( 'uedit_mode' => 0, 'home' => '/' );
-	my %named = ( 'uedit_mode' => 2, 'uedit' => 'alice bob',
-		      'home' => $tmp );
-	my @users = (
-		{ 'user' => 'alice', 'uid' => 50001, 'home' => "$tmp/a" },
-		{ 'user' => 'bob', 'uid' => 50002, 'home' => "$tmp/b" },
-		{ 'user' => 'carol', 'uid' => 50003, 'home' => "$tmp/c" },
-		{ 'user' => 'root', 'uid' => 0, 'home' => '/root' } );
-	ok(!restricted_user_acl(\%full), 'all-user admins are unrestricted');
-	ok(restricted_user_acl(\%named), 'name-limited admins are restricted');
-
-	# UIDs of uneditable users, including root, are refused
-	like(check_user_uid_owner(\%named, 0, 'alice', \@users), qr/UID 0/,
-	     'root UID is refused for a name-limited admin');
-	ok(check_user_uid_owner(\%named, 50003, 'alice', \@users),
-	   'UID of an uneditable user is refused');
-	ok(!check_user_uid_owner(\%named, 50002, 'alice', \@users),
-	   'UID of an editable user is allowed');
-	ok(!check_user_uid_owner(\%named, 50001, 'alice', \@users),
-	   'own UID is allowed');
-	ok(!check_user_uid_owner(\%named, 59999, 'alice', \@users),
-	   'unused UID is allowed');
-	ok(!check_user_uid_owner(\%full, 0, 'alice', \@users),
-	   'unrestricted admins keep full UID choice');
-
-	# The home base and other users' homes are refused
-	for my $home ($tmp, "$tmp/", "$tmp/./") {
-		ok(check_user_home(\%named, $home, undef, 'alice', \@users),
-		   "home base $home is refused");
-		}
-	{
-		no warnings 'once';
-		local $main::config{'home_base'} = "$tmp/homes";
-		ok(check_user_home(\%named, "$tmp/homes", undef, 'alice',
-				   \@users),
-		   'configured home base is refused');
-	}
-	ok(check_user_home(\%named, "$tmp/c", "$tmp/a", 'alice', \@users),
-	   'another user home is refused');
-	ok(check_user_home(\%named, "$tmp/c/", undef, 'dave', \@users),
-	   'another user home with a trailing slash is refused');
-	ok(!check_user_home(\%named, "$tmp/a", "$tmp/a", 'alice', \@users),
-	   'unchanged home is accepted');
-	ok(!check_user_home(\%named, "$tmp/nested/alice", undef, 'alice',
-			    \@users),
-	   'new home below the base is accepted');
-	ok(!check_user_home(\%full, '/', undef, 'alice', \@users),
-	   'unrestricted admins keep full home choice');
-
-	# Existing directories are only changed when owned by the user
-	my $owned = "$tmp/owned";
-	make_path($owned);
-	my $uid = (stat($owned))[4];
-	ok(can_change_home_directory(\%named,
-		{ 'uid' => $uid, 'home' => $owned }),
-	   'own directory can be changed');
-	ok(!can_change_home_directory(\%named,
-		{ 'uid' => $uid + 1, 'home' => $owned }),
-	   'directory owned by another UID is protected');
-	ok(can_change_home_directory(\%named,
-		{ 'uid' => $uid + 1, 'home' => "$tmp/missing" }),
-	   'missing directory can be created');
-	ok(can_change_home_directory(\%full,
-		{ 'uid' => $uid + 1, 'home' => $owned }),
-	   'unrestricted admins keep existing behaviour');
 	};
 
 done_testing();

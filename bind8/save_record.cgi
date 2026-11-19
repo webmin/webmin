@@ -14,8 +14,8 @@ our $ipv6revzone;
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
 my @zl = &list_zone_names();
-my $reverse = ($dom =~ /\.in-addr\.arpa/i ||
-	    $dom =~ /\.$ipv6revzone/i);
+my $reverse = ($in{'origin'} =~ /\.in-addr\.arpa/i ||
+	    $in{'origin'} =~ /\.$ipv6revzone/i);
 &can_edit_zone($zone) || &error($text{'recs_ecannot'});
 &can_edit_type($in{'type'}) ||
 	&error($text{'recs_ecannottype'});
@@ -27,20 +27,18 @@ $access{'ro'} && &error($text{'master_ero'});
 my @recs;
 if ($config{'largezones'} && !defined($in{'num'})) {
 	# Adding to a large zone, so only read the SOA
-	@recs = &read_zone_file($zone->{'file'}, $dom, undef, 1);
+	@recs = &read_zone_file($in{'file'}, $in{'origin'}, undef, 1);
 	}
 else {
 	# Read all records
-	@recs = &read_zone_file($zone->{'file'}, $dom);
+	@recs = &read_zone_file($in{'file'}, $in{'origin'});
 	}
 
 # get the old record if needed
 my $r;
-my ($oldname, $oldvalue);
 if (defined($in{'num'})) {
 	$r = &find_record_by_id(\@recs, $in{'id'}, $in{'num'});
 	$r || &error($text{'edit_egone'});
-	($oldname, $oldvalue) = ($r->{'name'}, $r->{'values'}->[0]);
 	&can_edit_type($r->{'type'}) || &error($text{'recs_ecannottype'});
 	}
 
@@ -53,7 +51,7 @@ if ($in{'delete'}) {
 
 		print &ui_confirmation_form("save_record.cgi",
 			&text('edit_rusure', "<tt>$r->{'name'}</tt>",
-                                             "<tt>$dom</tt>"),
+                                             "<tt>$in{'origin'}</tt>"),
 			[ map { [ $_, $in{$_} ] } (keys %in) ],
 			[ [ 'confirm', $text{'edit_dok'} ] ],
 			);
@@ -64,21 +62,21 @@ if ($in{'delete'}) {
 		# Delete the record
 		&lock_file(&make_chroot($r->{'file'}));
 		&delete_record($r->{'file'}, $r);
-		&bump_soa_record($zone->{'file'}, \@recs);
+		&bump_soa_record($in{'file'}, \@recs);
 		&sign_dnssec_zone_if_key($zone, \@recs);
 
 		# Update reverse
 		$fulloldvalue0 = &convert_to_absolute(
-					$oldvalue, $dom);
+					$in{'oldvalue0'}, $in{'origin'});
 		$fulloldname = &convert_to_absolute(
-					$oldname, $dom);
+					$in{'oldname'}, $in{'origin'});
 		my ($orevconf, $orevfile, $orevrec) = &find_reverse(
-					$oldvalue, $in{'view'});
+					$in{'oldvalue0'}, $in{'view'});
 		if ($in{'rev'} && $orevrec && &can_edit_reverse($orevconf) &&
 		    $fulloldname eq $orevrec->{'values'}->[0] &&
 		    ($in{'type'} eq "A" ||
 		     $in{'type'} eq "AAAA" &&
-		     &expandall_ip6($oldvalue) eq &expandall_ip6(&ip6int_to_net($orevrec->{'name'})))) {
+		     &expandall_ip6($in{'oldvalue0'}) eq &expandall_ip6(&ip6int_to_net($orevrec->{'name'})))) {
 			&before_editing($orevconf);
 			&lock_file(&make_chroot($orevrec->{'file'}));
 			&delete_record($orevrec->{'file'} , $orevrec);
@@ -94,8 +92,8 @@ if ($in{'delete'}) {
 		($ipv6 = ($fulloldvalue0 =~ /\.$ipv6revzone/i));
 		my ($ofwdconf, $ofwdfile, $ofwdrec) = &find_forward($fulloldvalue0, $ipv6);
 		if ($in{'fwd'} && $ofwdrec && &can_edit_zone($ofwdconf) &&
-		    (!$ipv6 && &arpa_to_ip($oldname) eq $ofwdrec->{'values'}->[0] ||
-		     $ipv6 && &expandall_ip6(&ip6int_to_net($oldname)) eq &expandall_ip6($ofwdrec->{'values'}->[0])) &&
+		    (!$ipv6 && &arpa_to_ip($in{'oldname'}) eq $ofwdrec->{'values'}->[0] ||
+		     $ipv6 && &expandall_ip6(&ip6int_to_net($in{'oldname'})) eq &expandall_ip6($ofwdrec->{'values'}->[0])) &&
 		    $fulloldvalue0 eq $ofwdrec->{'name'}) {
 			&before_editing($ofwdconf);
 			&lock_file(&make_chroot($ofwdrec->{'file'}));
@@ -109,7 +107,7 @@ if ($in{'delete'}) {
 
 		&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}");
 		&unlock_all_files();
-		&webmin_log('delete', 'record', $dom, $r);
+		&webmin_log('delete', 'record', $in{'origin'}, $r);
 		}
 	exit;
 	}
@@ -132,16 +130,16 @@ my ($name, $fullname);
 if ($in{'type'} eq "PTR" && $reverse) {
 	# a reverse address
 	my $ipv4;
-	($ipv4 = $dom =~ /in-addr\.arpa/i) ||
-	    $dom =~ /\.$ipv6revzone/i ||
+	($ipv4 = $in{'origin'} =~ /in-addr\.arpa/i) ||
+	    $in{'origin'} =~ /\.$ipv6revzone/i ||
 		&error(&text('edit_eip', $in{'name'}));
 	if ($ipv4) {
 		if ($in{'name'} =~ /^\d+$/) {
-			$in{'name'} = &arpa_to_ip($dom).".".$in{'name'};
+			$in{'name'} = &arpa_to_ip($in{'origin'}).".".$in{'name'};
 			}
 		&check_ipaddress($in{'name'}) ||
 		    ($in{'name'} =~ /^(.*)\.(\d+)$/ && &check_ipaddress("$1")) ||
-		    ($in{'name'} =~ /^(.*)\.(\d+)$/ && $1 eq &arpa_to_ip($dom)) ||
+		    ($in{'name'} =~ /^(.*)\.(\d+)$/ && $1 eq &arpa_to_ip($in{'origin'})) ||
 			&error(&text('edit_eip', $in{'name'}));
 		$name = &ip_to_arpa($in{'name'});
 		}
@@ -207,7 +205,7 @@ else {
 	elsif ($in{'type'} eq "NS") {
 		&valname($vals) ||
 			&error(&text('edit_ens', $vals));
-		if ($vals =~ /\.\Q$dom\E$/) {
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
 			# Make absolute
 			$vals .= ".";
 			}
@@ -215,14 +213,14 @@ else {
 	elsif ($in{'type'} eq "CNAME") {
 		&valname($vals) || $vals eq '@' ||
 			&error(&text('edit_ecname', $vals));
-		if ($vals =~ /\.\Q$dom\E$/) {
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
 			$vals .= ".";
 			}
 		}
 	elsif ($in{'type'} eq "ALIAS") {
 		&valname($vals) ||
 			&error(&text('edit_ecname', $vals));
-		if ($vals =~ /\.\Q$dom\E$/) {
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
 			$vals .= ".";
 			}
 		}
@@ -231,7 +229,7 @@ else {
 			&error(&text('edit_emx', $in{'value1'}));
 		$in{'value0'} =~ /^\d+$/ ||
 			&error(&text('edit_epri', $in{'value0'}));
-		if ($vals =~ /\.\Q$dom\E$/) {
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
 			$vals .= ".";
 			}
 		}
@@ -503,7 +501,7 @@ else {
 		my @vlines = split(/\n/, $in{'values'});
 		$vals = join(" ",map { $_ =~ /\s|;/ ? "\"$_\"" : $_ } @vlines);
 		}
-	$fullname = &convert_to_absolute($in{'name'}, $dom);
+	$fullname = &convert_to_absolute($in{'name'}, $in{'origin'});
 	if ($config{'short_names'}) {
 		$name = $in{'name'};
 		}
@@ -543,7 +541,7 @@ if ($in{'new'}) {
 		# Reverse zone must exist, but doesn't
 		&error($text{'edit_erevmust'});
 		}
-	&create_record($zone->{'file'}, $name, $ttl, "IN", $in{'type'}, $vals,
+	&create_record($in{'file'}, $name, $ttl, "IN", $in{'type'}, $vals,
 		       $in{'comment'});
 	$r = { 'name' => $name, 'ttl' => $ttl, 'class' => 'IN',
 	       'type' => $in{'type'}, 'values' => [ split(/\s+/, $vals) ],
@@ -601,9 +599,9 @@ if ($in{'new'}) {
 	}
 else {
 	# update an existing record
-	$fulloldvalue0 = &convert_to_absolute($oldvalue, $dom);
-	$fulloldname = &convert_to_absolute($oldname, $dom);
-	my ($orevconf, $orevfile, $orevrec) = &find_reverse($oldvalue,
+	$fulloldvalue0 = &convert_to_absolute($in{'oldvalue0'}, $in{'origin'});
+	$fulloldname = &convert_to_absolute($in{'oldname'}, $in{'origin'});
+	my ($orevconf, $orevfile, $orevrec) = &find_reverse($in{'oldvalue0'},
 							 $in{'view'});
 	my ($revconf, $revfile, $revrec) = &find_reverse($in{'value0'},
 						      $in{'view'});
@@ -622,7 +620,7 @@ else {
 					    $revconf);
 		}
 	if ($orevconf) {
-		$orname = &make_reverse_name($oldvalue, $in{'type'},
+		$orname = &make_reverse_name($in{'oldvalue0'}, $in{'type'},
 					     $orevconf);
 		}
 
@@ -630,7 +628,7 @@ else {
 	    $fulloldname eq $orevrec->{'values'}->[0] &&
 	    ($in{'type'} eq "A" ||
 	     $in{'type'} eq "AAAA" &&
-	     &expandall_ip6($oldvalue) eq &expandall_ip6(&ip6int_to_net($orevrec->{'name'})))) {
+	     &expandall_ip6($in{'oldvalue0'}) eq &expandall_ip6(&ip6int_to_net($orevrec->{'name'})))) {
 		# Updating the reverse record. Either the name, address
 		# or both may have changed. Furthermore, the reverse record
 		# may now be in a different file!
@@ -689,7 +687,7 @@ else {
 	my ($ofwdconf, $ofwdfile, $ofwdrec) = &find_forward($fulloldvalue0, $ipv6);
 	my ($fwdconf, $fwdfile, $fwdrec) =	&find_forward($in{'value0'}, $ipv6);
 	if ($in{'fwd'} && $ofwdrec && &can_edit_zone($ofwdconf) &&
-	    &expandall_ip6(&ip6int_to_net(&arpa_to_ip($oldname))) eq
+	    &expandall_ip6(&ip6int_to_net(&arpa_to_ip($in{'oldname'}))) eq
 	    &expandall_ip6($ofwdrec->{'values'}->[0]) &&
 	    $fulloldvalue0 eq $ofwdrec->{'name'}) {
 		# Updating the forward record
@@ -733,23 +731,23 @@ else {
 		&after_editing($ofwdconf);
 		}
 	}
-&bump_soa_record($zone->{'file'}, \@recs);
+&bump_soa_record($in{'file'}, \@recs);
 &sign_dnssec_zone_if_key($zone, \@recs);
 &after_editing($zone);
 &unlock_all_files();
 $r->{'newvalues'} = $vals;
-&webmin_log($in{'new'} ? 'create' : 'modify', 'record', $dom, $r);
+&webmin_log($in{'new'} ? 'create' : 'modify', 'record', $in{'origin'}, $r);
 &redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&".
 	  "type=$in{'redirtype'}&sort=$in{'sort'}");
 
 # valname(name, [type])
 sub valname
 {
-return valdnsname($_[0], 0, $dom, $_[1]);
+return valdnsname($_[0], 0, $in{'origin'}, $_[1]);
 }
 
 # valnamewild(name, [type])
 sub valnamewild
 {
-return valdnsname($_[0], 1, $dom, $_[1]);
+return valdnsname($_[0], 1, $in{'origin'}, $_[1]);
 }

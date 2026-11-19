@@ -53,11 +53,6 @@ else {
 				&html_escape($name)." - " .
 				"$text{'error_chown'}: $?";
 			}
-		# Users limited to some directories must not hand out
-		# setuid or setgid files to another owner
-		if (&filemin_restricted_root()) {
-			&filemin_drop_setid($full, $recursive ? -1 : 0);
-			}
 		}
 	if (scalar(@errors) > 0) {
 		print_errors(@errors);

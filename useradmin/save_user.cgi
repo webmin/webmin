@@ -162,14 +162,6 @@ else {
 	&error($text{'usave_euid_def'});
 	}
 
-# Restricted admins cannot reuse the UID of a user they cannot edit
-if (!%ouser || $ouser{'uid'} != $in{'uid'}) {
-	$err = &check_user_uid_owner(\%access, $in{'uid'},
-				     %ouser ? $ouser{'user'} : $in{'user'},
-				     \@ulist);
-	&error($err) if ($err);
-	}
-
 $in{'real'} =~ /^[^:]*$/ || &error(&text('usave_ereal', $in{'real'}));
 if ($in{'shell'} eq "*") { $in{'shell'} = $in{'othersh'}; }
 if ($access{'shells'} ne "*") {
@@ -248,7 +240,6 @@ else {
 		&error(&text('usave_ehomeslash', $in{'home'}));
 		}
 	$user{'home'} = $in{'home'};
-	$manual_home = 1;
 	}
 $real_home ||= $user{'home'};
 if (!$access{'autohome'}) {
@@ -257,13 +248,6 @@ if (!$access{'autohome'}) {
 	if (!&is_under_directory($access{'home'}, $user{'home'})) {
 		&error(&text('usave_ehomepath', $user{'home'}));
 		}
-	}
-if ($manual_home) {
-	# Restricted admins cannot use the base or another user's home
-	$err = &check_user_home(\%access, $user{'home'},
-				%ouser ? $ouser{'home'} : undef,
-				$ouser{'user'}, \@ulist);
-	&error($err) if ($err);
 	}
 
 # Normalize and validate once, before any user/group changes are committed.
@@ -601,12 +585,6 @@ else {
 
 	# Check for user validity
 	&can_edit_user(\%access, \%user) || &error($text{'usave_eeditafter'});
-
-	# Restricted admins cannot take over an existing directory
-	if ($in{'makehome'} &&
-	    !&can_change_home_directory(\%access, \%user, $real_home)) {
-		&error(&text('usave_ehomeowner', &html_escape($real_home)));
-		}
 
 	# Run the pre-change command
 	&set_user_envs(\%user, 'CREATE_USER',

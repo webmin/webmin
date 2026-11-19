@@ -40,7 +40,6 @@ index_eglobal=You are not allowed to edit global settings
 net_title=Network Configuration
 net_header=Global networking options
 opt_missing=Nothing entered for field : $1
-opt_eline=A directive value contains an invalid line break or null character
 opt_sendfile=Use sendfile function?
 opt_tcp_nopush=Send HTTP headers in one packet?
 opt_tcp_nodelay=Send small TCP packets?

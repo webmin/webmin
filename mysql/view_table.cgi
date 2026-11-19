@@ -2,9 +2,6 @@
 # view_table.cgi
 # Display all data in some table
 
-# The table viewer already quotes its literals for the selected database.
-local $mysql_quoted_sql = 1;
-local $main::disable_postgresql_escaping = 1;
 if (-r 'mysql-lib.pl') {
 	require './mysql-lib.pl';
 	}
@@ -94,9 +91,9 @@ if ($in{'delete'}) {
 							     " is null");
 						}
 					else {
-						push(@where,
-						     &quotestr($t[$i])." = ".
-						     &quote_sql_value($r[$i]));
+						$r[$i] =~ s/'/''/g;
+						push(@where, &quotestr($t[$i]).
+							     " = '$r[$i]'");
 						}
 					}
 				}
@@ -134,9 +131,9 @@ elsif ($in{'save'}) {
 							     " is null");
 						}
 					else {
-						push(@where,
-						     &quotestr($t[$i])." = ".
-						     &quote_sql_value($r[$i]));
+						$r[$i] =~ s/'/''/g;
+						push(@where, &quotestr($t[$i]).
+							     " = '$r[$i]'");
 						}
 					}
 				}

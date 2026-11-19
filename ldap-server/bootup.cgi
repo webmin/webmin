@@ -11,10 +11,6 @@ $access{'start'} || &error($text{'bootup_ecannot'});
 $iname = $config{'init_name'} || $module_name;
 if ($in{'boot'}) {
 	$pidfile = &get_ldap_server_pidfile();
-	# The PID file path comes from the LDAP server configuration, so quote
-	# it for the shell unless it is a plain path
-	$pidfile = quotemeta($pidfile)
-		if ($pidfile !~ /^[A-Za-z0-9\/\._\-]+\z/);
 	&init::enable_at_boot($iname, "Start OpenLDAP server",
 			      "$config{'slapd'} 2>&1 </dev/null",
 			      "kill `cat $pidfile`");

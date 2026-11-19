@@ -76,8 +76,6 @@ if (!$in{'name_def'}) {
 # Check if the root directory is allowed
 !$in{'root'} || &allowed_auth_file($in{'root'}) ||
 	&error(&text('cvirt_eroot3', &html_escape($in{'root'})));
-!$in{'root'} || &valid_section_path($in{'root'}) ||
-	&error(&text('vserv_eroot', &html_escape($in{'root'})));
 
 if ($in{'root'} && !-e $in{'root'}) {
 	# create the document root

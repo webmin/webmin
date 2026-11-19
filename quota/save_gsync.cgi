@@ -10,16 +10,10 @@ $access{'default'} && &can_edit_filesys($in{'filesys'}) ||
 grep { $_->[0] eq $in{'filesys'} } &list_filesystems() or &error($text{'suser_efs'});
 $bsize = &block_size($in{'filesys'});
 &lock_file("$module_config_directory/config");
-@fields = qw(sblocks hblocks sfiles hfiles);
-@limits = map { /blocks$/ ? &quota_parse($_, $bsize) :
-			    $in{$_."_def"} ? 0 : $in{$_} } @fields;
-$v = join(' ', @limits);
-# All zeroes remove the automatic quota.
-if ($v ne "0 0 0 0") {
-	for (my $i = 0; $i < @fields; $i++) {
-		&check_quota_limit($fields[$i], $limits[$i]);
-		}
-	}
+$v = join(' ', &quota_parse("sblocks", $bsize),
+	       &quota_parse("hblocks", $bsize),
+	       ($in{'sfiles_def'} ? 0 : $in{'sfiles'}),
+	       ($in{'hfiles_def'} ? 0 : $in{'hfiles'}) );
 $k = "gsync_$in{'filesys'}";
 if ($v eq "0 0 0 0") { delete($config{$k}); }
 else { $config{$k} = $v; }

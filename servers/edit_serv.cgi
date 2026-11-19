@@ -18,7 +18,6 @@ if ($in{'new'}) {
 	&get_miniserv_config(\%miniserv);
 	my $ts = &this_server();
 	$s = { 'port' => $miniserv{'port'},
-	       'ssl' => 1,
 	       'type' => $config{'auto_type'} || $ts->{'type'}, };
 	}
 else {
@@ -98,29 +97,22 @@ if ($access{'forcelink'}) {
 	if ($mode == 1) {
 		print &ui_table_row($text{'edit_luser'},
 				    &ui_textbox("wuser", $s->{'user'}, 10));
-		# The saved password is never sent back, and is kept if empty
 		print &ui_table_row($text{'edit_lpass'},
-			&ui_password("wpass", undef, 10, undef, undef,
-				     $s->{'pass'} ? " placeholder=\"".
-				     &quote_escape($text{'edit_passkeep'}, '"').
-				     "\"" : ""));
+				    &ui_password("wpass", $s->{'pass'}, 10));
 		}
 	}
 else {
 	# Login mode
 	my $qulbl = &quote_escape($text{'edit_user'}, '"');
 	my $qplbl = &quote_escape($text{'edit_pass'}, '"');
-	# The saved password is never sent back, so say that it is kept
-	my $qphold = $mode == 1 && $s->{'pass'} ?
-		&quote_escape($text{'edit_passkeep'}, '"') : $qplbl;
 	my $linksel = &ui_radio("mode", $mode,
 		[ [ 0, "$text{'edit_mode0'}<br>" ],
 		  [ 1, &text('edit_mode12',
 			&ui_textbox("wuser", $mode == 1 ? $s->{'user'} : "", 8,
 			    undef, undef,
 			    " aria-label=\"$qulbl\" placeholder=\"$qulbl\""),
-			&ui_password("wpass", undef, 8, undef, undef,
-			    " aria-label=\"$qplbl\" placeholder=\"$qphold\"")).
+			&ui_password("wpass", $s->{'pass'}, 8, undef, undef,
+			    " aria-label=\"$qplbl\" placeholder=\"$qplbl\"")).
 			"<br>" ],
 		  [ 2, "$text{'edit_mode2'}<br>" ],
 		  ($access{'pass'} && !$main::session_id || $mode == 3 ?

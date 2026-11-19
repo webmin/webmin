@@ -63,8 +63,7 @@ my $rotated = $file.($case->{'rotation'} // '.1');
 write_fixture($rotated, "Older log\n") unless $case->{'missing'};
 write_fixture(main::log_config_name($file), "dir=$report_dir\nuser=root\ntype=1\n")
 	unless $case->{'no_config'};
-write_fixture("$report_dir/index.html", $case->{'report_html'} //
-	"<TITLE>Fixture</TITLE>\n<BODY>\nReport body\n</BODY>\n")
+write_fixture("$report_dir/index.html", "<TITLE>Fixture</TITLE>\n<BODY>\nReport body\n</BODY>\n")
 	unless $case->{'no_report'};
 if (my $target = $case->{'report_link'}) {
 	# Keep the linked file readable so only the directory check can deny it.
@@ -76,8 +75,7 @@ if (my $target = $case->{'report_link'}) {
 %main::in = (file => $file, type => 1, custom => 1, run => 1);
 %main::access = (dir => '/', user => 'root', global => 1,
 	%{$case->{'access'} || {}});
-%main::config = (webalizer => 'fixture-only', webalizer_conf => "$root/webalizer/config",
-	naked => $case->{'naked'});
+%main::config = (webalizer => 'fixture-only', webalizer_conf => "$root/webalizer/config");
 # PATH_INFO is already decoded once by the web server for normal report links.
 $ENV{'PATH_INFO'} = '/'.main::urlize($file).'/index.html';
 if ($case->{'raw_quote'}) {
@@ -86,11 +84,6 @@ if ($case->{'raw_quote'}) {
 if ($case->{'decoded_path'}) {
 	$ENV{'PATH_INFO'} = "$file/index.html";
 	}
-if ($case->{'raw'}) {
-	# Request the report itself, as the sandboxed frame does.
-	$ENV{'PATH_INFO'} =~ s/(\/index\.html)$/\/raw$1/;
-	}
-$ENV{'HTTP_X_REQUESTED_WITH'} = 'XMLHttpRequest' if $case->{'xhr'};
 
 # Keep HTML rendering and file reads real; isolate authentication and services.
 *main::ReadParse = *main::foreign_require = *main::load_theme_library = sub { };

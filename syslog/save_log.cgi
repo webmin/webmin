@@ -70,10 +70,6 @@ elsif ($in{'view'}) {
 	else {
 		&error($text{'save_emissing'});
 		}
-	# Logs are read as root, so check where symlinks lead
-	if ($file) {
-		&can_read_log_file($file) || &error($text{'save_ecannot2'});
-		}
 	print "Refresh: $config{'refresh'}\r\n"
 		if ($config{'refresh'});
 	&ui_print_header("<tt>".&html_escape($file || $cmd)."</tt>",
@@ -97,7 +93,7 @@ elsif ($in{'view'}) {
 			}
 		elsif ($config{'compressed'}) {
 			# All compressed versions
-			foreach $l (&readable_log_files($file)) {
+			foreach $l (&all_log_files($file)) {
 				$c = &catter_command($l);
 				push(@cats, $c) if ($c);
 				}
@@ -131,7 +127,7 @@ elsif ($in{'view'}) {
 			# Cat all compressed files
 			local @cats;
 			$total = 0;
-			foreach $l (reverse(&readable_log_files($file))) {
+			foreach $l (reverse(&all_log_files($file))) {
 				next if (!-s $l);
 				$c = &catter_command($l);
 				if ($c) {
@@ -187,10 +183,7 @@ else {
 
 	# Validate destination section
 	if ($in{'mode'} == 0) {
-		# Logging to a local file. Syslog writes it as root, so a
-		# symlink must not lead outside the allowed logs.
-		&can_read_log_file($in{'file'}) ||
-			&error($text{'save_ecannot4'});
+		# Logging to a local file
 		$log->{'file'} = $in{'file'};
 		$log->{'sync'} = $in{'sync'};
 		}

@@ -321,4 +321,3 @@ update_failed=.. update failed : $1
 update_none=.. no updates were found.
 
 __norefs=1
-host_einvalid=The managed server ID is not valid

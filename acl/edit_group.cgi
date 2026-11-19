@@ -10,12 +10,6 @@ require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 &ReadParse();
 $access{'groups'} || &error($text{'gedit_ecannot'});
-if ($in{'group'} || $in{'clone'}) {
-	&can_edit_group_members($in{'group'} || $in{'clone'}) || &error($text{'acl_egroup'});
-	}
-if ($in{'clone'}) {
-	$access{'acl'} && !$access{'mode'} || &error($text{'acl_emod'});
-	}
 my $g;
 my %group;
 if ($in{'group'}) {
@@ -141,9 +135,8 @@ print &ui_table_row(undef, &ui_links_row(\@links).
                            &ui_links_row(\@links), 2);
 print &ui_hidden_table_end("mods");
 
-# Add global ACL section, unless it would apply to this limited admin
-if ($access{'acl'} && !$access{'mode'} && $in{'group'} &&
-    &can_change_own_acl("", undef, $in{'group'})) {
+# Add global ACL section
+if ($access{'acl'} && $in{'group'}) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
 	my %uaccess = &get_group_module_acl($in{'group'}, "");
@@ -157,7 +150,7 @@ if ($access{'acl'} && !$access{'mode'} && $in{'group'} &&
 my @buts = ( );
 push(@buts, [ undef, $in{'group'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'group'}) {
-	push(@buts, [ "but_clone", $text{'edit_clone'} ]) if ($access{'acl'} && !$access{'mode'});
+	push(@buts, [ "but_clone", $text{'edit_clone'} ]);
 	push(@buts, [ "but_delete", $text{'delete'} ]);
 	}
 print &ui_form_end(\@buts);

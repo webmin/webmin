@@ -3,53 +3,50 @@
 # Create, save or delete a boot-time address range
 
 require './net-lib.pl';
+$access{'ifcs'} == 2 || $access{'ifcs'} == 3 || &error($text{'ifcs_ecannot'});
 &ReadParse();
 @boot = &boot_interfaces();
-if ($in{'new'}) {
-	&can_create_iface() && !$in{'delete'} && !$in{'unapply'} ||
-		&error($text{'ifcs_ecannot'});
-	}
-else {
-	$b = $boot[$in{'idx'}] if ($in{'idx'} =~ /^\d+\z/);
-	$b && $b->{'range'} ne '' || &error($text{'daifcs_egone'});
-	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
-	}
+
+sub check_restricted_interfaces() {
+       if ($access{'ifcs'} == 3) {
+               map { $can_interfaces{$_}++ } split(/\s+/, $access{'interfaces'});
+               if (! $can_interfaces{$b->{'name'}}) {
+                       &error($text{'ifcs_ecannot_this'});
+               }
+       }
+}
 
 if ($in{'delete'} || $in{'unapply'}) {
 	# Delete interface
-	&error_setup($text{'bifc_err1'});
+	&error_setup($text{'range_err1'});
+	$b = $boot[$in{'idx'}];
+	&check_restricted_interfaces();
 
-	# Users who must change boot-time and active interfaces together have
-	# to deactivate a range when deleting it
-	$access{'delete'} || &error($text{'ifcs_ecannot_delete'});
-	!$access{'bootonly'} || $in{'unapply'} ||
-		&error($text{'ifcs_ecannot_active'});
 	if ($in{'unapply'}) {
-		&error_setup($text{'bifc_err4'});
-		&unapply_range($b);
+		# Shut down this range
+		&error_setup($text{'range_err4'});
+		$err = &unapply_interface($act);
+		$err && &error("<pre>$err</pre>");
 		}
 	&delete_interface($b);
 	&webmin_log("delete", "range", $b->{'fullname'}, $b);
 	}
 else {
 	# Save or create interface
-	&error_setup($text{'range_err'});
-
-	# Users who must change boot-time and active interfaces together have
-	# to activate a range when saving it
-	!$access{'bootonly'} || $in{'activate'} ||
-		&error($text{'ifcs_ecannot_active'});
-	if ($in{'new'}) {
-		# A range adds virtual interfaces
-		$access{'virt'} || &error($text{'ifcs_ecannot_virt'});
+	&error_setup($text{'range_err2'});
+	if (!$in{'new'}) {
+		$b = $boot[$in{'idx'}];
+		}
+	else {
 		$b = { };
 		}
 	&parse_range($b, \%in);
+	&check_restricted_interfaces();
 	&save_interface($b);
 
 	if ($in{'activate'}) {
 		# Make this interface active (if possible)
-		&error_setup($text{'bifc_err3'});
+		&error_setup($text{'range_err3'});
 		$err = &apply_interface($b);
 		$err && &error("<pre>$err</pre>");
 		}

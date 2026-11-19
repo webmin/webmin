@@ -472,52 +472,6 @@ sub check_ipaddress_any
 return &check_ipaddress($_[0]) || &check_ip6address($_[0]);
 }
 
-# valid_iface_name(name)
-# Returns 1 if a name is safe to use as an interface name in configuration
-# files, commands and file names, such as eth0, enp0s3, br-1 or eth0.100
-sub valid_iface_name
-{
-my ($name) = @_;
-return defined($name) && $name =~ /\A[A-Za-z0-9_][A-Za-z0-9_.:-]*\z/ ? 1 : 0;
-}
-
-# read_interface_config(file, &config)
-# Reads an ifcfg file, preserving punctuation in the quoted interface name.
-sub read_interface_config
-{
-my ($file, $conf) = @_;
-my %lines;
-my $rv = &read_env_file($file, $conf, 0, \%lines);
-if (defined($lines{'NAME'})) {
-	my $line = &read_file_lines($file, 1)->[$lines{'NAME'}];
-	if ($line =~ /^\s*(?:export\s+)?NAME\s*=\s*"((?:[^"\\]|\\.)*)"/) {
-		my $name = $1;
-		$name =~ s/\\([\\"\$`])/$1/g;
-		$conf->{'NAME'} = $name;
-		}
-	elsif ($line =~ /^\s*(?:export\s+)?NAME\s*=\s*'([^']*)'/) {
-		$conf->{'NAME'} = $1;
-		}
-	}
-return $rv;
-}
-
-# write_interface_config(file, &config)
-# Quotes the interface description as one shell string in an ifcfg file.
-sub write_interface_config
-{
-my ($file, $conf) = @_;
-my %values = %$conf;
-if (defined($values{'NAME'})) {
-	my $name = $values{'NAME'};
-	$name !~ /[\r\n\0]/ || &error($text{'bifc_edesc'});
-	$name =~ s/([\\"\$`])/\\$1/g;
-	# write_env_file supplies the quotes itself for empty values or spaces.
-	$values{'NAME'} = $name =~ /^\S+\z/ ? qq{"$name"} : $name;
-	}
-return &write_env_file($file, \%values);
-}
-
 # common_order_input(name, value, &opts)
 # Returns a field for a standard DNS resolution order input
 sub common_order_input

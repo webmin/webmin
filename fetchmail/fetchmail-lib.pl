@@ -255,58 +255,6 @@ else {
 	}
 }
 
-# switch_to_rc_user(&uinfo)
-# Switches the effective user and group IDs from root to a Unix user, so that
-# his .fetchmailrc is read and written with his permissions. Only effective
-# IDs change, so restore_rc_user can switch back to log the change as root.
-# Returns 1 if the IDs were switched.
-sub switch_to_rc_user
-{
-my ($uinfo) = @_;
-return 0 if ($> != 0 || defined($rc_saved_egid));
-
-# If an error is shown, release file locks as the user before switching back
-&register_error_handler(sub { &unlock_all_files(); &restore_rc_user(); });
-
-$rc_saved_egid = $);
-$) = $uinfo->[3]." ".join(" ", $uinfo->[3], &other_groups($uinfo->[0]));
-$> = $uinfo->[2];
-$> == $uinfo->[2] || &error("Failed to switch to user $uinfo->[0] : $!");
-return 1;
-}
-
-# restore_rc_user()
-# Switches the effective user and group IDs back to root after
-# switch_to_rc_user
-sub restore_rc_user
-{
-return 0 if (!defined($rc_saved_egid));
-$> = 0;
-$) = $rc_saved_egid;
-$rc_saved_egid = undef;
-return 1;
-}
-
-# output_file_user(file)
-# Returns the name of a user whose Fetchmail settings can be edited and whose
-# home directory contains a file. The deepest home directory wins.
-sub output_file_user
-{
-my ($file) = @_;
-my ($best, $bestlen);
-setpwent();
-while(my @uinfo = getpwent()) {
-	next if ($uinfo[7] eq '' || !&can_edit_user($uinfo[0]));
-	next if (!&is_under_directory($uinfo[7], $file));
-	if (!defined($best) || length($uinfo[7]) > $bestlen) {
-		$best = $uinfo[0];
-		$bestlen = length($uinfo[7]);
-		}
-	}
-endpwent();
-return $best;
-}
-
 # get_fetchmail_version([&out])
 sub get_fetchmail_version
 {

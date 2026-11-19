@@ -310,10 +310,6 @@ if ($in{'route_def'}) {
 else {
 	&check_ipaddress($in{'gw'}) ||
 		&error(&text('routes_edefault', &html_escape($in{'gw'})));
-
-	# The device becomes part of a variable name in a sourced file
-	&valid_iface_name($in{'dev'}) ||
-		&error(&text('routes_edevice', &html_escape($in{'dev'})));
 	&set_default_gateway($in{'gw'}, $in{'dev'});
 	}
 }

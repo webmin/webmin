@@ -6,7 +6,8 @@ do 'pptp-server-lib.pl';
 sub backup_config_files
 {
 local $conf = &get_config();
-local $option = &ppp_options_file($conf);
+local $option = &find_conf("option", $conf);
+$option ||= $config{'ppp_options'};
 return ( $config{'file'}, $config{'pap_file'}, $option );
 }
 
@@ -14,11 +15,7 @@ return ( $config{'file'}, $config{'pap_file'}, $option );
 # Called before the files are actually read
 sub pre_backup
 {
-my $conf = &get_config();
-return undef if (&ppp_options_file($conf));
-my $option = &find_conf("option", $conf) || $config{'ppp_options'};
-return &text('backup_eoptions', &html_escape($option),
-	     &html_escape(&ppp_options_dir()));
+return undef;
 }
 
 # post_backup(&files)

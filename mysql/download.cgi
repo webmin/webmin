@@ -2,9 +2,6 @@
 # download.cgi
 # Output the contents of a blob field
 
-# The table viewer already quotes its literals for the selected database.
-local $mysql_quoted_sql = 1;
-local $main::disable_postgresql_escaping = 1;
 if (-r 'mysql-lib.pl') {
 	require './mysql-lib.pl';
 	}

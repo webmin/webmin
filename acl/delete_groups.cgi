@@ -18,10 +18,6 @@ my @glist = &list_groups();
 my $ucount = 0;
 foreach my $g (@d) {
 	my ($group) = grep { $_->{'name'} eq $g } @glist;
-	$group || &error($text{'gedit_egone'});
-	if (@{$group->{'members'}}) {
-		$access{'delete'} && &can_edit_group_members($group->{'name'}) || &error($text{'gdelete_ecannot'});
-		}
 	foreach my $m (@{$group->{'members'}}) {
 		&error($text{'gdelete_esub'}) if ($m =~ /^\@/);
 		&error($text{'gdelete_euser'}) if ($m eq $base_remote_user);

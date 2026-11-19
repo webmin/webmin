@@ -7,7 +7,6 @@ require './apache-lib.pl';
 $access{'global'} || &error($text{'htaccess_ecannot'});
 &allowed_auth_file($in{'file'}) ||
 	&error($text{'htindex_ecannot'});
-&valid_section_path($in{'path'}) || &error($text{'cdir_echars'});
 $hconf = &get_htaccess_config($in{'file'});
 &lock_file($in{'file'});
 &before_changing();

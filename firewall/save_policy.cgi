@@ -13,7 +13,6 @@ else {
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
-exists($table->{'defaults'}->{$in{'chain'}}) || &error($text{'save_enochain'});
 @d = split(/\0/, $in{'d'});
 
 if ($in{'add'}) {
@@ -78,7 +77,7 @@ elsif ($in{'rename'} && $in{'newname'}) {
 	# Rename a chain
 	&lock_file($ipvx_save);
 	$access{'delchain'} || &error($text{'rename_ecannot'});
-	$in{'newname'} =~ /\A[^\s"\\]+\z/ || &error($text{'new_ename'});
+	$in{'newname'} =~ /^\S+$/ || &error($text{'new_ename'});
 
 	# Change the chain on each rule
 	foreach $r (@{$table->{'rules'}}) {
@@ -144,7 +143,6 @@ elsif ($in{'rename'}) {
 elsif ($in{'delsel'}) {
 	# Just delete selected rules
 	%idxs = map { $_, 1 } @d;
-	&check_selected_jumps();
 	&lock_file($ipvx_save);
 	$table->{'rules'} = [ grep { $_->{'chain'} ne $in{'chain'} ||
 				     !$idxs{$_->{'index'}} }
@@ -162,9 +160,6 @@ elsif ($in{'delsel'}) {
 elsif ($in{'movesel'} && $in{'dest'}) {
 	# Move selected rules to new chain
 	%idxs = map { $_, 1 } @d;
-	exists($table->{'defaults'}->{$in{'dest'}}) ||
-		&error($text{'save_enochain'});
-	&check_selected_jumps();
         &lock_file($ipvx_save);
 
 	# Change the chain on each rule
@@ -218,12 +213,6 @@ elsif ($in{'movesel'}) {
 else {
 	# Change the default for this chain
 	$access{'policy'} || &error($text{'policy_ecannot'});
-
-	# Only built-in chains have a policy, and it must be a standard target
-	$table->{'defaults'}->{$in{'chain'}} ne '-' ||
-		&error($text{'policy_ecannot'});
-	$in{'policy'} =~ /\A(ACCEPT|DROP|QUEUE|RETURN)\z/ ||
-		&error($text{'policy_einvalid'});
 	&lock_file($ipvx_save);
 	$table->{'defaults'}->{$in{'chain'}} = $in{'policy'};
 	&run_before_command();
@@ -235,14 +224,4 @@ else {
 					        'table' => $table->{'name'} });
 	&redirect("index.cgi?version=${ipvx_arg}&table=".&urlize($in{'table'}));
 	}
-
-# check_selected_jumps()
-# Fails unless the user can edit every selected rule in the chain
-sub check_selected_jumps
-{
-foreach my $r (@{$table->{'rules'}}) {
-	next if ($r->{'chain'} ne $in{'chain'} || !$idxs{$r->{'index'}});
-	&can_jump($r) || &error($text{'ejump'});
-	}
-}
 

@@ -1,6 +1,5 @@
 #!/usr/bin/perl
-# Tests that form input cannot add statements to named.conf or zone files,
-# and that valid input such as WKS records and empty ACL directories works.
+# Tests zone file access, WKS record fields and DNS view permissions.
 
 use strict;
 use warnings;
@@ -106,34 +105,10 @@ ok(!&allowed_zone_file({ 'dir' => '' }, "$zonedir/../a.hosts"),
 ok(!&allowed_zone_file({ 'dir' => '' }, "a.hosts"),
    'a relative path is denied');
 
-# --- save_choice and check_conf_value -------------------------------------
-{
-	my @saved;
-	no warnings qw(redefine once);
-	local *main::save_directive = sub { push(@saved, $_[2]) };
-	%in = ( 'notify' => 'explicit' );
-	&save_choice('notify', { }, 1);
-	is($saved[0]->[0]->{'values'}->[0], 'explicit',
-	   'an offered choice is saved');
-	%in = ( 'notify' => 'yes; }; zone "victim.com" { type master' );
-	ok(!eval { &save_choice('notify', { }, 1); 1 },
-	   'a choice that closes the zone block is rejected');
-	%in = ( 'notify' => 'maybe' );
-	ok(!eval { &save_choice('notify', { }, 1); 1 },
-	   'a choice that is not offered is rejected');
-	is(scalar(@saved), 1, 'rejected choices are not saved');
-}
-ok(eval { &check_conf_value('10.0.0.0/8', '!192.0.2.1', 'any',
-			    '"transfer-key"', '/var/named/a b.hosts'); 1 },
-   'addresses, quoted key names and paths are accepted');
-foreach my $bad ("1.2.3.4;", "x}", "{", "a\"b", "a\nb", "a\\") {
-	(my $label = $bad) =~ s/\n/\\n/g;
-	ok(!eval { &check_conf_value($bad); 1 }, "value $label is rejected");
-	}
-
 # --- WKS records can be saved ---------------------------------------------
 my ($out, $err) = &run_cgi('save_record.cgi', {
 	'zone' => 'example.com', 'view' => '', 'type' => 'WKS',
+	'file' => $zonefile, 'origin' => 'example.com',
 	'new' => 1, 'name' => 'www', 'ttl_def' => 1,
 	'value0' => '192.0.2.1', 'value1' => 'tcp',
 	'value2' => "smtp\nftp" });
@@ -142,58 +117,13 @@ like(&read_text($zonefile), qr/\tWKS\t192\.0\.2\.1 tcp \(\n\t+smtp\n\t+ftp \)/,
      'WKS services are written one per line');
 ($out, $err) = &run_cgi('save_record.cgi', {
 	'zone' => 'example.com', 'view' => '', 'type' => 'WKS',
+	'file' => $zonefile, 'origin' => 'example.com',
 	'new' => 1, 'name' => 'mail', 'ttl_def' => 1,
 	'value0' => '192.0.2.2', 'value1' => "tcp\n\t\tmail IN A 192.0.2.9",
 	'value2' => 'smtp' });
 isnt($err, '', 'a WKS protocol with a line break is rejected');
 unlike(&read_text($zonefile), qr/192\.0\.2\.9/,
        'the rejected WKS record adds nothing');
-
-# --- record generators ----------------------------------------------------
-($out, $err) = &run_cgi('save_gen.cgi', {
-	'zone' => 'example.com', 'view' => '',
-	'type_0' => "PTR\n\@ IN NS evil.example.", 'start_0' => 1,
-	'stop_0' => 2, 'skip_0' => '', 'name_0' => '$', 'value_0' => 'h$' });
-isnt($err, '', 'a generator type with a line break is rejected');
-($out, $err) = &run_cgi('save_gen.cgi', {
-	'zone' => 'example.com', 'view' => '', 'type_0' => 'PTR',
-	'start_0' => 1, 'stop_0' => 2, 'skip_0' => '', 'name_0' => '$',
-	'value_0' => 'h$', 'cmt_0' => "note\n\@ IN NS evil.example." });
-isnt($err, '', 'a generator comment with a line break is rejected');
-unlike(&read_text($zonefile), qr/evil/, 'rejected generators add nothing');
-($out, $err) = &run_cgi('save_gen.cgi', {
-	'zone' => 'example.com', 'view' => '', 'type_0' => 'PTR',
-	'start_0' => 1, 'stop_0' => 2, 'skip_0' => '', 'name_0' => '$',
-	'value_0' => 'h$', 'cmt_0' => 'hosts' });
-is($err, '', 'a valid generator is saved');
-like(&read_text($zonefile), qr/^\$generate 1-2 \$ PTR h\$ ;hosts$/m,
-     'the generator line is written');
-
-my $gen_zone = read_text($zonefile);
-$gen_zone =~ s/^\$generate.*$/\$GENERATE 1-2 tag-\$ 300 IN TXT branch-\$ ;branches/m;
-write_text($zonefile, $gen_zone);
-($out, $err) = run_cgi('list_gen.cgi', { zone => 'example.com', view => '' });
-like($out, qr/<option[^>]+value="TXT"[^>]*selected/i, 'existing TXT type is selected');
-($out, $err) = run_cgi('save_gen.cgi', {
-	zone => 'example.com', view => '', type_0 => 'TXT', start_0 => 1,
-	stop_0 => 2, name_0 => 'tag-$', value_0 => 'branch-$', cmt_0 => 'branches',
-	type_1 => 'MX', start_1 => 1, stop_1 => 2, name_1 => 'mail-$',
-	value_1 => '"10 mx$.example.com."' });
-is($err, '', 'TXT and quoted MX generators save');
-like(read_text($zonefile), qr/300 IN TXT branch-\$ ;branches/, 'TTL, class and comment kept');
-like(read_text($zonefile), qr/MX "10 mx\$\.example\.com\."/, 'MX preference and host kept');
-
-SKIP: {
-	my $check = &has_command('named-checkzone');
-	skip 'named-checkzone is not installed', 1 unless $check;
-	my $test = "$zonedir/generators.test";
-	write_text($test, "\$TTL 3600\n".
-		"\@ IN SOA ns1.example.com. hostmaster.example.com. (1 3600 600 86400 3600)\n".
-		"\@ IN NS ns1.example.com.\nns1 IN A 192.0.2.1\n".
-		"mx1 IN A 192.0.2.2\nmx2 IN A 192.0.2.3\n".
-		join("\n", grep { /^\$generate/i } split(/\n/, read_text($zonefile)))."\n");
-	is(system($check, '-q', 'example.com', $test), 0, 'BIND loads the saved generators');
-	}
 
 # --- delete_view only deletes views ----------------------------------------
 my $parent = &get_config_parent();

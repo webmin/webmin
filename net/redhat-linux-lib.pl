@@ -69,7 +69,7 @@ while($f = readdir(CONF)) {
 	my (%conf, $b);
 	if ($f =~ /^ifcfg-([a-z0-9:\.]+)\-range([a-z0-9\.\_]+)$/) {
 		# A range of addresses
-		&read_interface_config("$net_scripts_dir/$f", \%conf);
+		&read_env_file("$net_scripts_dir/$f", \%conf);
 		$b->{'fullname'} = "$1-range$2";
 		$b->{'name'} = $1;
 		$b->{'range'} = $2;
@@ -86,7 +86,7 @@ while($f = readdir(CONF)) {
 	elsif ($f !~ /\.(bak|old)$/i && $f =~ /^ifcfg-([a-zA-Z_0-9:\.\-]+)$/) {
 		# Normal interface
 		my $fname = $1;
-		&read_interface_config("$net_scripts_dir/$f", \%conf);
+		&read_env_file("$net_scripts_dir/$f", \%conf);
 		if ($conf{'DEVICE'}) {
 			# Device is set in the file
 			$b->{'fullname'} = $conf{'DEVICE'};
@@ -248,12 +248,12 @@ if ($pmode) {
 	$name =~ s/:\d+$//;
 	my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
 	&lock_file($file);
-	&read_interface_config($file, \%conf);
+	&read_env_file($file, \%conf);
 	my $n = $b->{'virtual'} + 1;
 	$conf{'IPADDR'.$n} = $b->{'address'};
 	$conf{'PREFIX'.$n} = &mask_to_prefix($b->{'netmask'});
 	delete($conf{'NETMASK'.$n});
-	&write_interface_config($file, \%conf);
+	&write_env_file($file, \%conf);
 	&unlock_file($file);
 	$b->{'parent'} ||= $b->{'name'};
 	}
@@ -262,7 +262,7 @@ else {
 	local(%conf);
 	my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
 	&lock_file($file);
-	&read_interface_config($file, \%conf);
+	&read_env_file($file, \%conf);
 	if ($b->{'range'} ne "") {
 		# Special case - saving a range
 		$conf{'IPADDR_START'} = $b->{'start'};
@@ -352,25 +352,25 @@ else {
 		# New interfaces shouldn't be controller by network manager
 		$conf{'NM_CONTROLLED'} = 'no';
 		}
-	&write_interface_config($file, \%conf);
+	&write_env_file($file, \%conf);
 
 	# If this is a bridge, set BRIDGE in real interface
 	if ($b->{'bridge'}) {
 		foreach my $efile (glob("$net_scripts_dir/ifcfg-e*")) {
 			my %bconf;
 			&lock_file($efile);
-			&read_interface_config($efile, \%bconf);
+			&read_env_file($efile, \%bconf);
 			if ($bconf{'DEVICE'} eq $b->{'bridgeto'} &&
 			    $b->{'bridgeto'}) {
 				# Correct device for bridge
 				$bconf{'BRIDGE'} = $b->{'fullname'};
-				&write_interface_config($efile, \%bconf);
+				&write_env_file($efile, \%bconf);
 				}
 			elsif ($bconf{'BRIDGE'} eq $b->{'fullname'} &&
 			       $bconf{'BRIDGE'}) {
 				# Was using this bridge, shouldn't be
 				delete($bconf{'BRIDGE'});
-				&write_interface_config($efile, \%bconf);
+				&write_env_file($efile, \%bconf);
 				}
 			&unlock_file($efile);
 			}
@@ -407,7 +407,7 @@ if ($b->{'virtual'} ne '' && $b->{'parent'}) {
 	my %conf;
 	my $i = $b->{'virtual'}+1;
 	&lock_file($file);
-	&read_interface_config($file, \%conf);
+	&read_env_file($file, \%conf);
 	for($n=$i; defined($conf{'IPADDR'.$n}); $n++) {
 		$conf{'IPADDR'.$n} = $conf{'IPADDR'.($n+1)};
 		$conf{'NETMASK'.$n} = $conf{'NETMASK'.($n+1)};
@@ -416,7 +416,7 @@ if ($b->{'virtual'} ne '' && $b->{'parent'}) {
 		delete($conf{'NETMASK'.($n+1)});
 		delete($conf{'PREFIX'.($n+1)});
 		}
-	&write_interface_config($file, \%conf);
+	&write_env_file($file, \%conf);
 	&unlock_file($file);
 	}
 else {
@@ -494,11 +494,11 @@ $conf{'HOSTNAME'} = $_[0];
 # If any ifcfg-XXX files have the old hostname in DHCP_HOSTNAME, fix it
 foreach my $b (&boot_interfaces()) {
 	my %ifc;
-	&read_interface_config($b->{'file'}, \%ifc);
+	&read_env_file($b->{'file'}, \%ifc);
 	if ($ifc{'DHCP_HOSTNAME'} eq $old) {
 		$ifc{'DHCP_HOSTNAME'} = $_[0];
 		&lock_file($b->{'file'});
-		&write_interface_config($b->{'file'}, \%ifc);
+		&write_env_file($b->{'file'}, \%ifc);
 		&unlock_file($b->{'file'});
 		}
 	}
@@ -716,7 +716,7 @@ if (!$supports_dev_gateway) {
 	else { $conf{'GATEWAY'} = $in{'gateway'}; }
 
 	if ($in{'gatewaydev_def'}) { delete($conf{'GATEWAYDEV'}); }
-	elsif (!&valid_iface_name($in{'gatewaydev'})) {
+	elsif ($in{'gatewaydev'} !~ /^\S+$/) {
 		&error(&text('routes_edevice', &html_escape($in{'gatewaydev'})));
 		}
 	else { $conf{'GATEWAYDEV'} = $in{'gatewaydev'}; }
@@ -737,13 +737,6 @@ else {
 		next if (!$in{"gatewaydev$r"});
 		&check_ipaddress($in{"gateway$r"}) ||
 			&error(&text('routes_edefault2', $r+1));
-
-		# The IPv6 gateway may name its interface after a %
-		my $gw6 = $in{"gateway6$r"};
-		$gw6 eq '' ||
-		    $gw6 =~ /\A([0-9a-f:.]+)(?:%([\w.:-]+))?\z/i &&
-		    &check_ip6address($1) ||
-			&error(&text('routes_edefault6', &html_escape($gw6)));
 		if ($in{"gatewaydev$r"} eq "*") {
 			# For any interface
 			$conf{'GATEWAY'} && &error(&text('routes_eclash'));
@@ -778,8 +771,7 @@ else {
 for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	next if (!$dev);
 	$net = $in{"net_$i"}; $netmask = $in{"netmask_$i"}; $gw = $in{"gw_$i"};
-	&valid_iface_name($dev) ||
-		&error(&text('routes_edevice', &html_escape($dev)));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) || &error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress($netmask) || &error(&text('routes_emask', &html_escape($netmask)));
 	&to_ipaddress($gw) || &error(&text('routes_egateway', &html_escape($gw)));
@@ -794,8 +786,7 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	$net = $in{"lnet_$i"}; $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
-	&valid_iface_name($dev) ||
-		&error(&text('routes_edevice', &html_escape($dev)));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) ||
 	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
 		&error(&text('routes_enet', &html_escape($net)));
@@ -1021,23 +1012,6 @@ return ($gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 3.0);
 }
 
-# unapply_range(&range)
-# Remove the live IPv4 aliases belonging to this boot-time range.
-sub unapply_range
-{
-my ($range) = @_;
-&check_ipaddress($range->{'start'}) && &check_ipaddress($range->{'end'}) ||
-	&error($text{'range_err'});
-my $start = &ip_to_integer($range->{'start'});
-my $end = &ip_to_integer($range->{'end'});
-foreach my $active (&active_interfaces()) {
-	next if ($active->{'name'} ne $range->{'name'} ||
-		 $active->{'virtual'} eq '' || !$active->{'address'});
-	my $addr = &ip_to_integer($active->{'address'});
-	&deactivate_interface($active) if ($addr >= $start && $addr <= $end);
-	}
-}
-
 sub supports_bonding
 {
 return $gconfig{'os_type'} eq 'redhat-linux' &&
@@ -1099,15 +1073,11 @@ sub parse_range
 {
 my %in = %{$_[1]};
 if ($in{'new'}) {
-	&valid_iface_name($in{'iface'}) || &error($text{'bifc_ename'});
 	$_[0]->{'name'} = $in{'iface'};
 	$in{'range'} =~ /^[a-z0-9\.\_]+$/ || &error($text{'range_ename'});
 	$_[0]->{'range'} = $in{'range'};
 	$_[0]->{'fullname'} = $in{'iface'}."-range".$in{'range'};
 	}
-
-# The description is written to a file that the shell sources
-$in{'desc'} =~ /[\r\n\0]/ && &error($text{'bifc_edesc'});
 $_[0]->{'desc'} = $in{'desc'};
 
 &check_ipaddress($in{'start'}) || &error($text{'range_estart'});
@@ -1209,13 +1179,13 @@ my ($conf) = @_;
 my @boot = &boot_interfaces();
 foreach my $b (@boot) {
 	my %ifc;
-	&read_interface_config($b->{'file'}, \%ifc);
+	&read_env_file($b->{'file'}, \%ifc);
 	next if (!&supports_dns_interface(\%ifc));
 	&lock_file($b->{'file'});
 	foreach my $k (keys %ifc) {
 		delete($ifc{$k}) if ($k =~ /^DNS\d+$/);
 		}
-	&write_interface_config($b->{'file'}, \%ifc);
+	&write_env_file($b->{'file'}, \%ifc);
 	my $i = 1;
 	foreach my $ns (@{$conf->{'nameserver'}}) {
 		$ifc{'DNS'.$i} = $ns;
@@ -1233,7 +1203,7 @@ foreach my $b (@boot) {
 	else {
 		delete($ifc{'DOMAIN'});
 		}
-	&write_interface_config($b->{'file'}, \%ifc);
+	&write_env_file($b->{'file'}, \%ifc);
 	&unlock_file($b->{'file'});
 	}
 return (0, 0);

@@ -473,42 +473,16 @@ system("chown -Rf ".quotemeta("$user:$group")." ".
 }
 
 # can_access(file)
-# Returns 1 if a file is inside the ACL root directory. An empty root has
-# always meant no restriction, like /
 sub can_access
 {
 my ($file) = @_;
-return &is_under_directory($access{'root'} || "/", $file);
-}
-
-# valid_auth_file(file)
-# Returns 1 if proxy users can be written to a password file. The file comes
-# from the authentication program's arguments, so unless it is Webmin's own
-# user database, it must be in the allowed directory and either already hold
-# only user:password lines, or be a new or empty file next to squid.conf.
-# This stops the program arguments pointing at a system file.
-sub valid_auth_file
-{
-my ($file) = @_;
-return 0 if (!$file || $file !~ /^\// || $file =~ /\.\./);
-return 1 if ($file eq $auth_database);
-return 0 if (!&can_access($file) || -l $file || (-e $file && !-f $file));
-
-# Count users, allowing blank lines, comments and disabled users
-my $users = 0;
-if (-e $file) {
-	foreach my $l (split(/\r?\n/, &read_file_contents($file))) {
-		next if ($l !~ /\S/ || $l =~ /^#/);
-		return 0 if ($l !~ /^[^:\s]+:[^:\s]+\s*$/);
-		$users++;
-		}
+my @f = grep { $_ ne '' } split(/\//, $file);
+return 1 if ($access{'root'} eq '/');
+my @a = grep { $_ ne '' } split(/\//, $access{'root'});
+for(my $i=0; $i<@a; $i++) {
+	return 0 if ($a[$i] ne $f[$i]);
 	}
-
-# A file with no users yet must be in the Squid configuration directory
-my $confdir = $config{'squid_conf'};
-$confdir =~ s/\/[^\/]+$//;
-return $users || $confdir =~ /^\/./ &&
-		  &is_under_directory($confdir, $file) ? 1 : 0;
+return 1;
 }
 
 # get_auth_file(&config)

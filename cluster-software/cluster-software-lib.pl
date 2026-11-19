@@ -84,8 +84,6 @@ delete($h{'packages'});
 # delete_software_host(&host)
 sub delete_software_host
 {
-# Without a valid ID the path would be the whole hosts directory
-return if (!$_[0] || !&servers::cache_path_component($_[0]->{'id'}));
 &unlink_file("$module_config_directory/hosts/$_[0]->{'id'}.host");
 &unlink_file("$module_config_directory/hosts/$_[0]->{'id'}");
 }

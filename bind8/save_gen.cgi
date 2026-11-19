@@ -58,10 +58,9 @@ if ($in{'show'}) {
 			#$rhs =~ s/\$/$i/g;
 			$rhs =~ s/(\$(\{[^\}]*\})?)/&expand_mods($i,$2)/ge;
 			$rhs =~ s/\0/\$/g;
-			my $rhsfull = $rhs;
-			if ($gv[2] =~ /^(?:NS|CNAME|DNAME|PTR)\z/i && $rhs !~ /\.$/) {
-				$rhsfull = $dom eq "." ? "$rhs." : "$rhs.$dom";
-				}
+			my $rhsfull = &check_ipaddress($rhs) ? $rhs :
+				   $rhs =~ /\.$/ ? $rhs :
+				    $dom eq "." ? "$rhs." : "$rhs.$dom";
 
 			# Generator lines come from the zone file
 			print &ui_columns_row([
@@ -85,38 +84,28 @@ if ($in{'show'}) {
 for(my $i=0; defined($in{"type_$i"}); $i++) {
 	if ($in{"type_$i"}) {
 		my @gv;
-		$in{"start_$i"} =~ /^\d+\z/ ||
+		$in{"start_$i"} =~ /^\d+$/ ||
 			&error(&text('gen_estart', $i+1));
-		$in{"stop_$i"} =~ /^\d+\z/ ||
+		$in{"stop_$i"} =~ /^\d+$/ ||
 			&error(&text('gen_estop', $i+1));
 		$in{"start_$i"} <= $in{"stop_$i"} ||
 			&error(&text('gen_erange', $i+1));
-		$in{"skip_$i"} =~ /^\d*\z/ ||
+		$in{"skip_$i"} =~ /^\d*$/ ||
 			&error(&text('gen_eskip', $i+1));
 		push(@gv, $in{"start_$i"}."-".$in{"stop_$i"});
 		if ($in{"skip_$i"}) {
 			$gv[$#gv] .= "/".$in{"skip_$i"};
 			}
-		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+\z/ ||
+		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
 			&error(&text('gen_ename', $i+1));
 		push(@gv, $in{"name_$i"});
-		# A generator accepts a single DNS record type.
-		$in{"type_$i"} =~ /\A[A-Za-z][A-Za-z0-9-]*\z/ ||
-			&error(&text('gen_etype', $i+1));
 		push(@gv, $in{"type_$i"});
-		# BIND takes one RDATA token, which can be quoted to include spaces.
-		my $atom = qr/(?:[^\s();"\\\0]|\\[^\r\n\0])+/;
-		my $quoted = qr/"(?:[^"\\\r\n\0]|\\[^\r\n\0])*"/;
-		$in{"value_$i"} =~ /\A(?:$atom|$quoted)\z/ ||
+		$in{"value_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
 			&error(&text('gen_evalue', $i+1));
 		push(@gv, $in{"value_$i"});
-		# The comment ends the generator line
-		$in{"cmt_$i"} =~ /[\r\n\0]/ &&
-			&error(&text('gen_ecmt', $i+1));
-		push(@gv, $in{"cmt_$i"});
+		push(@gv, $in{"cmt_$i"}) if ($in{"cmt_$i"});
 		if ($i < @gens) {
-			&modify_generator($gens[$i]->{'file'}, $gens[$i], @gv,
-					  $gens[$i]->{'generate'}->[5]);
+			&modify_generator($gens[$i]->{'file'}, $gens[$i], @gv);
 			}
 		else {
 			&create_generator($file, @gv);

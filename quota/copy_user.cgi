@@ -10,8 +10,6 @@ $access{'filesys'} eq "*" ||
 &can_edit_user($in{'user'}) ||
 	&error($text{'cuser_euallow'});
 $access{'ro'} && &error($text{'cuser_euallow'});
-# Copied limits must stay within this user's maximums
-&check_copy_limits($in{'user'}, 0);
 
 if ($in{'dest'} == 0) {
 	# Copy to all users

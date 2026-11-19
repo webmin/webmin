@@ -18,7 +18,6 @@ if ($m) {
 if ($in{'id'}) {
 	# Restoring a specific dump
 	$dump = &get_dump($in{'id'});
-	$dump && &can_edit_dir($dump) || &error($text{'restore_ecannot'});
 	}
 
 print "<b>$text{'restore_desc'}</b><p>\n";

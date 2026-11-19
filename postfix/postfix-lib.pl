@@ -225,7 +225,7 @@ sub get_default_value
 {
 # -h tells postconf not to output the name of the parameter
 my $out = &backquote_command(
-	"$config{'postfix_config_command'} -c $config_dir -dh ".quotemeta($_[0])." 2>&1", 1);
+	"$config{'postfix_config_command'} -c $config_dir -dh $_[0] 2>&1", 1);
 if ($?) { &error(&text('query_get_efailed', $_[0], $out)); }
 chop($out);
 return $out;
@@ -246,7 +246,7 @@ if ($value eq "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__" ||
 	my $i = 0;
 
 	foreach (@{$all_lines}) {
-		if (/^\s*\Q$_[0]\E\s*=/) {
+		if (/^\s*$_[0]\s*=/) {
 			$line_of_parameter = $i;
 			$end_line_of_parameter = $i;
 			}
@@ -270,7 +270,7 @@ if ($value eq "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__" ||
 else {
 	my $out = &backquote_logged(
 		"$config{'postfix_config_command'} -c $config_dir ".
-		"-e ".quotemeta($_[0]."=".$value)." 2>&1");
+		"-e $_[0]=".quotemeta($value)." 2>&1");
 	$? && &error(&text('query_set_efailed', $_[0], $_[1], $out).
 		     "<br> $config{'postfix_config_command'} -c $config_dir ".
 		     "-e $_[0]=\"$value\" 2>&1");
@@ -632,88 +632,6 @@ foreach my $e (@{$_[0]}) {
 	}
 }
 
-# options_for_section(section)
-# Lists the settings managed by each configuration form.
-sub options_for_section
-{
-my ($section) = @_;
-my %sections = (
-	general => [ qw(
-		myorigin mydestination relayhost always_bcc daemon_timeout
-		default_database_type default_transport double_bounce_sender
-		hash_queue_depth hash_queue_names hopcount_limit
-		delay_warning_time inet_interfaces ipc_idle ipc_timeout mail_name
-		mail_owner mail_version max_idle max_use myhostname mydomain
-		mynetworks mynetworks_style bounce_notice_recipient
-		2bounce_notice_recipient delay_notice_recipient
-		error_notice_recipient queue_directory process_id_directory
-		recipient_delimiter program_directory relocated_maps
-		sun_mailtool_compatibility trigger_timeout content_filter
-		notify_classes
-		) ],
-	smtp => [ qw(
-		best_mx_transport fallback_relay ignore_mx_lookup_error
-		smtp_skip_4xx_greeting smtp_skip_quit_response
-		smtp_destination_concurrency_limit
-		smtp_destination_recipient_limit smtp_connect_timeout
-		smtp_helo_timeout smtp_mail_timeout smtp_rcpt_timeout
-		smtp_data_init_timeout smtp_data_xfer_timeout
-		smtp_data_done_timeout smtp_quit_timeout
-		smtp_sasl_security_options smtp_enforce_tls
-		smtp_balance_inet_protocols smtputf8_enable
-		smtp_tls_security_level smtp_address_preference inet_protocols
-		) ],
-	smtpd => [ qw(
-		smtpd_banner smtpd_recipient_limit disable_vrfy_command
-		smtpd_timeout smtpd_error_sleep_time smtpd_soft_error_limit
-		smtpd_hard_error_limit smtpd_helo_required
-		allow_untrusted_routing smtpd_etrn_restrictions
-		smtpd_helo_restrictions smtpd_sender_restrictions
-		smtpd_recipient_restrictions relay_domains relay_recipient_maps
-		access_map_reject_code invalid_hostname_reject_code
-		maps_rbl_reject_code reject_code relay_domains_reject_code
-		unknown_address_reject_code unknown_client_reject_code
-		unknown_hostname_reject_code smtpd_discard_ehlo_keywords
-		) ],
-	rate => [ qw(
-		default_destination_concurrency_limit
-		default_destination_recipient_limit
-		initial_destination_concurrency maximal_queue_lifetime
-		minimal_backoff_time maximal_backoff_time queue_run_delay
-		defer_transports
-		) ],
-	resource => [ qw(
-		bounce_size_limit command_time_limit default_process_limit
-		duplicate_filter_limit deliver_lock_attempts deliver_lock_delay
-		fork_attempts fork_delay header_size_limit line_length_limit
-		message_size_limit qmgr_message_active_limit
-		qmgr_message_recipient_limit queue_minfree stale_lock_time
-		transport_retry_time mailbox_size_limit
-		) ],
-	ldap => [ qw(
-		ldap_search_base ldap_server_host ldap_timeout
-		ldap_lookup_timeout
-		) ],
-	debug => [ qw(
-		debug_peer_list debug_peer_level
-		) ],
-	local_delivery => [ qw(
-		local_transport local_command_shell forward_path
-		allow_mail_to_commands allow_mail_to_files default_privs
-		home_mailbox luser_relay mail_spool_directory mailbox_command
-		mailbox_transport fallback_transport
-		local_destination_concurrency_limit
-		local_destination_recipient_limit prepend_delivered_header
-		) ],
-	address_rewriting => [ qw(
-		allow_percent_hack append_at_myorigin append_dot_mydomain
-		swap_bangpath empty_address_recipient masquerade_domains
-		masquerade_exceptions resolve_dequoted_address
-		) ],
-	);
-return $sections{$section};
-}
-
 # save_options(&options, [&always-save], [&allowed-options])
 # Validates form options before saving. always-save lists defaults to keep.
 # allowed-options limits parameter names; omitting it allows all names.
@@ -729,14 +647,11 @@ foreach my $key (keys %options) {
 	if ($key =~ /_def$/) {
 		# Each _def field selects a default or a user-supplied value.
 		(my $param = $key) =~ s/_def$//;
-		$param =~ /\A[a-zA-Z0-9_]+\z/ ||
-		    &error(&text('opts_eoption', &html_escape($param)));
 		!$allowed_options || $allowed{$param} ||
 		    &error(&text('opts_eoption', &html_escape($param)));
 		my $value = $options{$key} eq "__USE_FREE_FIELD__"
 			? $options{$param} : $options{$key};
 		$value =~ s/\0/, /g;
-		$value =~ /[\r\n]/ && &error(&text('opts_eoption', &html_escape($param)));
 		&maps_under_directory($value) ||
 			&error(&text('opts_edir', $access{'dir'}));
 		$values{$param} = $value;

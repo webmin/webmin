@@ -364,20 +364,6 @@ $rv =~ s/\s+at\s+(\S+)\s+line\s+\d+.*$//;
 return $rv;
 }
 
-=head2 cache_path_component(name)
-
-Returns 1 if a server ID or a name received from a managed server can be used
-as a single file name. Cluster modules store their cached host data in files
-named this way.
-
-=cut
-sub cache_path_component
-{
-my ($name) = @_;
-return defined($name) && $name ne '' &&
-       $name !~ m![\\/\r\n\0]! && $name ne '.' && $name ne '..';
-}
-
 =head2 find_cron_job
 
 Returns the cron job hash ref for the regular scheduled new servers check.

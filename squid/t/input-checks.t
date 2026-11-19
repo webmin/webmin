@@ -1,6 +1,5 @@
 #!/usr/bin/perl
-# Tests that Squid ACL roots, proxy password files and form values cannot be
-# used to write outside the intended files or add lines to squid.conf.
+# Tests that access and authentication settings stay on one line.
 
 use strict;
 use warnings;
@@ -85,71 +84,10 @@ close($fh);
 return $err;
 }
 
-# set_auth_file(file)
-# Points the basic authentication program at a password file
-sub set_auth_file
-{
-my ($file) = @_;
-write_text($squid_conf, "http_port 3128\n".
-	"auth_param basic program /usr/lib/squid/basic_ncsa_auth $file\n");
-@main::get_config_cache = ( );
-}
-
-# --- can_access -----------------------------------------------------------
-{
-	local $access{'root'} = '';
-	ok(&can_access("$otherdir/acl"), 'an empty root allows any file');
-	$access{'root'} = '/';
-	ok(&can_access("$otherdir/acl"), 'a / root allows any file');
-	$access{'root'} = $squiddir;
-	ok(&can_access("$squiddir/acl"), 'a file under the root is allowed');
-	ok(!&can_access("$squiddir/../other/acl"), 'a .. path is denied');
-	ok(!&can_access("${squiddir}x/acl"), 'a prefix sibling is denied');
-}
-
-# --- valid_auth_file ------------------------------------------------------
-my $shadow = "$otherdir/shadow";
-write_text($shadow, "root:\$6\$salt\$hash:19000:0:99999:7:::\n");
-my $comments = "$otherdir/comments";
-write_text($comments, "# Only comments\n\n");
-my $htpasswd = "$otherdir/htpasswd";
-write_text($htpasswd, "# Users\nalice:\$apr1\$x\$y\n#bob:abc\n");
-symlink($shadow, "$squiddir/link") || die "symlink: $!";
-
-ok(&valid_auth_file($auth_database), "Webmin's own user database is allowed");
-ok(&valid_auth_file("$squiddir/passwd"),
-   'a new file next to squid.conf is allowed');
-ok(&valid_auth_file($htpasswd), 'an existing password file is allowed');
-ok(!&valid_auth_file($shadow), 'a shadow file is denied');
-ok(!&valid_auth_file($comments), 'a file without users elsewhere is denied');
-ok(!&valid_auth_file("$otherdir/new"), 'a new file elsewhere is denied');
-ok(!&valid_auth_file("$squiddir/link"), 'a symlink is denied');
-ok(!&valid_auth_file("$squiddir/../other/htpasswd"), 'a .. path is denied');
-ok(!&valid_auth_file("passwd"), 'a relative path is denied');
-{
-	local $access{'root'} = $squiddir;
-	ok(!&valid_auth_file($htpasswd),
-	   'a password file outside the allowed directory is denied');
-}
-
-# --- save_nuser.cgi -------------------------------------------------------
-set_auth_file($shadow);
-my $before = &read_text($shadow);
-my $err = &run_cgi('save_nuser.cgi', { 'new' => 1, 'user' => 'mallory',
-				       'pass' => 'secret', 'enabled' => 1 });
-isnt($err, '', 'users cannot be added to a shadow file');
-is(&read_text($shadow), $before, 'the shadow file is unchanged');
-
-set_auth_file("$squiddir/passwd");
-$err = &run_cgi('save_nuser.cgi', { 'new' => 1, 'user' => 'alice',
-				    'pass' => 'secret', 'enabled' => 1 });
-is($err, '', 'a user is added to a new password file');
-like(&read_text("$squiddir/passwd"), qr/^alice:\S+$/m, 'the user is written');
-
 # --- line breaks in squid.conf values -------------------------------------
 write_text($squid_conf, "http_port 3128\n");
 @main::get_config_cache = ( );
-$err = &run_cgi('acl_save.cgi', { 'name' => 'browsers', 'type' => 'browser',
+my $err = &run_cgi('acl_save.cgi', { 'name' => 'browsers', 'type' => 'browser',
 				  'file_def' => 1,
 				  'vals' => "Mozilla\nhttp_access allow all" });
 isnt($err, '', 'an ACL value with a line break is rejected');

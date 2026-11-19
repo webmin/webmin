@@ -355,36 +355,25 @@ if ($gconfig{'debug_what_sql'}) {
 		}
 	&webmin_debug_log('SQL', "db=$_[0] sql=$sql".$params);
 	}
-# Some DBD::mysql versions cannot bind even plain strings when backslash
-# escapes are disabled. Use the encoder's syntax for this connection only.
-my $mode;
-if (@params && $driver_handle && !$config{'nodbi'} && $driver_info->{opt} eq 'mysql' ||
-    (grep { defined($_) && /[\\'"\0\r\n\x1a]/ } @params) ||
-    $mysql_quoted_sql && $sql =~ /\\/) {
-	$mode = &mysql_backslash_mode_sql();
-	}
+$sql = &escape_backslashes_in_quotes($sql);
 if ($driver_handle && !$config{'nodbi'}) {
 	# Use the DBI interface
-	# Keep the database name out of the driver's option string.
-	my @options;
+	local $cstr = "database=$_[0]";
 	local $drv = $driver_info->{opt};
-	push(@options, "host=$config{'host'}") if ($config{'host'});
-	push(@options, "port=$config{'port'}") if ($config{'port'});
-	push(@options, "${drv}_socket=$config{'sock'}") if ($config{'sock'});
-	push(@options, "${drv}_read_default_file=$config{'my_cnf'}")
+	$cstr .= ";host=$config{'host'}" if ($config{'host'});
+	$cstr .= ";port=$config{'port'}" if ($config{'port'});
+	$cstr .= ";${drv}_socket=$config{'sock'}" if ($config{'sock'});
+	$cstr .= ";${drv}_read_default_file=$config{'my_cnf'}"
 		if (-r $config{'my_cnf'});
 	if ($config{'ssl'}) {
-		push(@options, "${drv}_ssl=1");
+		$cstr .= ";${drv}_ssl=1";
 		if ($DBD::mysql::VERSION >= 4.043) {
-			push(@options, "${drv}_ssl_optional=1");
+			$cstr .= ";${drv}_ssl_optional=1";
 			}
 		}
-	local $dbh = $driver_handle->connect(join(";", @options), $mysql_login,
-					     $mysql_pass, { database => $_[0] });
+	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
+					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
-	if ($mode) {
-		$dbh->do($mode) || &error(&html_escape($dbh->errstr));
-		}
 	if ($disable_session_binlog) {
 		# A point-in-time restore must not add its own SQL to the log that
 		# it is replaying, because that would make later retries unsafe
@@ -438,7 +427,6 @@ else {
 		$sql = &replace_sql_parameters($sql, @params);
 		}
 	open(TEMP, ">$temp");
-	print TEMP "$mode;\n" if ($mode);
 	if ($disable_session_binlog) {
 		# Keep point-in-time restore statements out of the binary log
 		print TEMP "set session sql_log_bin = 0;\n";
@@ -471,7 +459,9 @@ my $pos = -1;
 foreach my $p (@params) {
 	$pos = index($sql, '?', $pos+1);
 	&error("Incorrect number of parameters") if ($pos < 0);
-	local $qp = !defined($p) ? 'NULL' : "'".&escapestr($p)."'";
+	local $qp = $p;
+	$qp =~ s/'/''/g;
+	$qp = !defined($qp) ? 'NULL' : "'$qp'";
 	$sql = substr($sql, 0, $pos).$qp.substr($sql, $pos+1);
 	$pos += length($qp)-1;
 	}
@@ -774,32 +764,28 @@ return &can_edit_db(&unquote_mysql_database($db));
 }
 
 # escapestr(string)
-# Returns a string escaped for use inside single quotes in SQL. Backslashes are
-# escaped first, so that a backslash cannot escape the closing quote.
+# Returns a string with quotes escaped, for use in SQL
 sub escapestr
 {
 my ($rv) = @_;
-$rv =~ s/\\/\\\\/g;
 $rv =~ s/'/''/g;
-$rv =~ s/\0/\\0/g;
 return $rv;
 }
 
-# mysql_backslash_mode_sql()
-# Enables backslash escapes on this connection, preserving other SQL modes.
-sub mysql_backslash_mode_sql
+# escape_backslashes_in_quotes(string)
+# Escapes backslashes, but only inside quoted strings
+sub escape_backslashes_in_quotes
 {
-return "set session sql_mode = trim(both ',' from ".
-       "replace(concat(',', \@\@session.sql_mode, ','), ".
-       "',NO_BACKSLASH_ESCAPES,', ','))";
-}
-
-# execute_account_sql(db, sql)
-# Runs a generated account statement with the string syntax used by escapestr.
-sub execute_account_sql
-{
-local $mysql_quoted_sql = 1;
-return &execute_sql_logged(@_);
+my ($str) = @_;
+my $rv;
+while($str =~ /^([^"]*)"([^"]*)"(.*)$/) {
+	local ($before, $quoted, $after) = ($1, $2, $3);
+	$quoted =~ s/\\/\\\\/g;
+	$rv .= $before.'"'.$quoted.'"';
+	$str = $after;
+	}
+$rv .= $str;
+return $rv;
 }
 
 # supports_quoting()
@@ -2170,13 +2156,12 @@ my $supauth =
    $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
 if ($plugin && $supauth) {
 	my $sp = &get_plugin_sql($ver, $variant, $unescaped_plainpass, $plugin);
-	$sql = "alter user '".&escapestr($user)."'\@'".
-	       &escapestr($host)."' $sp";
+	$sql = "alter user '$user'\@'$host' $sp";
 	}
 else {
 	my $escaped_pass = &escapestr($unescaped_plainpass);
-	$sql = "set password for '".&escapestr($user)."'\@'".
-	       &escapestr($host)."' = $password_func('$escaped_pass')";
+	$sql = "set password for '".$user."'\@'".$host."' = ".
+	       "$password_func('$escaped_pass')";
 	}
 return $sql;
 }
@@ -2258,23 +2243,19 @@ if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 	my $col_to_priv_map = &perms_column_to_privilege_map();
 	foreach my $grant (keys %{ $perms }) {
 		my $grant_priv = &perms_column_to_privilege_map($grant);
-		&execute_account_sql($mysql::master_db,
-			"grant $grant_priv on *.* to '".&escapestr($user).
-			"'\@'".&escapestr($host)."'");
+		&execute_sql_logged($mysql::master_db, "grant $grant_priv on *.* to '$user'\@'$host'");
 		delete $col_to_priv_map->{$grant};
 		}
 	foreach my $revoke_priv (values %{ $col_to_priv_map }) {
-		&execute_account_sql($mysql::master_db,
-			"revoke $revoke_priv on *.* from '".&escapestr($user).
-			"'\@'".&escapestr($host)."'");
+		&execute_sql_logged($mysql::master_db, "revoke $revoke_priv on *.* from '$user'\@'$host'");
 		}
 	}
 else {
-	my $sql = "update user set ".
+	$sql = "update user set ".
 	       join(", ",map { "$_ = ?" } @{ $pfields }).
 	       " where host = ? and user = ?";
 	&execute_sql_logged($master_db, $sql,
-		(map { $perms->{$_} ? 'Y' : 'N' } @{ $pfields }),
+		(map { $perms{$_} ? 'Y' : 'N' } @{ $pfields }),
 		$host, $user);
 	}
 &execute_sql_logged($master_db, 'flush privileges');
@@ -2294,10 +2275,7 @@ my $oldhost = $sc->{'oldhost'};
 my ($ver, $variant) = &get_remote_mysql_variant();
 my $sql;
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-	&execute_account_sql($master_db,
-		"rename user '".&escapestr($olduser)."'\@'".
-		&escapestr($oldhost)."' to '".&escapestr($user)."'\@'".
-		&escapestr($host)."'");
+	&execute_sql_logged($master_db, "rename user '$olduser'\@'$oldhost' to '$user'\@'$host'");
 	}
 else {
 	&execute_sql_logged($master_db,
@@ -2334,9 +2312,8 @@ if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 	my $auth = $plugin ?
 		&get_plugin_sql($ver, $variant, $pass, $plugin) :
 		"identified by '".&escapestr($pass)."'";
-	my $sql = "create user '".&escapestr($user)."'\@'".
-		  &escapestr($host)."' $auth";
-	&execute_account_sql($master_db, $sql);
+	my $sql = "create user '$user'\@'$host' $auth";
+	&execute_sql_logged($master_db, $sql);
 	&execute_sql_logged($master_db, 'flush privileges');
 
 	# Update existing user privileges
@@ -2362,9 +2339,8 @@ else {
 
 	if ($variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0) {
 		$plugin = $plugin ? "with $plugin" : "";
-		&execute_account_sql($master_db,
-		    "alter user '".&escapestr($user)."'\@'".
-		    &escapestr($host)."' identified $plugin by ".
+		&execute_sql_logged($master_db,
+		    "alter user '$user'\@'$host' identified $plugin by ".
 		        "'".&escapestr($pass)."'");
 		&execute_sql_logged($master_db, 'flush privileges');
 		}
@@ -2381,7 +2357,7 @@ $plugin ||= "";
 my $sql;
 $host ||= '%';
 $sql = &get_change_pass_sql($plainpass, $user, $host, $plugin);
-&execute_account_sql($master_db, $sql);
+&execute_sql_logged($master_db, $sql);
 
 # Update module password when needed
 &update_config_credentials({
@@ -2479,7 +2455,6 @@ if (!$pid || !kill(0, $pid)) {
 # Update password by running command directly
 $cmd = $config{'mysql'} || 'mysql';
 my $sql = &get_change_pass_sql($pass, $user, 'localhost');
-$sql = &mysql_backslash_mode_sql()."; ".$sql if ($sql =~ /\\/);
 my $out = &backquote_command("$cmd -D $master_db -e ".
 		quotemeta("flush privileges; $sql")." 2>&1 </dev/null");
 if ($?) {
@@ -2498,7 +2473,7 @@ else {
 		eval {
 			local $main::error_must_die = 1;
 			&execute_sql_logged($master_db, 'flush privileges');
-			&execute_account_sql($master_db, $sql);
+			&execute_sql_logged($master_db, $sql);
 			&execute_sql_logged($master_db, 'flush privileges');
 			sleep 1;
 			};

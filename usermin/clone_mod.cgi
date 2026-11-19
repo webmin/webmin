@@ -13,9 +13,7 @@ $in{'desc'} = &filter_javascript($in{'desc'});
 # Symlink the code directory
 &get_usermin_miniserv_config(\%miniserv);
 $src = $in{'mod'};
-$src =~ /\A[\w-]+\z/ && &can_use_module($src) || &error($text{'acl_ecannot'});
 %minfo = &get_usermin_module_info($src);
-%minfo || &error($text{'acl_ecannot'});
 $count = 2;
 do {
 	$dst = $src.$count;

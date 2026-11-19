@@ -4,8 +4,6 @@
 
 require './software-lib.pl';
 &ReadParse();
-&valid_package_name($in{'package'}, $in{'version'}) ||
-	&error($text{'edit_egone'});
 &ui_print_header(undef, $text{'list_title'}, "", "list_pack");
 
 print &ui_subheading(&text('list_files',

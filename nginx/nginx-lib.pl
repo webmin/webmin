@@ -124,12 +124,13 @@ undef($get_config_cache);
 sub remove_hash_comment
 {
 my ($l) = @_;
-# Consume quoted strings and escaped characters before locating a comment.
-while ($l =~ /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|\\.|(#)/g) {
-	if (defined($1)) {
-		substr($l, $-[1]) = "";
-		last;
-		}
+if ($l =~ /".*#.*"/) {
+	# Comment inside quotes, so only remove any comment outside quotes
+	$l =~ s/#[^"]*$//;
+	}
+else {
+	# Remove all comments
+	$l =~ s/#.*$//;
 	}
 return $l;
 }
@@ -204,7 +205,7 @@ while(@lines) {
 		$addto = pop(@stack);
 		$addto->[@$addto-1]->{'eline'} = $lnum;
 		}
-	elsif ($l =~ /^\s*(\S+?)((?:\s+(?:"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|(?:\\.|[^\s;\\])+))*)\s*;/) {
+	elsif ($l =~ /^\s*(\S+)((\s+("([^"]*)"|'([^']*)'|[^ ;]+))*)\s*;/) {
 		# Found a directive
 		my ($name, $value) = ($1, $2);
 		my @words = &split_words($value);
@@ -287,10 +288,10 @@ sub split_words
 {
 my ($value) = @_;
 my @words;
-while ($value =~ /\G\s+(?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'|((?:\\.|[^\s\\])+))/gc) {
-	my $word = defined($1) ? $1 : defined($2) ? $2 : $3;
-	$word =~ s/\\(["'\\])/$1/g;
-	push(@words, $word);
+while($value =~ s/^\s+"([^"]+)"// ||
+      $value =~ s/^\s+'([^']+)'// ||
+      $value =~ s/^\s+(\S+)//) {
+	push(@words, $1);
 	}
 return @words;
 }
@@ -762,28 +763,24 @@ return $dir->{'sep_str'} || " ";
 }
 
 # join_words(word, etc..)
-# Returns a string made by joining directive words, quoted where needed.
-# Like Nginx, split_words reads \", \' and \\ as escapes, so a backslash is
-# only doubled before those characters or at the end of a quoted word. Others,
-# such as regex \., are written unchanged.
+# Returns a string made by joining directive words
 sub join_words
 {
 my @rv;
-foreach my $word (@_) {
-	$word =~ /[\r\n\0]/ && &error($text{'opt_eline'});
-	if (length($word) && $word !~ /[\s;#{}"']|\\\z/ &&
-	    ($word !~ /\$/ || $word =~ /^\$/)) {
-		# Plain word, which only needs a backslash before another one
-		(my $bare = $word) =~ s/\\(?=\\)/\\\\/g;
-		push(@rv, $bare);
+foreach my $w (@_) {
+	# Quote words with spaces, separators, variables or a # comment marker
+	my $quote = $w =~ /\s|;|\$/ && $w !~ /^\$/ || $w =~ /#/;
+	if ($w eq "") {
+		push(@rv, '""');
+		}
+	elsif ($quote && $w !~ /"/) {
+		push(@rv, "\"$w\"");
+		}
+	elsif ($quote) {
+		push(@rv, "'$w'");
 		}
 	else {
-		# Quote it, using single quotes for a value with double quotes
-		# such as a log format. Variables still expand inside quotes.
-		my $q = $word =~ /"/ && $word !~ /'/ ? "'" : '"';
-		(my $quoted = $word) =~ s/\\(?=["'\\]|\z)/\\\\/g;
-		$quoted =~ s/\Q$q\E/\\$q/g;
-		push(@rv, $q.$quoted.$q);
+		push(@rv, $w);
 		}
 	}
 return join(" ", @rv);
@@ -954,7 +951,7 @@ if ($in->{$name."_def"}) {
 	}
 else {
 	my $v = $in->{$name};
-	my @w = $multi ? &split_words(" ".$v) : ( $v );
+	my @w = $multi ? &split_quoted_string($v) : ( $v );
 	$v eq '' && &error(&text('opt_missing', $text{'opt_'.$name}));
 	!$regexp || $v =~ /$regexp/ || &error($text{'opt_e'.$name} || $name);
 	my $err = $vfunc && &$vfunc($v, $name);
@@ -987,7 +984,7 @@ my ($name, $parent, $in, $regexp, $vfunc, $multi) = @_;
 return undef if (!&supported_directive($name, $parent));
 $in ||= \%in;
 my $v = $in->{$name};
-my @w = $multi ? &split_words(" ".$v) : ( $v );
+my @w = $multi ? &split_quoted_string($v) : ( $v );
 foreach my $wv (@w) {
 	$wv eq '' && &error(&text('opt_missing', $text{'opt_'.$name}));
 	!$regexp || $wv =~ /$regexp/ || &error($text{'opt_e'.$name});
@@ -1210,7 +1207,7 @@ else {
 }
 
 # nginx_param_input(name, &parent, [name-text, value-text])
-# Returns HTML for entering parameter names and values
+# Returns HTML for entering multiple name value paramters
 sub nginx_param_input
 {
 my ($name, $parent, $ntext, $vtext) = @_;
@@ -1259,7 +1256,7 @@ sub nginx_opt_list_input
 my ($name, $parent, $size, $prefix, $suffix) = @_;
 return undef if (!&supported_directive($name, $parent));
 my $obj = &find($name, $parent);
-my $value = $obj ? &join_words(@{$obj->{'words'}}) : "";
+my $value = $obj ? join(" ", @{$obj->{'words'}}) : "";
 my $def = &get_default($name);
 return &ui_table_row($text{'opt_'.$name},
 	&ui_opt_textbox($name, $value, $size,
@@ -1278,7 +1275,7 @@ if ($in->{$name."_def"}) {
 	&save_directive($parent, $name, [ ]);
 	}
 else {
-	my @v = &split_words(" ".$in->{$name});
+	my @v = &split_quoted_string($in->{$name});
 	@v || &error(&text('opt_missing', $text{'opt_'.$name}));
 	foreach my $v (@v) {
 		!$regexp || $v =~ /$regexp/ ||

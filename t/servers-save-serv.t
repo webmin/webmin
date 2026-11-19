@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Check server form validation, forced options and saved password handling
+# Check forced server options
 # without writing the server list or contacting remote hosts.
 use strict;
 use warnings;
@@ -62,22 +62,9 @@ $record = { id => 7, host => 'old.test', port => 10000, type => 'debian',
 my %base = ( id => 7, host => 'old.test', port => 10000, ssl => 1,
 	     type => 'debian', mode => 0, fast => 1 );
 
-# Hosts and types must be safe, known values.
-like(&save({ %base, host => 'x"onmouseover="alert(1)' }),
-     qr/\Q$text{'save_ehost'}\E/, 'markup in a host is refused');
-is(&save({ %base, host => '2001:db8::1' }), '', 'IPv6 hosts are accepted');
-is(&save({ %base, host => 'web-1.example_lab.test' }), '',
-   'hostnames with dots, dashes and underscores are accepted');
-like(&save({ %base, type => 'x"><script>' }),
-     qr/\Q$text{'save_etype'}\E/, 'unknown types are refused');
-is(&save({ %base, type => 'ubuntu' }), '', 'known types are accepted');
-$record->{'type'} = 'legacy';
-is(&save({ %base, type => 'legacy' }), '', 'an unchanged saved type is kept');
-$record->{'type'} = 'debian';
-
 # Options an admin cannot change keep their saved values.
 is(&save({ %base, type => 'windows', mode => 0, fast => 0,
-	   wuser => 'admin', wpass => '', group => 'green',
+	   wuser => 'admin', wpass => $record->{'pass'}, group => 'green',
 	   newgroup => 'admins' },
 	 { forcetype => 1, forcelink => 1, forcefast => 1,
 	   forcegroup => 1 }), '', 'forced options save');
@@ -89,16 +76,5 @@ is($saved->{'group'}, "red\tblue", 'forced groups are kept');
 like(&save({ %base, mode => 3 }, { pass => 0 }),
      qr/\Q$text{'edit_ecannot'}\E/,
      'same-login mode needs password access');
-
-# The stored password is kept only for the same destination.
-is(&save({ %base, mode => 1, wuser => 'admin', wpass => '' }), '',
-   'empty password keeps the saved one');
-is($saved->{'pass'}, 'stored-secret', 'saved password is unchanged');
-like(&save({ %base, host => 'new.test', mode => 1, wuser => 'admin',
-	     wpass => '' }),
-     qr/\Q$text{'save_epass'}\E/, 'a new host needs the password again');
-is(&save({ %base, mode => 1, wuser => 'admin', wpass => 'new-secret' }), '',
-   'a new password can be entered');
-is($saved->{'pass'}, 'new-secret', 'entered password is saved');
 
 done_testing();

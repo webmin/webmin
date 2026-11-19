@@ -18,7 +18,7 @@ while($f = readdir(CONF)) {
 	next if ($f !~ /^ifcfg-(\S+)/ || $f eq 'ifcfg-routes' ||
 		 $f =~ /\.sample$/);
 	local (%conf, $b);
-	&read_interface_config("$net_scripts_dir/$f", \%conf);
+	&read_env_file("$net_scripts_dir/$f", \%conf);
 	$b->{'fullname'} = $conf{'DEVICE'} ? $conf{'DEVICE'} : $1;
 	if ($b->{'fullname'} =~ /(\S+):(\d+)/) {
 		$b->{'name'} = $1;
@@ -49,7 +49,7 @@ local(%conf);
 local $name = $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
 				       : $_[0]->{'name'};
 &lock_file("$net_scripts_dir/ifcfg-$name");
-&read_interface_config("$net_scripts_dir/ifcfg-$name", \%conf);
+&read_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
 $conf{'DEVICE'} = $name;
 if ($_[0]->{'dhcp'}) {
 	$conf{'DYNAMIC'} = 'dhcp';
@@ -69,7 +69,7 @@ $conf{'NETWORK'} = sprintf "%d.%d.%d.%d",
 $conf{'BROADCAST'} = $_[0]->{'broadcast'};
 $conf{'ONBOOT'} = $_[0]->{'up'} ? "yes" : "no";
 $conf{'NAME'} = $_[0]->{'desc'};
-&write_interface_config("$net_scripts_dir/ifcfg-$name", \%conf);
+&write_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
 &unlock_file("$net_scripts_dir/ifcfg-$name");
 }
 

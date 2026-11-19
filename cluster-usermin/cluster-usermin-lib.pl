@@ -44,14 +44,10 @@ return @rv;
 }
 
 # save_usermin_host(&host)
-# Writes the cached modules and themes of a managed server. Records whose name
-# cannot be used as a file name are skipped, so one bad record does not stop
-# the others from being cached.
 sub save_usermin_host
 {
 local $hdir = "$module_config_directory/hosts";
 local %oldfile;
-&servers::cache_path_component($_[0]->{'id'}) || &error($text{'host_einvalid'});
 mkdir($hdir, 0700);
 if (-d "$hdir/$_[0]->{'id'}") {
 	opendir(DIR, "$hdir/$_[0]->{'id'}");
@@ -63,53 +59,26 @@ else {
 	}
 local $m;
 foreach $m (@{$_[0]->{'modules'}}) {
-	local $cm = &clean_cache_record($m, 'dir') || next;
-	&write_file("$hdir/$_[0]->{'id'}/$cm->{'dir'}.mod", $cm);
-	delete($oldfile{"$cm->{'dir'}.mod"});
+	&write_file("$hdir/$_[0]->{'id'}/$m->{'dir'}.mod", $m);
+	delete($oldfile{"$m->{'dir'}.mod"});
 	}
 foreach $m (@{$_[0]->{'themes'}}) {
-	local $cm = &clean_cache_record($m, 'dir') || next;
-	&write_file("$hdir/$_[0]->{'id'}/$cm->{'dir'}.theme", $cm);
-	delete($oldfile{"$cm->{'dir'}.theme"});
+	&write_file("$hdir/$_[0]->{'id'}/$m->{'dir'}.theme", $m);
+	delete($oldfile{"$m->{'dir'}.theme"});
 	}
 local %usermin = %{$_[0]};
 delete($usermin{'modules'});
 delete($usermin{'themes'});
 delete($usermin{'id'});
-&write_file("$hdir/$_[0]->{'id'}/usermin", &clean_cache_record(\%usermin));
+&write_file("$hdir/$_[0]->{'id'}/usermin", \%usermin);
 delete($oldfile{"usermin"});
 unlink(map { "$hdir/$_[0]->{'id'}/$_" } keys %oldfile);
-}
-
-# clean_cache_record(&record, [name-field])
-# Returns a copy of a record from a managed server that is safe to write with
-# write_file, or undef if the record is not a hash or its name field is not a
-# safe file name. Keys that would break the file format are dropped. Trailing
-# line breaks are removed from values, and other line breaks become spaces.
-sub clean_cache_record
-{
-my ($rec, $field) = @_;
-return undef if (ref($rec) ne 'HASH' ||
-		 $field && !&servers::cache_path_component($rec->{$field}));
-my %clean;
-foreach my $k (keys %$rec) {
-	# Skip keys that cannot be read back from the cache file
-	next if ($k eq '' || $k =~ /[=\r\n\0]/);
-	my $v = $rec->{$k};
-	if (defined($v) && !ref($v)) {
-		$v =~ s/[\r\n\0]+$//;
-		$v =~ s/[\r\n\0]+/ /g;
-		}
-	$clean{$k} = $v;
-	}
-return \%clean;
 }
 
 # delete_usermin_host(&host)
 sub delete_usermin_host
 {
-&servers::cache_path_component($_[0]->{'id'}) || &error($text{'host_einvalid'});
-system("rm -rf ".quotemeta("$module_config_directory/hosts/$_[0]->{'id'}"));
+system("rm -rf '$module_config_directory/hosts/$_[0]->{'id'}'");
 }
 
 # list_servers()

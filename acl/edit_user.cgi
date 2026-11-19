@@ -393,9 +393,7 @@ elsif ($miniserv{'twofactor_provider'}) {
 	}
 
 # RPC is a global permission and cannot be edited on a group member.
-# Limited admins cannot change it for their own account.
-if ($access{'acl'} && $access{'mode'} == 0 && !$memg->{'name'} && !$safe &&
-    &can_change_own_acl("", $in{'user'})) {
+if ($access{'acl'} && !$memg->{'name'} && !$safe) {
 	print &ui_table_row(&hlink($text{'acl_rpc'}, 'rpc'),
 		&ui_radio("rpc", int($uaccess{'rpc'}),
 			  [ [ 1, $text{'acl_rpc1'} ],
@@ -483,9 +481,7 @@ print &ui_hidden_table_end("mods");
 
 # Group members inherit global permissions, even without a local ACL file.
 # Hide these fields because save_user.cgi ignores individual edits.
-# Limited admins cannot change their own global permissions.
-if ($access{'acl'} && $access{'mode'} == 0 && !$memg->{'name'} && !$safe &&
-    &can_change_own_acl("", $in{'user'})) {
+if ($access{'acl'} && !$memg->{'name'} && !$safe) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
 	print &ui_hidden("acl_security_form", 1);

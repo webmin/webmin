@@ -199,10 +199,10 @@ else {
 		}
 	}
 
-$cmd .= " ".join(" ", map { quotemeta($_) } &split_shell_words($in{'extra'})) if ($in{'extra'});
+$cmd .= " $in{'extra'}" if ($in{'extra'});
 if (!$in{'files_def'}) {
 	$in{'files'} || &error($text{'restore_efiles'});
-	$cmd .= " ".&restore_file_arguments($in{'files'});
+	$cmd .= " $in{'files'}";
 	}
 -d $in{'dir'} || &error($text{'restore_edir'});
 
@@ -217,7 +217,7 @@ sub restore_backup
 
 &foreign_require("proc", "proc-lib.pl");
 local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
-	"cd ".quotemeta($in{'dir'})." && $_[1]");
+	"cd ".quotemeta($in{'dir'})." ; $_[1]");
 local $donevolume;
 while(1) {
 	local $rv = &wait_for($fh, "(next volume #)", "(set owner.mode for.*\\[yn\\])", "(Directories already exist, set modes anyway. \\[yn\\])", "((.*)\\[yn\\])", "(.*\\n)");

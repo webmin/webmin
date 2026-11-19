@@ -11,8 +11,8 @@ print &ui_form_start("export_exec.cgi");
 print &ui_table_start($text{'export_header'}, undef, 2);
 
 # Destination
-if (&can_export_users_to_file(\%access)) {
-	# The account has permission to save a batch file.
+if ($access{'export'} == 2) {
+	# Can be to a file
 	print &ui_table_row($text{'export_to'},
 		&ui_radio_table("to", 0,
 			[ [ 0, $text{'export_show'} ],

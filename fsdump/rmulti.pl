@@ -26,14 +26,7 @@ else {
 	}
 
 # Update the link
-if (defined($ENV{'FSDUMP_RESTORE_DIRS'}) &&
-    $ENV{'FSDUMP_RESTORE_DIRS'} ne '*') {
-	# Check the directory containing the link and the volume it will open.
-	local $access{'dirs'} = $ENV{'FSDUMP_RESTORE_DIRS'};
-	&can_edit_dir($dir || "/") && &can_edit_dir("$dir/$nxt") ||
-		die "$text{'restore_ecannot'}\n";
-	}
 unlink($ARGV[0]);
-symlink($nxt, $ARGV[0]) || die "Failed to select the next archive: $!";
+symlink($nxt, $ARGV[0]);
 exit(0);
 

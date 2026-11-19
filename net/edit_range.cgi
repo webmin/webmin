@@ -3,16 +3,21 @@
 # Edit or create an IP range bootup interface
 
 require './net-lib.pl';
+$access{'ifcs'} == 2 || $access{'ifcs'} == 3 || &error($text{'ifcs_ecannot'});
 &ReadParse();
 if ($in{'new'}) {
-	&can_create_iface() && $access{'virt'} || &error($text{'ifcs_ecannot'});
 	&ui_print_header(undef, $text{'range_create'}, "");
 	}
 else {
 	@boot = &boot_interfaces();
-	$b = $boot[$in{'idx'}] if ($in{'idx'} =~ /^\d+\z/);
-	$b && $b->{'range'} ne '' || &error($text{'daifcs_egone'});
-	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
+	$b = $boot[$in{'idx'}];
+
+	if ($access{'ifcs'} == 3) {
+		map { $can_interfaces{$_}++ } split(/\s+/, $access{'interfaces'});
+		if (! $can_interfaces{$b->{'fullname'}}) {
+			&error($text{'ifcs_ecannot_this'});
+			}
+		}
 	
 	&ui_print_header(undef, $text{'range_edit'}, "");
 	}
@@ -29,24 +34,17 @@ print &ui_table_start($text{'range_header'}, undef, 2);
 # End and buttons
 print &ui_table_end();
 if ($in{'new'}) {
-	# Users limited to boot-time and active changes together can only
-	# create and activate
-	print &ui_form_end([
-		!$access{'bootonly'} ? ( [ undef, $text{'create'} ] ) : ( ),
-		[ 'activate', $text{'bifc_capply'} ] ]);
+	print &ui_form_end([ [ undef, $text{'create'} ],
+			     [ 'activate', $text{'bifc_capply'} ] ]);
 	}
 else {
-	# Deleting needs the delete permission, and boot-only users must also
-	# deactivate the range
 	print &ui_form_end([
-		!$always_apply_ifcs && !$access{'bootonly'} ?
-			( [ undef, $text{'save'} ] ) : ( ),
+		!$always_apply_ifcs ? ( [ undef, $text{'save'} ] ) : ( ),
 		defined(&apply_interface) ?
 			( [ 'activate', $text{'bifc_apply'} ] ) : ( ),
-		defined(&unapply_range) && $access{'delete'} ?
+		defined(&unapply_interface) ?
 			( [ 'unapply', $text{'bifc_dapply'} ] ) : ( ),
-		!$noos_support_delete_ifcs && $access{'delete'} &&
-		!$access{'bootonly'} ?
+		!$noos_support_delete_ifcs ?
 			( [ 'delete', $text{'delete'} ] ) : ( ),
 		]);
 	}

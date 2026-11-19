@@ -165,4 +165,3 @@ log_refresh=Refreshed users and groups
 log_sync=Synchronized users and groups
 
 __norefs=1
-host_einvalid=The managed server ID is not valid

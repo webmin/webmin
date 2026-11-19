@@ -278,9 +278,6 @@ save_espfrom=Invalid starting port for SNAT
 save_espto=Missing or invalid ending port for SNAT
 save_estates=No connection states selected
 save_ecanjump=You are not allowed to use this action
-save_eargsjump=Additional parameters cannot set the action for this rule
-save_echars=Rule fields cannot contain line breaks, and only additional parameters can contain double quotes or backslashes
-save_enochain=The chain does not exist
 save_ephysdevin=Missing or invalid incoming physical interface
 save_ephysdevout=Missing or invalid outgoing physical interface
 
@@ -369,7 +366,6 @@ add_ok=Added $1, with $2 active firewall rules.
 add_enone=No servers to add selected!
 
 policy_ecannot=You are not allowed to change the default policy for this chain
-policy_einvalid=Invalid default policy
 
 move_title=Move Rules
 move_count=Rules selected

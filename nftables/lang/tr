@@ -293,6 +293,7 @@ delete_notable=Böyle bir tablo seçilmedi
 save_failed=Kural kaydedilemedi: <pre>$1</pre>
 save_raw_empty=Ham kural boş olamaz.
 save_raw_multiline=Ham kural tek satır olmalıdır.
+save_invalid_rule=Ham kural geçersiz: $1
 save_set_missing=Seçilen küme $1 mevcut değil.
 save_set_type=Seçilen küme $1 türü $2, bu tür $3 için kullanılamaz.
 move_err=Kural taşınamadı

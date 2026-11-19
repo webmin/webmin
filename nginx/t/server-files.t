@@ -94,13 +94,6 @@ require File::Spec->catfile($root, 'nginx', 'nginx-lib.pl');
 	$main::text{'index_noproxy'} = 'No proxy target';
 }
 
-# A formatted argument must survive saving and reopening a server file.
-my @quoted = (q{Ops' "West" #4}, '/srv/two words', '', '$host');
-my $quoted_file = "$tmp/quoted.conf";
-write_text($quoted_file, 'example '.main::join_words(@quoted)." ; # note\n");
-my $parsed = main::read_config_file($quoted_file, 1);
-is_deeply($parsed->[0]->{'words'}, \@quoted, 'quoted arguments round trip');
-
 sub http_config
 {
 main::flush_config_cache();

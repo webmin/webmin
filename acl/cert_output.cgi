@@ -10,11 +10,11 @@ our (%in, %text, %config, %access);
 $access{'cert'} || &error($text{'cert_ecannot'});
 
 &ReadParse();
-my $file = &pending_certificate_file();
-&lock_file($file);
-my $cert = &read_file_contents($file);
-defined($cert) && length($cert) || &error($text{'cert_etempdir'});
-&unlink_file($file);
-&unlock_file($file);
+my $tempdir = &tempname();
+$tempdir =~ s/\/[^\/]+$//;
+&is_under_directory($tempdir, $in{'file'}) ||
+	&error($text{'cert_etempdir'});
 print "Content-type: application/x-x509-user-cert\n\n";
-print $cert;
+print &read_file_contents($in{'file'});
+&unlink_file($in{'file'});
+

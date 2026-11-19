@@ -54,14 +54,10 @@ if ($in{'action'} eq "fetch") {
                 # Check if download worked
                 &$error("File download failed : $err")
                     if ($err);
-                # Only known raster image types can be displayed inline.
-                my ($type) = lc($response_headers->{'content-type'} || '') =~
-                    m{^\s*(image/(?:gif|jpeg|png|webp|bmp|avif|x-icon|vnd\.microsoft\.icon))\s*(?:;|$)};
+                # Get MIME content type
+                my $mime_type = $response_headers->{'content-type'};
                 print "x-no-links: 1\n";
-                print "X-Content-Type-Options: nosniff\n";
-                print "Content-Security-Policy: sandbox; default-src 'none'\n";
-                print "Content-Disposition: attachment\n" if (!$type);
-                print "Content-type: ".($type || 'application/octet-stream')."\n\n";
+                print "Content-type: $mime_type;\n\n";
                 print $img;
                 exit;
                 }

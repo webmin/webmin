@@ -250,7 +250,7 @@ $cmd .= " -e" if ($in{'over'} == 2);
 $cmd .= " -A" if ($in{'noattribs'});
 $cmd .= " -L ".quotemeta($in{'label'}) if ($in{'label'});
 $cmd .= " -F";
-$cmd .= " ".join(" ", map { quotemeta($_) } &split_shell_words($in{'extra'})) if ($in{'extra'});
+$cmd .= " $in{'extra'}" if ($in{'extra'});
 if (!$in{'test'}) {
 	-d $in{'dir'} || &error($text{'restore_edir'});
 	$cmd .= " ".quotemeta($in{'dir'});
@@ -276,7 +276,7 @@ else {
 	# Need to supply prompts
 	&foreign_require("proc", "proc-lib.pl");
 	local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
-		"cd ".quotemeta($in{'dir'})." && $_[1]");
+		"cd ".quotemeta($in{'dir'})." ; $_[1]");
 	local $donevolume;
 	while(1) {
 		local $rv = &wait_for($fh, "(next volume #)", "(set owner.mode for.*\\[yn\\])", "((.*)\\[yn\\])", "(.*\\n)");

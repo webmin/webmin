@@ -7,8 +7,6 @@ use WebminCore;
 use POSIX;
 use Encode qw(decode encode);
 use File::Basename;
-use File::Path ();
-use Fcntl ();
 eval "use File::MimeInfo";
 
 our ($path, $quote_escaped_path, $urlized_path, $base, $cwd, $upload_max,
@@ -1345,370 +1343,6 @@ if (@allowed_paths == 1 && $allowed_paths[0] eq '/') {
 return 1;
 }
 
-# filemin_restricted_root()
-# Returns 1 if the file manager runs as root for a user limited to some
-# directories. Such users must not create setuid or setgid files.
-sub filemin_restricted_root
-{
-return $> == 0 && &test_allowed_paths() ? 1 : 0;
-}
-
-# filemin_walk_tree(path, depth, &callback)
-# Calls callback with a name and lstat details for path if it is not a
-# directory. For a real directory, calls it for each entry up to depth levels
-# below, or at any level if depth is negative, but not for the directory
-# itself. Each directory is entered and checked before its entries are read,
-# so a symlink swapped in later cannot lead outside the tree. The callback
-# runs in the entry's directory, gets a name relative to it, and must not
-# change the current directory.
-sub filemin_walk_tree
-{
-my ($path, $depth, $callback) = @_;
-my @st = lstat($path);
-return if (!@st);
-if (!-d _) {
-	&$callback($path, \@st);
-	return;
-	}
-return if (!$depth);
-opendir(my $orig, ".") || return;
-
-# Process the entries of the current directory, then descend into each
-# subdirectory once it is confirmed to be the one found by lstat
-my $walk;
-$walk = sub {
-	my ($dh, $level) = @_;
-	my @names = grep { $_ ne '.' && $_ ne '..' } readdir($dh);
-	foreach my $name (@names) {
-		my @est = lstat($name);
-		next if (!@est);
-		my $isdir = -d _;
-		&$callback($name, \@est);
-		next if (!$isdir || ($depth > 0 && $level >= $depth));
-		my $sub;
-		next if (!opendir($sub, $name));
-		if (chdir($sub)) {
-			my @cst = stat(".");
-			&$walk($sub, $level + 1)
-				if ($cst[0] == $est[0] && $cst[1] == $est[1]);
-			chdir($dh) || die "Failed to return to directory : $!";
-			}
-		closedir($sub);
-		}
-	};
-
-# Enter the top directory the same way
-my $top;
-if (opendir($top, $path)) {
-	if (chdir($top)) {
-		my @cst = stat(".");
-		&$walk($top, 1) if ($cst[0] == $st[0] && $cst[1] == $st[1]);
-		}
-	closedir($top);
-	}
-chdir($orig) || die "Failed to return to directory : $!";
-closedir($orig);
-undef($walk);
-}
-
-# filemin_drop_setid_file(file, &lstat)
-# Removes setuid and setgid bits from a regular file, unless it has been
-# replaced since the given lstat details were read
-sub filemin_drop_setid_file
-{
-my ($file, $st) = @_;
-return if (($st->[2] & 0170000) != 0100000 || !($st->[2] & 06000));
-my $flags = Fcntl::O_RDONLY() | Fcntl::O_NONBLOCK() |
-	    (eval { Fcntl::O_NOFOLLOW() } || 0);
-my $fh;
-sysopen($fh, $file, $flags) || return;
-my @fst = stat($fh);
-if (@fst && $fst[0] == $st->[0] && $fst[1] == $st->[1]) {
-	chmod($fst[2] & 01777, $fh);
-	}
-close($fh);
-}
-
-# filemin_drop_setid(path, [depth])
-# Removes setuid and setgid bits from regular files at path or up to depth
-# directory levels below it, or at any level if depth is negative. Symlinks
-# are never followed. Directories keep their bits, as setgid only sets the
-# group of new files there.
-sub filemin_drop_setid
-{
-my ($path, $depth) = @_;
-&filemin_walk_tree($path, $depth || 0, \&filemin_drop_setid_file);
-}
-
-# extract_in_private_dir(directory, overwrite, &command, [uid, gid], [tar archive])
-# Runs an archive extraction command in a new private directory inside
-# directory, then moves the extracted entries into directory. The command
-# runs in the private directory, must extract into it, and returns a status.
-# Existing directories are merged. Existing files and symlinks are replaced
-# if overwrite is true and kept otherwise. With undef, report each collision.
-# Symlinks in directory are never followed. When running as root, uid and
-# gid set the owner of the extracted entries. Directory limits strip setuid and setgid
-# bits. Returns the command's status, then any errors.
-sub extract_in_private_dir
-{
-my ($dir, $overwrite, $command, $uid, $gid, $tar) = @_;
-my @errors;
-
-# Only extract into a real directory, never through a symlink
-$dir =~ s/(?<=.)\/+$//;
-my @dst = lstat($dir);
-if (!@dst || !-d _) {
-	return (-1, &text('extract_edir', &html_escape($dir)));
-	}
-
-# Create a private directory on the same filesystem, so entries can be
-# renamed into place
-my ($tmp, @tst);
-for (my $i = 0; $i < 100; $i++) {
-	my $try = "$dir/.filemin-extract-$$-".int(rand(1000000000));
-	if (mkdir($try, 0700)) {
-		$tmp = $try;
-		@tst = lstat($tmp);
-		last;
-		}
-	last if (!$!{EEXIST});
-	}
-if (!$tmp) {
-	return (-1, &text('extract_etemp', &html_escape($dir),
-			  &html_escape("$!")));
-	}
-
-# Work in a subdirectory of it, as some archives change the owner and mode
-# of the top directory, while the private directory stays closed to others
-my ($orig, $tdh, $xdh, $status);
-my $back = opendir($orig, ".");
-if (!$back) {
-	push(@errors, &text('extract_etemp', &html_escape($dir),
-			    &html_escape("$!")));
-	}
-elsif (!opendir($tdh, $tmp) || !chdir($tdh) ||
-       !&filemin_same_file([ stat(".") ], \@tst) ||
-       !mkdir("x", 0700) || !opendir($xdh, "x") || !chdir($xdh)) {
-	push(@errors, &text('extract_etemp', &html_escape($dir),
-			    &html_escape("$!")));
-	}
-else {
-	$status = &$command();
-	chmod(0700, ".");
-
-	# Fix ownership and drop privileged modes of the extracted entries
-	my $chown = $> == 0 && defined($uid) && defined($gid);
-	my $strip = &filemin_restricted_root();
-	&filemin_walk_tree(".", -1, sub {
-		my ($name, $st) = @_;
-		if ($chown && ($st->[2] & 0170000) == 0120000) {
-			# Change the symlink itself, never its target
-			POSIX::lchown($uid, $gid, $name)
-				if (defined(&POSIX::lchown));
-			}
-		elsif ($chown) {
-			chown($uid, $gid, $name);
-			}
-		&filemin_drop_setid_file($name, $st) if ($strip);
-		}) if (!$status && ($chown || $strip));
-
-	# Move the entries into place
-	if (!$status) {
-		my $modes;
-		# Only list the archive when merging with existing directories.
-		# Finish reading it before any member can replace the archive.
-		if ($tar && $overwrite) {
-			rewinddir($xdh);
-			if (grep { $_ ne '.' && $_ ne '..' && -d $_ && -d "$dir/$_" }
-			    readdir($xdh)) {
-				$modes = &filemin_tar_dirs($tar, $dir);
-				push(@errors, &text('extract_ecommand', &html_escape($tar)))
-					if (!$modes);
-				}
-			}
-		&filemin_merge_extracted($dir, $overwrite, \@tst, \@errors, $modes)
-			if (!@errors);
-		}
-
-	# Remove anything that was kept back or written next to the extraction
-	# directory
-	chdir($tdh) || die "Failed to return to directory : $!";
-	rewinddir($tdh);
-	my @left = grep { $_ ne '.' && $_ ne '..' } readdir($tdh);
-	File::Path::rmtree(\@left) if (@left);
-	}
-
-# Leave and remove the private directory
-if ($back) {
-	chdir($orig) || die "Failed to return to directory : $!";
-	}
-rmdir("$tmp/x");
-rmdir($tmp);
-return (defined($status) ? $status : -1, @errors);
-}
-
-# filemin_same_file(&stat1, &stat2)
-# Returns 1 if two stat results describe the same file
-sub filemin_same_file
-{
-my ($st1, $st2) = @_;
-return @$st1 && @$st2 && $st1->[0] == $st2->[0] &&
-       $st1->[1] == $st2->[1] ? 1 : 0;
-}
-
-# filemin_tar_dirs(archive, directory)
-# Lists explicit tar directories once, so implicit parents keep their mode.
-sub filemin_tar_dirs
-{
-my ($archive, $dir) = @_;
-my %dirs;
-local $ENV{'LC_ALL'} = 'C';
-open(my $fh, '-|', 'tar', 'tf', $archive) || return undef;
-my %escape = ( n => "\n", r => "\r", t => "\t", b => "\b",
-	       f => "\f", v => "\013", a => "\007", '\\' => '\\' );
-while (my $name = <$fh>) {
-	chomp($name);
-	next unless ($name =~ s{/+\z}{});
-	# tar lists control characters and literal backslashes as C escapes.
-	$name =~ s/\\([0-7]{3}|[nrtbfva\\])/
-		length($1) == 3 ? chr(oct($1)) : $escape{$1}/ge;
-	$name = join('/', grep { length && $_ ne '.' } split('/', $name));
-	$dirs{"$dir/$name"} = 1 if ($name ne '');
-	}
-return close($fh) ? \%dirs : undef;
-}
-
-# filemin_merge_directory(target, overwrite, &private-stat, &errors, [&modes],
-#                        &source-stat, &destination-stat)
-# Close group and other access before installing private files. Keep owner
-# access until the entries have been moved, then set the archived mode.
-sub filemin_merge_directory
-{
-my ($target, $overwrite, $tst, $errors, $modes, $src, $dst) = @_;
-my ($fh, $mode);
-if ($modes && $modes->{$target}) {
-	$mode = $src->[2] & 07777;
-	if (&filemin_restricted_root()) {
-		# A restricted root operator may only narrow existing permissions.
-		$mode = ($dst->[2] & 07000) | ($mode & $dst->[2] & 0777);
-		}
-	$mode = undef if ($mode == ($dst->[2] & 07777));
-	}
-if (defined($mode)) {
-	my $flags = Fcntl::O_RDONLY() | Fcntl::O_NONBLOCK() |
-		    (eval { Fcntl::O_NOFOLLOW() } || 0);
-	sysopen($fh, $target, $flags) &&
-		&filemin_same_file([ stat($fh) ], $dst) &&
-		chmod(($dst->[2] & 07000) | ($dst->[2] & ($mode | 0700) & 0777) |
-		      ($mode & 01000), $fh) ||
-		return &text('extract_emove', &html_escape($target), &html_escape("$!"));
-	}
-&filemin_merge_extracted($target, $overwrite, $tst, $errors, $modes);
-return &text('extract_emove', &html_escape($target), &html_escape("$!"))
-	if (defined($mode) && !chmod($mode, $fh));
-return undef;
-}
-
-# filemin_merge_extracted(destination, overwrite, &private-stat, &errors, [&modes])
-# Moves each entry of the current directory into destination, merging
-# directories that exist in both. Existing files and symlinks are replaced if
-# overwrite is true and kept otherwise. With undef, report each collision.
-# Symlinks in destination are never followed, and the private extraction
-# directory is never merged into.
-sub filemin_merge_extracted
-{
-my ($dst, $overwrite, $tst, $errors, $modes) = @_;
-opendir(my $dh, ".") || return;
-my @names = grep { $_ ne '.' && $_ ne '..' } readdir($dh);
-foreach my $name (@names) {
-	my @sst = lstat($name);
-	next if (!@sst);
-	my $sdir = -d _;
-	my $target = "$dst/$name";
-	my @dst = lstat($target);
-	my $err;
-	if (!@dst) {
-		# Nothing is in the way
-		$err = &filemin_rename_extracted($name, $target, $sdir);
-		}
-	elsif (!defined($overwrite) && !($sdir && -d _)) {
-		$err = &html_escape($target)." ".$text{'error_exists'};
-		}
-	elsif (-d _) {
-		# An existing real directory is merged with an extracted one
-		next if (&filemin_same_file(\@dst, $tst));
-		my $sub;
-		if (!$sdir) {
-			$err = &text('extract_eisdir', &html_escape($target))
-				if ($overwrite);
-			}
-		elsif (opendir($sub, $name) && chdir($sub)) {
-			# Merge from the extracted directory found by lstat above
-			if (&filemin_same_file([ stat(".") ], \@sst)) {
-				$err = &filemin_merge_directory($target, $overwrite,
-					$tst, $errors, $modes, \@sst, \@dst);
-				}
-			chdir($dh) || die "Failed to return to directory : $!";
-			closedir($sub);
-			}
-		else {
-			# The extracted directory cannot be read
-			$err = &text('extract_emove', &html_escape($target),
-				     &html_escape("$!"));
-			}
-		}
-	elsif ($overwrite) {
-		# Replace a file or the symlink itself, never its target
-		if ($sdir && !unlink($target)) {
-			$err = &text('extract_emove', &html_escape($target),
-				     &html_escape("$!"));
-			}
-		else {
-			$err = &filemin_rename_extracted($name, $target, $sdir);
-			}
-		}
-	push(@$errors, $err) if ($err);
-	}
-closedir($dh);
-}
-
-# filemin_rename_extracted(name, target, is-directory)
-# Renames an extracted entry to target, and returns an error message on
-# failure. An unprivileged user may need to make a read-only directory
-# writable for a moment, so that it can be moved.
-sub filemin_rename_extracted
-{
-my ($name, $target, $isdir) = @_;
-return undef if (rename($name, $target));
-my $err = "$!";
-if ($isdir && $> != 0 && $!{EACCES}) {
-	my @st = lstat($name);
-	if (@st && chmod(($st[2] & 07777) | 0700, $name)) {
-		if (rename($name, $target)) {
-			chmod($st[2] & 07777, $target);
-			return undef;
-			}
-		$err = "$!";
-		chmod($st[2] & 07777, $name);
-		}
-	}
-return &text('extract_emove', &html_escape($target), &html_escape($err));
-}
-
-# filemin_decompress_command(program, archive)
-# Write the decompressed file in the private extraction directory.
-sub filemin_decompress_command
-{
-my ($tool, $archive) = @_;
-my ($output) = $archive =~ m{([^/]+)\z};
-if ($output !~ s/\.(?:tgz|taz|txz)\z/.tar/i &&
-    $output !~ s/[-.](?:gz|xz|z)\z//i) {
-	$output .= '.out';
-	}
-$output = 'output' if ($output =~ /^\.{0,2}\z/);
-return quotemeta($tool)." -dc <".quotemeta($archive)." >".quotemeta("./".$output);
-}
-
 # extract_files(&files_to_extract, delete)
 # Extracts archives and optionally deletes them after extraction
 sub extract_files
@@ -1781,20 +1415,12 @@ foreach my $fref (@{$files_to_extract}) {
 			}
 		}
 	my $created = mkdir($extract_to);
-	if (!$in{'overwrite_existing'} && !$created) {
-		push(@errors, &text('extract_etemp', &html_escape($extract_to),
-				    &html_escape("$!")));
-		next;
-		}
-	my @aperms = stat($archive);
-	if ($created && $> == 0) {
+	if ($is_rpm && $created && $> == 0) {
 		# Newly created upload directories share the archive's ownership
-		chown($aperms[4], $aperms[5], $extract_to);
+		my @perms = stat($archive);
+		chown($perms[4], $perms[5], $extract_to);
 		}
 
-	# Commands that extract into the current directory are run in a
-	# private directory, then their output is moved into place
-	my ($cmd, $tar_archive);
 	if ($archive_type =~ /x-tar/ ||
 	    $archive_type =~ /-compressed-tar/) {
 		my $tar_cmd = has_command('tar');
@@ -1807,8 +1433,11 @@ foreach my $fref (@{$files_to_extract}) {
 				   '<tt>tar</tt>'));
 			}
 		else {
-			$tar_archive = $archive;
-			$cmd = "$tar_cmd xpf ".quotemeta($archive);
+			$status = system(
+				"$tar_cmd xpf " .
+				quotemeta($archive) .
+				" -C " .
+				quotemeta($extract_to));
 			}
 		}
 	elsif ($archive_type =~ /x-bzip/) {
@@ -1822,21 +1451,44 @@ foreach my $fref (@{$files_to_extract}) {
 				   '<tt>tar</tt>'));
 			}
 		else {
-			$tar_archive = $archive;
-			$cmd = "$tar_cmd xjfp ".quotemeta($archive);
+			$status = system(
+				"$tar_cmd xjfp " .
+				quotemeta($archive) .
+				" -C " .
+				quotemeta($extract_to));
 			}
 		}
-	elsif ($archive_type =~ m{/gzip|/x-gzip|/x-xz}) {
-		my $xz = $archive_type =~ /x-xz/;
-		my $tool = $xz ? has_command('xz') :
-			   has_command('gunzip') || has_command('gzip');
-		if ($tool) {
-			$cmd = &filemin_decompress_command($tool, $archive);
+	elsif ($archive_type =~ /\/gzip/) {
+		my $gz_cmd = has_command('gunzip') ||
+			has_command('gzip');
+		if (!$gz_cmd) {
+			push(@errors,
+			     &text('extract_cmd_not_avail',
+				   "<tt>" .
+				   &html_escape($name) .
+				   "</tt>",
+				   '<tt>gzip/gunzip</tt>'));
 			}
 		else {
-			push(@errors, &text('extract_cmd_not_avail',
-				'<tt>'.&html_escape($name).'</tt>',
-				$xz ? '<tt>xz</tt>' : '<tt>gzip/gunzip</tt>'));
+			$status = system(
+				"$gz_cmd -d -f -k " .
+				quotemeta($archive));
+			}
+		}
+	elsif ($archive_type =~ /x-xz/) {
+		my $xz_cmd = has_command('xz');
+		if (!$xz_cmd) {
+			push(@errors,
+			     &text('extract_cmd_not_avail',
+				   "<tt>" .
+				   &html_escape($name) .
+				   "</tt>",
+				   '<tt>xz</tt>'));
+			}
+		else {
+			$status = system(
+				"$xz_cmd -d -f -k " .
+				quotemeta($archive));
 			}
 		}
 	elsif ($archive_type =~ /x-7z/ ||
@@ -1852,7 +1504,11 @@ foreach my $fref (@{$files_to_extract}) {
 				   '<tt>7z</tt>'));
 			}
 		else {
-			$cmd = "$x7z_cmd x -aoa ".quotemeta($archive)." -o.";
+			$status = system(
+				"$x7z_cmd x -aoa " .
+				quotemeta($archive) .
+				" -o" .
+				quotemeta($extract_to));
 			}
 		}
 	elsif ($archive_type =~ /\/zip/) {
@@ -1869,8 +1525,10 @@ foreach my $fref (@{$files_to_extract}) {
 			my $unzip_out = `unzip --help`;
 			my $uu = ($unzip_out =~ /-UU/
 				? '-UU' : undef);
-			$cmd = "$unzip_cmd $uu -q -o -d . -- ".
-			       quotemeta($archive);
+			$status = system(
+				"$unzip_cmd $uu -q -o".
+				" -d " .quotemeta($extract_to).
+				" -- ".quotemeta($archive));
 			}
 		}
 	elsif ($archive_type =~ /\/x-rar|\/vnd\.rar/) {
@@ -1886,12 +1544,21 @@ foreach my $fref (@{$files_to_extract}) {
 			}
 		else {
 			if ($unrar_cmd =~ /unar$/) {
-				$cmd = "$unrar_cmd ".quotemeta($archive).
-				       " -o .";
+				$status = system(
+					"$unrar_cmd " .
+					quotemeta($archive) .
+					" -o " .
+					quotemeta(
+					$extract_to));
 				}
 			else {
-				$cmd = "$unrar_cmd x -r -y -o+ ".
-				       quotemeta($archive)." ./";
+				$status = system(
+					"$unrar_cmd " .
+					"x -r -y -o+ " .
+					quotemeta($archive) .
+					" " .
+					quotemeta(
+					$extract_to));
 				}
 			}
 		}
@@ -1919,26 +1586,23 @@ foreach my $fref (@{$files_to_extract}) {
 				   '<tt>dpkg</tt>'));
 			}
 		else {
-			$cmd = "$dpkg_cmd -x ".quotemeta($archive)." .";
+			$status = system(
+				"$dpkg_cmd -x " .
+				quotemeta($archive) .
+				" " .
+				quotemeta($extract_to));
 			}
 		}
 
-	# Extracted entries belong to the uploaded archive's owner, and never
-	# replace what an existing symlink points to
-	if ($cmd) {
-		my @eerrors;
-		($status, @eerrors) = &extract_in_private_dir(
-			$extract_to, 1, sub { return system($cmd); },
-			($> == 0 ? @aperms[4, 5] : (undef, undef)), $tar_archive);
-		push(@errors, @eerrors);
-		if ($status && !@eerrors) {
-			push(@errors, &text('extract_ecommand', &html_escape($name)));
-			}
-		$status = -1 if (@eerrors && !$status);
+	# RPM ownership is set during extraction, without changing unrelated files
+	if (!$is_rpm) {
+		my @perms = stat($archive);
+		system("chown -R $perms[4]:$perms[5] " .
+			quotemeta($extract_to));
 		}
 
-	# Drop only a directory created for this extraction.
-	rmdir($extract_to) if ($created);
+	# Delete empty extraction
+	rmdir($extract_to);
 
 	# Delete if no error
 	if ($delete && $status == 0) {

@@ -11,13 +11,11 @@ foreach $s ('KILL', 'TERM', 'HUP', 'STOP', 'CONT') {
 
 &ui_print_unbuffered_header(undef, $text{'proc_kill'}, "");
 @pidlist = split(/\s+/, $in{pidlist});
-@pidlist && !grep { !/\A[1-9]\d*\z/ } @pidlist or &error($text{'kill_ecannot'});
-my %pinfo = map { $_->{'pid'} => $_ } &list_processes(@pidlist);
+@pinfo = &list_processes(@pidlist);
 for($i=0; $i<@pidlist; $i++) {
-	my $proc = $pinfo{$pidlist[$i]};
-	$in{"args$i"} = $proc->{'args'} if ($proc);
+	$in{"args$i"} = $pinfo[$i]->{'args'};
 	print "$text{'pid'} <tt>".&html_escape($pidlist[$i])."</tt> ... \n";
-	if ($proc && &can_edit_process($proc->{'user'})) {
+	if (&can_edit_process($pinfo[$i]->{'user'})) {
 		if (&kill_logged($in{signal}, $pidlist[$i])) {
 			print "SIG".&html_escape($in{'signal'})." $text{'kill_sent'}<br>\n";
 			}

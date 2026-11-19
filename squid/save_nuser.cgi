@@ -19,8 +19,6 @@ $access{'proxyauth'} || &error($text{'eauth_ecannot'});
 &ReadParse();
 my $conf = &get_config();
 my $file = &get_auth_file($conf);
-&valid_auth_file($file) ||
-	&error(&text('eauth_efile', &html_escape($file)));
 &lock_file($file);
 my @users = &list_auth_users($file);
 
@@ -30,7 +28,7 @@ if ($in{'delete'}) {
 	}
 else {
 	&error_setup($text{'suser_ftsu'});
-	$in{'user'} =~ /^[^:\s]+\z/ || &error($text{'suser_emsg1'});
+	$in{'user'} =~ /^[^:\s]+$/ || &error($text{'suser_emsg1'});
 	my ($same) = grep { $_->{'user'} eq $in{'user'} } @users;
 	my $cmt = $in{'enabled'} ? "" : "#";
 	if ($in{'new'}) {
