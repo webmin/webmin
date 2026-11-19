@@ -2334,8 +2334,8 @@ $qfile = quotemeta($_[0]);
 $bl = $_[1] * ($_[2] eq "t" ? 1024*1024*1024 :
 	       $_[2] eq "g" ? 1024*1024 :
 	       $_[2] eq "m" ? 1024 : 1);
-# Create the file exclusively, so an existing file or symlink is never
-# overwritten, then fill it in place. BusyBox dd has no conv=excl.
+# BusyBox dd lacks conv=excl, so create the file here only if the path is
+# unused. The file starts with mode 0600. dd reopens it by name to fill it.
 require Fcntl;
 local $sfh;
 sysopen($sfh, $_[0], &Fcntl::O_WRONLY() | &Fcntl::O_CREAT() |
