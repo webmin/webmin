@@ -90,12 +90,15 @@ local ($match, $for) = @_;
 # A backslash in a substring search is part of the text. LIKE patterns entered
 # with "matches" retain their normal escape syntax.
 $for =~ s/\\/\\\\/g if ($match == 0 || $match == 2);
+local $comparison = $for =~ /^-?\d+(?:\.\d+)?\z/
+	? $for
+	: &quote_sql_value($for);
 return $match == 0 ? "like ".&quote_sql_value("%$for%") :
        $match == 1 ? "like ".&quote_sql_value($for) :
        $match == 2 ? "not like ".&quote_sql_value("%$for%") :
        $match == 3 ? "not like ".&quote_sql_value($for) :
-       $match == 4 ? "> ".&quote_sql_value($for) :
-       $match == 5 ? "< ".&quote_sql_value($for) :
+       $match == 4 ? "> $comparison" :
+       $match == 5 ? "< $comparison" :
 		     " = ''";
 }
 
@@ -109,7 +112,7 @@ local ($value) = @_;
 $value = "" if (!defined($value));
 $value =~ s/'/''/g;
 if ($module_name eq "mysql" && $value =~ /\\/) {
-	# CHAR(92) has the same value with or without NO_BACKSLASH_ESCAPES.
+	# Keep backslashes outside quoted text so they cannot escape a quote.
 	my @parts = split(/\\/, $value, -1);
 	return "concat(".join(",char(92),", map { "'$_'" } @parts).")";
 	}

@@ -105,6 +105,15 @@ foreach my $module ('mysql', 'postgresql') {
 		}
 	is(main::make_like(6, "x' or 1=1"), " = ''",
 	   "$module empty comparison ignores the text");
+	is(main::make_like(4, '7.5'), '> 7.5',
+	   "$module decimal comparison stays numeric");
+	is(main::make_like(5, '-2'), '< -2',
+	   "$module negative comparison stays numeric");
+	is(main::make_like(4, "7.5\n"), "> ".$prefix."'7.5\n'",
+	   "$module number ending in a newline is quoted");
+	like(main::make_like(4, '7.5 or 1=1'),
+	     qr/^> (?:E)?'7\.5 or 1=1'$/,
+	     "$module nonnumeric comparison is quoted");
 
 	# Only a whole number can be an offset
 	my ($ok, $zero) = $module eq 'mysql' ?
