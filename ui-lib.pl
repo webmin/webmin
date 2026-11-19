@@ -82,8 +82,9 @@ Returns HTML for an <img src>.
 
 sub ui_img
 {
-return &theme_ui_img(@_) if (defined(&theme_ui_img));
 my ($src, $alt, $title, $class, $tags) = @_;
+$src = &module_icon_url($src);
+return &theme_ui_img($src, @_[1..$#_]) if (defined(&theme_ui_img));
 my $esrc   = &quote_escape($src);
 my $ealt   = &quote_escape($alt);
 my $etitle = &quote_escape($title);

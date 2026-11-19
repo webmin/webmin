@@ -40,7 +40,7 @@ push(@EXPORT, qw(init_ssl_context init_ssl_connection connect_ssl_connection
 # Add global variables in web-lib.pl
 push(@EXPORT, qw(&can_read_file_under_global_acl &global_acl_file_unix_user
 		 &read_file_under_global_acl &copy_file_under_global_acl));
-push(@EXPORT, qw(&unique));
+push(@EXPORT, qw(&unique &module_icon_url));
 push(@EXPORT, qw($config_directory $var_directory $remote_error_handler %month_to_number_map %number_to_month_map $default_lang $default_charset $module_index_name $module_index_link %in $in @in $progress_callback_prefix $progress_callback_url $wait_for_debug $wait_for_input @matches $theme_no_table $webmin_logfile $pragma_no_cache));
 
 # Functions defined in themes

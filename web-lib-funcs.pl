@@ -1001,6 +1001,44 @@ if ($callback) {
 return undef;
 }
 
+=head2 module_icon_url(url)
+
+Returns the URL of a module image in the best available format: SVG first,
+then PNG, then GIF. The theme's copy under its images/modules directory is
+used first, then Webmin's copy under images/modules, then the module's own
+copy. Other URLs, and images found in no format, pass through unchanged.
+
+=cut
+sub module_icon_url
+{
+my ($url) = @_;
+my $prefix = &get_webprefix();
+my $path = $url;
+$path =~ s!^\Q$prefix\E(?=/)!! if ($prefix);
+return $url if ($path !~ m!\A(?:(?:/|\.\./)?([\w-]+)/)?images/([\w.-]+)\.(?:svg|png|gif)\z!);
+my ($module, $name) = ($1 || &get_module_name(), $2);
+return $url if (!$module);
+
+# Search the locations in order of precedence, skipping missing ones.
+my $own = &module_root_directory($module)."/images";
+my @dirs = ( ( map { "$_/images/modules/$module" }
+	       @theme_root_directories, $root_directory ), $own );
+foreach my $dir (grep { -d $_ } @dirs) {
+	foreach my $ext ("svg", "png", "gif") {
+		next if (!-f "$dir/$name.$ext");
+		if ($dir ne $own) {
+			# Theme and Webmin copies share one URL. The theme
+			# overlay serves the theme's copy when it has one.
+			return "$prefix/images/modules/$module/$name.$ext";
+			}
+		# Keep the module's own path, changing only the format.
+		(my $rv = $url) =~ s/\.\w+\z/.$ext/;
+		return $rv;
+		}
+	}
+return $url;
+}
+
 =head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
 
 Prints HTML for an icon image. The parameters are :
@@ -1025,8 +1063,10 @@ Prints HTML for an icon image. The parameters are :
 sub generate_icon
 {
 &load_theme_library();
+my ($image, @args) = @_;
+$image = &module_icon_url($image);
 if (defined(&theme_generate_icon)) {
-	&theme_generate_icon(@_);
+	&theme_generate_icon($image, @args);
 	return;
 	}
 my $w = !defined($_[4]) ? "width='48'" : $_[4] ? "width='$_[4]'" : "";
@@ -1041,13 +1081,13 @@ if ($tconfig{'noicons'}) {
 	}
 elsif ($_[2]) {
 	print "<table border><tr><td width='48' height='48'>\n",
-	      "<a href=\"$_[2]\" $_[3]><img src=\"$_[0]\" alt=\"\" border='0' ",
+	      "<a href=\"$_[2]\" $_[3]><img src=\"$image\" alt=\"\" border='0' ",
 	      "$w $h></a></td></tr></table>\n";
 	print "$_[6]<a href=\"$_[2]\" $_[3]>$_[1]</a>$_[7]\n";
 	}
 else {
 	print "<table border><tr><td width='48' height='48'>\n",
-	      "<img src=\"$_[0]\" alt=\"\" border='0' $w $h>",
+	      "<img src=\"$image\" alt=\"\" border='0' $w $h>",
 	      "</td></tr></table>\n$_[6]$_[1]$_[7]\n";
 	}
 }
