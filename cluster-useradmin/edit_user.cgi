@@ -437,15 +437,18 @@ if (@icons < @hosts) {
 	print "<input type=hidden name=copy_files value=1>\n";
 	print "<input type=hidden name=server value=-1>\n";
 	print "<input type=hidden name=users_mode value=2>\n";
-	print "<input type=hidden name=usel value='$uinfo{'user'}'>\n";
+	print "<input type=hidden name=usel value='",
+	      &html_escape($uinfo{'user'}),"'>\n";
 	print "<input type=hidden name=groups_mode value=0>\n";
-	print "<input type=hidden name=user value=\"$uinfo{'user'}\">\n";
+	print "<input type=hidden name=user value=\"",
+	      &html_escape($uinfo{'user'}),"\">\n";
 	print "<td align=middle><input type=submit ",
 	      "value=\"$text{'uedit_sync'}\"></td>\n";
 	}
 
 print "</tr></table></form><p><form action=\"delete_user.cgi\">\n";
-print "<input type=hidden name=user value=\"$uinfo{'user'}\">\n";
+print "<input type=hidden name=user value=\"",
+      &html_escape($uinfo{'user'}),"\">\n";
 print "<input type=submit ",
       "value=\"$text{'delete'}\">\n";
 print "</form><p>\n";
