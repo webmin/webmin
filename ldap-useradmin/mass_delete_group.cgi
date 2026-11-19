@@ -9,7 +9,7 @@ foreach $name (split(/\0/, $in{'gd'})) {
 	$group = $glist{$name};
 	if ($group) {
 		&can_edit_group($group) ||
-			&error(&text('gmass_egroup', $name));
+			&error(&text('gmass_euser', &html_escape($name)));
 		push(@dlist, $group);
 		}
 	}
