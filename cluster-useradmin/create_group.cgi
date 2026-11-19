@@ -70,11 +70,8 @@ foreach $host (@hosts) {
 		}
 
 	# Run the pre-change command
-	&remote_eval($serv->{'host'}, "useradmin", <<EOF
-\$ENV{'USERADMIN_GROUP'} = '$group{'group'}';
-\$ENV{'USERADMIN_ACTION'} = 'CREATE_GROUP';
-EOF
-	);
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_group_envs",
+			     \%group, "CREATE_GROUP");
 	$merr = &remote_foreign_call($serv->{'host'}, "useradmin",
 				     "making_changes");
 	if (defined($merr)) {

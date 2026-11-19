@@ -212,20 +212,11 @@ foreach $host (@hosts) {
 		}
 
 	# Run the pre-change command
-	$envsgids = join(",", split(/\0/, $in{'sgid'}));
-	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : undef;
-	&remote_eval($serv->{'host'}, "useradmin", <<EOF
-\$ENV{'USERADMIN_USER'} = '$user{'user'}';
-\$ENV{'USERADMIN_UID'} = '$user{'uid'}';
-\$ENV{'USERADMIN_REAL'} = '$user{'real'}';
-\$ENV{'USERADMIN_SHELL'} = '$user{'shell'}';
-\$ENV{'USERADMIN_HOME'} = '$user{'home'}';
-\$ENV{'USERADMIN_GID'} = '$user{'gid'}';
-\$ENV{'USERADMIN_SECONDARY'} = '$envsgids';
-\$ENV{'USERADMIN_PASS'} = '$envpass';
-\$ENV{'USERADMIN_ACTION'} = 'CREATE_USER';
-EOF
-	);
+	my @envsgids = split(/\0/, $in{'sgid'});
+	# Hooks have always had this variable, empty when no password is set
+	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : '';
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+			     \%user, "CREATE_USER", $envpass, \@envsgids);
 	$merr = &remote_foreign_call($serv->{'host'}, "useradmin",
 				     "making_changes");
 	if (defined($merr)) {

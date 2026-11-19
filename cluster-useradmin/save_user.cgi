@@ -247,7 +247,8 @@ foreach $host (@hosts) {
 		}
 
 	# Run the pre-change command
-	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : undef;
+	# Hooks have always had this variable, empty when no password is set
+	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : '';
 	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
 				     $user, "MODIFY_USER", $envpass);
 	$merr = &remote_foreign_call($serv->{'host'}, "useradmin",
