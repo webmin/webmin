@@ -11,7 +11,7 @@ require './proc-lib.pl';
 # Set nice level
 &can_edit_process($pinfo{'user'}) || &error($text{'renice_ecannot'});
 if ($error = &renice_proc($in{'pid'}, $in{nice})) {
-	&error($error);
+	&error(&html_escape($error));
 	}
 
 # Set IO scheduling
