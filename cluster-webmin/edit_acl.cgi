@@ -74,9 +74,11 @@ $desc = &text($user ? 'acl_title2'.$ga : 'acl_title3'.$ga,
 
 # Display the editor form from this host
 print &ui_form_start("save_acl.cgi", "post");
-print &ui_hidden("_acl_mod", $in{'mod'}),"\n";
-print &ui_hidden("_acl_host", $in{'host'}),"\n";
-if ($in{'group'}) {
+# Use the module, host and account found above. Not every page that links
+# here gives them as separate parameters.
+print &ui_hidden("_acl_mod", $mod->{'dir'}),"\n";
+print &ui_hidden("_acl_host", $host->{'id'}),"\n";
+if (!$user) {
 	print &ui_hidden("_acl_group", $who),"\n";
 	}
 else {
