@@ -153,6 +153,7 @@ $mod_error_msg = join("", @_);
 # Do the changes across all hosts
 &ui_print_header(undef, $text{'uedit_title'}, "");
 $crypted = &foreign_call("useradmin", "encrypt_password", $in{'pass'});
+my $first_host;
 foreach $host (@hosts) {
 	$mod_error_msg = undef;
 	($user) = grep { $_->{'user'} eq $in{'olduser'} } @{$host->{'users'}};
@@ -259,6 +260,25 @@ foreach $host (@hosts) {
 		next;
 		}
 
+	# Move before saving the new path so a failed move leaves the account usable.
+	$first_host ||= $host;
+	my $change_files = $in{'servs'} || $host eq $first_host;
+	if ($change_files && $ouser{'home'} ne $user->{'home'} && $in{'movehome'}) {
+		my $qold = &remote_perl_string($ouser{'home'});
+		my $qnew = &remote_perl_string($user->{'home'});
+		my $status = &remote_eval($serv->{'host'}, "useradmin",
+			"-d $qold && !-e $qnew ? system('mv', '-f', '--', $qold, $qnew) : undef");
+		if ($mod_error_msg || $status) {
+			print &text('usave_emove', &html_escape($mod_error_msg ||
+				"$ouser{'home'} -> $user->{'home'}")), "<p>\n</ul>\n";
+			# All members rely on this move when the home is shared.
+			last if (!$in{'servs'});
+			next;
+			}
+		print defined($status) ? "$text{'usave_move'}<br>\n$text{'udel_done'}"
+				       : $text{'usave_moveskipped'}, "<p>\n";
+		}
+
 	# Update the user on the server
 	print "$text{'usave_update'}<br>\n";
 	&remote_foreign_call($serv->{'host'}, "useradmin", "modify_user",
@@ -266,13 +286,7 @@ foreach $host (@hosts) {
 	print "$text{'udel_done'}<p>\n";
 
 	# Make file changes
-	if ($in{'servs'} || $host eq $hosts[0]) {
-		if ($ouser{'home'} ne $user->{'home'} && $in{'movehome'}) {
-			print "$text{'usave_move'}<br>\n";
-			&remote_eval($serv->{'host'}, "useradmin",
-				"-d '$ouser{'home'}' && !-e '$user->{'home'}' && system(\"mv -f '$ouser{'home'}' '$user->{'home'}'\")");
-			print "$text{'udel_done'}<p>\n";
-			}
+	if ($change_files) {
 		if ($ouser{'gid'} ne $user->{'gid'}) {
 			if ($in{'chgid'} == 1) {
 				print "$text{'usave_gid'}<br>\n";

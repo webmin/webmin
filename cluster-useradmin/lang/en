@@ -83,6 +83,7 @@ usave_uon=Updating on $1 ..
 usave_update=Updating password file entry ..
 usave_mothers=Updating in other modules ..
 usave_move=Moving home directory ..
+usave_moveskipped=Home directory not moved because the old directory is missing or the new path already exists.
 usave_gid=Changing GID on files ..
 usave_uid=Changing UID on files ..
 usave_rgroups=Renaming in groups ..
