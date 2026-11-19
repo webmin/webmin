@@ -9,14 +9,14 @@ require './cluster-useradmin-lib.pl';
 @hosts = &list_useradmin_hosts();
 @servers = &list_servers();
 
+my $first_host;
 foreach $h (@hosts) {
-	local ($u) = grep { $_->{'user'} eq $in{'user'} } @{$h->{'users'}};
-	if ($u) {
-		%user = %$u;
+	if (grep { $_->{'user'} eq $in{'user'} } @{$h->{'users'}}) {
+		$first_host = $h;
 		last;
 		}
 	}
-%user || &error($text{'udel_ealready'});
+$first_host || &error($text{'udel_ealready'});
 
 # Setup error handler for down hosts
 sub del_error
@@ -100,14 +100,16 @@ if ($in{'confirmed'}) {
 		print "$text{'udel_done'}<p>\n";
 
 		# Delete home directory
-		if ($in{'servs'} || $host eq $hosts[0]) {
+		if ($in{'delhome'} && ($in{'servs'} || $host eq $first_host) &&
+		    $user->{'home'} !~ /^\/+$/) {
+			# Quote the path for the code the other server runs
+			local $qhome = &remote_perl_string($user->{'home'});
 			local $exists = &remote_eval($serv->{'host'},
-				"useradmin", "-d '$user{'home'}'");
-			if ($in{'delhome'} && $user{'home'} !~ /^\/+$/ &&
-			    $exists) {
+				"useradmin", "-d $qhome");
+			if ($exists) {
 				print "$text{'udel_home'}<br>\n";
 				&remote_eval($serv->{'host'}, "useradmin",
-					"system(\"rm -rf '$user{'home'}'\")");
+					"system('rm', '-rf', '--', $qhome)");
 				print "$text{'udel_done'}<p>\n";
 				}
 			}
@@ -129,18 +131,25 @@ if ($in{'confirmed'}) {
 	}
 else {
 	# Ask if the user is sure
-	($serv) = grep { $_->{'id'} == $host->{'id'} } @servers;
+	($serv) = grep { $_->{'id'} == $first_host->{'id'} } @servers;
 	&remote_foreign_require($serv->{'host'}, "useradmin", "user-lib.pl");
+	my $current;
+	if (!$del_error_msg) {
+		($current) = grep { $_->{'user'} eq $in{'user'} }
+			&remote_foreign_call($serv->{'host'}, "useradmin", "list_users");
+		}
+	my $name = &html_escape($in{'user'});
 	print "<form action=delete_user.cgi>\n";
-	print "<input type=hidden name=user value=\"$user{'user'}\">\n";
+	print "<input type=hidden name=user value=\"$name\">\n";
 	print "<input type=hidden name=confirmed value=1>\n";
 
-	$size = &remote_foreign_call($serv->{'host'}, "useradmin",
-				     "disk_usage_kb", $user{'home'});
+	my $size = $current && $current->{'home'} !~ /^\/+$/ &&
+		&remote_foreign_call($serv->{'host'}, "useradmin",
+				     "disk_usage_kb", $current->{'home'});
 	print "<center>\n";
-	if ($user{'home'} ne "/" && $size) {
-		print "<b>",&text('udel_sure', $user{'user'},
-				  $user{'home'}, $size),"</b><p>\n";
+	if ($size) {
+		print "<b>",&text('udel_sure', $name,
+				&html_escape($current->{'home'}), $size),"</b><p>\n";
 		print "<input type=submit value=\"$text{'udel_del1'}\">\n";
 		print "<input name=delhome type=submit ",
 		      "value=\"$text{'udel_del2'}\"><br>\n";
@@ -151,11 +160,10 @@ else {
 		      "$text{'uedit_mthis'}<br>\n";
 		}
 	else {
-		print "<center><b>",&text('udel_sure2',
-					   $user{'user'}),"</b><p>\n";
+		print "<center><b>",&text('udel_sure2', $name),"</b><p>\n";
 		print "<input type=submit value=\"$text{'udel_del1'}\">\n";
 		}
-	if ($user{'user'} eq 'root') {
+	if ($in{'user'} eq 'root') {
 		print "<b><font color=#ff0000>$text{'udel_root'}",
 		      "</font></b></center>\n";
 		}
