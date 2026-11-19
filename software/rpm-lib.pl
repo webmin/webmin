@@ -49,15 +49,18 @@ sub package_info
 {
 local(@rv, @tmp, $d);
 local $n = $_[1] ? "$_[0]-$_[1]" : $_[0];
+# Quote the name for the shell. The -- before it stops rpm from reading a
+# name that starts with a dash as an option.
+local $qn = "-- ".quotemeta($n);
 &clean_language();
-&open_execute_command(RPM, "rpm -q $n --queryformat \"%{NAME}\\n%{GROUP}\\n%{ARCH}\\n%{VERSION}-%{RELEASE}\\n%{VENDOR}\\n%{INSTALLTIME}\\n%{URL}\\n\" 2>/dev/null", 1, 1);
+&open_execute_command(RPM, "rpm -q --queryformat \"%{NAME}\\n%{GROUP}\\n%{ARCH}\\n%{VERSION}-%{RELEASE}\\n%{VENDOR}\\n%{INSTALLTIME}\\n%{URL}\\n\" $qn 2>/dev/null", 1, 1);
 @tmp = <RPM>;
 chop(@tmp);
 local $ex = close(RPM);
 &reset_environment();
 if (!@tmp || $tmp[0] =~ /not\s+installed/) { return (); }
 &clean_language();
-&open_execute_command(RPM, "rpm -q $n --queryformat \"%{DESCRIPTION}\"", 1, 1);
+&open_execute_command(RPM, "rpm -q --queryformat \"%{DESCRIPTION}\" $qn", 1, 1);
 while(<RPM>) { $d .= $_; }
 close(RPM);
 &reset_environment();
@@ -77,8 +80,10 @@ my $query_format =
 	'%{INSTALLTIME}\n%{DESCRIPTION}';
 
 &clean_language();
-&open_execute_command(*RPM, "rpm -q --whatprovides $vpkg --queryformat ".
-			    "\"$query_format\" 2>/dev/null", 1, 1);
+# Quote the name for the shell, and stop rpm from reading it as an option
+&open_execute_command(*RPM, "rpm -q --whatprovides --queryformat ".
+			    "\"$query_format\" -- ".quotemeta($vpkg).
+			    " 2>/dev/null", 1, 1);
 my @tmp = <RPM>;
 close(RPM);
 &reset_environment();
