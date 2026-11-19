@@ -57,6 +57,8 @@ else {
 	mkdir("$hdir/$host->{'id'}", 0700);
 	}
 foreach my $u (@{$host->{'users'}}) {
+	# Older versions left the password given to change hooks in here
+	delete($u->{'plainpass'});
 	&write_file("$hdir/$host->{'id'}/$u->{'user'}.user", $u);
 	delete($oldfile{"$u->{'user'}.user"});
 	}

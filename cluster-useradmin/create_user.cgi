@@ -291,11 +291,11 @@ foreach $host (@hosts) {
 	if ($in{'others'}) {
 		# Create in other modules on the server
 		print "$text{'usave_others'}<br>\n";
-		$user{'passmode'} = $in{'passmode'};
-		$user{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+		my %updated = (%user, 'passmode' => $in{'passmode'});
+		$updated{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
 		&remote_foreign_call($serv->{'host'}, "useradmin",
 				     "other_modules", "useradmin_create_user",
-				     \%user);
+				     \%updated);
 		print "$text{'udel_done'}<p>\n";
 		}
 

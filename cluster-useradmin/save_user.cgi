@@ -380,14 +380,16 @@ foreach $host (@hosts) {
 	if ($in{'others'}) {
 		# Update the user in other modules
 		print "$text{'usave_mothers'}<br>\n";
-		$user->{'passmode'} = $in{'passmode'};
-		if ($in{'passmode'} == 2 && $user->{'pass'} eq $ouser{'pass'}) {
-			$user{'passmode'} = 4;
+		my %updated = (%$user, 'passmode' => $in{'passmode'});
+		if ($in{'passmode'} < 0 ||
+		    $in{'passmode'} == 2 && $user->{'pass'} eq $ouser{'pass'}) {
+			# Tell other modules that the password was kept
+			$updated{'passmode'} = 4;
 			}
-		$user->{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+		$updated{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
 		&remote_foreign_call($serv->{'host'}, "useradmin",
 				     "other_modules", "useradmin_modify_user",
-				     $user, \%ouser);
+				     \%updated, \%ouser);
 		print "$text{'udel_done'}<p>\n";
 		}
 
