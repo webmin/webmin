@@ -26,39 +26,10 @@ my $help = -r &help_file($m, "config_intro") ? [ "config_intro", $m ] : undef;
 
 # Get the visible fields and section headings.
 my $fields = &read_config_fields($file, $m, 1);
-my @sections = @{$fields->{'sections'}};
-my ($section, $next);
-my $title = &text('config_header', $info->{'desc'});
 my $custom = -r "$mdir/config_info.pl" && &foreign_defined($m, 'config_form');
-
-if (@sections > 1) {
-	# Default to the first section and wrap at either end.
-	my $idx = &indexof($in{'section'}, map { $_->[0] } @sections);
-	$idx = 0 if ($idx < 0);
-	$idx += $in{'nprev'} ? -1 : $in{'nnext'} ? 1 : 0;
-	$idx %= scalar(@sections);
-	($section, $title) = @{$sections[$idx]};
-	$in{'section'} = $section;
-	$next = $sections[($idx + 1) % @sections]->[0];
-
-	# Switching sections submits only the navigation form.
-	print &ui_form_start("config.cgi");
-	print &ui_hidden("module", $m), &hidden_config_cparams(\%in);
-	my $select = &ui_select("section", $section, \@sections, 1, 0, 0, 0,
-				"onChange='form.submit()'");
-	if (defined(&theme_config_sections)) {
-		# Let the theme render the section controls.
-		print &theme_config_sections($select, $fields);
-		}
-	else {
-		# Use Webmin's standard section controls.
-		print $text{'config_section'}, " ", $select, " ",
-		      &ui_submit($text{'config_change'}), " ",
-		      &ui_submit($text{'config_nprev'}, "nprev"), " ",
-		      &ui_submit($text{'config_nnext'}, "nnext");
-		}
-	print &ui_form_end();
-	}
+my ($section, $title, $next) = &config_section_navigation(
+	"config.cgi", $m, $fields, &hidden_config_cparams(\%in));
+$title = &text('config_header', $info->{'desc'}) if (!defined($section));
 
 # Pass the current section and return parameters to the save handler.
 print &ui_form_start("config_save.cgi", "post");

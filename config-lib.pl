@@ -55,6 +55,72 @@ foreach my $root (@theme_root_directories) {
 return ( \%info, $dir, $file );
 }
 
+# user_config_editor(module)
+# Check access and load the preference editor as the logged-in Unix user.
+sub user_config_editor
+{
+my ($m) = @_;
+&get_product_name() eq 'usermin' || &error($text{'config_ecannot'});
+defined($m) && $m =~ /\A[A-Za-z0-9_-]+\z/ || &error($text{'config_emodule'});
+my %info = &get_module_info($m);
+%info || &error($text{'config_emodule'});
+&foreign_available($m) || &error($text{'config_eaccess'});
+&switch_to_remote_user();
+&create_user_config_dirs();
+$user_config_directory || &error($text{'config_ecannot'});
+
+my $dir = &module_root_directory($m);
+my $custom = -r "$dir/uconfig_info.pl";
+if ($custom) {
+	# This file may provide just a post-save hook, as in Mailbox.
+	&foreign_require($m, "uconfig_info.pl");
+	}
+elsif ($info{'library'} || -r "$dir/".($info{'cloneof'} || $m)."-lib.pl") {
+	&foreign_require($m);
+	}
+my $fields = &read_config_fields("$dir/uconfig.info", $m, 1);
+my %canconfig;
+&read_file("$config_directory/$m/canconfig", \%canconfig);
+if (%canconfig) {
+	# Keep headings for navigation and omit restricted options from search.
+	my %headings = map { $_->[0] => 1 } @{$fields->{'sections'}};
+	@{$fields->{'order'}} = grep { $headings{$_} || $canconfig{$_} }
+				    @{$fields->{'order'}};
+	}
+return ( \%info, $dir, $fields, \%canconfig,
+	 $custom && &foreign_defined($m, 'config_form') );
+}
+
+# config_section_navigation(script, module, &fields, [hidden-inputs])
+# Print the section controls and return the current key, title and next key.
+sub config_section_navigation
+{
+my ($script, $m, $fields, $hidden) = @_;
+my @sections = @{$fields->{'sections'}};
+return if (@sections < 2);
+my $idx = &indexof($in{'section'}, map { $_->[0] } @sections);
+$idx = 0 if ($idx < 0);
+$idx += $in{'nprev'} ? -1 : $in{'nnext'} ? 1 : 0;
+$idx %= scalar(@sections);
+my ($section, $title) = @{$sections[$idx]};
+$in{'section'} = $section;
+print &ui_form_start($script), &ui_hidden("module", $m);
+print $hidden if (defined($hidden));
+my $select = &ui_select("section", $section, \@sections, 1, 0, 0, 0,
+			"onChange='form.submit()'");
+if (defined(&theme_config_sections)) {
+	print &theme_config_sections($select, $fields);
+	}
+else {
+	print $text{'config_section'}, " ", $select, " ",
+	      &ui_submit($text{'config_change'}), " ",
+	      &ui_submit($text{'config_nprev'}, "nprev"), " ",
+	      &ui_submit($text{'config_nnext'}, "nnext");
+	}
+print &ui_form_end();
+return ( $section, $title, $sections[($idx + 1) % @sections]->[0] );
+}
+
 # module_config_return(module, &input, [footer-label])
 # Preserve the caller's return parameters and the theme's navigation target.
 sub module_config_return
