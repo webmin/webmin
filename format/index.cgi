@@ -50,14 +50,14 @@ for($i=0; $i<@dlist; $i++) {
 			print "</td> <td>$p->{'tag'}</td> <td>\n";
 			if ($p->{'end'} != 0) {
 				printf
-				  "<img src=images/gap.gif height=10 width=%d>",
+				  "<img src=../images/shared/disk-gap.gif height=10 width=%d>",
 				  $extwidth*$p->{'start'}/$dl->{'cyl'};
 				printf
-				  "<img src=images/use.gif height=10 width=%d>",
+				  "<img src=../images/shared/bar-red-10.gif height=10 width=%d>",
 				  $extwidth*($p->{'end'}-$p->{'start'})/
 				  $dl->{'cyl'};
 				printf
-				  "<img src=images/gap.gif height=10 width=%d>",
+				  "<img src=../images/shared/disk-gap.gif height=10 width=%d>",
 				  $extwidth*($dl->{'cyl'}-$p->{'end'})/
 				  $dl->{'cyl'};
 				print "</td> <td>$p->{'start'}</td> ",

@@ -121,7 +121,7 @@ EOF
 		  "<a href='javascript:svcclick(\"$fmri\",\"$f\",0,1)'>";
 		} else {
 			# service
-			$img = "images/service.gif";
+			$img = "images/svc.gif";
 			# remove final ":" if present
 			$f =~ s/^([^\:]+)\:$/$1/;
 			$inst = ":";

@@ -446,13 +446,7 @@ foreach my $c (sort { $b cmp $a } @cats) {
 		my $md = $m->{'dir'};
 		my $fromgroup = $memg &&
 				&indexof($md, @{$memg->{'modules'}}) >= 0;
-		if ($mcan{$md} && $fromgroup) {
-			# Module comes from group
-			push(@grid, (sprintf "<img src=images/%s.gif> %s\n",
-                                $has{$md} ? 'tick' : 'empty', $m->{'desc'}).
-				($has{$md} ? &ui_hidden("mod", $md) : ""));
-			}
-		elsif ($mcan{$md}) {
+		if ($mcan{$md} && !$fromgroup) {
 			my $label;
 			if ($access{'acl'} && $in{'user'} && !$safe &&
 			    &can_module_acl($m)) {
@@ -469,8 +463,12 @@ foreach my $c (sort { $b cmp $a } @cats) {
 			push(@grid, &ui_checkbox("mod", $md, $label,$has{$md}));
 			}
 		else {
-			push(@grid, (sprintf "<img src=images/%s.gif> %s\n",
-				$has{$md} ? 'tick' : 'empty', $m->{'desc'}));
+			# Keep granted group modules in the submitted form.
+			my $icon = $has{$md} ? "images/tick.gif" :
+				"../images/shared/empty-checkbox.gif";
+			my $row = &ui_img($icon)." ".$m->{'desc'}."\n";
+			$row .= &ui_hidden("mod", $md) if ($mcan{$md} && $has{$md});
+			push(@grid, $row);
 			}
 		}
 	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);

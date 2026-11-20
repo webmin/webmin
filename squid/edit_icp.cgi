@@ -91,15 +91,15 @@ if ($squid_version >= 2.3) {
 			if ($hc != @always-1) {
 				push(@moves, &ui_link(
 					"move_always.cgi?$hc+1",
-					"<img src=images/down.gif border=0>"));
+					"<img src=../images/shared/move-down.gif border=0>"));
 				}
 			else {
-				push(@moves, "<img src=images/gap.gif>");
+				push(@moves, "<img src=../images/shared/move-spacer.gif>");
 				}
 			if ($hc != 0) {
 				push(@moves, &ui_link(
 					"move_always.cgi?$hc+-1",
-					"<img src=images/up.gif border=0>"));
+					"<img src=../images/shared/move-up.gif border=0>"));
 				}
 			$table .= &ui_columns_row([
 			    &ui_link("always.cgi?index=$h->{'index'}", $v[0]),
@@ -136,15 +136,15 @@ if ($squid_version >= 2.3) {
 			if ($hc != @never-1) {
 				push(@moves, &ui_link(
 					"move_never.cgi?$hc+1",
-					"<img src=images/down.gif border=0>"));
+					"<img src=../images/shared/move-down.gif border=0>"));
 				}
 			else {
-				push(@moves, "<img src=images/gap.gif>");
+				push(@moves, "<img src=../images/shared/move-spacer.gif>");
 				}
 			if ($hc != 0) {
 				push(@moves, &ui_link(
 					"move_never.cgi?$hc+-1",
-					"<img src=images/up.gif border=0>"));
+					"<img src=../images/shared/move-up.gif border=0>"));
 				}
 			$table .= &ui_columns_row([
 			    &ui_link("never.cgi?index=$h->{'index'}", $v[0]),

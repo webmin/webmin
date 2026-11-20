@@ -1,0 +1,16 @@
+autofs=./auto.gif
+ext2=./ext.gif
+hpfs=./ext.gif
+icon=shared-drive.png
+iso9660=./hsfs.gif
+minix=./ext.gif
+msdos=./fat.gif
+nfs=shared-disk.gif
+pcfs=./fat.gif
+reiserfs=./ext.gif
+smbfs=./rumba.gif
+sysv=./ext.gif
+ufs=./ext.gif
+umsdos=./fat.gif
+vfat=./fat.gif
+xmemfs=./tmpfs.gif

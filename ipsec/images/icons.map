@@ -1,0 +1,5 @@
+config=tools.png
+icon=configure-lock.png
+policy=user-key.png
+secrets=keyring.png
+showkey=document-key.png

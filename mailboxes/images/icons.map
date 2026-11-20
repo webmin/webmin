@@ -1,0 +1,9 @@
+attach=paperclip.png
+boxes=mailbox.png
+error=error.png
+icon=envelope.png
+p1=priority-high.gif
+p2=priority-low.gif
+read=checkmark-small.png
+replied=replied.png
+special=special.gif

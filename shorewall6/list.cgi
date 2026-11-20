@@ -86,24 +86,24 @@ if (@table) {
 		if (@table > 1) {
 			$mover = "";
 			if ($i == 0) {
-				$mover .= "<img src=images/gap.gif>";
+				$mover .= "<img src=../images/shared/move-spacer.gif>";
 				}
 			else {
-				$mover .= &ui_link("up.cgi?table=$in{'table'}&idx=$i","<img src=images/up.gif border=0>")."\n";
+				$mover .= &ui_link("up.cgi?table=$in{'table'}&idx=$i","<img src=../images/shared/move-up.gif border=0>")."\n";
 				}
 			if ($i == $#table) {
-				$mover .= "<img src=images/gap.gif>";
+				$mover .= "<img src=../images/shared/move-spacer.gif>";
 				}
 			else {
-				$mover .= &ui_link("down.cgi?table=$in{'table'}&idx=$i","<img src=images/down.gif border=0>")."\n";
+				$mover .= &ui_link("down.cgi?table=$in{'table'}&idx=$i","<img src=../images/shared/move-down.gif border=0>")."\n";
 				}
 			push(@cols, $mover);
 			}
 		push(@cols, 
 		      "<a href='edit.cgi?table=$in{'table'}&new=1&before=$i'>".
-		      "<img src=images/before.gif border=0></a>\n".
+		      "<img src=../images/shared/move-to-top.gif border=0></a>\n".
 		      "<a href='edit.cgi?table=$in{'table'}&new=1&after=$i'>".
-		      "<img src=images/after.gif border=0></a>\n");
+		      "<img src=../images/shared/move-to-bottom.gif border=0></a>\n");
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $i);
 		}
 	print &ui_columns_end();

@@ -4159,23 +4159,23 @@ sub message_icons
 local ($mail, $showto, $folder) = @_;
 local @rv;
 if (&mail_has_attachments($mail, $folder)) {
-	push(@rv, "<img src=images/attach.gif alt='A'>");
+	push(@rv, "<img src=../images/shared/paperclip.png alt='A'>");
 	}
 local $p = int($mail->{'header'}->{'x-priority'});
 if ($p == 1) {
-	push(@rv, "<img src=images/p1.gif alt='P1'>");
+	push(@rv, "<img src=../images/shared/priority-high.gif alt='P1'>");
 	}
 elsif ($p == 2) {
-	push(@rv, "<img src=images/p2.gif alt='P2'>");
+	push(@rv, "<img src=../images/shared/priority-low.gif alt='P2'>");
 	}
 
 # Show icons if special or replied to
 local $read = &get_mail_read($folder, $mail);
 if ($read&2) {
-	push(@rv, "<img src=images/special.gif alt='*'>");
+	push(@rv, "<img src=../images/shared/special.gif alt='*'>");
 	}
 if ($read&4) {
-	push(@rv, "<img src=images/replied.gif alt='R'>");
+	push(@rv, "<img src=../images/shared/replied.png alt='R'>");
 	}
 
 if ($showto && defined(&open_dsn_hash)) {

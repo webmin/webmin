@@ -213,8 +213,8 @@ foreach $u (@ulist) {
 				"$mover&top=1",
 				"$mover&bottom=1",
 				$canup, $candown,
-				"images/top.gif",
-				"images/bottom.gif",
+				"../images/shared/move-to-top.gif",
+				"../images/shared/move-to-bottom.gif",
 			        ));
 			}
 

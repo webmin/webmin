@@ -570,7 +570,7 @@ else {
 					      check_acl('rules')
 					    ? ui_tag('a', $desc, {'href' => $rule_url})
 					    : $desc;
-					my $imgdir = "@{[get_webprefix()]}/images";
+					my $imgdir = "@{[get_webprefix()]}/images/shared";
 					my $up_url =
 					    "move_rule.cgi?table=$in{'table'}&chain=".
 					    urlize($c).
@@ -590,7 +590,7 @@ else {
 								'class' =>
 								    'ui_up_down_arrows_down',
 								'src' =>
-								    "$imgdir/movedown.gif",
+								    "$imgdir/down.gif",
 								'border' => 0
 							}
 						),
@@ -605,7 +605,7 @@ else {
 						{
 							'class' =>
 							    'ui_up_down_arrows_gap',
-							'src' => "$imgdir/movegap.gif"
+							'src' => "$imgdir/gap.gif"
 						}
 					    );
 					my $up_move =
@@ -618,7 +618,7 @@ else {
 								'class' =>
 								    'ui_up_down_arrows_up',
 								'src' =>
-								    "$imgdir/moveup.gif",
+								    "$imgdir/up.gif",
 								'border' => 0
 							}
 						),
@@ -633,7 +633,7 @@ else {
 						{
 							'class' =>
 							    'ui_up_down_arrows_gap',
-							'src' => "$imgdir/movegap.gif"
+							'src' => "$imgdir/gap.gif"
 						}
 					    );
 					$rules_html_row .= ui_tag_start('tr');

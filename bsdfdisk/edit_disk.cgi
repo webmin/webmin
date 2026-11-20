@@ -305,13 +305,13 @@ if (@$entries) {
             push( @cols, "-" );
             push( @cols, "-" );
             my $ext = "";
-            $ext .= sprintf "<img src='images/gap.gif' height='10' width='%d'>",
+            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
               $scale * ( $entry->{'start'} - 1 );
             $ext .=
               sprintf
-"<img src='images/gap.gif' height='10' width='%d' style='background-color: #8f8;'>",
+"<img src='../images/shared/disk-gap.gif' height='10' width='%d' style='background-color: #8f8;'>",
               $scale * ( $entry->{'size'} );
-            $ext .= sprintf "<img src='images/gap.gif' height='10' width='%d'>",
+            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
               $scale * ( $disk_blocks - $entry->{'start'} - $entry->{'size'} );
             push( @cols, $ext );
             push( @cols, $start );
@@ -324,11 +324,11 @@ if (@$entries) {
         else {
             my $part_num = $entry->{'index'};
             my $ext      = "";
-            $ext .= sprintf "<img src='images/gap.gif' height='10' width='%d'>",
+            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
               $scale * ( $entry->{'start'} - 1 );
-            $ext .= sprintf "<img src='images/use.gif' height='10' width='%d'>",
+            $ext .= sprintf "<img src='../images/shared/bar-red-10.gif' height='10' width='%d'>",
               $scale * ( $entry->{'size'} );
-            $ext .= sprintf "<img src='images/gap.gif' height='10' width='%d'>",
+            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
               $scale * ( $disk_blocks - $entry->{'start'} - $entry->{'size'} );
             my $url = "edit_slice.cgi?device=$device_url&amp;slice="
               . &urlize($part_num);
@@ -394,12 +394,14 @@ else {
         foreach my $s ( @{ $disk->{'slices'} } ) {
             my @cols = ();
             my $ext  = "";
-            $ext .= sprintf "<img src='images/gap.gif' height='10' width='%d'>",
+            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
               $scale * ( $s->{'startblock'} - 1 );
-            $ext .= sprintf "<img src='images/%s.gif' height='10' width='%d'>",
-              ( $s->{'extended'} ? "ext" : "use" ),
-              $scale * ( $s->{'blocks'} );
-            $ext .= sprintf "<img src='images/gap.gif' height='10' width='%d'>",
+            $ext .= ui_tag('img', undef, {
+                'src' => $s->{'extended'} ? 'images/ext.gif'
+                                         : '../images/shared/bar-red-10.gif',
+                'height' => 10, 'width' => int($scale * $s->{'blocks'}),
+            });
+            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
               $scale * ( $disk_blocks - $s->{'startblock'} - $s->{'blocks'} );
             my $url = "edit_slice.cgi?device=$device_url&amp;slice="
               . &urlize( $s->{'number'} );
