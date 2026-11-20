@@ -10,12 +10,7 @@ mmain_title=Cloudmin $1 na $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
 
-config_section=Konfiguracja kategorii
-config_change=Zmień
 config_return=informacji o systemie
-config_next=Zapisz i dalej
-config_nnext=Dalej
-config_nprev=Wstecz
 
 edright_title=Konfiguracja strony informacyjnej o serwerze
 edright_header=Ustawienia strony Virtualmin - Informacje o serwerze

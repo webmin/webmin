@@ -1,1 +1,6 @@
+config_section=Категорія конфігурації:
+config_change=Зміна
+config_next=Зберегти та Далі
+config_nnext=Далі
+config_nprev=Попередня
 or=або

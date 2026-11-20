@@ -33,4 +33,9 @@ main::save_module_preferences('example', {label => 'all'});
 %settings = ();
 main::load_module_preferences('example', \%settings);
 is_deeply(\%settings, {label => 'all'}, 'wildcard still permits all preferences');
+write_text("$root/prefs.info", "allowed=color,size\n");
+write_text($prefs, "color=green\nsize=10\n");
+main::save_module_preferences('example', {color => 'blue', size => 20}, ['size']);
+is(read_text($prefs), "color=green\nsize=20\n",
+	'a section save preserves personal overrides from other sections');
 done_testing();

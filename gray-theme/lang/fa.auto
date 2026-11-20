@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=دسته پیکربندی:
-config_change=تغییر دادن
 config_return=اطلاعات سیستم
-config_next=ذخیره و بعدی
-config_nnext=بعد
-config_nprev=مقدمه
 
 edright_title=پیکربندی اطلاعات سیستم
 edright_header=تنظیمات صفحه اطلاعات سیستم Virtualmin

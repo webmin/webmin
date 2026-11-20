@@ -1,3 +1,8 @@
+config_section=Konfiguračná kategória:
+config_change=zmena
+config_next=Uložiť a Ďalej
+config_nnext=Ďalšie
+config_nprev=Predchádzajúce
 main_title3=Webmin $1 ($2)
 main_readonly=(Režim len na čítanie)
 main_unused=Nepoužité moduly

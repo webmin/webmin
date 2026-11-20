@@ -15,11 +15,6 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Konfigurační kategorie:
-config_change=Změna
-config_next=Uložit a další
-config_nnext=další
-config_nprev=Předchozí
 
 edright_list1=Seznam virtuálních serverů
 edright_global=Použít pro všechny uživatele?

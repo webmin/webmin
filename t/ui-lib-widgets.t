@@ -349,9 +349,12 @@ unlike(main::ui_page_start({ 'scheme' => 'bogus"' }),
 
 # Column tables take extra class names for the theme, such as no-hover
 like(main::ui_columns_start([ 'A' ], undef, 0, undef, undef, 0, 'no-hover'),
-	qr/class='ui_columns no-hover'/, 'ui_columns_start adds the class argument');
-like(main::ui_columns_start([ 'A' ]), qr/class='ui_columns'/,
-	'ui_columns_start without the class argument is unchanged');
+	qr/class='[^']*\bui_columns no-hover'/, 'ui_columns_start adds the class argument');
+main::ui_columns_end();
+my $columns = main::ui_columns_start([ 'A' ]);
+like($columns, qr/class='[^']*\bui_columns'/, 'default columns have the table class');
+unlike($columns, qr/\bno-hover\b/, 'the extra class is optional');
+main::ui_columns_end();
 
 # Search boxes carry the client-side filter target
 like(main::ui_search({ 'name' => 'q', 'filter' => '#rows' }),
@@ -495,8 +498,10 @@ like(main::ui_progress(96, { 'thresholds' => 1, 'state' => 'info' }),
 # Sortable column tables carry the data-sortable marker for themes
 like(main::ui_columns_start([ 'A' ], 100, 0, undef, undef, 1),
 	qr/data-sortable='1'/, 'ui_columns_start marks sortable tables');
+main::ui_columns_end();
 unlike(main::ui_columns_start([ 'A' ], 100),
 	qr/data-sortable/, 'ui_columns_start is plain by default');
+main::ui_columns_end();
 like(main::ui_columns_table([ 'A' ], 100, [ [ 'x' ] ], undef, 0, undef, undef, 1),
 	qr/data-sortable='1'/, 'ui_columns_table passes the sortable flag on');
 like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
@@ -617,7 +622,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'select all is the usual link');
 	like($html, qr/<a (?=[^>]*\bselect_invert\b)(?=[^>]*data-ui-multi-action="invert")/,
 		'invert selection is the usual link');
-	like($html, qr/select_all[^>]*>[^<]*<\/a>\s*\|\s*<a/s,
+	like($html, qr/select_all[^>]*>[^<]*<\/a>\s*<span class='ui_links_sep'>\|<\/span>\s*<a/s,
 		'the links are laid out by ui_links_row');
 	unlike($html, qr/<br>\s*<span[^>]*ui_search/,
 		'without the line break that row ends with');
@@ -1306,6 +1311,111 @@ like(main::ui_svg_icon('ellipsis'), qr/fill="currentColor"/, 'ellipsis is drawn 
 }
 
 # ---- section titles, segmented controls and stacked fields -----------------
+
+subtest 'collapsible section arrows' => sub {
+	our (%gconfig, $ui_hidden_start_donejs);
+	local $gconfig{'webprefix'} = '/webmin';
+	local $ui_hidden_start_donejs = 1;
+	foreach my $open (0, 1) {
+		my $src = '/webmin/images/'.($open ? 'open.png' : 'closed.png');
+		foreach my $html (ui_hidden_start('Title', 'test', $open).ui_hidden_end('test'),
+				  ui_hidden_table_start('Title', '', 2, 'test', $open).
+				  ui_hidden_table_end('test')) {
+			like($html, qr{<details\b[^>]*><summary>.*</details>}s,
+				'section has a native disclosure control');
+			is(($html =~ /<details\b[^>]*\sopen\b/) ? 1 : 0, $open,
+				'section respects its initial state');
+			}
+		ui_table_start(undef, undef, 2);
+		like(ui_hidden_table_row_start('Title', 'test', $open),
+			qr{<img\b[^>]*\bsrc='\Q$src\E'}, "table row uses $src");
+		ui_hidden_table_row_end('test');
+		ui_table_end();
+		}
+	};
+
+subtest 'theme overrides and shared table markup' => sub {
+	no warnings 'once';
+	my $notice = ui_alert('Notice', 'info', [ 'fa2 fa2-message', '', 1 ],
+			      { 'class' => 'login-prefix-alert' });
+	like($notice, qr/<i\b[^>]*\bfa2 fa2-message\b/,
+		'the login notice keeps the icon supplied by the caller');
+	{
+		local *main::theme_ui_hidden_start = sub { "<div>$_[0]" };
+		is(ui_hidden_start('Title', 'id', 0).ui_hidden_end('id'),
+			"<div>Title</div>\n", 'a theme can override only the opener');
+		local *main::theme_ui_hidden_end = sub { "end $_[0]" };
+		is(ui_hidden_end('id'), 'end id', 'the closing hook takes priority');
+	}
+	{
+		local *main::theme_ui_hidden_table_start = sub { '<table>' };
+		is(ui_hidden_table_end('id'), "</table></div></td></tr></table>\n",
+			'a theme table opener keeps its original closing tags');
+	}
+	like(ui_hidden_javascript(), qr/\.opener_hidden\s*\{\s*display:\s*none/,
+		'inactive tabs stay hidden without a theme stylesheet');
+	my $html = ui_columns_table([ 'Name' ], 100, [ [
+		{ type => 'string', value => 'example', td => 'data-sort="example"' }
+		] ]);
+	like($html, qr/<td\b[^>]*data-sort="example"[^>]*>example/,
+		'column cells retain their sort keys');
+	like(ui_radio_columns_row([ 'Name' ], [ ], 'domain', 'example', 0, 1),
+		qr/<input\b[^>]*\bdisabled\b/, 'a disabled radio stays disabled');
+	{
+		local *main::theme_ui_columns_end = sub { "</table>\n" };
+		my $depth = @main::columns_bordered;
+		my $inner = ui_columns_start([ 'Custom' ]).ui_columns_end();
+		is(scalar(() = $inner =~ /<table\b/g), 1, 'a custom closer gets one table');
+		is(scalar(@main::columns_bordered), $depth, 'a custom closer leaves the stack alone');
+	}
+	ui_columns_start([ 'Outer' ]);
+	{
+		local *main::theme_ui_columns_start = sub { "<table>" };
+		is(ui_columns_start([ 'Custom' ]).ui_columns_end(),
+			"<table></table>\n", 'a theme can override just the column table opener');
+		local *main::theme_ui_columns_end = sub { 'theme end' };
+		is(ui_columns_end(), 'theme end', 'the column table closing hook takes priority');
+	}
+	ui_columns_start([ ], 50, 1);
+	unlike(ui_columns_end(), qr{</div>}, 'a borderless inner table leaves the wrapper open');
+	like(ui_columns_end(), qr{</div>}, 'the outer table closes its own wrapper');
+	{
+		# Authentic styles the row checkbox by the cell's alignment tag.
+		my @tags;
+		local *main::theme_ui_checked_columns_row = sub { @tags = @{$_[1]}; '' };
+		ui_columns_table([ '', 'Name' ], 100, [ [
+			{ type => 'checkbox', name => 'd', value => '1' }, 'example'
+			] ]);
+		like($tags[0], qr/valign='top'/,
+			'a theme row override still receives top-aligned cells');
+	}
+	like(ui_columns_table([], 100, [], undef, 0, undef, 'No entries'),
+		qr/<span class='ui_emptymsg'><b>No entries<\/b><\/span>/,
+		'the empty message keeps its theme class');
+	my $grid = ui_grid_table([ 'Cell' ], 2, 100, [], 'id="grid"');
+	like($grid, qr{^<table class='ui_grid_table'[^>]*id="grid">},
+		'an untitled core grid starts with the grid table itself');
+};
+
+subtest 'ACL libraries can reload ui-lib inside a table' => sub {
+	my $table = ui_table_start('Permissions', 'width=100%', 4);
+	my $columns = ui_columns_start([ 'Outer' ]);
+	{
+		package ModuleACL;
+		do File::Spec->catfile($root, 'ui-lib.pl') or die $@ || $!;
+		$columns .= ui_columns_start([ 'Inner' ], 50, 1);
+	}
+	my $inner_end = ui_columns_end();
+	unlike($inner_end, qr{</div>}, 'the borderless inner table leaves the wrapper open');
+	my $outer_end = ModuleACL::ui_columns_end();
+	like($outer_end, qr{</div>}, 'the other package can close the outer wrapper');
+	$columns .= $inner_end.$outer_end;
+	$table .= ui_table_end();
+	foreach my $html ($table, $columns) {
+		is(scalar(() = $html =~ /<table\b/g), scalar(() = $html =~ m{</table>}g),
+			'all tables opened before the reload are closed');
+		}
+};
 
 subtest 'section titles' => sub {
 	my $html = main::ui_section_title('Recent', {

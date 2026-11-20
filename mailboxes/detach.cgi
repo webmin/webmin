@@ -113,8 +113,8 @@ else {
 
 sub dump_erroricon
 {
-print "Content-type: image/gif\n\n";
-open(ICON, "<images/error.gif");
+print "Content-type: image/png\n\n";
+open(ICON, "<../images/shared/error.png");
 while(<ICON>) { print; }
 close(ICON);
 exit;

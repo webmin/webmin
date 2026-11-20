@@ -1,0 +1,15 @@
+anon=user.png
+dir=folder.png
+dirs=folder.png
+edit=clipboard.png
+ftpusers=users.png
+icon=network-server.png
+limit=terminal-key.png
+log=alert.png
+type_icon_1=alert.png
+type_icon_2=header-document.png
+type_icon_3=database-lock.png
+type_icon_4=./misc.gif
+type_icon_5=users.png
+type_icon_7=ssl-lock.png
+virt=internet.png

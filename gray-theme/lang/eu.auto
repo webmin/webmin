@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Konfigurazio kategoria:
-config_change=Aldaketa
 config_return=sistemaren informazioa
-config_next=Gorde eta Hurrengoa
-config_nnext=hurrengo
-config_nprev=Aurrekoa
 
 edright_title=Sistemaren informazioa konfiguratzea
 edright_header=Virtualmin sistemaren informazio orriaren ezarpenak

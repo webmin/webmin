@@ -94,6 +94,8 @@ return 1;
 }
 sub foreign_require { }
 sub foreign_exists { return 0; }
+sub foreign_defined { return $_[0]->can($_[1]); }
+sub load_language_auto { return 0; }
 sub unique { my %seen; return grep { !$seen{$_}++ } @_; }
 sub foreign_call
 {

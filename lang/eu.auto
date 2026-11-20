@@ -1,3 +1,8 @@
+config_section=Konfigurazio kategoria:
+config_change=Aldaketa
+config_next=Gorde eta Hurrengoa
+config_nnext=hurrengo
+config_nprev=Aurrekoa
 main_title3=Webmin $1 ($2)
 main_refreshmods=Eguneratu moduluak
 

@@ -1,3 +1,8 @@
+config_section=Категория на конфигурация:
+config_change=Промяна
+config_next=Запазване и Напред
+config_nnext=Следващия
+config_nprev=Предишна
 main_title3=Webmin $1 ($2)
 main_readonly=(Режим само за четене)
 main_unused=Неизползвани модули

@@ -78,6 +78,24 @@ chdir($cwd) or die $!;
 return ($html || '', $status);
 }
 
+# Check the icons emitted for a normal directory listing.
+subtest 'file type icons' => sub {
+	my %icons = ( 'example.txt' => 'shared/text.png',
+		      'example.png' => 'shared/image.png',
+		      'example.tar' => 'shared/binary.png',
+		      'example.other' => 'unknown.gif',
+		      'sub' => 'dir.gif' );
+	foreach my $name (keys %icons) {
+		write_file("$allowed/$name", '') unless -d "$allowed/$name";
+		}
+	my ($html, $status) = request($allowed, '', 'root', '/', "$allowed/");
+	is($status, 0, 'file listing succeeds');
+	foreach my $name (sort keys %icons) {
+		like($html, qr{\Q/$name\E"[^>]*><img [^>]*src=/images/\Q$icons{$name}\E>},
+		     "$name uses its file type icon");
+		}
+	};
+
 # Check both privileged browsing and the existing Unix-user switch.
 my @users = ('root', 'nobody');
 for my $user (@users) {

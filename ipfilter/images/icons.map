@@ -1,0 +1,6 @@
+after=move-to-bottom.gif
+before=move-to-top.gif
+down=move-down.gif
+gap=move-spacer.gif
+icon=brick-firewall.gif
+up=move-up.gif

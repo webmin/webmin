@@ -185,8 +185,10 @@ subtest 'File Manager rename handler' => sub {
 	close($lib);
 	my ($function) = $source =~ /^(sub print_interface\n\{.*?^\})/ms;
 	die 'Missing print_interface' if (!$function);
-	eval "no strict; $function";
+	my ($mime) = $source =~ /^(sub mime_icon\n\{.*?^\})/ms;
+	eval "no strict; $mime $function";
 	die $@ if ($@);
+	local $main::module_root_directory = "$source_root/filemin";
 	local *main::get_bookmarks = sub { return []; };
 	local *main::get_theme_info = sub { return (); };
 	local *main::plain_interface_head = sub { '' };

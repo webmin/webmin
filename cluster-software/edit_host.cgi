@@ -108,20 +108,21 @@ print "<tr style='border-top: 1px solid #aaaaaa28'> <td>", $spacer x $_[1];
 if ($_[0]) {
 	print "<a name=\"".&html_escape($_[0])."\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";
+	my $folder = $heiropen{$_[0]} ? "folder-open-small.png" : "folder-closed-small.png";
 	print "<a href=\"$act.cgi?id=",&urlize($in{'id'}),
 	      "&what=",&urlize($_[0]),"\">";
 	$_[0] =~ /([^\/]+)$/;
-	print "<img border=0 src=images/$act.gif></a>&nbsp; ",
+	print "<img border=0 src=../images/shared/$folder></a>&nbsp; ",
 	      &html_escape($1),"</td>\n",
 	}
-else { print "<img src=images/close.gif> <i>$text{'host_all'}</i></td>\n"; }
+else { print "<img src=../images/shared/folder-open-small.png> <i>$text{'host_all'}</i></td>\n"; }
 print "<td><br></td> </tr>\n";
 if ($heiropen{$_[0]}) {
 	# print sub-folders followed by packages
 	foreach $i (@packages) {
 		if ($i->{'class'} eq $_[0]) {
 			print "<tr style='border-top: 1px solid #aaaaaa28'> <td>", $spacer x ($_[1]+1);
-			print "<img border=0 src=images/pack.gif></a>&nbsp;\n";
+			print "<img border=0 src=../images/shared/floppy-disk.png></a>&nbsp;\n";
 			# Package details come from the managed server
 			print "<a href=\"edit_pack.cgi?package=",
 			     &urlize($i->{'name'}),"\">",

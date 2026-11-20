@@ -1,0 +1,14 @@
+aliases=forward-mail.png
+assigns=users.png
+attach=paperclip.png
+bads=error.png
+boxes=mailbox.png
+locals=address-book.png
+misc=tools.png
+opts=miscellaneous.gif
+p1=priority-high.gif
+p2=priority-low.gif
+percents=send-mail.png
+queue=mail-queue.png
+routes=deliver-mail.png
+virts=mail-folders.png

@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=فئة التكوين:
-config_change=يتغيرون
 config_return=معلومات النظام
-config_next=حفظ ثم التالي
-config_nnext=التالى
-config_nprev=السابق
 
 edright_title=تكوين معلومات النظام
 edright_header=إعدادات صفحة معلومات نظام Virtualmin

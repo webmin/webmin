@@ -1,3 +1,8 @@
+config_section=Konfigurationskategori:
+config_change=Lave om
+config_next=Gem og Næste
+config_nnext=Næste
+config_nprev=forrige
 category_=Værktøjer
 
 longcategory_=Moduler, der udfører andre diverse opgaver

@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Kategori konfigurasi:
-config_change=Ubah
 config_return=maklumat sistem
-config_next=Simpan dan Seterusnya
-config_nnext=Seterusnya
-config_nprev=Sebelumnya
 
 edright_title=Konfigurasi Maklumat Sistem
 edright_header=Tetapan halaman maklumat sistem Virtualmin

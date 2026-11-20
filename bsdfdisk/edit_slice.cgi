@@ -166,14 +166,15 @@ if ( @{ $slice->{'parts'} } ) {
     foreach my $p ( @{ $slice->{'parts'} } ) {
 
         # Create images representing the partition extent
-        my $gap_before = sprintf( "<img src=images/gap.gif height=10 width=%d>",
+        my $gap_before = sprintf( "<img src=../images/shared/disk-gap.gif height=10 width=%d>",
             int( $scale * ( $p->{'startblock'} - 1 ) ) );
-        my $img_type = $p->{'extended'} ? "ext" : "use";
-        my $partition_img =
-          sprintf( "<img src=images/%s.gif height=10 width=%d>",
-            $img_type, int( $scale * $p->{'blocks'} ) );
+        my $partition_img = ui_tag('img', undef, {
+            'src' => $p->{'extended'} ? 'images/ext.gif'
+                                     : '../images/shared/bar-red-10.gif',
+            'height' => 10, 'width' => int($scale * $p->{'blocks'}),
+        });
         my $gap_after = sprintf(
-            "<img src=images/gap.gif height=10 width=%d>",
+            "<img src=../images/shared/disk-gap.gif height=10 width=%d>",
             int(
                 $scale * (
                     $slice->{'blocks'} - $p->{'startblock'} - $p->{'blocks'}

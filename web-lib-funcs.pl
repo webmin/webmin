@@ -1001,6 +1001,65 @@ if ($callback) {
 return undef;
 }
 
+=head2 module_icon_url(url)
+
+Returns the URL of a module image in the best available format: SVG first,
+then PNG, then GIF. The theme's copy under its images/modules directory is
+used first, followed by Webmin's module artwork and the module's own copy.
+Modules name shared icons in images/icons.map with action=filename.
+A name beginning with ./ refers to another image in that module.
+Webmin supplies the same defaults for separately packaged add-ons in
+images/modules/icons.map. Other URLs pass through unchanged.
+
+=cut
+sub module_icon_url
+{
+my ($url) = @_;
+my $prefix = &get_webprefix();
+my $path = $url;
+$path =~ s!^\Q$prefix\E(?=/)!! if ($prefix);
+return $url if ($path !~ m!\A(?:(?:/|\.\./)?([\w-][\w.-]*)/)?images/([\w.-]+)\.(?:svg|png|gif)\z!);
+my ($module, $name) = ($1 || &get_module_name(), $2);
+return $url if (!$module);
+
+# A theme can override one action even when several share the same artwork.
+foreach my $root (@theme_root_directories, $root_directory) {
+	foreach my $ext ("svg", "png", "gif") {
+		my $image = "/images/modules/$module/$name.$ext";
+		return "$prefix$image" if (-f "$root$image");
+		}
+	}
+
+my $own = &module_root_directory($module);
+my %icons;
+&read_file_cached("$root_directory/images/modules/icons.map", \%icons);
+my $file = $icons{"$module/$name"};
+if (!$file) {
+	my %defaults;
+	&read_file_cached("$own/images/icons.map", \%defaults);
+	$file = $defaults{$name};
+	}
+if ($file) {
+	# A module-local filename follows the module when it is cloned.
+	if ($file =~ m!^\./([\w.-]+)$!) {
+		return "$prefix/$module/images/$1" if (-f "$own/images/$1");
+		}
+	else {
+		my $path = $file =~ m!^/! ? $file : "/images/shared/$file";
+		return "$prefix$path" if (-f "$root_directory$path");
+		}
+	}
+
+# Keep the module's original URL when it supplies its own artwork.
+foreach my $ext ("svg", "png", "gif") {
+	if (-f "$own/images/$name.$ext") {
+		(my $rv = $url) =~ s/\.\w+\z/.$ext/;
+		return $rv;
+		}
+	}
+return $url;
+}
+
 =head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
 
 Prints HTML for an icon image. The parameters are :
@@ -1025,8 +1084,10 @@ Prints HTML for an icon image. The parameters are :
 sub generate_icon
 {
 &load_theme_library();
+my ($image, @args) = @_;
+$image = &module_icon_url($image);
 if (defined(&theme_generate_icon)) {
-	&theme_generate_icon(@_);
+	&theme_generate_icon($image, @args);
 	return;
 	}
 my $w = !defined($_[4]) ? "width='48'" : $_[4] ? "width='$_[4]'" : "";
@@ -1041,13 +1102,13 @@ if ($tconfig{'noicons'}) {
 	}
 elsif ($_[2]) {
 	print "<table border><tr><td width='48' height='48'>\n",
-	      "<a href=\"$_[2]\" $_[3]><img src=\"$_[0]\" alt=\"\" border='0' ",
+	      "<a href=\"$_[2]\" $_[3]><img src=\"$image\" alt=\"\" border='0' ",
 	      "$w $h></a></td></tr></table>\n";
 	print "$_[6]<a href=\"$_[2]\" $_[3]>$_[1]</a>$_[7]\n";
 	}
 else {
 	print "<table border><tr><td width='48' height='48'>\n",
-	      "<img src=\"$_[0]\" alt=\"\" border='0' $w $h>",
+	      "<img src=\"$image\" alt=\"\" border='0' $w $h>",
 	      "</td></tr></table>\n$_[6]$_[1]$_[7]\n";
 	}
 }

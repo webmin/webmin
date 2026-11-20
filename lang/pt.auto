@@ -1,3 +1,8 @@
+config_section=Categoria de configuração:
+config_change=mudança
+config_next=Salvar e Avançar
+config_nnext=Próximo
+config_nprev=Anterior
 category_=Ferramentas
 
 longcategory_=Módulos que realizam outras tarefas diversas

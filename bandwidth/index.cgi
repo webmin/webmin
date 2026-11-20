@@ -379,11 +379,11 @@ if (@hours) {
 					}
 				my $bar = sprintf
 					"<span style='display: flex;'>".
-					  "<img src=images/blue.gif width=%d% ".
+					  "<img src=../images/shared/bar-blue-10.gif width=%d% ".
 					  	"height=10>",
 					$max ? int($width * $icount{$k}/$max)+1 : 1;
 				$bar .= sprintf
-					"<img src=images/red.gif width=%d% ".
+					"<img src=../images/shared/bar-red-10.gif width=%d% ".
 						"height=10></span>",
 					$max ? int($width * $ocount{$k}/$max)+1 : 1;
 				push(@cols, $bar);

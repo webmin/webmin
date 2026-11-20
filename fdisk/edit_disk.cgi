@@ -103,9 +103,9 @@ if (@parts) {
 		$ext1 = int((($p->{'start'} - 1) / $d->{'cylinders'}) * 100) . "%";
 		$ext2 = int((($p->{'end'} - $p->{'start'}) / $d->{'cylinders'}) * 100) . "%";
 		$ext3 = int((($d->{'cylinders'} - ($p->{'end'} - 1)) / $d->{'cylinders'}) * 100) . "%";
-		$ext .= "<img src=images/gap.gif height=10 width='$ext1'>";
+		$ext .= "<img src=../images/shared/disk-gap.gif height=10 width='$ext1'>";
 		$ext .= sprintf "<img src=images/%s.gif height=10 width='$ext2'>", $p->{'extended'} ? "ext" : "use";
-		$ext .= "<img src=images/gap.gif height=10 width='$ext3'>";
+		$ext .= "<img src=../images/shared/disk-gap.gif height=10 width='$ext3'>";
 
 		# Work out usage
 		@stat = &device_status($p->{'device'});

@@ -27,49 +27,109 @@
 #	     and parse_ prepended.
 #	16 - Password free text
 
-# generate_config(&config, info-file, [module], [&can-config], [checkbox-name],
-#		  [only-section])
-# Prints HTML for 
+# module_config_editor(module)
+# Check access before loading module code. Return the module information,
+# directory and config.info file used by both the editor and the save handler.
+sub module_config_editor
+{
+my ($m) = @_;
+&get_product_name() eq 'webmin' || &error($text{'config_ecannot'});
+defined($m) && $m =~ /\A[A-Za-z0-9_-]+\z/ || &error($text{'config_emodule'});
+my %info = &get_module_info($m);
+%info || &error($text{'config_emodule'});
+&foreign_available($m) || $info{'noacl'} || &error($text{'config_eaccess'});
+my %access = &get_module_acl(undef, $m);
+$access{'noconfig'} && &error($text{'config_ecannot'});
+
+# Modules can supply hooks in their library or a custom configuration editor.
+my $dir = &module_root_directory($m);
+my $lib = ($info{'cloneof'} || $m)."-lib.pl";
+&foreign_require($m) if ($info{'library'} || -r "$dir/$lib");
+&foreign_require($m, "config_info.pl") if (-r "$dir/config_info.pl");
+
+# The last theme with a configuration definition takes precedence.
+my $file = "$dir/config.info";
+foreach my $root (@theme_root_directories) {
+	$file = "$root/$m/config.info" if (-r "$root/$m/config.info");
+	}
+return ( \%info, $dir, $file );
+}
+
+# module_config_return(module, &input, [footer-label])
+# Preserve the caller's return parameters and the theme's navigation target.
+sub module_config_return
+{
+my ($m, $in, $label) = @_;
+my $url = &link_config_cparams($m, $in);
+&load_theme_library();
+return &theme_config_return_link($m, $url, $label)
+	if (defined(&theme_config_return_link));
+return ( $url, $label );
+}
+
+# read_config_fields(info-file, [module], [group-sections])
+# Resolve field order, translations and module hooks once for the whole form.
+sub read_config_fields
+{
+my ($file, $module, $group_sections) = @_;
+my (%info, @order);
+&read_file($file, \%info, \@order);
+my %english = %info;
+
+# Overlay the user's language files in preference order.
+my $auto = &load_language_auto();
+my $neutral = $gconfig{"langneutral_$remote_user"};
+foreach my $lang (@lang_order_list) {
+	&read_file("$file.$lang", \%info, \@order);
+	&read_file("$file.$lang.auto", \%info, \@order) if ($auto);
+	&read_file("$file.$lang.neutral", \%info, \@order) if ($neutral);
+	}
+if ($module && &foreign_defined($module, 'config_pre_load')) {
+	# Let the module hide or relabel fields in both definitions.
+	&foreign_call($module, "config_pre_load", \%info, \@order);
+	&foreign_call($module, "config_pre_load", \%english);
+	}
+
+# Drop repeated keys and fields the module removed.
+@order = grep { exists($info{$_}) } &unique(@order);
+
+# Translations may supply only the label. Both display and save need
+# the field type and any omitted parameters from the original definition.
+foreach my $key (@order) {
+	next if ($info{$key} eq $english{$key});
+	my @field = split(/,/, $info{$key});
+	my @base = split(/,/, $english{$key});
+	if (@base > @field) {
+		$info{$key} = join(',', @field, @base[@field .. $#base]);
+		}
+	}
+my @sections;
+if ($group_sections) {
+	# List the section headings for paginated forms.
+	foreach my $key (@order) {
+		my ($label, $type) = split(/,/, $info{$key});
+		push(@sections, [ $key, $label ]) if ($type == 11);
+		}
+	if (@sections > 1 && $sections[0]->[0] ne $order[0]) {
+		# Include fields before the first heading on the first page.
+		my $idx = &indexof($sections[0]->[0], @order);
+		unshift(@order, splice(@order, $idx, 1));
+		}
+	}
+return { 'info' => \%info, 'order' => \@order, 'sections' => \@sections };
+}
+
+# generate_config(&config, info-file-or-fields, [module], [&can-config],
+#                 [checkbox-name], [only-section])
+# Render the fields allowed for this form.
 sub generate_config
 {
 my ($configref, $file, $module, $canconfig, $cbox, $section) = @_;
 my %config = %$configref;
-
-my $auto = $gconfig{"langauto_$remote_user"};
-my $neutral = $gconfig{"langneutral_$remote_user"};
-if (!defined($auto)) {
-my $glangauto = $gconfig{'langauto'};
-if (defined($glangauto)) {
-	$auto = $glangauto;
-	} 
-else {
-	my ($clanginfo) = grep { $_->{'lang'} eq $current_lang } &list_languages();
-	$auto = $clanginfo->{'auto'};
-	}
-}
-
-# Read the .info file in the right language
-my (%info, @info_order, %einfo, $o);
-&read_file($file, \%info, \@info_order);
-%einfo = %info;
-foreach $o (@lang_order_list) {
-	&read_file("$file.$o", \%info, \@info_order);
-	&read_file("$file.$o.auto", \%info, \@info_order)
-		if ($auto && -r "$file.$o.auto");
-	&read_file("$file.$o.neutral", \%info, \@info_order)
-		if ($neutral && -r "$file.$o.neutral");
-	}
-
-# Call any config pre-load function
-if (&foreign_defined($module, 'config_pre_load')) {
-	&foreign_call($module, "config_pre_load", \%info, \@info_order);
-	&foreign_call($module, "config_pre_load", \%einfo);
-	}
-
-@info_order = &unique(@info_order);
-
-if ($section) {
-	# Limit to settings in one section
+my $fields = ref($file) ? $file : &read_config_fields($file, $module);
+my %info = %{$fields->{'info'}};
+my @info_order = @{$fields->{'order'}};
+if (defined($section) && $section ne '') {
 	@info_order = &config_in_section($section, \@info_order, \%info);
 	}
 
@@ -86,10 +146,6 @@ foreach my $c (@info_order) {
 		next if ($canconfig && !$canconfig->{$c});
 		}
 	my @p = split(/,/, $info{$c});
-	my @ep = split(/,/, $einfo{$c});
-	if (scalar(@ep) > scalar(@p)) {
-		push(@p, @ep[scalar(@p) .. @ep-1]);
-		}
 	if ($p[1] == 14) {
 		$module || &error($text{'config_ewebmin'});
 		&foreign_require($module, "config_info.pl");
@@ -99,7 +155,7 @@ foreach my $c (@info_order) {
 		}
 	if ($p[1] == 11) {
 		# Title row
-		print &ui_table_row(undef, "<b>$p[0]</b>", 2, [ undef, $tb ]);
+		print &ui_table_row(undef, &ui_tag('b', $p[0]), 2, [ undef, $tb ]);
 		next;
 		}
 	if ($p[1] == 16 && $gconfig{'config_16_insecure'}) {
@@ -128,9 +184,10 @@ foreach my $c (@info_order) {
 			$len += length($2);
 			}
 		my @opts;
+		my $br = $len > 50 ? &ui_br() : "";
 		for($i=2; $i<@p; $i++) {
 			$p[$i] =~ /^(\S*)\-(.*)$/;
-			push(@opts, [ $1, $2.($len > 50 ? "<br>" : "") ]);
+			push(@opts, [ $1, $2.$br ]);
 			}
 		$field = &ui_radio($c, $config{$c}, \@opts);
 		}
@@ -217,9 +274,10 @@ foreach my $c (@info_order) {
 			}
 		my $fv = $config{$c};
 		my @opts;
+		my $br = $len > 50 ? &ui_br() : "";
 		for(my $i=2; $i<@p; $i++) {
 			($p[$i] =~ /^(\S*)\-(.*)$/) || next;
-			push(@opts, [ $1, $2.($len > 50 ? "<br>" : "") ]);
+			push(@opts, [ $1, $2.$br ]);
 			$fv = undef if ($config{$c} eq $1);
 			}
 		push(@opts, [ "free", $p[$#p] !~ /^(\S*)\-(.*)$/ ? $p[$#p]
@@ -255,40 +313,31 @@ foreach my $c (@info_order) {
 		# Password free text
 		$field = &ui_password($c, undef, $p[2] || 40, 0, $p[3]);
 		}
-	$label = "<a name=$c>$label</a>";
+	$label = &ui_tag('a', $label, { 'name' => $c });
 	print &ui_table_row($label, $field, 1, [ "width=30% nowrap" ]);
 	}
 }
 
-# parse_config(&config, info-file, [module], [&canconfig], [section])
-# Updates the specified configuration with values from %in
+# parse_config(&config, info-file-or-fields, [module], [&canconfig], [section])
+# Update the specified configuration from %in and return the fields written.
 sub parse_config
 {
 my ($config, $file, $module, $canconfig, $section) = @_;
 
-# Read the .info file
-my (%info, @info_order, $o);
-&read_file($file, \%info, \@info_order);
-foreach $o (@lang_order_list) {
-	&read_file("$file.$o", \%info, \@info_order);
+# The shared editor supplies the same filtered definitions it uses to render.
+# Other callers pass a filename and may need the module's hooks loaded here.
+if (!ref($file) && $module && &foreign_exists($module)) {
+	&foreign_require($module);
 	}
-@info_order = &unique(@info_order);
-
-if ($section) {
-	# Limit to settings in one section
+my $fields = ref($file) ? $file : &read_config_fields($file, $module);
+my %info = %{$fields->{'info'}};
+my @info_order = @{$fields->{'order'}};
+if (defined($section) && $section ne '') {
 	@info_order = &config_in_section($section, \@info_order, \%info);
 	}
 
-# If config fields are conditional (not displayed)
-# make sure to preserve system default values to
-# prevent changing behaviour of a module
-if (&foreign_exists($module) &&
-    &foreign_require($module) &&
-    &foreign_defined($module, 'config_pre_load')) {
-	&foreign_call($module, "config_pre_load", \%info, \@info_order);
-	}
-
 # Actually parse the inputs
+my @saved;
 foreach my $c (@info_order) {
 	next if ($canconfig && !$canconfig->{$c});
 	my @p = split(/,/, $info{$c});
@@ -343,10 +392,9 @@ foreach my $c (@info_order) {
 			}
 		}
 	elsif ($p[1] == 12) {
-		# Optionally changed password
-		if (!$in{"${c}_nochange"}) {
-			$config->{$c} = $in{$c};
-			}
+		# Keeping a password also keeps any existing personal override.
+		next if ($in{"${c}_nochange"});
+		$config->{$c} = $in{$c};
 		}
 	elsif ($p[1] == 15) {
 		# Parse custom HTML field
@@ -355,14 +403,44 @@ foreach my $c (@info_order) {
 		$config->{$c} = &foreign_call($_[2], "parse_".$p[2],
 					    $config->{$c}, @p);
 		}
+	else {
+		# Headings and unrecognized field types have no value to save.
+		next;
+		}
+	push(@saved, $c);
 	}
+return \@saved;
 }
 
-# config_in_section(&section, &order, &config-info)
-# Returns a list of config names that are in some section
+# parse_custom_config(&config, info-file, module, [section])
+# Run the module's save callback and return the settings it wrote or deleted.
+sub parse_custom_config
+{
+my ($config, $file, $module, $section) = @_;
+if (length($section)) {
+	# Reject a stale section before calling the module.
+	my $fields = &read_config_fields($file, $module, 1);
+	&config_in_section($section, $fields->{'order'}, $fields->{'info'});
+	}
+
+# A callback can write an existing value or delete a personal-only setting.
+# Neither operation shows up in a comparison of the old and new config.
+require Tie::Hash;
+my %written;
+tie(my %changes, 'Webmin::ConfigChanges', $config, \%written);
+&foreign_call($module, 'config_save', \%changes);
+return [ keys %written ];
+}
+
+# config_in_section(section, &order, &config-info)
+# Return the config names in one section. Stop with an error if the section
+# heading does not exist.
 sub config_in_section
 {
 my ($section, $info_order, $info) = @_;
+# An unknown section must not select an empty or partial set of fields.
+my (undef, $type) = split(/,/, $info->{$section});
+defined($type) && $type == 11 || &error($text{'config_esection'});
 my @new_order = ( );
 my $in_section = 0;
 foreach my $c (@$info_order) {
@@ -380,12 +458,11 @@ foreach my $c (@$info_order) {
 return @new_order;
 }
 
-# save_module_preferences(module, &config)
-# Check which user preferences can be save for
-# given module based on module's prefs.info file
+# save_module_preferences(module, &config, [&saved-fields])
+# Save allowed preferences, preserving other sections on a partial save.
 sub save_module_preferences
 {
-my ($module, $curr_config) = @_;
+my ($module, $curr_config, $saved) = @_;
 my $module_dir = &module_root_directory($module);
 my $module_prefs_conf = "$module_dir/prefs.info";
 if (-r $module_prefs_conf) {
@@ -394,6 +471,20 @@ if (-r $module_prefs_conf) {
 	mkdir("$config_directory/$module", 0700);
 	my $user_prefs_file = "$config_directory/$module/prefs.$remote_user";
 	&lock_file($user_prefs_file);
+	if ($saved) {
+		# Other sections may contain personal overrides.
+		my %prefs;
+		&read_file($user_prefs_file, \%prefs);
+		foreach my $key (@$saved) {
+			if (exists($curr_config->{$key})) {
+				$prefs{$key} = $curr_config->{$key};
+				}
+			else {
+				delete($prefs{$key});
+				}
+			}
+		$curr_config = \%prefs;
+		}
 	if ($module_prefs_conf_allowed{'allowed'} eq "*") {
 		&write_file($user_prefs_file, \%$curr_config);
 		}
@@ -452,6 +543,39 @@ if (@w) {
 	$url .= "?".join("&", @w);
 	}
 return $url;
+}
+
+# Private to parse_custom_config. Tie::ExtraHash handles reads and iteration.
+{
+package Webmin::ConfigChanges;
+our @ISA = qw(Tie::ExtraHash);
+
+# TIEHASH(class, &config, &written)
+# Tie::ExtraHash uses the first hash for storage.
+sub TIEHASH
+{
+my ($class, $config, $written) = @_;
+return bless([ $config, $written ], $class);
+}
+
+# STORE(self, key, value)
+sub STORE
+{
+my ($self, $key, $value) = @_;
+$self->[1]->{$key} = 1;
+return $self->SUPER::STORE($key, $value);
+}
+
+# DELETE(self, key)
+sub DELETE
+{
+my ($self, $key) = @_;
+$self->[1]->{$key} = 1;
+return $self->SUPER::DELETE($key);
+}
+
+# CLEAR(self) calls DELETE for each key when a callback replaces the hash.
+sub CLEAR { Tie::Hash::CLEAR(@_) }
 }
 
 1;

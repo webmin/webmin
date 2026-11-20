@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Konfiguračná kategória:
-config_change=zmena
 config_return=systémové informácie
-config_next=Uložiť a Ďalej
-config_nnext=Ďalšie
-config_nprev=Predchádzajúce
 
 edright_title=Konfigurácia systémových informácií
 edright_header=Nastavenia stránky s informáciami o systéme Virtualmin

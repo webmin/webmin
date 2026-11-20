@@ -15,6 +15,21 @@ our ($path, $quote_escaped_path, $urlized_path, $base, $cwd, $upload_max,
 our (%access, %userconfig, %allowed_for_edit);
 our (@allowed_paths, @allowed_for_edit, @remote_user_info);
 
+# mime_icon(type, module-dir)
+# Return the icon for a MIME type, using the generic icon for unknown types.
+sub mime_icon
+{
+my ($type, $dir) = @_;
+our %mime_icon_maps;
+if (!$mime_icon_maps{$dir}) {
+	$mime_icon_maps{$dir} = { };
+	&read_file("$dir/mime-icons.map", $mime_icon_maps{$dir});
+	}
+my $name = $mime_icon_maps{$dir}->{$type} || $type;
+my $path = "images/icons/mime/$name.png";
+return -f "$dir/$path" ? $path : "images/icons/mime/none.png";
+}
+
 # get_acls_status()
 # Returns the getfacl command path if available
 sub get_acls_status
@@ -511,11 +526,7 @@ for (my $count = 1 + $pagelimit * ($page - 1);
 	my $type = $list[$count - 1][14];
 	$type =~ s/\//\-/g;
 
-	my $img =
-		"images/icons/mime/$type.png";
-	unless (-e $img) {
-		$img = "images/icons/mime/unknown.png";
-		}
+	my $img = &mime_icon($type, $module_root_directory);
 	$size = &nice_size($list[$count - 1][8]);
 	$user = getpwuid($list[$count - 1][5]) ?
 		getpwuid($list[$count - 1][5]) :

@@ -1,0 +1,9 @@
+convert=import-key.png
+empty=empty-checkbox.gif
+icon=user.png
+pass=padlock.png
+rbac=users.png
+sessions=id-card.png
+sql=mysql.png
+twofactor=security-token.png
+unix=user-key.png

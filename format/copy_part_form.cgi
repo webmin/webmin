@@ -21,11 +21,11 @@ for($i=0; $i<@plist; $i++) {
 	@p = split(/\s+/, $plist[$i]);
 	print "<tr $cb> <td>$i</td> <td>$p[0]</td>\n";
 	if ($p[3]) {
-		printf "<td><img src=images/gap.gif height=10 width=%d>",
+		printf "<td><img src=../images/shared/disk-gap.gif height=10 width=%d>",
 			$extwidth*$p[2]/$cyl;
-		printf "<img src=images/use.gif height=10 width=%d>",
+		printf "<img src=../images/shared/bar-red-10.gif height=10 width=%d>",
 			$extwidth*($p[3]-$p[2])/$cyl;
-		printf "<img src=images/gap.gif height=10 width=%d></td>\n",
+		printf "<img src=../images/shared/disk-gap.gif height=10 width=%d></td>\n",
 			$extwidth*($cyl-$p[3])/$cyl;
 		print "<td>$p[2]</td> <td>$p[3]</td> </tr>\n";
 		}

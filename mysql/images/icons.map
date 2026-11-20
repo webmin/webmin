@@ -1,0 +1,14 @@
+cnf=mysql.png
+cprivs=document-key.png
+dbs=database-lock.png
+hosts=network-computer.png
+icon=mysql.png
+index=database-index.gif
+manual=edit.png
+procs=network-globe.png
+ssl=key.png
+tables=./table.gif
+tprivs=folder-key.png
+users=users.png
+vars=tools.png
+view=eye.gif

@@ -76,8 +76,9 @@ elsif ($gconfig{"notabs_${base_remote_user}"} == 2 ||
 		if ($pos % $cols == 0) { print "<tr $cb>\n"; }
 		print "<td valign=top align=center width=$per\%>\n";
 		local $idx = $m->{'index_link'};
+		my $icon = &module_icon_url("$m->{'dir'}/images/icon.gif");
 		print "<table border><tr><td><a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>",
-		      "<img src=$m->{'dir'}/images/icon.gif border=0 ",
+		      "<img src=\"$icon\" border=0 ",
 		      "width=48 height=48></a></td></tr></table>\n";
 		print "<a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>$m->{'desc'}</a></td>\n";
 		if ($pos % $cols == $cols - 1) { print "</tr>\n"; }
@@ -141,9 +142,10 @@ else {
 
 		if ($pos % $cols == 0) { print "<tr>\n"; }
 		local $idx = $m->{'index_link'};
+		my $icon = &module_icon_url("$m->{'dir'}/images/icon.gif");
 		print "<td valign=top align=center width=$per\%>\n";
 		print "<table border bgcolor=#ffffff><tr><td><a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>",
-		      "<img src=$m->{'dir'}/images/icon.gif alt=\"\" border=0></a>",
+		      "<img src=\"$icon\" alt=\"\" border=0></a>",
 		      "</td></tr></table>\n";
 		print "<a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>$m->{'desc'}</a></td>\n";
 		if ($pos++ % $cols == $cols - 1) { print "</tr>\n"; }

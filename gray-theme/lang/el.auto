@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Κατηγορία διαμόρφωσης:
-config_change=Αλλαγή
 config_return=πληροφορίες συστήματος
-config_next=Αποθήκευση και Επόμενο
-config_nnext=Επόμενο
-config_nprev=Προηγ
 
 edright_title=Διαμόρφωση πληροφοριών συστήματος
 edright_header=Ρυθμίσεις σελίδας πληροφοριών συστήματος Virtualmin

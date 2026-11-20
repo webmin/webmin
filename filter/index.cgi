@@ -126,18 +126,18 @@ if (@filters || &get_global_spamassassin()) {
 		# Create mover links
 		local $mover;
 		if ($f eq $filters[0]) {
-			$mover .= "<img src=images/gap.gif alt=' '>";
+			$mover .= "<img src=../images/shared/move-spacer.gif alt=' '>";
 			}
 		else {
 			$mover .= "<a href='up.cgi?idx=$f->{'index'}'>".
-			      "<img src=images/up.gif border=0 alt='Up'></a>";
+			      "<img src=../images/shared/move-up.gif border=0 alt='Up'></a>";
 			}
 		if ($f eq $filters[$#filters]) {
-			$mover .= "<img src=images/gap.gif alt=' '>";
+			$mover .= "<img src=../images/shared/move-spacer.gif alt=' '>";
 			}
 		else {
 			$mover .= "<a href='down.cgi?idx=$f->{'index'}'>".
-			    "<img src=images/down.gif border=0 alt='Down'></a>";
+			    "<img src=../images/shared/move-down.gif border=0 alt='Down'></a>";
 			}
 
 		# Show the row

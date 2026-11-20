@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=配置类别:
-config_change=变更
 config_return=系统信息
-config_next=保存并下一步
-config_nnext=上一步
-config_nprev=下一步
 
 edright_title=系统信息配置
 edright_header=系统信息页面配置
