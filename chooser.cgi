@@ -5,19 +5,19 @@
 BEGIN { push(@INC, "."); };
 use WebminCore;
 
-@icon_map = (	"c", "text.gif",
-		"txt", "text.gif",
-		"pl", "text.gif",
-		"cgi", "text.gif",
-		"html", "text.gif",
-		"htm", "text.gif",
-		"php", "text.gif",
-		"php5", "text.gif",
-		"gif", "image.gif",
-		"jpg", "image.gif",
-		"jpeg", "image.gif",
-		"png", "image.gif",
-		"tar", "binary.gif"
+my %icon_map = ("c", "shared/text.png",
+		"txt", "shared/text.png",
+		"pl", "shared/text.png",
+		"cgi", "shared/text.png",
+		"html", "shared/text.png",
+		"htm", "shared/text.png",
+		"php", "shared/text.png",
+		"php5", "shared/text.png",
+		"gif", "shared/image.png",
+		"jpg", "shared/image.png",
+		"jpeg", "shared/image.png",
+		"png", "shared/image.png",
+		"tar", "shared/binary.png"
 		);
 
 &init_config();
