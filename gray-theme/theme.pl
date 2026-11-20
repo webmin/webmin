@@ -1204,8 +1204,7 @@ if (openerobj) {
   // Core openers use an image instead of a CSS arrow.
   var img = openerobj.getElementsByTagName('img')[0];
   if (img) {
-    img.src = img.src.replace(shown ? 'open.gif' : 'closed.gif',
-                              shown ? 'closed.gif' : 'open.gif');
+    img.src = '@{[&get_webprefix()]}/images/' + (shown ? 'closed.png' : 'open.png');
     }
   }
 }

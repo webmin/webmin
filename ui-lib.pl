@@ -2145,11 +2145,11 @@ var divobj = document.getElementById(divid);
 var openerobj = document.getElementById(openerid);
 if (divobj.className == 'opener_shown') {
   divobj.className = 'opener_hidden';
-  openerobj.innerHTML = '<img border=0 src=$imgdir/closed.gif>';
+  openerobj.innerHTML = '<img border=0 src=$imgdir/closed.png>';
   }
 else {
   divobj.className = 'opener_shown';
-  openerobj.innerHTML = '<img border=0 src=$imgdir/open.gif>';
+  openerobj.innerHTML = '<img border=0 src=$imgdir/open.png>';
   }
 }
 
@@ -2222,9 +2222,9 @@ if (!$main::ui_hidden_start_donejs++) {
 	}
 my $divid = "hiddendiv_$name";
 my $openerid = "hiddenopener_$name";
-my $defimg = $status ? "open.gif" : "closed.gif";
+my $defimg = $status ? "open" : "closed";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
-$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg' alt='*'></a>\n";
+$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg.png' alt='*'></a>\n";
 $rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 $rv .= "<div class='$defclass' id='$divid'>\n";
 return $rv;
@@ -2260,10 +2260,10 @@ if (!$main::ui_hidden_start_donejs++) {
 	}
 my $divid = "hiddendiv_$name";
 my $openerid = "hiddenopener_$name";
-my $defimg = $status ? "open.gif" : "closed.gif";
+my $defimg = $status ? "open" : "closed";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 if ($title) {
-	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a>\n";
+	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg.png'></a>\n";
 	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 	$rv .= &ui_table_row(undef, $rrv, $main::ui_table_cols);
 	}
@@ -2320,7 +2320,7 @@ if (!$main::ui_hidden_start_donejs++) {
 	}
 my $divid = "hiddendiv_$name";
 my $openerid = "hiddenopener_$name";
-my $defimg = $status ? "open.gif" : "closed.gif";
+my $defimg = $status ? "open" : "closed";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
@@ -2329,7 +2329,7 @@ my $colspan = 1;
 if (defined($heading) || defined($rightheading)) {
 	$rv .= "<tr".($tb ? " ".$tb : "")."><td>";
 	if (defined($heading)) {
-		$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color='#$text'>$heading</font></b></a>";
+		$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg.png'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color='#$text'>$heading</font></b></a>";
 		}
 	$rv .= "</td>";
 	if (defined($rightheading)) {

@@ -1307,6 +1307,21 @@ like(main::ui_svg_icon('ellipsis'), qr/fill="currentColor"/, 'ellipsis is drawn 
 
 # ---- section titles, segmented controls and stacked fields -----------------
 
+subtest 'collapsible section arrows' => sub {
+	our (%gconfig, $ui_hidden_start_donejs);
+	local $gconfig{'webprefix'} = '/webmin';
+	local $ui_hidden_start_donejs = 1;
+	foreach my $open (0, 1) {
+		my $src = '/webmin/images/'.($open ? 'open.png' : 'closed.png');
+		ui_table_start(undef, undef, 2);
+		foreach my $html (ui_hidden_start('Title', 'test', $open),
+				  ui_hidden_table_row_start('Title', 'test', $open),
+				  ui_hidden_table_start('Title', '', 2, 'test', $open)) {
+			like($html, qr{<img\b[^>]*\bsrc='\Q$src\E'}, "uses $src");
+			}
+		}
+	};
+
 subtest 'section titles' => sub {
 	my $html = main::ui_section_title('Recent', {
 		'actions' => '<a href="clear.cgi">Clear list</a>', 'id' => 'recent' });
