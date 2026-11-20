@@ -13118,14 +13118,52 @@ $rv =~ s/\$\{[A-Z]+\}//g;
 return $rv;
 }
 
+=head2 secure_random_bytes(length)
+
+Returns exactly length cryptographically random bytes from /dev/urandom, or
+undef on failure. Length must be an integer from 0 to 256. Interrupted and
+short reads are retried. This function never falls back to Perl's rand.
+
+=cut
+
+sub secure_random_bytes
+{
+my ($length) = @_;
+return undef if (!defined($length) || $length !~ /\A[0-9]+\z/ ||
+                 $length > 256);
+return "" if (!$length);
+
+# Fill the buffer completely, retrying interrupted and short reads.
+open(my $fh, '<', '/dev/urandom') || return undef;
+binmode($fh) || return undef;
+my $bytes = '';
+while (length($bytes) < $length) {
+	my $count = sysread($fh, $bytes, $length - length($bytes),
+			    length($bytes));
+	if (!defined($count)) {
+		# Retry signals, but do not return partial data on a read error.
+		next if ($!{'EINTR'});
+		return undef;
+		}
+	return undef if (!$count);
+	}
+close($fh);
+return $bytes;
+}
+
 =head2 substitute_pattern(regex-pattern, [&params])
 
 Given regular expression generates a string based on the pattern. Hash reference
 with params can be used to control default pattern length, results filtering and
 replacement, date/time substitution and manipulate resulted string with callback
 
-This function must be save to be used with patterns defined by a user to generate
-strings with desired pattern, like usernames
+This function must be safe to use with patterns defined by a user to generate
+strings with a desired pattern, like usernames.
+
+Set crypt to 1 in params to use secure_random_bytes for shuffling. This returns
+undef if a secure read fails or no-shuffle is also set. Without crypt, Perl's
+rand is used as before. Pattern length and alphabet, filters and callbacks
+still determine the strength of the result. Check for undef before using it.
 
 Examples:
 
@@ -13186,14 +13224,42 @@ my $_param = sub {
         return $params->{$param};
     }
 };
+my $crypt = &$_param('crypt');
+# Secure mode requires shuffling.
+return undef if ($crypt && &$_param('no-shuffle'));
+my $random_bytes = '';
+
+# Shuffle the expanded character range. Secure mode uses rejection sampling
+# so every index has equal probability even when the range is not a power of 2.
 my $_shuffle = sub {
     my $a = shift;
     my $c;
     for ($c = @{$a}; --$c;) {
-        my $b = int(rand($c + 1));
+        my $b;
+        if ($crypt) {
+            # Discard the incomplete interval at the top of the 32-bit range.
+            my $range = $c + 1;
+            return undef if ($range > 4294967296);
+            my $limit = 4294967296 - (4294967296 % $range);
+            do {
+                if (length($random_bytes) < 4) {
+                    # Read another block of random bytes for this call.
+                    $random_bytes = &secure_random_bytes(256);
+                    return undef if (!defined($random_bytes) ||
+                                     length($random_bytes) != 256);
+                    }
+                $b = unpack('N', substr($random_bytes, 0, 4, ''));
+                } while ($b >= $limit);
+            $b %= $range;
+            }
+        else {
+            # Preserve the generator used by existing callers.
+            $b = int(rand($c + 1));
+            }
         next if $c == $b;
         @{$a}[$c, $b] = @{$a}[$b, $c];
     }
+    return 1;
 };
 
 # Parse passed pattern to build a string based on it
@@ -13224,7 +13290,10 @@ while ($pattern =~
                     @ranges_ =
                       (@ranges_) x ceil($length / scalar(@ranges_));
                     }
-                &$_shuffle(\@ranges_) if (!&$_param('no-shuffle'));
+                if (!&$_param('no-shuffle')) {
+                    # Stop if secure randomness is unavailable.
+                    return undef if (!&$_shuffle(\@ranges_));
+                    }
                 }
             }
         }
