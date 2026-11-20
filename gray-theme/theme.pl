@@ -1258,112 +1258,6 @@ return false;
 EOF
 }
 
-# Icons drawn before notices, by notice type and by the Font Awesome class
-# names that modules pass to ui_alert
-my %theme_alert_icons = (
-	'success' => 'check-circle',
-	'info' => 'info-circle',
-	'warning' => 'warning',
-	'danger' => 'x-circle',
-	'danger-fatal' => 'x-circle',
-	);
-my %theme_fa_icons = (
-	'fa-check-circle' => 'check-circle',
-	'fa-check' => 'check',
-	'fa-info-circle' => 'info-circle',
-	'fa-question-circle' => 'question-circle',
-	'fa-exclamation-triangle' => 'warning',
-	'fa-warning' => 'warning',
-	'fa-bolt' => 'x-circle',
-	'fa-times-circle' => 'x-circle',
-	'fa-clock' => 'clock',
-	'fa-clock-o' => 'clock',
-	'fa-hdd-o' => 'hard-drive',
-	'fa-lock' => 'shield',
-	'fa-shield' => 'shield',
-	'fa-plug' => 'power',
-	'fa-power-off' => 'power',
-	'fa-download' => 'download',
-	'fa-upload' => 'upload',
-	'fa-refresh' => 'refresh',
-	'fa-search' => 'search',
-	'fa-server' => 'server',
-	'fa-user' => 'user',
-	'fa-trash' => 'trash',
-	'fa-cog' => 'gear',
-	'fa-globe' => 'globe',
-	'fa-star' => 'star',
-	'fa-play' => 'play',
-	'fa-stop' => 'stop',
-	'fa-terminal' => 'terminal',
-	'fa-book' => 'book',
-	'fa-filter' => 'filter',
-	'fa-pencil' => 'edit',
-	'fa-edit' => 'edit',
-	'fa-external-link' => 'external',
-	);
-
-# theme_alert_icon(type, [fa-classes])
-# Returns the icon shown before a notice, from a Font Awesome class name
-# when the theme has an equivalent, else from the notice type
-sub theme_alert_icon
-{
-my ($type, $fa) = @_;
-my $name;
-if ($fa) {
-	# Prefer the icon the module asked for, when the theme has it
-	my ($known) = grep { $theme_fa_icons{$_} } split(/\s+/, $fa);
-	$name = $theme_fa_icons{$known} if ($known);
-	}
-$name ||= $theme_alert_icons{$type} || 'info-circle';
-return "<span class='ui_alert_icon'>".
-       &ui_svg_icon($name, { 'size' => 18 })."</span>";
-}
-
-# theme_ui_alert_box(message, type, [style], [new-line], [title], [icon])
-# Returns HTML for a notice box with an icon, taking the same arguments as
-# the Authentic theme. The type can be success, info, warn, danger or
-# danger-fatal, and picks the colors, the icon and the default title. The
-# style is added to the box. With new-line set, the message starts under
-# the title instead of after it. A title replaces the default one, and an
-# empty title removes it. The icon is a Font Awesome class name, used when
-# the theme has an equivalent. Buttons that the message puts on a line of
-# their own, after a <p>, are wrapped together with the text before them,
-# so both can share one line.
-sub theme_ui_alert_box
-{
-my ($msg, $class, $style, $new_line, $desc_to_title, $desc_icon) = @_;
-my %types = ( 'success' => [ 'success', $text{'ui_success'} ],
-	      'info' => [ 'info', $text{'ui_info'} ],
-	      'warn' => [ 'warning', $text{'ui_warning'} ],
-	      'warning' => [ 'warning', $text{'ui_warning'} ],
-	      'danger' => [ 'danger', $text{'ui_error'} ],
-	      'danger-fatal' => [ 'danger-fatal', $text{'ui_error_fatal'} ] );
-my ($type, $title) = @{$types{$class} || $types{'info'}};
-# The default titles end in an exclamation mark, as in the Authentic theme
-$title .= "!" if ($title ne '');
-$title = $desc_to_title if (defined($desc_to_title));
-my $lead = $title =~ /\S/ ?
-	"<strong>$title</strong>".($new_line ? "<br>" : " ") : "";
-if ($msg =~ s/^(.*?)<p>\s*(<form\b.*?<\/form>)/<span class='ui_alert_text'>$lead$1<\/span><span class='ui_alert_actions'>$2<\/span>/is) {
-	# A form of buttons after the text
-	}
-elsif ($msg =~ s/(<form\b[^>]*>)(.*?)<p>\s*((?:<input\b[^>]*>\s*)+)(<\/form>)/$1<span class='ui_alert_text'>$lead$2<\/span><span class='ui_alert_actions'>$3<\/span>$4/is) {
-	# Buttons after the text, inside its form
-	}
-elsif ($msg =~ s/(<form\b[^>]*>)(.*?)<p>\s*((?:<input\b[^>]*>\s*)*<table\b[^>]*class=['"]ui_form_end_buttons['"].*?<\/table>)\s*(<\/form>)/$1<span class='ui_alert_text'>$lead$2<\/span><span class='ui_alert_actions'>$3<\/span>$4/is) {
-	# Buttons after the text, as a form end table inside its form
-	}
-else {
-	# Plain message after the title
-	$msg = $lead.$msg;
-	}
-return "<div class='ui_alert_box alert alert-$type'".
-       ($style ? " style='".&quote_escape($style)."'" : "").">".
-       &theme_alert_icon($type, $desc_icon).
-       "<div class='ui_alert_body'>$msg</div></div>\n";
-}
-
 # theme_ui_alert(content, [type], [icon], [&attrs])
 # Returns HTML for an alert with an icon and a title, like the core
 # ui_alert but drawn with the theme's SVG icons. The icon can be a Font
@@ -1394,7 +1288,7 @@ my $body = "";
 $body .= "<strong>$title</strong>".($br ? "<br>" : " ") if ($title ne '');
 $body .= "<span>$content</span>";
 return &ui_tag_start('div', \%a).
-       &theme_alert_icon($type, $fa).
+       &ui_alert_icon($type, $fa).
        "<div class='ui_alert_body'>$body</div>".
        &ui_tag_end('div')."\n";
 }

@@ -2916,44 +2916,128 @@ elsif ($type eq "danger") { $color = "var(--text-color-danger, #a94442)"; }
 return "<span class=\"ui_text_color text_type_$type text-$class_type\" style=\"color: $color\">$text</span>";
 }
 
-=head2 ui_alert_box(msg, type)
+=head2 ui_icons()
 
-Returns HTML for an alert box, with background color determined by $type.
+Returns a hash reference with two maps of SVG icon names. C<alert> maps alert
+types and C<fa> maps Font Awesome classes.
 
-$msg contains any text or HTML to be contained within the alert box, and
-can include forms.
+=cut
+sub ui_icons
+{
+return &theme_ui_icons(@_) if (defined(&theme_ui_icons));
+return {
+	'alert' => {
+		'success' => 'check-circle',
+		'info' => 'info-circle',
+		'warning' => 'warning',
+		'danger' => 'x-circle',
+		'danger-fatal' => 'x-circle',
+		},
+	'fa' => {
+		'fa-check-circle' => 'check-circle',
+		'fa-check' => 'check',
+		'fa-info-circle' => 'info-circle',
+		'fa-question-circle' => 'question-circle',
+		'fa-exclamation-triangle' => 'warning',
+		'fa-warning' => 'warning',
+		'fa-bolt' => 'x-circle',
+		'fa-times-circle' => 'x-circle',
+		'fa-clock' => 'clock',
+		'fa-clock-o' => 'clock',
+		'fa-hdd-o' => 'hard-drive',
+		'fa-lock' => 'shield',
+		'fa-shield' => 'shield',
+		'fa-plug' => 'power',
+		'fa-power-off' => 'power',
+		'fa-download' => 'download',
+		'fa-upload' => 'upload',
+		'fa-refresh' => 'refresh',
+		'fa-search' => 'search',
+		'fa-server' => 'server',
+		'fa-user' => 'user',
+		'fa-trash' => 'trash',
+		'fa-cog' => 'gear',
+		'fa-globe' => 'globe',
+		'fa-star' => 'star',
+		'fa-play' => 'play',
+		'fa-stop' => 'stop',
+		'fa-terminal' => 'terminal',
+		'fa-book' => 'book',
+		'fa-filter' => 'filter',
+		'fa-pencil' => 'edit',
+		'fa-edit' => 'edit',
+		'fa-external-link' => 'external',
+		},
+	};
+}
 
-Type of alert:
+# ui_alert_icon(type, [fa-classes])
+# Returns the icon shown before a notice, from a Font Awesome class name
+# when the theme has an equivalent, else from the notice type
+sub ui_alert_icon
+{
+return &theme_ui_alert_icon(@_) if (defined(&theme_ui_alert_icon));
+# Framed previously called theme_alert_icon directly.
+return &theme_alert_icon(@_) if (defined(&theme_alert_icon));
+my ($type, $fa) = @_;
+my $icons = &ui_icons();
+my $name;
+if ($fa) {
+	# Prefer the icon the module asked for, when the theme has it
+	my ($known) = grep { $icons->{'fa'}->{$_} } split(/\s+/, $fa);
+	$name = $icons->{'fa'}->{$known} if ($known);
+	}
+$name ||= $icons->{'alert'}->{$type} || 'info-circle';
+return "<span class='ui_alert_icon'>".
+       &ui_svg_icon($name, { 'size' => 18 })."</span>";
+}
 
-=item success - green
+=head2 ui_alert_box(message, type, [style], [new-line], [title], [icon])
 
-=item info - blue
+Returns an alert containing text or HTML, including forms. The type sets
+the default title and icon. Supported types are C<success>, C<info>, C<warn>,
+C<warning>, C<danger> and C<danger-fatal>.
 
-=item warn - yellow
-
-=item danger - red
+The optional style is inline CSS. Set new-line to 1 to put the message below
+the title. Pass a title to replace the default, or an empty string to omit it.
+The icon accepts Font Awesome classes and falls back to the type's icon
+when none of the supplied classes match.
 
 =cut
 
 sub ui_alert_box
 {
-my ($msg, $type) = @_;
-my ($rv, $color);
-
-if (defined (&theme_ui_alert_box)) {
-    return &theme_ui_alert_box(@_);
-    }
-
-if ($type eq "success") { $color = "DFF0D8"; }
-elsif ($type eq "info") { $color = "D9EDF7"; }
-elsif ($type eq "warn") { $color = "FCF8E3"; }
-elsif ($type eq "danger") { $color = "F2DEDE"; }
-
-$rv .= "<table class='ui_alert_box' width='100%'><tr bgcolor='#$color'><td align='center'><p>\n";
-$rv .= "$msg\n";
-$rv .= "<p></td></tr></table><p>\n";
-
-return $rv;
+return &theme_ui_alert_box(@_) if (defined(&theme_ui_alert_box));
+my ($msg, $class, $style, $new_line, $desc_to_title, $desc_icon) = @_;
+my %types = ( 'success' => [ 'success', $text{'ui_success'} ],
+	      'info' => [ 'info', $text{'ui_info'} ],
+	      'warn' => [ 'warning', $text{'ui_warning'} ],
+	      'warning' => [ 'warning', $text{'ui_warning'} ],
+	      'danger' => [ 'danger', $text{'ui_error'} ],
+	      'danger-fatal' => [ 'danger-fatal', $text{'ui_error_fatal'} ] );
+my ($type, $title) = @{$types{$class} || $types{'info'}};
+# The default titles end in an exclamation mark, as in the Authentic theme
+$title .= "!" if ($title ne '');
+$title = $desc_to_title if (defined($desc_to_title));
+my $lead = $title =~ /\S/ ?
+	"<strong>$title</strong>".($new_line ? "<br>" : " ") : "";
+if ($msg =~ s/^(.*?)<p>\s*(<form\b.*?<\/form>)/<span class='ui_alert_text'>$lead$1<\/span><span class='ui_alert_actions'>$2<\/span>/is) {
+	# A form of buttons after the text
+	}
+elsif ($msg =~ s/(<form\b[^>]*>)(.*?)<p>\s*((?:<input\b[^>]*>\s*)+)(<\/form>)/$1<span class='ui_alert_text'>$lead$2<\/span><span class='ui_alert_actions'>$3<\/span>$4/is) {
+	# Buttons after the text, inside its form
+	}
+elsif ($msg =~ s/(<form\b[^>]*>)(.*?)<p>\s*((?:<input\b[^>]*>\s*)*<table\b[^>]*class=['"]ui_form_end_buttons['"].*?<\/table>)\s*(<\/form>)/$1<span class='ui_alert_text'>$lead$2<\/span><span class='ui_alert_actions'>$3<\/span>$4/is) {
+	# Buttons after the text, as a form end table inside its form
+	}
+else {
+	# Plain message after the title
+	$msg = $lead.$msg;
+	}
+return "<div class='ui_alert_box alert alert-$type'".
+       ($style ? " style='".&quote_escape($style)."'" : "").">".
+       &ui_alert_icon($type, $desc_icon).
+       "<div class='ui_alert_body'>$msg</div></div>\n";
 }
 
 ####################### javascript functions

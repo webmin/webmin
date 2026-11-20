@@ -70,6 +70,8 @@ my $saved_csv = '';
 *main::ReadParse = *main::ReadParseMime = sub { };
 *main::error = sub { die join(' ', @_)."\n" };
 *main::error_setup = sub { };
+# Omit the alert artwork so any SVG in the output comes from the tested input.
+*main::theme_ui_alert_icon = sub { '' };
 *main::ui_print_header = sub { print main::ui_post_header($_[0]) };
 *main::ui_print_footer = sub {
 	while (@_) {

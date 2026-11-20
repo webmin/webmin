@@ -63,4 +63,26 @@ for my $case (
 	is($stderr, '', "$name: no loading errors");
 	}
 
+# Framed CGIs load the theme into the package that imported WebminCore.
+{
+	package FramedCGI;
+	local @INC = ($root, @INC);
+	require WebminCore;
+	WebminCore->import();
+	require "gray-theme/theme.pl";
+	my $icons = ui_icons();
+	::is($icons->{'alert'}->{'danger'}, 'x-circle', 'alert types map to SVG icon names');
+	::is($icons->{'fa'}->{'fa-lock'}, 'shield', 'Font Awesome classes map to SVG icon names');
+	::like(theme_ui_alert('Notice', 'info', 'fa-lock'), qr/ui_svg_icon_shield/,
+		'Framed can render alerts when a CGI loads the theme directly');
+	{
+		no warnings 'once';
+		local *WebminCore::theme_ui_icons = sub {
+			return { 'alert' => { 'info' => 'clock' }, 'fa' => { } };
+			};
+		::like(ui_alert_icon('info', 'fa-unknown'), qr/ui_svg_icon_clock/,
+			'an unknown class falls back to the themed alert icon');
+	}
+}
+
 done_testing();
