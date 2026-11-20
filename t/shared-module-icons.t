@@ -71,7 +71,7 @@ foreach my $map (@maps, "$root/images/modules/icons.map") {
 	}
 is_deeply(\@missing, [ ], 'all module and add-on actions resolve to their declared files');
 
-open(my $mime, '<', 'filemin/mime-icons') or die $!;
+open(my $mime, '<', 'filemin/mime-icons.map') or die $!;
 my @missing_mime;
 while (<$mime>) {
 	chomp;

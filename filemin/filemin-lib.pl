@@ -25,7 +25,7 @@ my ($type, $dir) = @_;
 our %mime_icon_maps;
 if (!$mime_icon_maps{$dir}) {
 	$mime_icon_maps{$dir} = { };
-	&read_file("$dir/mime-icons", $mime_icon_maps{$dir});
+	&read_file("$dir/mime-icons.map", $mime_icon_maps{$dir});
 	}
 my $name = $mime_icon_maps{$dir}->{$type} || $type;
 my $path = "images/icons/mime/$name.png";
