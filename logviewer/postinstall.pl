@@ -18,4 +18,13 @@ if (&foreign_check("syslog") && !&foreign_installed("syslog")) {
 		&unlock_file($syslog::module_config_file);
 		}
 	}
+
+# Older versions saved zero context lines as 0. An empty value means the
+# same, and makes the settings page show it as None.
+if ($config{'include_context'} eq '0') {
+	$config{'include_context'} = '';
+	&lock_file($module_config_file);
+	&save_module_config();
+	&unlock_file($module_config_file);
+	}
 }
