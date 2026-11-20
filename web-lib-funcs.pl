@@ -1005,8 +1005,11 @@ return undef;
 
 Returns the URL of a module image in the best available format: SVG first,
 then PNG, then GIF. The theme's copy under its images/modules directory is
-used first, then Webmin's copy under images/modules, then the module's own
-copy. Other URLs, and images found in no format, pass through unchanged.
+used first, followed by Webmin's module artwork and the module's own copy.
+Modules name shared icons in images/icons.map with action=filename.
+A name beginning with ./ refers to another image in that module.
+Webmin supplies the same defaults for separately packaged add-ons in
+images/modules/icons.map. Other URLs pass through unchanged.
 
 =cut
 sub module_icon_url
@@ -1015,23 +1018,41 @@ my ($url) = @_;
 my $prefix = &get_webprefix();
 my $path = $url;
 $path =~ s!^\Q$prefix\E(?=/)!! if ($prefix);
-return $url if ($path !~ m!\A(?:(?:/|\.\./)?([\w-]+)/)?images/([\w.-]+)\.(?:svg|png|gif)\z!);
+return $url if ($path !~ m!\A(?:(?:/|\.\./)?([\w-][\w.-]*)/)?images/([\w.-]+)\.(?:svg|png|gif)\z!);
 my ($module, $name) = ($1 || &get_module_name(), $2);
 return $url if (!$module);
 
-# Search the locations in order of precedence, skipping missing ones.
-my $own = &module_root_directory($module)."/images";
-my @dirs = ( ( map { "$_/images/modules/$module" }
-	       @theme_root_directories, $root_directory ), $own );
-foreach my $dir (grep { -d $_ } @dirs) {
+# A theme can override one action even when several share the same artwork.
+foreach my $root (@theme_root_directories, $root_directory) {
 	foreach my $ext ("svg", "png", "gif") {
-		next if (!-f "$dir/$name.$ext");
-		if ($dir ne $own) {
-			# Theme and Webmin copies share one URL. The theme
-			# overlay serves the theme's copy when it has one.
-			return "$prefix/images/modules/$module/$name.$ext";
-			}
-		# Keep the module's own path, changing only the format.
+		my $image = "/images/modules/$module/$name.$ext";
+		return "$prefix$image" if (-f "$root$image");
+		}
+	}
+
+my $own = &module_root_directory($module);
+my %icons;
+&read_file_cached("$root_directory/images/modules/icons.map", \%icons);
+my $file = $icons{"$module/$name"};
+if (!$file) {
+	my %defaults;
+	&read_file_cached("$own/images/icons.map", \%defaults);
+	$file = $defaults{$name};
+	}
+if ($file) {
+	# A module-local filename follows the module when it is cloned.
+	if ($file =~ m!^\./([\w.-]+)$!) {
+		return "$prefix/$module/images/$1" if (-f "$own/images/$1");
+		}
+	else {
+		my $path = $file =~ m!^/! ? $file : "/images/shared/$file";
+		return "$prefix$path" if (-f "$root_directory$path");
+		}
+	}
+
+# Keep the module's original URL when it supplies its own artwork.
+foreach my $ext ("svg", "png", "gif") {
+	if (-f "$own/images/$name.$ext") {
 		(my $rv = $url) =~ s/\.\w+\z/.$ext/;
 		return $rv;
 		}

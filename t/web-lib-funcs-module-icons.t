@@ -38,6 +38,13 @@ local *STDOUT = $out;
 return ($html =~ /<img src="([^"]+)"/)[0];
 }
 
+my $addon = 'third-party';
+my $map = "$root_directory/images/modules/icons.map";
+make_path("$root_directory/images/modules");
+open(my $fh, '>', $map) or die $!;
+print $fh "$addon/access=padlock.png\n$addon/lock=padlock.png\n";
+close($fh);
+
 my $own = "$root_directory/virtual-server/images";
 is(render('images/newplan.gif'), 'images/newplan.gif',
 	'keep the URL when no format exists');
@@ -87,4 +94,17 @@ foreach my $url ('/images/left.gif', '../images/left.gif',
 		 'graph.cgi?id=2', 'https://example.org/images/external.png') {
 	is(render($url), $url, "preserve $url");
 	}
+# Two add-on actions use the same stock icon, even if the add-on has its own.
+touch("$root_directory/images/shared/padlock.png");
+touch("$root_directory/$addon/images/access.svg");
+$module_name = $addon;
+foreach my $action ('access', 'lock') {
+	is(render("images/$action.gif"), '/webmin/images/shared/padlock.png',
+		"$action uses the shared file");
+	}
+touch("$theme/images/modules/$addon/access.gif");
+is(render('images/access.gif'), "/webmin/images/modules/$addon/access.gif",
+	'the theme overrides one shared action by its original name');
+is(render('images/lock.gif'), '/webmin/images/shared/padlock.png',
+	'the other action keeps the stock icon');
 done_testing();
