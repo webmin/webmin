@@ -70,6 +70,10 @@ for my $case (
 	require WebminCore;
 	WebminCore->import();
 	require "gray-theme/theme.pl";
+	my $grid = theme_ui_grid_table([ 'Cell' ], 2, 100, [], 'id="grid"');
+	::like($grid, qr{^<table class='wrapper'}, 'Framed wraps its grid');
+	::is(() = $grid =~ /id="grid"/g, 1, 'the grid ID belongs to one table');
+	::like($grid, qr{</tbody>\s*</table>}, 'the grid closes its body before its table');
 	my $icons = ui_icons();
 	::is($icons->{'alert'}->{'danger'}, 'x-circle', 'alert types map to SVG icon names');
 	::is($icons->{'fa'}->{'fa-lock'}, 'shield', 'Font Awesome classes map to SVG icon names');

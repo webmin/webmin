@@ -14,14 +14,6 @@ $main::basic_virtualmin_domain = 1;
 $main::nocreate_virtualmin_menu = 1;
 $main::nosingledomain_virtualmin_mode = 1;
 
-our $ui_formcount;
-
-# Global state for wrapper
-# if 0, wrapper isn't on, add one and open it, if 1 close it, if 2+, subtract
-# but don't close
-$main::WRAPPER_OPEN = 0;
-$main::COLUMNS_WRAPPER_OPEN = 0;
-
 # theme_config_return_link(module, url, [footer-label])
 # Return to the framed dashboard after editing Virtualmin settings.
 sub theme_config_return_link
@@ -32,41 +24,6 @@ if ($module eq "virtual-server") {
 	return ( "/right.cgi", $lang{'config_return'} );
 	}
 return ( $url, $label );
-}
-
-# theme_ui_print_header(subtext, header-args...)
-# Prints the page header like the core, but wraps the text under the
-# title in a span of its own, then prints the subtext block
-sub theme_ui_print_header
-{
-my ($text, @args) = @_;
-if ($args[9] ne '') {
-	# Text under the title, such as a version, gets an element of its own
-	# so the stylesheet can make it smaller
-	$args[9] = "<span class='ui_header_below'>$args[9]</span>";
-	}
-&header(@args);
-print &ui_post_header($text);
-}
-
-# theme_ui_post_header([subtext])
-# Returns HTML to appear directly after a standard header() call
-sub theme_ui_post_header
-{
-my ($text) = @_;
-my $rv;
-$rv .= "<div class='ui_post_header'>$text</div>\n" if (defined($text));
-$rv .= "<p></p>" if (!defined($text));
-return $rv;
-}
-
-# theme_ui_pre_footer()
-# Returns HTML to appear directly before a standard footer() call
-sub theme_ui_pre_footer
-{
-my $rv;
-$rv .= "<p></p>\n";
-return $rv;
 }
 
 # ui_print_footer(args...)
@@ -510,510 +467,11 @@ my @st = stat("$theme_root_directory/unauthenticated/$file");
 return @st ? $st[9] : &get_webmin_version();
 }
 
-# theme_tag_class(tags, class)
-# Adds a class to a string of tag attributes, merging it into an existing
-# class attribute so that a tag never gets two of them
-sub theme_tag_class
-{
-my ($tags, $class) = @_;
-return "class='$class'" if (!$tags);
-return $tags if ($tags =~ s/class=(['"])([^'"]*)\1/class=$1$2 $class$1/);
-return "$tags class='$class'";
-}
-
 # theme_popup_prehead(title, ...)
 # Popup windows and the frames get the same head as ordinary pages
 sub theme_popup_prehead
 {
 return &theme_prehead();
-}
-
-# theme_ui_table_start(heading, [tabletags], [cols], [&default-tds],
-#		       [right-heading])
-# Returns HTML for the start of a form table: a card with the heading in
-# its head row and the label and value rows in a nested table
-sub theme_ui_table_start
-{
-my ($heading, $tabletags, $cols, $tds, $rightheading) = @_;
-# Expose the column count so CSS can size the form layout.
-my $formcols = $cols || 4;
-if (! $tabletags =~ /width/) { $tabletages .= " width=100%"; }
-if (defined($main::ui_table_cols)) {
-  # Push on stack, for nested call
-  push(@main::ui_table_cols_stack, $main::ui_table_cols);
-  push(@main::ui_table_pos_stack, $main::ui_table_pos);
-  push(@main::ui_table_default_tds_stack, $main::ui_table_default_tds);
-  }
-my $rv;
-my $colspan = 1;
-
-if (!$main::WRAPPER_OPEN) {
-	# A class in the table tags, such as the login form's, joins the
-	# wrapper class instead of being lost as a second class attribute
-	$rv .= "<table ".&theme_tag_class($tabletags, 'shrinkwrapper').">\n";
-	$rv .= "<tr><td>\n";
-	}
-$main::WRAPPER_OPEN++;
-$rv .= "<table class='ui_table' $tabletags>\n";
-if (defined($heading) || defined($rightheading)) {
-	# Heading row, with an optional part at the right
-        $rv .= "<thead><tr>";
-	# Add the main heading when present.
-        if (defined($heading)) {
-                $rv .= "<td><b>$heading</b></td>"
-                }
-	# Put optional actions or context at the right.
-        if (defined($rightheading)) {
-                $rv .= "<td align=right>$rightheading</td>";
-                $colspan++;
-                }
-        $rv .= "</tr></thead>\n";
-        }
-$rv .= "<tbody> <tr class='ui_table_body'> <td colspan=$colspan>".
-       "<table class='ui_form_rows ui_form_rows_$formcols' width=100%>\n";
-$main::ui_table_cols = $formcols;
-$main::ui_table_pos = 0;
-$main::ui_table_default_tds = $tds;
-return $rv;
-}
-
-# ui_table_row(label, value, [cols], [&td-tags])
-# Returns HTML for a row in a table started by ui_table_start, with a 1-column
-# label and 1+ column value.
-sub theme_ui_table_row
-{
-my ($label, $value, $cols, $tds, $trs) = @_;
-$cols ||= 1;
-$tds ||= $main::ui_table_default_tds;
-my $rv;
-if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
-    $main::ui_table_pos != 0) {
-    # If the requested number of cols won't fit in the number
-    # remaining, start a new row
-    my $leftover = $main::ui_table_cols - $main::ui_table_pos;
-    $rv .= "<td colspan=$leftover></td>\n";
-    $rv .= "</tr>\n";
-    $main::ui_table_pos = 0;
-    }
-if (defined($label) &&
-    ($value =~ /id="([^"]+)"/ || $value =~ /id='([^']+)'/ ||
-     $value =~ /id=([^>\s]+)/)) {
-	# Value contains an input with an ID
-	my $id = $1;
-	$label = "<label for=\"".&quote_escape($id)."\">$label</label>";
-	}
-my $trtags_attrs = ref($trs) eq 'ARRAY' && $trs->[0] ? " $trs->[0]" : "";
-my $trtags_class = ref($trs) eq 'ARRAY' && $trs->[1] ? " $trs->[1]" : "";
-$rv .= "<tr class='ui_form_pair$trtags_class'$trtags_attrs>\n" if ($main::ui_table_pos%$main::ui_table_cols == 0);
-$rv .= "<td class='ui_form_label' $tds->[0]><b>$label</b></td>\n" if (defined($label));
-$rv .= "<td class='ui_form_value' colspan=$cols $tds->[1]>$value</td>\n";
-$main::ui_table_pos += $cols+(defined($label) ? 1 : 0);
-if ($main::ui_table_pos%$main::ui_table_cols == 0) {
-    $rv .= "</tr>\n";
-    $main::ui_table_pos = 0;
-    }
-return $rv;
-}
-
-sub theme_ui_table_hr
-{
-my $rv;
-if ($main::ui_table_pos) {
-	$rv .= "</tr>\n";
-	$main::ui_table_pos = 0;
-	}
-$rv .= "<tr class='ui_form_pair'>\n";
-$rv .= "<td class='ui_form_label' colspan=$main::ui_table_cols><hr></td>\n";
-$rv .= "</tr>\n";
-return $rv;
-}
-
-# theme_ui_table_end()
-# Returns HTML for the end of a table started by theme_ui_table_start
-sub theme_ui_table_end
-{
-my $rv;
-if ($main::ui_table_cols == 4 && $main::ui_table_pos) {
-  # Add an empty block to balance the table
-  $rv .= &ui_table_row(" ", " ");
-  }
-if (@main::ui_table_cols_stack) {
-  # Back to the column state of the enclosing table
-  $main::ui_table_cols = pop(@main::ui_table_cols_stack);
-  $main::ui_table_pos = pop(@main::ui_table_pos_stack);
-  $main::ui_table_default_tds = pop(@main::ui_table_default_tds_stack);
-  }
-else {
-  # No enclosing table
-  $main::ui_table_cols = undef;
-  $main::ui_table_pos = undef;
-  $main::ui_table_default_tds = undef;
-  }
-$rv .= "</tbody></table></td></tr></table>\n";
-if ($main::WRAPPER_OPEN==1) {
-	# Close the card around the outermost table
-	$rv .= "</td></tr>\n";
-	$rv .= "</table>\n";
-	}
-$main::WRAPPER_OPEN--;
-return $rv;
-}
-
-# theme_ui_tabs_start(&tabs, name, selected, show-border)
-# Render a row of tabs from which one can be selected. Each tab is an array
-# ref containing a name, title and link. The tabs are links in a div, and
-# select_tab switches their classes and the visible tab body.
-sub theme_ui_tabs_start
-{
-my ($tabs, $name, $sel, $border) = @_;
-my $rv;
-if (!$main::ui_hidden_start_donejs++) {
-  # The tab switching script is printed once per page
-  $rv .= &ui_hidden_javascript();
-  }
-
-# List of tab names, used by select_tab to find the tabs and bodies
-my $tabnames = &convert_to_json([map { $_->[0] } @$tabs]);
-$rv .= "<script>\n";
-$rv .= "document.${name}_tabnames = $tabnames;\n";
-$rv .= "</script>\n";
-
-# Output the tabs
-$rv .= &ui_hidden($name, $sel)."\n";
-$rv .= "<div class='ui_tabs' id='tabs_$name'>\n";
-foreach my $t (@$tabs) {
-	my $cls = $t->[0] eq $sel ? "ui_tab ui_tab_selected" : "ui_tab";
-	my $href = $t->[2] ne '' ? $t->[2] : '#';
-	$rv .= "<a id='tab_$t->[0]' class='$cls' href='$href' ".
-	       "onClick='return select_tab(\"$name\", \"$t->[0]\")'>".
-	       "$t->[1]</a>\n";
-	}
-$rv .= "</div>\n";
-
-if ($border) {
-	# All tab bodies are within a box
-	$rv .= "<div class='ui_tabs_box'>\n";
-	}
-$main::ui_tabs_selected = $sel;
-return $rv;
-}
-
-# theme_ui_tabs_end(show-border)
-# Closes the box opened by theme_ui_tabs_start
-sub theme_ui_tabs_end
-{
-my ($border) = @_;
-return $border ? "</div>\n" : "";
-}
-
-# theme_ui_columns_start(&headings, [width-percent], [no-border],
-#                        [&td-tags], [title], [sortable], [class])
-# Returns HTML for a multi-column table. The sortable flag forces client-side
-# sorting, and class adds a table class.
-sub theme_ui_columns_start
-{
-my ($heads, $width, $noborder, $tdtags, $title, $sortable, $class) = @_;
-my ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
-my $rv;
-$theme_ui_columns_row_toggle = 0;
-if (!$noborder && !$main::COLUMNS_WRAPPER_OPEN) {
-	# The outermost bordered table opens the card and a container that
-	# scrolls wide columns without widening the page.
-	$rv .= "<table class='wrapper' width="
-	     . ($width ? $width : "100")
-	     . "%>\n";
-	$rv .= "<tr><td><div class='ui_columns_scroll'>\n";
-	}
-if (!$noborder) {
-	# Nested bordered tables share that card
-	$main::COLUMNS_WRAPPER_OPEN++;
-	}
-# Tables are sorted by sorttable.js unless their headings are links, or
-# always when the caller asked for a sortable table
-my @classes;
-push(@classes, "ui_table") if (!$noborder);
-push(@classes, "sortable") if (!$href || $sortable);
-push(@classes, "ui_columns");
-push(@classes, $class) if ($class);
-$rv .= "<table".(@classes ? " class='".join(" ", @classes)."'" : "").
-    (defined($width) ? " width=$width%" : "").
-    ($sortable ? " data-sortable='1'" : "").">\n";
-if ($title) {
-  # Title row spanning the table, above the column headings
-  $rv .= "<thead> <tr ".&theme_tag_class($tb, 'ui_columns_heading').">".
-	 "<td colspan=".scalar(@$heads)."><b>$title</b></td>".
-	 "</tr> </thead> <tbody>\n";
-  }
-$rv .= "<thead> <tr ".&theme_tag_class($tb, 'ui_columns_heads').">\n";
-my $i;
-for($i=0; $i<@$heads; $i++) {
-  $rv .= "<td ".$tdtags->[$i]."><b>".
-         ($heads->[$i] eq "" ? "<br>" : $heads->[$i])."</b></td>\n";
-  }
-$rv .= "</tr></thead> <tbody>\n";
-$theme_ui_columns_count++;
-return $rv;
-}
-
-# theme_ui_columns_header(&columns, &tdtags)
-# Returns HTML for a heading row inside a multi-column table
-sub theme_ui_columns_header
-{
-my ($cols, $tdtags) = @_;
-my $rv;
-$rv .= "<tr ".&theme_tag_class($tb, 'ui_columns_header').">\n";
-for(my $i=0; $i<@$cols; $i++) {
-	$rv .= "<td ".$tdtags->[$i]."><b>".
-	       ($cols->[$i] eq "" ? "<br>" : $cols->[$i])."</b></td>\n";
-	}
-$rv .= "</tr>\n";
-return $rv;
-}
-
-# theme_ui_columns_row(&columns, &tdtags)
-# Returns HTML for a row in a multi-column table. Rows are highlighted on
-# hover and when checked by the stylesheet, so no handlers are needed.
-sub theme_ui_columns_row
-{
-$theme_ui_columns_row_toggle = $theme_ui_columns_row_toggle ? '0' : '1';
-local ($cols, $tdtags) = @_;
-my $rv;
-$rv .= "<tr class='ui_columns_row row$theme_ui_columns_row_toggle'>\n";
-my $i;
-for($i=0; $i<@$cols; $i++) {
-	$rv .= "<td ".$tdtags->[$i].">".
-	       ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i])."</td>\n";
-	}
-$rv .= "</tr>\n";
-return $rv;
-}
-
-# theme_ui_columns_end()
-# Ends a table from theme_ui_columns_start. Also closes the scroll container
-# and card opened for the outermost bordered table.
-sub theme_ui_columns_end
-{
-my $rv;
-$rv = "</tbody> </table>\n";
-# Close the shared scroll container with the outermost table.
-if ($main::COLUMNS_WRAPPER_OPEN == 1) {
-	$rv .= "</div></td> </tr> </table>\n";
-	}
-$main::COLUMNS_WRAPPER_OPEN--;
-return $rv;
-}
-
-# theme_ui_grid_table(&elements, columns, [width-percent], [tds], [tabletags],
-#   [title])
-# Given a list of HTML elements, formats them into a table with the given
-# number of columns. However, themes are free to override this to use fewer
-# columns where space is limited.
-sub theme_ui_grid_table
-{
-my ($elements, $cols, $width, $tds, $tabletags, $title) = @_;
-return "" if (!@$elements);
-	
-my $rv = "<table class='wrapper' " 
-       . ($width ? " width=$width%" : " width=100%")
-       . ($tabletags ? " ".$tabletags : "")
-       . "><tr><td>\n";
-$rv .= "<table class='ui_table ui_grid_table'"
-     . ($width ? " width=$width%" : "")
-     . ($tabletags ? " ".$tabletags : "")
-     . ">\n";
-if ($title) {
-	$rv .= "<thead><tr class='ui_grid_heading'> ".
-	       "<td colspan=$cols><b>$title</b></td> </tr></thead>\n";
-	}
-$rv .= "<tbody>\n";
-my $i;
-for($i=0; $i<@$elements; $i++) {
-  $rv .= "<tr class='ui_grid_row'>" if ($i%$cols == 0);
-  $rv .= "<td ".$tds->[$i%$cols]." valign=top class='ui_grid_cell'>".
-	 $elements->[$i]."</td>\n";
-  $rv .= "</tr>" if ($i%$cols == $cols-1);
-  }
-if ($i%$cols) {
-  while($i%$cols) {
-    $rv .= "<td ".$tds->[$i%$cols]." class='ui_grid_cell'><br></td>\n";
-    $i++;
-    }
-  $rv .= "</tr>\n";
-  }
-$rv .= "</table>\n";
-$rv .= "</tbody>\n";
-$rv .= "</td></tr></table>\n"; # wrapper
-return $rv;
-}
-
-sub theme_ui_hidden_start
-{
-my ($title, $name, $status) = @_;
-my $rv;
-my $opened = $status ? " open" : "";
-$rv .= "<details class='ui_hidden_start'$opened>";
-$rv .= "<summary>$title</summary>\n";
-return $rv;
-}
-
-=head2 ui_hidden_end(name)
-
-Returns HTML for the end of a hidden section, started by ui_hidden_start.
-
-=cut
-sub theme_ui_hidden_end
-{
-return "</details>\n";
-}
-
-# theme_ui_hidden_table_start(heading, [tabletags], [cols], name, status,
-#                             [&default-tds], [rightheading])
-# A table with a heading and table inside, and which is collapsible
-sub theme_ui_hidden_table_start
-{
-my ($heading, $tabletags, $cols, $name, $status, $tds, $rightheading) = @_;
-my $rv;
-if (!$main::ui_hidden_start_donejs++) {
-  $rv .= &ui_hidden_javascript();
-  }
-my $opened = $status ? " open" : "";
-my $header = defined($heading) ? "<span>$heading</span>" : "";
-my $rheader = defined($rightheading) ? "<span class='rightheading'>$rightheading</span>" : "";
-if (!$main::WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
-	$rv .= "<div>\n";
-	}
-$main::WRAPPER_OPEN++;
-my $colspan = 1;
-$rv .= "<details data-name='$name' class='ui_hidden_table_start'$opened $tabletags>";
-$rv .= "<summary>$header $rheader</summary>\n";
-$rv .= "<table width=100%>\n";
-$main::ui_table_cols = $cols || 4;
-$main::ui_table_pos = 0;
-$main::ui_table_default_tds = $tds;
-return $rv;
-}
-
-# ui_hidden_table_end(name)
-# Returns HTML for the end of table with hiding, as started by
-# ui_hidden_table_start
-sub theme_ui_hidden_table_end
-{
-local $rv = "</table></details>\n";
-if ( $main::WRAPPER_OPEN == 1 ) {
-	$main::WRAPPER_OPEN--;
-	$rv .= "</div>\n";
-	}
-elsif ($main::WRAPPER_OPEN) { $main::WRAPPER_OPEN--; }
-return $rv;
-}
-
-# theme_ui_checked_columns_row(&columns, &tdtags, checkname, checkvalue,
-#			       [checked], [disabled], [tags])
-# Returns HTML for a row with a checkbox in its first column. The row is
-# highlighted by the stylesheet while its checkbox is checked.
-sub theme_ui_checked_columns_row
-{
-$theme_ui_columns_row_toggle = $theme_ui_columns_row_toggle ? '0' : '1';
-local ($cols, $tdtags, $checkname, $checkvalue, $checked, $disabled, $tags) = @_;
-my $rv;
-my $rid = &quote_escape("row_${checkname}_${checkvalue}");
-my $mycb = &theme_tag_class($cb,
-	"row$theme_ui_columns_row_toggle ui_checked_columns");
-$rv .= "<tr id=\"$rid\" $mycb>\n";
-$rv .= "<td class='ui_checked_checkbox' ".$tdtags->[0].">".
-       &ui_checkbox($checkname, $checkvalue, undef, $checked, $tags,
-		    $disabled).
-       "</td>\n";
-my $i;
-for($i=0; $i<@$cols; $i++) {
-	$rv .= "<td ".$tdtags->[$i+1].">";
-	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
-		# Plain cells become labels for the control, so a click on
-		# them selects it
-		$rv .= "<label for=\"".
-			&quote_escape("${checkname}_${checkvalue}")."\">";
-		}
-	$rv .= ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i]);
-	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
-		# Close that label
-		$rv .= "</label>";
-		}
-	$rv .= "</td>\n";
-	}
-$rv .= "</tr>\n";
-return $rv;
-}
-
-# theme_ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue,
-#			     [checked])
-# Returns HTML for a row with a radio button in its first column. The row
-# is highlighted by the stylesheet while its button is selected.
-sub theme_ui_radio_columns_row
-{
-local ($cols, $tdtags, $checkname, $checkvalue, $checked) = @_;
-my $rv;
-my $rid = &quote_escape("row_${checkname}_${checkvalue}");
-my $mycb = &theme_tag_class($cb, "ui_radio_columns");
-$rv .= "<tr $mycb id=\"$rid\">\n";
-$rv .= "<td ".$tdtags->[0]." class='ui_radio_radio'>".
-       &ui_oneradio($checkname, $checkvalue, undef, $checked).
-       "</td>\n";
-my $i;
-for($i=0; $i<@$cols; $i++) {
-	$rv .= "<td ".$tdtags->[$i+1].">";
-	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
-		# Plain cells become labels for the control, so a click on
-		# them selects it
-		$rv .= "<label for=\"".
-			&quote_escape("${checkname}_${checkvalue}")."\">";
-		}
-	$rv .= ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i]);
-	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
-		# Close that label
-		$rv .= "</label>";
-		}
-	$rv .= "</td>\n";
-	}
-$rv .= "</tr>\n";
-return $rv;
-}
-
-# theme_ui_nav_link(direction, url, disabled)
-# Returns an arrow icon linking to provided url
-sub theme_ui_nav_link
-{
-my ($direction, $url, $disabled) = @_;
-my $icon = &ui_svg_icon($direction eq "left" ? "chevron-left"
-					      : "chevron-right",
-			{ 'size' => 14,
-			  'title' => $direction eq "left" ? '<-' : '->' });
-if ($disabled) {
-  # A disabled arrow is plain, not a link
-  return "<span class='ui_nav_link ui_nav_link_disabled'>$icon</span>\n";
-  }
-else {
-  # Arrow linking to the page
-  return "<a class='ui_nav_link' href=\"$url\">$icon</a>\n";
-  }
-}
-
-# theme_ui_links_row(&links)
-# Returns links in a toolbar wrapper. Gray Theme hides the legacy separators
-# and styles each link as a button.
-sub theme_ui_links_row
-{
-my ($links) = @_;
-# An empty list does not need a toolbar container.
-return "" if (!$links || !@$links);
-my @button_links = map {
-	my $link = $_;
-	# Drop the final period from the button without changing its source text.
-	$link =~ s/(?<!\.)\.(?=(?:\s*<\/[^>]+>)*\s*<\/a>\s*$)//i;
-	$link;
-	} @$links;
-return "<div class='ui_links_row'>".
-       join(" <span class='ui_links_sep'>|</span> ", @button_links).
-       "</div>\n";
 }
 
 # theme_file_chooser_button(input, type, [form], [chroot], [addmode])
@@ -1185,77 +643,61 @@ if (get_module_name() eq "virtual-server" && $orig eq "" &&
 print "Location: $url\n\n";
 }
 
-# theme_ui_hidden_javascript()
-# Returns scripts to switch tabs and toggle sections, classes and arrows.
-sub theme_ui_hidden_javascript
+# theme_ui_grid_table(&elements, columns, [width-percent], [&tds], [tabletags], [title])
+# Render a grid inside the Framed theme's wrapper table.
+sub theme_ui_grid_table
 {
-return <<EOF;
-<script>
-// hidden_opener(divid, openerid): Toggle a section and its arrow.
-function hidden_opener(divid, openerid)
-{
-var divobj = document.getElementById(divid);
-var openerobj = document.getElementById(openerid);
-var shown = divobj.className == 'opener_shown';
-divobj.className = shown ? 'opener_hidden' : 'opener_shown';
-if (openerobj) {
-  // Theme arrows follow the opener's CSS class.
-  openerobj.className = shown ? 'opener_closed' : 'opener_open';
-  // Core openers use an image instead of a CSS arrow.
-  var img = openerobj.getElementsByTagName('img')[0];
-  if (img) {
-    img.src = '@{[&get_webprefix()]}/images/' + (shown ? 'closed.png' : 'open.png');
-    }
-  }
+my ($elements, $cols, $width, $tds, $tabletags, $title) = @_;
+return "" if (!@$elements);
+
+my $rv = "<table class='wrapper' "
+       . ($width ? " width=$width%" : " width=100%")
+       . "><tr><td>\n";
+$rv .= "<table class='ui_table ui_grid_table'"
+     . ($width ? " width=$width%" : "")
+     . ($tabletags ? " ".$tabletags : "")
+     . ">\n";
+if ($title) {
+	$rv .= "<thead><tr class='ui_grid_heading'> ".
+	       "<td colspan=$cols><b>$title</b></td> </tr></thead>\n";
+	}
+$rv .= "<tbody>\n";
+my $i;
+for($i=0; $i<@$elements; $i++) {
+	$rv .= "<tr class='ui_grid_row'>" if ($i%$cols == 0);
+	$rv .= "<td ".$tds->[$i%$cols]." valign=top class='ui_grid_cell'>".
+	       $elements->[$i]."</td>\n";
+	$rv .= "</tr>" if ($i%$cols == $cols-1);
+	}
+if ($i%$cols) {
+	while($i%$cols) {
+		$rv .= "<td ".$tds->[$i%$cols]." class='ui_grid_cell'><br></td>\n";
+		$i++;
+		}
+	$rv .= "</tr>\n";
+	}
+$rv .= "</tbody></table>\n";
+$rv .= "</td></tr></table>\n"; # wrapper
+return $rv;
 }
 
-// Show a tab and hide the others
-function select_tab(name, tabname, form)
+# theme_ui_nav_link(direction, url, disabled)
+# Returns an arrow icon linking to provided url
+sub theme_ui_nav_link
 {
-var tabnames = document[name+'_tabnames'];
-for(var i=0; i<tabnames.length; i++) {
-  var tabobj = document.getElementById('tab_'+tabnames[i]);
-  var divobj = document.getElementById('div_'+tabnames[i]);
-  var selected = tabnames[i] == tabname;
-  if (tabobj) {
-    // Mark the tab itself
-    tabobj.className = selected ? 'ui_tab ui_tab_selected' : 'ui_tab';
-    }
-  if (!divobj) {
-    // A tab that is only a link has no body
-    continue;
-    }
-  divobj.className = (selected ? 'opener_shown' : 'opener_hidden')+
-		     ' ui_tabs_start';
-  if (selected) {
-    // Point the submit buttons of a nested form at it
-    try {
-	var nestedForm = divobj.querySelector("form[data-form-nested]");
-	if (nestedForm) {
-		var nestedFormId = nestedForm.getAttribute("data-form-nested"),
-		formSubmitters = document
-			.querySelectorAll(
-				"[data-submit-nested='" + nestedFormId + "']");
-		if (formSubmitters) {
-			formSubmitters.forEach(function(submitter) {
-				submitter.setAttribute(
-					"form", nestedForm.getAttribute('id'));
-			});
-		}
-	}
-    } catch(e) {
-	console.warn('Cannot set the related submitter ID of the nested form : ' + e);
-    }
-    }
+my ($direction, $url, $disabled) = @_;
+my $icon = &ui_svg_icon($direction eq "left" ? "chevron-left"
+					      : "chevron-right",
+			{ 'size' => 14,
+			  'title' => $direction eq "left" ? '<-' : '->' });
+if ($disabled) {
+  # A disabled arrow is plain, not a link
+  return "<span class='ui_nav_link ui_nav_link_disabled'>$icon</span>\n";
   }
-if (document.forms[0] && document.forms[0][name]) {
-  // Remember the tab in the hidden field, so a submit returns to it
-  document.forms[0][name].value = tabname;
+else {
+  # Arrow linking to the page
+  return "<a class='ui_nav_link' href=\"$url\">$icon</a>\n";
   }
-return false;
-}
-</script>
-EOF
 }
 
 # theme_ui_alert(content, [type], [icon], [&attrs])
@@ -1291,130 +733,6 @@ return &ui_tag_start('div', \%a).
        &ui_alert_icon($type, $fa).
        "<div class='ui_alert_body'>$body</div>".
        &ui_tag_end('div')."\n";
-}
-
-# XXX Temporary until ui-lib.pl valign stuff gets cleaned up
-#
-# theme_ui_columns_table(&headings, width-percent, &data, &types, no-sort, title,
-#		   empty-msg)
-# Returns HTML for a complete table.
-# headings - An array ref of heading HTML
-# width-percent - Preferred total width
-# data - A 2x2 array ref of table contents. Each can either be a simple string,
-#        or a hash ref like :
-#          { 'type' => 'group', 'desc' => 'Some section title' }
-#          { 'type' => 'string', 'value' => 'Foo', 'colums' => 3,
-#	     'nowrap' => 1 }
-#          { 'type' => 'checkbox', 'name' => 'd', 'value' => 'foo',
-#            'label' => 'Yes', 'checked' => 1, 'disabled' => 1 }
-#          { 'type' => 'radio', 'name' => 'd', 'value' => 'foo', ... }
-# types - An array ref of data types, such as 'string', 'number', 'bytes'
-#         or 'date'
-# no-sort - Set to 1 to disable sorting by theme
-# title - Text to appear above the table
-# empty-msg - Message to display if no data
-# sortable - Set to 1 to mark the table for client-side sorting
-sub theme_ui_columns_table
-{
-my ($heads, $width, $data, $types, $nosort, $title, $emptymsg,
-    $sortable) = @_;
-my $rv;
-
-# Just show empty message if no data
-if ($emptymsg && !@$data) {
-	$rv .= &ui_subheading($title) if ($title);
-	$rv .= "<b>$emptymsg</b><p>\n";
-	return $rv;
-	}
-
-# Are there any checkboxes in each column? If so, make those columns narrow
-my @tds;
-my $maxwidth = 0;
-foreach my $r (@$data) {
-	my $cc = 0;
-	foreach my $c (@$r) {
-		if (ref($c) &&
-		    ($c->{'type'} eq 'checkbox' || $c->{'type'} eq 'radio')) {
-			$tds[$cc] .= " width=5" if ($tds[$cc] !~ /width=/);
-			}
-		$cc++;
-		}
-	$maxwidth = $cc if ($cc > $maxwidth);
-	}
-$rv .= &ui_columns_start($heads, $width, 0, \@tds, $title, $sortable);
-
-# Add the data rows
-foreach my $r (@$data) {
-	my $c0;
-	if (ref($r->[0]) && ($r->[0]->{'type'} eq 'checkbox' ||
-			     $r->[0]->{'type'} eq 'radio')) {
-		# First column is special
-		$c0 = $r->[0];
-		$r = [ @$r[1..(@$r-1)] ];
-		}
-	# Turn data into HTML
-	my @rtds = @tds;
-	my @cols;
-	my $cn = 0;
-	$cn++ if ($c0);
-	foreach my $c (@$r) {
-		if (!ref($c)) {
-			# Plain old string
-			push(@cols, $c);
-			}
-		elsif ($c->{'type'} eq 'checkbox') {
-			# Checkbox in non-first column
-			push(@cols, &ui_checkbox($c->{'name'}, $c->{'value'},
-					         $c->{'label'}, $c->{'checked'},
-						 $c->{'tags'},
-						 $c->{'disabled'}));
-			}
-		elsif ($c->{'type'} eq 'radio') {
-			# Radio button in non-first column
-			push(@cols, &ui_oneradio($c->{'name'}, $c->{'value'},
-					         $c->{'label'}, $c->{'checked'},
-						 $c->{'tags'},
-						 $c->{'disabled'}));
-			}
-		elsif ($c->{'type'} eq 'group') {
-			# Header row that spans whole table
-			$rv .= &ui_columns_header([ $c->{'desc'} ],
-						  [ "colspan=$width" ]);
-			next;
-			}
-		elsif ($c->{'type'} eq 'string') {
-			# A string, which might be special
-			push(@cols, $c->{'value'});
-			if ($c->{'columns'} > 1) {
-				splice(@rtds, $cn, $c->{'columns'},
-				       "colspan=".$c->{'columns'});
-				}
-			if ($c->{'nowrap'}) {
-				$rtds[$cn] .= " nowrap";
-				}
-			}
-		$cn++;
-		}
-	# Add the row
-	if (!$c0) {
-		$rv .= &ui_columns_row(\@cols, \@rtds);
-		}
-	elsif ($c0->{'type'} eq 'checkbox') {
-		$rv .= &ui_checked_columns_row(\@cols, \@rtds, $c0->{'name'},
-					       $c0->{'value'}, $c0->{'checked'},
-					       $c0->{'disabled'},
-					       $c0->{'tags'});
-		}
-	elsif ($c0->{'type'} eq 'radio') {
-		$rv .= &ui_radio_columns_row(\@cols, \@rtds, $c0->{'name'},
-					     $c0->{'value'}, $c0->{'checked'},
-					     $c0->{'disabled'},
-					     $c0->{'tags'});
-		}
-	}
-
-$rv .= &ui_columns_end();
-return $rv;
 }
 
 =yui
