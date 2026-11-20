@@ -12,7 +12,7 @@ use WebminCore;
 sub is_installed
 {
 # Mode 0 is a boolean probe; mode 1 asks whether the module should be visible.
-return 0 if (!has_command("systemctl"));
+return 0 if (!has_command("systemctl") || !-d "/run/systemd/system");
 return $_[0] ? 2 : 1;
 }
 

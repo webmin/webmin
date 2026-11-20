@@ -64,8 +64,7 @@ elsif ($config{'init_base'} && -d "/etc/init" &&
        &execute_command("/sbin/init --version") == 0) {
 	$init_mode = "upstart";
 	}
-elsif (-d "/etc/systemd" && &has_command("systemctl") &&
-       &execute_command("systemctl list-units") == 0) {
+elsif (-d "/run/systemd/system" && &has_command("systemctl")) {
 	$init_mode = "systemd";
 	}
 elsif ($config{'init_base'}) {
