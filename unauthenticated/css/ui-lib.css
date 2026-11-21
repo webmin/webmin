@@ -12,8 +12,9 @@
  * --font-family-mono when defined, otherwise text inherits the page font
  * and code uses the monospace fallback below.
  *
- * .ui_page and standalone .ui_multi lists, .ui_toggle switches and
- * .ui_action controls supply the widget tokens.
+ * .ui_page and standalone .ui_multi lists, .ui_toggle switches,
+ * .ui_action controls, dropdowns, dialogs, breadcrumbs, pagers and
+ * progress bars supply the widget tokens.
  * The palette and shared spacing come from --ui-* custom properties,
  * which a theme may redefine on .ui_page to restyle every
  * widget at once. Setting data-ui-scheme="dark" (or "auto") on any
@@ -25,7 +26,8 @@
 .ui_toggle:not(:where(.ui_page *, .ui_multi *)),
 .ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 .ui_dropdown:not(:where(.ui_page *)), .ui_dialog:not(:where(.ui_page *)),
-.ui_breadcrumb:not(:where(.ui_page *)), .ui_pager:not(:where(.ui_page *)) {
+.ui_breadcrumb:not(:where(.ui_page *)), .ui_pager:not(:where(.ui_page *)),
+.ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
 	/* Palette tokens read the theme's own custom properties first - the
 	 * names Authentic defines for its palettes and night mode - and
 	 * fall back to the colors of the gray theme, which defines only the
@@ -88,6 +90,16 @@
 	--ui-neutral-text: var(--text-color-neutral-stressed, #40474f);
 	--ui-neutral-soft: var(--bg-color-neutral, var(--ui-surface-2));
 	--ui-neutral-line: var(--border-color-neutral, #d7dbe0);
+
+	/* Series. Colors for a bar that shows more kinds of data than there
+	 * are states, such as traffic by service. Four of them are state
+	 * and border colors, so they follow the palette in use. */
+	--ui-series-1: var(--ui-info);
+	--ui-series-2: var(--ui-success);
+	--ui-series-3: var(--ui-warning);
+	--ui-series-4: var(--text-color-pink, #c2439b);
+	--ui-series-5: var(--ui-neutral);
+	--ui-series-6: var(--ui-border-strong);
 
 	/* Controls */
 	--ui-input-bg: var(--bg-color-input, var(--ui-surface));
@@ -276,7 +288,8 @@
 [data-ui-scheme="dark"] .ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 .ui_action[data-ui-scheme="dark"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 [data-ui-scheme="dark"] :is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager):not(:where(.ui_page *)),
-:is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="dark"]:not(:where(.ui_page *)) {
+:is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="dark"]:not(:where(.ui_page *)),
+[data-ui-scheme="dark"] .ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
 	--ui-canvas: #15171b;
 	--ui-surface: #1e2126;
 	--ui-surface-2: #23262c;
@@ -311,6 +324,7 @@
 	--ui-neutral-text: var(--text-color-neutral-stressed, #b6bec7);
 	--ui-neutral-soft: var(--bg-color-neutral, #272b31);
 	--ui-neutral-line: var(--border-color-neutral, #3c424b);
+	--ui-series-4: var(--text-color-pink, #e58cc4);
 	--ui-input-bg: var(--ui-surface);
 	--ui-input-border: var(--ui-border-strong);
 	color-scheme: dark;
@@ -325,7 +339,8 @@
 	[data-ui-scheme="auto"] .ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 	.ui_action[data-ui-scheme="auto"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 	[data-ui-scheme="auto"] :is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager):not(:where(.ui_page *)),
-	:is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="auto"]:not(:where(.ui_page *)) {
+	:is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="auto"]:not(:where(.ui_page *)),
+	[data-ui-scheme="auto"] .ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
 		--ui-canvas: #15171b;
 		--ui-surface: #1e2126;
 		--ui-surface-2: #23262c;
@@ -360,6 +375,7 @@
 		--ui-neutral-text: var(--text-color-neutral-stressed, #b6bec7);
 		--ui-neutral-soft: var(--bg-color-neutral, #272b31);
 		--ui-neutral-line: var(--border-color-neutral, #3c424b);
+		--ui-series-4: var(--text-color-pink, #e58cc4);
 		--ui-input-bg: var(--ui-surface);
 		--ui-input-border: var(--ui-border-strong);
 		color-scheme: dark;
@@ -467,6 +483,12 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_bg_danger { background: var(--ui-danger); }
 .ui_bg_info { background: var(--ui-info); }
 .ui_bg_neutral { background: var(--ui-neutral); }
+.ui_bg_series_1 { background: var(--ui-series-1); }
+.ui_bg_series_2 { background: var(--ui-series-2); }
+.ui_bg_series_3 { background: var(--ui-series-3); }
+.ui_bg_series_4 { background: var(--ui-series-4); }
+.ui_bg_series_5 { background: var(--ui-series-5); }
+.ui_bg_series_6 { background: var(--ui-series-6); }
 
 /* ---- Page header ---- */
 

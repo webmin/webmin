@@ -5643,7 +5643,7 @@ of 100, or of the max option. The result is clamped to the range 0 to
 100. Options are :
 
 =item label - Text shown above the bar, or before it in the inline
-layout, or under the ring.
+layout, or under the ring (or label_html for pre-built HTML).
 
 =item state - State name coloring the bar, defaulting to info.
 
@@ -5655,7 +5655,7 @@ the first threshold, warning from there, danger from the second. Set to
 pass raw numbers such as bytes.
 
 =item value - Text shown with the bar instead of the percentage, such as
-"3.4 GB of 10 GB".
+"3.4 GB of 10 GB" (or value_html for pre-built HTML).
 
 =item small - Set to 1 for a bare bar with no text at all.
 
@@ -5666,14 +5666,22 @@ a table cell or a list row.
 end of the bar, instead of at the right of the label row.
 
 =item segments - Array ref of hash refs with pct (or value, against max),
-state and label, drawn as consecutive segments of one bar, with a legend
-under it when segments have labels. The main value is then their sum.
+state and label (or label_html), drawn as consecutive segments of one bar,
+with a legend under it when segments have labels. The main value is then
+their sum. Segments are drawn to a tenth of a percent, so that bars placed
+one above the other line up, while the legend shows whole percentages. A
+bar that shows more kinds of data than there are states can give a segment
+a series from 1 to 6 instead of a state. A segment with empty set to 1 is
+left blank and is not counted : it moves the segments after it along the
+bar.
 
 =item indeterminate - Set to 1 for a task of unknown progress, drawn as
 a moving bar. The value is ignored.
 
 =item ring - Set to 1 for a circular gauge with the value in its center,
 sized by the size option in pixels, defaulting to 56.
+
+Loads ui_page_assets once, and can also be used outside a ui_page.
 
 =cut
 sub ui_progress
@@ -5689,18 +5697,27 @@ my @segments;
 if ($opts->{'segments'} && ref($opts->{'segments'}) eq 'ARRAY') {
 	foreach my $s (@{$opts->{'segments'}}) {
 		next if (ref($s) ne 'HASH');
+		# The color class comes from the series when one is given,
+		# and from the state otherwise. A blank segment has none.
+		my $series = defined($s->{'series'}) &&
+			     $s->{'series'} =~ /\A[1-6]\z/ ? $s->{'series'} : undef;
+		my @of = defined($s->{'pct'}) ? ( $s->{'pct'} )
+					      : ( $s->{'value'}, $max );
 		push(@segments, {
-			'pct' => defined($s->{'pct'}) ?
-				&_ui_progress_pct($s->{'pct'}) :
-				&_ui_progress_pct($s->{'value'}, $max),
-			'state' => &_ui_state($s->{'state'} || 'info'),
+			'pct' => &_ui_progress_pct($of[0], $of[1]),
+			'width' => &_ui_progress_pct($of[0], $of[1], 1),
+			'empty' => $s->{'empty'} ? 1 : 0,
+			'tint' => $s->{'empty'} ? undef :
+				  $series ? "ui_bg_series_$series" :
+				  "ui_bg_".&_ui_state($s->{'state'} || 'info'),
 			'label' => &_ui_text($s, 'label') });
 		}
 	}
 my $pct = 0;
 if (@segments) {
-	$pct += $_->{'pct'} foreach (@segments);
-	$pct = 100 if ($pct > 100);
+	# Add up the drawn widths, so that the total matches the bar
+	$pct += $_->{'width'} foreach (grep { !$_->{'empty'} } @segments);
+	$pct = &_ui_progress_pct($pct);
 	}
 else {
 	$pct = &_ui_progress_pct($value, $max);
@@ -5720,8 +5737,10 @@ elsif ($opts->{'thresholds'}) {
 else {
 	$state = 'info';
 	}
-my $vtext = defined($opts->{'value'}) ? &html_escape($opts->{'value'})
-				      : $pct."%";
+my $vtext = defined($opts->{'value_html'}) && $opts->{'value_html'} ne '' ?
+		$opts->{'value_html'} :
+	    defined($opts->{'value'}) ? &html_escape($opts->{'value'}) :
+	    $pct."%";
 my $indet = $opts->{'indeterminate'} ? 1 : 0;
 my %aria = ( 'role' => 'progressbar',
 	     'aria-valuemin' => 0,
@@ -5762,7 +5781,7 @@ if ($opts->{'ring'}) {
 		{ 'class' => 'ui_progress_ring_box' });
 	$body .= &ui_tag('span', $label, { 'class' => 'ui_progress_label' })
 		if (defined($label));
-	return &_ui_block('div', $body, {
+	return &ui_page_assets().&_ui_block('div', $body, {
 		'class' => &_ui_class('ui_progress', 'ui_progress_ring',
 				      $indet ? 'ui_progress_indeterminate' :
 					       undef),
@@ -5778,8 +5797,8 @@ if ($indet) {
 elsif (@segments) {
 	foreach my $s (@segments) {
 		$bars .= &ui_tag('div', undef, {
-			'class' => "ui_progress_bar ui_bg_$s->{'state'}",
-			'style' => "width:$s->{'pct'}%" });
+			'class' => &_ui_class('ui_progress_bar', $s->{'tint'}),
+			'style' => "width:$s->{'width'}%" });
 		}
 	}
 else {
@@ -5796,10 +5815,10 @@ my $track = &ui_tag('div', $bars, { 'class' => 'ui_progress_track' });
 my $legend = "";
 if (grep { defined($_->{'label'}) } @segments) {
 	my $keys = "";
-	foreach my $s (@segments) {
+	foreach my $s (grep { !$_->{'empty'} } @segments) {
 		$keys .= &ui_tag('span',
 			&ui_tag('span', undef,
-				{ 'class' => "ui_progress_dot ui_bg_$s->{'state'}" }).
+				{ 'class' => "ui_progress_dot $s->{'tint'}" }).
 			(defined($s->{'label'}) ? $s->{'label'} : "")." ".
 			&ui_tag('span', $s->{'pct'}."%",
 				{ 'class' => 'ui_progress_value' }),
@@ -5828,7 +5847,7 @@ else {
 	$body = &ui_tag('div', $head, { 'class' => 'ui_progress_head' }).
 		$track.$legend;
 	}
-return &_ui_block('div', $body, {
+return &ui_page_assets().&_ui_block('div', $body, {
 	'class' => &_ui_class('ui_progress',
 		$opts->{'small'} ? 'ui_progress_sm' : undef,
 		$opts->{'inline'} ? 'ui_progress_inline' : undef,
@@ -5841,12 +5860,13 @@ return &_ui_block('div', $body, {
 	%aria });
 }
 
-# _ui_progress_pct(value, [max])
-# Converts a value into a whole percentage of max (100 by default),
-# clamped to 0..100, treating anything that is not a number as 0
+# _ui_progress_pct(value, [max], [places])
+# Converts a value into a percentage of max (100 by default), clamped to
+# 0..100, treating anything that is not a number as 0. The result is a whole
+# number, unless a number of decimal places to keep is given.
 sub _ui_progress_pct
 {
-my ($value, $max) = @_;
+my ($value, $max, $places) = @_;
 $value = 0 if (!defined($value) ||
 	      $value !~ /\A-?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)\z/);
 $max = 100 if (!defined($max) ||
@@ -5854,7 +5874,12 @@ $max = 100 if (!defined($max) ||
 my $pct = $value * 100 / $max;
 $pct = 0 if ($pct < 0);
 $pct = 100 if ($pct > 100);
-return int($pct + 0.5);
+return int($pct + 0.5) if (!$places);
+
+# Spare zeros are dropped, so that a whole result reads the same either way
+$pct = sprintf("%.${places}f", $pct);
+$pct =~ s/\.?0+\z// if ($pct =~ /\./);
+return $pct;
 }
 
 ####################### new form controls

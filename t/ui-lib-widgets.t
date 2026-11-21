@@ -403,6 +403,64 @@ like(main::ui_progress(96, { 'thresholds' => 1, 'state' => 'info' }),
 	like($seg, qr/ui_progress_legend/, 'labelled segments get a legend');
 	assert_no_handler_injection($seg, 'ui_progress segment label');
 
+	# Series colors and blank segments
+	my $many = main::ui_progress(undef, { 'small' => 1, 'max' => 200,
+		'segments' => [ { 'value' => 50, 'empty' => 1 },
+				{ 'value' => 40, 'series' => 4 },
+				{ 'value' => 20, 'series' => 9 },
+				{ 'value' => 10, 'series' => q{1" onload="x} } ] });
+	like($many, qr/class="[^"]*\bui_progress_bar"[^>]*width:25%|width:25%"[^>]*class="[^"]*\bui_progress_bar"/,
+		'a blank segment is drawn with no color');
+	unlike($many, qr/ui_bg_[a-z0-9_]+"[^>]*width:25%|width:25%"[^>]*ui_bg_/,
+		'a blank segment has no color class');
+	like($many, qr/ui_bg_series_4/, 'a series gives its own color class');
+	unlike($many, qr/ui_bg_series_9/, 'a series outside 1 to 6 is not used');
+	is(scalar(() = $many =~ /ui_bg_info/g), 2,
+		'an unusable series falls back to the state color');
+	like($many, qr/aria-valuenow="35"/, 'a blank segment is not counted');
+	assert_no_handler_injection($many, 'ui_progress series');
+	my $keyed = main::ui_progress(undef, { 'segments' => [
+		{ 'pct' => 10, 'empty' => 1, 'label' => 'Gap' },
+		{ 'pct' => 30, 'series' => 6, 'label' => 'Restores' } ] });
+	like($keyed, qr/ui_progress_dot ui_bg_series_6/,
+		'the legend dot takes the series color');
+	unlike($keyed, qr/Gap/, 'a blank segment has no legend entry');
+
+	# Segments are drawn to a tenth of a percent, so that a bar starting
+	# after a gap lines up with the end of the bar above it
+	my @parts = ( { 'value' => 140 }, { 'value' => 420 },
+		      { 'value' => 1500 }, { 'value' => 830 } );
+	my $above = main::ui_progress(undef, { 'small' => 1, 'max' => 6144,
+					       'segments' => \@parts });
+	my $end = 0;
+	$end += $1 while ($above =~ /width:([0-9.]+)%/g);
+	my $below = main::ui_progress(undef, { 'small' => 1, 'max' => 6144,
+		'segments' => [ { 'value' => 2890, 'empty' => 1 },
+				{ 'value' => 30 } ] });
+	my ($gap, $small) = $below =~ /width:([0-9.]+)%/g;
+	cmp_ok(abs($end - $gap), '<', 0.3,
+		'a gap ends where the same amount drawn in parts ends');
+	is($small, '0.5', 'a small segment keeps a width');
+	like($above, qr/aria-valuenow="47"/,
+		'the total of fine segments is a whole percentage');
+	like(main::ui_progress(undef, { 'segments' => [
+			{ 'pct' => 33.333, 'label' => 'Third' } ] }),
+		qr/width:33\.3%.*Third <span class="[^"]*\bui_progress_value">33%</s,
+		'the legend shows a whole percentage');
+
+	# The value and a segment label can be pre-built HTML
+	my $raw = main::ui_progress(undef, {
+		'value_html' => '<span data-n="5">5 MiB</span>',
+		'value' => $xss,
+		'segments' => [ { 'pct' => 50,
+				  'label_html' => '<span data-n="2">2 MiB</span>' } ] });
+	like($raw, qr/\bui_progress_value"><span data-n="5">5 MiB<\/span><\/span>/,
+		'a pre-built value is used as given');
+	like($raw, qr/<span data-n="2">2 MiB<\/span>/,
+		'a pre-built segment label is used as given');
+	assert_no_handler_injection(main::ui_progress(10, { 'value' => $xss }),
+		'ui_progress value');
+
 	my $busy = main::ui_progress(0, { 'indeterminate' => 1 });
 	like($busy, qr/aria-busy="true"/, 'indeterminate bar is marked busy');
 	unlike($busy, qr/aria-valuenow/, 'indeterminate bar has no value');
@@ -428,6 +486,49 @@ like(main::ui_progress(96, { 'thresholds' => 1, 'state' => 'info' }),
 		like($html, qr/<svg[^>]*width="56"/,
 			"ring size $size falls back to the default");
 		}
+}
+
+# Progress bars work on ordinary pages : each loads the assets once, and the
+# stylesheet gives one outside a page area the palette it needs.
+{
+	local $main::ui_page_assets_done = 0;
+	like(main::ui_progress(40, { 'small' => 1 }), qr/ui-lib\.css/,
+		'a progress bar loads the widget stylesheet');
+	unlike(main::ui_progress(60, { 'small' => 1 }), qr/ui-lib\.(css|js)/,
+		'another progress bar does not reload the assets');
+	$main::ui_page_assets_done = 0;
+	like(main::ui_progress(34, { 'ring' => 1 }), qr/ui-lib\.css/,
+		'a ring loads the widget stylesheet');
+
+	open(my $CSS, "<", File::Spec->catfile($root, 'unauthenticated', 'css',
+					      'ui-lib.css')) or
+		die "ui-lib.css: $!";
+	my $css = do { local $/; <$CSS> };
+	close($CSS);
+
+	# The palette is defined for light, for dark, and for dark that
+	# follows the browser
+	my @lists = $css =~ /([^{}]*)\{\s*(?:\/\*.*?\*\/\s*)*--ui-canvas:/gs;
+	is(scalar(@lists), 3, 'the stylesheet defines its palette three times');
+	foreach my $list (@lists) {
+		like($list, qr/\.ui_progress:not\(:where\(\.ui_page \*/,
+			'a progress bar outside a page area gets the palette');
+		}
+
+	# The Gray theme rounds bars, but not where two segments meet. It
+	# finds the last segment with any width by the style of the empty ones.
+	like(main::ui_progress(undef, { 'segments' => [
+			{ 'pct' => 30 }, { 'pct' => 0 } ] }),
+		qr/style="width:0%"/, 'an empty segment is written as width:0%');
+	open(my $GRAY, "<", File::Spec->catfile($root, 'gray-theme',
+				'unauthenticated', 'gray-theme.css')) or
+		die "gray-theme.css: $!";
+	my $gray = do { local $/; <$GRAY> };
+	close($GRAY);
+	like($gray, qr/\.ui_progress_segmented \.ui_progress_bar \{ border-radius: 0; \}/,
+		'segments of one bar meet with square ends in the Gray theme');
+	like($gray, qr/\.ui_progress_bar:nth-last-child\(1 of :not\(\[style="width:0%"\]\)\)/,
+		'the Gray theme rounds the end of the last segment with any width');
 }
 
 # Choice lists : escaping, selection, fields and disabled options
