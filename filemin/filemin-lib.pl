@@ -26,8 +26,8 @@ if (!$mime_icon_maps{$dir}) {
 	&read_file("$dir/mime-icons.map", $mime_icon_maps{$dir});
 	}
 my $name = $mime_icon_maps{$dir}->{$type} || $type;
-my $path = "images/icons/mime/$name.png";
-return -f "$dir/$path" ? $path : "images/icons/mime/none.png";
+my $path = "images/icons/mime/$name.svg";
+return -f "$dir/$path" ? $path : "images/icons/mime/none.svg";
 }
 
 # get_acls_status()

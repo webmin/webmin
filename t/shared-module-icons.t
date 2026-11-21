@@ -76,7 +76,7 @@ my @missing_mime;
 while (<$mime>) {
 	chomp;
 	my ($type, $icon) = split(/=/, $_, 2);
-	push(@missing_mime, $type) if (!-f "filemin/images/icons/mime/$icon.png");
+	push(@missing_mime, $type) if (!-f "filemin/images/icons/mime/$icon.svg");
 	}
 is_deeply(\@missing_mime, [ ], 'all MIME names point to packaged File Manager icons');
 done_testing();
