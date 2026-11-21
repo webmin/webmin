@@ -26,7 +26,11 @@ if (!&read_file($oldstatus_file, \%oldstatus)) {
 	# Collection not done yet
 	return ( );
 	}
-my $table = &ui_columns_start([ $text{'info_desc'}, $text{'index_host'},
+# The host column is left out when every monitor runs on this system
+# only, as it would say the same thing in each row
+my $hosts = grep { $_->{'groups'} || $_->{'remote'} ne "*" } @serv;
+my $table = &ui_columns_start([ $text{'info_desc'},
+				$hosts ? ( $text{'index_host'} ) : ( ),
 				$text{'info_last'} ]);
 my $down = 0;
 my $can = &foreign_available($module_name) && $access{'edit'};
@@ -44,7 +48,7 @@ foreach my $s (@serv) {
 		}
 	$table .= &ui_columns_row([
 		$desc,
-		&nice_remotes($s),
+		$hosts ? ( &nice_remotes($s) ) : ( ),
 		join("", @icons),
 		]);
 	}
