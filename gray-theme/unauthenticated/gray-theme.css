@@ -325,6 +325,9 @@ a:hover {
 }
 /* Element defaults */
 img, a img { border: 0; }
+/* The shared 16px icons, such as a folder before its name, sit level
+ * with the words next to them instead of standing on the text line */
+img[src$="-small.svg"] { vertical-align: text-top; }
 p { margin: 6px 0; }
 h1, h2, h3, h4, h5 {
 	margin: 10px 0 6px;
