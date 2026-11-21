@@ -2265,6 +2265,12 @@ body.right-frame { padding: 0; }
 /* Bars in cards and tiles are thin and round, and their second segment
  * is a soft accent instead of gray */
 .section .ui_progress { margin-top: 6px; }
+/* A bar alone in a table cell has nothing above it, and sits in the
+ * middle of its row */
+.section td > .ui_progress:only-child { margin-top: 0; }
+/* A small picture before a word, such as a monitor's state, sits level
+ * with the word instead of standing on the text line */
+.section img { vertical-align: text-top; }
 .section .ui_progress_track, .tile .ui_progress_track {
 	height: 6px;
 	border-radius: 999px;
