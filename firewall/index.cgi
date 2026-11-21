@@ -309,23 +309,23 @@ else {
 				# Up/down mover
 				local $mover;
 				if ($r eq $rules[@rules-1]) {
-					$mover .= "<img src=../images/shared/move-spacer.gif>";
+					$mover .= &ui_gap(20, 16);
 					}
 				else {
 					$mover .= "<a href='move.cgi?version=${ipvx_arg}&table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
 					      "down=1'><img src=".
-					      "../images/shared/move-down.gif border=0></a>";
+					      "../images/shared/move-down.svg border=0></a>";
 					}
 				if ($r eq $rules[0]) {
-					$mover .= "<img src=../images/shared/move-spacer.gif>";
+					$mover .= &ui_gap(20, 16);
 					}
 				else {
 					$mover .= "<a href='move.cgi?version=${ipvx_arg}&table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
-					      "up=1'><img src=../images/shared/move-up.gif ".
+					      "up=1'><img src=../images/shared/move-up.svg ".
 					      "border=0></a>";
 					}
 				push(@cols, $mover);
@@ -336,12 +336,12 @@ else {
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "after=$r->{'index'}'><img src=".
-				      "../images/shared/move-to-bottom.gif border=0></a>";
+				      "../images/shared/move-to-bottom.svg border=0></a>";
 				$adder .= "<a href='edit_rule.cgi?version=${ipvx_arg}&table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "before=$r->{'index'}'><img src=".
-				      "../images/shared/move-to-top.gif border=0></a>";
+				      "../images/shared/move-to-top.svg border=0></a>";
                                 push(@cols, $adder);
 				# chain to jump to is filtered, switch of edit
 				if ($edit && !$chain_filtered) {

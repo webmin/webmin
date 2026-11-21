@@ -2849,21 +2849,21 @@ return &theme_ui_up_down_arrows(@_) if (defined(&theme_ui_up_down_arrows));
 my ($uplink, $downlink, $upshow, $downshow, $upicon, $downicon) = @_;
 my $mover;
 my $imgdir = "@{[&get_webprefix()]}/images";
-$upicon ||= "$imgdir/shared/up.gif";
-$downicon ||= "$imgdir/shared/down.gif";
+$upicon ||= "$imgdir/shared/move-up.svg";
+$downicon ||= "$imgdir/shared/move-down.svg";
 if ($downshow) {
 	$mover .= "<a class='ui_up_down_arrows_down' href='$downlink'>".
 	  "<img class='ui_up_down_arrows_down' src='$downicon' border='0'></a>";
 	}
 else {
-	$mover .= "<img class='ui_up_down_arrows_gap' src='$imgdir/shared/gap.gif'>";
+	$mover .= &ui_gap(20, 16, 'ui_up_down_arrows_gap');
 	}
 if ($upshow) {
 	$mover .= "<a class='ui_up_down_arrows_up' href='$uplink'>".
 	  "<img class='ui_up_down_arrows_up' src='$upicon' border='0'></a>";
 	}
 else {
-	$mover .= "<img class='ui_up_down_arrows_gap' src='$imgdir/shared/gap.gif'>";
+	$mover .= &ui_gap(20, 16, 'ui_up_down_arrows_gap');
 	}
 return $mover;
 }

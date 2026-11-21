@@ -33,18 +33,18 @@ if (@dialin) {
 					 : $text{'dialin_allow'},"</td>\n";
 		print "<td>";
 		if ($d eq $dialin[@dialin-1]) {
-			print "<img src=../images/shared/move-spacer.gif>";
+			print &ui_gap(20, 16);
 			}
 		else {
 			print "<a href='move.cgi?idx=$d->{'index'}&down=1'>",
-			      "<img src=../images/shared/move-down.gif border=0></a>";
+			      "<img src=../images/shared/move-down.svg border=0></a>";
 			}
 		if ($d eq $dialin[0]) {
-			print "<img src=../images/shared/move-spacer.gif>";
+			print &ui_gap(20, 16);
 			}
 		else {
 			print "<a href='move.cgi?idx=$d->{'index'}&up=1'>",
-			      "<img src=../images/shared/move-up.gif border=0></a>";
+			      "<img src=../images/shared/move-up.svg border=0></a>";
 			}
 		print "</td>\n";
 		print "</tr>\n";

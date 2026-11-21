@@ -108,10 +108,10 @@ elsif (@$rules && !$in{'reset'}) {
 		if ($r->{'index'} <= $lastidx) {
 			$adder .= "<a href='edit_rule.cgi?new=1&".
 				  "after=$r->{'index'}'>".
-				  "<img src=../images/shared/move-to-bottom.gif border=0></a>";
+				  "<img src=../images/shared/move-to-bottom.svg border=0></a>";
 			$adder .= "<a href='edit_rule.cgi?new=1&".
 				  "before=$r->{'index'}'>".
-				  "<img src=../images/shared/move-to-top.gif border=0></a>";
+				  "<img src=../images/shared/move-to-top.svg border=0></a>";
 			}
 
 		local $num = $r->{'num'};

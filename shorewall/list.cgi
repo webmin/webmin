@@ -86,16 +86,16 @@ if (@table) {
 				"up.cgi?table=".&urlize($in{'table'})."&idx=".&urlize($i),
 				"down.cgi?table=".&urlize($in{'table'})."&idx=".&urlize($i),
 				$i > 0, $i != $#table,
-				"../images/shared/move-up.gif", "../images/shared/move-down.gif"));
+				"../images/shared/move-up.svg", "../images/shared/move-down.svg"));
 			}
 		push(@cols, &ui_link(
 			"edit.cgi?table=".&urlize($in{'table'}).
 			  "&new=1&before=".&urlize($i),
-			"<img src=../images/shared/move-to-top.gif border=0>").
+			"<img src=../images/shared/move-to-top.svg border=0>").
 			    &ui_link(
 			"edit.cgi?table=".&urlize($in{'table'}).
 			  "&new=1&after=".&urlize($i),
-			"<img src=../images/shared/move-to-bottom.gif border=0>"));
+			"<img src=../images/shared/move-to-bottom.svg border=0>"));
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $i);
 		}
 	print &ui_columns_end();

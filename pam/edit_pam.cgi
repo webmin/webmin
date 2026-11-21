@@ -65,18 +65,18 @@ foreach $t ('auth', 'account', 'session', 'password') {
 				}
 			local $mv;
 			if ($m eq $mods[$#mods]) {
-				$mv .= "<img src=../images/shared/move-spacer.gif>";
+				$mv .= &ui_gap(20, 16);
 				}
 			else {
 				$mv .= &ui_link("move.cgi?idx=$pam->{'index'}&".
-				       "midx=".$m->{'index'}."&down=1", "<img src='../images/shared/move-down.gif' border=0>");
+				       "midx=".$m->{'index'}."&down=1", "<img src='../images/shared/move-down.svg' border=0>");
 				}
 			if ($m eq $mods[0]) {
-				$mv .= "<img src='../images/shared/move-spacer.gif'>";
+				$mv .= &ui_gap(20, 16);
 				}
 			else {
 				$mv .= &ui_link("move.cgi?idx=".$pam->{'index'}."&".
-				       "midx=".$m->{'index'}."&up=1", "<img src='../images/shared/move-up.gif' border=0>");
+				       "midx=".$m->{'index'}."&up=1", "<img src='../images/shared/move-up.svg' border=0>");
 				}
 			push(@cols, $mv);
 			$ptable .= &ui_columns_row(\@cols, \@rtds);

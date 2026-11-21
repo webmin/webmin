@@ -133,25 +133,25 @@ if (@conf) {
 		local $mover;
 		if ($c eq $conf[@conf-1] ||
 		    $c->{'file'} ne $conf[$c->{'index'}+1]->{'file'}) {
-			$mover .= "<img src=../images/shared/move-spacer.gif>";
+			$mover .= &ui_gap(20, 16);
 			}
 		else {
 			$mover .= "<a href='down.cgi?idx=$c->{'index'}'>".
-			      "<img src=../images/shared/move-down.gif border=0></a>";
+			      "<img src=../images/shared/move-down.svg border=0></a>";
 			}
 		if ($c eq $conf[0] ||
 		    $c->{'file'} ne $conf[$c->{'index'}-1]->{'file'}) {
-			$mover .= "<img src=../images/shared/move-spacer.gif>";
+			$mover .= &ui_gap(20, 16);
 			}
 		else {
 			$mover .= "<a href='up.cgi?idx=$c->{'index'}'>".
-			      "<img src=../images/shared/move-up.gif border=0></a>";
+			      "<img src=../images/shared/move-up.svg border=0></a>";
 			}
 		push(@cols, $mover);
 		push(@tds, "width=32");
 
 		# Add before/after links
-		push(@cols, &ui_link("edit_recipe.cgi?new=1&after=$c->{'index'}","<img src=../images/shared/move-to-bottom.gif border=0>"));
+		push(@cols, &ui_link("edit_recipe.cgi?new=1&after=$c->{'index'}","<img src=../images/shared/move-to-bottom.svg border=0>"));
 		print &ui_checked_columns_row(\@cols, \@tds, "d",$c->{'index'});
 		}
 	print &ui_columns_end();
