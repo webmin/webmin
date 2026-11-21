@@ -1,7 +1,8 @@
-auth=group.png
-conn=connections.gif
-icon=database.gif
-initiators=lock.png
-manual=edit-configuration.png
-targets=lock.png
-timeout=timer.png
+addr=network-globe.svg
+auth=users.svg
+conn=cable.svg
+icon=database.svg
+initiators=padlock.svg
+manual=edit.svg
+targets=padlock.svg
+timeout=clock.svg

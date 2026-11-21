@@ -228,7 +228,7 @@ elsif (@match) {
 		      "&search=".&urlize($in || ""),
 		      &filter_javascript($desc)) );
 		if ($anno) {
-			$cols[$#cols] .= "&nbsp;<img src=../images/shared/star.gif>";
+			$cols[$#cols] .= "&nbsp;<img src=../images/shared/star.svg>";
 			}
 		push(@cols, $minfo->{'desc'},
 			    &html_escape($act->{'user'}),

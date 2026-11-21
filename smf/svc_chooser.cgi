@@ -105,23 +105,23 @@ EOF
 		print "<tr>\n";
 		# determine img type
 		if ($f eq $uplevel) {
-			$img = "images/uplevel.gif";
+			$img = "../images/shared/move-up.svg";
 			$link =
 		  "<a href='javascript:svcclick(\"$uplevel\",\"\",1,0)'>";
 		} elsif ($f =~ /^.*\/$/) {
-			$img = "images/nextlevel.gif";
+			$img = "../images/right.svg";
 			$link =
 		  "<a href='javascript:svcclick(\"$fmri$f\",\"\",1,0)'>";
 		} elsif ($f =~ /^\:.*/) {
 			# at instance level...
 			# remove leading ":"
 			$f =~ s/^\:(\S+)$/$1/;
-			$img = "images/instance.gif";
+			$img = "../images/shared/note.svg";
 			$link =
 		  "<a href='javascript:svcclick(\"$fmri\",\"$f\",0,1)'>";
 		} else {
 			# service
-			$img = "images/svc.gif";
+			$img = "../images/shared/settings.svg";
 			# remove final ":" if present
 			$f =~ s/^([^\:]+)\:$/$1/;
 			$inst = ":";

@@ -1,8 +1,9 @@
-icon=send-mail.png
-login=users.png
-mail=envelope.png
-manual=edit.png
-misc=miscellaneous.gif
-net=cable.png
-pop3=./imap.gif
-ssl=key.png
+icon=send-mail.svg
+imap=mail.svg
+login=users.svg
+mail=mail.svg
+manual=edit.svg
+misc=list-options.svg
+net=cable.svg
+pop3=mail.svg
+ssl=secure-certificate.svg

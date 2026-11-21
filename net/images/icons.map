@@ -1,5 +1,4 @@
-dns=settings.png
-hosts=address-card.png
-icon=network-globe.png
-ifcs=network-card.png
-routes=cable.png
+icon=network-globe.svg
+ifcs=network-card.svg
+ipnodes=network-computer.svg
+routes=cable.svg

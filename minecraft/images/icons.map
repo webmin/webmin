@@ -1,3 +1,10 @@
-backup=backup-folder.png
-icon=./conf.gif
-playtime=timer.png
+backup=folders.svg
+cmds=terminal.svg
+conf=settings.svg
+conns=network-computer.svg
+icon=tools.svg
+logs=warning-document.svg
+manual=edit.svg
+playtime=clock.svg
+users=users.svg
+versions=upgrade.svg

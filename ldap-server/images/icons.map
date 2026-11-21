@@ -1,4 +1,6 @@
-acl=keyhole.gif
-browser=open-book.gif
-icon=./slapd.gif
-ldif=./slapd.gif
+acl=padlock.svg
+browser=address-book.svg
+create=folders-tree.svg
+icon=directory-users.svg
+ldif=documents.svg
+schema=module-document.svg

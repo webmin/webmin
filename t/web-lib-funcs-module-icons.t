@@ -107,4 +107,9 @@ is(render('images/access.gif'), "/webmin/images/modules/$addon/access.gif",
 	'the theme overrides one shared action by its original name');
 is(render('images/lock.gif'), '/webmin/images/shared/padlock.png',
 	'the other action keeps the stock icon');
+# A map written for a PNG still resolves after the artwork becomes an SVG.
+unlink("$root_directory/images/shared/padlock.png") or die $!;
+touch("$root_directory/images/shared/padlock.svg");
+is(render('images/lock.gif'), '/webmin/images/shared/padlock.svg',
+	'a map naming the older format finds the converted icon');
 done_testing();

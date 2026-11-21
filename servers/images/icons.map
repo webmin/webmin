@@ -1,3 +1,13 @@
-icon=network-server.png
-openbsd=./freebsd.gif
-unknown=network-server.png
+asianux=./linux.svg
+caldera=./linux.svg
+cobalt=./linux.svg
+icon=network-server.svg
+irix=network-server.svg
+mandrake=./linux.svg
+msc=./linux.svg
+openbsd=./freebsd.svg
+redflag=./linux.svg
+sco=network-server.svg
+solaris=./oracle.svg
+turbo=./linux.svg
+unknown=network-server.svg

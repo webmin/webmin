@@ -5,19 +5,19 @@
 BEGIN { push(@INC, "."); };
 use WebminCore;
 
-my %icon_map = ("c", "shared/text.png",
-		"txt", "shared/text.png",
-		"pl", "shared/text.png",
-		"cgi", "shared/text.png",
-		"html", "shared/text.png",
-		"htm", "shared/text.png",
-		"php", "shared/text.png",
-		"php5", "shared/text.png",
-		"gif", "shared/image.png",
-		"jpg", "shared/image.png",
-		"jpeg", "shared/image.png",
-		"png", "shared/image.png",
-		"tar", "shared/binary.png"
+my %icon_map = ("c", "shared/text-small.svg",
+		"txt", "shared/text-small.svg",
+		"pl", "shared/text-small.svg",
+		"cgi", "shared/text-small.svg",
+		"html", "shared/text-small.svg",
+		"htm", "shared/text-small.svg",
+		"php", "shared/text-small.svg",
+		"php5", "shared/text-small.svg",
+		"gif", "shared/image-small.svg",
+		"jpg", "shared/image-small.svg",
+		"jpeg", "shared/image-small.svg",
+		"png", "shared/image-small.svg",
+		"tar", "shared/binary-small.svg"
 		);
 
 &init_config();
@@ -192,9 +192,9 @@ EOF
 
 		@st = stat($path);
 		$isdir = 0; undef($icon);
-		if (-d $path) { $icon = "dir.gif"; $isdir = 1; }
+		if (-d $path) { $icon = "dir.svg"; $isdir = 1; }
 		elsif ($path =~ /\.([^\.\/]+)$/) { $icon = $icon_map{$1}; }
-		if (!$icon) { $icon = "unknown.gif"; }
+		if (!$icon) { $icon = "unknown.svg"; }
 
 		if ($f eq "..") {
 			$dir =~ /^(.*\/)[^\/]+\/$/;

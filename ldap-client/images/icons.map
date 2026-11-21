@@ -1,3 +1,6 @@
-base=directory-users.gif
-browser=open-book.gif
-pam=keyhole.gif
+base=directory-users.svg
+browser=address-book.svg
+icon=client-server.svg
+pam=padlock.svg
+server=network-server.svg
+switch=list-options.svg

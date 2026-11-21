@@ -121,8 +121,7 @@ elsif (@servers) {
 	# Server types and hosts are stored values, so escape them in HTML
 	my @icons = map { my $t = $_->{'type'} =~ /^[\w\-]+$/ ?
 				  $_->{'type'} : 'unknown';
-			  -r "images/$t.svg" ? "images/$t.svg" :
-					       "images/$t.gif" } @servers;
+			  "images/$t.svg" } @servers;
 	my @links = map { !$access{'links'} ? undef :
 		       &html_escape($_->{'user'} || $_->{'autouser'} ?
 			"link.cgi/$_->{'id'}/" : &make_url($_)) } @servers;

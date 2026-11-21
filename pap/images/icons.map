@@ -1,7 +1,7 @@
-dialin=id-card.png
-down=move-down.gif
-gap=move-spacer.gif
-mgetty=network-card.png
-options=tools.png
-secrets=users.png
-up=move-up.gif
+dialin=id-card.svg
+down=move-down.svg
+icon=dialup.svg
+mgetty=network-card.svg
+options=tools.svg
+secrets=users.svg
+up=move-up.svg

@@ -1418,7 +1418,7 @@ subtest 'collapsible section arrows' => sub {
 	local $gconfig{'webprefix'} = '/webmin';
 	local $ui_hidden_start_donejs = 1;
 	foreach my $open (0, 1) {
-		my $src = '/webmin/images/'.($open ? 'open.png' : 'closed.png');
+		my $src = '/webmin/images/'.($open ? 'open.svg' : 'closed.svg');
 		foreach my $html (ui_hidden_start('Title', 'test', $open).ui_hidden_end('test'),
 				  ui_hidden_table_start('Title', '', 2, 'test', $open).
 				  ui_hidden_table_end('test')) {

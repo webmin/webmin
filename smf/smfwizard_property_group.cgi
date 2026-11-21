@@ -7,8 +7,7 @@ require './smf-lib.pl';
 # wizard-specific info here
 &wizard_header($wizard, "smfwizard_property_group.cgi",
 	"$text{'smfwizard_property_group_heading'}",
-	&convert_links_in_text("$text{'smfwizard_property_group_description'}"),
-	"images/smf.gif");
+	&convert_links_in_text("$text{'smfwizard_property_group_description'}"));
 
 &wizard_input("smfwizard_property_group.cgi",
 	"$text{'smfwizard_property_group_name'}",

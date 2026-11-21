@@ -13,8 +13,7 @@ if (defined($in{'clearout'})) {
 	}
 &wizard_header($wizard, "smfwizard_service.cgi",
 	"$text{'smfwizard_service_heading'}",
-	&convert_links_in_text("$text{'smfwizard_service_description'}"),
-	"images/smf.gif");
+	&convert_links_in_text("$text{'smfwizard_service_description'}"));
 &wizard_input("smfwizard_service.cgi", "$text{'smfwizard_service_name'}",
 	"service_name", 60, ".+", "$text{'smfwizard_service_name_error'}");
 &wizard_input("smfwizard_service.cgi", "$text{'smfwizard_service_version'}",

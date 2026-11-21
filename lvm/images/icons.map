@@ -1,5 +1,6 @@
-hdd_unmount=drive.png
-icon=disk-array.png
-lv=drive.png
-pv=drive.png
-vg=disk-array.png
+hdd_unmount=drive.svg
+icon=disk-array.svg
+lv=drive.svg
+pv=drive.svg
+snap=camera.svg
+vg=disk-array.svg

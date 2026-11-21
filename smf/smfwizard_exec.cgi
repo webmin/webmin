@@ -7,8 +7,7 @@ require './smf-lib.pl';
 # wizard-specific info here
 &wizard_header($wizard, "smfwizard_exec.cgi",
 	"$text{'smfwizard_exec_heading'}",
-	&convert_links_in_text("$text{'smfwizard_exec_description'}"),
-	"images/smf.gif");
+	&convert_links_in_text("$text{'smfwizard_exec_description'}"));
 
 @sinst_list = ("service");
 # add existing instances to list...

@@ -72,15 +72,15 @@ EOF
 					}
 				$uplevel = &urlize($uplevel);
 				push(@pathlist,
-"<td><a href='javascript:pathclick(\"$uplevel\",1)'><img border=0 width=30 height=30 src=\"images/uplevel.gif\"></a></td><td><a href='javascript:pathclick(\"$uplevel\",1)'>..</a></td>");
+"<td><a href='javascript:pathclick(\"$uplevel\",1)'><img border=0 width=30 height=30 src=\"../images/shared/move-up.svg\"></a></td><td><a href='javascript:pathclick(\"$uplevel\",1)'>..</a></td>");
 			} else {
 				$expand = 0;
-				$img = "images/file.gif";
+				$img = "../images/shared/text-document.svg";
 				# is this a file or a dir?
 				if (opendir(DISCARD, "$fixed_filepath/$f")) {
 					close(DISCARD);
 					$expand = 1;
-					$img = "images/dir.gif";
+					$img = "../images/shared/folder.svg";
 					}
 				$newpath = &urlize("$fixed_filepath/$f");
 				push(@pathlist,

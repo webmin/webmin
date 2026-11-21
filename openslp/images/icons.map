@@ -1,2 +1,5 @@
-icon=path.png
-log=logs.gif
+dacfg=network-server.svg
+icon=path.svg
+log=text-document.svg
+netcfg=network-globe.svg
+snda=modules.svg

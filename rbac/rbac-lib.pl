@@ -760,7 +760,7 @@ local $hf = &rbac_help_file($_[0]);
 local $rv = "<table cellpadding=0 cellspacing=0 width=100%><tr><td>$_[1]</td>";
 if ($hf) {
 	$hf = &urlize($hf);
-	$rv .= "<td align=right><a onClick='window.open(\"rbac_help.cgi?help=$hf\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300,resizable=yes\"); return false' href=\"rbac_help.cgi?help=$hf\"><img src=images/help.gif border=0></a></td>";
+	$rv .= "<td align=right><a onClick='window.open(\"rbac_help.cgi?help=$hf\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300,resizable=yes\"); return false' href=\"rbac_help.cgi?help=$hf\"><img src=../images/shared/help.svg width=14 height=14 border=0></a></td>";
 	}
 $rv .= "</tr></table>";
 return $rv;

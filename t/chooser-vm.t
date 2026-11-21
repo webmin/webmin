@@ -80,11 +80,11 @@ return ($html || '', $status);
 
 # Check the icons emitted for a normal directory listing.
 subtest 'file type icons' => sub {
-	my %icons = ( 'example.txt' => 'shared/text.png',
-		      'example.png' => 'shared/image.png',
-		      'example.tar' => 'shared/binary.png',
-		      'example.other' => 'unknown.gif',
-		      'sub' => 'dir.gif' );
+	my %icons = ( 'example.txt' => 'shared/text-small.svg',
+		      'example.png' => 'shared/image-small.svg',
+		      'example.tar' => 'shared/binary-small.svg',
+		      'example.other' => 'unknown.svg',
+		      'sub' => 'dir.svg' );
 	foreach my $name (keys %icons) {
 		write_file("$allowed/$name", '') unless -d "$allowed/$name";
 		}

@@ -1,2 +1,7 @@
-filters=warning.png
-manual=edit-configuration.png
+actions=firewall.svg
+config=gears.svg
+filters=warning-document.svg
+icon=denied.svg
+jails=error.svg
+manual=edit.svg
+status=header-document.svg

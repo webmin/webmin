@@ -69,13 +69,13 @@ if ($self->get_sortable()) {
 	if (!defined($sortdir)) {
 		# Not sorting .. show grey button
 		$head .= "<a href='${thisurl}ui_sortdir_${name}=0'>".
-			 "<img src=/images/nosort.gif border=0></a>";
+			 "<img src=/images/nosort.svg border=0></a>";
 		}
 	else {
 		# Sorting .. show button to switch mode
 		my $notsort = !$sortdir;
 		$head .= "<a href='${thisurl}ui_sortdir_${name}=$notsort'>".
-			 "<img src=/images/sort.gif border=0></a>";
+			 "<img src=/images/sort.svg border=0></a>";
 		}
 	$head .= "</td></tr></table>";
 	}

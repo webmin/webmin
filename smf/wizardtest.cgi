@@ -7,8 +7,7 @@ require './smf-lib.pl';
 
 # wizard-specific info here!
 $wizard = "page= wizardtest.cgi  , min =1,max=1;finish=done.cgi;";
-&wizard_header($wizard, "wizardtest.cgi", "heading", "description here",
-	"images/smf.gif");
+&wizard_header($wizard, "wizardtest.cgi", "heading", "description here");
 &wizard_input("wizardtest.cgi", "Enter name here", "name", 60, ".+",
 	"Must be non-null!");
 @bool = ("true", "false");

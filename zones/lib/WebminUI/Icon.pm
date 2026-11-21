@@ -29,7 +29,7 @@ sub html
 {
 my ($self) = @_;
 my $rv;
-$rv .= "<img src=/images/".$self->get_type().".gif align=middle>";
+$rv .= "<img src=/images/".$self->get_type().".svg align=middle>";
 if ($self->get_message()) {
 	$rv .= "&nbsp;".$self->get_message();
 	}

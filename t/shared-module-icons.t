@@ -43,7 +43,7 @@ $root_directory = $root;
 @root_directories = ($root);
 $gconfig{'webprefix'} = '/webmin';
 $module_name = 'net';
-is(module_icon_url('images/ifcs.gif'), '/webmin/images/shared/network-card.png',
+is(module_icon_url('images/ifcs.gif'), '/webmin/images/shared/network-card.svg',
 	'Network Configuration resolves the interfaces action used on its index');
 my @missing;
 my @maps = grep { -f $_ } map { "$root/$_/images/icons.map" } @modules;

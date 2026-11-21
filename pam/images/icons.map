@@ -1,4 +1,3 @@
-down=move-down.gif
-gap=move-spacer.gif
-icon=padlock.png
-up=move-up.gif
+down=move-down.svg
+icon=padlock.svg
+up=move-up.svg

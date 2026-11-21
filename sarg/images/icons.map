@@ -1,5 +1,6 @@
-icon=charts.png
-log=warning-document.png
-report=module-document.png
-sched=clock.png
-style=color-palette.png
+icon=charts.svg
+log=warning-document.svg
+package_graphics=paint.svg
+report=module-document.svg
+sched=clock.svg
+style=color-palette.svg

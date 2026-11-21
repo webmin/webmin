@@ -1,6 +1,6 @@
-files=directory-tree.gif
-group=computer-cluster.png
-host=computer.png
-icon=handshake.png
-shared=network-computer.png
-subnet=cable.png
+files=folders-tree.svg
+group=computer-cluster.svg
+host=computer.svg
+icon=handshake.svg
+shared=network-computer.svg
+subnet=cable.svg

@@ -462,8 +462,9 @@ foreach my $c (sort { $b cmp $a } @cats) {
 			}
 		else {
 			# Keep granted group modules in the submitted form.
-			my $icon = $has{$md} ? "images/tick.gif" :
-				"../images/shared/empty-checkbox.gif";
+			my $icon = $has{$md} ?
+				"../images/shared/ticked-checkbox.svg" :
+				"../images/shared/empty-checkbox.svg";
 			my $row = &ui_img($icon)." ".$m->{'desc'}."\n";
 			$row .= &ui_hidden("mod", $md) if ($mcan{$md} && $has{$md});
 			push(@grid, $row);

@@ -1,2 +1,3 @@
-disk=drive.png
-icon=disk-array.png
+disk=drive.svg
+icon=disk-array.svg
+linear=drive-stack.svg

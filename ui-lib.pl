@@ -2257,7 +2257,7 @@ if (openerobj) {
   // Core openers use an image instead of a CSS arrow.
   var img = openerobj.getElementsByTagName('img')[0];
   if (img) {
-    img.src = '@{[&get_webprefix()]}/images/' + (shown ? 'closed.png' : 'open.png');
+    img.src = '@{[&get_webprefix()]}/images/' + (shown ? 'closed.svg' : 'open.svg');
     }
   }
 }
@@ -2371,7 +2371,7 @@ my $openerid = "hiddenopener_$name";
 my $defimg = $status ? "open" : "closed";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 if ($title) {
-	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg.png'></a>\n";
+	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='@{[&get_webprefix()]}/images/$defimg.svg'></a>\n";
 	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 	$rv .= &ui_table_row(undef, $rrv, $main::ui_table_cols);
 	}
@@ -2894,11 +2894,11 @@ my ($direction, $url, $disabled) = @_;
 my $alt = $direction eq "left" ? '<-' : '->';
 if ($disabled) {
 	return "<img class='ui_nav_link' alt=\"$alt\" align=\"middle\""
-	     . "src=\"@{[&get_webprefix()]}/images/$direction-grey.gif\">\n";
+	     . "src=\"@{[&get_webprefix()]}/images/$direction-grey.svg\">\n";
 	}
 else {
 	return "<a class='ui_nav_link' href=\"$url\"><img class='ui_nav_link' alt=\"$alt\" align=\"middle\""
-	     . "src=\"@{[&get_webprefix()]}/images/$direction.gif\"></a>\n";
+	     . "src=\"@{[&get_webprefix()]}/images/$direction.svg\"></a>\n";
 	}
 }
 
@@ -3156,11 +3156,11 @@ $rv .= &ui_form_start($cgi) if ($cgi);
 if (@_ > 5) {
 	if ($farleft) {
 		$rv .= "<a href='$farleft'>".
-		       "<img src='@{[&get_webprefix()]}/images/first.gif' ".
+		       "<img src='@{[&get_webprefix()]}/images/first.svg' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	else {
-		$rv .= "<img src='@{[&get_webprefix()]}/images/first-grey.gif' ".
+		$rv .= "<img src='@{[&get_webprefix()]}/images/first-grey.svg' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	}
@@ -3168,11 +3168,11 @@ if (@_ > 5) {
 # Left link
 if ($left) {
 	$rv .= "<a href='$left'>".
-	       "<img src=@{[&get_webprefix()]}/images/left.gif ".
+	       "<img src=@{[&get_webprefix()]}/images/left.svg ".
 	       "border='0' align='middle'></a>\n";
 	}
 else {
-	$rv .= "<img src=@{[&get_webprefix()]}/images/left-grey.gif ".
+	$rv .= "<img src=@{[&get_webprefix()]}/images/left-grey.svg ".
 	       "border='0' align='middle'></a>\n";
 	}
 
@@ -3183,11 +3183,11 @@ $rv .= " ".$inputs if ($inputs);
 # Right link
 if ($right) {
 	$rv .= "<a href='$right'>".
-	       "<img src='@{[&get_webprefix()]}/images/right.gif' ".
+	       "<img src='@{[&get_webprefix()]}/images/right.svg' ".
 	       "border='0' align='middle'></a>\n";
 	}
 else {
-	$rv .= "<img src='@{[&get_webprefix()]}/images/right-grey.gif' ".
+	$rv .= "<img src='@{[&get_webprefix()]}/images/right-grey.svg' ".
 	       "border='0' align='middle'></a>\n";
 	}
 
@@ -3195,11 +3195,11 @@ else {
 if (@_ > 5) {
 	if ($farright) {
 		$rv .= "<a href='$farright'>".
-		       "<img src='@{[&get_webprefix()]}/images/last.gif' ".
+		       "<img src='@{[&get_webprefix()]}/images/last.svg' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	else {
-		$rv .= "<img src='@{[&get_webprefix()]}/images/last-grey.gif' ".
+		$rv .= "<img src='@{[&get_webprefix()]}/images/last-grey.svg' ".
 		       "border='0' align='middle'></a>\n";
 		}
 	}

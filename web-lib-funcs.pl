@@ -1047,6 +1047,13 @@ if ($file) {
 	else {
 		my $path = $file =~ m!^/! ? $file : "/images/shared/$file";
 		return "$prefix$path" if (-f "$root_directory$path");
+		# Shared artwork can change format, so a map written for the
+		# older file still finds it under the same name.
+		(my $base = $path) =~ s/\.\w+\z//;
+		foreach my $ext ("svg", "png", "gif") {
+			return "$prefix$base.$ext"
+				if (-f "$root_directory$base.$ext");
+			}
 		}
 	}
 
@@ -1989,7 +1996,7 @@ for(my $i=0; $i+1<@_; $i+=2) {
 			}
 		$url = "@{[&get_webprefix()]}$url" if ($url =~ /^\//);
 		if ($i == 0) {
-			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='@{[&get_webprefix()]}/images/left.gif'></a>\n";
+			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='@{[&get_webprefix()]}/images/left.svg'></a>\n";
 			}
 		else {
 			print "&nbsp;|\n";

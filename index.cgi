@@ -42,7 +42,7 @@ if ($gconfig{'texttitles'}) {
 else {
 	@args = ( $gconfig{'nohostname'} ? $text{'main_title2'} :
 		    &text('main_title', $ver, $hostname, $ostr),
-		  "images/webmin-blue.png" );
+		  "images/webmin-blue.svg" );
 	if ($gconfig{'showlogin'}) {
 		$args[0] = $remote_user." : ".$args[0];
 		}
@@ -114,18 +114,18 @@ else {
 		$t = $cats{$c};
 		if ($in{'cat'} eq $c) {
 			print "<td class='usercoll' valign=top $cb>", $usercol ? "<br>" :
-			  "<img src=images/lc2.gif alt=\"\">","</td>\n";
+			  "<img src=images/lc2.svg alt=\"\">","</td>\n";
 			print "<td class='usercolc' id='selectedcat' $cb>&nbsp;<b>$t</b>&nbsp;</td>\n";
 			print "<td class='usercolr' valign=top $cb>", $usercol ? "<br>" :
-			  "<img src=images/rc2.gif alt=\"\">","</td>\n";
+			  "<img src=images/rc2.svg alt=\"\">","</td>\n";
 			}
 		else {
 			print "<td class='usercoll' valign=top $tb>", $usercol ? "<br>" :
-			  "<img src=images/lc1.gif alt=\"\">","</td>\n";
+			  "<img src=images/lc1.svg alt=\"\">","</td>\n";
 			print "<td class='usercolc' $tb>&nbsp;",
 			      "<a href=@{[&get_webprefix()]}/?cat=$c><b>$t</b></a>&nbsp;</td>\n";
 			print "<td class='usercolr' valign=top $tb>", $usercol ? "<br>" :
-			  "<img src=images/rc1.gif alt=\"\">","</td>\n";
+			  "<img src=images/rc1.svg alt=\"\">","</td>\n";
 			}
 		print "<td width=10></td>\n";
 		}

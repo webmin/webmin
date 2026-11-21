@@ -37,8 +37,8 @@ $rv .= "<td valign=bottom>";
 $rv .= "<table border=0 cellpadding=0 cellspacing=0 height=20><tr>";
 my $i = 0;
 my ($high, $low) = ("#cccccc", "#9999ff");
-my ($lowlc, $lowrc) = ( "/images/lc1.gif", "/images/rc1.gif" );
-my ($highlc, $highrc) = ( "/images/lc2.gif", "/images/rc2.gif" );
+my ($lowlc, $lowrc) = ( "/images/lc1.svg", "/images/rc1.svg" );
+my ($highlc, $highrc) = ( "/images/lc2.svg", "/images/rc2.svg" );
 foreach my $t (@{$self->get_tabs()}) {
 	if ($i == $self->get_tab()) {
 		# This is the selected tab

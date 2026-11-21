@@ -63,7 +63,7 @@ if ($in{'search'}) {
 			$name = join("::",@{$m->{'name'}});
 			print &ui_columns_row([
 				"<a href='' onClick='sel(\"$name\")'>".
-				  "<img src=../images/shared/floppy-disk-small.png border=0></a>",
+				  "<img src=../images/shared/floppy-disk-small.svg border=0></a>",
 				"<a href='' onClick='sel(\"$name\")'>".
 				  &html_escape($name)."</a>",
 				&html_escape($m->{'ver'}),
@@ -92,7 +92,7 @@ else {
 		print &ui_columns_row([
 			"<a href='cpan.cgi?".
 			  join("&",map { "sel=$_" } @up),"#",join("::",@sel).
-			  "'><img src=../images/shared/folder-open-small.png border=0></a>",
+			  "'><img src=../images/shared/folder-open-small.svg border=0></a>",
 			"<a href='cpan.cgi?".
 			  join("&",map { "sel=$_" } @up)."#".
 			  join("::",@sel)."'>..</a>",
@@ -111,7 +111,7 @@ else {
 			# A category which can be opened
 			print &ui_columns_row([
 				"<a name=$name><a href='cpan.cgi?$pars'>".
-				  "<img src=../images/shared/folder-open-small.png border=0></a>",
+				  "<img src=../images/shared/folder-open-small.svg border=0></a>",
 				&ui_link("cpan.cgi?$pars",&html_escape($name)),
 				""
 				]);
@@ -120,7 +120,7 @@ else {
 			# A module
 			print &ui_columns_row([
 				"<a href='' onClick='sel(\"$name\")'>".
-				  "<img src=../images/shared/floppy-disk-small.png border=0></a>",
+				  "<img src=../images/shared/floppy-disk-small.svg border=0></a>",
 				"<a href='' onClick='sel(\"$name\")'>".
 				  &html_escape($name)."</a>",
 				&html_escape($m->{'ver'}),

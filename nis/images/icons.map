@@ -1,5 +1,6 @@
-client=network-computer.png
-icon=address-card.png
-security=padlock.png
-server=network-server.png
-switch=network-globe.png
+client=network-computer.svg
+icon=id-card.svg
+security=padlock.svg
+server=network-server.svg
+switch=network-globe.svg
+tables=folder-cyan.svg
