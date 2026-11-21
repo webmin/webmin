@@ -21,12 +21,13 @@ for($i=0; $i<@plist; $i++) {
 	@p = split(/\s+/, $plist[$i]);
 	print "<tr $cb> <td>$i</td> <td>$p[0]</td>\n";
 	if ($p[3]) {
-		printf "<td><img src=../images/shared/disk-gap.gif height=10 width=%d>",
-			$extwidth*$p[2]/$cyl;
-		printf "<img src=../images/shared/bar-red-10.gif height=10 width=%d>",
-			$extwidth*($p[3]-$p[2])/$cyl;
-		printf "<img src=../images/shared/disk-gap.gif height=10 width=%d></td>\n",
-			$extwidth*($cyl-$p[3])/$cyl;
+		# Draw where the partition sits on the disk : the space
+		# before it, then the partition itself
+		print "<td width=$extwidth>",
+		      &ui_progress(undef, { 'small' => 1, 'segments' => [
+			{ 'pct' => 100*$p[2]/$cyl, 'empty' => 1 },
+			{ 'pct' => 100*($p[3]-$p[2])/$cyl,
+			  'state' => 'danger' } ] }),"</td>\n";
 		print "<td>$p[2]</td> <td>$p[3]</td> </tr>\n";
 		}
 	else { print "<td colspan=3><br></td>\n"; }

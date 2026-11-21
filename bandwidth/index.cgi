@@ -328,14 +328,13 @@ if (@hours) {
 				}
 			}
 
-		# Find max and size
+		# Find the largest total, which fills the whole bar
 		$max = 0;
 		foreach $k (keys %count) {
 			if ($count{$k} > $max) {
 				$max = $count{$k};
 				}
 			}
-		$width = 500;
 
 		# Fill in missing hours or days
 		if ($in{'by'} eq 'hour' || $in{'by'} eq 'day') {
@@ -377,16 +376,14 @@ if (@hours) {
 				else {
 					push(@cols, $k);
 					}
-				my $bar = sprintf
-					"<span style='display: flex;'>".
-					  "<img src=../images/shared/bar-blue-10.gif width=%d% ".
-					  	"height=10>",
-					$max ? int($width * $icount{$k}/$max)+1 : 1;
-				$bar .= sprintf
-					"<img src=../images/shared/bar-red-10.gif width=%d% ".
-						"height=10></span>",
-					$max ? int($width * $ocount{$k}/$max)+1 : 1;
-				push(@cols, $bar);
+				# Traffic in and out as two segments, sized against
+				# the busiest row
+				push(@cols, &ui_progress(undef, {
+					'small' => 1, 'max' => $max,
+					'segments' => [
+					  { 'value' => $icount{$k}, 'state' => 'info' },
+					  { 'value' => $ocount{$k},
+					    'state' => 'danger' } ] }));
 				push(@cols, &nice_size($icount{$k}),
 					&nice_size($ocount{$k}),
 					&nice_size($count{$k}));

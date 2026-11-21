@@ -32,8 +32,8 @@ my $disk_blocks =
   ? $disk_structure->{'total_blocks'}
   : ( $disk->{'blocks'} || 1000000 );
 
-# Precompute a scale factor for extent image widths
-my $scale = $extwidth / ( $disk_blocks || 1 );
+# Precompute the share of the disk that one block is, as a percentage
+my $scale = 100 / ( $disk_blocks || 1 );
 &ui_print_header( $disk->{'desc'}, $text{'disk_title'}, "" );
 
 # Debug toggle bar
@@ -289,6 +289,9 @@ if (@$entries) {
         ]
     );
     my $row_number = 1;
+
+    # Keep the extent column wide enough for its bar
+    my @tds = ( ("") x 5, "width=$extwidth" );
     foreach my $entry (@$entries) {
         my @cols = ();
         push( @cols, $row_number++ );
@@ -304,15 +307,13 @@ if (@$entries) {
             push( @cols, "-" );
             push( @cols, "-" );
             push( @cols, "-" );
-            my $ext = "";
-            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
-              $scale * ( $entry->{'start'} - 1 );
-            $ext .=
-              sprintf
-"<img src='../images/shared/disk-gap.gif' height='10' width='%d' style='background-color: #8f8;'>",
-              $scale * ( $entry->{'size'} );
-            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
-              $scale * ( $disk_blocks - $entry->{'start'} - $entry->{'size'} );
+            # Draw where the free space sits on the disk : the space
+            # before it, then the free space itself
+            my $ext = &ui_progress( undef, { 'small' => 1, 'segments' => [
+                { 'pct' => $scale * ( $entry->{'start'} - 1 ),
+                  'empty' => 1 },
+                { 'pct' => $scale * $entry->{'size'}, 'state' => 'success' },
+            ] } );
             push( @cols, $ext );
             push( @cols, $start );
             push( @cols, $end );
@@ -323,13 +324,13 @@ if (@$entries) {
         }
         else {
             my $part_num = $entry->{'index'};
-            my $ext      = "";
-            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
-              $scale * ( $entry->{'start'} - 1 );
-            $ext .= sprintf "<img src='../images/shared/bar-red-10.gif' height='10' width='%d'>",
-              $scale * ( $entry->{'size'} );
-            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
-              $scale * ( $disk_blocks - $entry->{'start'} - $entry->{'size'} );
+            # Draw where the partition sits on the disk : the space
+            # before it, then the partition itself
+            my $ext = &ui_progress( undef, { 'small' => 1, 'segments' => [
+                { 'pct' => $scale * ( $entry->{'start'} - 1 ),
+                  'empty' => 1 },
+                { 'pct' => $scale * $entry->{'size'}, 'state' => 'danger' },
+            ] } );
             my $url = "edit_slice.cgi?device=$device_url&amp;slice="
               . &urlize($part_num);
             push( @cols, "<a href='$url'>" . &html_escape($part_num) . "</a>" );
@@ -377,7 +378,7 @@ if (@$entries) {
             push( @cols, &html_escape( $usage       || $text{'part_nouse'} ) );
             push( @cols, &html_escape( $role        || '-' ) );
         }
-        print &ui_columns_row( \@cols );
+        print &ui_columns_row( \@cols, \@tds );
     }
     print &ui_columns_end();
 }
@@ -391,18 +392,19 @@ else {
                 $text{'disk_end'},    $text{'disk_use'},
             ]
         );
+
+        # Keep the extent column wide enough for its bar
+        my @tds = ( ("") x 2, "width=$extwidth" );
         foreach my $s ( @{ $disk->{'slices'} } ) {
             my @cols = ();
-            my $ext  = "";
-            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
-              $scale * ( $s->{'startblock'} - 1 );
-            $ext .= ui_tag('img', undef, {
-                'src' => $s->{'extended'} ? 'images/ext.gif'
-                                         : '../images/shared/bar-red-10.gif',
-                'height' => 10, 'width' => int($scale * $s->{'blocks'}),
-            });
-            $ext .= sprintf "<img src='../images/shared/disk-gap.gif' height='10' width='%d'>",
-              $scale * ( $disk_blocks - $s->{'startblock'} - $s->{'blocks'} );
+            # Draw where the slice sits on the disk : the space before
+            # it, then the slice itself
+            my $ext = &ui_progress( undef, { 'small' => 1, 'segments' => [
+                { 'pct' => $scale * ( $s->{'startblock'} - 1 ),
+                  'empty' => 1 },
+                { 'pct' => $scale * $s->{'blocks'},
+                  'state' => $s->{'extended'} ? 'info' : 'danger' },
+            ] } );
             my $url = "edit_slice.cgi?device=$device_url&amp;slice="
               . &urlize( $s->{'number'} );
             push( @cols,
@@ -415,7 +417,7 @@ else {
             my @st  = &fdisk::device_status( $s->{'device'} );
             my $use = &fdisk::device_status_link(@st);
             push( @cols, &html_escape( $use || $text{'part_nouse'} ) );
-            print &ui_columns_row( \@cols );
+            print &ui_columns_row( \@cols, \@tds );
         }
         print &ui_columns_end();
     }
