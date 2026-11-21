@@ -91,6 +91,32 @@ my $etitle = &quote_escape($title);
 return ("<img src='".$esrc."' class='ui_img".($class ? " ".$class : "")."' alt='$ealt' ".($title ne '' ? "title='$etitle'" : "").($tags ? " ".$tags : "").">");
 }
 
+=head2 ui_gap(width, [height], [class])
+
+Returns HTML for an invisible box of the given size. It holds the place of
+something that is not shown, such as a missing move arrow, so that whatever
+is next to it stays in line.
+
+=item width - Width in pixels.
+
+=item height - Height in pixels, defaulting to the width.
+
+=item class - Extra CSS class names for the box.
+
+=cut
+sub ui_gap
+{
+return &theme_ui_gap(@_) if (defined(&theme_ui_gap));
+my ($width, $height, $class) = @_;
+$width = int($width);
+$height = defined($height) && $height ne '' ? int($height) : $width;
+my $classes = "ui_gap";
+$classes .= " ".$class if ($class);
+return "<span class='".&quote_escape($classes)."' ".
+       "style='display: inline-block; vertical-align: middle; ".
+       "width: ${width}px; height: ${height}px;'></span>";
+}
+
 =head2 ui_link_button(href, text, [target], [tags])
 
 Returns HTML for a button, which opens a URL when clicked. The parameters are :

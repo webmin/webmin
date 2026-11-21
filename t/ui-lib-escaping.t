@@ -124,6 +124,16 @@ assert_no_handler_injection(
 	main::ui_img(q{img.png' onerror='alert(1)}, 'safe'),
 	'ui_img src');
 
+# ui_gap: sizes are numbers, and the class is in a single-quoted attr.
+like(main::ui_gap(16),
+	qr/^<span class='ui_gap' style='[^']*width: 16px; height: 16px;'><\/span>$/,
+	'ui_gap is a square of the given width by default');
+like(main::ui_gap(16, 4, 'extra'), qr/class='ui_gap extra'.*height: 4px;/,
+	'ui_gap takes a height and a class');
+like(main::ui_gap(q{16px;' onload='alert(1)}), qr/width: 16px; height: 16px;'>/,
+	'ui_gap keeps only the number of a size');
+assert_no_handler_injection(main::ui_gap(16, 16, $xss_sq), 'ui_gap class');
+
 # js_redirect: url must not be able to close the script tag, and the
 # timeout/window parameters must not allow JS injection.
 {
