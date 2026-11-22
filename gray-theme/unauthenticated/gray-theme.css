@@ -2340,6 +2340,12 @@ body.right-frame { padding: 0; }
 	font-weight: 400;
 	color: var(--text-color-desc);
 }
+/* Keep space between host chips under a status when they wrap */
+.section .ui_stat_desc:has(> .ui_chip) {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
 
 /* ---- Widgets ---- */
 /* The ui-lib widgets keep square corners by default; this theme rounds
