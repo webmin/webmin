@@ -1723,6 +1723,25 @@ div.ui_tabs_box .ui_tabs_start > table.shrinkwrapper:last-of-type,
 div.ui_tabs_box .ui_tabs_start > table.wrapper:last-of-type {
 	margin-bottom: 0;
 }
+/* A tab body made of cards is not a card itself. Its cards sit on the page
+ * ground, as on a page without tabs, so no card is framed and padded twice.
+ * A body of plain text and fields keeps the box. Only the open tab counts,
+ * along with cards printed after the tabs inside the box. */
+div.ui_tabs_box:has(
+	> .ui_tabs_start.opener_shown > :is(table.wrapper, table.shrinkwrapper,
+		div.wrapper, table.ui_buttons_table,
+		details.ui_hidden_table_start, details.default),
+	> .ui_tabs_start.opener_shown > form > :is(table.wrapper,
+		table.shrinkwrapper, div.wrapper, table.ui_buttons_table,
+		details.ui_hidden_table_start, details.default),
+	> :is(table.wrapper, table.shrinkwrapper, div.wrapper,
+		table.ui_buttons_table, details.ui_hidden_table_start,
+		details.default)) {
+	padding: 0;
+	background: none;
+	border: 0;
+	box-shadow: none;
+}
 
 /* ---- Help bubbles and tooltips ---- */
 
