@@ -1120,15 +1120,24 @@ else {
 	}
 }
 
-=head2 urlize
+=head2 urlize(string, [keep-safe])
 
-Converts a string to a form ok for putting in a URL, using % escaping.
+Converts a string to a form ok for putting in a URL, using % escaping. If
+keep-safe is set, the characters - . _ and ~ are left as they are, as they
+need no escaping in a URL.
 
 =cut
 sub urlize
 {
-my ($rv) = @_;
-$rv =~ s/([^A-Za-z0-9])/sprintf("%%%2.2X", ord($1))/ge;
+my ($rv, $safe) = @_;
+if ($safe) {
+	# Leave the punctuation that is always allowed in a URL
+	$rv =~ s/([^A-Za-z0-9\-._~])/sprintf("%%%2.2X", ord($1))/ge;
+	}
+else {
+	# Encode everything except letters and digits
+	$rv =~ s/([^A-Za-z0-9])/sprintf("%%%2.2X", ord($1))/ge;
+	}
 return $rv;
 }
 
@@ -14884,10 +14893,11 @@ $referer =~ s/http.*:\/\/.*?$prefix/\//;
 $referer =~ s/\/\//\//g;
 if ($query) {
 	my @pr;
-	my $pq = "?";
-	my $pq = "&"
-		if ($referer =~ /\?/);
-	map { push(@pr, "$_=$in{$_}")
+	# Extend an existing query, or else start one
+	my $pq = $referer =~ /\?/ ? "&" : "?";
+	# Encode names and values so they cannot change the URL. Names keep
+	# safe punctuation, as themes look for plain names such as no-cache
+	map { push(@pr, &urlize($_, 1)."=".&urlize($in{$_}))
 		if ($_ ne $query_str) } keys %in;
 	$referer .= "$pq".join('&', @pr)
 		if (@pr);
