@@ -47,7 +47,7 @@
 
 	/* Neutrals: a light gray ground, white surfaces and gray hairlines,
 	 * with near-black text */
-	--bg-color: #dfdfdf;
+	--bg-color: #cfcfcf;
 	--bg-color-frame: #ffffff;
 	--bg-color-hover: #f0f0f0;
 	--bg-color-switch: #e2e2e2;
@@ -65,9 +65,13 @@
 	--border-color-lighter: #e8e8e8;
 	--border-color-frame: #e2e2e2;
 	--border-color-darker: #b8b8b8;
-	/* A dividing line on the ground. The darker edge is too strong for
+	/* Lines drawn on the ground itself, such as the one under a row of
+	 * tabs. They are a step darker than the ground, so they stay
+	 * visible on it. */
+	--border-color-ground: #a1a1a1;
+	/* A dividing line on the ground. The ground line is too strong for
 	 * it in the dark palette, which uses the card edge instead. */
-	--border-color-rule: var(--border-color-darker);
+	--border-color-rule: var(--border-color-ground);
 	--border-color-input: #bcbcbc;
 	--border-color-focused: #dbe5f5;
 
@@ -154,6 +158,7 @@
 		--border-color-lighter: #262a30;
 		--border-color-frame: #2a2f36;
 		--border-color-darker: #4d545e;
+		--border-color-ground: var(--border-color-darker);
 		--border-color-rule: var(--border-color);
 		--border-color-input: #4d545e;
 		--border-color-focused: rgba(106, 168, 240, 0.3);
@@ -233,6 +238,7 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--border-color-lighter: #262a30;
 	--border-color-frame: #2a2f36;
 	--border-color-darker: #4d545e;
+	--border-color-ground: var(--border-color-darker);
 	--border-color-rule: var(--border-color);
 	--border-color-input: #4d545e;
 	--border-color-focused: rgba(106, 168, 240, 0.3);
@@ -1749,13 +1755,13 @@ table.icons_table img { display: block; }
 
 /* ---- Tabs (ui_tabs_start) ---- */
 
-/* The tab row sits on the ground, so its line is the darker one */
+/* The tab row sits on the ground, so its line takes the ground line color */
 div.ui_tabs {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4px;
 	margin: 0 0 12px;
-	border-bottom: 1px solid var(--border-color-darker);
+	border-bottom: 1px solid var(--border-color-ground);
 }
 div.ui_tabs a.ui_tab {
 	display: block;
