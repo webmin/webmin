@@ -474,13 +474,13 @@ return $scheme && $scheme =~ /^(light|dark)$/ ? $1 : "";
 }
 
 # theme_menu_color()
-# Returns the chosen menu colors: page, blue, lightblue or darkgray. Without
+# Returns the chosen menu colors: white, blue, lightblue or darkgray. Without
 # a saved choice, the menu_color key of theme.info gives the default.
 sub theme_menu_color
 {
 my $menu = &theme_settings()->{'menu'} ||
 	   &get_current_theme_info_cached()->{'menu_color'};
-return $menu || 'page';
+return $menu || 'white';
 }
 
 # theme_menu_stylesheet()

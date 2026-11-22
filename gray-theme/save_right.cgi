@@ -38,8 +38,8 @@ $sect->{'nosearch'} = !$in{'search'};
 # Color scheme, forced or following the browser when empty
 $in{'scheme'} =~ /^(light|dark|)$/ || &error($text{'edright_escheme'});
 $sect->{'scheme'} = $in{'scheme'};
-# Menu colors, page for the page colors
-$in{'menu'} =~ /^(page|blue|lightblue|darkgray)$/ ||
+# Menu colors, white for the page colors
+$in{'menu'} =~ /^(white|blue|lightblue|darkgray)$/ ||
 	&error($text{'edright_emenu'});
 $sect->{'menu'} = $in{'menu'};
 if ($hasvirt) {

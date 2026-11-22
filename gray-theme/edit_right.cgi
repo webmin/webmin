@@ -66,7 +66,7 @@ print &ui_table_row($text{'edright_scheme'},
 # theme's default until one is saved
 print &ui_table_row($text{'edright_menu'},
     &ui_select("menu", &theme_menu_color(),
-	       [ [ "page", $text{'edright_menu_page'} ],
+	       [ [ "white", $text{'edright_menu_page'} ],
 		 [ "blue", $text{'edright_menu_blue'} ],
 		 [ "lightblue", $text{'edright_menu_lightblue'} ],
 		 [ "darkgray", $text{'edright_menu_darkgray'} ] ]));
