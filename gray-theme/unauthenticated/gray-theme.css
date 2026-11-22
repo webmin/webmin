@@ -2073,7 +2073,7 @@ html.loading-right .menu-loader { display: block; }
 .mode {
 	display: flex;
 	margin: 14px 16px 0;
-	padding: 3px;
+	padding: 3.5px;
 	background: var(--bg-color-switch);
 	border-radius: var(--radius);
 }
