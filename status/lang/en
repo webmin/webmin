@@ -590,8 +590,8 @@ ldap_ssl=Use SSL connection?
 ldap_user=LDAP server login
 ldap_pass=LDAP server password
 
-info_desc=System monitor
-info_last=Current status
+info_desc=System Monitor
+info_last=Current Status
 info_title=System and Server Status
 
 smtp_host=SMTP server host
