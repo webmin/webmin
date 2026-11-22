@@ -28,6 +28,11 @@
 	 * The page bottom keeps scroll room under the last element. */
 	--card-gap: 4px;
 	--page-pad-bottom: 28px;
+	/* Space between the side edge of a card of rows or buttons and the
+	 * first and last thing in it: buttons, checkboxes and text alike.
+	 * With the card's own edge it equals the space above and under the
+	 * buttons of a toolbar. */
+	--card-inset: 11px;
 	/* Titles on the ground sit a little in from the card edge, so they
 	 * neither touch the edge nor go as deep as the text inside the
 	 * cards */
@@ -801,6 +806,9 @@ tr.ui_buttons_row > td {
 	border-top: 1px solid var(--border-color-lighter);
 	vertical-align: middle;
 }
+/* The button and the end of its text keep the card's side inset */
+tr.ui_buttons_row > td:first-child { padding-left: var(--card-inset); }
+tr.ui_buttons_row > td:last-child { padding-right: var(--card-inset); }
 /* Each row is a form with a table of its own, as a form cannot wrap table
  * rows. Flattening the wrappers lets all rows share the outer columns */
 tr.ui_buttons_form_row,
@@ -1310,18 +1318,23 @@ table.ui_table.border {
 /* Cells of a grid of elements (ui_grid_table) */
 table.ui_grid_table td { padding: 2px 4px; }
 /* A grid of plain items in a card of its own, such as the list of Webmin
- * users, keeps the card's 16px side padding in its first and last
- * columns, with some air above its first row and under its last. Grids
+ * users, keeps the card's side inset in its first and last columns,
+ * with some air above its first row and under its last. Grids
  * inside a form row, grids of tables and the two-column link bars keep
  * their tight cells. */
 table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell {
 	padding: 4px 8px;
 }
 table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child {
-	padding-left: 16px;
+	padding-left: var(--card-inset);
 }
 table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:last-child {
-	padding-right: 16px;
+	padding-right: var(--card-inset);
+}
+/* The heading of such a grid starts on the same line as its items */
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > thead > tr > td {
+	padding-left: var(--card-inset);
+	padding-right: var(--card-inset);
 }
 table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row:first-child > td.ui_grid_cell {
 	padding-top: 8px;
@@ -1395,6 +1408,8 @@ details.ui_hidden_table_start table.ui_columns {
 }
 .section-body {
 	--section-pad: 16px;
+	/* A table in a block is inset by half of the block's side padding */
+	--card-inset: calc(var(--section-pad) / 2);
 	padding: 10px var(--section-pad) 14px;
 }
 /* Text above a dashboard block's content */
@@ -1451,8 +1466,18 @@ table.sortable > tbody > tr > td {
 	vertical-align: middle;
 }
 table.ui_columns > tbody > tr:last-child > td { border-bottom: 0; }
+/* The first and the last cell of every row keep the card's side inset, so
+ * titles, headings, checkboxes and text start on one line with the buttons
+ * of the toolbar above them */
+table.ui_columns > :is(thead, tbody) > tr > td:first-child {
+	padding-left: var(--card-inset);
+}
+table.ui_columns > :is(thead, tbody) > tr > td:last-child {
+	padding-right: var(--card-inset);
+}
 /* The first column, or the one after a checkbox, names the row and is
- * a little bolder; the checkbox column is as narrow as it can be */
+ * a little bolder; the checkbox column is as narrow as it can be, also
+ * when a module prints the checkbox as a plain first cell */
 table.ui_columns > tbody > tr > td:first-child,
 table.ui_columns > tbody > tr > td.ui_checked_checkbox + td,
 table.ui_columns > tbody > tr > td.ui_radio_radio + td {
@@ -1460,7 +1485,8 @@ table.ui_columns > tbody > tr > td.ui_radio_radio + td {
 	font-weight: 500;
 }
 table.ui_columns > tbody > tr > td.ui_checked_checkbox,
-table.ui_columns > tbody > tr > td.ui_radio_radio {
+table.ui_columns > tbody > tr > td.ui_radio_radio,
+table.ui_columns > tbody > tr > td:first-child:has(> input:is([type="checkbox"], [type="radio"]):only-child) {
 	width: 1%;
 	padding-right: 4px;
 }
@@ -1530,7 +1556,7 @@ table.ui_columns > tbody > tr > td > .text_type_warn:only-child {
 form.ui_form > .ui_links_row:has(+ table.wrapper),
 form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) {
 	margin: 0;
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-bottom: 0;
@@ -1543,7 +1569,7 @@ form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_lin
 	padding: 0;
 }
 form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) > tbody > tr > td {
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 }
 form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) table.ui_grid_table td {
 	padding: 0;
@@ -1564,7 +1590,7 @@ form.ui_form > table.wrapper + table.ui_form_end_buttons {
 	box-sizing: border-box;
 	width: 100%;
 	margin: calc(-1px - var(--card-gap)) 0 var(--card-gap);
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-top: 1px solid var(--border-color-light);
@@ -1583,7 +1609,7 @@ form.ui_form > table.wrapper:has(+ table.wrapper > tbody > tr > td > table.ui_gr
 form.ui_form > table.wrapper + .ui_links_row,
 form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) {
 	margin: calc(-1px - var(--card-gap)) 0 var(--card-gap);
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-top: 1px solid var(--border-color-light);
@@ -1594,7 +1620,7 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 	padding: 0;
 }
 form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) > tbody > tr > td {
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 }
 /* A links row and a button row under one table form a single footer
  * bar: 11px above the links, 11px between the rows and 11px under the
@@ -1615,7 +1641,7 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 	box-sizing: border-box;
 	width: 100%;
 	margin: 0 0 var(--card-gap);
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-top: 0;
