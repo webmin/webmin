@@ -259,18 +259,12 @@ function stop() {
 	root.classList.remove('loading-right');
 	clearTimeout(timer);
 	}
-// Give a menu row the fill it has under the mouse, taking it from the row
-// that had it; no row clears it
+// Mark a menu row as the page shown, taking the mark from the row that
+// had it; no row clears it. The stylesheet colors the marked row.
 function mark(a) {
-	if (current) {
-		current.style.background = '';
-		current.removeAttribute('aria-current');
-		}
+	if (current) current.removeAttribute('aria-current');
 	current = a;
-	if (a) {
-		a.style.background = 'var(--bg-color-hover)';
-		a.setAttribute('aria-current', 'page');
-		}
+	if (a) a.setAttribute('aria-current', 'page');
 	}
 window.rightLoading = start;
 // A page that no menu row opened, such as one reached with the back button

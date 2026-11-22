@@ -52,6 +52,9 @@
 	--bg-color: #cfcfcf;
 	--bg-color-frame: #ffffff;
 	--bg-color-hover: #f0f0f0;
+	/* The menu row of the page shown, and its text */
+	--bg-color-current: var(--bg-color-hover);
+	--text-color-current: var(--text-color);
 	--bg-color-switch: #e2e2e2;
 	--bg-color-switch-on: #ffffff;
 	/* Product switch: chosen pill text and shadow, other text */
@@ -164,6 +167,8 @@
 		--bg-color: #15171b;
 		--bg-color-frame: #1a1d22;
 		--bg-color-hover: #262a30;
+		--bg-color-current: var(--bg-color-hover);
+		--text-color-current: var(--text-color);
 		--bg-color-switch: #262a30;
 		--bg-color-switch-on: #363b43;
 		--text-color-switch-on: var(--text-color);
@@ -257,6 +262,8 @@ html[data-scheme="dark"] .menu-panel, body[data-scheme="dark"] .menu-panel {
 	--bg-color: #15171b;
 	--bg-color-frame: #1a1d22;
 	--bg-color-hover: #262a30;
+	--bg-color-current: var(--bg-color-hover);
+	--text-color-current: var(--text-color);
 	--bg-color-switch: #262a30;
 	--bg-color-switch-on: #363b43;
 	--text-color-switch-on: var(--text-color);
@@ -2263,6 +2270,11 @@ html.loading-right .menu-loader { display: block; }
 	background: var(--bg-color-hover);
 	color: var(--text-color);
 	text-decoration: none;
+}
+/* The row of the page shown in the right frame, marked by the menu script */
+.menu-link[aria-current="page"] {
+	background: var(--bg-color-current);
+	color: var(--text-color-current);
 }
 /* Links inside a category are indented under its name */
 .menu-link.menu-sub { padding-left: 24px; }

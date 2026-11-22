@@ -15,6 +15,9 @@
 	--bg-color-frame: #003a83;
 	/* A light fill for the row under the mouse */
 	--bg-color-hover: rgba(200, 205, 220, 0.22);
+	/* The row of the page shown, as under the mouse */
+	--bg-color-current: var(--bg-color-hover);
+	--text-color-current: var(--text-color);
 	/* Fields are outlined. The switch is a dark track with a white pill
 	 * for the chosen product and faint text for the other. */
 	--bg-color-input: transparent;
