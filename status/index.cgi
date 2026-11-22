@@ -149,8 +149,8 @@ foreach $s (@_) {
 		@remotes = map { $_->{'remote'} } @stats;
 		}
 	elsif ($oldstatus) {
-		# Getting status from last check
-		$stat = &expand_oldstatus($oldstatus{$s->{'id'}});
+		# Use the monitor to assign a legacy numeric result to its host
+		$stat = &expand_oldstatus($oldstatus{$s->{'id'}}, $s);
 		@remotes = &expand_remotes($s);
 		@ups = map { defined($stat->{$_}) ? ( $stat->{$_} ) : ( ) }
 			   @remotes;

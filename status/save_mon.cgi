@@ -30,6 +30,9 @@ else {
 	&error_setup($text{'mon_err'});
 	$in{'desc'} || &error($text{'mon_edesc'});
 	$serv->{'desc'} = $in{'desc'};
+	# Keep visibility unchanged when older callers omit this field
+	$serv->{'nodashboard'} = $in{'dashboard'} ? 0 : 1
+		if (defined($in{'dashboard'}));
 
 	# Make sure remote monitors exist on remote systems
 	@remotes = split(/\0/, $in{'remotes'});

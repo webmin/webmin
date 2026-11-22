@@ -98,6 +98,7 @@ mon_warn0=Report when going down
 mon_warn2=Report when down
 mon_warn3=Report when up
 mon_status=Current status
+mon_dashboard=Show on dashboard?
 mon_up=Up
 mon_down=Down
 mon_webmin=Webmin Down
@@ -349,6 +350,10 @@ log_refresh=Refreshed monitor statuses
 
 acl_edit=Can edit and create monitors?
 acl_sched=Can change scheduled monitoring?
+acl_monitors=Monitors shown on the dashboard
+acl_all=All monitors
+acl_selected=Only selected monitors
+acl_actions=Show buttons to start, stop and restart services?
 
 change_file=File or directory to monitor (fail if changed)
 
@@ -593,6 +598,8 @@ ldap_pass=LDAP server password
 info_desc=System Monitor
 info_last=Current Status
 info_title=System and Server Status
+info_unknown=Unknown
+info_actions=Actions
 
 smtp_host=SMTP server host
 smtp_port=SMTP server port

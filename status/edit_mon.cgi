@@ -68,6 +68,10 @@ if ($minfo) {
 print &ui_table_row($text{'mon_desc'},
 		    &ui_textbox("desc", $serv->{'desc'}, 50),
 		    undef, \@tds);
+# Hide this monitor from the dashboard without disabling its checks
+print &ui_table_row($text{'mon_dashboard'},
+		    &ui_yesno_radio("dashboard", !$serv->{'nodashboard'}),
+		    undef, \@tds);
 
 # Show current status
 if (!$in{'type'}) {
@@ -83,9 +87,10 @@ if (!$in{'type'}) {
 			    "</td>\n";
 			$stable .= "<td>:</td>\n";
 			}
+		# Color failure descriptions with the active theme
 		$stable .= "<td>".
 		      ($stat->{'desc'} && $stat->{'up'} == 0 ?
-			 "<font color=#ff0000>$stat->{'desc'}</font>" :
+			 &ui_text_color($stat->{'desc'}, 'danger') :
 		       $stat->{'desc'} ? $stat->{'desc'}
 				       : &status_to_string($stat->{'up'}, $serv)).
 			"</td>\n";
