@@ -2175,6 +2175,8 @@ html.loading-right .menu-loader { display: block; }
 .menu-panel-virtualmin .menu-create svg { color: var(--accent-color-hover); }
 /* Forms in the menu: a caps label over a field that fills the panel */
 .menu-form { margin: 0 8px 12px; }
+/* A row has padding of its own, so a form keeps less space before one */
+.menu-form:has(+ .menu-link, + details.menu-cat) { margin-bottom: 6px; }
 .menu-label {
 	display: block;
 	margin-bottom: 4px;
