@@ -14893,10 +14893,10 @@ $referer =~ s/http.*:\/\/.*?$prefix/\//;
 $referer =~ s/\/\//\//g;
 if ($query) {
 	my @pr;
-	# Extend an existing query, or else start one
+	# Extend an existing query, or else start one.
 	my $pq = $referer =~ /\?/ ? "&" : "?";
 	# Encode names and values so they cannot change the URL. Names keep
-	# safe punctuation, as themes look for plain names such as no-cache
+	# safe punctuation, as themes look for plain names such as no-cache.
 	map { push(@pr, &urlize($_, 1)."=".&urlize($in{$_}))
 		if ($_ ne $query_str) } keys %in;
 	$referer .= "$pq".join('&', @pr)
