@@ -62,11 +62,12 @@ print &ui_table_row($text{'edright_scheme'},
 		 [ "light", $text{'edright_scheme_light'} ],
 		 [ "dark", $text{'edright_scheme_dark'} ] ]));
 
-# Menu colors, the page colors or navy blue
+# Menu colors, the page colors, navy blue or light blue
 print &ui_table_row($text{'edright_menu'},
     &ui_select("menu", $sects->{'menu'},
 	       [ [ "", $text{'edright_menu_page'} ],
-		 [ "blue", $text{'edright_menu_blue'} ] ]));
+		 [ "blue", $text{'edright_menu_blue'} ],
+		 [ "lightblue", $text{'edright_menu_lightblue'} ] ]));
 
 # Show search box
 print &ui_table_row($text{'edright_search'},

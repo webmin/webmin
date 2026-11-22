@@ -241,7 +241,7 @@ if (get_module_name() eq "virtual-server") {
 # theme_prehead()
 # Prints the head parts of every page: the color scheme meta, the scheme
 # and frame scripts, and the links to the stylesheet and the table sorting
-# script. The menu frame also gets the blue menu stylesheet when chosen.
+# script. The menu frame also gets the chosen menu colors stylesheet.
 # Also sets the body attributes the stylesheet keys on: the module name as
 # a class and the forced color scheme, if any.
 sub theme_prehead
@@ -253,11 +253,10 @@ print &theme_scheme_script($scheme);
 print &theme_frame_script();
 print "<link rel='stylesheet' type='text/css' href='$pfx/unauthenticated/".
       "gray-theme.css?".&theme_asset_key("gray-theme.css")."'>\n";
-if ($main::gray_theme_body_class &&
-    $main::gray_theme_body_class eq 'left-frame' &&
-    &theme_menu_color() eq 'blue') {
-	# The navy blue menu, in the menu frame only
-	my $css = "gray-theme-menu-navi-blue.css";
+my $css = &theme_menu_stylesheet();
+if ($css && $main::gray_theme_body_class &&
+    $main::gray_theme_body_class eq 'left-frame') {
+	# The chosen menu colors, in the menu frame only
 	print "<link rel='stylesheet' type='text/css' href='$pfx/".
 	      "unauthenticated/$css?".&theme_asset_key($css)."'>\n";
 	}
@@ -474,12 +473,15 @@ my $scheme = &theme_settings()->{'scheme'};
 return $scheme && $scheme =~ /^(light|dark)$/ ? $1 : "";
 }
 
-# theme_menu_color()
-# Returns blue when the navy blue menu is chosen, or an empty string
-sub theme_menu_color
+# theme_menu_stylesheet()
+# Returns the stylesheet of the chosen menu colors, or an empty string for
+# a menu in the page colors
+sub theme_menu_stylesheet
 {
-my $menu = &theme_settings()->{'menu'};
-return $menu && $menu eq 'blue' ? 'blue' : "";
+my $menu = &theme_settings()->{'menu'} || "";
+my %css = ( 'blue' => 'gray-theme-menu-navi-blue.css',
+	    'lightblue' => 'gray-theme-menu-light-blue.css' );
+return $css{$menu} || "";
 }
 
 # theme_asset_key(file)
