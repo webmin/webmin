@@ -480,7 +480,8 @@ sub theme_menu_stylesheet
 {
 my $menu = &theme_settings()->{'menu'} || "";
 my %css = ( 'blue' => 'gray-theme-menu-navi-blue.css',
-	    'lightblue' => 'gray-theme-menu-light-blue.css' );
+	    'lightblue' => 'gray-theme-menu-light-blue.css',
+	    'darkgray' => 'gray-theme-menu-dark-gray.css' );
 return $css{$menu} || "";
 }
 

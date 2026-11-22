@@ -66,6 +66,7 @@ edright_menu=Menu colors
 edright_menu_page=Same as the pages
 edright_menu_blue=Navy blue in the light scheme
 edright_menu_lightblue=Light blue in the light scheme
+edright_menu_darkgray=Dark gray in the light scheme
 edright_emenu=Invalid menu colors
 edright_ecannot=You are not allowed to customize this page
 

@@ -39,7 +39,8 @@ $sect->{'nosearch'} = !$in{'search'};
 $in{'scheme'} =~ /^(light|dark|)$/ || &error($text{'edright_escheme'});
 $sect->{'scheme'} = $in{'scheme'};
 # Menu colors, empty for the page colors
-$in{'menu'} =~ /^(blue|lightblue|)$/ || &error($text{'edright_emenu'});
+$in{'menu'} =~ /^(blue|lightblue|darkgray|)$/ ||
+	&error($text{'edright_emenu'});
 $sect->{'menu'} = $in{'menu'};
 if ($hasvirt) {
 	$sect->{'dom'} = $in{'dom'};
