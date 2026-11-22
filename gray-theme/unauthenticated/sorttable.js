@@ -31,18 +31,19 @@ function ts_makeSortable(table) {
     }
     if (!firstRow) return;
     
-    // Find the columns that hold the checkbox or radio button of each row.
-    // The first row that has one tells for all rows
-    var boxes = {};
-    for (var r=firstRow.rowIndex+1;r<table.rows.length;r++) {
-        var cells = table.rows[r].cells;
-        var found = false;
-        for (var c=0;c<cells.length;c++) {
-            if (/(^|\s)(ui_checked_checkbox|ui_radio_radio)(\s|$)/.test(cells[c].className)) {
-                boxes[c] = found = true;
+    // Find the columns that hold controls, such as the checkbox of each row
+    // or a field to fill in. Only the first row under the headings is read,
+    // so a large table takes no longer than a small one
+    var controls = {};
+    var below = table.rows[firstRow.rowIndex+1];
+    if (below) {
+        for (var c=0;c<below.cells.length;c++) {
+            var under = below.cells[c];
+            if (under.querySelector &&
+                under.querySelector('input:not([type="hidden"]), select, button, textarea')) {
+                controls[c] = true;
             }
         }
-        if (found) break;
     }
 
     // We have a heading row: make its contents clickable links
@@ -51,9 +52,9 @@ function ts_makeSortable(table) {
         // A heading holding a control, such as a select-all checkbox, is
         // left as it is : rewriting it as a sort link would drop the control
         if (cell.querySelector && cell.querySelector('input, select, button, textarea')) continue;
-        // So is the heading over the row checkboxes or radio buttons, as
-        // that column has nothing to sort by
-        if (boxes[i]) continue;
+        // So is the heading of a column of controls, as that column has
+        // nothing to sort by
+        if (controls[i]) continue;
         var txt = ts_getInnerText(cell);
         // A heading without text would become an empty link
         if (!txt.replace(/\s/g, '')) continue;
