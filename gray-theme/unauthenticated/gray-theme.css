@@ -44,6 +44,8 @@
 	/* Which of two images, one per palette, is shown */
 	--show-light: block;
 	--show-dark: none;
+	/* Filter for a logo whose colors do not suit the surface */
+	--logo-filter: none;
 
 	/* Neutrals: a light gray ground, white surfaces and gray hairlines,
 	 * with near-black text */
@@ -52,6 +54,10 @@
 	--bg-color-hover: #f0f0f0;
 	--bg-color-switch: #e2e2e2;
 	--bg-color-switch-on: #ffffff;
+	/* Product switch: chosen pill text and shadow, other text */
+	--text-color-switch-on: var(--text-color);
+	--shadow-color-switch: var(--shadow-color);
+	--text-color-switch-off: var(--text-color-muted);
 	--main-content: #ffffff;
 	--bg-table-header: #f5f5f5;
 	--bg-color-input: #ffffff;
@@ -82,6 +88,7 @@
 	--text-color-desc: #2b2f35;
 	--text-color-muted: #3d434b;
 	--text-color-disabled: #767d86;
+	--text-color-placeholder: var(--text-color-disabled);
 	--text-color-inverse: #ffffff;
 
 	/* Links are a deep blue, 9.5:1 on the ground, still apart from the
@@ -92,6 +99,15 @@
 	--accent-color-hover: #234d93;
 	--accent-color-soft: #a9c0e8;
 	--element-highlight-bg-color: #e3ebf8;
+	/* Text and icon on that fill, as on the menu's creation button */
+	--element-highlight-text-color: var(--text-color);
+	--element-highlight-icon-color: var(--accent-color-hover);
+	/* Cloudmin's orange, and its creation button: an orange tint */
+	--cloudmin-color: #df7935;
+	--cloudmin-create-bg: rgba(223, 121, 53, 0.14);
+	--cloudmin-create-bg-hover: rgba(223, 121, 53, 0.22);
+	--cloudmin-create-edge: rgba(223, 121, 53, 0.42);
+	--cloudmin-create-text: var(--text-color);
 	/* Navigation loader, with a separate shade for each color scheme. */
 	--menu-loader-color: #dc143c;
 	/* Text on a button filled with a notice color: white on the deep
@@ -134,9 +150,11 @@
 /* The dark palette. The two blocks below must be kept identical: the
  * first applies when the browser prefers dark and nothing marks the
  * scheme light, the second when the theme settings or the theme script
- * mark it dark. */
+ * mark it dark. Both also name the menu panel, so they outrank the blue
+ * menu palette of gray-theme-menu-navi-blue.css. */
 @media (prefers-color-scheme: dark) {
-	html:not([data-scheme="light"]) body:not([data-scheme="light"]) {
+	html:not([data-scheme="light"]) body:not([data-scheme="light"]),
+	html:not([data-scheme="light"]) body:not([data-scheme="light"]) .menu-panel {
 		color-scheme: dark;
 		--card-gap: 7px;
 		--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -144,11 +162,15 @@
 		--border-color-panel: #30353d;
 		--show-light: none;
 		--show-dark: block;
+		--logo-filter: none;
 		--bg-color: #15171b;
 		--bg-color-frame: #1a1d22;
 		--bg-color-hover: #262a30;
 		--bg-color-switch: #262a30;
 		--bg-color-switch-on: #363b43;
+		--text-color-switch-on: var(--text-color);
+		--shadow-color-switch: var(--shadow-color);
+		--text-color-switch-off: var(--text-color-muted);
 		--main-content: #1e2126;
 		--bg-table-header: #23262c;
 		--bg-color-input: #1b1e23;
@@ -167,6 +189,7 @@
 		--text-color-desc: #a7b0ba;
 		--text-color-muted: #99a3ae;
 		--text-color-disabled: #6b7581;
+		--text-color-placeholder: var(--text-color-disabled);
 		--text-color-inverse: #ffffff;
 		--link-color: #6aa8f0;
 		--link-color-hover: #8fc0f3;
@@ -174,6 +197,13 @@
 		--accent-color-hover: #5a8ad8;
 		--accent-color-soft: #3d5f8a;
 		--element-highlight-bg-color: #26395a;
+		--element-highlight-text-color: var(--text-color);
+		--element-highlight-icon-color: var(--accent-color-hover);
+		--cloudmin-color: #df7935;
+		--cloudmin-create-bg: rgba(223, 121, 53, 0.14);
+		--cloudmin-create-bg-hover: rgba(223, 121, 53, 0.22);
+		--cloudmin-create-edge: rgba(223, 121, 53, 0.42);
+		--cloudmin-create-text: var(--text-color);
 		--menu-loader-color: #c7302c;
 		--alert-button-text: var(--bg-color);
 		--alert-button-warning: #e0a63c;
@@ -216,7 +246,8 @@
 		background: #15171b;
 	}
 }
-html[data-scheme="dark"] body, body[data-scheme="dark"] {
+html[data-scheme="dark"] body, body[data-scheme="dark"],
+html[data-scheme="dark"] .menu-panel, body[data-scheme="dark"] .menu-panel {
 	color-scheme: dark;
 	--card-gap: 7px;
 	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -224,11 +255,15 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--border-color-panel: #30353d;
 	--show-light: none;
 	--show-dark: block;
+	--logo-filter: none;
 	--bg-color: #15171b;
 	--bg-color-frame: #1a1d22;
 	--bg-color-hover: #262a30;
 	--bg-color-switch: #262a30;
 	--bg-color-switch-on: #363b43;
+	--text-color-switch-on: var(--text-color);
+	--shadow-color-switch: var(--shadow-color);
+	--text-color-switch-off: var(--text-color-muted);
 	--main-content: #1e2126;
 	--bg-table-header: #23262c;
 	--bg-color-input: #1b1e23;
@@ -247,6 +282,7 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--text-color-desc: #a7b0ba;
 	--text-color-muted: #99a3ae;
 	--text-color-disabled: #6b7581;
+	--text-color-placeholder: var(--text-color-disabled);
 	--text-color-inverse: #ffffff;
 	--link-color: #6aa8f0;
 	--link-color-hover: #8fc0f3;
@@ -254,6 +290,13 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--accent-color-hover: #5a8ad8;
 	--accent-color-soft: #3d5f8a;
 	--element-highlight-bg-color: #26395a;
+	--element-highlight-text-color: var(--text-color);
+	--element-highlight-icon-color: var(--accent-color-hover);
+	--cloudmin-color: #df7935;
+	--cloudmin-create-bg: rgba(223, 121, 53, 0.14);
+	--cloudmin-create-bg-hover: rgba(223, 121, 53, 0.22);
+	--cloudmin-create-edge: rgba(223, 121, 53, 0.42);
+	--cloudmin-create-text: var(--text-color);
 	--menu-loader-color: #c7302c;
 	--alert-button-text: var(--bg-color);
 	--alert-button-warning: #e0a63c;
@@ -1985,6 +2028,7 @@ body.left-frame {
 	border: 1px solid var(--border-color-panel);
 	border-radius: 14px;
 	box-shadow: 0 2px 6px var(--shadow-color);
+	color: var(--text-color);
 }
 /* The brand block and the product switch stick to the top of the panel
  * while the menu scrolls under them */
@@ -2037,12 +2081,13 @@ html.loading-right .menu-loader { display: block; }
 	margin: 0 0 12px;
 	line-height: 0;
 }
-/* The product logo, in the version matching the palette */
+/* The product logo for the palette, with the palette's filter */
 .menu-brand-logo {
 	display: var(--show-light);
 	height: 36px;
 	width: auto;
 	max-width: 100%;
+	filter: var(--logo-filter);
 }
 .menu-brand-logo-dark { display: var(--show-dark); }
 /* Host and login under the logo: small lines with a leading icon; a
@@ -2088,8 +2133,8 @@ html.loading-right .menu-loader { display: block; }
 	padding: 3px 0;
 	border-radius: var(--radius-sm);
 	background: var(--bg-color-switch-on);
-	box-shadow: 0 1px 2px var(--shadow-color);
-	color: var(--text-color);
+	box-shadow: 0 1px 2px var(--shadow-color-switch);
+	color: var(--text-color-switch-on);
 	font-size: 12.5px;
 	font-weight: 600;
 	text-align: center;
@@ -2099,7 +2144,7 @@ html.loading-right .menu-loader { display: block; }
 .mode > b:has(> a) {
 	background: transparent;
 	box-shadow: none;
-	color: var(--text-color-muted);
+	color: var(--text-color-switch-off);
 	font-weight: 400;
 	cursor: pointer;
 }
@@ -2156,29 +2201,29 @@ html.loading-right .menu-loader { display: block; }
 	color: var(--text-color-inverse);
 	text-decoration: none;
 }
-/* Cloudmin's creation action uses a quiet orange tint and outline. Normal
- * theme text stays readable without making the button dominate the menu. */
+/* The creation buttons take their colors from the palette */
 .menu-panel-cloudmin .menu-create {
-	background: rgba(223, 121, 53, 0.14);
-	box-shadow: inset 0 0 0 1px rgba(223, 121, 53, 0.42);
-	color: var(--text-color);
+	background: var(--cloudmin-create-bg);
+	box-shadow: inset 0 0 0 1px var(--cloudmin-create-edge);
+	color: var(--cloudmin-create-text);
 }
 .menu-panel-cloudmin .menu-create:hover {
-	background: rgba(223, 121, 53, 0.22);
-	color: var(--text-color);
+	background: var(--cloudmin-create-bg-hover);
+	color: var(--cloudmin-create-text);
 }
-.menu-panel-cloudmin .menu-create svg { color: #df7935; }
-/* Virtualmin uses the same quiet treatment with the theme's blue palette. */
+.menu-panel-cloudmin .menu-create svg { color: var(--cloudmin-color); }
 .menu-panel-virtualmin .menu-create {
 	background: var(--element-highlight-bg-color);
 	box-shadow: inset 0 0 0 1px var(--accent-color-soft);
-	color: var(--text-color);
+	color: var(--element-highlight-text-color);
 }
 .menu-panel-virtualmin .menu-create:hover {
 	box-shadow: inset 0 0 0 2px var(--border-color-info);
-	color: var(--text-color);
+	color: var(--element-highlight-text-color);
 }
-.menu-panel-virtualmin .menu-create svg { color: var(--accent-color-hover); }
+.menu-panel-virtualmin .menu-create svg {
+	color: var(--element-highlight-icon-color);
+}
 /* Forms in the menu: a caps label over a field that fills the panel */
 .menu-form { margin: 0 8px 12px; }
 /* A row has padding of its own, so a form keeps less space before one */
@@ -2201,6 +2246,11 @@ html.loading-right .menu-loader { display: block; }
 	width: 100%;
 	min-width: 0;
 	font-size: 12.5px;
+}
+/* Hint text in an empty field */
+.menu-field input::placeholder {
+	color: var(--text-color-placeholder);
+	opacity: 1;
 }
 /* Menu rows: 26px links that highlight under the mouse */
 .menu-link {
