@@ -1430,6 +1430,10 @@ table.ui_columns > thead > tr.ui_columns_heading > td {
 	color: var(--text-color);
 }
 table.ui_columns > thead > tr > td b { font-weight: inherit; }
+/* The sort script keeps a slot for the arrow inside each heading link. As
+ * a block of its own, the slot is not underlined with the link's text, and
+ * a click on it still sorts. */
+a.sortheader > .sortarrow { display: inline-block; }
 /* Rows are as tall as their content plus 4px above and below, in
  * every table alike */
 table.ui_columns > tbody > tr > td,
