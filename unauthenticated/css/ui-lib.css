@@ -13,8 +13,9 @@
  * and code uses the monospace fallback below.
  *
  * .ui_page and standalone .ui_multi lists, .ui_toggle switches,
- * .ui_action controls, dropdowns, dialogs, breadcrumbs, pagers and
- * progress bars supply the widget tokens.
+ * .ui_action controls, dropdowns, dialogs, breadcrumbs, pagers,
+ * progress bars, .ui_list entry lists and .ui_card cards supply the
+ * widget tokens.
  * The palette and shared spacing come from --ui-* custom properties,
  * which a theme may redefine on .ui_page to restyle every
  * widget at once. Setting data-ui-scheme="dark" (or "auto") on any
@@ -27,7 +28,8 @@
 .ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 .ui_dropdown:not(:where(.ui_page *)), .ui_dialog:not(:where(.ui_page *)),
 .ui_breadcrumb:not(:where(.ui_page *)), .ui_pager:not(:where(.ui_page *)),
-.ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
+.ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)),
+:is(.ui_list, .ui_card):not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
 	/* Palette tokens read the theme's own custom properties first - the
 	 * names Authentic defines for its palettes and night mode - and
 	 * fall back to the colors of the gray theme, which defines only the
@@ -289,7 +291,8 @@
 .ui_action[data-ui-scheme="dark"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 [data-ui-scheme="dark"] :is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager):not(:where(.ui_page *)),
 :is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="dark"]:not(:where(.ui_page *)),
-[data-ui-scheme="dark"] .ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
+[data-ui-scheme="dark"] .ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)),
+[data-ui-scheme="dark"] :is(.ui_list, .ui_card):not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
 	--ui-canvas: #15171b;
 	--ui-surface: #1e2126;
 	--ui-surface-2: #23262c;
@@ -340,7 +343,8 @@
 	.ui_action[data-ui-scheme="auto"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
 	[data-ui-scheme="auto"] :is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager):not(:where(.ui_page *)),
 	:is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="auto"]:not(:where(.ui_page *)),
-	[data-ui-scheme="auto"] .ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
+	[data-ui-scheme="auto"] .ui_progress:not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)),
+	[data-ui-scheme="auto"] :is(.ui_list, .ui_card):not(:where(.ui_page *, .ui_multi *, .ui_dropdown *, .ui_dialog *)) {
 		--ui-canvas: #15171b;
 		--ui-surface: #1e2126;
 		--ui-surface-2: #23262c;
@@ -540,6 +544,10 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 	grid-template-columns: var(--ui-grid-template,
 		repeat(var(--ui-grid-cols, 2), minmax(0, 1fr)));
 }
+/* Optional alignment keeps cells at their natural height. */
+.ui_grid_start { align-items: start; }
+.ui_grid_center { align-items: center; }
+.ui_grid_end { align-items: end; }
 .ui_stack {
 	display: flex;
 	flex-direction: column;
@@ -805,6 +813,9 @@ label.ui_select_inline {
 	align-items: center;
 	gap: 8px;
 }
+/* Compact values use icons sized to the text. */
+.ui_stat_small .ui_stat_value { font-size: 1em; gap: 6px; }
+.ui_stat_small .ui_stat_value .ui_svg_icon { width: 1em; height: 1em; }
 .ui_stat_label { font-weight: 600; }
 .ui_stat_desc { color: var(--ui-fg-muted); font-size: 0.9em; }
 a.ui_stat, a.ui_stat:hover {
@@ -1114,7 +1125,9 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
  * back by that much to match the ones next to the title */
 .ui_list_desc .ui_badge { font-size: calc(0.81em / 0.93); }
 .ui_list_desc .ui_chip { font-size: calc(0.86em / 0.93); }
-.ui_list_icon { padding-top: 2px; color: var(--ui-fg-muted); }
+.ui_list_icon { padding-top: 2px; }
+/* Low specificity lets status colors override the muted default. */
+:where(.ui_list_icon) { color: var(--ui-fg-muted); }
 a.ui_list_link, a.ui_list_link:hover {
 	color: inherit !important;
 	text-decoration: none !important;

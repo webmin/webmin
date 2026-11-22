@@ -125,6 +125,18 @@ assert_no_handler_injection(
 	is_deeply($tile, { 'value' => 4 }, 'ui_stats preserves caller options');
 	like(main::ui_stat({ 'value' => 1 }), qr/\bui_stat_square\b/,
 		'ui_stat defaults to square corners');
+	# Compact size and cell alignment apply only when requested
+	unlike(main::ui_stat({ 'value' => 1 }), qr/\bui_stat_small\b/,
+		'ui_stat keeps the default value size');
+	like(main::ui_stat({ 'value' => 1, 'small' => 1 }), qr/\bui_stat_small\b/,
+		'ui_stat can use the smaller value size');
+	like(main::ui_grid([ 'a', 'b' ], { 'align' => 'start' }), qr/\bui_grid_start\b/,
+		'ui_grid can align its cells to the top of the row');
+	unlike(main::ui_grid([ 'a', 'b' ], { 'align' => $xss }), qr/ui_grid_[^f]/,
+		'ui_grid ignores an unknown alignment');
+	my @small = main::ui_stats([ { 'value' => 1 }, { 'value' => 2, 'small' => 0 } ],
+		{ 'small' => 1 }) =~ /\bui_stat_small\b/g;
+	is(scalar(@small), 1, 'ui_stats applies small only when a tile has no override');
 	$html = main::ui_stat({ 'value' => 1, 'shape' => $xss });
 	like($html, qr/\bui_stat_square\b/, 'unknown shapes fall back to square');
 	assert_no_handler_injection($html, 'ui_stat shape');
@@ -227,6 +239,18 @@ subtest 'action buttons and links' => sub {
 	like($fallback, qr/type="button"/, 'unknown type cannot accidentally submit');
 	unlike(main::ui_action_button('Plain', 'danger', {icon => ''}), qr/<svg\b/,
 		'empty icon suppresses the state icon');
+	# Empty labels remove the gap but keep an accessible action name
+	my $icon_only = main::ui_action_button('', undef,
+		{ icon => 'stop', title => 'Stop server' });
+	like($icon_only, qr/ui_action_content[^>]*><svg\b.*<\/svg>\s*<\/span><\/button>/s,
+		'empty label leaves the icon alone');
+	like($icon_only, qr/aria-label="Stop server"/,
+		'icon-only action takes its accessible name from the title');
+	like(main::ui_action_button('', undef, { icon => 'stop', title => 'Stop',
+			attrs => { 'aria-label' => 'Halt' } }),
+		qr/aria-label="Halt"/, 'caller accessible name is kept');
+	unlike(main::ui_action_button('Stop', undef, { title => 'Stop server' }),
+		qr/aria-label=/, 'labelled action needs no separate accessible name');
 	assert_no_handler_injection(main::ui_action_button($xss, 'danger',
 		{ href => $xss, title => $xss, class => $xss, name => $xss, value => $xss }),
 		'action text and attributes');

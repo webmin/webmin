@@ -4889,6 +4889,9 @@ narrow screens the grid always collapses to one column.
 
 =item gap - Gap between cells, as a CSS length.
 
+=item align - Vertical cell alignment: stretch (default), start, center
+or end. Stretch makes cells fill the row height.
+
 =item class - Additional CSS classes.
 
 =cut
@@ -4900,6 +4903,8 @@ $opts ||= {};
 my @items = grep { defined($_) && $_ ne '' } @$items;
 return "" if (!@items);
 my $fixed = $opts->{'cols'} || $opts->{'template'};
+# Unknown alignment values keep the default stretch behavior
+my $align = ($opts->{'align'} || '') =~ /^(start|center|end)$/ ? $1 : undef;
 my @style;
 push(@style, "--ui-grid-cols:".int($opts->{'cols'}))
 	if ($opts->{'cols'} && !$opts->{'template'});
@@ -4909,6 +4914,7 @@ push(@style, "--ui-grid-min:".$opts->{'min'}) if ($opts->{'min'});
 push(@style, "--ui-gap:".$opts->{'gap'}) if ($opts->{'gap'});
 return &_ui_block('div', join("\n", @items), &_ui_attrs({
 	'class' => &_ui_class('ui_grid', $fixed ? 'ui_grid_fixed' : undef,
+			      $align ? 'ui_grid_'.$align : undef,
 			      $opts->{'class'}),
 	'style' => @style ? join(";", @style) : undef }));
 }
@@ -5066,6 +5072,8 @@ padding.
 
 =item id - HTML id for the card element.
 
+Include ui_page_assets when rendering outside ui_page_start.
+
 =cut
 sub ui_card
 {
@@ -5141,6 +5149,8 @@ Options are :
 
 =item shape - Square corners (square, the default) or rounded corners (rounded).
 
+=item small - Set to 1 for a smaller value and icon.
+
 =cut
 sub ui_stat
 {
@@ -5163,7 +5173,8 @@ $body .= &ui_tag('span', $desc, { 'class' => 'ui_stat_desc' })
 	if (defined($desc));
 return &_ui_block($opts->{'href'} ? 'a' : 'div', $body, &_ui_attrs({
 	'class' => &_ui_class('ui_stat', ($opts->{'shape'} || '') eq 'rounded' ?
-		'ui_stat_rounded' : 'ui_stat_square'),
+		'ui_stat_rounded' : 'ui_stat_square',
+		$opts->{'small'} ? 'ui_stat_small' : undef),
 	'href' => $opts->{'href'} }));
 }
 
@@ -5171,8 +5182,8 @@ return &_ui_block($opts->{'href'} ? 'a' : 'div', $body, &_ui_attrs({
 
 Returns HTML for a responsive row of statistic tiles. Each element of the
 stats array is a hash reference in ui_stat format. Options are C<class>
-and C<min> for the minimum tile width, and C<shape> for the default corner
-shape. An individual tile's C<shape> overrides the row's setting.
+for CSS classes, C<min> for minimum tile width, C<shape> for corner shape
+and C<small> for smaller values and icons. Tile options override row defaults.
 
 =cut
 sub ui_stats
@@ -5183,7 +5194,8 @@ $opts ||= {};
 return "" if (!$stats || !@$stats);
 # Apply row defaults to a copy so caller-owned tile options stay unchanged.
 return &_ui_block('div', join("", map {
-	&ui_stat({ 'shape' => $opts->{'shape'}, %$_ }) } @$stats),
+	&ui_stat({ 'shape' => $opts->{'shape'},
+		   'small' => $opts->{'small'}, %$_ }) } @$stats),
 	&_ui_attrs({
 		'class' => &_ui_class('ui_stats', $opts->{'class'}),
 		'style' => $opts->{'min'} ?
@@ -5304,7 +5316,9 @@ Returns a native button, or a link when href is supplied, using the
 current theme's button styles. State accepts the same values and aliases
 as ui_badge and defaults to neutral; the extra state primary uses the
 theme's informational action style for the one main action of a form.
-Labels are plain text. Options are :
+Labels are plain text. An empty label shows only the icon. Its title is
+the tooltip and default accessible name; attrs can override aria-label.
+Options are :
 
 =item href - Destination URL. When present, renders an <a> instead of a
 <button>. Use links for navigation and buttons for form actions.
@@ -5408,7 +5422,13 @@ else {
 	my $name = defined($opts->{'icon'}) ? $opts->{'icon'} : $ui_state_icons{$state};
 	$icon = &ui_svg_icon($name) if ($name);
 	}
-my $label_html = &ui_tag('span', &html_escape($label));
+# Omit empty label markup to avoid a gap beside the icon
+my $label_html = defined($label) && $label ne '' ?
+	&ui_tag('span', &html_escape($label)) : '';
+# Use the tooltip as the accessible name unless one was supplied
+$attrs{'aria-label'} = $attrs{'title'}
+	if ($label_html eq '' && defined($attrs{'title'}) &&
+	    !defined($attrs{'aria-label'}));
 return &ui_page_assets().&ui_tag($tag,
 	&ui_tag('span', $opts->{'icon_after'} ? $label_html.$icon : $icon.$label_html,
 		{ 'class' => 'ui_action_content' }), \%attrs);
@@ -5497,6 +5517,8 @@ tile, which gives rows of files or databases more weight.
 aligned to the right, instead of beside it.
 
 =item class - Additional CSS classes.
+
+Include ui_page_assets when rendering outside ui_page_start.
 
 =cut
 sub ui_list
