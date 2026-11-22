@@ -60,6 +60,9 @@
 	--border-color-lighter: #e8e8e8;
 	--border-color-frame: #e2e2e2;
 	--border-color-darker: #b8b8b8;
+	/* A dividing line on the ground. The darker edge is too strong for
+	 * it in the dark palette, which uses the card edge instead. */
+	--border-color-rule: var(--border-color-darker);
 	--border-color-input: #bcbcbc;
 	--border-color-focused: #dbe5f5;
 
@@ -146,6 +149,7 @@
 		--border-color-lighter: #262a30;
 		--border-color-frame: #2a2f36;
 		--border-color-darker: #4d545e;
+		--border-color-rule: var(--border-color);
 		--border-color-input: #4d545e;
 		--border-color-focused: rgba(106, 168, 240, 0.3);
 		--text-color: #e6e8ea;
@@ -224,6 +228,7 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--border-color-lighter: #262a30;
 	--border-color-frame: #2a2f36;
 	--border-color-darker: #4d545e;
+	--border-color-rule: var(--border-color);
 	--border-color-input: #4d545e;
 	--border-color-focused: rgba(106, 168, 240, 0.3);
 	--text-color: #e6e8ea;
@@ -343,7 +348,7 @@ hr {
 	height: 0;
 	margin: 12px 0;
 	border: 0;
-	border-top: 1px solid var(--border-color-darker);
+	border-top: 1px solid var(--border-color-rule);
 }
 code, kbd, samp, tt, pre {
 	font-family: var(--font-family-mono);
