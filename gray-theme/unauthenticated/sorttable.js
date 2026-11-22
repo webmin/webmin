@@ -22,19 +22,49 @@ function sortables_init() {
 function ts_makeSortable(table) {
     if (table.rows && table.rows.length > 0) {
         var firstRow = table.rows[0];
+        // A title row that spans the table is not a row of column headings.
+        // The headings are in the row under it
+        if (table.rows.length > 1 &&
+            (' '+firstRow.className+' ').indexOf(' ui_columns_heading ') != -1) {
+            firstRow = table.rows[1];
+        }
     }
     if (!firstRow) return;
     
-    // We have a first row: assume it's the header, and make its contents clickable links
+    // Find the columns that hold the checkbox or radio button of each row.
+    // The first row that has one tells for all rows
+    var boxes = {};
+    for (var r=firstRow.rowIndex+1;r<table.rows.length;r++) {
+        var cells = table.rows[r].cells;
+        var found = false;
+        for (var c=0;c<cells.length;c++) {
+            if (/(^|\s)(ui_checked_checkbox|ui_radio_radio)(\s|$)/.test(cells[c].className)) {
+                boxes[c] = found = true;
+            }
+        }
+        if (found) break;
+    }
+
+    // We have a heading row: make its contents clickable links
     for (var i=0;i<firstRow.cells.length;i++) {
         var cell = firstRow.cells[i];
         // A heading holding a control, such as a select-all checkbox, is
         // left as it is : rewriting it as a sort link would drop the control
         if (cell.querySelector && cell.querySelector('input, select, button, textarea')) continue;
+        // So is the heading over the row checkboxes or radio buttons, as
+        // that column has nothing to sort by
+        if (boxes[i]) continue;
         var txt = ts_getInnerText(cell);
+        // A heading without text would become an empty link
+        if (!txt.replace(/\s/g, '')) continue;
+        // The slot for the arrow follows the link, so that the link's
+        // underline covers the heading text only. A click on the slot
+        // sorts as well
         cell.innerHTML = '<b><a href="#" class="sortheader" '+ 
         'onclick="ts_resortTable(this, '+i+');return false;">' + 
-        txt+'<span class="sortarrow">&nbsp;&nbsp;&nbsp;</span></a></b>';
+        txt+'</a><span class="sortarrow" '+
+        'onclick="ts_resortTable(this.previousSibling, '+i+');">'+
+        '&nbsp;&nbsp;&nbsp;</span></b>';
     }
 }
 
@@ -60,11 +90,8 @@ function ts_getInnerText(el) {
 }
 
 function ts_resortTable(lnk,clid) {
-    // get the span
-    var span;
-    for (var ci=0;ci<lnk.childNodes.length;ci++) {
-        if (lnk.childNodes[ci].tagName && lnk.childNodes[ci].tagName.toLowerCase() == 'span') span = lnk.childNodes[ci];
-    }
+    // The slot for the arrow is the span right after the link
+    var span = lnk.nextSibling;
     var spantext = ts_getInnerText(span);
     var td = lnk.parentNode;
     while(td.nodeName.toLowerCase() != 'td')
@@ -72,14 +99,18 @@ function ts_resortTable(lnk,clid) {
     var column = typeof(clid) == 'undefined' ? td.cellIndex : clid;
     var table = getParent(td,'TABLE');
     
+    // The rows under the heading row are the data. A title row above the
+    // headings is not sorted
+    var first = td.parentNode.rowIndex + 1;
+
     // Work out a type for the column
-    if (table.rows.length <= 1) return;
-    var itm = ts_getInnerText(table.rows[1].cells[column]);
+    if (table.rows.length <= first) return;
+    var itm = ts_getInnerText(table.rows[first].cells[column]);
     sortfn = ts_sort_caseinsensitive;
     if (itm.match(/^\d\d[\/-]\d\d[\/-]\d\d\d\d$/)) sortfn = ts_sort_date;
     if (itm.match(/^\d\d[\/-]\S\S\S[\/-]\d\d\d\d$/)) sortfn = ts_sort_date;
     if (itm.match(/^\d\d[\/-]\d\d[\/-]\d\d$/)) sortfn = ts_sort_date;
-    if (itm.match(/^[£$]/)) sortfn = ts_sort_currency;
+    if (itm.match(/^[ï¿½$]/)) sortfn = ts_sort_currency;
     if (itm.match(/^[\d\.]+\s*(bytes|b|kb|tb|gb|mb)$/i)) sortfn = ts_sort_filesize;
     // Special cases for our mailbox lists
     if (itm.match(/^(Empty|Unlimited)$/)) sortfn = ts_sort_filesize;
@@ -89,7 +120,10 @@ function ts_resortTable(lnk,clid) {
     var firstRow = new Array();
     var newRows = new Array();
     for (i=0;i<table.rows[0].length;i++) { firstRow[i] = table.rows[0][i]; }
-    for (j=1;j<table.rows.length;j++) { newRows[j-1] = table.rows[j]; }
+    for (j=first;j<table.rows.length;j++) { newRows[j-first] = table.rows[j]; }
+    // Sorted rows go back into the section that holds the data, which is
+    // not the table's first one when a title row comes before the headings
+    var body = table.rows[first].parentNode;
 
     newRows.sort(sortfn);
 
@@ -104,9 +138,9 @@ function ts_resortTable(lnk,clid) {
     
     // We appendChild rows that already exist to the tbody, so it moves them rather than creating new ones
     // don't do sortbottom rows
-    for (i=0;i<newRows.length;i++) { if (!newRows[i].className || (newRows[i].className && (newRows[i].className.indexOf('sortbottom') == -1))) table.tBodies[0].appendChild(newRows[i]);}
+    for (i=0;i<newRows.length;i++) { if (!newRows[i].className || (newRows[i].className && (newRows[i].className.indexOf('sortbottom') == -1))) body.appendChild(newRows[i]);}
     // do sortbottom rows only
-    for (i=0;i<newRows.length;i++) { if (newRows[i].className && (newRows[i].className.indexOf('sortbottom') != -1)) table.tBodies[0].appendChild(newRows[i]);}
+    for (i=0;i<newRows.length;i++) { if (newRows[i].className && (newRows[i].className.indexOf('sortbottom') != -1)) body.appendChild(newRows[i]);}
     
     // Delete any other arrows there may be showing
     var allspans = document.getElementsByTagName("span");
