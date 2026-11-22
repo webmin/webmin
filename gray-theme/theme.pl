@@ -241,8 +241,9 @@ if (get_module_name() eq "virtual-server") {
 # theme_prehead()
 # Prints the head parts of every page: the color scheme meta, the scheme
 # and frame scripts, and the links to the stylesheet and the table sorting
-# script. Also sets the body attributes the stylesheet keys on: the module
-# name as a class and the forced color scheme, if any.
+# script. The menu frame also gets the blue menu stylesheet when chosen.
+# Also sets the body attributes the stylesheet keys on: the module name as
+# a class and the forced color scheme, if any.
 sub theme_prehead
 {
 my $pfx = &get_webprefix();
@@ -252,6 +253,14 @@ print &theme_scheme_script($scheme);
 print &theme_frame_script();
 print "<link rel='stylesheet' type='text/css' href='$pfx/unauthenticated/".
       "gray-theme.css?".&theme_asset_key("gray-theme.css")."'>\n";
+if ($main::gray_theme_body_class &&
+    $main::gray_theme_body_class eq 'left-frame' &&
+    &theme_menu_color() eq 'blue') {
+	# The navy blue menu, in the menu frame only
+	my $css = "gray-theme-menu-navi-blue.css";
+	print "<link rel='stylesheet' type='text/css' href='$pfx/".
+	      "unauthenticated/$css?".&theme_asset_key($css)."'>\n";
+	}
 print "<script type='text/javascript' src='$pfx/unauthenticated/".
       "sorttable.js?".&theme_asset_key("sorttable.js")."'></script>\n";
 my @cls = grep { $_ } ( $main::gray_theme_body_class, &get_module_name() );
@@ -437,13 +446,12 @@ window.addEventListener('DOMContentLoaded', function() { tell('rightLoaded'); })
 EOF
 }
 
-# theme_color_scheme()
-# Returns light or dark when the theme settings force a color scheme, or an
-# empty string to follow the browser. The setting is stored with the other
-# system information page settings, per user unless they are global.
-sub theme_color_scheme
+# theme_settings()
+# Returns the theme settings as a hash reference, per user unless they are
+# global. The file is read once per request.
+sub theme_settings
 {
-return $main::gray_theme_scheme if (defined($main::gray_theme_scheme));
+return $main::gray_theme_settings if ($main::gray_theme_settings);
 my $file = "$config_directory/$current_theme/sections";
 my %sects;
 &read_file($file, \%sects);
@@ -453,8 +461,25 @@ if (!$sects{'global'}) {
 	my %usects;
 	%sects = %usects if (&read_file("$file.$remote_user", \%usects));
 	}
-$main::gray_theme_scheme = $sects{'scheme'} =~ /^(light|dark)$/ ? $1 : "";
-return $main::gray_theme_scheme;
+$main::gray_theme_settings = \%sects;
+return $main::gray_theme_settings;
+}
+
+# theme_color_scheme()
+# Returns light or dark when the theme settings force a color scheme, or an
+# empty string to follow the browser
+sub theme_color_scheme
+{
+my $scheme = &theme_settings()->{'scheme'};
+return $scheme && $scheme =~ /^(light|dark)$/ ? $1 : "";
+}
+
+# theme_menu_color()
+# Returns blue when the navy blue menu is chosen, or an empty string
+sub theme_menu_color
+{
+my $menu = &theme_settings()->{'menu'};
+return $menu && $menu eq 'blue' ? 'blue' : "";
 }
 
 # theme_asset_key(file)

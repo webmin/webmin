@@ -38,6 +38,9 @@ $sect->{'nosearch'} = !$in{'search'};
 # Color scheme, forced or following the browser when empty
 $in{'scheme'} =~ /^(light|dark|)$/ || &error($text{'edright_escheme'});
 $sect->{'scheme'} = $in{'scheme'};
+# Menu colors, empty for the page colors
+$in{'menu'} =~ /^(blue|)$/ || &error($text{'edright_emenu'});
+$sect->{'menu'} = $in{'menu'};
 if ($hasvirt) {
 	$sect->{'dom'} = $in{'dom'};
 	$sect->{'qsort'} = $in{'qsort'};
@@ -61,5 +64,10 @@ if ($hasvirt && &virtual_server::master_admin() ||
 
 # Save config
 &save_right_frame_sections($sect);
-&redirect("right.cgi");
 
+# Reload the menu, which some settings change, then return to the system
+# information page. A plain redirect would move only this frame.
+&popup_header($text{'edright_title'},
+	      "<meta http-equiv='refresh' content='0; url=right.cgi'>\n");
+&theme_post_save_domains();
+&popup_footer();
