@@ -2313,13 +2313,21 @@ body.right-frame { padding: 0; }
 	margin-bottom: 0;
 }
 .section-body:has(> table.wrapper:last-child,
-		  > form:last-of-type > :is(table.wrapper, table.ui_form_end_buttons):last-child) {
+		  > form:last-of-type > :is(table.wrapper, table.ui_form_end_buttons):last-child,
+		  > .ui_grid:last-child > .ui_card) {
 	padding-bottom: calc(var(--section-pad) / 2);
 }
 /* The same goes for the space above a table that starts a block. Assets
  * before the table do not count. */
-.section-body:has(> table.wrapper:nth-child(1 of :not(script, style, link))) {
+.section-body:has(> table.wrapper:nth-child(1 of :not(script, style, link)),
+		  > .ui_grid:nth-child(1 of :not(script, style, link)) > .ui_card) {
 	padding-top: calc(var(--section-pad) / 2);
+}
+/* A grid of cards is placed like a table: it takes up half of the block's
+ * side padding, and the rules above give it the same space over and under
+ * it. The widget stylesheet's own gap after the assets is dropped. */
+details.section > .section-body > .ui_grid:has(> .ui_card) {
+	margin: 0 calc(var(--section-pad) / -2);
 }
 /* A paragraph break between a note and the table under it, as in the
  * package updates block, leaves a clear gap */
