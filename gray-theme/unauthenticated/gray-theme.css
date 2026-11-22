@@ -1378,7 +1378,10 @@ details.ui_hidden_table_start table.ui_columns {
 	width: max-content;
 	min-width: 100%;
 }
-.section-body { padding: 10px 16px 14px; }
+.section-body {
+	--section-pad: 16px;
+	padding: 10px var(--section-pad) 14px;
+}
 /* Text above a dashboard block's content */
 .section-note {
 	margin: 0 0 8px;
@@ -2280,7 +2283,44 @@ body.right-frame { padding: 0; }
 }
 .section .ui_progress_bar.ui_bg_neutral,
 .tile .ui_progress_bar.ui_bg_neutral { background: var(--accent-color-soft); }
-.section-body > table.wrapper:last-child { margin-bottom: 0; }
+/* A table in a dashboard block is a card inside a card. It keeps its
+ * border but takes up half of the block's side padding, and its cells are
+ * padded by the other half, so its text lines up with the block's heading.
+ * A button or links bar joined to the table moves with it. */
+.section-body table.wrapper:not(table table),
+.section-body form.ui_form > table.wrapper + table.ui_form_end_buttons {
+	width: calc(100% + var(--section-pad));
+}
+.section-body table.wrapper:not(table table),
+.section-body form.ui_form > table.wrapper + table.ui_form_end_buttons,
+.section-body form.ui_form > .ui_links_row:has(+ table.wrapper),
+.section-body form.ui_form > table.wrapper + .ui_links_row {
+	margin-left: calc(var(--section-pad) / -2);
+	margin-right: calc(var(--section-pad) / -2);
+}
+.section-body table.ui_columns > * > tr > td,
+.section-body form.ui_form > table.wrapper + table.ui_form_end_buttons,
+.section-body form.ui_form > .ui_links_row:has(+ table.wrapper),
+.section-body form.ui_form > table.wrapper + .ui_links_row {
+	padding-left: calc(var(--section-pad) / 2);
+	padding-right: calc(var(--section-pad) / 2);
+}
+/* The last table or button bar in a block adds no gap of its own under it,
+ * also inside a form. A block that ends with one has the same space under
+ * it as at its sides. */
+.section-body > table.wrapper:last-child,
+.section-body > form:last-of-type > :is(table.wrapper, table.ui_form_end_buttons):last-child {
+	margin-bottom: 0;
+}
+.section-body:has(> table.wrapper:last-child,
+		  > form:last-of-type > :is(table.wrapper, table.ui_form_end_buttons):last-child) {
+	padding-bottom: calc(var(--section-pad) / 2);
+}
+/* The same goes for the space above a table that starts a block. Assets
+ * before the table do not count. */
+.section-body:has(> table.wrapper:nth-child(1 of :not(script, style, link))) {
+	padding-top: calc(var(--section-pad) / 2);
+}
 /* A paragraph break between a note and the table under it, as in the
  * package updates block, leaves a clear gap */
 .section-body p:has(+ table) { margin-bottom: 10px; }
