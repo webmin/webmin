@@ -1317,30 +1317,47 @@ table.ui_table.border {
 }
 /* Cells of a grid of elements (ui_grid_table) */
 table.ui_grid_table td { padding: 2px 4px; }
-/* A grid of plain items in a card of its own, such as the list of Webmin
- * users, keeps the card's side inset in its first and last columns,
- * with some air above its first row and under its last. Grids
- * inside a form row, grids of tables and the two-column link bars keep
- * their tight cells. */
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell {
+/* A grid in a card of its own, such as the list of Webmin users or a
+ * search form of labels and fields, keeps the card's inset on all four
+ * sides. Grids inside a form row and grids of tables keep their tight
+ * cells, and so do the two-column link bars joined to a table, whose
+ * rules further down outrank these. */
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row > td.ui_grid_cell {
 	padding: 4px 8px;
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child {
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child {
 	padding-left: var(--card-inset);
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:last-child {
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:last-child {
 	padding-right: var(--card-inset);
 }
 /* The heading of such a grid starts on the same line as its items */
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > thead > tr > td {
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > thead > tr > td {
 	padding-left: var(--card-inset);
 	padding-right: var(--card-inset);
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row:first-child > td.ui_grid_cell {
-	padding-top: 8px;
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row:first-child > td.ui_grid_cell {
+	padding-top: var(--card-inset);
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row:last-child > td.ui_grid_cell {
-	padding-bottom: 8px;
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row:last-child > td.ui_grid_cell {
+	padding-bottom: var(--card-inset);
+}
+/* In a row with a field, a menu or a row of links, every cell sits in the
+ * middle, so a label lines up with the control beside it. The row of links
+ * has no margin of its own there. */
+table.ui_grid_table > tbody > tr.ui_grid_row:has(> td > :is(.ui_links_row, select, textarea,
+	input:not([type="checkbox"], [type="radio"], [type="hidden"]))) > td.ui_grid_cell {
+	vertical-align: middle;
+}
+table.ui_grid_table td > .ui_links_row { margin: 0; }
+/* A plain label before the control that ends its row takes only the width
+ * of its text, so the control starts right after it instead of half way
+ * across the card */
+table.ui_grid_table > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child:not(:has(*)):has(
+	+ td.ui_grid_cell:last-child > :is(.ui_links_row, select, textarea,
+	input:not([type="checkbox"], [type="radio"], [type="hidden"]))) {
+	width: 1%;
+	white-space: nowrap;
 }
 
 /* Collapsible sections (ui_hidden_table_start) and the system
@@ -1571,11 +1588,11 @@ form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_lin
 form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) > tbody > tr > td {
 	padding: 11px var(--card-inset);
 }
-form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) table.ui_grid_table td {
+/* The grid inside a bar above or under a table has no padding of its own.
+ * A grid with links that is not joined to a table is a card, not a bar. */
+form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) > tbody > tr > td > table.ui_grid_table > tbody > tr > td,
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) > tbody > tr > td > table.ui_grid_table > tbody > tr > td {
 	padding: 0;
-}
-form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) .ui_links_row {
-	margin: 0;
 }
 form.ui_form > .ui_links_row:has(+ table.wrapper) + table.wrapper,
 form.ui_form > table.wrapper:has(.ui_links_row) + table.wrapper {
@@ -1655,6 +1672,14 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 form.ui_form:has(> :is(table.wrapper, table.shrinkwrapper)):has(> .ui_submit):has(
 	+ form.ui_form, + script + form.ui_form) {
 	margin-bottom: var(--card-gap);
+}
+/* Buttons printed loose at the start of a form, above its table, as in the
+ * list of package updates, keep the card gap above and under them, so they
+ * touch neither the text before them nor the table */
+form.ui_form > :is(input[type="submit"], input[type="button"], input[type="reset"], button):not(
+	:is(table.wrapper, table.shrinkwrapper) ~ *):has(
+	~ :is(table.wrapper, table.shrinkwrapper)) {
+	margin-block: var(--card-gap);
 }
 
 /* A small form of controls before another form or a table, such as the
