@@ -473,16 +473,25 @@ my $scheme = &theme_settings()->{'scheme'};
 return $scheme && $scheme =~ /^(light|dark)$/ ? $1 : "";
 }
 
+# theme_menu_color()
+# Returns the chosen menu colors: page, blue, lightblue or darkgray. Without
+# a saved choice, the menu_color key of theme.info gives the default.
+sub theme_menu_color
+{
+my $menu = &theme_settings()->{'menu'} ||
+	   &get_current_theme_info_cached()->{'menu_color'};
+return $menu || 'page';
+}
+
 # theme_menu_stylesheet()
 # Returns the stylesheet of the chosen menu colors, or an empty string for
 # a menu in the page colors
 sub theme_menu_stylesheet
 {
-my $menu = &theme_settings()->{'menu'} || "";
 my %css = ( 'blue' => 'gray-theme-menu-navi-blue.css',
 	    'lightblue' => 'gray-theme-menu-light-blue.css',
 	    'darkgray' => 'gray-theme-menu-dark-gray.css' );
-return $css{$menu} || "";
+return $css{&theme_menu_color()} || "";
 }
 
 # theme_asset_key(file)
