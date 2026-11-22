@@ -42,6 +42,7 @@
 * Update the Authentic theme to the latest version with various improvements:
   - Add support for Terminal module color preferences
   - Add support for the new Cloudmin 10 beta navigation, graphical console and live virtual machine controls
+  - Add support for styling the new status monitors panel in the dashboard and side slider
   - Fix spacing and borders in widgets, tables and tab panes
   - Fix zip download dropping symlinks and failing on dangling ones in File Manager module [webmin#1918](https://github.com/webmin/webmin/issues/1918)
   - Fix archive downloads to report the real archiving error in File Manager module
