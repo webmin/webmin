@@ -2346,6 +2346,9 @@ body.right-frame { padding: 0; }
 	flex-wrap: wrap;
 	gap: 4px;
 }
+/* Action buttons in a block of the dashboard sit a little below its top
+ * edge, as they are closer to it than to the side */
+.section .ui_card .ui_cluster { margin-top: 3px; }
 
 /* ---- Widgets ---- */
 /* The ui-lib widgets keep square corners by default; this theme rounds
