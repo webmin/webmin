@@ -2490,10 +2490,13 @@ sub start_systemd_service
 my ($name) = @_;
 my $out = &backquote_logged(
 	"systemctl start ".quotemeta($name)." 2>&1 </dev/null");
-if ($? && $out =~ /journalctl/) {
+# Keep the start result when collecting diagnostic output
+my $ex = $?;
+if ($ex && $out =~ /journalctl/) {
+	# Add diagnostics when systemctl suggests them
 	$out .= &backquote_command("journalctl -xe 2>/dev/null");
 	}
-return (!$?, $out);
+return (!$ex, $out);
 }
 
 =head2 stop_systemd_service(name)
