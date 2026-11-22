@@ -71,12 +71,10 @@
 	--border-color-lighter: #e8e8e8;
 	--border-color-frame: #e2e2e2;
 	--border-color-darker: #b8b8b8;
-	/* Lines drawn on the ground itself, such as the one under a row of
-	 * tabs. They are a step darker than the ground, so they stay
-	 * visible on it. */
-	--border-color-ground: #a1a1a1;
-	/* A dividing line on the ground. The ground line is too strong for
-	 * it in the dark palette, which uses the card edge instead. */
+	/* Lines on the ground, such as under a tab row, dark enough to show
+	 * on it */
+	--border-color-ground: #00000055;
+	/* A rule on the ground. The dark palette uses the fainter card edge */
 	--border-color-rule: var(--border-color-ground);
 	--border-color-input: #bcbcbc;
 	--border-color-focused: #dbe5f5;
