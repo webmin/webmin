@@ -1147,6 +1147,16 @@ div.ui_tabs_box { box-sizing: border-box; }
 }
 table.shrinkwrapper > tbody > tr > td,
 table.wrapper > tbody > tr > td { padding: 0; }
+/* Two tables side by side, as in a list of databases or monitors, are cards
+ * in the cells of a plain table. They keep the same gap between them as
+ * cards that follow each other, split over both cells so the tables stay
+ * equally wide. */
+td:not([class]):has(> table.wrapper):has(+ td:not([class]) > table.wrapper) {
+	padding-right: calc(var(--card-gap) / 2);
+}
+td:not([class]):has(> table.wrapper) + td:not([class]):has(> table.wrapper) {
+	padding-left: calc(var(--card-gap) / 2);
+}
 /* Data-table cards stay within the page. Only their columns scroll when
  * their natural width is wider than the available content area. */
 table.wrapper:has(> tbody > tr > td > .ui_columns_scroll) {
