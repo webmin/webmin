@@ -29,7 +29,6 @@ for($i=0; $i<$len; $i++) {
 	$rv .= "<td><input name=$_[1]_from_$i size=20 value=\"$from\"></td>\n";
 	$rv .= "<td><input name=$_[1]_to_$i size=40 value=\"$to\"></td>\n";
 	$rv .= "</tr>\n";
-	$rv .= &ui_hidden("$_[1]_old_to_$i", $to);
 	}
 $rv .= "</table>\n";
 return (2, $_[2], $rv);
@@ -63,26 +62,27 @@ for($i=0; $i<$len; $i++) {
 	$rv .= "<td><input name=$_[1]_stat_$i size=4 value=\"$stat\"></td>\n";
 	$rv .= "<td><input name=$_[1]_to_$i size=40 value=\"$to\"></td>\n";
 	$rv .= "</tr>\n";
-	$rv .= &ui_hidden("$_[1]_old_to_$i", $to);
 	}
 $rv .= "</table>\n";
 return (2, $_[2], $rv);
 }
 
-# parse_alias(name, title, regexp)
+# parse_alias(name, title, regexp, &config)
 sub parse_alias
 {
 local($re, @rv, $i, $from, $to);
 $re = $_[2];
+# Saved mappings, which can be kept even if their target is outside the
+# allowed directory
+local %cur = map { $_->{'words'}->[-2]."\0".$_->{'words'}->[-1], 1 }
+		 &find_directive_struct($_[0], $_[3]);
 for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 	$from = $in{"$_[0]_from_$i"};
 	$to = $in{"$_[0]_to_$i"};
-	$old_to = $in{"$_[0]_old_to_$i"};
 	if ($from !~ /\S/ && $to !~ /\S/) { next; }
 	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', &html_escape($from), $_[1])); }
 	if ($to !~ /$re/) { &error(&text('mod_alias_edest', &html_escape($to), $_[1])); }
-	&allowed_doc_dir($to) ||
-	    $old_to && !&allowed_doc_dir($old_to) ||
+	&allowed_doc_dir($to) || $cur{"$from\0$to"} ||
 		&error(&text('mod_alias_edest2', &html_escape($to), $_[1]));
 	if ($to =~ /^[a-zA-Z0-9:\/\.\-]+$/) {
 		push(@rv, "$from $to");
@@ -94,15 +94,18 @@ for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 return ( \@rv );
 }
 
-# parse_alias_status(name, title, regexp)
+# parse_alias_status(name, title, regexp, &config)
 sub parse_alias_status
 {
 local($re, @rv, $i, $from, $to, $stat);
 $re = $_[2];
+# Saved mappings, which can be kept even if their target is outside the
+# allowed directory
+local %cur = map { $_->{'words'}->[-2]."\0".$_->{'words'}->[-1], 1 }
+		 &find_directive_struct($_[0], $_[3]);
 for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 	$from = $in{"$_[0]_from_$i"};
 	$to = $in{"$_[0]_to_$i"};
-	$old_to = $in{"$_[0]_old_to_$i"};
 	$stat = $in{"$_[0]_stat_$i"};
 	if ($from !~ /\S/ && $to !~ /\S/) { next; }
 	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', &html_escape($from), $_[1])); }
@@ -111,8 +114,7 @@ for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 		if ($to !~ /$re/) {
 			&error(&text('mod_alias_edest', &html_escape($to), $_[1]));
 			}
-		&allowed_doc_dir($to) ||
-	            $old_to && !&allowed_doc_dir($old_to) ||
+		&allowed_doc_dir($to) || $cur{"$from\0$to"} ||
 			&error(&text('mod_alias_edest2', &html_escape($to), $_[1]));
 		}
 	else { $to = ""; }
@@ -129,7 +131,7 @@ return &alias_input($_[0], "Alias", $text{'mod_alias_alias'});
 }
 sub save_Alias
 {
-return &parse_alias("Alias", $text{'mod_alias_alias2'}, '\S');
+return &parse_alias("Alias", $text{'mod_alias_alias2'}, '\S', $_[1]);
 }
 
 sub edit_AliasMatch
@@ -138,7 +140,7 @@ return &alias_input($_[0], "AliasMatch", $text{'mod_alias_regexp'});
 }
 sub save_AliasMatch
 {
-return &parse_alias("AliasMatch", $text{'mod_alias_regexp2'}, '\S');
+return &parse_alias("AliasMatch", $text{'mod_alias_regexp2'}, '\S', $_[1]);
 }
 
 sub edit_Redirect
@@ -151,9 +153,9 @@ else { return &alias_input($_[0], "Redirect", $text{'mod_alias_redir'}); }
 sub save_Redirect
 {
 if ($_[0]->{'version'} >= 1.2) {
-	return &parse_alias_status("Redirect", $text{'mod_alias_redir2'}, $url_regexp);
+	return &parse_alias_status("Redirect", $text{'mod_alias_redir2'}, $url_regexp, $_[1]);
 	}
-else { return &parse_alias("Redirect", $text{'mod_alias_redir2'}, $url_regexp); }
+else { return &parse_alias("Redirect", $text{'mod_alias_redir2'}, $url_regexp, $_[1]); }
 }
 
 sub edit_RedirectMatch
@@ -162,7 +164,7 @@ return &alias_status_input($_[0], "RedirectMatch", $text{'mod_alias_rredir'});
 }
 sub save_RedirectMatch
 {
-return &parse_alias_status("RedirectMatch", $text{'mod_alias_rredir2'}, $url_regexp);
+return &parse_alias_status("RedirectMatch", $text{'mod_alias_rredir2'}, $url_regexp, $_[1]);
 }
 
 sub edit_RedirectTemp
@@ -171,7 +173,7 @@ return &alias_input($_[0], "RedirectTemp", $text{'mod_alias_tredir'});
 }
 sub save_RedirectTemp
 {
-return &parse_alias("RedirectTemp", $text{'mod_alias_tredir2'}, $url_regexp);
+return &parse_alias("RedirectTemp", $text{'mod_alias_tredir2'}, $url_regexp, $_[1]);
 }
 
 sub edit_RedirectPermanent
@@ -180,7 +182,7 @@ return &alias_input($_[0], "RedirectPermanent", $text{'mod_alias_predir'});
 }
 sub save_RedirectPermanent
 {
-return &parse_alias("RedirectPermanent", $text{'mod_alias_predir2'}, $url_regexp);
+return &parse_alias("RedirectPermanent", $text{'mod_alias_predir2'}, $url_regexp, $_[1]);
 }
 
 sub edit_ScriptAlias
@@ -189,7 +191,7 @@ return &alias_input($_[0], "ScriptAlias", $text{'mod_alias_cgi'});
 }
 sub save_ScriptAlias
 {
-return &parse_alias("ScriptAlias", $text{'mod_alias_cgi2'}, '^\S+$');
+return &parse_alias("ScriptAlias", $text{'mod_alias_cgi2'}, '^\S+$', $_[1]);
 }
 
 sub edit_ScriptAliasMatch
@@ -198,7 +200,7 @@ return &alias_input($_[0], "ScriptAliasMatch", $text{'mod_alias_rcgi'});
 }
 sub save_ScriptAliasMatch
 {
-return &parse_alias("ScriptAliasMatch", $text{'mod_alias_rcgi2'}, '^\S+$');
+return &parse_alias("ScriptAliasMatch", $text{'mod_alias_rcgi2'}, '^\S+$', $_[1]);
 }
 
 1;

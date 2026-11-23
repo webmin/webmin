@@ -1465,7 +1465,7 @@ sub parse_inputs
 foreach $e (@{$_[0]}) {
 	@dirs = split(/\s+/, $e->{'name'});
 	$func = "save_".join('_', @dirs);
-	@rv = &$func($e);
+	@rv = &$func($e, $_[1]);
 	for($i=0; $i<@dirs; $i++) {
 		# Each value is written as one Apache directive.
 		&error($text{'enewline'}) if (grep { /[\r\n\0]/ } @{$rv[$i]});
