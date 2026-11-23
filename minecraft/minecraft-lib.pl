@@ -1147,6 +1147,9 @@ if (!-d $playtime_dir) {
 my $today = strftime("%Y-%m-%d", localtime(time()));
 my (@bans, @unbans);
 foreach my $u (keys %$usage) {
+	# Chat lines can look like logins, so skip names that would point
+	# outside the playtime directory
+	next if ($u =~ /\/|^\.\.?$/);
 	my $ufile = "$playtime_dir/$u";
 	my %days;
 	&read_file($ufile, \%days);
