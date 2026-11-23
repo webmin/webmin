@@ -41,8 +41,9 @@ return \@rv;
 # check if value is ok or not
 sub check_amavis_value
 {
-if ($_[1] && $_[1] eq "*") {
-	return $_[0] =~ m/^[0-9\.\,\*\-\+\/]+$|undef/;
+if ($_[1]) {
+	# A number, a simple calculation or undef, which are saved unquoted
+	return $_[0] =~ m/^(undef|[0-9\.\,\*\-\+\/ \t\(\)_eE]*[0-9][0-9\.\,\*\-\+\/ \t\(\)_eE]*)\z/;
     }
 return 1;
 }
@@ -60,6 +61,7 @@ if (!$old) {
     if (&check_amavis_value($v, 1)) {
 	push(@$lref, "\$$n = $v;");
     } else {
+	$v =~ s/([\\\"\$\@])/\\$1/g;
 	push(@$lref, "\$$n = \"$v\";");
     }
     push(@$lref, "1;");
@@ -70,10 +72,13 @@ local $olen = $old->{'eline'} - $old->{'line'} + 1;
 local $pos = $old->{'line'};
 $v =~ s/\n$//;
 
-	$v =~ s/\@/\\@/g;
-	if ($old->{'computed'} && $v ne "*") {
+	# Numbers, and unchanged values that were not quoted, are saved as they
+	# are. Other values are escaped so that they stay a string in the config.
+	if ($old->{'computed'} && $v ne "*" &&
+	    (&check_amavis_value($v, 1) || $v eq $old->{'value'})) {
 		splice(@$lref, $pos, $olen, "\$$n = $v; # modified by webmin");
 	} else {
+		$v =~ s/([\\\"\$\@])/\\$1/g;
 		splice(@$lref, $pos, $olen, "\$$n = \"$v\"; # modified by webmin");
 	}
 }
