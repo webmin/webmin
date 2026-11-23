@@ -238,6 +238,9 @@ else {
 	if ($access{'autohome'}) {
 		if ($in{'new'} || $ouser{'user'} ne $user) {
 			$home = &auto_home_dir($access{'home'}, $user, $grp);
+			# Names that lead outside the base get no home directory
+			$home || &error(&text('usave_ehomepath',
+				&html_escape("$access{'home'}/$user")));
 			}
 		else {
 			$home = $ouser{'home'};

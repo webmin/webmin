@@ -847,9 +847,11 @@ return $_[0] ? ( $_[0]->{'user'}, $_[0]->{'pass'}, $_[0]->{'uid'},
 
 # auto_home_dir(base, username, groupname)
 # Returns an automatically generated home directory, and creates needed
-# parent dirs
+# parent dirs. Returns undef if the names would lead outside the base.
 sub auto_home_dir
 {
+return undef if ($_[1] =~ /\.\./ ||
+		 $mconfig{'home_style'} == 5 && $_[2] =~ /\.\./);
 local $pfx = $_[0] eq "/" ? "/" : $_[0]."/";
 if ($mconfig{'home_style'} == 0) {
 	return $pfx.$_[1];
