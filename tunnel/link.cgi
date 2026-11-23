@@ -63,7 +63,13 @@ if ($config{'loginmode'} == 2) {
 		}
 	}
 elsif ($config{'loginmode'} == 1) {
-	# Login is fixed
+	# Login is fixed, so it is only sent to the server in the configured URL
+	$config{'url'} || &error($text{'link_efixedurl'});
+	$openurl =~ /^(http|https):\/+([^:\/]+)(:(\d+))?/ &&
+	    $1 eq $protocol && lc($2) eq lc($host) &&
+	    ($4 || ($1 eq "https" ? 443 : 80)) == $port ||
+		&error(&text('link_ebadurl',
+			"<tt>".&html_escape($ENV{'PATH_INFO'})."</tt>"));
 	$user = $config{'user'};
 	$pass = $config{'pass'};
 	}
