@@ -932,6 +932,18 @@ chown($st[4], $st[5], $f);
 chmod($st[2], $f);
 }
 
+# quote_program_recipients(&addresses)
+# Returns recipient addresses quoted for a mail program command line. Fails if
+# an address starts with -, as the program would read it as an option.
+sub quote_program_recipients
+{
+my ($dests) = @_;
+foreach my $d (@$dests) {
+	$d =~ /^-/ && &error("Invalid recipient address : ".&html_escape($d));
+	}
+return join(" ", map { quotemeta($_) } @$dests);
+}
+
 # send_mail(&mail, [file], [textonly], [nocr], [smtp-server],
 #	    [smtp-user], [smtp-pass], [smtp-auth-mode],
 #	    [&notify-flags], [port], [use-ssl])
@@ -968,7 +980,6 @@ foreach my $f ("to", "cc", "bcc") {
 		push(@dests, &address_parts($header{$f}));
 		}
 	}
-my $qdests = join(" ", map { quotemeta($_) } @dests);
 
 local @from = &address_parts($header{'from'});
 local $fromaddr;
@@ -1107,12 +1118,14 @@ elsif ($config{'postfix_control_command'}) {
 	local $cmd = -x "/usr/lib/sendmail" ? "/usr/lib/sendmail" :
 			&has_command("sendmail");
 	$cmd || &error($text{'send_ewrapper'});
+	my $qdests = &quote_program_recipients(\@dests);
 	open($h->{'fh'}, "| $cmd -f$qfromaddr $qdests >/dev/null 2>&1");
 	}
 else {
 	# Start sendmail
 	&has_command($config{'sendmail_path'}) ||
 	    &error(&text('send_epath', "<tt>$config{'sendmail_path'}</tt>"));
+	my $qdests = &quote_program_recipients(\@dests);
 	open($h->{'fh'}, "| $config{'sendmail_path'} -f$qfromaddr $qdests >/dev/null 2>&1");
 	}
 

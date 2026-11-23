@@ -33,7 +33,6 @@ if ($config{'mail_system'} == 3) {
 sub send_mail_program
 {
 my ($from, $dests) = @_;
-my $qdests = join(" ", map { quotemeta($_) } @$dests);
 
 if ($config{'mail_system'} == 1 || $config{'mail_system'} == 0) {
 	# Use sendmail executable, or postfix wrapper
@@ -41,7 +40,8 @@ if ($config{'mail_system'} == 1 || $config{'mail_system'} == 0) {
 			 $config{'mail_system'} == 1 ?
 				&foreign_config("sendmail") : ( );
 	local $cmd = &has_command($sconfig{'sendmail_path'} || "sendmail");
-	return "$cmd -f".quotemeta($_[0])." ".$qdests if ($cmd);
+	return "$cmd -f".quotemeta($_[0])." ".
+	       &quote_program_recipients($dests) if ($cmd);
 	}
 elsif ($config{'mail_system'} == 2) {
 	# Use qmail injector
@@ -54,7 +54,8 @@ elsif ($config{'mail_system'} == 2) {
 else {
 	# Fallback - use sendmail command
 	local $cmd = &has_command("sendmail");
-	return "$cmd -f".quotemeta($_[0])." ".$qdests if ($cmd);
+	return "$cmd -f".quotemeta($_[0])." ".
+	       &quote_program_recipients($dests) if ($cmd);
 	}
 return undef;
 }
