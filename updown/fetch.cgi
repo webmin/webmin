@@ -42,8 +42,14 @@ if ($ENV{'PATH_INFO'}) {
 		($shortfile = $file) =~ s/^.*\///g;
 		$shortfile =~ s/\s+//g;
 		$temp = &transname($shortfile.".zip");
+		# For a user limited to some directories, store symlinks as
+		# links, so that they cannot add files from outside those
+		# directories. zip may run as root even after switching users,
+		# as the shell resets the effective user to the real one.
+		my $links = &indexof("/", @can_dirs) < 0;
 		$out = &backquote_command("cd ".quotemeta($file).
-					  " && zip -r ".quotemeta($temp)." .");
+					  " && zip -r ".($links ? "-y " : "").
+					  quotemeta($temp)." .");
 		if ($?) {
 			&error(&text('fetch_ezipcmd',
 				     "<tt>".&html_escape($out)."</tt>"));
