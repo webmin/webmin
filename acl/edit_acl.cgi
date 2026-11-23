@@ -12,16 +12,18 @@ our (%in, %text, %config, %access, $base_remote_user, %gconfig);
 $access{'acl'} || &error($text{'acl_emod'});
 
 my $who;
+# Users and groups can only get ACLs for modules this admin can grant
+my $me = $access{'mode'} == 1 ? &get_user($base_remote_user) : undef;
+my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
+	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+			          ( &list_modules() , "" );
+&indexof($in{'mod'}, @mcan) >= 0 || &error($text{'acl_emod'});
 if ($in{'group'}) {
 	$access{'groups'} || &error($text{'acl_egroup'});
+	&get_group($in{'group'}) || &error($text{'acl_egroup'});
 	$who = $in{'group'};
 	}
 else {
-	my $me = &get_user($base_remote_user);
-	my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
-		   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-				          ( &list_modules() , "" );
-	&indexof($in{'mod'}, @mcan) >= 0 || &error($text{'acl_emod'});
 	&can_edit_user($in{'user'}) || &error($text{'acl_euser'});
 	$who = $in{'user'};
 	}

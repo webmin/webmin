@@ -115,8 +115,8 @@ foreach my $c (sort { $b cmp $a } @cats) {
 	foreach my $m (@cmlist) {
 		my $md = $m->{'dir'};
 		my $label;
-		if ($access{'acl'} && $in{'group'}) {
-			# Show link for editing ACL
+		if ($access{'acl'} && $in{'group'} && $mcan{$md}) {
+			# Show link for editing ACL of a module this admin can grant
 		    	$label = ui_link("edit_acl.cgi?" .
 			     "mod=" . urlize($m->{'dir'}) . 
 			     "&group=". urlize($in{'group'}),
