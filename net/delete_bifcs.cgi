@@ -6,6 +6,12 @@ require './net-lib.pl';
 &error_setup($in{'apply'} ? $text{'dbifcs_err2'} : $text{'dbifcs_err'});
 @d = split(/\0/, $in{'b'});
 @d || &error($text{'daifcs_enone'});
+# Applying is allowed for any editable interface, but deleting is not. Users
+# who must change boot-time and active interfaces together have to deactivate
+# interfaces when deleting them.
+$in{'apply'} || $access{'delete'} || &error($text{'ifcs_ecannot_delete'});
+$in{'apply'} || $in{'deleteapply'} || !$access{'bootonly'} ||
+	&error($text{'ifcs_ecannot_active'});
 
 # Do the deletes
 @boot = &boot_interfaces();
