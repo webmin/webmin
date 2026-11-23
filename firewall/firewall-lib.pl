@@ -34,10 +34,13 @@ if ($_[0] =~ /6$/i) {
 
 # get_ipvx_version
 # get iptables version used from environment
-# if script runs in firewall6 or version=inet6, 6 is returned, else 4
+# if script runs in firewall6 or a clone of it, 6 is returned, else 4. The
+# version parameter is not used, as access to each module only covers its own
+# IP version.
 sub get_ipvx_version
 {
-return $in{'version'} =~ /6$/ || $module_name =~ /6$/ ? 6 : 4;
+my %minfo = &get_module_info($module_name);
+return ($minfo{'cloneof'} || $module_name) =~ /6$/ ? 6 : 4;
 }
 
 

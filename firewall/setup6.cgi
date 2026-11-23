@@ -6,6 +6,8 @@ require './firewall-lib.pl';
 require './firewall6-lib.pl';
 &ReadParse();
 $access{'setup'} || &error($text{'setup_ecannot'});
+# Only the IPv6 firewall module can set up IPv6 rules
+&get_ipvx_version() == 6 || &error($text{'setup_ecannot'});
 
 &lock_file($ip6tables_save_file);
 if ($in{'reset'}) {

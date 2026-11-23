@@ -11,6 +11,8 @@ else {
 	require './firewall4-lib.pl';
 	}
 $access{'setup'} || &error($text{'setup_ecannot'});
+# The IPv6 module uses setup6.cgi, as this script resets IPv4 rules
+&get_ipvx_version() == 4 || &error($text{'setup_ecannot'});
 
 &lock_file($ipvx_save);
 if ($in{'reset'}) {
