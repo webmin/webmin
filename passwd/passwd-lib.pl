@@ -153,6 +153,9 @@ if ($others) {
 sub apply_rate_limit
 {
 my ($key) = @_;
+# The key is saved as a line in the counters file, so it cannot hold a line
+# break or an equals sign that would overwrite other counters
+return "Invalid key" if ($key =~ /[\r\n=]/);
 my $now = time();
 my %rate;
 &lock_file($rate_limit_file);
@@ -163,16 +166,19 @@ if ($now - $rate{$key."_last"} > $rate_limit_timeout) {
 	delete($rate{$key});
 	delete($rate{$key."_last"});
 	}
-my $rv;
+my ($rv, $delay);
 if ($rate{$key} > $rate_limit_max) {
 	$rv = "Too many failures for $key";
 	}
 else {
-	sleep(2 ** $rate{$key});
+	$delay = 2 ** $rate{$key};
 	$rate{$key}++;
 	}
 &write_file($rate_limit_file, \%rate);
 &unlock_file($rate_limit_file);
+
+# Wait without the lock, so that other keys are not delayed too
+sleep($delay) if ($delay);
 return $rv;
 }
 
