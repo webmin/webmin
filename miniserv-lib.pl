@@ -1832,15 +1832,15 @@ return $res;
 sub ip_match
 {
 local(@io, @mo, @ms, $i, $j, $hn, $needhn);
-@io = &check_ip6address($_[0]) ? split(/:/, $_[0])
-			       : split(/\./, $_[0]);
+my $ipv6 = &check_ip6address($_[0]);
+@io = $ipv6 ? split(/:/, $_[0]) : split(/\./, $_[0]);
 for($i=2; $i<@_; $i++) {
 	$needhn++ if ($_[$i] =~ /^\*(\S+)$/);
 	}
 if ($needhn && !defined($hn = $ip_match_cache{$_[0]})) {
 	# Reverse-lookup hostname if any rules match based on it
 	$hn = &to_hostname($_[0]);
-	if (&check_ip6address($_[0])) {
+	if ($ipv6) {
 		local $ip6 = &to_ip6address($hn);
 		$hn = "" if (!$ip6 ||
 			     &canonicalize_ip6($ip6) ne
@@ -1859,6 +1859,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	if ($_[$i] =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 		# Compare with IPv4 network/mask
+		next if ($ipv6);
 		@mo = split(/\./, $1);
 		@ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
@@ -1869,6 +1870,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^([0-9\.]+)-([0-9\.]+)$/) {
 		# Compare with an IPv4 range (separated by a hyphen -)
+		next if ($ipv6);
 		local ($remote, $min, $max);
 		local @low = split(/\./, $1);
 		local @high = split(/\./, $2);
@@ -1887,6 +1889,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] eq 'LOCAL' && &check_ipaddress($_[1])) {
 		# Compare with local IPv4 network
+		next if ($ipv6);
 		local @lo = split(/\./, $_[1]);
 		if ($lo[0] < 128) {
 			$mismatch = 1 if ($lo[0] != $io[0]);
@@ -1903,6 +1906,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] eq 'LOCAL' && &check_ip6address($_[1])) {
 		# Compare with local IPv6 network, which is always first 4 words
+		next if (!$ipv6);
 		local @lo = split(/:/, $_[1]);
 		for(my $i=0; $i<4; $i++) {
 			$mismatch = 1 if ($lo[$i] ne $io[$i]);
@@ -1910,6 +1914,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^[0-9\.]+$/) {
 		# Compare with a full or partial IPv4 address
+		next if ($ipv6);
 		@mo = split(/\./, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for($j=0; $j<@mo; $j++) {
@@ -1932,7 +1937,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] !~ /^[0-9\.]+$/) {
 		# Compare with hostname
-		if (&check_ip6address($_[0])) {
+		if ($ipv6) {
 			local $ip6 = &to_ip6address($_[$i]);
 			$mismatch = 1 if (!$ip6 ||
 					  &canonicalize_ip6($ip6) ne

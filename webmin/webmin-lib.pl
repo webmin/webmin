@@ -1849,12 +1849,12 @@ returns 1 if a match is found.
 =cut
 sub ip_match
 {
-my @io = &check_ip6address($_[0]) ? split(/:/, $_[0])
-			          : split(/\./, $_[0]);
+my $ipv6 = &check_ip6address($_[0]);
+my @io = $ipv6 ? split(/:/, $_[0]) : split(/\./, $_[0]);
 
 # Resolve to hostname and check that it forward resolves again
 my $hn = &to_hostname($_[0]);
-if (&check_ip6address($_[0])) {
+if ($ipv6) {
 	my $ip6 = &to_ip6address($hn);
 	$hn = "" if (!$ip6 ||
 		     &canonicalize_ip6($ip6) ne
@@ -1873,6 +1873,7 @@ for(my $i=1; $i<@_; $i++) {
                 }
 	if ($ip =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 		# Compare with IPv4 network/mask
+		next if ($ipv6);
 		my @mo = split(/\./, $1);
 		my @ms = split(/\./, $2);
 		for(my $j=0; $j<4; $j++) {
@@ -1883,6 +1884,7 @@ for(my $i=1; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^([0-9\.]+)-([0-9\.]+)$/) {
 		# Compare with an IPv4 range (separated by a hyphen -)
+		next if ($ipv6);
 		my ($remote, $min, $max);
 		my @low = split(/\./, $1);
 		my @high = split(/\./, $2);
@@ -1904,6 +1906,7 @@ for(my $i=1; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^[0-9\.]+$/) {
 		# Compare with IPv4 address or network
+		next if ($ipv6);
 		my @mo = split(/\./, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for(my $j=0; $j<@mo; $j++) {
@@ -1926,7 +1929,7 @@ for(my $i=1; $i<@_; $i++) {
 		}
 	elsif ($_[$i] !~ /^[0-9\.]+$/) {
 		# Compare with hostname
-		if (&check_ip6address($_[0])) {
+		if ($ipv6) {
 			my $ip6 = &to_ip6address($_[$i]);
 			$mismatch = 1 if (!$ip6 ||
 					  &canonicalize_ip6($ip6) ne

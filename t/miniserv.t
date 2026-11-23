@@ -504,7 +504,7 @@ subtest 'matches_cron' => sub {
 	ok(!miniserv::matches_cron('*/5',   7, 0), 'step miss');
 };
 
-# ip_match — host-based ACL matching (IPv4 only, no DNS branches)
+# ip_match — IPv4 and IPv6 access rules
 subtest 'ip_match' => sub {
 	no warnings 'once';
 	local %miniserv::ip_match_cache = ();
@@ -525,6 +525,18 @@ subtest 'ip_match' => sub {
 	my $partial_rule        = '1.2.3';
 	my $multi_miss_rule     = '9.9.9.9';
 	my $multi_match_rule    = '1.2.3.4';
+
+	# Mixed rule lists must still reach a rule for the client's family.
+	my $v6 = '2001:db8::4';
+	for my $rule ($exact_match_rule, $cidr_match_rule, '0.0.0.0/0',
+		      $netmask_rule, $range_rule, $partial_rule) {
+		ok(!$check->($v6, '2001:db8::1', $rule),
+		   "IPv4 rule $rule skips an IPv6 client");
+		}
+	ok($check->($v6, '2001:db8::1', $range_rule, '2001:db8::/64'),
+	   'a later IPv6 rule can match');
+	ok($check->('1.2.3.4', '5.6.7.8', '2001:db8::/64', $exact_match_rule),
+	   'a later IPv4 rule can match');
 
 	# Exact match.
 	ok( $check->('1.2.3.4', '5.6.7.8', $exact_match_rule),
