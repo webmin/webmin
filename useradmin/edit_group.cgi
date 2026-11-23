@@ -15,7 +15,7 @@ if ($n eq "") {
 		($clone_hash) = grep { $_->{'group'} eq $in{'clone'} } @glist;
 		$clone_hash || &error($text{'ugdit_egone'});
 		%group = %$clone_hash;
-		&can_edit_user(\%access, \%group) ||
+		&can_edit_group(\%access, \%group) ||
 			&error($text{'gedit_eedit'});
 		$group{'group'} = '';
 		}
