@@ -255,6 +255,10 @@ sub validate_password
 {
 my ($passwd, $hash) = @_;
 
+# An empty hash only matches an empty password, as unix_crypt returns an
+# empty string for any password with no salt
+return $passwd eq '' ? 1 : 0 if ($hash eq '');
+
 # Classic Unix crypt
 my $chash = eval {
 	local $main::error_must_die = 1;

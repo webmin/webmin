@@ -164,7 +164,10 @@ else {
 		}
 	defined($idx) || &pass_error($text{'password_euserpass'});
 
-	# Validate old password
+	# Validate old password. An empty hash is only accepted, with an empty
+	# old password, when blank passwords must be changed at login.
+	($line[$miniserv{'passwd_pindex'}] ne '' ||
+	 $miniserv{'passwd_blank'} && $in{'old'} eq '') &&
 	&unix_crypt($in{'old'}, $line[$miniserv{'passwd_pindex'}]) eq
 		$line[$miniserv{'passwd_pindex'}] ||
 			&pass_error($text{'password_euserpass'});
