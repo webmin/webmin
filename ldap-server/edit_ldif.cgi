@@ -3,7 +3,9 @@
 
 require './ldap-server-lib.pl';
 &local_ldap_server() == 1 || &error($text{'slapd_elocal'});
-$access{'slapd'} || &error($text{'slapd_ecannot'});
+# The permission that applies depends on the server config type
+$access{&get_config_type() == 2 ? 'ldif' : 'slapd'} ||
+	&error($text{'slapd_ecannot'});
 &ui_print_header(undef, $text{'slapd_title'}, "", "slapd");
 $conf = &get_ldif_config();
 
