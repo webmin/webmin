@@ -12,6 +12,11 @@ if (!$in{'new'}) {
 	$rc || &error($text{'edit_egone'});
 	}
 
+# Users who can only start and stop actions cannot change them. Deletion is
+# checked first, as it runs even when a start or stop button is also sent.
+!$in{'delete'} && ($in{'start'} || $in{'stop'} || $in{'status'}) ||
+    $access{'bootup'} == 1 || &error($text{'edit_ecannot'});
+
 if ($in{'delete'}) {
 	# Delete the action script
 	&delete_rc_script($in{'name'});

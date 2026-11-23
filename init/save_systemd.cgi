@@ -23,6 +23,9 @@ if ($in{'start'} || $in{'stop'} || $in{'restart'}) {
 	exit;
 	}
 
+# Only users who can edit bootup actions can create, change or delete them
+$access{'bootup'} == 1 || &error($text{'edit_ecannot'});
+
 if ($in{'delete'}) {
 	# Delete the service
 	&disable_at_boot($in{'name'});
