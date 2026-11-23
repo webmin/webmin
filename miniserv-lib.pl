@@ -249,6 +249,9 @@ local $headerhost = $header{'x-forwarded-for'} ||
 		    $header{'cf-connecting-ip'} ||
 		    $header{'cf-connecting-ip6'};
 if ($headerhost) {
+	# Proxies may send an IPv4 client in IPv4-mapped IPv6 form
+	$headerhost = &unmap_ipv4_mapped($headerhost);
+
 	# Only real IPs are allowed
 	$headerhost = undef if (!&check_ipaddress($headerhost) &&
 				!&check_ip6address($headerhost));
@@ -1315,7 +1318,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"SERVER_PORT"} = $port;
 	$ENV{"REMOTE_HOST"} = $acpthost;
 	$ENV{"REMOTE_ADDR"} = $acptip;
-	$ENV{"REMOTE_ADDR_PROTOCOL"} = $ipv6 ? 6 : 4;
+	$ENV{"REMOTE_ADDR_PROTOCOL"} = &check_ip6address($acptip) ? 6 : 4;
 	$ENV{"REMOTE_USER"} = $authuser;
 	$ENV{"BASE_REMOTE_USER"} = $authuser ne $baseauthuser ?
 					$baseauthuser : undef;
@@ -3052,8 +3055,9 @@ sub get_address_ip
 {
 local ($sn, $ipv6) = @_;
 if ($ipv6) {
+	# An IPv4 client on an IPv6 socket gets its plain IPv4 text address
 	local ($p, $b) = unpack_sockaddr_in6($sn);
-	return ($b, inet_ntop(AF_INET6(), $b), $p);
+	return ($b, &unmap_ipv4_mapped(inet_ntop(AF_INET6(), $b)), $p);
 	}
 else {
 	local ($p, $b) = unpack_sockaddr_in($sn);
@@ -6019,6 +6023,25 @@ foreach my $b (@blocks) {
 	}
 return 0 if ($empty > 1 && !($addr =~ /^::/ && $empty == 2));
 return 1;
+}
+
+# unmap_ipv4_mapped(address)
+# Returns the IPv4 address inside an IPv4-mapped IPv6 address in any valid
+# spelling, such as ::ffff:1.2.3.4 or ::ffff:102:304, or the address unchanged
+sub unmap_ipv4_mapped
+{
+my ($addr) = @_;
+# inet_pton stops at a NUL byte, so allow only address characters
+return $addr if ($addr !~ /^[0-9a-f:.]+\z/i);
+
+# Perl before 5.12 has no Socket::inet_pton
+return $addr if (!defined(&Socket::inet_pton));
+
+# Parse the address and check for the ::ffff:0:0/96 prefix
+my $bin = Socket::inet_pton(AF_INET6(), $addr);
+return $addr if (!defined($bin) ||
+		 substr($bin, 0, 12) ne ("\0" x 10)."\xff\xff");
+return inet_ntoa(substr($bin, 12));
 }
 
 # network_to_address(binary)
