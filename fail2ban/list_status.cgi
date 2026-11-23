@@ -59,7 +59,7 @@ if (@jails) {
 					if ($col =~ /banned_ip_list/) {
 						$jips = $val;
 						my @ips = split(/\s+/, $val);
-						@ips = map { "<small $tal><tt><label $lwf>" . &ui_link("unblock_jailed_ip.cgi?ip=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", $_, undef,
+						@ips = map { "<small $tal><tt><label $lwf>" . &ui_link("unblock_jailed_ip.cgi?ip=@{[&urlize($_)]}&jail=@{[&urlize($jail)]}", &html_escape($_), undef,
 							         "title=\"@{[&text('status_jail_unblock_ip', &quote_escape($_))]}\" onmouseover=\"this.style.textDecoration='line-through'\" onmouseout=\"this.style.textDecoration='none'\""
 							        ) . "</label></tt></small>" } @ips;
 						$val = "<br>" if ($val);
@@ -67,6 +67,10 @@ if (@jails) {
 						$val = &$ipslimit($val);
 						$val .= "<br><br>" if ($val);
 						$val .= "&ndash;" if (!$val);
+						}
+					else {
+						# Other values are plain text
+						$val = &html_escape($val);
 						}
 					push(@body, $val);
 					}

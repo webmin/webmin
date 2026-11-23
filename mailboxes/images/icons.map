@@ -1,0 +1,9 @@
+attach=paperclip.svg
+boxes=mailbox.svg
+error=error.svg
+icon=mail.svg
+p1=priority-high.svg
+p2=priority-low.svg
+read=checkmark-small.svg
+replied=replied.svg
+special=special.svg

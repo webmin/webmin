@@ -11,6 +11,7 @@ $ty = $ARGV[0];
 if ($ty == 0) {
 	# Editing an action in init.d, linked to from various runlevels
 	$ac = $ARGV[1];
+	&is_init_action($ac) || &error($text{'edit_ecannot'});
 	&ui_print_header(undef, $text{'edit_title'}, "");
 	$file = &action_filename($ac);
 	$data = &read_file_contents($file);
@@ -23,6 +24,8 @@ elsif ($ty == 1) {
 	$ac = $ARGV[3];
 	$inode = $ARGV[4];
 	$ss = $ARGV[5];
+	&is_runlevel_action($rl, $ss, $num, $ac) ||
+		&error($text{'edit_ecannot'});
 	&ui_print_header(undef, $text{'edit_title'}, "");
 	$file = &runlevel_filename($rl, $ss, $num, $ac);
 	$data = &read_file_contents($file);
@@ -48,7 +51,8 @@ if ($ty != 2) {
 
 # Action name
 if ($ac =~ /^\// || $access{'bootup'} == 2) {
-	print &ui_table_row($text{'edit_name'}, "<tt>$ac</tt>");
+	print &ui_table_row($text{'edit_name'},
+			    "<tt>".&html_escape($ac)."</tt>");
 	print &ui_hidden("name", $ac);
 	print &ui_hidden("extra", 1);
 	}
@@ -92,7 +96,9 @@ if ($ty == 1 && $access{'bootup'} == 1) {
 	# Display a message about the script being bogus
 	print &ui_table_end();
 	print "<b>",&text("edit_bad$ss", $rl),"</b><br>\n";
-	print &ui_link("fix_action.cgi?$rl+$ss+$num+$ac", $text{'edit_fix'});
+	print &ui_link("fix_action.cgi?".join("+", map { &urlize($_) }
+					      ($rl, $ss, $num, $ac)),
+		       $text{'edit_fix'});
 	print "<p>\n";
 	}
 elsif (!$config{'expert'} || $access{'bootup'} == 2) {

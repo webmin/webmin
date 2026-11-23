@@ -1,0 +1,11 @@
+cert=certificate.svg
+convert=import-key.svg
+empty=empty-checkbox.svg
+icon=user.svg
+pass=padlock.svg
+rbac=users.svg
+sessions=id-card.svg
+sql=databases.svg
+sync=keys.svg
+twofactor=security-token.svg
+unix=user-key.svg

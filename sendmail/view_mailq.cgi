@@ -60,7 +60,7 @@ if ($in{'headers'}) {
 				    &html_escape($mail->{'fromline'}));
 		}
 	foreach $h (@{$mail->{'headers'}}) {
-		print &ui_table_row($h->[0],
+		print &ui_table_row(&html_escape($h->[0]),
 			&html_escape(&decode_mimewords($h->[1])), 1, [ "nowrap" ]);
 		}
 	}
@@ -116,8 +116,9 @@ if (@attach) {
 			}
 		else {
 			print &ui_columns_row([
-				&ui_link("qdetach.cgi/$a->{'filename'}?file=$qfile&attach=$a->{'idx'}$subs","$a->{'filename'}" || $text{'view_aname'}.' #'.$attachment_id),
-				$a->{'type'},
+				&ui_link("qdetach.cgi/".&urlize($a->{'filename'})."?file=$qfile&attach=$a->{'idx'}$subs",
+					&html_escape($a->{'filename'} || $text{'view_aname'}.' #'.$attachment_id)),
+				&html_escape($a->{'type'}),
 				&nice_size(length($a->{'data'})),
 				]);
 			}

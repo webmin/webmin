@@ -8,6 +8,25 @@ use WebminCore;
 
 do 'secrets-lib.pl';
 
+# checked_ppp_options_file([file])
+# Returns the PPP options file to edit. This must be the main options file or
+# the options file of a serial port managed by mgetty, otherwise error is
+# called.
+sub checked_ppp_options_file
+{
+my ($file) = @_;
+return $config{'ppp_options'} if (!$file || $file eq $config{'ppp_options'});
+&foreign_require("inittab", "inittab-lib.pl");
+foreach my $entry (&mgetty_inittabs()) {
+	next if (!$entry->{'mgetty'});
+	my $tty = $entry->{'tty'};
+	$tty =~ s!^/dev/!!;
+	$tty =~ tr!/!.!;
+	return $file if ($file eq "$config{'ppp_options'}.$tty");
+	}
+&error($text{'options_ecannot'});
+}
+
 # mgetty_inittabs()
 # Returns a list of inittab entries for mgetty, with options parsed
 sub mgetty_inittabs

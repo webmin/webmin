@@ -48,18 +48,18 @@ foreach $h (@hosts) {
 	push(@cols, $text{"host_$h->{'auth'}"} || $h->{'auth'});
 	local $mover;
 	if ($h eq $hosts[@hosts-1]) {
-		$mover .= "<img src=images/gap.gif>";
+		$mover .= &ui_gap(20, 16);
 		}
 	else {
 		$mover .= "<a href='down.cgi?idx=$h->{'index'}'>".
-		          "<img src=images/down.gif border=0></a>";
+		          "<img src=../images/shared/move-down.svg border=0></a>";
 		}
 	if ($h eq $hosts[0]) {
-		$mover .= "<img src=images/gap.gif>";
+		$mover .= &ui_gap(20, 16);
 		}
 	else {
 		$mover .= "<a href='up.cgi?idx=$h->{'index'}'>".
-		          "<img src=images/up.gif border=0></a>";
+		          "<img src=../images/shared/move-up.svg border=0></a>";
 		}
 	push(@cols, $mover);
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $h->{'index'});

@@ -38,25 +38,25 @@ if ($access{'cothers'} == 1 || $access{'mothers'} == 1 ||
 print &ui_table_row($text{'batch_batch'},
 	&ui_yesno_radio("batch", 0));
 
-if ($access{'makehome'}) {
+if ($access{'makehome'} == 1) {
 	# Create home dir
 	print &ui_table_row($text{'batch_makehome'},
 		&ui_yesno_radio("makehome", 1));
 	}
 
-if ($access{'copy'} && $config{'user_files'} =~ /\S/) {
+if ($access{'copy'} == 1 && $config{'user_files'} =~ /\S/) {
 	# Copy files to homes
 	print &ui_table_row($text{'batch_copy'},
 		&ui_yesno_radio("copy", 1));
 	}
 
-if ($access{'movehome'}) {
+if ($access{'movehome'} == 1) {
 	# Move home dirs
 	print &ui_table_row($text{'batch_movehome'},
 		&ui_yesno_radio("movehome", 1));
 	}
 
-if ($access{'chuid'}) {
+if ($access{'chuid'} == 1) {
 	# Update UIDs on files
 	print &ui_table_row($text{'batch_chuid'},
 		&ui_radio("chuid", 1, [ [ 0, $text{'no'} ],
@@ -64,7 +64,7 @@ if ($access{'chuid'}) {
 					[ 2, $text{'uedit_allfiles'} ] ]));
 	}
 
-if ($access{'chgid'}) {
+if ($access{'chgid'} == 1) {
 	# Update GIDs on files
 	print &ui_table_row($text{'batch_chgid'},
 		&ui_radio("chgid", 1, [ [ 0, $text{'no'} ],
@@ -74,7 +74,7 @@ if ($access{'chgid'}) {
 
 # Delete home dirs
 print &ui_table_row($text{'batch_delhome'},
-	&ui_yesno_radio("delhome", 1));
+	&ui_yesno_radio("delhome", 1)) if ($access{'delhome'} == 2);
 
 # Encrypt password
 print &ui_table_row($text{'batch_crypt'},

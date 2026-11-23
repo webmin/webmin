@@ -25,7 +25,9 @@ if ($in{'storage'}) {
 	($msg, $ok, $run, $done) = &get_storage_status($in{'storage'});
 
 	if ($ok) {
-		print &text('storagestatus_msg', $in{'storage'}, $msg),"<p>\n";
+		# Status text comes from the remote daemon
+		print &text('storagestatus_msg', &html_escape($in{'storage'}),
+			    &html_escape($msg)),"<p>\n";
 
 		# Running jobs
 		print &ui_subheading($text{'dirstatus_run'});
@@ -44,9 +46,9 @@ if ($in{'storage'}) {
 			foreach $j (@$run) {
 				print &ui_checked_columns_row([
 					&joblink($j->{'name'}),
-					$j->{'id'},
-					$j->{'level'},
-					$j->{'status'} ], \@tds,
+					&html_escape($j->{'id'}),
+					&html_escape($j->{'level'}),
+					&html_escape($j->{'status'}) ], \@tds,
 					"d", $j->{'id'});
 				}
 			print &ui_columns_end();
@@ -71,12 +73,12 @@ if ($in{'storage'}) {
 			foreach $j (@$done) {
 				print &ui_columns_row([
 					&joblink($j->{'name'}),
-					$j->{'id'},
-					$j->{'level'},
-					$j->{'date'},
+					&html_escape($j->{'id'}),
+					&html_escape($j->{'level'}),
+					&html_escape($j->{'date'}),
 					&nice_size($j->{'bytes'}),
-					$j->{'files'},
-					$j->{'status'} ]);
+					&html_escape($j->{'files'}),
+					&html_escape($j->{'status'}) ]);
 				}
 			print &ui_columns_end();
 			}
@@ -86,7 +88,9 @@ if ($in{'storage'}) {
 		}
 	else {
 		# Couldn't connect!
-		print "<b>",&text('storagestatus_err', $in{'storage'}, $msg),
+		print "<b>",&text('storagestatus_err',
+				  &html_escape($in{'storage'}),
+				  &html_escape($msg)),
 		      "</b><p>\n";
 		}
 	}

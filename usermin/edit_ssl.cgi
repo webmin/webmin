@@ -3,6 +3,7 @@
 # Webserver SSL form
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'ssl_title'}, "");
 &ReadParse();
 &get_usermin_miniserv_config(\%miniserv);
@@ -107,7 +108,8 @@ if (@ipkeys) {
 				  $text{'ssl_cert'} ]);
 	foreach $k (@ipkeys) {
 		print &ui_columns_row([
-			&ui_link("edit_ipkey.cgi?idx=$k->{'index'}",
+			&ui_link("edit_ipkey.cgi?mapping=".
+				 &urlize(join(",", @{$k->{'ips'}})),
 				 join(", ", @{$k->{'ips'}})),
 			"<tt>$k->{'key'}</tt>",
 			$k->{'cert'} ? "<tt>$k->{'cert'}</tt>"

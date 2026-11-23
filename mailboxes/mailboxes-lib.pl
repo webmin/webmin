@@ -701,6 +701,17 @@ local %sconfig = &foreign_config("spam");
 return &has_command($sconfig{'sa_learn'}) ? "$sconfig{'sa_learn'} --ham --mbox" : undef;
 }
 
+# can_edit_spam_lists()
+# Returns 1 if the current user can add senders to the SpamAssassin allowed
+# and denied addresses, which needs that page in the SpamAssassin module. The
+# addresses go into the config file that the module lets this user edit.
+sub can_edit_spam_lists
+{
+return 0 if (!&foreign_available("spam"));
+&foreign_require("spam", "spam-lib.pl");
+return &spam::can_use_page("white") ? 1 : 0;
+}
+
 # allowed_directory()
 # Returns base directory for mail files, or undef if not allowed
 sub allowed_directory
@@ -1081,7 +1092,7 @@ sub view_mail_link
 local ($user, $folder, $idx, $txt, $dom) = @_;
 local $uuser = &urlize($user);
 local $url = "view_mail.cgi?user=$uuser&idx=$idx&folder=$folder->{'index'}".
-	     "&dom=$dom";
+	     "&dom=".&urlize($dom);
 if ($config{'open_mode'}) {
         return "<a href='' onClick='window.open(\"$url\", \"viewmail\", \"toolbar=no,menubar=no,scrollbars=yes,width=1024,height=768\"); return false'>".
                &simplify_from($txt)."</a>";

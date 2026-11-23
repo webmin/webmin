@@ -13,8 +13,8 @@ if (!%pinfo) {
 	exit;
 	}
 
-print "<b>",&text('open_proc', "<tt>$pinfo{'args'}</tt>", $in{'pid'}),
-      "</b><p>\n";
+print "<b>",&text('open_proc', "<tt>".&html_escape($pinfo{'args'})."</tt>",
+		  &html_escape($in{'pid'})),"</b><p>\n";
 
 # Show open files
 print &ui_subheading($text{'open_header1'});
@@ -36,9 +36,9 @@ foreach $f (@files) {
 		     $f->{'type'} =~ /^v?chr$/ ? $text{'open_chr'} :
 		     $f->{'type'} =~ /^v?blk$/ ? $text{'open_blk'} :
 					     $f->{'type'},
-		     $f->{'size'},
-		     $f->{'inode'},
-		     $f->{'file'},
+		     &html_escape($f->{'size'}),
+		     &html_escape($f->{'inode'}),
+		     &html_escape($f->{'file'}),
 		     ]);
 	}
 print &ui_columns_end();
@@ -85,5 +85,5 @@ if (@nets) {
 	print &ui_columns_end();
 	}
 
-&ui_print_footer("edit_proc.cgi?$in{'pid'}", $text{'edit_return'},
+&ui_print_footer("edit_proc.cgi?".&urlize($in{'pid'}), $text{'edit_return'},
 		 "", $text{'index_return'});

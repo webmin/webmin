@@ -7,8 +7,7 @@ require './smf-lib.pl';
 # wizard-specific info here
 &wizard_header($wizard, "smfwizard_manpage.cgi",
 	"$text{'smfwizard_manpage_heading'}",
-	&convert_links_in_text("$text{'smfwizard_manpage_description'}"),
-	"images/smf.gif");
+	&convert_links_in_text("$text{'smfwizard_manpage_description'}"));
 
 &wizard_input("smfwizard_manpage.cgi",
 	"$text{'smfwizard_manpage_title'}",

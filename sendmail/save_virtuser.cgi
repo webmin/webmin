@@ -37,6 +37,12 @@ if ($in{'delete'}) {
 else {
 	# Saving or creating.. check inputs
 	&error_setup($text{'vsave_err'});
+
+	# Each field must stay on its map or comment line
+	foreach my $k ("from_addr", "from_dom", "to_addr", "to_dom",
+		       "to_code", "to_error", "cmt") {
+		$in{$k} =~ /[\r\n\0]/ && &error($text{'vsave_eline'});
+		}
 	if ($in{'from_type'} == 0 || !$access{'vcatchall'}) {
 		$in{'from_addr'} =~ /^(\S+)\@(\S+)$/ ||
 			&error(&text('vsave_efrom', $in{'from_addr'}));

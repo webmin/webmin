@@ -3,10 +3,10 @@
 # Create an empty <Files> clause in a .htaccess file
 
 require './apache-lib.pl';
+&ReadParse();
 $access{'global'} || &error($text{'htaccess_ecannot'});
 &allowed_auth_file($in{'file'}) ||
 	&error($text{'htindex_ecannot'});
-&ReadParse();
 $hconf = &get_htaccess_config($in{'file'});
 &lock_file($in{'file'});
 &before_changing();

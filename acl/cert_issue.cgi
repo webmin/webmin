@@ -7,6 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $module_config_directory, $base_remote_user);
+$access{'cert'} || &error($text{'cert_ecannot'});
 &ReadParse();
 
 &error_setup($text{'cert_err'});

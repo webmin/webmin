@@ -8,6 +8,11 @@ require './mount-lib.pl';
 &ReadParse();
 $| = 1;
 
+# Line breaks would add extra fstab entries, and tabs would split its fields
+foreach my $k (keys %in) {
+	$in{$k} =~ /[\r\n\t]/ && &error($text{'save_eline'});
+	}
+
 # Check for redirect to proc module to list processes on the FS
 if ($in{'lsof'}) {
 	&redirect("../proc/index_search.cgi?mode=3&fs=".&urlize($in{'lsoffs'}));
@@ -50,7 +55,10 @@ if (defined($in{old})) {
 	# Saving an existing mount
 	if ($in{temp}) { @mlist = &list_mounted(); }
 	else { @mlist = &list_mounts(); }
+	$in{'old'} =~ /\A\d+\z/ && $mlist[$in{'old'}] ||
+		&error($text{'edit_egone'});
 	@mold = @{$mlist[$in{old}]};
+	&can_edit_fs(@mold[0..3]) || &error($text{'edit_ecannot'});
 
 	if (!$mnow && !$in{oldmnow} && !$msave) {
 		# Not mounted, so remove from fstab without checking
@@ -245,7 +253,10 @@ elsif (defined($in{'old'})) {
 		$msave = 1;
 		$now = 1 if ($in{'oldmnow'});
 		}
+	$in{'old'} =~ /\A\d+\z/ && $mlist[$in{'old'}] ||
+		&error($text{'edit_egone'});
 	@mold = @{$mlist[$in{old}]};
+	&can_edit_fs(@mold[0..3]) || &error($text{'edit_ecannot'});
 
 	if ($in{'umount'}) {
 		# Just unmount the filesystem
@@ -440,7 +451,7 @@ else {
 	}
 &save_filesystem_users($users);
 
-&redirect($in{'return'});
+&redirect(&local_return_url($in{'return'}));
 
 # undo_changes
 # Put back any changes to the fstab file

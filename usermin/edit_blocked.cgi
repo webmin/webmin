@@ -2,6 +2,7 @@
 # Show a list of blocked users and hosts
 
 require './usermin-lib.pl';
+$access{'blocked'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'blocked_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 @blocked = &webmin::get_blocked_users_hosts(\%miniserv);

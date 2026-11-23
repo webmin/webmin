@@ -41,8 +41,10 @@ elsif ($in{'method'} eq 'tar') {
 elsif ($in{'method'} eq 'zip') {
 	$extension = ".zip";
 	$full = &validate_filename_path($in{'arch'}.$extension);
+	# Restricted users store symlinks as links, never their targets
 	$command = "cd ".quotemeta($cwd).
-		" && zip -r ".quotemeta($full)." --";
+		" && zip ".(&test_allowed_paths() ? "-y " : "")."-r ".
+		quotemeta($full)." --";
 	}
 else {
 	&error("Unknown method!");

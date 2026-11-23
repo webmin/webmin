@@ -10,10 +10,15 @@ our (%access, %text, %in);
 
 require './bind8-lib.pl';    ## no critic
 &ReadParse();
+$access{'ro'} && &error($text{'master_ero'});
 my $parent = &get_config_parent();
 my $conf = $parent->{'members'};
 my $vconf = $conf->[$in{'index'}];
 $access{'views'} || &error($text{'view_ecannot'});
+# The index must select a view that this user can edit
+$vconf && $vconf->{'name'} eq 'view' && $vconf->{'type'} ||
+	&error($text{'vdelete_egone'});
+&can_edit_view($vconf) || &error($text{'view_ecannot'});
 
 my @zones;
 if (!$in{'confirm'}) {
@@ -41,7 +46,7 @@ if (!$in{'confirm'}) {
 	# Show confirm form
 	print &ui_confirmation_form("delete_view.cgi",
 		&text(@zones ? 'vdelete_mesg' : 'vdelete_mesg2',
-		      "<tt>$vconf->{'value'}</tt>"),
+		      "<tt>".&html_escape($vconf->{'value'})."</tt>"),
 		[ [ 'index', $in{'index'} ] ],
 		[ [ 'confirm', $text{'view_delete'} ] ],
 		$movefield);
@@ -57,11 +62,18 @@ if ($in{'mode'} == 1) {
 	# Adding to top level
 	$dest = &get_config_parent(&add_to_file());
 	}
-else {
-	# Adding to some other view
+elsif ($in{'mode'} == 2) {
+	# Adding to some other view, which must also be editable
 	$dest = $conf->[$in{'newview'}];
+	$dest && $dest->{'name'} eq 'view' && $dest->{'type'} &&
+	    $dest ne $vconf && &can_edit_view($dest) ||
+		&error($text{'vdelete_egone'});
 	}
-&lock_file(&make_chroot($dest->{'file'}));
+else {
+	# Any other mode deletes the zones
+	$in{'mode'} = 0;
+	}
+&lock_file(&make_chroot($dest->{'file'})) if ($dest);
 foreach my $z (@zones) {
 	my $type = &find_value("type", $z->{'members'});
 	next if (!$type || $type eq 'hint');

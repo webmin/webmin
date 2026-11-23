@@ -20,7 +20,19 @@ foreach my $d (split(/\0/, $in{'d'})) {
 		&error($text{'master_edelete'});
 	push(@zones, $zone);
 	}
+
+# Read-only users cannot change any zone
 $access{'ro'} && &error($text{'master_ero'});
+
+if ($in{'type'} eq 'ttl') {
+	# The default TTL is a zone parameter, not a record type, so it needs
+	# the same permission as the zone parameters page
+	$access{'params'} || &error($text{'master_esoacannot'});
+	}
+else {
+	# Records can only be changed when their type is allowed
+	&can_edit_type($in{'type'}) || &error($text{'recs_ecannottype'});
+	}
 
 # Reject empty values, while allowing a TTL of zero.
 $in{'old'} =~ s/\s+/ /g;

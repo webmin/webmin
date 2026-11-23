@@ -3,6 +3,7 @@
 # Update list of anonymously accessible modules
 
 require './usermin-lib.pl';
+$access{'anon'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &get_usermin_miniserv_config(\%miniserv);
 &error_setup($text{'anon_err'});

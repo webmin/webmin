@@ -11,6 +11,11 @@ our (%in, %text, %config, %gconfig, %access, $config_directory, $base_remote_use
 &foreign_require("webmin", "webmin-lib.pl");
 
 &ReadParse();
+if ($in{'clone'}) {
+	$access{'acl'} && !$access{'mode'} && &get_user($in{'clone'}) &&
+		&can_edit_user($in{'clone'}) ||
+		&error($text{'save_euser'});
+	}
 my ($u, %user,  $safe);
 if ($in{'user'}) {
 	# Editing an existing user
@@ -86,7 +91,7 @@ print &ui_table_row($text{'edit_user'},
 
 # Source user for clone
 if ($in{'clone'}) {
-	print &ui_table_row($text{'edit_cloneof'}, "<tt>$in{'clone'}</tt>");
+	print &ui_table_row($text{'edit_cloneof'}, "<tt>".&html_escape($in{'clone'})."</tt>");
 	}
 
 # Find and show parent group
@@ -439,13 +444,7 @@ foreach my $c (sort { $b cmp $a } @cats) {
 		my $md = $m->{'dir'};
 		my $fromgroup = $memg &&
 				&indexof($md, @{$memg->{'modules'}}) >= 0;
-		if ($mcan{$md} && $fromgroup) {
-			# Module comes from group
-			push(@grid, (sprintf "<img src=images/%s.gif> %s\n",
-                                $has{$md} ? 'tick' : 'empty', $m->{'desc'}).
-				($has{$md} ? &ui_hidden("mod", $md) : ""));
-			}
-		elsif ($mcan{$md}) {
+		if ($mcan{$md} && !$fromgroup) {
 			my $label;
 			if ($access{'acl'} && $in{'user'} && !$safe &&
 			    &can_module_acl($m)) {
@@ -462,8 +461,13 @@ foreach my $c (sort { $b cmp $a } @cats) {
 			push(@grid, &ui_checkbox("mod", $md, $label,$has{$md}));
 			}
 		else {
-			push(@grid, (sprintf "<img src=images/%s.gif> %s\n",
-				$has{$md} ? 'tick' : 'empty', $m->{'desc'}));
+			# Keep granted group modules in the submitted form.
+			my $icon = $has{$md} ?
+				"../images/shared/ticked-checkbox.svg" :
+				"../images/shared/empty-checkbox.svg";
+			my $row = &ui_img($icon)." ".$m->{'desc'}."\n";
+			$row .= &ui_hidden("mod", $md) if ($mcan{$md} && $has{$md});
+			push(@grid, $row);
 			}
 		}
 	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
@@ -489,7 +493,7 @@ if ($access{'acl'} && !$memg->{'name'} && !$safe) {
 my @buts = ( );
 push(@buts, [ undef, $in{'user'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'user'}) {
-	if ($access{'create'}) {
+	if ($access{'create'} && $access{'acl'} && !$access{'mode'}) {
 		push(@buts, [ "but_clone", $text{'edit_clone'} ]);
 		}
 	if (&foreign_available("webminlog")) {

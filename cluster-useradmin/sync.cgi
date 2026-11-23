@@ -103,16 +103,19 @@ foreach $host (@phosts) {
 			local $made_home;
 			if ($in{'makehome'}) {
 				# Create the home directory
+				# Quote the path for the code the other server
+				# runs
+				local $qhome = &remote_perl_string($u->{'home'});
 				local $exists = &remote_eval($serv->{'host'},
-					"useradmin", "-d '$u->{'home'}'");
+					"useradmin", "-d $qhome");
 				if (!$exists) {
 					print "$text{'usave_mkhome'}<br>\n";
 					if (!$in{'test'}) {
-						local $rv = &remote_eval($serv->{'host'}, "useradmin", "&make_dir('$u->{'home'}', oct('$uconfig{'homedir_perms'}'), 1) && chmod(oct('$uconfig{'homedir_perms'}'), '$u->{'home'}') ? undef : \$!");
+						local $rv = &remote_eval($serv->{'host'}, "useradmin", "&make_dir($qhome, oct('$uconfig{'homedir_perms'}'), 1) && chmod(oct('$uconfig{'homedir_perms'}'), $qhome) ? undef : \$!");
 						$rv && &error(&text(
 							'usave_emkdir', $rv));
 
-						$rv = &remote_eval($serv->{'host'}, "useradmin", "chown($u->{'uid'}, $u->{'gid'}, '$u->{'home'}')");
+						$rv = &remote_eval($serv->{'host'}, "useradmin", "chown(".int($u->{'uid'}).", ".int($u->{'gid'}).", $qhome)");
 						$rv || &error(&text(
 							'usave_echown', $rv));
 						}

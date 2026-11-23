@@ -67,7 +67,8 @@ else {
 	$changed++ if ($acl && $in{'name'} ne $acl->{'values'}->[0]);
 	for(my $i=0; $i<@acls; $i++) {
 		if ($changed && $acls[$i]->{'values'}->[0] eq $in{'name'}) {
-			&error(&text('aclsave_eexists',$in{'name'}));
+			&error(&text('aclsave_eexists',
+					    &html_escape($in{'name'})));
 			}
 		}
 
@@ -80,12 +81,15 @@ else {
 			next if (!$from && !$to && !$mask);
 			&check_ipaddress($from) ||
 			    &check_ip6address($from) ||
-			       &error(&text('aclsave_efrom',$from));
+			       &error(&text('aclsave_efrom',
+						   &html_escape($from)));
 			!$to || &check_ipaddress($to) ||
 			   &check_ip6address($to) ||
-			       &error(&text('aclsave_eto',$to));
+			       &error(&text('aclsave_eto',
+						   &html_escape($to)));
 			$mask =~ /^\d*$/ || &check_ipaddress($mask) ||
-			       &error(&text('aclsave_enmask',$mask));
+			       &error(&text('aclsave_enmask',
+						   &html_escape($mask)));
 			if ($to && $mask) { push(@vals, "$from-$to/$mask"); }
 			elsif ($to) { push(@vals, "$from-$to"); }
 			elsif ($mask) { push(@vals, "$from/$mask"); }
@@ -97,9 +101,10 @@ else {
 			my $mask = $in{"mask_$i"};
 			next if (!$mask || !$ip);
 			&check_ipaddress($ip) || &check_ip6address($ip) ||
-				&error(&text('aclsave_eip',$ip));
+				&error(&text('aclsave_eip', &html_escape($ip)));
 			$mask =~ /^\d+$/ || &check_ipaddress($mask) ||
-			       &error(&text('aclsave_enmask',$mask));
+			       &error(&text('aclsave_enmask',
+						   &html_escape($mask)));
 			push(@vals, "$ip/$mask");
 			}
 		}
@@ -170,13 +175,15 @@ else {
 		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "myport") {
-		$in{'vals'} =~ /^\d+$/ ||
-			&error("'$in{'vals'}' is not a valid port number");
+		$in{'vals'} =~ /^\d+\z/ ||
+			&error(&text('aclsave_eport',
+				     &html_escape($in{'vals'})));
 		push(@vals, $in{'vals'});
 		}
 	elsif ($in{'type'} eq "maxconn") {
-		$in{'vals'} =~ /^\d+$/ ||
-		    &error("'$in{'vals'}' is not a valid number of requests");
+		$in{'vals'} =~ /^\d+\z/ ||
+		    &error(&text('aclsave_emaxconn',
+				 &html_escape($in{'vals'})));
 		push(@vals, $in{'vals'});
 		}
 	elsif ($in{'type'} eq "arp") {
@@ -194,11 +201,18 @@ else {
 		push(@vals, $in{'vals'});
 		}
 
+	# Each ACL and deny_info is written on one line of squid.conf
+	foreach my $v ($in{'name'}, $in{'type'}, @aclopts, @vals,
+		       $in{'file_def'} ? ( ) : ( $in{'file'} ), $in{'deny'}) {
+		$v =~ /[\r\n\0]/ && &error($text{'aclsave_eline'});
+		}
+
 	if (!$in{'file_def'}) {
 		# Writing to an external file
 		$in{'file'} || &error($text{'aclsave_enofile'});
 		&can_access($in{'file'}) ||
-			&error(&text('aclsave_efile', $in{'file'}));
+			&error(&text('aclsave_efile',
+					     &html_escape($in{'file'})));
 		if (!$in{'keep'}) {
 			if (!$acl && -e $in{'file'}) {
 				&error($text{'aclsave_ealready'});
@@ -218,7 +232,8 @@ else {
 		if ($vals[0] =~ /^"(.*)"$/) {
 			my $f = $1;
 			&can_access($f) ||
-				&error(&text('aclsave_efile', $f));
+				&error(&text('aclsave_efile',
+						     &html_escape($f)));
 			if ($f !~ /^\// && $access{'root'} ne '/') {
 				$vals[0] = "\"$access{'root'}/$f\"";
 				}

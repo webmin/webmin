@@ -13,7 +13,7 @@ my $name = $in{'name'};
 my $from = &validate_filename_path($file);
 my $to = &validate_filename_path($name);
 if (-e $to) {
-	print_errors("$name $text{'error_exists'}");
+	print_errors(&html_escape($name)." $text{'error_exists'}");
 	}
 else {
 	my $from_dir = $from;
@@ -24,7 +24,7 @@ else {
 	$to_dir ||= "/";
 	if (!can_move($from, $from_dir, $to_dir)) {
 		print_errors(
-			"$file - $text{'error_move'}");
+			&html_escape($file)." - $text{'error_move'}");
 		}
 	elsif (&rename_file($from, $to)) {
 		&redirect("index.cgi?path=".
@@ -32,6 +32,6 @@ else {
 		}
 	else {
 		print_errors(
-			"$text{'error_rename'} $file: $!");
+			"$text{'error_rename'} ".&html_escape($file).": $!");
 		}
 	}

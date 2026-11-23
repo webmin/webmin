@@ -33,8 +33,9 @@ if ($in{'new'}) {
 	print "<input type=hidden name=new value=1>\n";
 	}
 else {
-	print "<td>$prn{'name'}</td>\n";
-	print "<input type=hidden name=name value=\"$prn{'name'}\">\n";
+	print "<td>",&html_escape($prn{'name'}),"</td>\n";
+	print "<input type=hidden name=name value=\"",
+	      &quote_escape($prn{'name'}),"\">\n";
 	}
 
 print "<td align=right><b>$text{'edit_acc'}</b></td>\n";
@@ -44,7 +45,7 @@ if (&printer_support('why')) {
 	printf "<input type=radio name=accepting value=0 %s> %s\n",
 		$prn{'accepting'} ? "" : "checked", $text{'edit_why'};
 	printf "<input name=accepting_why size=15 value=\"%s\"></td> </tr>\n",
-		$prn{'accepting_why'};
+		&quote_escape($prn{'accepting_why'});
 	}
 else {
 	printf "<input type=radio name=accepting value=0 %s> $text{'no'}\n",
@@ -65,7 +66,7 @@ if (&printer_support('why')) {
 	printf "<input type=radio name=enabled value=0 %s> %s\n",
 		$prn{'enabled'} ? "" : "checked", $text{'edit_why'};
 	printf "<input name=enabled_why size=15 value=\"%s\"></td> </tr>\n",
-		$prn{'enabled_why'};
+		&quote_escape($prn{'enabled_why'});
 	}
 else {
 	printf "<input type=radio name=enabled value=0 %s> $text{'no'}\n",
@@ -85,7 +86,7 @@ if (&printer_support('allow')) {
 		$prn{'deny'} ? "checked" : "", $text{'edit_denyu'};
 	print "</td> <td valign=top>\n";
 	print "<textarea wrap=auto name=users rows=5 cols=30>",
-	      join(" ", (@{$prn{'allow'}}, @{$prn{'deny'}})),
+	      &html_escape(join(" ", (@{$prn{'allow'}}, @{$prn{'deny'}}))),
 	      "</textarea></td>\n";
 	print "<td valign=top>",&user_chooser_button("users",1),"</td>\n";
 	print "</tr></table></td> </tr>\n";
@@ -120,7 +121,8 @@ elsif (&printer_support('msize')) {
 	printf "<input type=radio name=msize_def value=0 %s>\n",
 		$prn{'msize'} ? "checked" : "";
 	printf "<input name=msize size=6 value=\"%s\"> %s</td> </tr>\n",
-		$prn{'msize'} ? $prn{'msize'} : "", $text{'blocks'};
+		$prn{'msize'} ? &quote_escape($prn{'msize'}) : "",
+		$text{'blocks'};
 	}
 else { print "<td colspan=2></tr>\n"; }
 
@@ -137,7 +139,7 @@ if (&printer_support('ctype')) {
 	printf "<input type=checkbox name=ctype_other %s> %s\n",
 		@ctypeo ? "checked" : "", $text{'edit_dother'};
 	printf "<input name=ctype_olist size=20 value=\"%s\">\n",
-		join(' ', @ctypeo);
+		&quote_escape(join(' ', @ctypeo));
 	print "</td> </tr>\n";
 	}
 
@@ -145,7 +147,7 @@ if (&printer_support('alias')) {
 	@alias = @{$prn{'alias'}};
 	print "<tr> <td><b>$text{'edit_alt'}</b></td> <td colspan=3>\n";
 	printf "<input name=alias size=40 value=\"%s\"></td> </tr>\n",
-		join(' ', @alias);
+		&quote_escape(join(' ', @alias));
 	}
 
 print "</table></td></tr></table><p>\n";
@@ -180,14 +182,16 @@ if ($in{'new'} || &printer_support('editdest')) {
 		$prn{'dev'} && !$isdev && !$wdrv && !$hdrv ? "checked" : "",
 		$text{'edit_file'};
 	printf "<td><input name=file size=25 value=\"%s\"></td> </tr>\n",
-		$isdev || $wdrv || $hdrv ? "" : $prn{'dev'};
+		$isdev || $wdrv || $hdrv ? "" : &quote_escape($prn{'dev'});
 
 	printf "<tr> <td><input type=radio name=dest value=2 %s>\n",
 		$prn{'rhost'} ? "checked" : "";
 	print "$text{'edit_remote'}</td>\n";
-	print "<td><input name=rhost size=25 value=\"$prn{'rhost'}\"></td>\n";
+	print "<td><input name=rhost size=25 value=\"",
+	      &quote_escape($prn{'rhost'}),"\"></td>\n";
 	print "<td>$text{'edit_rqueue'} ",
-	      "<input name=rqueue size=15 value=\"$prn{'rqueue'}\">\n";
+	      "<input name=rqueue size=15 value=\"",
+	      &quote_escape($prn{'rqueue'}),"\">\n";
 	if (defined(&remote_printer_types)) {
 		@rtypes = &remote_printer_types();
 		}
@@ -214,9 +218,10 @@ if ($in{'new'} || &printer_support('editdest')) {
 			$prn{'dhost'} ? "checked" : "";
 		print "$text{'edit_direct'}</td>\n";
 		print "<td><input name=dhost size=25 ",
-		      "value=\"$prn{'dhost'}\"></td>\n";
+		      "value=\"",&quote_escape($prn{'dhost'}),"\"></td>\n";
 		print "<td>$text{'edit_dport'} ",
-		      "<input name=dport size=5 value=\"$prn{'dport'}\">\n";
+		      "<input name=dport size=5 value=\"",
+		      &quote_escape($prn{'dport'}),"\">\n";
 		print "</td> </tr>\n";
 		}
 
@@ -225,19 +230,19 @@ if ($in{'new'} || &printer_support('editdest')) {
 			$wdrv ? "checked" : "";
 		printf "$text{'edit_smb'}</td> ".
 		      "<td><input name=server size=25 value=\"%s\"></td>\n",
-			$wdrv->{'server'};
+			&quote_escape($wdrv->{'server'});
 		printf "<td>$text{'edit_share'} ".
 		       "<input name=share size=15 value=\"%s\"></td>\n",
-			$wdrv->{'share'};
+			&quote_escape($wdrv->{'share'});
 		print "</tr><tr> <td align=right>$text{'edit_user'}</td>\n";
 		printf "<td colspan=2><input name=suser size=10 value='%s'>\n",
-			$wdrv->{'user'};
+			&quote_escape($wdrv->{'user'});
 		printf "$text{'edit_pass'} ".
 		       "<input type=password name=spass size=10 value='%s'>\n",
-			$wdrv->{'pass'};
+			&quote_escape($wdrv->{'pass'});
 		printf "$text{'edit_wgroup'} ".
 		       "<input name=wgroup size=10 value=\"%s\">\n",
-			$wdrv->{'workgroup'};
+			&quote_escape($wdrv->{'workgroup'});
 		print "</td> </tr>\n";
 		}
 
@@ -246,10 +251,10 @@ if ($in{'new'} || &printer_support('editdest')) {
 			$hdrv ? "checked" : "";
 		print "$text{'edit_hpnp'}</td>\n";
 		printf "<td><input name=hpnp size=25 value=\"%s\"></td>\n",
-			$hdrv->{'server'};
+			&quote_escape($hdrv->{'server'});
 		printf "<td>$text{'edit_port'} ".
 		       "<input name=port size=15 value=\"%s\"></td> </tr>\n",
-			$hdrv->{'port'};
+			&quote_escape($hdrv->{'port'});
 		}
 
 	print "<tr> <td>&nbsp;&nbsp;&nbsp;&nbsp;",

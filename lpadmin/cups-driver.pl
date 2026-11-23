@@ -106,7 +106,7 @@ else {
 	else {
 		&copy_source_dest($_[1]->{'ppd'}, $drv);
 		}
-	chmod(0777, $drv);
+	chmod(0644, $drv);
 	$cups_driver_options = $_[1]->{'opts'};	# for modify_printer
 	return $drv;
 	}
@@ -127,7 +127,7 @@ print "<td>($text{'cups_nonemsg'})</td> </tr>\n";
 printf "<tr> <td><input type=radio name=mode value=2 %s> %s</td>",
 	$_[1]->{'mode'} == 2 ? 'checked' : '', $text{'cups_prog'};
 printf "<td><input name=program size=40 value='%s'></td> </tr>\n",
-	$_[1]->{'mode'} == 2 ? $_[0]->{'iface'} : '';
+	$_[1]->{'mode'} == 2 ? &quote_escape($_[0]->{'iface'}) : '';
 
 # Display all the CUPS drivers
 printf "<tr> <td valign=top><input type=radio name=mode value=1 %s> %s</td>\n",
@@ -172,9 +172,10 @@ print "<td><select name=ppd size=10>\n";
 foreach $f (sort { $cache{$a} cmp $cache{$b} } keys %cache) {
 	if ($cache{$f} && $cache{$f} ne "duplicate" &&
 	    !$done{$cache{$f}}++) {
-		printf "<option value=%s %s>%s\n",
-			$f, $_[1]->{'nick'} eq $cache{$f} ? 'selected' : '',
-			$cache{$f};
+		printf "<option value=\"%s\" %s>%s\n",
+			&quote_escape($f),
+			$_[1]->{'nick'} eq $cache{$f} ? 'selected' : '',
+			&html_escape($cache{$f});
 		$currppd = $f if ($_[1]->{'nick'} eq $cache{$f});
 		}
 	}
@@ -183,23 +184,27 @@ print "</select>\n";
 # Display driver option inputs
 if ($currppd) {
 	local $ppd = &parse_cups_ppd($currppd);
-	print "<br><b>",&text('cups_opts', $ppd->{'NickName'}),
+	print "<br><b>",&text('cups_opts', &html_escape($ppd->{'NickName'})),
 	      "</b><table>\n";
-	open(OPTS, "$lpoptions -p '$_[0]->{'name'}' -l 2>/dev/null |");
+	open(OPTS, "$lpoptions -p ".quotemeta($_[0]->{'name'}).
+		   " -l 2>/dev/null |");
 	while(<OPTS>) {
 		if (/^(\S+)\/([^:]+):\s*(.*)/ && $1 ne "PageRegion") {
 			print "<tr>\n" if ($i%2 == 0);
 			local $code = $1;
 			local $disp = $2;
 			local @opts = split(/\s+/, $3);
-			print "<td><b>$disp:</b></td>\n";
-			print "<td><select name=ppd_$code>\n";
+			# Option names and labels come from the PPD file
+			print "<td><b>",&html_escape($disp),":</b></td>\n";
+			print "<td><select name=\"",
+			      &quote_escape("ppd_$code"),"\">\n";
 			foreach $o (@opts) {
 				local $sel = ($o =~ s/^\*//);
 				printf "<option value='%s' %s>%s\n",
-					$o, $sel ? "selected" : "",
-					$ppd->{$code}->{$o} ?
-					  $ppd->{$code}->{$o} : $o;
+					&quote_escape($o),
+					$sel ? "selected" : "",
+					&html_escape($ppd->{$code}->{$o} ?
+					  $ppd->{$code}->{$o} : $o);
 				}
 			print "</select></td>\n";
 			print "<tr>\n" if ($i%2 == 1);

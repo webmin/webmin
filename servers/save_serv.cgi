@@ -22,12 +22,34 @@ else {
 	$serv = { 'id' => time() };
 	}
 
+my $oldmode = !$in{'id'} ? $config{'deflink'} :
+	      $serv->{'autouser'} ? 2 :
+	      $serv->{'sameuser'} ? 3 : $serv->{'user'} ? 1 : 0;
+
 if ($in{'delete'}) {
 	# delete the server
 	&delete_server($in{'id'});
 	&webmin_log("delete", "server", $serv->{'host'}, $serv); 
 	}
 else {
+	# Apply options that this admin is not allowed to change
+	if ($access{'forcetype'}) {
+		$in{'type'} = $in{'id'} ? $serv->{'type'} :
+			$config{'auto_type'} || &this_server()->{'type'};
+		}
+	if ($access{'forcelink'}) {
+		$in{'mode'} = $oldmode;
+		}
+	if ($access{'forcefast'}) {
+		$in{'fast'} = $in{'id'} ? $serv->{'fast'} : $config{'deffast'};
+		}
+	if ($access{'forcegroup'}) {
+		$in{'group'} = join("\0", split(/\t/, $serv->{'group'}));
+		$in{'newgroup'} = undef;
+		}
+	$in{'mode'} == 3 && $oldmode != 3 && !$access{'pass'} &&
+		&error($text{'edit_ecannot'});
+
 	# validate inputs
 	$in{'host'} =~ /^\S+$/ || &error($text{'save_ehost'});
 	if ($in{'port_def'}) {

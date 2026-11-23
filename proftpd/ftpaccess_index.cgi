@@ -6,6 +6,7 @@ require './proftpd-lib.pl';
 &ReadParse();
 $conf = &get_ftpaccess_config($in{'file'});
 $desc = "<tt>".&html_escape($in{'file'})."</tt>";
+$ufile = &urlize($in{'file'});
 &ui_print_header($desc, $text{'ftpindex_title'}, "",
 	undef, undef, undef, undef, "<a href=\"delete_ftpaccess.cgi?file=".
 	&urlize($in{'file'})."\">$text{'ftpindex_delete'}</a>".
@@ -15,12 +16,13 @@ print "<h3>$text{'ftpindex_opts'}</h3>\n";
 # Add user permissions icon/link
 $userperms_icon = { "icon" => "images/type_icon_3.gif",
 	     "name" => "User Permissions",
-	     "link" => "userpermissions_form.cgi?file=$in{'file'}" };
+	     "link" => "userpermissions_form.cgi?file=$ufile" };
 # Add 'edit as text' icon/link
 $ed_icon = { "icon" => "images/edit.gif",
 	     "name" => $text{'ftpindex_edit'},
-	     "link" => "manual_form.cgi?file=$in{'file'}" };
-&config_icons("ftpaccess", "edit_ftpaccess.cgi?file=$in{'file'}&", $ed_icon, $userperms_icon);
+	     "link" => "manual_form.cgi?file=$ufile" };
+&config_icons("ftpaccess", "edit_ftpaccess.cgi?file=$ufile&", $ed_icon,
+	      $userperms_icon);
 
 @limit = ( &find_directive_struct("Limit", $conf) );
 if (@limit) {
@@ -29,8 +31,8 @@ if (@limit) {
 	print "<h3>$text{'ftpindex_limit'}</h3>\n";
 	foreach $l (@limit) {
 		push(@links, "limit_index.cgi?limit=".&indexof($l, @$conf).
-			     "&file=$in{'file'}");
-		push(@titles, $l->{'value'});
+			     "&file=$ufile");
+		push(@titles, &html_escape($l->{'value'}));
 		push(@icons, "images/limit.gif");
 		}
 	&icons_table(\@links, \@titles, \@icons, 3);

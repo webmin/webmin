@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=構成カテゴリ：
-config_change=変化する
 config_return=システムインフォメーション
-config_next=保存して次へ
-config_nnext=次
-config_nprev=前へ
 
 edright_title=システム情報の構成
 edright_header=Virtualminシステム情報ページの設定

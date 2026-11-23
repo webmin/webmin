@@ -570,7 +570,7 @@ else {
 					      check_acl('rules')
 					    ? ui_tag('a', $desc, {'href' => $rule_url})
 					    : $desc;
-					my $imgdir = "@{[get_webprefix()]}/images";
+					my $imgdir = "@{[get_webprefix()]}/images/shared";
 					my $up_url =
 					    "move_rule.cgi?table=$in{'table'}&chain=".
 					    urlize($c).
@@ -590,7 +590,7 @@ else {
 								'class' =>
 								    'ui_up_down_arrows_down',
 								'src' =>
-								    "$imgdir/movedown.gif",
+								    "$imgdir/move-down.svg",
 								'border' => 0
 							}
 						),
@@ -600,14 +600,7 @@ else {
 							'href' => $down_url
 						}
 					    )
-					    : ui_tag(
-						'img', undef,
-						{
-							'class' =>
-							    'ui_up_down_arrows_gap',
-							'src' => "$imgdir/movegap.gif"
-						}
-					    );
+					    : ui_gap(20, 16, 'ui_up_down_arrows_gap');
 					my $up_move =
 					    check_acl('rules') && $ri > 0
 					    ? ui_tag(
@@ -618,7 +611,7 @@ else {
 								'class' =>
 								    'ui_up_down_arrows_up',
 								'src' =>
-								    "$imgdir/moveup.gif",
+								    "$imgdir/move-up.svg",
 								'border' => 0
 							}
 						),
@@ -628,14 +621,7 @@ else {
 							'href' => $up_url
 						}
 					    )
-					    : ui_tag(
-						'img', undef,
-						{
-							'class' =>
-							    'ui_up_down_arrows_gap',
-							'src' => "$imgdir/movegap.gif"
-						}
-					    );
+					    : ui_gap(20, 16, 'ui_up_down_arrows_gap');
 					$rules_html_row .= ui_tag_start('tr');
 					$rules_html_row .= ui_tag('td', $rule_link,
 						{'class' => 'nftables_rule_text'});

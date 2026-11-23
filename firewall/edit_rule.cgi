@@ -40,7 +40,7 @@ print &ui_table_start($text{'edit_header1'}, "width=100%", 2);
 
 print &ui_table_row($text{'edit_chain'},
 	$text{"index_chain_".lc($rule->{'chain'})} ||
-	&text('index_chain', "<tt>$rule->{'chain'}</tt>"));
+	&text('index_chain', "<tt>".&html_escape($rule->{'chain'})."</tt>"));
 
 # Rule comment
 if ($config{'comment_mod'} || $rule->{'comment'}) {

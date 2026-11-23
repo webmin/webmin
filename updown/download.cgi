@@ -60,7 +60,7 @@ if ($can_mode != 3) {
 else {
 	# User is fixed
 	if (&supports_users()) {
-		@uinfo = getpwnam($remote_user);
+		@uinfo = &get_remote_unix_user();
 		$download{'uid'} = $uinfo[2];
 		$download{'gid'} = $uinfo[3];
 		}
@@ -154,7 +154,8 @@ else {
 		print "<p>$text{'download_done'}<p>\n";
 		foreach $p (@paths) {
 			@st = stat($p);
-			print "<tt>$p</tt> ($st[7] bytes)<br>\n";
+			print "<tt>",&html_escape($p),"</tt> ",
+			      "($st[7] bytes)<br>\n";
 			}
 		}
 	if ($error) {

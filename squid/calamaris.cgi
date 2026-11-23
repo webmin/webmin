@@ -45,16 +45,10 @@ my $fh;
 my @files;
 opendir($fh, $ld);
 while(my $f = readdir($fh)) {
+	next if ($f !~ /^access\.log/ || !-f "$ld/$f");
 	my @st = stat("$ld/$f");
-	if ($f =~ /^access.log.*gz$/) {
-		push(@files, [ "gunzip -c $ld/$f |", $st[9] ]);
-		}
-	elsif ($f =~ /^access.log.*Z$/) {
-		push(@files, [ "uncompress -c $ld/$f |", $st[9] ]);
-		}
-	elsif ($f =~ /^access.log/) {
-		push(@files, [ "$ld/$f", $st[9] ]);
-		}
+	my $reader = $f =~ /\.gz$/ ? 'gunzip' : $f =~ /\.Z$/ ? 'uncompress' : undef;
+	push(@files, [ "$ld/$f", $st[9], $reader ]);
 	}
 closedir($fh);
 if (!@files) {
@@ -77,11 +71,11 @@ if ($config{'cal_max'}) {
 		my $left = $config{'cal_max'} - $lnum;
 		last if ($left <= 0);
 		my $fh3;
-		if ($f->[0] =~ /\|$/) {
-			open($fh3, "$f->[0] tail -$left |");
+		if ($f->[2]) {
+			open($fh3, $f->[2]." -c ".quotemeta($f->[0])." | tail -".int($left)." |") || next;
 			}
 		else {
-			open($fh3, "tail -$left $f->[0] |");
+			open($fh3, "-|", "tail", "-".int($left), $f->[0]) || next;
 			}
 		while(<$fh3>) {
 			print $fh2 $_;
@@ -94,7 +88,12 @@ else {
 	# read all the log files
 	my $fh3;
 	foreach my $f (@files) {
-		open($fh3, "<$f->[0]");
+		if ($f->[2]) {
+			open($fh3, "-|", $f->[2], "-c", $f->[0]) || next;
+			}
+		else {
+			open($fh3, "<", $f->[0]) || next;
+			}
 		my $buf;
 		my $bs = &get_buffer_size();
 		while(read($fh3, $buf, $bs) > 0) {

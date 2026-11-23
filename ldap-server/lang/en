@@ -48,6 +48,7 @@ slapd_cachesize=Indexes to cache
 slapd_dbcachesize=Database entries to cache
 slapd_err=Failed to save LDAP server configuration
 slapd_elocal=No LDAP server is installed on this system
+slapd_eline=LDAP server settings cannot contain line breaks
 slapd_esuffix=Missing or invalid-looking root DN - should be like <tt>dc=your-domain,dc=com</tt>
 slapd_erootdn=Missing or invalid-looking Administration login - should be like <tt>cn=Manager,dc=your-domain,dc=com</tt>
 slapd_erootpw=Missing new administration password

@@ -244,11 +244,12 @@ print "</div>\n";
 # The loader starts on a click or a form submission aimed at the right
 # frame and stops when the new page there reports, through the functions
 # below, that it has loaded; a stuck loader stops on its own after 20
-# seconds
+# seconds. The menu row that opened the page stays highlighted while that
+# page is shown.
 print <<'EOF';
 <script type='text/javascript'>
 (function() {
-var root = document.documentElement, timer;
+var root = document.documentElement, timer, current, clicked;
 function start() {
 	root.classList.add('loading-right');
 	clearTimeout(timer);
@@ -258,12 +259,31 @@ function stop() {
 	root.classList.remove('loading-right');
 	clearTimeout(timer);
 	}
+// Mark a menu row as the page shown, taking the mark from the row that
+// had it; no row clears it. The stylesheet colors the marked row.
+function mark(a) {
+	if (current) current.removeAttribute('aria-current');
+	current = a;
+	if (a) a.setAttribute('aria-current', 'page');
+	}
 window.rightLoading = start;
-window.rightLoaded = stop;
-// Links and forms aimed at the right frame start the loader
+// A page that no menu row opened, such as one reached with the back button
+// or a link inside the right frame, clears the highlight, as the menu can
+// no longer tell which row it belongs to
+window.rightLoaded = function() {
+	stop();
+	if (!clicked) mark(null);
+	clicked = false;
+	};
+// Links and forms aimed at the right frame start the loader, and a plain
+// click on a menu row highlights that row
 document.addEventListener('click', function(e) {
 	var a = e.target.closest ? e.target.closest('a') : null;
-	if (a && a.target == 'right' && !/^javascript:/.test(a.href)) start();
+	if (!a || a.target != 'right' || /^javascript:/.test(a.href)) return;
+	start();
+	clicked = a.classList.contains('menu-link') && !e.ctrlKey &&
+		  !e.metaKey && !e.shiftKey && !e.altKey;
+	if (clicked) mark(a);
 	});
 document.addEventListener('submit', function(e) {
 	if (e.target.target == 'right') start();

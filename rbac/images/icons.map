@@ -1,0 +1,8 @@
+auths=padlock.svg
+execs=terminal.svg
+icon=user-lock.svg
+policy=policy.svg
+prctl=no-entry.svg
+profs=users.svg
+projects=folders.svg
+users=directory-users.svg

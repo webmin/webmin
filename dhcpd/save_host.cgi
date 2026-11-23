@@ -52,6 +52,17 @@ else {
 		&error("'$in{'name'}' $text{'shost_invalidhn'}");
 	$host->{'comment'} = $in{'desc'};
 
+	# Per-host ACLs are keyed by name, so refuse the name of another host
+	# that this user cannot edit
+	if ($in{'new'} || $in{'name'} ne $oldname) {
+		foreach $h (&find_recursive("host", &get_config())) {
+			next if ($h eq $host ||
+				 $h->{'values'}->[0] ne $in{'name'});
+			&can('rw', \%access, $h) ||
+				&error("$text{'eacl_np'} $text{'eacl_puh'}");
+			}
+		}
+
 	# Check for a hostname clash
 	if (($in{'new'} || $in{'name'} ne $host->{'values'}->[0]) &&
 	    $access{'uniq_hst'}) {

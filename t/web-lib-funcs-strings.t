@@ -139,6 +139,15 @@ subtest 'urlize / un_urlize' => sub {
 	is(main::urlize(chr(0xff)), '%FF',     'high-bit byte encoded');
 	is(main::urlize('a b/c'),   'a%20b%2Fc', 'mixed input');
 
+	# The second argument keeps the characters that need no escaping in
+	# a URL, and still encodes everything else.
+	is(main::urlize('no-cache_1.x~'), 'no%2Dcache%5F1%2Ex%7E',
+	   'punctuation encoded by default');
+	is(main::urlize('no-cache_1.x~', 1), 'no-cache_1.x~',
+	   'safe punctuation kept on request');
+	is(main::urlize("a&b=c #\r\n", 1), 'a%26b%3Dc%20%23%0D%0A',
+	   'other characters still encoded on request');
+
 	# un_urlize: by default, '+' becomes ' ' (form-encoded). Pass the
 	# second arg true to preserve '+' literally.
 	is(main::un_urlize('a+b'),    'a b', '+ decoded as space by default');

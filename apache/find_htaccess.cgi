@@ -10,6 +10,9 @@ $in{'from'}=1 if ($access{'dir'} ne '/');
 if ($in{'from'} == 1 && !(-d $in{'dir'})) {
 	&error(&text('htaccess_edir', &html_escape($in{'dir'})));
 	}
+# Search only an absolute directory inside the allowed directory
+$in{'from'} == 0 || $in{'dir'} =~ /^\// && &allowed_auth_file($in{'dir'}) ||
+	&error(&text('htaccess_esearch', &html_escape($in{'dir'})));
 &read_file("$module_config_directory/site", \%site);
 foreach $f (split(/\s+/, $site{'htaccess'})) {
 	if (-r $f) { push(@rv, $f); }

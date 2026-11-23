@@ -29,24 +29,26 @@ $desc = &text('gedit_host', $serv->{'desc'} ?
 &ui_print_header($desc, $text{'gedit_title'}, "");
 
 print "<form action=\"save_group.cgi\" method=post>\n";
-print "<input type=hidden name=group value=\"$in{'group'}\">\n";
+print "<input type=hidden name=group value=\"",
+      &html_escape($in{'group'}),"\">\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'gedit_details'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr> <td valign=top><b>$text{'gedit_group'}</b></td>\n";
-print "<td valign=top><font size=3><i>$ginfo{'group'}</i></font></td>\n";
+print "<td valign=top><font size=3><i>",&html_escape($ginfo{'group'}),
+      "</i></font></td>\n";
 
 print "<td valign=top><b>$text{'gedit_gid'}</b></td>\n";
 printf "<td><input type=radio name=gid_def value=1 checked> %s (%s)\n",
-	$text{'uedit_leave'}, $ginfo{'gid'};
+	$text{'uedit_leave'}, &html_escape($ginfo{'gid'});
 printf "<input type=radio name=gid_def value=0> %s\n",
 	$text{'gedit_set'};
 print "<input name=gid size=10></td> </tr>\n";
 
 print "<tr> <td valign=top><b>$text{'pass'}</b></td>\n";
 printf "<td><input type=radio name=passmode value=-1 checked> %s (%s)\n",
-	$text{'uedit_leave'}, $ginfo{'pass'} ? $ginfo{'pass'}
+	$text{'uedit_leave'}, $ginfo{'pass'} ? &html_escape($ginfo{'pass'})
 					     : $text{'uedit_none'};
 print "<input type=radio name=passmode value=0> $text{'none2'}<br>\n";
 print "<input type=radio name=passmode value=1> $text{'encrypted'}\n";
@@ -56,8 +58,9 @@ print "<input name=pass size=15></td>\n";
 
 print "<td valign=top><b>$text{'gedit_members'}</b></td> <td>\n";
 printf "<input type=radio name=members_def value=0 checked> %s (%s)<br>\n",
-	$text{'uedit_leave'}, $ginfo{'members'} ? $ginfo{'members'}
-						: $text{'uedit_none'};
+	$text{'uedit_leave'},
+	$ginfo{'members'} ? &html_escape($ginfo{'members'})
+			  : $text{'uedit_none'};
 printf "<input type=radio name=members_def value=1> %s\n", $text{'gedit_add'};
 print "<input name=membersadd size=20> ",
 	&user_chooser_button("membersadd", 1),"<br>\n";
@@ -106,13 +109,15 @@ if (@icons < @hosts) {
 	print "<input type=hidden name=server value=-1>\n";
 	print "<input type=hidden name=users_mode value=0>\n";
 	print "<input type=hidden name=groups_mode value=2>\n";
-	print "<input type=hidden name=gsel value='$ginfo{'group'}'>\n";
+	print "<input type=hidden name=gsel value='",
+	      &html_escape($ginfo{'group'}),"'>\n";
 	print "<td align=middle><input type=submit ",
 	      "value=\"$text{'uedit_sync'}\"></td>\n";
 	}
 
 print "</tr></table></form><p><form action=\"delete_group.cgi\">\n";
-print "<input type=hidden name=group value=\"$ginfo{'group'}\">\n";
+print "<input type=hidden name=group value=\"",
+      &html_escape($ginfo{'group'}),"\">\n";
 print "<input type=submit value=\"$text{'delete'}\">\n";
 print "</form><p>\n";
 

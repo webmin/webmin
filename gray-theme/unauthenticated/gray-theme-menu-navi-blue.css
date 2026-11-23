@@ -1,0 +1,67 @@
+/*
+ * gray-theme-menu-navi-blue.css
+ * Navy blue menu of the framed theme, loaded after gray-theme.css in the
+ * menu frame when chosen in the theme settings.
+ */
+
+/* A navy blue menu with light text. The dark palette of gray-theme.css
+ * outranks it, so every variable set here must also be set there. */
+.menu-panel {
+	color-scheme: dark;
+	--show-light: none;
+	--show-dark: block;
+	/* A white logo, as its blue is close to the panel's */
+	--logo-filter: brightness(0) invert(1);
+	--bg-color-frame: #003a83;
+	/* A light fill for the row under the mouse */
+	--bg-color-hover: rgba(200, 205, 220, 0.22);
+	/* The row of the page shown, as under the mouse */
+	--bg-color-current: var(--bg-color-hover);
+	--text-color-current: var(--text-color);
+	/* Fields are outlined. The switch is a dark track with a white pill
+	 * for the chosen product and faint text for the other. */
+	--bg-color-input: transparent;
+	--bg-color-switch: rgba(0, 0, 0, 0.42);
+	--bg-color-switch-on: rgba(255, 255, 255, 0.92);
+	--text-color-switch-on: var(--bg-color-frame);
+	--shadow-color-switch: rgba(0, 0, 0, 0.45);
+	--text-color-switch-off: rgba(255, 255, 255, 0.6);
+	--border-color-frame: rgba(255, 255, 255, 0.18);
+	--border-color-panel: rgba(0, 0, 0, 0.25);
+	--border-color-darker: rgba(255, 255, 255, 0.4);
+	--border-color-input: rgba(255, 255, 255, 0.25);
+	--border-color-focused: rgba(255, 255, 255, 0.25);
+	--text-color: #ffffff;
+	--text-color-soft: rgba(255, 255, 255, 0.95);
+	--text-color-desc: rgba(255, 255, 255, 0.9);
+	--text-color-muted: rgba(255, 255, 255, 0.78);
+	--text-color-disabled: rgba(255, 255, 255, 0.5);
+	/* Hint text in an empty field */
+	--text-color-placeholder: rgba(255, 255, 255, 0.65);
+	--text-color-inverse: #003a83;
+	--link-color: #cfe0ff;
+	--link-color-hover: #ffffff;
+	/* White accent, for focus rings and the plain creation button */
+	--accent-color: #ffffff;
+	--accent-color-hover: #e9eef4;
+	/* The creation button: white with dark text and a plus in
+	 * Virtualmin's blue, and a white edge under the mouse */
+	--element-highlight-bg-color: rgba(255, 255, 255, 0.93);
+	--element-highlight-text-color: #0b0c0e;
+	--element-highlight-icon-color: #0044b8;
+	--accent-color-soft: transparent;
+	/* Cloudmin's: the same, but turns white under the mouse */
+	--cloudmin-create-bg: var(--element-highlight-bg-color);
+	--cloudmin-create-bg-hover: #ffffff;
+	--cloudmin-create-edge: transparent;
+	--cloudmin-create-text: var(--element-highlight-text-color);
+	--border-color-info: #ffffff;
+	/* State colors from the dark palette */
+	--text-color-success: #7ec563;
+	--text-color-info: #6aa8f0;
+	--text-color-warning: #e0a63c;
+	--text-color-danger: #ef7b6f;
+	--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%23ffffff' stroke-opacity='0.8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+/* Cloudmin's orange logo needs no filter, and white would hide its details */
+.menu-panel-cloudmin { --logo-filter: none; }

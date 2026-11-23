@@ -44,10 +44,12 @@ if (@match) {
 	foreach $i (@match) {
 		local @cols;
 		push(@cols, "<a href=\"edit_pack.cgi?search=".&urlize($s).
-		    "&package=".&urlize($i->{'name'})."\">$i->{'name'}</a>");
+		    "&package=".&urlize($i->{'name'})."\">".
+		    &html_escape($i->{'name'})."</a>");
 		$c = $i->{'class'};
-		push(@cols, $i->{'class'} || $text{'search_none'});
-		push(@cols, $i->{'desc'});
+		push(@cols, $i->{'class'} ? &html_escape($i->{'class'})
+					  : $text{'search_none'});
+		push(@cols, &html_escape($i->{'desc'}));
 		print &ui_checked_columns_row(\@cols, \@tds,
 					      "del", $i->{'name'});
 		}

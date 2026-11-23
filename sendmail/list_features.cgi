@@ -33,18 +33,18 @@ if (@features) {
 		print "</tt></td>\n";
 		print "<td>";
 		if ($i == @features-1) {
-			print "<img src=images/gap.gif>";
+			print &ui_gap(20, 16);
 			}
 		else {
 			print "<a href='move.cgi?idx=$i&down=1'>",
-			      "<img border=0 src=images/down.gif></a>";
+			      "<img border=0 src=../images/shared/move-down.svg></a>";
 			}
 		if ($i == 0) {
-			print "<img src=images/gap.gif>";
+			print &ui_gap(20, 16);
 			}
 		else {
 			print "<a href='move.cgi?idx=$i&up=1'>",
-			      "<img border=0 src=images/up.gif></a>";
+			      "<img border=0 src=../images/shared/move-up.svg></a>";
 			}
 		print "</td>\n";
 		print "</tr>\n";

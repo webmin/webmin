@@ -1,3 +1,4 @@
+save_eline=A PHP setting contains an invalid line break or null character
 index_title=PHP Configuration
 index_eaccess=You do not have access to any PHP configuration files.
 index_efiles=None of the PHP configuration files you have access to exist.
@@ -78,7 +79,8 @@ session_path=Directory for session files
 session_cookies=Allow use of cookies for session tracking?
 session_only_cookies=Always use cookies for session tracking?
 session_life=Cookie lifetime
-session_forever=Forever
+session_forever=Until browser is closed
+session_default=Default
 session_maxlife=Maximum session lifetime
 session_epath=Missing or invalid directory for session files
 session_elife=Missing or invalid cookie lifetime

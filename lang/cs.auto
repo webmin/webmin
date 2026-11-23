@@ -1,3 +1,8 @@
+config_section=Konfigurační kategorie:
+config_change=Změna
+config_next=Uložit a další
+config_nnext=další
+config_nprev=Předchozí
 category_=Nástroje
 
 longcategory_=Moduly, které plní další různé úkoly

@@ -30,7 +30,7 @@ require './proftpd-lib.pl';
 
 # read .ftpaccess file
 $file = $in{'file'};
-$title = &text('ftpindex_header', "<tt>$in{'file'}</tt>");
+$title = &text('ftpindex_header', "<tt>".&html_escape($in{'file'})."</tt>");
 $return = "ftpaccess_index.cgi";
 $rmsg = $text{'ftpindex_return'};
 
@@ -41,8 +41,8 @@ $rmsg = $text{'ftpindex_return'};
 # Navigation parameters
 foreach $h ('virt', 'idx', 'file', 'limit', 'anon', 'global') {
     if (defined($in{$h})) {
-	$NavigationData.="<input type=hidden name=$h value='$in{$h}'>\n";
-	push(@args, "$h=$in{$h}");
+	$NavigationData.=&ui_hidden($h, $in{$h})."\n";
+	push(@args, "$h=".&urlize($in{$h}));
     }
 }
 $args = join('&', @args);
@@ -172,9 +172,9 @@ foreach $Username(sort split (" ",$UsedUsernames)){
     #print "User: $Username  Allowed=\"".$UserAllowedCommands{$Username}."\" Denied=\"".$UserDeniedCommands{$Username}."\"\n";
     print "<form action=userpermissions_form.cgi method=get>\n";
     print $NavigationData;
-    print "<input type=hidden name=\"ChangePermissions\" value=\"".$Username."\">\n";
+    print "<input type=hidden name=\"ChangePermissions\" value=\"".&html_escape($Username)."\">\n";
     print "<HR WIDTH=\"100%\">\n";
-    print "<H2>User: $Username</H2>\n";
+    print "<H2>User: ".&html_escape($Username)."</H2>\n";
     print "<table border=1>\n";
     $Column=0;
     $Row=0;
@@ -243,7 +243,7 @@ foreach $Username(sort split (" ",$UsedUsernames)){
 
     print "<form action=userpermissions_form.cgi method=get>\n";
     print $NavigationData;
-    print "<input type=hidden name=\"DeleteUser\" value=\"".$Username."\">\n";
+    print "<input type=hidden name=\"DeleteUser\" value=\"".&html_escape($Username)."\">\n";
     print "<input type=submit value=\"Delete User Permissions\">\n";
     print "<input type=checkbox name=\"Confirm Delete User\">I'm sure<br>\n";
     print "</form>\n";
@@ -254,7 +254,7 @@ foreach $Username(sort split (" ",$UsedUsernames)){
 # print textarea
 
 print "<HR WIDTH=100%>\n";
-print &text('manual_header', "<tt>$file</tt>"),"<p>\n";
+print &text('manual_header', "<tt>".&html_escape($file)."</tt>"),"<p>\n";
 
 print "<form action=manual_save.cgi method=post enctype=multipart/form-data>\n";
 print $NavigationData;
@@ -302,7 +302,9 @@ sub GetFTPAccessUserPerms(){
     # Read .ftpaccess file
     my $Commands = "";
 
-    open FTPACCESS, "$FTPAccessFile" or &error("Can't open $FTPAccessFile: $!");
+    # Three-argument open, so that a path cannot be read as a command
+    open(FTPACCESS, "<", $FTPAccessFile) or
+	&error(&html_escape("Can't open $FTPAccessFile: $!"));
     while (my $line=<FTPACCESS>){
         chomp $line;
         #print $line."\n";
@@ -484,7 +486,8 @@ sub WritePermissions(){
 
 
     # Read old .ftpaccess file
-    open FTPACCESS, "$FTPAccessFile" or die "Can't read $FTPAccessFile: $!";
+    open(FTPACCESS, "<", $FTPAccessFile) or
+	die "Can't read $FTPAccessFile: $!";
     $DenyAllBlockFound = 0;
     while(my $line = <FTPACCESS>){
 	my $ShortLine = $line;
@@ -560,7 +563,8 @@ sub WritePermissions(){
     #print "<br>\n".$NewConfig."<br>\n";
 
     # Write new .ftpaccess file
-    open FTPACCESS, "> $FTPAccessFile" or die "Can't append to $FTPAccessFile: $!";
+    open(FTPACCESS, ">", $FTPAccessFile) or
+	die "Can't append to $FTPAccessFile: $!";
     print FTPACCESS $NewConfig;
     close FTPACCESS;
 

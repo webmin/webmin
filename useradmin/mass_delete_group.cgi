@@ -9,7 +9,7 @@ foreach $name (split(/\0/, $in{'gd'})) {
 	$group = $glist{$name};
 	if ($group) {
 		&can_edit_group(\%access, $group) ||
-			&error(&text('gmass_egroup', $name));
+			&error(&text('gmass_euser', &html_escape($name)));
 		push(@dlist, $group);
 		$delete_sys = $group if ($group->{'gid'} < 10 &&
 		    (!$delete_sys || $user->{'gid'} < $delete_sys->{'gid'}));

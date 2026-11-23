@@ -44,7 +44,8 @@ printf "<input type=radio name=mode value=1 %s> %s\n",
 printf "<input type=radio name=mode value=2 %s> %s\n",
 	$mode == 2 ? "checked" : "", $text{'conf_mode2'};
 printf "<input name=option size=25 value='%s'>&nbsp;%s</td> </tr>\n",
-	$mode == 2 ? $option : "", &file_chooser_button("option");
+	$mode == 2 ? &quote_escape($option) : "",
+	&file_chooser_button("option");
 
 # Local IP ranges
 &ip_table("localip");

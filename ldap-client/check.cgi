@@ -101,7 +101,7 @@ if (!$uid) {
 	# Sometimes this fails due to nsswitch.conf caching .. so try forking
 	# a separate command
 	$uid = &backquote_command(
-		"id -a ".$first->get_value("uid")." 2>/dev/null");
+		"id -a -- ".quotemeta($first->get_value("uid"))." 2>/dev/null");
 	}
 if (!$uid) {
 	&print_problem($text{'check_ematch'});

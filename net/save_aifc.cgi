@@ -9,14 +9,18 @@ require './net-lib.pl';
 if ($in{'delete'}) {
 	# delete an interface
 	&error_setup($text{'aifc_err1'});
+	!$access{'bootonly'} || &error($text{'ifcs_ecannot_active'});
+	$access{'delete'} || &error($text{'ifcs_ecannot_delete'});
 	$a = $acts[$in{'idx'}];
 	&can_iface($a) || &error($text{'ifcs_ecannot_this'});
 	&deactivate_interface($a);
 	&webmin_log("delete", "aifc", $a->{'fullname'}, $a);
 	}
 else {
-	# Validate and save inputs
+	# Validate and save inputs. Users who must change boot-time and active
+	# interfaces together cannot change active ones alone
 	&error_setup($text{'aifc_err2'});
+	!$access{'bootonly'} || &error($text{'ifcs_ecannot_active'});
 	if (!$in{'new'}) {
 		# Editing existing interface
 		$olda = $acts[$in{'idx'}];
@@ -28,6 +32,7 @@ else {
 		}
 	elsif (defined($in{'virtual'})) {
 		# creating a virtual interface
+		$access{'virt'} || &error($text{'ifcs_ecannot_virt'});
 		$in{'virtual'} =~ /^\d+$/ ||
 			&error($text{'aifc_evirt'});
 		$in{'virtual'} >= $min_virtual_number ||
@@ -47,6 +52,7 @@ else {
 		}
 	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/) {
 		# also creating a virtual interface
+		$access{'virt'} || &error($text{'ifcs_ecannot_virt'});
 		foreach $ea (@acts) {
 			if ($ea->{'name'} eq $1 &&
 			    $ea->{'virtual'} eq $4) {

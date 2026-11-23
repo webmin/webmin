@@ -120,8 +120,9 @@ elsif ($r == -1) {
 		&ui_textbox("login", $access{'user'} || $config{'login'}, 40));
 
 	print &ui_table_row($text{'index_pass'},
-		&ui_password("pass", undef, 40) . "<br>" .
-		&ui_checkbox("force", 1, $text{'mysqlpass_echange_forcepass'}));
+		&ui_password("pass", undef, 40).
+		(!$access{'user'} && !$access{'noconfig'} ? "<br>".
+		 &ui_checkbox("force", 1, $text{'mysqlpass_echange_forcepass'}) : ""));
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);

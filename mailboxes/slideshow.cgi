@@ -48,7 +48,8 @@ foreach $a (@iattach) {
 		push(@links, "<a href='#image".($n+1)."'>".
 			     "$text{'slide_next'}</a>");
 		}
-	push(@links, "<b>$a->{'filename'}</b>") if ($a->{'filename'});
+	push(@links, "<b>".&html_escape($a->{'filename'})."</b>")
+		if ($a->{'filename'});
 	print &ui_links_row(\@links),"<br>\n";
 
 	# Actual image

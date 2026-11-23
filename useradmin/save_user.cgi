@@ -30,11 +30,6 @@ elsif ($in{'clone'}) {
 	return;
 	}
 
-# Build list of used UIDs and GIDs
-&build_user_used(\%used);
-&build_group_used(\%used) if ($config{'new_user_gid'});
-&build_group_used(\%gused);
-
 # Strip out \n characters in inputs
 $in{'real'} =~ s/\r|\n//g;
 $in{'user'} =~ s/\r|\n//g;
@@ -56,6 +51,11 @@ $err = &check_username_restrictions($in{'user'});
 &error($err) if ($err);
 
 &lock_user_files();
+# Build list of used UIDs and GIDs
+&build_user_used(\%used);
+&build_group_used(\%used) if ($config{'new_user_gid'});
+&build_group_used(\%gused);
+
 @ulist = &list_users();
 @glist = &list_groups();
 if ($in{'old'} ne "") {
@@ -99,6 +99,12 @@ if (($in{'old'} eq '' || $user{'user'} ne $ouser{'user'}) &&
 	}
 
 # Validate and store basic inputs
+if ($in{'old'} eq '') {
+	my @modes = qw(useruid autouid calcuid);
+	my $mode = $in{'uid_def'} || 0;
+	$mode =~ /\A[012]\z/ && $access{$modes[$mode]} ||
+		&error($text{'usave_euid_def'});
+	}
 if (!$in{'uid_def'} || $in{'old'} ne '') {
 	# Only do UID checks if not automatic
 	$in{'uid'} =~ /^\-?[0-9]+$/ || &error(&text('usave_euid', $in{'uid'}));
@@ -141,7 +147,8 @@ elsif ($in{'uid_def'} == 2) {
 	else {
 		$in{'uid'} = &berkeley_cksum($in{'user'});
 		}
-        &error($text{'usave_euidcalc'}) if ($in{'uid'} < 0);
+	&error($text{'usave_euidcalc'}) if ($in{'uid'} < 0);
+	$in{'uid'} = $access{'lowuid'} if ($in{'uid'} < $access{'lowuid'});
 	while($used{$in{'uid'}}) {
 		$in{'uid'}++;
 		}
@@ -286,15 +293,16 @@ if ($access{'ugroups'} ne "*") {
 				}
 			}
 		}
-	elsif (!$in{'gidmode'}) {
-		# new users can only be added to allowed groups
-		# This is skipped if we are creating a new group for
-		# new users
-		&can_use_group(\%access, $in{'gid'}) ||
-			&error(&text('usave_eprimary', $in{'gid'}));
+	else {
+		# new users can only be added to allowed groups. The primary
+		# group check is skipped when creating a new group for them
+		if (!$in{'gidmode'}) {
+			&can_use_group(\%access, $in{'gid'}) ||
+				&error(&text('usave_eprimary', $in{'gid'}));
+			}
 		foreach $gname (@sgnames) {
 			&can_use_group(\%access, $gname) ||
-				&error(&text('usave_esecondary', $group));
+				&error(&text('usave_esecondary', $gname));
 			}
 		}
 	}

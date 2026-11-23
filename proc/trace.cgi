@@ -27,16 +27,18 @@ $syscalls = &ui_form_start("trace.cgi", "post")."\n".
 $trace = &open_process_trace($in{'pid'},
 			     \@syscalls);
 $fmt = "%-8.8s %-11.11s %-80.80s %-10.10s";
-print "<b>",&text('trace_start', "<tt>$pinfo{'args'}</tt>"),"</b><br>\n";
+print "<b>",&text('trace_start', "<tt>".&html_escape($pinfo{'args'})."</tt>"),
+      "</b><br>\n";
 print $syscalls;
 print "<pre>";
 printf "$fmt\n", "Time", "System Call", "Parameters", "Return";
 printf "$fmt\n", ("-"x8), ("-"x11), ("-"x80), ("-"x10);
 while($action = &read_process_trace($trace)) {
 	local $tm = strftime("%H:%M:%S", localtime($action->{'time'}));
-	printf "$fmt\n", $tm, $action->{'call'},
-			 join(", ", @{$action->{'args'}}),
-			 $action->{'rv'};
+	# Traced arguments hold process data such as file names
+	print &html_escape(sprintf("$fmt", $tm, $action->{'call'},
+				   join(", ", @{$action->{'args'}}),
+				   $action->{'rv'})),"\n";
 	}
 print "</pre>";
 &close_process_trace($trace);
@@ -47,6 +49,6 @@ else {
 	print "<b>$text{'trace_failed'}</b><br>\n";
 	}
 
-&ui_print_footer("edit_proc.cgi?$in{'pid'}", $text{'edit_return'},
+&ui_print_footer("edit_proc.cgi?".&urlize($in{'pid'}), $text{'edit_return'},
 		 "", $text{'index_return'});
 

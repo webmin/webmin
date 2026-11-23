@@ -125,6 +125,18 @@ assert_no_handler_injection(
 	is_deeply($tile, { 'value' => 4 }, 'ui_stats preserves caller options');
 	like(main::ui_stat({ 'value' => 1 }), qr/\bui_stat_square\b/,
 		'ui_stat defaults to square corners');
+	# Compact size and cell alignment apply only when requested
+	unlike(main::ui_stat({ 'value' => 1 }), qr/\bui_stat_small\b/,
+		'ui_stat keeps the default value size');
+	like(main::ui_stat({ 'value' => 1, 'small' => 1 }), qr/\bui_stat_small\b/,
+		'ui_stat can use the smaller value size');
+	like(main::ui_grid([ 'a', 'b' ], { 'align' => 'start' }), qr/\bui_grid_start\b/,
+		'ui_grid can align its cells to the top of the row');
+	unlike(main::ui_grid([ 'a', 'b' ], { 'align' => $xss }), qr/ui_grid_[^f]/,
+		'ui_grid ignores an unknown alignment');
+	my @small = main::ui_stats([ { 'value' => 1 }, { 'value' => 2, 'small' => 0 } ],
+		{ 'small' => 1 }) =~ /\bui_stat_small\b/g;
+	is(scalar(@small), 1, 'ui_stats applies small only when a tile has no override');
 	$html = main::ui_stat({ 'value' => 1, 'shape' => $xss });
 	like($html, qr/\bui_stat_square\b/, 'unknown shapes fall back to square');
 	assert_no_handler_injection($html, 'ui_stat shape');
@@ -227,6 +239,18 @@ subtest 'action buttons and links' => sub {
 	like($fallback, qr/type="button"/, 'unknown type cannot accidentally submit');
 	unlike(main::ui_action_button('Plain', 'danger', {icon => ''}), qr/<svg\b/,
 		'empty icon suppresses the state icon');
+	# Empty labels remove the gap but keep an accessible action name
+	my $icon_only = main::ui_action_button('', undef,
+		{ icon => 'stop', title => 'Stop server' });
+	like($icon_only, qr/ui_action_content[^>]*><svg\b.*<\/svg>\s*<\/span><\/button>/s,
+		'empty label leaves the icon alone');
+	like($icon_only, qr/aria-label="Stop server"/,
+		'icon-only action takes its accessible name from the title');
+	like(main::ui_action_button('', undef, { icon => 'stop', title => 'Stop',
+			attrs => { 'aria-label' => 'Halt' } }),
+		qr/aria-label="Halt"/, 'caller accessible name is kept');
+	unlike(main::ui_action_button('Stop', undef, { title => 'Stop server' }),
+		qr/aria-label=/, 'labelled action needs no separate accessible name');
 	assert_no_handler_injection(main::ui_action_button($xss, 'danger',
 		{ href => $xss, title => $xss, class => $xss, name => $xss, value => $xss }),
 		'action text and attributes');
@@ -349,9 +373,12 @@ unlike(main::ui_page_start({ 'scheme' => 'bogus"' }),
 
 # Column tables take extra class names for the theme, such as no-hover
 like(main::ui_columns_start([ 'A' ], undef, 0, undef, undef, 0, 'no-hover'),
-	qr/class='ui_columns no-hover'/, 'ui_columns_start adds the class argument');
-like(main::ui_columns_start([ 'A' ]), qr/class='ui_columns'/,
-	'ui_columns_start without the class argument is unchanged');
+	qr/class='[^']*\bui_columns no-hover'/, 'ui_columns_start adds the class argument');
+main::ui_columns_end();
+my $columns = main::ui_columns_start([ 'A' ]);
+like($columns, qr/class='[^']*\bui_columns'/, 'default columns have the table class');
+unlike($columns, qr/\bno-hover\b/, 'the extra class is optional');
+main::ui_columns_end();
 
 # Search boxes carry the client-side filter target
 like(main::ui_search({ 'name' => 'q', 'filter' => '#rows' }),
@@ -400,6 +427,64 @@ like(main::ui_progress(96, { 'thresholds' => 1, 'state' => 'info' }),
 	like($seg, qr/ui_progress_legend/, 'labelled segments get a legend');
 	assert_no_handler_injection($seg, 'ui_progress segment label');
 
+	# Series colors and blank segments
+	my $many = main::ui_progress(undef, { 'small' => 1, 'max' => 200,
+		'segments' => [ { 'value' => 50, 'empty' => 1 },
+				{ 'value' => 40, 'series' => 4 },
+				{ 'value' => 20, 'series' => 9 },
+				{ 'value' => 10, 'series' => q{1" onload="x} } ] });
+	like($many, qr/class="[^"]*\bui_progress_bar"[^>]*width:25%|width:25%"[^>]*class="[^"]*\bui_progress_bar"/,
+		'a blank segment is drawn with no color');
+	unlike($many, qr/ui_bg_[a-z0-9_]+"[^>]*width:25%|width:25%"[^>]*ui_bg_/,
+		'a blank segment has no color class');
+	like($many, qr/ui_bg_series_4/, 'a series gives its own color class');
+	unlike($many, qr/ui_bg_series_9/, 'a series outside 1 to 6 is not used');
+	is(scalar(() = $many =~ /ui_bg_info/g), 2,
+		'an unusable series falls back to the state color');
+	like($many, qr/aria-valuenow="35"/, 'a blank segment is not counted');
+	assert_no_handler_injection($many, 'ui_progress series');
+	my $keyed = main::ui_progress(undef, { 'segments' => [
+		{ 'pct' => 10, 'empty' => 1, 'label' => 'Gap' },
+		{ 'pct' => 30, 'series' => 6, 'label' => 'Restores' } ] });
+	like($keyed, qr/ui_progress_dot ui_bg_series_6/,
+		'the legend dot takes the series color');
+	unlike($keyed, qr/Gap/, 'a blank segment has no legend entry');
+
+	# Segments are drawn to a tenth of a percent, so that a bar starting
+	# after a gap lines up with the end of the bar above it
+	my @parts = ( { 'value' => 140 }, { 'value' => 420 },
+		      { 'value' => 1500 }, { 'value' => 830 } );
+	my $above = main::ui_progress(undef, { 'small' => 1, 'max' => 6144,
+					       'segments' => \@parts });
+	my $end = 0;
+	$end += $1 while ($above =~ /width:([0-9.]+)%/g);
+	my $below = main::ui_progress(undef, { 'small' => 1, 'max' => 6144,
+		'segments' => [ { 'value' => 2890, 'empty' => 1 },
+				{ 'value' => 30 } ] });
+	my ($gap, $small) = $below =~ /width:([0-9.]+)%/g;
+	cmp_ok(abs($end - $gap), '<', 0.3,
+		'a gap ends where the same amount drawn in parts ends');
+	is($small, '0.5', 'a small segment keeps a width');
+	like($above, qr/aria-valuenow="47"/,
+		'the total of fine segments is a whole percentage');
+	like(main::ui_progress(undef, { 'segments' => [
+			{ 'pct' => 33.333, 'label' => 'Third' } ] }),
+		qr/width:33\.3%.*Third <span class="[^"]*\bui_progress_value">33%</s,
+		'the legend shows a whole percentage');
+
+	# The value and a segment label can be pre-built HTML
+	my $raw = main::ui_progress(undef, {
+		'value_html' => '<span data-n="5">5 MiB</span>',
+		'value' => $xss,
+		'segments' => [ { 'pct' => 50,
+				  'label_html' => '<span data-n="2">2 MiB</span>' } ] });
+	like($raw, qr/\bui_progress_value"><span data-n="5">5 MiB<\/span><\/span>/,
+		'a pre-built value is used as given');
+	like($raw, qr/<span data-n="2">2 MiB<\/span>/,
+		'a pre-built segment label is used as given');
+	assert_no_handler_injection(main::ui_progress(10, { 'value' => $xss }),
+		'ui_progress value');
+
 	my $busy = main::ui_progress(0, { 'indeterminate' => 1 });
 	like($busy, qr/aria-busy="true"/, 'indeterminate bar is marked busy');
 	unlike($busy, qr/aria-valuenow/, 'indeterminate bar has no value');
@@ -425,6 +510,49 @@ like(main::ui_progress(96, { 'thresholds' => 1, 'state' => 'info' }),
 		like($html, qr/<svg[^>]*width="56"/,
 			"ring size $size falls back to the default");
 		}
+}
+
+# Progress bars work on ordinary pages : each loads the assets once, and the
+# stylesheet gives one outside a page area the palette it needs.
+{
+	local $main::ui_page_assets_done = 0;
+	like(main::ui_progress(40, { 'small' => 1 }), qr/ui-lib\.css/,
+		'a progress bar loads the widget stylesheet');
+	unlike(main::ui_progress(60, { 'small' => 1 }), qr/ui-lib\.(css|js)/,
+		'another progress bar does not reload the assets');
+	$main::ui_page_assets_done = 0;
+	like(main::ui_progress(34, { 'ring' => 1 }), qr/ui-lib\.css/,
+		'a ring loads the widget stylesheet');
+
+	open(my $CSS, "<", File::Spec->catfile($root, 'unauthenticated', 'css',
+					      'ui-lib.css')) or
+		die "ui-lib.css: $!";
+	my $css = do { local $/; <$CSS> };
+	close($CSS);
+
+	# The palette is defined for light, for dark, and for dark that
+	# follows the browser
+	my @lists = $css =~ /([^{}]*)\{\s*(?:\/\*.*?\*\/\s*)*--ui-canvas:/gs;
+	is(scalar(@lists), 3, 'the stylesheet defines its palette three times');
+	foreach my $list (@lists) {
+		like($list, qr/\.ui_progress:not\(:where\(\.ui_page \*/,
+			'a progress bar outside a page area gets the palette');
+		}
+
+	# The Gray theme rounds bars, but not where two segments meet. It
+	# finds the last segment with any width by the style of the empty ones.
+	like(main::ui_progress(undef, { 'segments' => [
+			{ 'pct' => 30 }, { 'pct' => 0 } ] }),
+		qr/style="width:0%"/, 'an empty segment is written as width:0%');
+	open(my $GRAY, "<", File::Spec->catfile($root, 'gray-theme',
+				'unauthenticated', 'gray-theme.css')) or
+		die "gray-theme.css: $!";
+	my $gray = do { local $/; <$GRAY> };
+	close($GRAY);
+	like($gray, qr/\.ui_progress_segmented \.ui_progress_bar \{ border-radius: 0; \}/,
+		'segments of one bar meet with square ends in the Gray theme');
+	like($gray, qr/\.ui_progress_bar:nth-last-child\(1 of :not\(\[style="width:0%"\]\)\)/,
+		'the Gray theme rounds the end of the last segment with any width');
 }
 
 # Choice lists : escaping, selection, fields and disabled options
@@ -495,8 +623,10 @@ like(main::ui_progress(96, { 'thresholds' => 1, 'state' => 'info' }),
 # Sortable column tables carry the data-sortable marker for themes
 like(main::ui_columns_start([ 'A' ], 100, 0, undef, undef, 1),
 	qr/data-sortable='1'/, 'ui_columns_start marks sortable tables');
+main::ui_columns_end();
 unlike(main::ui_columns_start([ 'A' ], 100),
 	qr/data-sortable/, 'ui_columns_start is plain by default');
+main::ui_columns_end();
 like(main::ui_columns_table([ 'A' ], 100, [ [ 'x' ] ], undef, 0, undef, undef, 1),
 	qr/data-sortable='1'/, 'ui_columns_table passes the sortable flag on');
 like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
@@ -617,7 +747,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'select all is the usual link');
 	like($html, qr/<a (?=[^>]*\bselect_invert\b)(?=[^>]*data-ui-multi-action="invert")/,
 		'invert selection is the usual link');
-	like($html, qr/select_all[^>]*>[^<]*<\/a>\s*\|\s*<a/s,
+	like($html, qr/select_all[^>]*>[^<]*<\/a>\s*<span class='ui_links_sep'>\|<\/span>\s*<a/s,
 		'the links are laid out by ui_links_row');
 	unlike($html, qr/<br>\s*<span[^>]*ui_search/,
 		'without the line break that row ends with');
@@ -1306,6 +1436,111 @@ like(main::ui_svg_icon('ellipsis'), qr/fill="currentColor"/, 'ellipsis is drawn 
 }
 
 # ---- section titles, segmented controls and stacked fields -----------------
+
+subtest 'collapsible section arrows' => sub {
+	our (%gconfig, $ui_hidden_start_donejs);
+	local $gconfig{'webprefix'} = '/webmin';
+	local $ui_hidden_start_donejs = 1;
+	foreach my $open (0, 1) {
+		my $src = '/webmin/images/'.($open ? 'open.svg' : 'closed.svg');
+		foreach my $html (ui_hidden_start('Title', 'test', $open).ui_hidden_end('test'),
+				  ui_hidden_table_start('Title', '', 2, 'test', $open).
+				  ui_hidden_table_end('test')) {
+			like($html, qr{<details\b[^>]*><summary>.*</details>}s,
+				'section has a native disclosure control');
+			is(($html =~ /<details\b[^>]*\sopen\b/) ? 1 : 0, $open,
+				'section respects its initial state');
+			}
+		ui_table_start(undef, undef, 2);
+		like(ui_hidden_table_row_start('Title', 'test', $open),
+			qr{<img\b[^>]*\bsrc='\Q$src\E'}, "table row uses $src");
+		ui_hidden_table_row_end('test');
+		ui_table_end();
+		}
+	};
+
+subtest 'theme overrides and shared table markup' => sub {
+	no warnings 'once';
+	my $notice = ui_alert('Notice', 'info', [ 'fa2 fa2-message', '', 1 ],
+			      { 'class' => 'login-prefix-alert' });
+	like($notice, qr/<i\b[^>]*\bfa2 fa2-message\b/,
+		'the login notice keeps the icon supplied by the caller');
+	{
+		local *main::theme_ui_hidden_start = sub { "<div>$_[0]" };
+		is(ui_hidden_start('Title', 'id', 0).ui_hidden_end('id'),
+			"<div>Title</div>\n", 'a theme can override only the opener');
+		local *main::theme_ui_hidden_end = sub { "end $_[0]" };
+		is(ui_hidden_end('id'), 'end id', 'the closing hook takes priority');
+	}
+	{
+		local *main::theme_ui_hidden_table_start = sub { '<table>' };
+		is(ui_hidden_table_end('id'), "</table></div></td></tr></table>\n",
+			'a theme table opener keeps its original closing tags');
+	}
+	like(ui_hidden_javascript(), qr/\.opener_hidden\s*\{\s*display:\s*none/,
+		'inactive tabs stay hidden without a theme stylesheet');
+	my $html = ui_columns_table([ 'Name' ], 100, [ [
+		{ type => 'string', value => 'example', td => 'data-sort="example"' }
+		] ]);
+	like($html, qr/<td\b[^>]*data-sort="example"[^>]*>example/,
+		'column cells retain their sort keys');
+	like(ui_radio_columns_row([ 'Name' ], [ ], 'domain', 'example', 0, 1),
+		qr/<input\b[^>]*\bdisabled\b/, 'a disabled radio stays disabled');
+	{
+		local *main::theme_ui_columns_end = sub { "</table>\n" };
+		my $depth = @main::columns_bordered;
+		my $inner = ui_columns_start([ 'Custom' ]).ui_columns_end();
+		is(scalar(() = $inner =~ /<table\b/g), 1, 'a custom closer gets one table');
+		is(scalar(@main::columns_bordered), $depth, 'a custom closer leaves the stack alone');
+	}
+	ui_columns_start([ 'Outer' ]);
+	{
+		local *main::theme_ui_columns_start = sub { "<table>" };
+		is(ui_columns_start([ 'Custom' ]).ui_columns_end(),
+			"<table></table>\n", 'a theme can override just the column table opener');
+		local *main::theme_ui_columns_end = sub { 'theme end' };
+		is(ui_columns_end(), 'theme end', 'the column table closing hook takes priority');
+	}
+	ui_columns_start([ ], 50, 1);
+	unlike(ui_columns_end(), qr{</div>}, 'a borderless inner table leaves the wrapper open');
+	like(ui_columns_end(), qr{</div>}, 'the outer table closes its own wrapper');
+	{
+		# Authentic styles the row checkbox by the cell's alignment tag.
+		my @tags;
+		local *main::theme_ui_checked_columns_row = sub { @tags = @{$_[1]}; '' };
+		ui_columns_table([ '', 'Name' ], 100, [ [
+			{ type => 'checkbox', name => 'd', value => '1' }, 'example'
+			] ]);
+		like($tags[0], qr/valign='top'/,
+			'a theme row override still receives top-aligned cells');
+	}
+	like(ui_columns_table([], 100, [], undef, 0, undef, 'No entries'),
+		qr/<span class='ui_emptymsg'><b>No entries<\/b><\/span>/,
+		'the empty message keeps its theme class');
+	my $grid = ui_grid_table([ 'Cell' ], 2, 100, [], 'id="grid"');
+	like($grid, qr{^<table class='ui_grid_table'[^>]*id="grid">},
+		'an untitled core grid starts with the grid table itself');
+};
+
+subtest 'ACL libraries can reload ui-lib inside a table' => sub {
+	my $table = ui_table_start('Permissions', 'width=100%', 4);
+	my $columns = ui_columns_start([ 'Outer' ]);
+	{
+		package ModuleACL;
+		do File::Spec->catfile($root, 'ui-lib.pl') or die $@ || $!;
+		$columns .= ui_columns_start([ 'Inner' ], 50, 1);
+	}
+	my $inner_end = ui_columns_end();
+	unlike($inner_end, qr{</div>}, 'the borderless inner table leaves the wrapper open');
+	my $outer_end = ModuleACL::ui_columns_end();
+	like($outer_end, qr{</div>}, 'the other package can close the outer wrapper');
+	$columns .= $inner_end.$outer_end;
+	$table .= ui_table_end();
+	foreach my $html ($table, $columns) {
+		is(scalar(() = $html =~ /<table\b/g), scalar(() = $html =~ m{</table>}g),
+			'all tables opened before the reload are closed');
+		}
+};
 
 subtest 'section titles' => sub {
 	my $html = main::ui_section_title('Recent', {

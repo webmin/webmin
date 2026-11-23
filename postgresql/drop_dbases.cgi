@@ -3,6 +3,7 @@
 
 require './postgresql-lib.pl';
 &ReadParse();
+$access{'delete'} || &error($text{'dbase_ecannot'});
 &error_setup($text{'ddrops_err'});
 @dbs = split(/\0/, $in{'d'});
 foreach $db (@dbs) {
@@ -11,7 +12,7 @@ foreach $db (@dbs) {
 if ($in{'confirm'}) {
 	# Drop the databases
 	foreach $db (@dbs) {
-		&execute_sql_logged($config{'basedb'}, "drop database \"$db\"");
+		&execute_sql_logged($config{'basedb'}, "drop database ".&pg_quote_ident($db));
 		&delete_database_backup_job($db);
 		}
 	&webmin_log("delete", "dbs", scalar(@dbs));

@@ -44,18 +44,19 @@ while(<SHELLS>) {
 close(SHELLS);
 
 print "<form action=save_user.cgi method=post>\n";
-print "<input type=hidden name=olduser value=\"$in{'user'}\">\n";
-print "<input type=hidden name=host value=\"$host->{'id'}\">\n";
+print &ui_hidden("olduser", $in{'user'}),"\n";
+print &ui_hidden("host", $host->{'id'}),"\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'uedit_details'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr> <td><b>$text{'user'}</b></td>\n";
-print "<td><input name=user size=10 value=\"$uinfo{'user'}\"></td> </tr>\n";
+print "<td><input name=user size=10 value=\"",
+      &quote_escape($uinfo{'user'}),"\"></td> </tr>\n";
 
 print "<tr> <td><b>$text{'uid'}</b></td>\n";
 printf "<td><input type=radio name=uid_def value=1 checked> %s (%s)\n",
-	$text{'uedit_leave'}, $uinfo{'uid'};
+	$text{'uedit_leave'}, &html_escape($uinfo{'uid'});
 printf "<input type=radio name=uid_def value=0> %s\n",
 	$text{'uedit_set'};
 print "<input name=uid size=10></td> </tr>\n";
@@ -65,35 +66,40 @@ if ($uconfig{'extra_real'}) {
 
 	print "<tr> <td><b>$text{'real'}</b></td> <td>\n";
 	printf "<input type=radio name=real_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $real[0] ? $real[0] : $text{uedit_none};
+		$text{'uedit_leave'},
+		$real[0] ? &html_escape($real[0]) : $text{uedit_none};
 	printf "<input type=radio name=real_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input name=real size=20></td> </tr>\n";
 
 	print "<tr> <td><b>$text{'office'}</b></td> <td>\n";
 	printf "<input type=radio name=office_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $real[1] ? $real[1] : $text{uedit_none};
+		$text{'uedit_leave'},
+		$real[1] ? &html_escape($real[1]) : $text{uedit_none};
 	printf "<input type=radio name=office_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input name=office size=20></td> </tr>\n";
 
 	print "<tr> <td><b>$text{'workph'}</b></td> <td>\n";
 	printf "<input type=radio name=workph_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $real[2] ? $real[2] : $text{uedit_none};
+		$text{'uedit_leave'},
+		$real[2] ? &html_escape($real[2]) : $text{uedit_none};
 	printf "<input type=radio name=workph_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input name=workph size=20></td> </tr>\n";
 
 	print "<tr> <td><b>$text{'homeph'}</b></td> <td>\n";
 	printf "<input type=radio name=homeph_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $real[3] ? $real[3] : $text{uedit_none};
+		$text{'uedit_leave'},
+		$real[3] ? &html_escape($real[3]) : $text{uedit_none};
 	printf "<input type=radio name=homeph_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input name=homeph size=20></td> </tr>\n";
 
 	print "<tr> <td><b>$text{'extra'}</b></td> <td>\n";
 	printf "<input type=radio name=extra_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $real[4] ? $real[4] : $text{uedit_none};
+		$text{'uedit_leave'},
+		$real[4] ? &html_escape($real[4]) : $text{uedit_none};
 	printf "<input type=radio name=extra_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input name=extra size=20></td> </tr>\n";
@@ -105,7 +111,8 @@ else {
 	print "<tr> <td><b>$text{'real'}</b></td> <td>\n";
 	printf "<input type=radio name=real_def value=1 checked> %s (%s)\n",
 		$text{'uedit_leave'},
-		$uinfo{'real'} ? $uinfo{'real'} : $text{uedit_none};
+		$uinfo{'real'} ? &html_escape($uinfo{'real'})
+			       : $text{uedit_none};
 	printf "<input type=radio name=real_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input name=real size=30></td> </tr>\n";
@@ -113,7 +120,7 @@ else {
 
 print "<tr> <td><b>$text{'home'}</b></td>\n";
 printf "<td><input type=radio name=home_def value=1 checked> %s (%s)\n",
-	$text{'uedit_leave'}, $uinfo{'home'};
+	$text{'uedit_leave'}, &html_escape($uinfo{'home'});
 if ($uconfig{'home_base'}) {
 	printf "<input type=radio name=home_def value=2> %s\n",
 		$text{'uedit_auto'};
@@ -125,20 +132,20 @@ print "<input name=home size=30> ",&file_chooser_button("home", 1),
 
 print "<tr> <td><b>$text{'shell'}</b></td>\n";
 printf "<td><input type=radio name=shell_def value=1 checked> %s (%s)\n",
-	$text{'uedit_leave'}, $uinfo{'shell'};
+	$text{'uedit_leave'}, &html_escape($uinfo{'shell'});
 printf "<input type=radio name=shell_def value=0> %s\n",
 	$text{'uedit_set'};
 print "<select name=shell>\n";
 @shlist = &unique(@shlist);
 foreach $s (@shlist) {
-	printf "<option value='%s'>%s</option>\n", $s,
-		$s eq "" ? "&lt;None&gt;" : $s;
+	printf "<option value='%s'>%s</option>\n", &quote_escape($s),
+		$s eq "" ? "&lt;None&gt;" : &html_escape($s);
 	}
 print "</select></td>\n";
 
 print "<tr> <td valign=top><b>$text{'pass'}</b></td>\n";
 printf "<td><input type=radio name=passmode value=-1 checked> %s (%s)\n",
-	$text{'uedit_leave'}, $uinfo{'pass'};
+	$text{'uedit_leave'}, &html_escape($uinfo{'pass'});
 printf "<input type=radio name=passmode value=0> %s\n",
 	$uconfig{'empty_mode'} ? $text{'none1'} : $text{'none2'};
 printf "<input type=radio name=passmode value=1> %s<br>\n", $text{'nologin'};
@@ -179,8 +186,9 @@ if ($pft == 1 || $pft == 6) {
 
 	print "<tr> <td><b>$text{'class'}</b></td> <td>\n";
 	printf "<input type=radio name=class_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'class'} ? $uinfo{'class'}
-						      : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'class'} ? &html_escape($uinfo{'class'})
+				: $text{'uedit_none'};
 	printf "<input type=radio name=class_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input name=class size=10></td> </tr>\n";
@@ -224,32 +232,36 @@ elsif ($pft == 2) {
 
 	print "<tr> <td><b>$text{'min'}</b></td>\n";
 	printf "<td><input type=radio name=min_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'min'} ? $uinfo{'min'}
-						    : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'min'} ? &html_escape($uinfo{'min'})
+			      : $text{'uedit_none'};
 	printf "<input type=radio name=min_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input size=5 name=min></td> </tr>\n";
 
 	print "<tr> <td><b>$text{'max'}</b></td>\n";
 	printf "<td><input type=radio name=max_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'max'} ? $uinfo{'max'}
-						    : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'max'} ? &html_escape($uinfo{'max'})
+			      : $text{'uedit_none'};
 	printf "<input type=radio name=max_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input size=5 name=max></td></tr>\n";
 
 	print "<tr> <td><b>$text{'warn'}</b></td>\n";
 	printf "<td><input type=radio name=warn_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'warn'} ? $uinfo{'warn'}
-						     : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'warn'} ? &html_escape($uinfo{'warn'})
+			       : $text{'uedit_none'};
 	printf "<input type=radio name=warn_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input size=5 name=warn></td> </tr>\n";
 
 	print "<tr> <td><b>$text{'inactive'}</b></td> <td>\n";
 	printf "<input type=radio name=inactive_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'inactive'} ? $uinfo{'inactive'}
-							 : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'inactive'} ? &html_escape($uinfo{'inactive'})
+				   : $text{'uedit_none'};
 	printf "<input type=radio name=inactive_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input size=5 name=inactive></td></tr>\n";
@@ -299,24 +311,27 @@ elsif ($pft == 4) {
 
 	print "<tr> <td><b>$text{'min_weeks'}</b></td>\n";
 	printf "<td><input type=radio name=min_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'min'} ? $uinfo{'min'}
-						    : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'min'} ? &html_escape($uinfo{'min'})
+			      : $text{'uedit_none'};
 	printf "<input type=radio name=min_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input size=5 name=min></td> </tr>\n";
 
 	print "<td><b>$text{'max_weeks'}</b></td>\n";
 	printf "<td><input type=radio name=max_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'max'} ? $uinfo{'max'}
-						    : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'max'} ? &html_escape($uinfo{'max'})
+			      : $text{'uedit_none'};
 	printf "<input type=radio name=max_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input size=5 name=max></td></tr>\n";
 
 	print "<tr> <td valign=top><b>$text{'warn'}</b></td>\n";
 	printf "<td><input type=radio name=warn_def value=1 checked> %s (%s)\n",
-		$text{'uedit_leave'}, $uinfo{'warn'} ? $uinfo{'warn'}
-						     : $text{'uedit_none'};
+		$text{'uedit_leave'},
+		$uinfo{'warn'} ? &html_escape($uinfo{'warn'})
+			       : $text{'uedit_none'};
 	printf "<input type=radio name=warn_def value=0> %s\n",
 		$text{'uedit_set'};
 	print "<input size=5 name=warn></td> </tr>\n";
@@ -357,7 +372,7 @@ foreach $g (@{$host->{'groups'}}) {
 print "<tr> <td valign=top><b>$text{'uedit_2nd'}</b></td> <td>\n";
 printf "<input type=radio name=sgid_def value=0 checked> %s (%s)<br>\n",
 	$text{'uedit_leave'},
-	@ugroups ? join(", ", @ugroups) : $text{'uedit_none'};
+	@ugroups ? &html_escape(join(", ", @ugroups)) : $text{'uedit_none'};
 printf "<input type=radio name=sgid_def value=1> %s\n",
 	$text{'uedit_addto'};
 printf "<input name=sgidadd size=40> %s<br>\n",
@@ -422,15 +437,18 @@ if (@icons < @hosts) {
 	print "<input type=hidden name=copy_files value=1>\n";
 	print "<input type=hidden name=server value=-1>\n";
 	print "<input type=hidden name=users_mode value=2>\n";
-	print "<input type=hidden name=usel value='$uinfo{'user'}'>\n";
+	print "<input type=hidden name=usel value='",
+	      &html_escape($uinfo{'user'}),"'>\n";
 	print "<input type=hidden name=groups_mode value=0>\n";
-	print "<input type=hidden name=user value=\"$uinfo{'user'}\">\n";
+	print "<input type=hidden name=user value=\"",
+	      &html_escape($uinfo{'user'}),"\">\n";
 	print "<td align=middle><input type=submit ",
 	      "value=\"$text{'uedit_sync'}\"></td>\n";
 	}
 
 print "</tr></table></form><p><form action=\"delete_user.cgi\">\n";
-print "<input type=hidden name=user value=\"$uinfo{'user'}\">\n";
+print "<input type=hidden name=user value=\"",
+      &html_escape($uinfo{'user'}),"\">\n";
 print "<input type=submit ",
       "value=\"$text{'delete'}\">\n";
 print "</form><p>\n";

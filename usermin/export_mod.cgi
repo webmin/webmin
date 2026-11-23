@@ -9,7 +9,7 @@ require './usermin-lib.pl';
 
 # Make sure we have the needed commands
 &has_command("tar") || &error(&text('export_ecmd', "<tt>tar</tt>"));
-&has_command("gzip") || &error(&twebmin::ext('export_ecmd', "<tt>gzip</tt>"));
+&has_command("gzip") || &error(&text('export_ecmd', "<tt>gzip</tt>"));
 $in{'to'} == 0 || $in{'file'} =~ /^\// || &error($text{'export_efile'});
 
 # Make the tar.gz file

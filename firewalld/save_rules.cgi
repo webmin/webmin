@@ -20,7 +20,8 @@ if ($in{'remove'}) {
 	foreach my $rule (@rules) {
 		my $rrfunc = \&{"remove_" . ($rule =~ /^(ipv4|ipv6|eb)/ ? 'direct' : 'rich') . "_rule"};
 	    my $rmerr  = &$rrfunc($rule, $zone);
-	    &error(&text('delete_edel', $rule, $rmerr)) if ($rmerr);
+	    &error(&text('delete_edel', &html_escape($rule),
+			 &html_escape($rmerr))) if ($rmerr);
 		}
 	}
 

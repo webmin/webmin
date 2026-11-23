@@ -8,7 +8,7 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 &ReadParseMime();
 
 # Needs permission for autoreply aliases, and for the file's directory
-if (!&can_edit_alias_files(5) ||
+if (!&can_edit_alias_files(5, $in{'file'}) ||
     !&is_under_directory($access{'apath'}, $in{'file'})) {
 	&error(&text('rfile_efile', &html_escape($in{'file'})));
 	}

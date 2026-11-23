@@ -148,11 +148,11 @@ if ($in{'sig'}) {
 		if ($mode eq 'rpm') {
 			# Use rpm's gpg signature verification
 			system("rpm --import $webmin::module_root_directory/jcameron-key.asc >/dev/null 2>&1");
-			local $out = `rpm --checksig $file 2>&1`;
+			local $out = `rpm --checksig $qfile 2>&1`;
 			if ($?) {
 				$ec = 3;
 				$emsg = &webmin::text('upgrade_echecksig',
-					      "<pre>$out</pre>");
+				      "<pre>".&html_escape($out)."</pre>");
 				}
 			}
 		else {
@@ -167,7 +167,7 @@ if ($in{'sig'}) {
 						'upgrade_edownsig', $sigerror);
 					}
 				else {
-					local $data = `cat $file`;
+					local $data = `cat $qfile`;
 					local ($vc, $vmsg) =
 					    &webmin::verify_data(
 						$data, $sigtemp);
@@ -209,7 +209,7 @@ if ($two eq "\037\213") {
 		&inst_error($webmin::text{'upgrade_egunzip'});
 		}
 	$newfile = &tempname();
-	$out = `gunzip -c $file 2>&1 >$newfile`;
+	$out = `gunzip -c $qfile 2>&1 >$newfile`;
 	if ($?) {
 		unlink($newfile);
 		&inst_error(&webmin::text('upgrade_egzip', "<tt>$out</tt>"));
@@ -315,7 +315,9 @@ foreach $h (@hosts) {
 			# Is the file the same on remote? (like if we have NFS)
 			local @st = stat($file);
 			local $rst = &remote_eval($s->{'host'}, "webmin",
-						  "[ stat('$file') ]");
+						  "[ stat('".
+						  &quote_literal_escape($file).
+						  "') ]");
 			local @rst = @$rst;
 			if (@st && @rst && $st[7] == $rst[7] &&
 			    $st[9] == $rst[9]) {

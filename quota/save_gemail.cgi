@@ -2,9 +2,11 @@
 # Save scheduled email settings for groups
 
 require './quota-lib.pl';
+&ReadParse();
+$access{'ro'} && &error($text{'suser_efs'});
 $access{'email'} && &can_edit_filesys($in{'filesys'}) ||
 	&error($text{'email_ecannot'});
-&ReadParse();
+grep { $_->[0] eq $in{'filesys'} } &list_filesystems() or &error($text{'suser_efs'});
 &error_setup($text{'email_err'});
 
 # Validate inputs

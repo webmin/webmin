@@ -4,6 +4,7 @@
 
 require './quota-lib.pl';
 &ReadParse();
+$access{'ro'} && &error($text{'suser_efs'});
 &can_edit_filesys($in{'dir'}) && $access{'enable'} ||
 	&error($text{'activate_eallow'});
 

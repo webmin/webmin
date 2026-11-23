@@ -704,10 +704,10 @@ else {
 		if (&file_map_type($map->[0])) {
 			my $cmd = $config{'postfix_aliases_table_command'};
 			if ($cmd =~ /newaliases/) {
-				$cmd .= " -oA$map->[1]";
+				$cmd .= " -oA".quotemeta($map->[1]);
 				}
 			else {
-				$cmd .= " $map->[1]";
+				$cmd .= " ".quotemeta($map->[1]);
 				}
 			$out = &backquote_logged("$cmd 2>&1");
 			if ($?) {
@@ -836,7 +836,7 @@ foreach my $map (@files) {
 			$config{'postfix_lookup_table_command'}.
 			" -c $config_dir".
 			($base64 ? " -F" : "").
-			" $map->[0]:$map->[1] 2>&1");
+			" ".quotemeta("$map->[0]:$map->[1]")." 2>&1");
 		if ($?) {
 			&error(&text('regenerate_table_efailed',
 				     $map->[1], $out));
@@ -2066,13 +2066,14 @@ my %acl = (
 return $acl{$mapname} && $access{$acl{$mapname}};
 }
 
-# can_edit_alias_files(type)
+# can_edit_alias_files(type, file)
 # Checks alias and type permissions: 2 for address files, 5 for autoreplies,
 # or 6 for filters.
 sub can_edit_alias_files
 {
-my ($type) = @_;
-return $access{'aliases'} && $access{"aedit_$type"};
+my ($type, $file) = @_;
+return $access{'aliases'} && $access{"aedit_$type"} &&
+       (!$access{'dir'} || &is_under_directory($access{'dir'}, $file));
 }
 
 # map_chooser_button(field, mapname)

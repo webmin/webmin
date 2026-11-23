@@ -20,6 +20,8 @@ my $dom = $zone->{'name'};
 
 my $file = $zone->{'file'};
 if (!$in{'show'}) {
+	# Saving changes the zone file, unlike showing the generated records
+	$access{'ro'} && &error($text{'master_ero'});
 	&lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 	&before_editing($zone);
 	}
@@ -62,10 +64,14 @@ if ($in{'show'}) {
 				   $rhs =~ /\.$/ ? $rhs :
 				    $dom eq "." ? "$rhs." : "$rhs.$dom";
 
+			# Generator lines come from the zone file
 			print &ui_columns_row([
-				&arpa_to_ip($lhsfull), $gv[2],
-				$text{'default'}, &arpa_to_ip($rhsfull),
-				"<tt>$lhs IN $gv[2] $rhs</tt>" ]);
+				&html_escape(&arpa_to_ip($lhsfull)),
+				&html_escape($gv[2]),
+				$text{'default'},
+				&html_escape(&arpa_to_ip($rhsfull)),
+				"<tt>".&html_escape("$lhs IN $gv[2] $rhs").
+				"</tt>" ]);
 			}
 		}
 	print &ui_columns_end();

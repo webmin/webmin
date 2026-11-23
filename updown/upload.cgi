@@ -39,7 +39,7 @@ if ($can_mode != 3) {
 	}
 elsif (&supports_users()) {
 	# User to upload as is set in the ACL
-	@uinfo = getpwnam($remote_user);
+	@uinfo = &get_remote_unix_user();
 	}
 for($i=0; defined($in{"upload$i"}); $i++) {
 	for(my $j=0; $j<@{$in{"upload$i"}}; $j++) {
@@ -52,7 +52,8 @@ $found || &error($text{'upload_enone'});
 $in{'zip'} && $can_mode != 3 && !&can_write_file("/") &&
 	&error($text{'upload_eextractacl'});
 &can_write_file($in{'dir'}) ||
-	&error(&text('upload_eaccess', "<tt>$in{'dir'}</tt>", $!));
+	&error(&text('upload_eaccess',
+		     "<tt>".&html_escape($in{'dir'})."</tt>"));
 
 # If in direct mode, the uploaded files need to be readable by the user we're
 # going to write files as
@@ -109,8 +110,8 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 		else {
 			# Write uploaded data to the destination file
 			if (!&open_tempfile(FILE, ">$path", 1)) {
-				&error(&text('upload_eopen', "<tt>$path</tt>",
-					$!));
+				&error(&text('upload_eopen', "<tt>".
+					&html_escape($path)."</tt>", $!));
 				}
 			&print_tempfile(FILE, $d);
 			&close_tempfile(FILE);
@@ -121,8 +122,8 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 
 		$estatus = undef;
 		if ($in{'zip'}) {
-			print &text('upload_unzipping',
-				    "<tt>$path</tt>"),"<br>\n";
+			print &text('upload_unzipping', "<tt>".
+				    &html_escape($path)."</tt>"),"<br>\n";
 			local ($err, $out);
 			$path =~ /^(\S*\/)/;
 			local $dir = $1;
@@ -212,7 +213,8 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 				}
 			if (!$err) {
 				my $jn = join("<br>",
-					      map { "&nbsp;&nbsp;<tt>$_</tt>" }
+					      map { "&nbsp;&nbsp;<tt>".
+					    &html_escape($_)."</tt>" }
 						  @files);
 				if ($in{'zip'} == 2) {
 					unlink($path);
@@ -229,7 +231,8 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 				}
 			$estatus = $err ? &text('email_extfailed', $err)
 					: &text('email_extdone_'.$fmt);
-			print &text('upload_unzipdone', $estatus),"<p>\n";
+			print &text('upload_unzipdone', &html_escape($estatus)),
+			      "<p>\n";
 			}
 
 		# Add to email message

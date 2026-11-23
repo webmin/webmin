@@ -1678,6 +1678,21 @@ if (opendir(DIR, $main::forgot_password_link_dir)) {
 	}
 }
 
+=head2 can_edit_cron_files()
+
+Returns true when raw crontab edits respect all job editing permissions.
+Users who can run any command as any user can already bypass the module-wide
+hourly limit, so only an hourly limit set in their own ACL blocks raw edits.
+
+=cut
+sub can_edit_cron_files
+{
+return !$single_user && $access{'mode'} == 0 && $access{'hourly'} != 1 &&
+       $access{'command'} && $access{'create'} && $access{'delete'} &&
+       $access{'env'} && $access{'move'};
+}
+
+
 =head2 list_cron_files()
 
 Returns a list of all files containing cron jobs

@@ -147,7 +147,7 @@ if ($two eq "\037\213") {
 		&inst_error($usermin::text{'upgrade_egunzip'});
 		}
 	$newfile = &tempname();
-	$out = `gunzip -c $file 2>&1 >$newfile`;
+	$out = `gunzip -c $qfile 2>&1 >$newfile`;
 	if ($?) {
 		unlink($newfile);
 		&inst_error(&usermin::text('upgrade_egzip', "<tt>$out</tt>"));
@@ -254,7 +254,9 @@ foreach $h (@hosts) {
 			# Is the file the same on remote? (like if we have NFS)
 			local @st = stat($file);
 			local $rst = &remote_eval($s->{'host'}, "usermin",
-						  "[ stat('$file') ]");
+						  "[ stat('".
+						  &quote_literal_escape($file).
+						  "') ]");
 			local @rst = @$rst;
 			if (@st && @rst && $st[7] == $rst[7] &&
 			    $st[9] == $rst[9]) {

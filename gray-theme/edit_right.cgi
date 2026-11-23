@@ -62,6 +62,15 @@ print &ui_table_row($text{'edright_scheme'},
 		 [ "light", $text{'edright_scheme_light'} ],
 		 [ "dark", $text{'edright_scheme_dark'} ] ]));
 
+# Menu colors, the page colors or one of the menu palettes, showing the
+# theme's default until one is saved
+print &ui_table_row($text{'edright_menu'},
+    &ui_select("menu", &theme_menu_color(),
+	       [ [ "white", $text{'edright_menu_page'} ],
+		 [ "blue", $text{'edright_menu_blue'} ],
+		 [ "lightblue", $text{'edright_menu_lightblue'} ],
+		 [ "darkgray", $text{'edright_menu_darkgray'} ] ]));
+
 # Show search box
 print &ui_table_row($text{'edright_search'},
     &ui_yesno_radio("search", !$sects->{'nosearch'}));

@@ -153,6 +153,7 @@ $mod_error_msg = join("", @_);
 # Do the changes across all hosts
 &ui_print_header(undef, $text{'uedit_title'}, "");
 $crypted = &foreign_call("useradmin", "encrypt_password", $in{'pass'});
+my $first_host;
 foreach $host (@hosts) {
 	$mod_error_msg = undef;
 	($user) = grep { $_->{'user'} eq $in{'olduser'} } @{$host->{'users'}};
@@ -247,24 +248,35 @@ foreach $host (@hosts) {
 		}
 
 	# Run the pre-change command
-	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : undef;
-	&remote_eval($serv->{'host'}, "useradmin", <<EOF
-\$ENV{'USERADMIN_USER'} = '$user->{'user'}';
-\$ENV{'USERADMIN_UID'} = '$user->{'uid'}';
-\$ENV{'USERADMIN_REAL'} = '$user->{'real'}';
-\$ENV{'USERADMIN_SHELL'} = '$user->{'shell'}';
-\$ENV{'USERADMIN_HOME'} = '$user->{'home'}';
-\$ENV{'USERADMIN_GID'} = '$user->{'gid'}';
-\$ENV{'USERADMIN_PASS'} = '$envpass';
-\$ENV{'USERADMIN_ACTION'} = 'MODIFY_USER';
-EOF
-	);
+	# Hooks have always had this variable, empty when no password is set
+	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : '';
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+				     $user, "MODIFY_USER", $envpass);
 	$merr = &remote_foreign_call($serv->{'host'}, "useradmin",
 				     "making_changes");
 	if (defined($merr)) {
 		print &text('usave_emaking', "<tt>$merr</tt>"),"<p>\n";
 		print "</ul>\n";
 		next;
+		}
+
+	# Move before saving the new path so a failed move leaves the account usable.
+	$first_host ||= $host;
+	my $change_files = $in{'servs'} || $host eq $first_host;
+	if ($change_files && $ouser{'home'} ne $user->{'home'} && $in{'movehome'}) {
+		my $qold = &remote_perl_string($ouser{'home'});
+		my $qnew = &remote_perl_string($user->{'home'});
+		my $status = &remote_eval($serv->{'host'}, "useradmin",
+			"-d $qold && !-e $qnew ? system('mv', '-f', '--', $qold, $qnew) : undef");
+		if ($mod_error_msg || $status) {
+			print &text('usave_emove', &html_escape($mod_error_msg ||
+				"$ouser{'home'} -> $user->{'home'}")), "<p>\n</ul>\n";
+			# All members rely on this move when the home is shared.
+			last if (!$in{'servs'});
+			next;
+			}
+		print defined($status) ? "$text{'usave_move'}<br>\n$text{'udel_done'}"
+				       : $text{'usave_moveskipped'}, "<p>\n";
 		}
 
 	# Update the user on the server
@@ -274,13 +286,7 @@ EOF
 	print "$text{'udel_done'}<p>\n";
 
 	# Make file changes
-	if ($in{'servs'} || $host eq $hosts[0]) {
-		if ($ouser{'home'} ne $user->{'home'} && $in{'movehome'}) {
-			print "$text{'usave_move'}<br>\n";
-			&remote_eval($serv->{'host'}, "useradmin",
-				"-d '$ouser{'home'}' && !-e '$user->{'home'}' && system(\"mv -f '$ouser{'home'}' '$user->{'home'}'\")");
-			print "$text{'udel_done'}<p>\n";
-			}
+	if ($change_files) {
 		if ($ouser{'gid'} ne $user->{'gid'}) {
 			if ($in{'chgid'} == 1) {
 				print "$text{'usave_gid'}<br>\n";
@@ -388,14 +394,16 @@ EOF
 	if ($in{'others'}) {
 		# Update the user in other modules
 		print "$text{'usave_mothers'}<br>\n";
-		$user->{'passmode'} = $in{'passmode'};
-		if ($in{'passmode'} == 2 && $user->{'pass'} eq $ouser{'pass'}) {
-			$user{'passmode'} = 4;
+		my %updated = (%$user, 'passmode' => $in{'passmode'});
+		if ($in{'passmode'} < 0 ||
+		    $in{'passmode'} == 2 && $user->{'pass'} eq $ouser{'pass'}) {
+			# Tell other modules that the password was kept
+			$updated{'passmode'} = 4;
 			}
-		$user->{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+		$updated{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
 		&remote_foreign_call($serv->{'host'}, "useradmin",
 				     "other_modules", "useradmin_modify_user",
-				     $user, \%ouser);
+				     \%updated, \%ouser);
 		print "$text{'udel_done'}<p>\n";
 		}
 

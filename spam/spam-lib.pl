@@ -57,10 +57,10 @@ $ldap_username_attr = $config{'uid'} || 'uid';
 sub set_config_file
 {
 local ($file) = @_;
-if (!$module_info{'usermin'}) {
+if (!$module_info{'usermin'} && !&can_edit_any_config_file()) {
 	# Check for valid file
 	local %cans;
-	$cans{$access{'file'}} = 1 if ($access{'file'});
+	$cans{$access{'file'} || $config{'local_cf'}} = 1;
 	foreach my $f (split(/\s+/, $access{'files'})) {
 		$cans{$f} = 1;
 		}
@@ -75,6 +75,17 @@ $add_cf = !-d $local_cf ? $local_cf :
 				    "$local_cf/local.cf";
 }
 
+# can_edit_any_config_file()
+# Returns 1 if the Webmin user may pick any SpamAssassin config file. This is
+# allowed only without a file limit, and when the user can already edit the
+# module config or the config files manually, which both control settings and
+# plugins used by root.
+sub can_edit_any_config_file
+{
+return 0 if ($access{'file'} || $access{'files'});
+return !$access{'noconfig'} || &can_use_page("manual") ? 1 : 0;
+}
+
 sub set_config_file_in
 {
 local ($in) = @_;
@@ -83,7 +94,8 @@ $redirect_url = "";
 $form_hiddens = "";
 if (!$module_info{'usermin'} && $in{'file'}) {
 	&set_config_file($in{'file'});
-	$header_subtext = $in{'title'} || "<tt>$in{'file'}</tt>";
+	$header_subtext = $in{'title'} ? &html_escape($in{'title'}) :
+			  "<tt>".&html_escape($in{'file'})."</tt>";
 	$redirect_url = "index.cgi?file=".&urlize($in{'file'}).
 			"&title=".&urlize($in{'title'});
 	$form_hiddens = &ui_hidden("file", $in{'file'}).
@@ -241,6 +253,14 @@ if (!ref($nameold)) {
 	}
 my @old = ref($nameold) ? @$nameold : &find($nameold, $conf);
 my @new = $vonly ? &make_directives($nameold, $newv) : @$newv;
+
+# Each directive must stay on one line, or it could add other directives
+foreach my $n (grep { $_ } @new) {
+	if ($n->{'name'} =~ /[\r\n\0]/ || $n->{'value'} =~ /[\r\n\0]/) {
+		&error($text{'save_eline'});
+		}
+	}
+
 for(my $i=0; $i<@old || $i<@new; $i++) {
 	my $line;
 	if ($new[$i]) {

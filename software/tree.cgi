@@ -107,13 +107,14 @@ print "<tr style=\"border-top: 1px solid #aaaaaa28\"> <td>", $spacer x $_[1];
 if ($_[0]) {
 	print "<a name=\"$_[0]\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";
+	my $folder = $heiropen{$_[0]} ? "folder-open-small.svg" : "folder-closed-small.svg";
 	my $link = "$act.cgi?what=".&urlize($_[0]);
 	$_[0] =~ /([^\/]+)$/;
-	print &ui_link($link, "<img border=0 src='images/$act.gif'>");
+	print &ui_link($link, "<img border=0 src='../images/shared/$folder'>");
     print "&nbsp; $1</td>\n";
 	}
 else {
-	print "<img src=images/close.gif> <i>$text{'index_all'}</i></td>\n";
+	print "<img src=../images/shared/folder-open-small.svg> <i>$text{'index_all'}</i></td>\n";
 	}
 
 print "<td><br></td> </tr>\n";
@@ -122,7 +123,7 @@ if ($heiropen{$_[0]}) {
 	foreach $i (@order) {
 		if ($class[$i] eq $_[0] && $pack[$i] ne "") {
 			print "<tr> <td nowrap>", $spacer x ($_[1]+1);
-			print "<img border=0 src=images/pack.gif>&nbsp;\n";
+			print "<img border=0 src=../images/shared/floppy-disk-small.svg>&nbsp;\n";
 			print &ui_link("edit_pack.cgi?package=".
 			      &urlize($pack[$i])."&version=".
 			      &urlize($vers[$i]), &html_escape($pack[$i].

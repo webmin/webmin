@@ -41,6 +41,17 @@ closedir(DIR);
 return @rv;
 }
 
+# remote_perl_string(value)
+# Returns a value as a single-quoted Perl string, for code that is run on
+# another server. Only a backslash and a quote need escaping in one.
+sub remote_perl_string
+{
+my ($v) = @_;
+$v = "" if (!defined($v));
+$v =~ s/([\\'])/\\$1/g;
+return "'$v'";
+}
+
 # save_useradmin_host(&host)
 sub save_useradmin_host
 {
@@ -57,6 +68,8 @@ else {
 	mkdir("$hdir/$host->{'id'}", 0700);
 	}
 foreach my $u (@{$host->{'users'}}) {
+	# Older versions left the password given to change hooks in here
+	delete($u->{'plainpass'});
 	&write_file("$hdir/$host->{'id'}/$u->{'user'}.user", $u);
 	delete($oldfile{"$u->{'user'}.user"});
 	}

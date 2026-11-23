@@ -7,8 +7,11 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 require './firewalld-lib.pl';
 our (%text, %in);
+&ReadParse();
 &error_setup($text{'restart_err'});
 my $err = &apply_firewalld();
 &error($err) if ($err);
 &webmin_log("restart");
-&redirect("index.cgi?zone=".&urlize($in{'zone'}));
+# Return to the selected zone, referring page or module index
+&redirect(($in{'zone'} ? "index.cgi?zone=".&urlize($in{'zone'}) :
+	   &get_referer_relative()) || "");

@@ -35,10 +35,19 @@ my $ex = $?;
 my $err = &read_file_contents($errtemp);
 &unlink_file($errtemp);
 if ($err || $?) {
-	&error("SQL command $sql failed : ".
-	       ($err || $headline || "Unknown error"));
+	&error(&html_escape("SQL command $sql failed : ".
+			    ($err || $headline || "Unknown error")));
 	}
 return @rv;
+}
+
+# pkgin_sql_quote(string)
+# Returns a string as an SQL literal, with single quotes doubled
+sub pkgin_sql_quote
+{
+my ($str) = @_;
+$str =~ s/'/''/g;
+return "'".$str."'";
 }
 
 # list_packages([package]*)
@@ -48,7 +57,8 @@ sub list_packages
 my (@names) = @_;
 my $sql = "select * from local_pkg";
 if (@names) {
-	$sql .= " where pkgname in (".join(", ", map { "'$_'" } @names).")";
+	$sql .= " where pkgname in (".
+		join(", ", map { &pkgin_sql_quote($_) } @names).")";
 	}
 my @out = &execute_pkgin_sql($sql);
 my $i = 0;
@@ -252,8 +262,8 @@ $text =~ s/\.\*/%/g;
 $text =~ s/\./?/g;
 my $sql = "select * from remote_pkg";
 if ($text) {
-	$sql .= " where pkgname like '%$text%' or ".
-		"comment like '%$text%'";
+	my $like = &pkgin_sql_quote("%".$text."%");
+	$sql .= " where pkgname like $like or comment like $like";
 	}
 my @out = &execute_pkgin_sql($sql);
 my @rv;

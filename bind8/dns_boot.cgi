@@ -5,11 +5,13 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-our (%text, %config, %in);
+our (%text, %config, %in, %access);
 
 require './bind8-lib.pl';    ## no critic
 &error_setup($text{'boot_err'});
 &ReadParse();
+$access{'defaults'} && !$access{'ro'} && !$access{'noconfig'} ||
+	&error($text{'boot_ecannot'});
 
 $config{'named_conf'} =~ /^(\S+)\/([^\/]+)$/;
 my $conf_directory = $1;

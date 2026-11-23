@@ -170,7 +170,7 @@ if (((!$access{'sysdate'} && &has_command("date")) ||
 		print &ui_table_row($text{'index_addresses'},
 			&ui_textbox("timeserver", $config{'timeserver'}, 60));
 		# Show hardware time checkbox
-		if ($support_hwtime) {
+		if ($support_hwtime && !$access{'hwdate'}) {
 			print &ui_table_row(" ",
 				&ui_checkbox("hardware", 1, $text{'index_hardware2'},
 					$config{'timeserver_hardware'}));
@@ -190,7 +190,7 @@ if (((!$access{'sysdate'} && &has_command("date")) ||
 			($chronyd_run_atboot < 2 && $chronyd_running) ? 1 : 0),
 			[ [ 2, $text{'index_serviceonboot'} ], [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 		# Show hardware time checkbox
-		if ($support_hwtime) {
+		if ($support_hwtime && !$access{'hwdate'}) {
 			print &ui_table_row(" ",
 				"&nbsp;".&ui_checkbox("hardware", 1, $text{'index_hardware2'},
 					$config{'timeserver_hardware'}));
@@ -209,7 +209,7 @@ if (((!$access{'sysdate'} && &has_command("date")) ||
 			($systemd_timesyncd_run_atboot < 2 && $systemd_timesyncd_running) ? 1 : 0),
 			[ [ 2, $text{'index_serviceonboot'} ], [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 		# Show hardware time checkbox
-		if ($support_hwtime) {
+		if ($support_hwtime && !$access{'hwdate'}) {
 			print &ui_table_row(" ",
 				"&nbsp;".&ui_checkbox("hardware", 1, $text{'index_hardware2'},
 					$config{'timeserver_hardware'}));

@@ -9,7 +9,7 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 &read_usermin_acl(\%acl);
 print "$text{'acl_desc'}<p>\n";
 print &ui_form_start("save_acl.cgi");
-@mods = &list_modules();
+@mods = grep { &can_use_module($_->{'dir'}) } &list_modules();
 @grid = ( );
 foreach $m (@mods) {
 	push(@grid, &ui_checkbox("mod", $m->{'dir'}, &html_escape($m->{'desc'}),

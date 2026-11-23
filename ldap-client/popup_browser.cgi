@@ -78,7 +78,7 @@ print "<table width=100%>\n";
 if ($parent =~ /\S/) {
 	print "<tr> <td><i><a href='popup_browser.cgi?node=".
 	      &urlize($in{'node'})."&base=",
-	      &urlize($parent),"'><img src=images/up.gif border=0> ",
+	      &urlize($parent),"'><img src=../images/shared/move-up.svg border=0> ",
 	      &html_escape($parent),"</a></td> </tr>\n";
 	}
 if ($rv->all_entries) {
@@ -87,7 +87,7 @@ if ($rv->all_entries) {
 		print "<tr> <td><a href='popup_browser.cgi?node=".
 		      &urlize($in{'node'}),"&",
 		      "base=".&urlize($dn->dn()).
-		      "'><img src=images/open.gif border=0>",
+		      "'><img src=images/open.svg border=0>",
 		      " ",&html_escape($dn->dn()),"</a></td> </tr>\n";
 		}
 	}
@@ -95,8 +95,8 @@ else {
 	# Show attributes
 	foreach $a (sort { lc($a) cmp lc($b) } $bo->attributes()) {
 		@v = $bo->get_value($a);
-		print "<tr> <td>$a</td> <td>:</td> <td>",
-		      join(" , ", @v),"</td> </tr>\n";
+		print "<tr> <td>",&html_escape($a),"</td> <td>:</td> <td>",
+		      join(" , ", map { &html_escape($_) } @v),"</td> </tr>\n";
 		}
 	}
 print "</table>\n";

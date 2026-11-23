@@ -63,7 +63,8 @@ elsif ($in{'delete'} || $in{'clear'}) {
 	print &ui_hidden("table", $in{'table'});
 	print &ui_hidden("chain", $in{'chain'});
 	print &ui_hidden($mode, 1);
-	print "<center><b>",&text($mode.'_rusure', "<tt>$in{'chain'}</tt>",
+	print "<center><b>",&text($mode.'_rusure',
+				  "<tt>".&html_escape($in{'chain'})."</tt>",
 				  scalar(@rules)),"</b><p>\n";
 	print &ui_submit($text{'delete_ok'}, 'confirm');
 	print "</center>\n";
@@ -121,7 +122,7 @@ elsif ($in{'rename'}) {
 
 	# Number of rules and old name
 	@rules = grep { $_->{'chain'} eq $in{'chain'} } @{$table->{'rules'}};
-	print &ui_table_row($text{'rename_chain'}, $in{'chain'});
+	print &ui_table_row($text{'rename_chain'}, &html_escape($in{'chain'}));
 	print &ui_table_row($text{'rename_count'},
 		scalar(@rules) || $text{'rename_none'});
 
@@ -194,7 +195,7 @@ elsif ($in{'movesel'}) {
 
 	# Number of rules and source
 	print &ui_table_row($text{'move_count'}, scalar(@d));
-	print &ui_table_row($text{'move_chain'}, $in{'chain'});
+	print &ui_table_row($text{'move_chain'}, &html_escape($in{'chain'}));
 
 	# Destination chain
 	print &ui_table_row($text{'move_dest'},

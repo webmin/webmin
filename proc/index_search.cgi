@@ -191,7 +191,8 @@ if (%in) {
 	if (@pidlist && $access{'simple'} && $access{'edit'}) {
 		# display form for mass killing with selected signals
 		print "<form action=kill_proc_list.cgi>\n";
-		print "<input type=hidden name=args value=\"$in\">\n";
+		print "<input type=hidden name=args value=\"",
+		      &html_escape($in),"\">\n";
 		printf "<input type=hidden name=pidlist value=\"%s\">\n",
 			join(" ", @pidlist);
 		print "<input type=hidden name=pid value=$pinfo{pid}>\n";
@@ -205,7 +206,8 @@ if (%in) {
 		# display form for mass killing with any signal
 		print "<form action=kill_proc_list.cgi>\n";
 		print "<input type=submit value=\"$text{'proc_kill'}\">\n";
-		print "<input type=hidden name=args value=\"$in\">\n";
+		print "<input type=hidden name=args value=\"",
+		      &html_escape($in),"\">\n";
 		printf "<input type=hidden name=pidlist value=\"%s\">\n",
 			join(" ", @pidlist);
 		print "<select name=signal>\n";

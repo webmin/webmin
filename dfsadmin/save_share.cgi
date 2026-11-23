@@ -7,6 +7,7 @@ require './dfs-lib.pl';
 use Socket;
 &ReadParse();
 @shlist = &list_shares();
+$access{'view'} && &error($text{'ecannot'});
 
 if ($in{'delete'}) {
 	# Redirect to deletion CGI

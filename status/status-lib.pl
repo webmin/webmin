@@ -60,17 +60,21 @@ if ($mysql_variant eq "mariadb") {
 	}
 
 # list_services()
-# Returns a list of all services this module knows how to get status on.
-# If this is the first time the function is called a default set of services
-# will be setup.
+# Returns configured monitors whose required modules are available.
+# Creates default monitors if the services directory does not exist.
 sub list_services
 {
 my (%mod, @rv);
 if (!-d $services_dir) {
-	# setup initial services
+	# Initialize monitor storage
 	mkdir($module_config_directory, 0700);
-	mkdir($services_dir, 0700);
-	system("cp $module_root_directory/services/* $services_dir");
+	# Serialize initialization and preserve an existing directory
+	&lock_file($services_dir);
+	if (mkdir($services_dir, 0700)) {
+		# Seed only the directory created by this call
+		system("cp $module_root_directory/services/* $services_dir");
+		}
+	&unlock_file($services_dir);
 	}
 map { $mod{$_}++ } &list_modules();
 opendir(DIR, $services_dir);
@@ -107,6 +111,123 @@ if (!defined($serv{'notify'})) {
 	}
 $serv{'remote'} = "*" if (!$serv{'remote'} && !$serv{'groups'});
 return $_[0] ne $serv{'id'} ? undef : \%serv;
+}
+
+# dashboard_visible_monitors(&acl, [&monitor, ...])
+# Filters monitor hashrefs by dashboard ACL. Missing limits or * allow
+# all; an empty saved list allows none.
+sub dashboard_visible_monitors
+{
+my ($acl, @monitors) = @_;
+return @monitors if (!defined($acl->{'dashboard_monitors'}) ||
+		     $acl->{'dashboard_monitors'} eq '*');
+my %allowed = map { $_ => 1 } split(/\s+/, $acl->{'dashboard_monitors'});
+return grep { $allowed{$_->{'id'}} } @monitors;
+}
+
+# module_dashboard_monitors([&data], [&skip-modules])
+# Returns services from accessible modules with status_dashboard=1.
+# Passes dashboard options, or {}, to each hook; skip-modules is an arrayref.
+# Prefixes IDs with module:: and sets provider and remote for local services.
+sub module_dashboard_monitors
+{
+my ($data, $skip) = @_;
+my %skip = map { $_ => 1 } @{$skip || []};
+my @rv;
+foreach my $m (&get_all_module_infos()) {
+	# Only ask modules that opted in and that this user may use
+	my $mod = $m->{'dir'};
+	next if (!$m->{'status_dashboard'} || $skip{$mod} || $m->{'cloneof'} ||
+		 !-r (&module_root_directory($mod)."/status_monitor.pl") ||
+		 !&foreign_available($mod));
+	&foreign_require($mod, "status_monitor.pl");
+	next if (!&foreign_defined($mod, "status_monitor_dashboard"));
+	foreach my $s (&foreign_call($mod, "status_monitor_dashboard",
+				     $data || {})) {
+		# Keep provider IDs distinct and mark these as local services
+		push(@rv, { %$s, 'id' => $mod.'::'.$s->{'id'},
+			    'provider' => $mod, 'remote' => '*' });
+		}
+	}
+return @rv;
+}
+
+# match_dashboard_services(&monitors, &provided)
+# Maps monitor IDs to supplied services for shared status and actions.
+# Matches an explicit dashboard_service ID, or an unambiguous type.
+sub match_dashboard_services
+{
+my ($services, $provided) = @_;
+my %byid = map { $_->{'id'} => $_ } @$provided;
+
+# A shared type cannot distinguish multiple service instances
+my %bytype;
+foreach my $p (@$provided) {
+	next if (!$p->{'type'});
+	$bytype{$p->{'type'}} = exists($bytype{$p->{'type'}}) ? undef : $p;
+	}
+
+my %controls;
+foreach my $s (@$services) {
+	my $p = $s->{'dashboard_service'} ? $byid{$s->{'dashboard_service'}}
+					  : $bytype{$s->{'type'}};
+	if ($p && $s->{'remote'} eq '*' && !$s->{'groups'} &&
+	    !$s->{'clone'}) {
+		# Pair only local monitors without groups or module clones
+		$controls{$s->{'id'}} = $p;
+		}
+	}
+return %controls;
+}
+
+# monitor_action_buttons(&monitor, up)
+# Returns POST forms from the owning module's status_monitor_actions hook.
+# Start, stop and restart use icons; other actions show their labels.
+# These forms must not be nested inside another form.
+sub monitor_action_buttons
+{
+my ($s, $up) = @_;
+
+# Hide controls for unavailable or remote checks and restricted users.
+# Missing action permissions inherit the monitor-edit permission.
+my $can = defined($access{'actions'}) ? $access{'actions'} : $access{'edit'};
+return ( ) if (!defined($up) || $up < 0 || $s->{'remote'} ne '*' ||
+	       $s->{'groups'} || !$can || &is_readonly_mode());
+
+# Resolve module::type; supplied services and clones override the owner
+my ($mod, $type) = split(/::/, $s->{'type'} || '', 2);
+$type ||= $mod;
+$mod = $s->{'provider'} || $s->{'clone'} || $mod;
+# Require access to the module and an action hook
+return ( ) if (!$mod ||
+	       !-r (&module_root_directory($mod)."/status_monitor.pl") ||
+	       !&foreign_available($mod));
+&foreign_require($mod, "status_monitor.pl");
+return ( ) if (!&foreign_defined($mod, "status_monitor_actions"));
+
+my %icons = ( 'start' => 'play', 'stop' => 'stop', 'restart' => 'refresh' );
+my @rv;
+foreach my $a (&foreign_call($mod, "status_monitor_actions",
+			     $type, $s, $up)) {
+	my ($kind, $label, $cgi, $fields) = @$a;
+
+	# Leave return handling to the action CGI; this may be a sidebar render
+	my %send = %{$fields || {}};
+	my $form = &ui_form_start(&get_webprefix()."/$mod/$cgi", "post").
+		   join("", map { &ui_tag('input', undef,
+					  { 'type' => 'hidden', 'name' => $_,
+					    'value' => $send{$_} }) }
+				sort(keys(%send)));
+
+	# Use the label as an icon tooltip, or as text for an unknown action
+	my $icon = $icons{$kind};
+	my $button = &ui_action_button(
+		$icon ? '' : $label, 'neutral',
+		{ 'type' => 'submit', 'size' => 'small',
+		  'icon' => $icon || '', 'title' => $icon ? $label : undef });
+	push(@rv, $form.$button.&ui_form_end(undef, undef, 1));
+	}
+return @rv;
 }
 
 # save_service(&serv)
@@ -270,6 +391,8 @@ foreach my $m (&get_all_module_infos()) {
 	    &check_os_support($m) &&
 	    !$m->{'cloneof'}) {
 		&foreign_require($m->{'dir'}, "status_monitor.pl");
+		# Action-only modules do not define new monitor types
+		next if (!&foreign_defined($m->{'dir'}, "status_monitor_list"));
 		my @mms = &foreign_call($m->{'dir'}, "status_monitor_list");
 		push(@rv, map { [ $m->{'dir'}."::".$_->[0], $_->[1], $_->[2] ] } @mms);
 		}
@@ -680,29 +803,58 @@ sub get_status_icon
 {
 my ($up) = @_;
 return &get_webprefix().
-       "/".$module_name."/images/".($up == 1 ? "up.gif" :
-		  $up == -1 ? "not.gif" :
-		  $up == -2 ? "webmin.gif" :
-		  $up == -3 ? "timed.gif" :
-		  $up == -4 ? "skip.gif" :
-		  	      "down.gif");
+       "/".$module_name."/images/".($up == 1 ? "up.svg" :
+		  $up == -1 ? "not.svg" :
+		  $up == -2 ? "webmin.svg" :
+		  $up == -3 ? "timed.svg" :
+		  $up == -4 ? "skip.svg" :
+		  	      "down.svg");
 }
 
-sub status_to_string
+# status_to_state(up)
+# Returns widget state, icon and severity for a status code. Higher
+# severity is worse, so multiple hosts can share one summary status.
+sub status_to_state
+{
+my ($up) = @_;
+return $up == 1 ? ( 'success', 'check-circle', 0 ) :
+       $up == -1 ? ( 'neutral', 'minus', 1 ) :
+       $up == -4 ? ( 'neutral', 'minus', 1 ) :
+       $up == -2 ? ( 'warning', 'warning', 2 ) :
+       $up == -3 ? ( 'warning', 'clock', 2 ) :
+		   ( 'danger', 'x-circle', 3 );
+}
+
+# status_to_text(up, [&monitor])
+# Returns plain status text, using the monitor type's wording if available
+sub status_to_text
 {
 my ($up, $serv) = @_;
 if ($serv) {
+	# Ask the monitor type for its own message
 	do $serv->{'type'}."-monitor.pl" if (!$done_monitor{$serv->{'type'}}++);
 	my $f = "get_".$serv->{'type'}."_upmsg";
 	my $msg = defined(&$f) ? &$f($up) : undef;
 	return $msg if (defined($msg));
 	}
+# Fall back to the standard status names
 return $up == 1 ? $text{'mon_up'} :
        $up == -1 ? $text{'mon_not'} :
        $up == -2 ? $text{'mon_webmin'} :
        $up == -3 ? $text{'mon_timeout'} :
        $up == -4 ? $text{'mon_skip'} :
-                   "<font color=#ff0000>$text{'mon_down'}</font>";
+		   $text{'mon_down'};
+}
+
+# status_to_string(up, [&monitor])
+# Returns status text, coloring the standard Down message with the theme
+sub status_to_string
+{
+my ($up, $serv) = @_;
+my $msg = &status_to_text($up, $serv);
+my ($state) = &status_to_state($up);
+return $state eq 'danger' && $msg eq $text{'mon_down'} ?
+	&ui_text_color($msg, 'danger') : $msg;
 }
 
 1;

@@ -21,7 +21,7 @@ else {
 	$access{'global'} || &error($text{'edit_ecannot'});
 	&ui_print_header(undef, $text{'global_title'}, "");
 	}
-my $conf = &get_config($in{'file'});
+my $conf = &get_config($in{'file'}, 1);
 my $cfile = &config_file_name($in{'file'}) if ($in{'file'});
 
 print &ui_form_start("save_global.cgi", "post");

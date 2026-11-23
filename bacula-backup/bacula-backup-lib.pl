@@ -1038,7 +1038,7 @@ local $status = &console_cmd($h, "status client=$client");
 local $msg;
 if ($status =~ /Connecting\s+to\s+Client.*\n(\n?)(.*)\n/i) {
 	$msg = $2;
-	$msg =~ s/^\s*$client\s//;
+	$msg =~ s/^\s*\Q$client\E\s//;
 	}
 local $sect = 0;
 local (@run, @done);
@@ -1182,11 +1182,13 @@ return $n;
 sub job_name
 {
 local ($name) = @_;
+# The name comes from daemon output, so only _ is treated as a wildcard
+local $re = join(".", map { quotemeta($_) } split(/_/, $name, -1));
 $name =~ s/_/./g;
 local $conf = &get_director_config();
 foreach my $j (&find("Job", $conf)) {
 	local $n = &find_value("Name", $j->{'members'});
-	if ($n =~ /^$name$/) {
+	if ($n =~ /^$re$/) {
 		return $n;
 		}
 	}
@@ -1385,15 +1387,18 @@ if (!%joblink_jobs) {
 local ($name) = @_;
 local $job = $joblink_jobs{$name};
 local ($j, $c) = &is_oc_object($name);
+# Job names can come from daemon status output, so show them as text
 if (!$job) {
-	return $j ? "$j ($c)" : $name;
+	return &html_escape($j ? "$j ($c)" : $name);
 	}
 else {
 	if ($j) {
-		return &ui_link("edit_gjob.cgi?name=".&urlize($j)."","$j ($c)");
+		return &ui_link("edit_gjob.cgi?name=".&urlize($j)."",
+				&html_escape("$j ($c)"));
 		}
 	else {
-		return &ui_link("edit_job.cgi?name=".&urlize($name)."",$name);
+		return &ui_link("edit_job.cgi?name=".&urlize($name)."",
+				&html_escape($name));
 		}
 	}
 }

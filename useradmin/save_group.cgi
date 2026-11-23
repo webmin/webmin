@@ -17,9 +17,6 @@ elsif ($in{'clone'}) {
 	return;
 	}
 
-# Build list of used GIDs
-&build_group_used(\%gused);
-
 # Strip out \n characters in inputs
 $in{'group'} =~ s/\r|\n//g;
 $in{'pass'} =~ s/\r|\n//g;
@@ -27,6 +24,7 @@ $in{'encpass'} =~ s/\r|\n//g;
 $in{'gid'} =~ s/\r|\n//g;
 
 &lock_user_files();
+&build_group_used(\%gused);
 @glist = &list_groups();
 if ($in{'old'} ne "") {
 	# get old group
@@ -50,6 +48,12 @@ else {
 	}
 
 # Validate and save inputs
+if ($in{'old'} eq '') {
+	my @modes = qw(usergid autogid calcgid);
+	my $mode = $in{'gid_def'} || 0;
+	$mode =~ /\A[012]\z/ && $access{$modes[$mode]} ||
+		&error($text{'gsave_egid_def'});
+	}
 if (!$in{'gid_def'} || $in{'old'} ne '') {
 	# Only do GID checks if not automatic
 	$in{'gid'} =~ /^[0-9]+$/ || &error(&text('gsave_egid', $in{'gid'}));
@@ -90,8 +94,9 @@ elsif ($in{'gid_def'} == 2) {
 	else {
 		$in{'gid'} = &berkeley_cksum($in{'group'});
 		}
-        &error($text{'gsave_egidcalc'}) if ($in{'gid'} < 0);
-	while($used{$in{'gid'}}) {
+	&error($text{'gsave_egidcalc'}) if ($in{'gid'} < 0);
+	$in{'gid'} = $access{'lowgid'} if ($in{'gid'} < $access{'lowgid'});
+	while($gused{$in{'gid'}}) {
 		$in{'gid'}++;
 		}
 	if ($access{'higid'} && $in{'gid'} > $access{'higid'}) {

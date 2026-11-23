@@ -160,27 +160,20 @@ if ( @{ $slice->{'parts'} } ) {
         ]
     );
 
-    # Pre-calculate scaling factor for the partition extent images
-    my $scale = $extwidth / $slice->{'blocks'};
+    # Pre-calculate the share of the slice that one block is, as a
+    # percentage
+    my $scale = 100 / $slice->{'blocks'};
 
     foreach my $p ( @{ $slice->{'parts'} } ) {
 
-        # Create images representing the partition extent
-        my $gap_before = sprintf( "<img src=images/gap.gif height=10 width=%d>",
-            int( $scale * ( $p->{'startblock'} - 1 ) ) );
-        my $img_type = $p->{'extended'} ? "ext" : "use";
-        my $partition_img =
-          sprintf( "<img src=images/%s.gif height=10 width=%d>",
-            $img_type, int( $scale * $p->{'blocks'} ) );
-        my $gap_after = sprintf(
-            "<img src=images/gap.gif height=10 width=%d>",
-            int(
-                $scale * (
-                    $slice->{'blocks'} - $p->{'startblock'} - $p->{'blocks'}
-                )
-            )
-        );
-        my $ext = $gap_before . $partition_img . $gap_after;
+        # Draw where the partition sits in the slice : the space before
+        # it, then the partition itself
+        my $ext = &ui_progress( undef, { 'small' => 1, 'segments' => [
+            { 'pct' => $scale * ( $p->{'startblock'} - 1 ),
+              'empty' => 1 },
+            { 'pct' => $scale * $p->{'blocks'},
+              'state' => $p->{'extended'} ? 'info' : 'danger' },
+        ] } );
 
         # Cache partition device status information
         my @part_status = fdisk::device_status( $p->{'device'} );
@@ -225,7 +218,10 @@ if ( @{ $slice->{'parts'} } ) {
                 $stripesize,
                 $use_txt,
                 html_escape($role_txt),
-            ]
+            ],
+
+            # Keep the extent column wide enough for its bar
+            [ ("") x 2, "width=$extwidth" ]
         );
     }
     print ui_columns_end();

@@ -7,6 +7,8 @@ require './mysql-lib.pl';
 &error_setup($text{'login_err'});
 $access{'user'} || !$access{'noconfig'} || &error($text{'login_ecannot'});
 $in{'login'} || &error($text{'login_elogin'});
+$in{'force'} && ($access{'user'} || $access{'noconfig'}) &&
+	&error($text{'login_ecannot'});
 $mysql_login = $config{'login'} = $in{'login'};
 $mysql_pass = $config{'pass'} = $in{'pass'};
 $in{'force'} && force_set_mysql_admin_pass($mysql_login, $mysql_pass);

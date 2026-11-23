@@ -46,19 +46,23 @@ if (@plist) {
 			next if (!$ed && !$jb && !$access{'view'});
 			local $l;
 			if ($ed) {
-				$l = &ui_link("edit_printer.cgi?name=$p", $p)."\n";
+				$l = &ui_link("edit_printer.cgi?name=".
+					      &urlize($p),
+					      &html_escape($p))."\n";
 				}
 			else {
-				$l = $p."\n";
+				$l = &html_escape($p)."\n";
 				}
 			if ($config{'show_jobs'}) {
 				local @jobs = &get_jobs($p->{'name'});
-				$l .= "&nbsp;<a href='list_jobs.cgi?name=$p'>".
+				$l .= "&nbsp;<a href='list_jobs.cgi?name=".
+				      &urlize($p)."'>".
 				      "(".&text('index_jcount', scalar(@jobs)).
 				      ")</a>";
 				}
 			else {
-				$l .= "&nbsp;<a href='list_jobs.cgi?name=$p'>".
+				$l .= "&nbsp;<a href='list_jobs.cgi?name=".
+				      &urlize($p)."'>".
 				      "($text{'index_jlist'})</a>";
 				}
 			push(@grid, $l);
@@ -98,7 +102,7 @@ if (@plist) {
 			local @cols;
 			if ($ed) {
 				push(@cols, "<a href=\"edit_printer.cgi?".
-					    "name=$p->{'name'}\">".
+					    "name=".&urlize($p->{'name'})."\">".
 					    &html_escape($p->{'name'})."</a>");
 				}
 			else {
@@ -110,26 +114,33 @@ if (@plist) {
 				}
 			$wdrv = &is_windows_driver($p->{'iface'}, $p) if (!$wdrv);
 			$hdrv = &is_hpnp_driver($p->{'iface'}, $p);
+			# Device names and remote hosts can be set by other
+			# printer admins, so show them as text
 			if ($wdrv) {
-				push(@cols, "<tt>\\\\$wdrv->{'server'}".
-				      	    "\\$wdrv->{'share'}</tt>");
+				push(@cols, "<tt>".&html_escape(
+					"\\\\$wdrv->{'server'}".
+					"\\$wdrv->{'share'}")."</tt>");
 				$p->{'iface'} = $wdrv->{'program'};
 				}
 			elsif ($hdrv) {
-				push(@cols, "<tt>HPNP $hdrv->{'server'}:".
-					    "$hdrv->{'port'}</tt>");
+				push(@cols, "<tt>".&html_escape(
+					"HPNP $hdrv->{'server'}:".
+					"$hdrv->{'port'}")."</tt>");
 				$p->{'iface'} = $hdrv->{'program'};
 				}
 			elsif ($p->{'rhost'}) {
 				local $qu = $p->{'rqueue'} ? $p->{'rqueue'}
 							   : $p->{'name'};
-				push(@cols, "<tt>$p->{'rhost'}:$qu</tt>");
+				push(@cols, "<tt>".
+				     &html_escape("$p->{'rhost'}:$qu")."</tt>");
 				}
 			elsif ($p->{'dhost'}) {
-				push(@cols, "<tt>$p->{'dhost'}:$p->{'dport'}</tt>");
+				push(@cols, "<tt>".&html_escape(
+					"$p->{'dhost'}:$p->{'dport'}")."</tt>");
 				}
 			else {
-				push(@cols, &dev_name($p->{'dev'}));
+				push(@cols,
+				     &html_escape(&dev_name($p->{'dev'})));
 				}
 			if (!$webmin_print_driver) {
 				$drv = &is_webmin_driver($p->{'iface'}, $p);
@@ -145,7 +156,8 @@ if (@plist) {
 			else {
 				push(@cols, &html_escape($drv->{'desc'}));
 				}
-			$jlink = "<a href=\"list_jobs.cgi?name=$p->{'name'}\">";
+			$jlink = "<a href=\"list_jobs.cgi?name=".
+				 &urlize($p->{'name'})."\">";
 			if ($config{'show_jobs'}) {
 				local @jobs = &get_jobs($p->{'name'});
 				$jlink .= scalar(@jobs);

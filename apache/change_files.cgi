@@ -9,6 +9,9 @@ $access{'global'} || &error($text{'htaccess_ecannot'});
 	&error($text{'htindex_ecannot'});
 $hconf = &get_htaccess_config($in{'file'});
 $d = $hconf->[$in{'idx'}];
+# Only <Files> sections can be changed or deleted here
+$d && $d->{'type'} && $d->{'name'} =~ /^Files(Match)?$/i ||
+	&error($text{'cdir_egone'});
 &lock_file($d->{'file'});
 &before_changing();
 

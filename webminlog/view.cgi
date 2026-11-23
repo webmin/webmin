@@ -140,15 +140,15 @@ foreach my $d (&list_diffs($act)) {
 		$fhtml .= &ui_table_row(undef,
 			&ui_tag('pre',
 				&text("view_type_".$d->{'type'},
-				      "<tt>$d->{'object'}</tt>",
-				      "<tt>".&html_escape($d->{'diff'})."</tt>")
+				    "<tt>".&html_escape($d->{'object'})."</tt>",
+				    "<tt>".&html_escape($d->{'diff'})."</tt>")
 			, {'data-text' => 1}), 2);
 		}
 	else {
 		# Show multi-line diff
 		$fhtml .= &ui_hidden_table_start(
 			$cbox.&text("view_type_".$d->{'type'},
-			            "<tt>$d->{'object'}</tt>"),
+				"<tt>".&html_escape($d->{'object'})."</tt>"),
 			"width=100%", 2, "diff$i", $open);
 		$fhtml .= &ui_table_row(undef,
 			"<pre>".&html_escape($d->{'diff'})."</pre>", 2);

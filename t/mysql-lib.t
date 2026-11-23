@@ -22,7 +22,7 @@ BEGIN {
 	my $caller = caller;
 	no strict 'refs';
 	*{$caller.'::init_config'} = sub { };
-	*{$caller.'::get_module_acl'} = sub { return (); };
+	*{$caller.'::get_module_acl'} = sub { return (bpath => ''); };
 	*{$caller.'::read_file_contents'} = sub { return "10.5.29-MariaDB\n"; };
 	*{$caller.'::compare_version_numbers'} = sub {
 		my ($left, $right) = @_;
@@ -428,9 +428,13 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		return $_[0] eq '/' || index($_[1], $_[0].'/') == 0;
 		};
 	local *main::foreign_installed = sub { return 1; };
+	local *main::foreign_require = sub { };
+	local *cron::list_cron_jobs = sub { () };
+	local *cron::parse_times_input = sub { };
 	local *main::save_module_config = sub { die "SAVED\n"; };
 	local *main::ui_print_header = sub { die "VALIDATED\n"; };
 	local *main::list_databases = sub { return ('testdb'); };
+	is($main::access{'bpath'}, '/', 'a blank backup folder means unrestricted');
 
 	# Test each restriction independently and in representative combinations.
 	foreach my $case (
@@ -444,6 +448,12 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		  { save => 1, all => 1, before => 'id' }, 'backup_esave' ],
 		[ 'parameter with restricted output path', 'root', '/allowed',
 		  { parameters => '--result-file=/outside/dump' }, 'backup_eparameters' ],
+		[ 'directory-limited global login cannot save settings', 'root', '/allowed',
+		  { save => 1 }, 'backup_esave', '' ],
+		[ 'directory-limited global login cannot schedule', 'root', '/allowed',
+		  { sched => 1 }, 'backup_esave', '' ],
+		[ 'blank folder permits saving a schedule with the global login',
+		  'root', $main::access{'bpath'}, { save => 1, sched => 1 }, 'SAVED', '' ],
 		[ 'restricted user parameter', 'nobody', '/',
 		  { parameters => '-r/outside/dump' }, 'backup_eparameters' ],
 		[ 'valid confined backup', 'nobody', '/allowed',
@@ -451,11 +461,12 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		[ 'valid root backup without cron access', 'root', '/',
 		  {}, 'VALIDATED' ],
 		) {
-		my ($name, $user, $path, $input, $expected) = @$case;
+		# A sixth field, if given, replaces the user's database login.
+		my ($name, $user, $path, $input, $expected, $login) = @$case;
 		local %main::module_info;
 		local %main::config;
 		local %main::access = ( dbs => 'testdb', buser => $user,
-			bpath => $path, user => 'dbuser' );
+			bpath => $path, user => $login // 'dbuser' );
 		local %main::in = ( db => 'testdb', file => '/allowed/backup.sql',
 			where_def => 1, charset_def => 1, compatible_def => 1,
 			tables_def => 1, %$input );
@@ -463,6 +474,44 @@ subtest 'backup CGI enforces restrictions before saving or running' => sub {
 		do './mysql/backup_db.cgi';
 		like($@, qr/^\Q$expected\E\b/, $name);
 		}
+
+	{
+		local $main::module_info{'usermin'} = 1;
+		local $main::config{'access'} = '*: testdb';
+		local %main::access = (dbs => '*', buser => 'root', bpath => '/');
+		local %main::userconfig;
+		local %main::in = (db => 'testdb', file => '/backup.sql', save => 1,
+			tables => "t1\0t2", where_def => 1, charset_def => 1);
+		local *main::save_user_module_config = sub { die "PERSONAL\n" };
+		do './mysql/backup_db.cgi';
+		is($@, "PERSONAL\n", 'Usermin saves to the personal config');
+		is($main::userconfig{'backup_tables_testdb'}, 't1 t2',
+		   'personal save keeps the selected tables');
+		$main::in{'sched'} = 1;
+		do './mysql/backup_db.cgi';
+		like($@, qr/^backup_esave/, 'Usermin cannot schedule a backup');
+	}
+
+	# Reject the generated filename in the mock before mkdir can run.
+	my $dir = tempdir(CLEANUP => 1);
+	local %main::module_info;
+	local %main::access = (dbs => '*', buser => 'root', bpath => $dir);
+	local %main::in = (all => 1, file => $dir, mkdir => 1, where_def => 1,
+		charset_def => 1, compatible_def => 1);
+	local *main::date_subs = sub { $_[0] };
+	local *main::supports_backup_db = sub { 1 };
+	local *main::ui_print_header = sub { };
+	local *main::make_dir = sub { die "unexpected mkdir\n" };
+	local *main::is_under_directory = sub { $_[0] eq $_[1] };
+	do './mysql/backup_db.cgi';
+	like($@, qr/^backup_epath/, 'generated filename is checked before mkdir');
+	# Then a single-file destination that leaves the folder after date
+	# substitution must be refused.
+	local *main::date_subs = sub { '/elsewhere' };
+	$main::in{'all'} = 0;
+	$main::in{'db'} = 'testdb';
+	do './mysql/backup_db.cgi';
+	like($@, qr/^backup_epath/, 'expanded single-file destination is checked');
 };
 
 subtest 'binary log retention display round-trips exactly' => sub {

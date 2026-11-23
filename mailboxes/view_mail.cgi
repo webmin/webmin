@@ -11,12 +11,17 @@ if (&is_user($in{'user'})) {
 	}
 
 $uuser = &urlize($in{'user'});
+$udom = &urlize($in{'dom'});
 @folders = &list_user_folders($in{'user'});
-$folder = $folders[$in{'folder'}];
+$in{'folder'} = 0 if (!length($in{'folder'}));
+$in{'folder'} =~ /\A[0-9]+\z/ || &error($text{'view_efolder'});
+$folder = $folders[$in{'folder'}] || &error($text{'view_efolder'});
+$in{'idx'} =~ /\A[0-9]+\z/ || &error($text{'view_egone'});
 @mail = &mailbox_list_mails($in{'idx'}, $in{'idx'}, $folder);
-$mail = $mail[$in{'idx'}];
+$mail = $mail[$in{'idx'}] || &error($text{'view_egone'});
 &parse_mail($mail, undef, $in{'raw'});
 @sub = split(/\0/, $in{'sub'});
+grep(!/\A[0-9]+\z/, @sub) && &error($text{'view_egone'});
 $subs = join("", map { "&sub=$_" } @sub);
 foreach $s (@sub) {
         # We are looking at a mail within a mail ..
@@ -106,7 +111,7 @@ if ($config{'top_buttons'} == 2 && &editable_mail($mail)) {
 
 # Start of headers section
 $hbase = "view_mail.cgi?idx=$in{'idx'}&".
-	 "folder=$in{'folder'}&dom=$in{'dom'}&user=$uuser$subs";
+	 "folder=$in{'folder'}&dom=$udom&user=$uuser$subs";
 if ($in{'headers'}) {
 	push(@hmode, "<a href='$hbase&headers=0&body=$in{'body'}'>$text{'view_noheaders'}</a>");
 	}
@@ -125,7 +130,7 @@ if ($in{'headers'}) {
 			&eucconv_and_escape($mail->{'fromline'}));
 		}
 	foreach $h (@{$mail->{'headers'}}) {
-		print &ui_table_row($h->[0].":",
+		print &ui_table_row(&html_escape($h->[0]).":",
 			&eucconv_and_escape(&decode_mimewords($h->[1])));
 		}
 	}
@@ -259,9 +264,9 @@ $s = int((@mail - $in{'idx'} - 1) / $config{'perpage'}) *
 	$config{'perpage'};
 &mail_page_footer(
 	@sub ? ("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&".
-		"user=$uuser&dom=$in{'dom'}", $text{'view_return'})
+		"user=$uuser&dom=$udom", $text{'view_return'})
 	     : ( ),
-	"list_mail.cgi?folder=$in{'folder'}&user=$uuser&dom=$in{'dom'}",
+	"list_mail.cgi?folder=$in{'folder'}&user=$uuser&dom=$udom",
 	  $text{'mail_return'},
 	&user_list_link(), $text{'index_return'});
 
@@ -328,15 +333,15 @@ if (!@sub) {
 	if ($in{'idx'}) {
 		print "<a href='view_mail.cgi?idx=",
 		    $in{'idx'}-1,"&folder=$in{'folder'}&user=$uuser'>",
-		    "<img src=@{[&get_webprefix()]}/images/left.gif border=0 ",
+		    "<img src=@{[&get_webprefix()]}/images/left.svg border=0 ",
 		    "align=middle></a>\n";
 		}
 	print "<font size=+1>",&text('view_desc', $in{'idx'}+1,
-			$folder->{'name'}),"</font>\n";
+			&html_escape($folder->{'name'})),"</font>\n";
 	if ($in{'idx'} < @mail-1) {
 		print "<a href='view_mail.cgi?idx=",
 		    $in{'idx'}+1,"&folder=$in{'folder'}&user=$uuser'>",
-		    "<img src=@{[&get_webprefix()]}/images/right.gif border=0 ",
+		    "<img src=@{[&get_webprefix()]}/images/right.svg border=0 ",
 		    "align=middle></a>\n";
 		}
 	}

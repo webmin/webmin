@@ -20,7 +20,7 @@ if ($in{'action'} eq $text{'action_sync'}) {
 
 } elsif ($in{'action'} eq $text{'action_sync_s'}) {
   # Set hardware time to system time
-  &error( $text{ 'acl_nohw' } ) if( $access{ 'hwdate' } && $access{'sysdate'} );
+  &error( $text{ 'acl_nohw' } ) if( $access{ 'hwdate' } );
   $err = &set_hardware_time_to_system_time();
   &error( &text( 'error_sync', &html_escape($err) ) ) if ($err);
   &webmin_log("sync_s");
@@ -47,6 +47,8 @@ if ($in{'action'} eq $text{'action_sync'}) {
 } elsif ($in{'action'} eq $text{'index_sync'} || $in{'mode'} eq 'ntp') {
   # Sync with a time server
   $access{'ntp'} || &error($text{'acl_nontp'});
+  # Syncing also sets the hardware clock, which hwdate forbids
+  &error( $text{ 'acl_nohw' } ) if( $in{'hardware'} && $access{ 'hwdate' } );
   # Save service status
   if (defined($in{'sync_service_name'}) &&
       defined($in{'sync_service_status'})) {
@@ -83,7 +85,8 @@ if ($in{'action'} eq $text{'action_sync'}) {
   # Save settings in module config
   &lock_file($module_config_file);
   $config{'timeserver'} = $in{'timeserver'};
-  $config{'timeserver_hardware'} = $in{'hardware'};
+  # Users without hardware clock access keep the existing setting
+  $config{'timeserver_hardware'} = $in{'hardware'} if (!$access{'hwdate'});
   &save_module_config();
   &unlock_file($module_config_file);
 

@@ -23,9 +23,14 @@ $error && &error(&text('notallowed',
 my $size = -s "$file";
 (my $name, my $dir, my $ext) =
 	fileparse($file, qr/\.[^.]*/);
+
+# Keep the file name inside its quoted header value
+my $hname = "$name$ext";
+$hname =~ s/[\0-\x1f\x7f]//g;
+$hname =~ s/(["\\])/\\$1/g;
 print "Content-Type: application/x-download\n";
 print "Content-Disposition: attachment; ".
-	"filename=\"$name$ext\"\n";
+	"filename=\"$hname\"\n";
 print "Content-Length: $size\n\n";
 open(FILE, "< $file") or die "can't open $file: $!";
 binmode FILE;

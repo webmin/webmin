@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Категория на конфигурация:
-config_change=Промяна
 config_return=Системна информация
-config_next=Запазване и Напред
-config_nnext=Следващия
-config_nprev=Предишна
 
 edright_title=Конфигурация на системната информация
 edright_header=Настройки на страницата за информация за виртуалната система

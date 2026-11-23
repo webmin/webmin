@@ -2,6 +2,7 @@
 # Create a whole new object
 
 require './ldap-server-lib.pl';
+$access{'browser'} || &error($text{'browser_ecannot'});
 &error_setup($text{'oadd_err'});
 &ReadParse();
 $ldap = &connect_ldap_db();

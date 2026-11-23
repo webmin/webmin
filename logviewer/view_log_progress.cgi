@@ -35,10 +35,10 @@ $log->{'cmd'} =~ s/\s+\-\-lines\s+\d+//;
 $log->{'cmd'} .= " --follow";
 
 # Add filter to the command if present
-my $filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
+my $filter = quotemeta($in{'filter'} // "");
 my $use_regex = $in{'regex'} ? 1 : 0;
 my $readcmd = $log->{'cmd'};
-if ($filter) {
+if (length($filter)) {
 	my $grep_flag = $use_regex ? "-E" : "-F";
 	$readcmd .= " | grep --line-buffered -a $grep_flag -- $filter";
 	}

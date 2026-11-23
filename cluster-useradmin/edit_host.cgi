@@ -55,14 +55,16 @@ print &ui_hr();
 my @ugrid;
 foreach my $u (@{$host->{'users'}}) {
 	push(@ugrid, &ui_link("edit_user.cgi?user=".&urlize($u->{'user'}).
-			      "&host=".&urlize($server->{'id'}), $u->{'user'}));
+			      "&host=".&urlize($server->{'id'}),
+			      &html_escape($u->{'user'})));
 	}
 print &ui_grid_table(\@ugrid, 4, 100, undef, undef, $text{'host_users'});
 
 my @ggrid;
 foreach $g (@{$host->{'groups'}}) {
 	push(@ggrid, &ui_link("edit_group.cgi?group=".&urlize($g->{'group'}).
-			     "&host=".&urlize($server->{'id'}), $g->{'group'}));
+			     "&host=".&urlize($server->{'id'}),
+			     &html_escape($g->{'group'})));
 	}
 print &ui_grid_table(\@ggrid, 4, 100, undef, undef, $text{'host_groups'});
 

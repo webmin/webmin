@@ -89,9 +89,10 @@ print &ui_table_row($text{'edit_conf'},
 	&ui_radio("cmode", $cmode,
 		  [ [ 0, $text{'edit_cmode0'} ],
 		    [ 1, $text{'edit_cmode1'} ],
-		    [ 2, $text{'edit_cmode2'}." ".
+		    (!$access{'noconfig'} || $cmode == 2 ?
+		    ( [ 2, $text{'edit_cmode2'}." ".
 			 &ui_filebox("cfile",
-				$cmode == 2 ? readlink($cfile) : "", 40) ] ]));
+				$cmode == 2 ? readlink($cfile) : "", 40) ] ) : ( )) ]));
 
 # Clear log files after run?
 print &ui_table_row($text{'edit_clear'},
@@ -116,7 +117,7 @@ if ($in{'new'}) {
 	}
 else {
 	push(@b, [ undef, $text{'save'} ]);
-	push(@b, [ 'global', $text{'edit_global'} ]) if ($cmode);
+	push(@b, [ 'global', $text{'edit_global'} ]) if ($cmode == 1 || ($cmode == 2 && !$access{'noconfig'}));
 	if ($lconf->{'dir'}) {
 		push(@b, [ 'run', $text{'edit_run'} ]);
 		}

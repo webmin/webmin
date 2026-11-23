@@ -68,6 +68,18 @@ else {
 		&check_ipaddress($in{'netmask'}) ||
 			&error("'$in{'netmask'}' $text{'ssub_invalidnmask'}");
 		$oldnetwork = $sub->{'values'}->[0];
+
+		# Per-subnet ACLs are keyed by network address, so refuse the
+		# address of another subnet that this user cannot edit
+		if ($in{'new'} || $in{'network'} ne $oldnetwork) {
+			foreach $s (&find_recursive("subnet", &get_config())) {
+				next if ($s eq $sub ||
+					 $s->{'values'}->[0] ne $in{'network'});
+				&can('rw', \%access, $s) ||
+					&error("$text{'eacl_np'} ".
+					       "$text{'eacl_pus'}");
+				}
+			}
 		$sub->{'values'} = [ $in{'network'}, "netmask", $in{'netmask'} ];
 		}
 

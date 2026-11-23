@@ -45,7 +45,7 @@ print &ui_table_row(&opt_help($text{'session_life'}, 'session.cookie_lifetime'),
 $lf = &find_value("session.gc_maxlifetime", $conf);
 print &ui_table_row(&opt_help($text{'session_maxlife'}, 'session.gc_maxlifetime'),
 	&ui_opt_textbox("session.gc_maxlifetime", $lf || undef,
-			5, $text{'session_forever'})." ".$text{'db_s'});
+			5, $text{'session_default'})." ".$text{'db_s'});
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

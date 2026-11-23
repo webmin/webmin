@@ -16,4 +16,5 @@ $test && &error(&text('restart_etest',
 my $err = &apply_nginx();
 $err && &error("<tt>".&html_escape($err)."</tt>");
 &webmin_log("restart");
-&redirect($in{'redir'} || "");
+# Return to the requested URL, referring page or module index
+&redirect($in{'redir'} || &get_referer_relative() || "");

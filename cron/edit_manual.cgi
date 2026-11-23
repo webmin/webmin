@@ -4,7 +4,7 @@
 require './cron-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'manual_title'}, "");
-$access{'mode'} == 0 || &error($text{'manual_ecannot'});
+&can_edit_cron_files() || &error($text{'manual_ecannot'});
 
 # File selection form
 my @files = &list_cron_files();

@@ -66,7 +66,7 @@ if ($cmd) {
 $err = &restore_database($in{'db'}, $path, $in{'only'}, $in{'clean'}, $tables);
 unlink($path) if ($need_unlink);
 if ($err) {
-	&error(&text('restore_failed', "<pre>$err</pre>"));
+	&error(&text('restore_failed', "<pre>".&html_escape($err)."</pre>"));
 	}
 else {
 	&redirect ("edit_dbase.cgi?db=$in{'db'}") ;

@@ -69,21 +69,16 @@ $desc = &text($user ? 'acl_title2'.$ga : 'acl_title3'.$ga,
 
 # Get the host's ACL options
 &remote_foreign_require($serv->{'host'}, "acl", "acl-lib.pl");
-if ($user) {
-	$aref = &remote_eval($serv->{'host'}, "acl",
-		"\%rv = &get_module_acl('$who', '$mod->{'dir'}'); \\%rv");
-	}
-else {
-	$aref = &remote_eval($serv->{'host'}, "acl",
-		"\%rv = &get_group_module_acl('$who', '$mod->{'dir'}'); \\%rv");
-	}
-%access = %$aref;
+%access = &remote_foreign_call($serv->{'host'}, "acl",
+	$user ? "get_module_acl" : "get_group_module_acl", $who, $mod->{'dir'} || "");
 
 # Display the editor form from this host
 print &ui_form_start("save_acl.cgi", "post");
-print &ui_hidden("_acl_mod", $in{'mod'}),"\n";
-print &ui_hidden("_acl_host", $in{'host'}),"\n";
-if ($in{'group'}) {
+# Use the module, host and account found above. Not every page that links
+# here gives them as separate parameters.
+print &ui_hidden("_acl_mod", $mod->{'dir'}),"\n";
+print &ui_hidden("_acl_host", $host->{'id'}),"\n";
+if (!$user) {
 	print &ui_hidden("_acl_group", $who),"\n";
 	}
 else {

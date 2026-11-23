@@ -13,6 +13,8 @@ require './bind8-lib.pl';    ## no critic
 &error_setup($text{'convert_err'});
 
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+$access{'ro'} && &error($text{'master_ero'});
+&can_edit_zone($zone) || &error($text{'recs_ecannot'});
 my $zconf = &zone_to_config($zone);
 
 $access{'slave'} || &error($text{'screate_ecannot1'});

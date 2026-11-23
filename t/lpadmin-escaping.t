@@ -26,7 +26,9 @@ close($lang);
 
 # Load the real parser and access check without module initialization.
 for my $source ([ 'cups-lib.pl', 'get_jobs' ],
-		[ 'lpadmin-lib.pl', 'can_edit_jobs' ]) {
+		[ 'lpadmin-lib.pl', 'can_edit_jobs' ],
+		[ 'lpadmin-lib.pl', 'can_edit_printer' ],
+		[ 'lpadmin-lib.pl', 'can_view_printer' ]) {
 	open(my $fh, '<', "$root/lpadmin/$source->[0]") or die $!;
 	my $code = do { local $/; <$fh> };
 	$code =~ /(^sub \Q$source->[1]\E\n\{.*?^\})/ms or die "Missing $source->[1]";
@@ -75,7 +77,8 @@ subtest 'test form printer names' => sub {
 	for my $name ('Office_Main', q{O'Reilly & Sons},
 		q{x'><svg onload="alert(1)"></svg>},
 		q{x" autofocus onfocus="alert(1)}) {
-		my $html = render_cgi('test_form', $name, { test => 1 });
+		my $html = render_cgi('test_form', $name,
+				      { test => 1, printers => '*' });
 		check_inert($html, 'Printer name');
 		like($html, qr/\Q@{[main::ui_hidden('name', $name)]}\E/,
 			'Hidden field uses the attribute-escaping helper');
@@ -85,7 +88,8 @@ subtest 'test form printer names' => sub {
 		like($html, qr/action=test_print\.cgi method=post/,
 			'Test-page submission target is unchanged');
 		}
-	my $ok = eval { render_cgi('test_form', 'Office_Main', { test => 0 }); 1 };
+	my $ok = eval { render_cgi('test_form', 'Office_Main',
+				   { test => 0, printers => '*' }); 1 };
 	ok(!$ok, 'Test-print permission remains required');
 	like($@, qr/\Q$main::text{'test_ecannot'}\E/, 'Permission error is unchanged');
 	};
@@ -94,8 +98,9 @@ subtest 'CUPS job titles and queue controls' => sub {
 	for my $title ('Quarterly report.pdf', q{Report's "draft" & notes.txt},
 		q{<svg onload="alert(1)"></svg>}) {
 		local $ENV{'WEBMIN_TEST_PRINT_TITLE'} = $title;
-		for my $access ({ cancel => 0 }, { cancel => 1, user => '*' },
-			{ cancel => 1, user => 'someone-else' }) {
+		for my $access ({ cancel => 0, printers => '*' },
+			{ cancel => 1, user => '*' },
+			{ cancel => 1, user => 'someone-else', view => 1 }) {
 			my $html = render_cgi('list_jobs', 'Office_Main', $access);
 			check_inert($html, 'Job title');
 			like($html, qr/\Q@{[main::html_escape($title)]}\E/,
@@ -125,6 +130,19 @@ subtest 'job-view URLs and empty queues' => sub {
 	like($html, qr/\Q$desc\E/,
 		'Empty queue message remains escaped');
 	unlike($html, qr/action="cancel_all\.cgi"/, 'Empty queue has no cancel form');
+	};
+
+subtest 'printer restrictions' => sub {
+	my $access = { test => 1, cancel => 0, printers => 'Office_Main' };
+	for my $cgi ('list_jobs', 'test_form') {
+		my $ok = eval { render_cgi($cgi, 'Office_Main', $access); 1 };
+		ok($ok, "$cgi allows a printer in the restricted list");
+		$ok = eval { render_cgi($cgi, 'Other', $access); 1 };
+		ok(!$ok, "$cgi refuses a printer outside the restricted list");
+		}
+	my $ok = eval { render_cgi('list_jobs', 'Other',
+				   { %$access, view => 1 }); 1 };
+	ok($ok, 'Jobs on listed but non-configurable printers can be viewed');
 	};
 
 done_testing();

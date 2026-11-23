@@ -2,6 +2,7 @@
 # Show an IP-specific SSL key
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &get_usermin_miniserv_config(\%miniserv);
 if ($in{'new'}) {
@@ -10,12 +11,13 @@ if ($in{'new'}) {
 else {
 	&ui_print_header(undef, $text{'ipkey_title2'}, "");
 	@ipkeys = &webmin::get_ipkeys(\%miniserv);
-	$ipkey = $ipkeys[$in{'idx'}];
+	$ipkey = &webmin::find_ipkey(\@ipkeys, $in{'mapping'}) ||
+		 &error($text{'ipkey_egone'});
 	}
 
 print &ui_form_start("save_ipkey.cgi", "post");
 print &ui_hidden("new", $in{'new'}),"\n";
-print &ui_hidden("idx", $in{'idx'}),"\n";
+print &ui_hidden("mapping", join(",", @{$ipkey->{'ips'}})),"\n" if (!$in{'new'});
 print &ui_table_start($text{'ipkey_header'}, undef, 2);
 
 print &ui_table_row($text{'ipkey_ips2'},

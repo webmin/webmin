@@ -46,7 +46,7 @@ else {
 
 if ($s->{'realhost'}) {
 	print &ui_table_row($text{'edit_realhost'},
-			    "<tt>$s->{'realhost'}</tt>");
+			    "<tt>".&html_escape($s->{'realhost'})."</tt>");
 	}
 
 if ($access{'forcetype'}) {

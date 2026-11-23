@@ -39,6 +39,7 @@ return ($html, $@);
 }
 
 subtest 'certificate success and error output' => sub {
+	local $main::access{'cert'} = 1;
 	# Stub only certificate I/O and account writes; preserve submitted values.
 	my ($saved, $openssl_error);
 	local *main::transname = local *main::tempname = sub { '/fixture/cert' };

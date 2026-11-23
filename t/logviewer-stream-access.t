@@ -25,7 +25,7 @@ my $command;
 	return { id => 'journal-1', cmd => $command };
 	};
 
-# The only executable in the child's PATH records invocation and emits a line.
+# The stub journalctl records its arguments and emits a line without a zero.
 my $tmp = tempdir(CLEANUP => 1);
 my $marker = "$tmp/started";
 open(my $fake, '>', "$tmp/journalctl") or die $!;
@@ -44,21 +44,23 @@ foreach my $case (
 	[ 'syslog denied', 0, '', 'journal-1', 'journalctl --lines 10', 0 ],
 	[ 'syslog unset', undef, '', 'journal-1', 'journalctl --lines 10', 0 ],
 	[ 'syslog allowed', 1, '', 'journal-1', 'journalctl --lines 10', 1 ],
+	[ 'literal zero filter', 1, '', 'journal-1', 'journalctl --lines 10',
+		1, '0' ],
 	[ 'log excluded', 1, '/fixture/other', 'journal-1',
 		'journalctl --lines 10', 0 ],
 	[ 'unknown log', 1, '', 'journal-missing', 'journalctl --lines 10', 0 ],
 	[ 'non-journal command', 1, '', 'journal-1', 'other-command', 0 ]) {
-	my ($label, $syslog, $logs, $id, $cmd, $allowed) = @$case;
+	my ($label, $syslog, $logs, $id, $cmd, $allowed, $filter) = @$case;
 	$command = $cmd;
 	unlink($marker) if (-e $marker);
 	# Run the real CGI in a child so its exit cannot terminate the test suite.
 	my $pid = open(my $output, '-|');
 	die "fork: $!" if (!defined($pid));
 	if (!$pid) {
-		$ENV{'PATH'} = $tmp;
+		$ENV{'PATH'} = "$tmp:$ENV{'PATH'}";
 		$ENV{'LOGVIEWER_TEST_MARKER'} = $marker;
 		%main::access = (syslog => $syslog, logs => $logs);
-		%main::in = (idx => $id);
+		%main::in = (idx => $id, filter => $filter);
 		%main::text = (save_ecannot3 => 'Access denied');
 		do "$root/logviewer/view_log_progress.cgi";
 		die $@ if ($@);
@@ -67,9 +69,9 @@ foreach my $case (
 	my $body = do { local $/; <$output> };
 	close($output);
 	is($? >> 8, 0, "$label: CGI completes");
-	is($body, "Content-Type: text/plain\n\n".
-		($allowed ? "fixture journal line\n" : 'Access denied'),
-		"$label: correct response");
+	my $expected = $allowed ? "fixture journal line\n" : 'Access denied';
+	$expected = '' if (defined($filter));
+	is($body, "Content-Type: text/plain\n\n".$expected, "$label: correct response");
 	is(-e $marker ? 1 : 0, $allowed,
 		"$label: command runs only when permitted");
 	if ($allowed) {

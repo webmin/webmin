@@ -5,7 +5,8 @@
 require './lpadmin-lib.pl';
 &foreign_require("proc", "proc-lib.pl");
 &ReadParseMime();
-$access{'test'} || &error($text{'test_ecannot'});
+$access{'test'} && &can_view_printer($in{'name'}) ||
+	&error($text{'test_ecannot'});
 &ui_print_header(&text('jobs_on', "<tt>".&html_escape($in{'name'})."</tt>"),
 		 $text{'test_title'}, "");
 
@@ -36,11 +37,11 @@ else {
 	$cmd = &command_as_user($remote_user, 0, $cmd);
 	}
 
-print &text('test_exec', "<tt>$cmd</tt>"),"<br>\n";
+print &text('test_exec', "<tt>".&html_escape($cmd)."</tt>"),"<br>\n";
 print "<pre>";
 &open_execute_command(CMD, $cmd, 1);
 while(<CMD>) {
-	print;
+	print &html_escape($_);
 	}
 close(CMD);
 print "</pre>\n";

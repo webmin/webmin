@@ -15,6 +15,11 @@ $access{'authparam'} || &error($text{'authparam_ecannot'});
 my $conf = &get_config();
 &error_setup($text{'authparam_err'});
 
+# Every option is written on one line of squid.conf
+foreach my $k (keys %in) {
+	$in{$k} =~ /[\r\n\0]/ && &error($text{'authparam_eline'});
+	}
+
 if ($squid_version >= 2.5) {
 	my @auth = &find_config("auth_param", $conf);
 

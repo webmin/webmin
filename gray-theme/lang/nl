@@ -10,12 +10,7 @@ mmain_title=Cloudmin $1 op $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
 
-config_section=Configuratie categorie:
-config_change=Verander
 config_return=systeem informatie
-config_next=Opslaan en Volgende
-config_nnext=Volgende
-config_nprev=Vorige
 
 edright_title=Systeem Informatie Configuratie
 edright_header=Virtualmin systeem informatie pagina instellingen

@@ -27,7 +27,8 @@ else {
 		&error($text{'import_efile'});
 	$need_unlink = 1;
 	&ui_print_header(undef, $text{'import_title'}, "");
-	print &text('import_fileout', "<tt>$in{'file'}</tt>"),"<p>\n";
+	print &text('import_fileout', "<tt>".&html_escape($in{'file'})."</tt>"),
+	      "<p>\n";
 	}
 
 if (!$in{'delete'}) {
@@ -68,7 +69,8 @@ while(<FILE>) {
 		@row = split(/\t/, $_);
 		}
 	if (!@row) {
-		print &text('import_erow', "<tt>$_</tt>"),"<p>\n";
+		print &text('import_erow', "<tt>".&html_escape($_)."</tt>"),
+		      "<p>\n";
 		goto failed;
 		}
 	if ($in{'ignore'} && $done{join("/", @row)}++) {
@@ -101,7 +103,8 @@ print &text('import_done', scalar(@rv), $skip),"<p>\n";
 failed:
 unlink($file) if ($need_unlink);
 
-&ui_print_footer("exec_form.cgi?db=$in{'db'}&mode=import", $text{'exec_return'},
-		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("exec_form.cgi?db=".&urlize($in{'db'})."&mode=import",
+		 $text{'exec_return'},
+		 "edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 "", $text{'index_return'});
 

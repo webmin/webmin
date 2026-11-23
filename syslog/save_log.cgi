@@ -73,7 +73,7 @@ elsif ($in{'view'}) {
 	print "Refresh: $config{'refresh'}\r\n"
 		if ($config{'refresh'});
 	&ui_print_header("<tt>".&html_escape($file || $cmd)."</tt>",
-			 $in{'linktitle'} || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
+			 &html_escape($in{'linktitle'}) || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
 
 	$lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 	$filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
@@ -175,6 +175,11 @@ else {
 	$access{'noedit'} && &error($text{'edit_ecannot'});
 	$access{'syslog'} || &error($text{'edit_ecannot'});
 	&error_setup($text{'save_err'});
+
+	# A field in the structured editor cannot start another log entry.
+	foreach my $key (keys %in) {
+		$in{$key} =~ /[\r\n]/ && &error($text{'save_eline'});
+		}
 
 	# Validate destination section
 	if ($in{'mode'} == 0) {

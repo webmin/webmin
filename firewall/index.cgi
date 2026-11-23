@@ -208,7 +208,8 @@ else {
                 @rules = grep { lc($_->{'chain'}) eq lc($c) }
                               @{$table->{'rules'}};
                 print "<b>",$text{"index_chain_".lc($c)} ||
-                            &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
+                            &text('index_chain', "<tt>".&html_escape($c).
+				  "</tt>"),"</b><br>\n";
 
                 # check if chain is filtered out
                 if ($config{'filter_chain'}) {
@@ -274,7 +275,8 @@ else {
 				local @cols;
 				local $act =
 				  $text{"index_jump_".lc($r->{'j'}->[1])} ||
-				  &text('index_jump', $r->{'j'}->[1]);
+				  &text('index_jump',
+					&html_escape($r->{'j'}->[1]));
 
                                 # check if chain jump TO is filtered out
                                 local $chain_filtered;
@@ -301,29 +303,29 @@ else {
 					$cmt = $config{'comment_mod'} ||
 					       $r->{'comment'} ?
 					    $r->{'comment'}->[1] : $r->{'cmt'};
-					push(@cols, $cmt);
+					push(@cols, &html_escape($cmt));
 					}
 
 				# Up/down mover
 				local $mover;
 				if ($r eq $rules[@rules-1]) {
-					$mover .= "<img src=images/gap.gif>";
+					$mover .= &ui_gap(20, 16);
 					}
 				else {
 					$mover .= "<a href='move.cgi?version=${ipvx_arg}&table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
 					      "down=1'><img src=".
-					      "images/down.gif border=0></a>";
+					      "../images/shared/move-down.svg border=0></a>";
 					}
 				if ($r eq $rules[0]) {
-					$mover .= "<img src=images/gap.gif>";
+					$mover .= &ui_gap(20, 16);
 					}
 				else {
 					$mover .= "<a href='move.cgi?version=${ipvx_arg}&table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
-					      "up=1'><img src=images/up.gif ".
+					      "up=1'><img src=../images/shared/move-up.svg ".
 					      "border=0></a>";
 					}
 				push(@cols, $mover);
@@ -334,12 +336,12 @@ else {
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "after=$r->{'index'}'><img src=".
-				      "images/after.gif border=0></a>";
+				      "../images/shared/move-to-bottom.svg border=0></a>";
 				$adder .= "<a href='edit_rule.cgi?version=${ipvx_arg}&table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "before=$r->{'index'}'><img src=".
-				      "images/before.gif border=0></a>";
+				      "../images/shared/move-to-top.svg border=0></a>";
                                 push(@cols, $adder);
 				# chain to jump to is filtered, switch of edit
 				if ($edit && !$chain_filtered) {
@@ -446,12 +448,12 @@ else {
 			my @h = split(/ /, $s->{'Header'});
 			# print matching pínet version
 			if ($h[1] =~ /inet${ipvx}$/) {
-				my @cols = ( "$h[0] $h[1]",
-					     $s->{'Name'},
-					     $s->{'Type'},
+				my @cols = ( &html_escape("$h[0] $h[1]"),
+					     &html_escape($s->{'Name'}),
+					     &html_escape($s->{'Type'}),
 					     $s->{'Number'} || 0,
-					     $h[5],
-					     $s->{'Size'} );
+					     &html_escape($h[5]),
+					     &html_escape($s->{'Size'}) );
 				print &ui_columns_row(\@cols);
 				}
 			}

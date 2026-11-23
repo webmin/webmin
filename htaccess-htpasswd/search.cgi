@@ -7,6 +7,7 @@ require './htaccess-lib.pl';
 
 &ReadParse();
 &error_setup($text{'search_err'});
+$can_create || &error($text{'dir_ecannotcreate'});
 if ($in{'search'} !~ /^\// && $accessdirs[0] ne "/") {
 	# Make path absolute
 	$in{'search'} = "$accessdirs[0]/$in{'dir'}";
@@ -29,10 +30,10 @@ open(FIND, "find ".quotemeta($in{'search'})." -name ".
 while($f = <FIND>) {
 	chop($f);
 	if ($got{$f}) {
-		print &text('search_already', "<tt>$f</tt>"),"<br>\n";
+		print &text('search_already', "<tt>".&html_escape($f)."</tt>"),"<br>\n";
 		}
-	elsif (!open(TEST, $f)) {
-		print &text('search_open', "<tt>$f</tt>", $!),"<br>\n";
+	elsif (!open(TEST, "<", $f)) {
+		print &text('search_open', "<tt>".&html_escape($f)."</tt>", $!),"<br>\n";
 		}
 	else {
 		$conf = &foreign_call($apachemod, "get_htaccess_config", $f);
@@ -40,15 +41,15 @@ while($f = <FIND>) {
 					  "AuthUserFile", $conf, 1);
 		$require = &foreign_call($apachemod, "find_directive",
 					 "require", $conf, 1);
-		if ($currfile && $require) {
-			print &text('search_found', "<tt>$f</tt>",
-				    "<tt>$currfile</tt>"),"<br>\n";
+		if ($currfile && $require && &can_access_dir($currfile)) {
+			print &text('search_found', "<tt>".&html_escape($f)."</tt>",
+				    "<tt>".&html_escape($currfile)."</tt>"),"<br>\n";
 			local $d = $f;
 			$d =~ s/\/$config{'htaccess'}$//;
 			push(@dirs, [ $d, $currfile ]);
 			}
 		else {
-			print &text('search_noprot', "<tt>$f</tt>"),"<br>\n";
+			print &text('search_noprot', "<tt>".&html_escape($f)."</tt>"),"<br>\n";
 			}
 		}
 	}

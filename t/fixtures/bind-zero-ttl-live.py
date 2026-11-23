@@ -214,6 +214,7 @@ with tempfile.TemporaryDirectory(prefix='live-', dir=task) as directory:
             'nonzero 120 IN A 192.0.2.13\n'
             'units 1H IN A 192.0.2.14\n'
             'zerounits 0S IN A 192.0.2.15\n'
+            'restricted IN TXT "keep"\n'
             '@ 0 IN NSEC3PARAM 1 0 0 -\n'
             f'@ 0 IN RRSIG NSEC3PARAM 13 2 0 20270101000000 20260101000000 12345 {name}. Zml4dHVyZQ==\n')
         zones[name] = zone
@@ -280,6 +281,29 @@ with tempfile.TemporaryDirectory(prefix='live-', dir=task) as directory:
             check_records('zero.invalid', str(new))
             check(re.search(r'^explicit(?:\.zero\.invalid\.)?\s+0\s+IN\s+A', content, re.M),
                   'bulk changes preserve explicit record TTLs')
+
+        # Record restrictions also apply to bulk writes. Default TTL changes
+        # remain a zone operation because TTL is not a record type.
+        write_config(conf/'bind8/admin.acl',
+            dict(zones='*', inviews='*', types='A', ro=0, params=1, multiple=1))
+        request('/bind8/mass_update.cgi',
+            dict(d='zero.invalid', type='ttl', old_def=0, old=0, new=600))
+        content = zones['zero.invalid'].read_text()
+        check(re.search(r'^\$TTL\s+600\s*$', content, re.M | re.I),
+              'record restrictions allow a bulk default TTL change')
+        request('/bind8/mass_update.cgi',
+            dict(d='zero.invalid', type='ttl', old_def=0, old=600, new=0))
+
+        # Restricted record types cannot be updated or deleted in bulk.
+        before = zones['zero.invalid'].read_bytes()
+        request('/bind8/mass_update.cgi',
+            dict(d='zero.invalid', type='TXT', old_def=1, new='changed'))
+        check(zones['zero.invalid'].read_bytes() == before,
+              'bulk update rejects a restricted record type')
+        request('/bind8/mass_rdelete.cgi',
+            dict(d='zero.invalid', type='TXT', name_def=1, value_def=1))
+        check(zones['zero.invalid'].read_bytes() == before,
+              'bulk delete rejects a restricted record type')
 
         # Invalid values must leave the zone file unchanged.
         for invalid in ['', '-1', 'abc']:

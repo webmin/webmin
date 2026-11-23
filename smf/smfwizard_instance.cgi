@@ -7,8 +7,7 @@ require './smf-lib.pl';
 # wizard-specific info here
 &wizard_header($wizard, "smfwizard_instance.cgi",
 	"$text{'smfwizard_instance_heading'}",
-	&convert_links_in_text("$text{'smfwizard_instance_description'}"),
-	"images/smf.gif");
+	&convert_links_in_text("$text{'smfwizard_instance_description'}"));
 &wizard_input("smfwizard_instance.cgi", "$text{'smfwizard_instance_name'}",
 	"instance_name", 60, ".+", "$text{'smfwizard_instance_name_error'}");
 &wizard_select("smfwizard_instance.cgi", "$text{'smfwizard_instance_enabled'}",

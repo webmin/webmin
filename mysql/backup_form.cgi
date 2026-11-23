@@ -26,8 +26,9 @@ if (!-x $cmd) {
 	exit;
 	}
 
+# Root cron jobs use the module login and do not retain per-user limits.
 $cron = !$module_info{'usermin'} && $access{'buser'} eq 'root' &&
-	!$access{'user'} && &foreign_installed("cron");
+	$access{'bpath'} eq '/' && !$access{'user'} && &foreign_installed("cron");
 $commands = &can_run_backup_commands($cron);
 if ($in{'all'}) {
 	print "$text{'backup_desc3'}\n";
@@ -226,7 +227,7 @@ if ($cron) {
 	print &ui_hidden_table_end("sched");
 	}
 
-if ($cron) {
+if ($cron || $module_info{'usermin'}) {
 	print &ui_form_end([ [ "backup", $text{'backup_ok'} ],
 			     [ "save", $text{'backup_ok2'} ] ]);
 	}

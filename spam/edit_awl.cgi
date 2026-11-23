@@ -95,7 +95,10 @@ else {
 			$ip = $text{'awl_unknown'};
 			}
 		$score = $awl{$k."|totscore"};
-		print &ui_checked_columns_row([ $email, $ip, $awl{$k}, $score ],
+		print &ui_checked_columns_row([ &html_escape($email),
+						&html_escape($ip),
+						&html_escape($awl{$k}),
+						&html_escape($score) ],
 					      \@tds, "d", $k);
 		}
 	print &ui_columns_end();

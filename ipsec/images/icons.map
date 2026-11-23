@@ -1,0 +1,6 @@
+config=tools.svg
+conn=tunnel-lock.svg
+icon=configure-lock.svg
+policy=user-key.svg
+secrets=keyring.svg
+showkey=document-key.svg

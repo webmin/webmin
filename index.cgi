@@ -42,7 +42,7 @@ if ($gconfig{'texttitles'}) {
 else {
 	@args = ( $gconfig{'nohostname'} ? $text{'main_title2'} :
 		    &text('main_title', $ver, $hostname, $ostr),
-		  "images/webmin-blue.png" );
+		  "images/webmin-blue.svg" );
 	if ($gconfig{'showlogin'}) {
 		$args[0] = $remote_user." : ".$args[0];
 		}
@@ -76,8 +76,9 @@ elsif ($gconfig{"notabs_${base_remote_user}"} == 2 ||
 		if ($pos % $cols == 0) { print "<tr $cb>\n"; }
 		print "<td valign=top align=center width=$per\%>\n";
 		local $idx = $m->{'index_link'};
+		my $icon = &module_icon_url("$m->{'dir'}/images/icon.gif");
 		print "<table border><tr><td><a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>",
-		      "<img src=$m->{'dir'}/images/icon.gif border=0 ",
+		      "<img src=\"$icon\" border=0 ",
 		      "width=48 height=48></a></td></tr></table>\n";
 		print "<a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>$m->{'desc'}</a></td>\n";
 		if ($pos % $cols == $cols - 1) { print "</tr>\n"; }
@@ -113,18 +114,18 @@ else {
 		$t = $cats{$c};
 		if ($in{'cat'} eq $c) {
 			print "<td class='usercoll' valign=top $cb>", $usercol ? "<br>" :
-			  "<img src=images/lc2.gif alt=\"\">","</td>\n";
+			  "<img src=images/lc2.svg alt=\"\">","</td>\n";
 			print "<td class='usercolc' id='selectedcat' $cb>&nbsp;<b>$t</b>&nbsp;</td>\n";
 			print "<td class='usercolr' valign=top $cb>", $usercol ? "<br>" :
-			  "<img src=images/rc2.gif alt=\"\">","</td>\n";
+			  "<img src=images/rc2.svg alt=\"\">","</td>\n";
 			}
 		else {
 			print "<td class='usercoll' valign=top $tb>", $usercol ? "<br>" :
-			  "<img src=images/lc1.gif alt=\"\">","</td>\n";
+			  "<img src=images/lc1.svg alt=\"\">","</td>\n";
 			print "<td class='usercolc' $tb>&nbsp;",
 			      "<a href=@{[&get_webprefix()]}/?cat=$c><b>$t</b></a>&nbsp;</td>\n";
 			print "<td class='usercolr' valign=top $tb>", $usercol ? "<br>" :
-			  "<img src=images/rc1.gif alt=\"\">","</td>\n";
+			  "<img src=images/rc1.svg alt=\"\">","</td>\n";
 			}
 		print "<td width=10></td>\n";
 		}
@@ -141,9 +142,10 @@ else {
 
 		if ($pos % $cols == 0) { print "<tr>\n"; }
 		local $idx = $m->{'index_link'};
+		my $icon = &module_icon_url("$m->{'dir'}/images/icon.gif");
 		print "<td valign=top align=center width=$per\%>\n";
 		print "<table border bgcolor=#ffffff><tr><td><a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>",
-		      "<img src=$m->{'dir'}/images/icon.gif alt=\"\" border=0></a>",
+		      "<img src=\"$icon\" alt=\"\" border=0></a>",
 		      "</td></tr></table>\n";
 		print "<a href=@{[&get_webprefix()]}/$m->{'dir'}/$idx>$m->{'desc'}</a></td>\n";
 		if ($pos++ % $cols == $cols - 1) { print "</tr>\n"; }

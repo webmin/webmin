@@ -21,8 +21,8 @@ print &ui_table_start($passwd::text{'passwd_header'}, undef, 2);
 
 $user->{'real'} =~ s/,.*$//;
 print &ui_table_row($passwd::text{'passwd_for'},
-		    $user->{'user'}.
-	            ($user->{'real'} ? " ($user->{'real'})" : ""));
+		    &html_escape($user->{'user'}.
+	            ($user->{'real'} ? " ($user->{'real'})" : "")));
 
 if ($access{'old'} == 1 ||
     $access{'old'} == 2 && $user->{'user'} ne $remote_user) {

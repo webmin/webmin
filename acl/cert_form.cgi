@@ -7,13 +7,15 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access);
+$access{'cert'} || &error($text{'cert_ecannot'});
 &ui_print_header(undef, $text{'cert_title'}, "", undef, undef, undef, undef,
 		 undef, undef, "language=VBSCRIPT onload='postLoad()'");
 eval { require Net::SSLeay; Net::SSLeay->import; 1 };
 
 print "<p>$text{'cert_msg'}<p>\n";
 if ($ENV{'SSL_USER'}) {
-	print &text('cert_already', "<tt>$ENV{'SSL_USER'}</tt>"),
+	print &text('cert_already',
+		    "<tt>".&html_escape($ENV{'SSL_USER'})."</tt>"),
 	      "<p>\n";
 	}
 

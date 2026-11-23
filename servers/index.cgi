@@ -68,7 +68,7 @@ if (@servers && $config{'display_mode'}) {
 				$link = &make_url($s);
 				}
 		    	$table .= "<span>\n";
-			$table .= &ui_link($link,
+			$table .= &ui_link(&html_escape($link),
 				&html_escape($s->{'realhost'} || $s->{'host'} ).
 				":".$s->{'port'}, undef, "target=_top");
 			$table .= "</span>\n";
@@ -118,12 +118,13 @@ elsif (@servers) {
 		@befores = map { &ui_checkbox("d", $_->{'id'}) } @servers;
 		}
 	my @titles = map { &make_iconname($_) } @servers;
-	my @icons = map { -r "images/$_->{'type'}.svg" ? 
-	                    "images/$_->{'type'}.svg" :
-	                    "images/$_->{'type'}.gif" } @servers;
+	# Server types and hosts are stored values, so escape them in HTML
+	my @icons = map { my $t = $_->{'type'} =~ /^[\w\-]+$/ ?
+				  $_->{'type'} : 'unknown';
+			  "images/$t.svg" } @servers;
 	my @links = map { !$access{'links'} ? undef :
-		       $_->{'user'} || $_->{'autouser'} ?
-			"link.cgi/$_->{'id'}/" : &make_url($_) } @servers;
+		       &html_escape($_->{'user'} || $_->{'autouser'} ?
+			"link.cgi/$_->{'id'}/" : &make_url($_)) } @servers;
 	&icons_table(\@links, \@titles, \@icons, undef, "target=_top",
 		     undef, undef, \@befores, \@afters);
 	}

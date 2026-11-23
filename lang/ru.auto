@@ -1,3 +1,8 @@
+config_section=Категория конфигурации:
+config_change=Изменить
+config_next=Сохранить и далее
+config_nnext=Следующий
+config_nprev=Предыдущая
 category_=Инструменты
 
 longcategory_=Модули, выполняющие другие разные задачи

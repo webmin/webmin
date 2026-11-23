@@ -487,9 +487,12 @@ if ($fmt == 0) {
 	foreach $r (@$conf) {
 		if (!$r->{'other'} &&
 		    $r->{'num'} != 65535) {	# skip auto-added final rule
+			# Quote every word for the shell. A word already in
+			# quotes is passed without them, as the shell would
 			local ($line) = &rule_lines($r, 1, 1);
 			$line = join(" ",
-				  map { /^['"].*["']$/ ? $_ : quotemeta($_) }
+				  map { /^(['"])(.*)\1$/ ? quotemeta($2)
+							 : quotemeta($_) }
 				    split(/\s+/, $line));
 			local $cmd = "$config{'ipfw'} add $line";
 			$out = &backquote_logged("$cmd 2>&1 </dev/null");

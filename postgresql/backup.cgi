@@ -24,11 +24,19 @@ foreach $p ($in{'path'}, &date_subs($in{'path'})) {
 			     "<tt>".&html_escape($bpath)."</tt>"));
 	}
 
-# Scheduled backups do not retain the restricted Unix user's permissions.
-if ($buser && ($in{'save'} || $in{'sched'})) {
+# Root cron jobs use the module login and do not retain per-user limits.
+$cron = !$module_info{'usermin'} && !$buser && $bpath eq '/' &&
+        !$access{'user'} && &foreign_installed("cron");
+# Usermin saves personal settings. Only Webmin can manage root schedules.
+if (!$cron && ($in{'sched'} || ($in{'save'} && !$module_info{'usermin'}))) {
 	&error($text{'backup_esave'});
 	}
 
+# Keep the table selection when saving without running a backup.
+my @tables;
+if (!$in{'all'} && !$in{'tables_def'}) {
+	@tables = split(/\0/, $in{'tables'});
+	}
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
 		-d $in{'path'} || -d &date_subs($in{'path'}) || $in{'mkdir'} ||
@@ -40,12 +48,9 @@ if (!$in{'save'} || $in{'sched'}) {
 		    &error(&text('backup_pe3', $in{'path'})) ;
 		}
 	if (!$in{'all'} && !$in{'tables_def'}) {
-		@tables = split(/\0/, $in{'tables'});
 		@tables || &error($text{'backup_etables'});
 		}
 	}
-$cron = !$module_info{'usermin'} && !$buser &&
-        !$access{'user'} && &foreign_installed("cron");
 $cmode = 0;
 if ($cron) {
 	if ($access{'cmds'}) {
@@ -82,7 +87,9 @@ if (!$in{'all'}) {
 # Save choices for next time the form is visited (and for the cron job)
 if ($module_info{'usermin'}) {
 	$userconfig{'backup_'.$in{'db'}} = $in{'path'};
+	$userconfig{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$userconfig{'backup_format_'.$in{'db'}} = $in{'format'};
+	$userconfig{'backup_compress_'.$in{'db'}} = $in{'compress'};
 	$userconfig{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	if ($in{'save'}) {
 		&save_user_module_config();

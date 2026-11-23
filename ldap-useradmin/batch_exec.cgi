@@ -50,6 +50,11 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 	local @line = split(/:/, $line, -1);
 	local %user;
 	if ($line[0] eq 'create') {
+		if (!$access{'ucreate'}) {
+			print &text('batch_ecaccess', $lnum,
+				    $text{'usave_ecreate'}),"\n";
+			next;
+			}
 		# Creating a new user
 		local @attrs;
 		if ($pft == 2) {
@@ -285,6 +290,7 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		$created++;
 		}
 	elsif ($line[0] eq 'delete') {
+		# Each row is subject to the same user restrictions as the editor.
 		# Deleting an existing user
 		if (@line != 2) {
 			print &text('batch_elen', $lnum, 2),"\n";
@@ -294,6 +300,10 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		local ($user) = grep { $_->{'user'} eq $line[1] } @ulist;
 		if (!$user) {
 			print &text('batch_enouser', $lnum, $line[1]),"\n";
+			next;
+			}
+		if (!&can_edit_user($user)) {
+			print &text('batch_edaccess', $lnum, $text{'uedit_eedit'}),"\n";
 			next;
 			}
 		if (!$mconfig{'delete_root'} && $user->{'uid'} <= 10) {
@@ -387,6 +397,11 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		local ($user) = grep { $_->{'user'} eq $line[1] } @ulist;
 		if (!$user) {
 			print &text('batch_enouser', $lnum, $line[1]),"\n";
+			next;
+			}
+		if (!&can_edit_user($user)) {
+			print &text('batch_emaccess', $lnum,
+				    $text{'usave_eedit'}),"\n";
 			next;
 			}
 		%olduser = %user = %$user;

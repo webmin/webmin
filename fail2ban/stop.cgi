@@ -6,9 +6,11 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './fail2ban-lib.pl';
-our (%text);
+our (%text, %in);
+&ReadParse();
 &error_setup($text{'stop_err'});
 my $err = &stop_fail2ban_server();
 &error("<tt>".&html_escape($err)."</tt>") if ($err);
 &webmin_log("stop");
-&redirect("");
+# Return to the referring page or module index
+&redirect(&get_referer_relative() || "");

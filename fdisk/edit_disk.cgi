@@ -98,14 +98,14 @@ if (@parts) {
 	foreach $p (@parts) {
 		$url = "edit_part.cgi?disk=$d->{'index'}&part=$p->{'index'}";
 
-		# Create extent images
-		$ext = "";
-		$ext1 = int((($p->{'start'} - 1) / $d->{'cylinders'}) * 100) . "%";
-		$ext2 = int((($p->{'end'} - $p->{'start'}) / $d->{'cylinders'}) * 100) . "%";
-		$ext3 = int((($d->{'cylinders'} - ($p->{'end'} - 1)) / $d->{'cylinders'}) * 100) . "%";
-		$ext .= "<img src=images/gap.gif height=10 width='$ext1'>";
-		$ext .= sprintf "<img src=images/%s.gif height=10 width='$ext2'>", $p->{'extended'} ? "ext" : "use";
-		$ext .= "<img src=images/gap.gif height=10 width='$ext3'>";
+		# Draw where the partition sits on the disk : the space before
+		# it, then the partition itself
+		$ext1 = int((($p->{'start'} - 1) / $d->{'cylinders'}) * 100);
+		$ext2 = int((($p->{'end'} - $p->{'start'}) / $d->{'cylinders'}) * 100);
+		$ext = &ui_progress(undef, { 'small' => 1, 'segments' => [
+			{ 'pct' => $ext1, 'empty' => 1 },
+			{ 'pct' => $ext2,
+			  'state' => $p->{'extended'} ? 'info' : 'danger' } ] });
 
 		# Work out usage
 		@stat = &device_status($p->{'device'});

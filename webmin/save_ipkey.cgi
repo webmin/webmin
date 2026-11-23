@@ -3,10 +3,12 @@
 
 require './webmin-lib.pl';
 &ReadParse();
+&lock_file(&get_miniserv_config_file());
 &get_miniserv_config(\%miniserv);
 @ipkeys = &get_ipkeys(\%miniserv);
 if (!$in{'new'}) {
-	$ipkey = $ipkeys[$in{'idx'}];
+	$ipkey = &find_ipkey(\@ipkeys, $in{'mapping'}) ||
+		 &error($text{'ipkey_egone'});
 	}
 else {
 	$ipkey = { };
@@ -14,7 +16,8 @@ else {
 
 if ($in{'delete'}) {
 	# Just remove this entry
-	splice(@ipkeys, $in{'idx'}, 1);
+	defined($ipkey->{'index'}) || &error($text{'ipkey_egone'});
+	splice(@ipkeys, $ipkey->{'index'}, 1);
 	}
 else {
 	# Validate inputs
@@ -26,6 +29,8 @@ else {
 			&error(&text('ipkey_eip2', $i));
 		}
 	@ips || &error(&text('ipkey_eips'));
+	$existing = &find_ipkey(\@ipkeys, join(",", @ips));
+	$existing && $existing != $ipkey && &error($text{'ipkey_eduplicate'});
 	$ipkey->{'ips'} = \@ips;
 	&validate_key_cert($in{'key'}, $in{'cert_def'} ? undef : $in{'cert'});
 	$ipkey->{'key'} = $in{'key'};
@@ -53,5 +58,6 @@ else {
 
 &save_ipkeys(\%miniserv, \@ipkeys);
 &put_miniserv_config(\%miniserv);
+&unlock_file(&get_miniserv_config_file());
 &show_restart_page();
 

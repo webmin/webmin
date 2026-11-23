@@ -150,6 +150,25 @@ foreach $z (&list_timezones()) {
 return undef;
 }
 
+# valid_timezone(zone)
+# Returns 1 if a zone can be saved: it is listed by the OS, or it has a plain
+# relative name and is either a zone file or the current zone
+sub valid_timezone
+{
+my ($zone) = @_;
+return 0 if (!defined($zone) || $zone eq "");
+return 1 if (grep { $_->[0] eq $zone } &list_timezones());
+
+# Path segments may not start with a dot, so .. cannot escape the zone
+# directory, and quotes or line breaks cannot reach config files
+return 0 if ($zone !~ /^[A-Za-z0-9_+\-][A-Za-z0-9_+.\-]*
+		      (\/[A-Za-z0-9_+\-][A-Za-z0-9_+.\-]*)*\z/x);
+return 1 if ($timezones_dir &&
+	     -f &translate_filename("$timezones_dir/$zone"));
+my $cz = &get_current_timezone();
+return defined($cz) && $cz eq $zone ? 1 : 0;
+}
+
 # get_hwclock_flags()
 # Returns command-line flags for hwclock
 sub get_hwclock_flags

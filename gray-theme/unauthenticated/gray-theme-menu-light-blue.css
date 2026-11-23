@@ -1,0 +1,28 @@
+/*
+ * gray-theme-menu-light-blue.css
+ * Light blue menu of the framed theme, loaded after gray-theme.css in the
+ * menu frame when chosen in the theme settings.
+ */
+
+/* A light blue menu with dark text. The dark palette of gray-theme.css
+ * outranks it, so every variable set here must also be set there. */
+.menu-panel {
+	--bg-color-frame: #dce5f4;
+	--border-color-panel: rgba(16, 24, 40, 0.12);
+	--border-color-frame: #cad3e2;
+	/* A blue tint for the row under the mouse */
+	--bg-color-hover: #ccd7ea;
+	/* The row of the page shown is white with blue text */
+	--bg-color-current: #ffffff;
+	--text-color-current: #1f5fcd;
+	/* The switch is a blue gray track with a white pill */
+	--bg-color-switch: #00000017;
+	--border-color-input: #c3cfe0;
+	/* The creation button is filled blue with white text and a white
+	 * plus, and a darker edge under the mouse */
+	--element-highlight-bg-color: #1f5fcd;
+	--element-highlight-text-color: #ffffff;
+	--element-highlight-icon-color: #ffffff;
+	--accent-color-soft: transparent;
+	--border-color-info: #17489c;
+}

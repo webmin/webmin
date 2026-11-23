@@ -1,0 +1,5 @@
+after=move-to-bottom.svg
+before=move-to-top.svg
+down=move-down.svg
+icon=firewall.svg
+up=move-up.svg

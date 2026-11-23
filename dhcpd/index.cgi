@@ -10,20 +10,22 @@
 require './dhcpd-lib.pl';
 $display_max = $config{'display_max'} || 1000000000;
 &ReadParse();
-$horder = $in{'horder'};
-$norder = $in{'norder'};
+# Sort orders are numbers, and they are echoed into links and saved, so
+# anything else is ignored
+$horder = $in{'horder'} =~ /^\d+$/ ? $in{'horder'} : "";
+$norder = $in{'norder'} =~ /^\d+$/ ? $in{'norder'} : "";
 if ($horder eq "" && open(INDEX, "<$module_config_directory/hindex.".$remote_user)) {
 	chop($horder = <INDEX>);
 	close(INDEX);
 	}
-if (!$horder) {
+if ($horder !~ /^\d+$/) {
 	$horder = 0;
 	}
 if ($norder eq "" && open(INDEX, "<$module_config_directory/nindex.".$remote_user)) {
 	chop($norder = <INDEX>);
 	close(INDEX);
 	}
-if (!$norder) {
+if ($norder !~ /^\d+$/) {
 	$norder = 0;
 	}
 $nocols = $config{'dhcpd_nocols'} ? $config{'dhcpd_nocols'} : 5;
@@ -352,11 +354,13 @@ foreach $h (@host) {
 		push(@htitles, &html_escape($t));
 		if ($config{'show_ip'}) {
 			$fv = &fixedaddr($h);
-			$htitles[$#htitles] .= "<br>".$fv if ($fv);
+			$htitles[$#htitles] .= "<br>".&html_escape($fv)
+				if ($fv);
 			}
 		if ($config{'show_mac'}) {
 			local $hard = &find("hardware", $h->{'members'});
-			$htitles[$#htitles] .= "<br>$hard->{'values'}->[1]"
+			$htitles[$#htitles] .= "<br>".
+				&html_escape($hard->{'values'}->[1])
 				if ($hard);
 			}
 		$t = $htitles[$#htitles];
@@ -646,9 +650,9 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 	if ($config{'desc_name'} && $par{$h}->{'comment'}) {
 	    $parent = $par{$h}->{'comment'};
 	}
-	push(@cols, "$par_type  $parent");
-	push(@cols, $_[3]->[$i] ? &hardware($h) : "");
-	push(@cols, $_[3]->[$i] ? &fixedaddr($h) : "");
+	push(@cols, "$par_type  ".&html_escape($parent));
+	push(@cols, $_[3]->[$i] ? &html_escape(&hardware($h)) : "");
+	push(@cols, $_[3]->[$i] ? &html_escape(&fixedaddr($h)) : "");
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $_[5]->[$i]);
 	}
 print &ui_columns_end();
@@ -691,10 +695,10 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		}
 	push(@cols, $first);
 	push(@cols, $cmt) if ($hascmt);
-	push(@cols, $_[3]->[$i] ? &netmask($n) : "");
-	push(@cols, $n->{'comment'});
-	push(@cols, $par{$n} ? 
-		"$text{'index_toshared'} $par{$n}->{'values'}->[0]" : "");
+	push(@cols, $_[3]->[$i] ? &html_escape(&netmask($n)) : "");
+	push(@cols, &html_escape($n->{'comment'}));
+	push(@cols, $par{$n} ? "$text{'index_toshared'} ".
+			       &html_escape($par{$n}->{'values'}->[0]) : "");
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $_[5]->[$i]);
 	}
 print &ui_columns_end();

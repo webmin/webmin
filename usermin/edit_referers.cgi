@@ -3,6 +3,7 @@
 # Display a list of trusted referers
 
 require './usermin-lib.pl';
+$access{'referers'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'referers_title'}, "");
 &get_usermin_config(\%ugconfig);
 

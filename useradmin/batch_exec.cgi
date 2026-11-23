@@ -24,12 +24,12 @@ elsif ($in{'source'} == 2) {
 
 &ui_print_unbuffered_header(undef, $text{'batch_title'}, "");
 
-# Force defaults for save options
-$in{'makehome'} = 1 if (!$access{'makehome'});
-$in{'copy'} = 1 if (!$access{'copy'} && $config{'user_files'} =~ /\S/);
-$in{'movehome'} = 1 if (!$access{'movehome'});
-$in{'chuid'} = 1 if (!$access{'chuid'});
-$in{'chgid'} = 1 if (!$access{'chgid'});
+# Apply the same forced choices as the individual account editor.
+foreach my $option (qw(makehome copy movehome chuid chgid)) {
+	$in{$option} = !$access{$option} if ($access{$option} != 1);
+	}
+$in{'copy'} = 0 if ($config{'user_files'} !~ /\S/);
+$in{'delhome'} = $access{'delhome'} == 1 if ($access{'delhome'} != 2);
 
 # Work out a good base UID for new users
 &build_user_used(\%used, undef, \%taken);
@@ -218,6 +218,13 @@ foreach $line (split(/[\r\n]+/, $data)) {
 				}
 			}
 
+		my ($denied) = grep { !&can_use_group(\%access, $_->{'group'}) } @secs;
+		if ($denied) {
+			print &text('batch_ecaccess', $lnum,
+				    &text('usave_esecondary', &html_escape($denied->{'group'}))),"\n";
+			next;
+			}
+
 		# Work out the password
 		if ($in{'crypt'}) {
 			$user{'pass'} = $line[2];
@@ -328,7 +335,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			print &text('batch_enouser', $lnum, $line[1]),"\n";
 			next;
 			}
-		if (!&can_edit_user(\%access, $user)) {
+		if (!$access{'udelete'} || !&can_edit_user(\%access, $user)) {
 			print &text('batch_edaccess', $lnum,
 				    $text{'udel_euser'}),"\n";
 			next;
@@ -426,6 +433,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		if ($line[2] ne '') {
 			if (!$access{'urename'}) {
 				print &text('batch_erename', $lnum, $line[1]),"\n";
+				next;
 				}
 			$user{'user'} = $line[2];
 			}

@@ -16,8 +16,12 @@ foreach $i (&find_value("include", $conf)) {
 		}
 	}
 
-# Build new list of includes
-push(@incs, split(/\0/, $in{'d'}));
+# Build new list of includes, which must be files in the schema directory
+foreach $d (split(/\0/, $in{'d'})) {
+	$d =~ /^(.*)\/([^\/\r\n]+)\z/ && $1 eq $config{'schema_dir'} ||
+		&error($text{'schema_edir'});
+	push(@incs, $d);
+	}
 @incs = &unique(@incs);
 
 # Write out

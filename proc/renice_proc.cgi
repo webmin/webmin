@@ -5,13 +5,13 @@
 require './proc-lib.pl';
 &ReadParse();
 &switch_acl_uid();
-&error_setup(&text('renice_err', $in{pid}));
+&error_setup(&text('renice_err', &html_escape($in{pid})));
 %pinfo = &process_info($in{pid});
 
 # Set nice level
 &can_edit_process($pinfo{'user'}) || &error($text{'renice_ecannot'});
 if ($error = &renice_proc($in{'pid'}, $in{nice})) {
-	&error($error);
+	&error(&html_escape($error));
 	}
 
 # Set IO scheduling
@@ -21,5 +21,5 @@ if (defined($in{'sclass'})) {
 	}
 
 &webmin_log("renice", undef, undef, \%in);
-&redirect("edit_proc.cgi?$in{pid}");
+&redirect("edit_proc.cgi?".&urlize($in{pid}));
 

@@ -8,7 +8,7 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 &ReadParse();
 
 # Needs permission for filter aliases, and for the file's directory
-if (!&can_edit_alias_files(6) ||
+if (!&can_edit_alias_files(6, $in{'file'}) ||
     !&is_under_directory($access{'apath'}, $in{'file'})) {
 	&error(&text('ffile_efile', &html_escape($in{'file'})));
 	}

@@ -40,7 +40,7 @@ $mnow = ($mmodes[1]==0 ? $msave : $mnow);
 
 # Start of the form
 print &ui_form_start("save_mount.cgi", "post");
-print &ui_hidden("return", $in{'return'});
+print &ui_hidden("return", &local_return_url($in{'return'}));
 if (!$newm) {
 	print &ui_hidden("old", $in{'index'});
 	print &ui_hidden("temp", $in{'temp'});
@@ -150,5 +150,5 @@ else {
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
 
-&ui_print_footer($in{'return'}, $text{'index_return'});
+&ui_print_footer(&local_return_url($in{'return'}), $text{'index_return'});
 

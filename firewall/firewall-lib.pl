@@ -284,7 +284,8 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 		if ($d eq 'match-set') {
 			$v[1] = $text{'desc_'.$d.'_'.$v[1]} || $v[1];
 			}
-		my $txt = &text("desc_$d$n", map { "<b>$_</b>" } @v);
+		my $txt = &text("desc_$d$n",
+				map { "<b>".&html_escape($_)."</b>" } @v);
 		push(@c, $txt) if ($txt);
 		}
 	}

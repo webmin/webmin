@@ -17,16 +17,27 @@ $access{'buser'} || &error($text{'dbase_ecannot'});
 &error_setup($text{'backup_err'});
 
 # Cannot download all the DBs
-if ($in{'dest'} == 1 && $in{'all'}) {
+if ($in{'dest'} && $in{'all'}) {
 	&error($text{'backup_edownloadall'});
 	}
-if ($in{'dest'} == 1 && ($in{'sched'} || $in{'save'})) {
+# Downloads go to the browser, so they cannot be saved or scheduled
+if ($in{'dest'} && ($in{'sched'} || $in{'save'})) {
 	&error($text{'backup_edownloadsave'});
 	}
-# Apply the path restriction to both immediate and saved backups.
-if (!$in{'dest'} && !&is_under_directory($access{'bpath'}, $in{'file'})) {
-	&error($text{'backup_epath'}."<br>".
-	       &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
+# check_path(path)
+# Stops with an error unless the path is under the allowed backup folder.
+my $check_path = sub {
+	my ($path) = @_;
+	&is_under_directory($access{'bpath'}, $path) ||
+		&error($text{'backup_epath'}."<br>".
+		       &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
+	};
+# Check the destination before and after expanding dates and templates.
+my $local_path;
+if (!$in{'dest'}) {
+	$check_path->($in{'file'});
+	$local_path = &date_subs($in{'file'});
+	$check_path->($local_path);
 	}
 # Dump options can create files directly and bypass output restrictions.
 if ($in{'parameters'} &&
@@ -34,6 +45,11 @@ if ($in{'parameters'} &&
 	&error($text{'backup_eparameters'});
 	}
 
+# Keep the table selection when saving without running a backup.
+my @tables;
+if (!$in{'all'} && !$in{'tables_def'}) {
+	@tables = split(/\0/, $in{'tables'});
+	}
 # Validate fields required to run a backup now or from a schedule.
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
@@ -56,16 +72,16 @@ if (!$in{'save'} || $in{'sched'}) {
 		&error(&text('backup_eccmd', "<tt>$ccmd</tt>"));
 	if (!$in{'all'} && !$in{'tables_def'}) {
 		# A custom table selection must include at least one table.
-		@tables = split(/\0/, $in{'tables'});
 		@tables || &error($text{'backup_etables'});
 		}
 	}
 @compat = $in{'compatible_def'} ? ( ) : ( $in{'compatible'} );
 push(@compat, split(/\0/, $in{'options'}));
+# Root cron jobs use the module login and do not retain per-user limits.
 $cron = !$module_info{'usermin'} && $access{'buser'} eq 'root' &&
-	!$access{'user'} && &foreign_installed("cron");
-# Only root-backup schedulers may save shared settings.
-if (($in{'save'} || $in{'sched'}) && !$cron) {
+	$access{'bpath'} eq '/' && !$access{'user'} && &foreign_installed("cron");
+# Usermin saves personal settings. Only Webmin can manage root schedules.
+if (!$cron && ($in{'sched'} || ($in{'save'} && !$module_info{'usermin'}))) {
 	&error($text{'backup_esave'});
 	}
 $commands = &can_run_backup_commands($cron);
@@ -107,7 +123,9 @@ if ($cron) {
 if ($module_info{'usermin'}) {
 	if (!$in{'dest'}) {
 		$userconfig{'backup_'.$in{'db'}} = $in{'file'};
+		$userconfig{'backup_prefix_'.$in{'db'}} = $in{'prefix'};
 		}
+	$userconfig{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$userconfig{'backup_where_'.$in{'db'}} =
 		$in{'where_def'} ? undef : $in{'where'};
 	$userconfig{'backup_charset_'.$in{'db'}} =
@@ -187,21 +205,31 @@ if (!$in{'save'}) {
 			goto donebackup;
 			}
 		}
+	# Keep the current Unix user unless the backup uses a different writer.
+	my $writer = &mysql_command_unix_user();
 	foreach $db (@dbs) {
 		my $deletefile = 0;
 		if ($in{'all'}) {
 			# File in a directory
-			$dir = &date_subs($in{'file'});
+			$dir = $local_path;
 			$prefix = &date_subs($in{'prefix'});
-			&make_dir($dir, 0755) if ($in{'mkdir'});
 			$file = $dir."/".$prefix.$db.".sql".
 				($in{'compress'} == 1 ? ".gz" :
 				 $in{'compress'} == 2 ? ".bz2" : "");
+			# The prefix and database name may hold path parts,
+			# so check the full filename too
+			$check_path->($file);
+			if ($in{'mkdir'}) {
+				# Create the folder as the dump writer, so only
+				# their permissions apply
+				my $mkdir = sub { &make_dir($dir, 0755) };
+				$writer ? &eval_as_unix_user($writer, $mkdir) : $mkdir->();
+				}
 			$deletefile = 1;
 			}
 		elsif (!$in{'dest'}) {
 			# Single file
-			$file = &date_subs($in{'file'});
+			$file = $local_path;
 			$deletefile = 1;
 			}
 		else {
@@ -231,7 +259,11 @@ if (!$in{'save'}) {
 				next;
 				}
 			}
-		&unlink_file($file) if ($deletefile);
+		if ($deletefile) {
+			# Remove the old dump as the writer.
+			my $unlink = sub { &unlink_file($file) };
+			$writer ? &eval_as_unix_user($writer, $unlink) : $unlink->();
+			}
 		local $err = &backup_database($db, $file, $in{'compress'},
 			$in{'drop'}, $in{'where_def'} ? undef : $in{'where'},
 			$in{'charset_def'} ? undef : $in{'charset'},

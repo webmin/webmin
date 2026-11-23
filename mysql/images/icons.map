@@ -1,0 +1,17 @@
+cnf=database-settings.svg
+cprivs=document-key.svg
+db=folder-green.svg
+dbs=padlock.svg
+hosts=network-computer.svg
+icon=database.svg
+index=database-index.svg
+manual=edit.svg
+procs=network-globe.svg
+root=user-key.svg
+ssl=secure-certificate.svg
+table=folder-green-open.svg
+tables=folder-green-open.svg
+tprivs=table-key.svg
+users=users.svg
+vars=tools.svg
+view=search.svg

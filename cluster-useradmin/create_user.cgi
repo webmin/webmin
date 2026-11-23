@@ -212,20 +212,11 @@ foreach $host (@hosts) {
 		}
 
 	# Run the pre-change command
-	$envsgids = join(",", split(/\0/, $in{'sgid'}));
-	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : undef;
-	&remote_eval($serv->{'host'}, "useradmin", <<EOF
-\$ENV{'USERADMIN_USER'} = '$user{'user'}';
-\$ENV{'USERADMIN_UID'} = '$user{'uid'}';
-\$ENV{'USERADMIN_REAL'} = '$user{'real'}';
-\$ENV{'USERADMIN_SHELL'} = '$user{'shell'}';
-\$ENV{'USERADMIN_HOME'} = '$user{'home'}';
-\$ENV{'USERADMIN_GID'} = '$user{'gid'}';
-\$ENV{'USERADMIN_SECONDARY'} = '$envsgids';
-\$ENV{'USERADMIN_PASS'} = '$envpass';
-\$ENV{'USERADMIN_ACTION'} = 'CREATE_USER';
-EOF
-	);
+	my @envsgids = split(/\0/, $in{'sgid'});
+	# Hooks have always had this variable, empty when no password is set
+	$envpass = $in{'passmode'} == 3 ? $in{'pass'} : '';
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+			     \%user, "CREATE_USER", $envpass, \@envsgids);
 	$merr = &remote_foreign_call($serv->{'host'}, "useradmin",
 				     "making_changes");
 	if (defined($merr)) {
@@ -238,15 +229,18 @@ EOF
 	local $made_home;
 	if ($in{'servs'} || $host eq $hosts[0]) {
 		if ($in{'makehome'}) {
+			# Quote the path for the code the other server runs
+			local $qhome = &remote_perl_string($user{'home'});
 			local $exists = &remote_eval($serv->{'host'},
-				"useradmin", "-e '$user{'home'}'");
+				"useradmin", "-e $qhome");
 			if (!$exists) {
 				print "$text{'usave_mkhome'}<br>\n";
 				local $rv = &remote_eval($serv->{'host'}, "useradmin",
-					"mkdir('$user{'home'}', oct('$uconfig{'homedir_perms'}')) && chmod(oct('$uconfig{'homedir_perms'}'), '$user{'home'}') ? undef : \$!");
+					"mkdir($qhome, oct('$uconfig{'homedir_perms'}')) && chmod(oct('$uconfig{'homedir_perms'}'), $qhome) ? undef : \$!");
 				$rv && &error(&text('usave_emkdir', $rv));
 				$rv = &remote_eval($serv->{'host'}, "useradmin",
-					"chown($user{'uid'}, $user{'gid'}, '$user{'home'}')");
+					"chown(".int($user{'uid'}).", ".
+					int($user{'gid'}).", $qhome)");
 				$rv || &error(&text('usave_echown', $rv));
 				$made_home = 1;
 				print "$text{'udel_done'}<p>\n";
@@ -300,11 +294,11 @@ EOF
 	if ($in{'others'}) {
 		# Create in other modules on the server
 		print "$text{'usave_others'}<br>\n";
-		$user{'passmode'} = $in{'passmode'};
-		$user{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+		my %updated = (%user, 'passmode' => $in{'passmode'});
+		$updated{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
 		&remote_foreign_call($serv->{'host'}, "useradmin",
 				     "other_modules", "useradmin_create_user",
-				     \%user);
+				     \%updated);
 		print "$text{'udel_done'}<p>\n";
 		}
 

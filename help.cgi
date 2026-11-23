@@ -14,8 +14,8 @@ my $module = $1;
 my $file = $2;
 &ReadParse();
 
-# if it ends with .gif assume it is a direct URL
-if ($file =~ /\.(gif|jpg|jpeg|png)$/i) {
+# An image name is a direct URL inside the module
+if ($file =~ /\.(gif|jpg|jpeg|png|svg)$/i) {
 	&redirect("$module/$file");
 	return;
 	}

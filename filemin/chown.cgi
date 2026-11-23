@@ -50,7 +50,7 @@ else {
 			"chown $recursive $uid:$grid ".
 			quotemeta($full)) != 0) {
 			push @errors,
-				"$name - " .
+				&html_escape($name)." - " .
 				"$text{'error_chown'}: $?";
 			}
 		}

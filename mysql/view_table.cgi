@@ -185,7 +185,7 @@ if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	print "<center>\n";
 	if ($in{'start'}) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
-		     "<img src=../images/left.gif border=0 align=middle></a>\n",
+		     "<img src=../images/left.svg border=0 align=middle></a>\n",
 		     &urlize($in{'db'}), &urlize($in{'table'}),
 		     $in{'start'} - $displayconfig{'perpage'},
 		     $searchargs, $sortargs;
@@ -195,7 +195,7 @@ if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	      $in{'start'}+$displayconfig{'perpage'}, $total),"</font>\n";
 	if ($in{'start'}+$displayconfig{'perpage'} < $total) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
-		     "<img src=../images/right.gif border=0 align=middle></a> ",
+		     "<img src=../images/right.svg border=0 align=middle></a> ",
 		     &urlize($in{'db'}), &urlize($in{'table'}),
 		     $in{'start'} + $displayconfig{'perpage'},
 		     $searchargs, $sortargs;
@@ -516,9 +516,9 @@ sub column_sort_link
 {
 local ($field) = @_;
 local $dir = $in{'sortfield'} eq $field ? !$in{'sortdir'} : 0;
-local $img = $in{'sortfield'} eq $field && $dir ? "sortascgrey.gif" :
-	     $in{'sortfield'} eq $field && !$dir ? "sortdescgrey.gif" :
-	     $dir ? "sortasc.gif" : "sortdesc.gif";
+local $img = $in{'sortfield'} eq $field && $dir ? "sortascgrey.svg" :
+	     $in{'sortfield'} eq $field && !$dir ? "sortdescgrey.svg" :
+	     $dir ? "sortasc.svg" : "sortdesc.svg";
 return "<a href='view_table.cgi?db=".&urlize($in{'db'}).
        "&table=".&urlize($in{'table'})."&start=".&urlize($in{'start'}).
        "&sortfield=".&urlize($field)."&sortdir=".&urlize($dir)."$searchargs'>".

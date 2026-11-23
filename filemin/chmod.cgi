@@ -23,7 +23,8 @@ if ($in{'applyto'} eq '1') {
 			"chmod " . quotemeta($perms) . " " .
 			quotemeta($full)) != 0) {
 			push @errors,
-				"$name - $text{'error_chmod'}: $?";
+				&html_escape($name)." - ".
+				"$text{'error_chmod'}: $?";
 			}
 		}
 	}
@@ -37,7 +38,8 @@ if ($in{'applyto'} eq '2') {
 			"chmod " . quotemeta($perms) . " " .
 			quotemeta($full)) != 0) {
 			push @errors,
-				"$name - $text{'error_chmod'}: $?";
+				&html_escape($name)." - ".
+				"$text{'error_chmod'}: $?";
 			}
 		if (-d $full) {
 			if (system_logged(
@@ -48,7 +50,7 @@ if ($in{'applyto'} eq '2') {
 				quotemeta($perms) .
 				" {} \\;") != 0) {
 				push @errors,
-					"$name - " .
+					&html_escape($name)." - " .
 					"$text{'error_chmod'}: $?";
 				}
 			}
@@ -64,7 +66,8 @@ if ($in{'applyto'} eq '3') {
 			" " .
 			quotemeta($full)) != 0) {
 			push @errors,
-				"$name - $text{'error_chmod'}: $?";
+				&html_escape($name)." - ".
+				"$text{'error_chmod'}: $?";
 			}
 		}
 	}
@@ -80,7 +83,7 @@ if ($in{'applyto'} eq '4') {
 				quotemeta($perms) . " " .
 				quotemeta($full)) != 0) {
 				push @errors,
-					"$name - " .
+					&html_escape($name)." - " .
 					"$text{'error_chmod'}: $?";
 				}
 			}
@@ -92,7 +95,7 @@ if ($in{'applyto'} eq '4') {
 				quotemeta($perms) .
 				" {} \\;") != 0) {
 				push @errors,
-					"$name - " .
+					&html_escape($name)." - " .
 					"$text{'error_chmod'}: $?";
 				}
 			}
@@ -109,7 +112,7 @@ if ($in{'applyto'} eq '5') {
 				quotemeta($perms) . " " .
 				quotemeta($full)) != 0) {
 				push @errors,
-					"$name - " .
+					&html_escape($name)." - " .
 					"$text{'error_chmod'}: $?";
 				}
 			if (system_logged(
@@ -119,7 +122,7 @@ if ($in{'applyto'} eq '5') {
 				quotemeta($perms) .
 				" {} \\;") != 0) {
 				push @errors,
-					"$name - " .
+					&html_escape($name)." - " .
 					"$text{'error_chmod'}: $?";
 				}
 			}

@@ -25,6 +25,11 @@ if ($in{'delete'}) {
 else {
 	# Saving or creating.. check inputs
 	$whatfailed = "Failed to save spam control rule";
+
+	# Each field must stay on its map or comment line
+	foreach my $k ("from", "tag", "action", "err", "msg", "cmt") {
+		$in{$k} =~ /[\r\n\0]/ && &error($text{'ssave_eline'});
+		}
 	$from = $in{'from'};
 	$in{'from_type'} == 0 && $from !~ /^[^\@ ]+\@[A-z0-9\.\-]+$/ &&
 		&error(&text('ssave_etype0', $from));

@@ -55,6 +55,7 @@ upload_done=Successfully uploaded the following files :
 upload_eaccess=You are not allowed to upload files to $1
 upload_ecannot=You are not allowed to upload files at all
 upload_eucannot=You are not allowed to upload files as user $1
+upload_eunix=There is no Unix user named $1 to transfer files as
 upload_egcannot=The selected group does not contain the selected user
 upload_ecmd=Missing command $1
 upload_eextract=, which could not be extracted : $1
@@ -85,6 +86,7 @@ download_eatd=Scheduled downloads are not possible unless the At daemon is runni
 cancel_err=Failed to cancel downloads
 cancel_enone=None selected
 cancel_ecannot=You are not allowed to cancel downloads for user $1
+cancel_eid=Invalid download ID
 
 log_cancel=Cancelled $1 download(s)
 log_upload_l=Uploaded file(s) $1

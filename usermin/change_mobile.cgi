@@ -2,6 +2,7 @@
 # Display options specific to mobile devices
 
 require './usermin-lib.pl';
+$access{'mobile'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'mobile_err'});
 

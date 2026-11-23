@@ -87,12 +87,12 @@ elsif ($in{'new'}) {
 elsif ($in{'black'} || $in{'white'}) {
 	# Deny or allow all senders
 	$dir = $in{'black'} ? "blacklist_from" : "whitelist_from";
+	&can_edit_spam_lists() || &error($text{'black_ecannot'});
 	@delete || &error($text{'delete_ebnone'});
 	@mail = &mailbox_list_mails($delete[0], $delete[@delete-1], $folder);
 	foreach $d (@delete) {
 		push(@addrs, map { $_->[0] } &split_addresses($mail[$d]->{'header'}->{'from'}));
 		}
-	&foreign_require("spam", "spam-lib.pl");
 	local $conf = &spam::get_config();
 	local @from = map { @{$_->{'words'}} }
 			  &spam::find($dir, $conf);

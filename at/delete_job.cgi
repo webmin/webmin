@@ -4,7 +4,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-our (%text, %in); 
+our (%text, %in, %access);
 
 require './at-lib.pl';
 &ReadParse();
@@ -13,8 +13,11 @@ require './at-lib.pl';
 my @jobs = &list_atjobs();
 my ($job) = grep { $_->{'id'} eq $in{'id'} } @jobs;
 $job || &error($text{'delete_egone'});
+&can_edit_user(\%access, $job->{'user'}) || &error($text{'edit_ecannot'});
 
 if ($in{'run'}) {
+	my @uinfo = getpwnam($job->{'user'});
+	@uinfo || &error($text{'delete_egone'});
 	# Run the command and show output
 	&ui_print_header(undef, $text{'run_title'}, "");
 
@@ -28,7 +31,6 @@ if ($in{'run'}) {
 
 	print "<p>\n";
 	print &text('run_output'),"<p>\n";
-	my @uinfo = getpwnam($job->{'user'});
 	print "<pre>";
 	&additional_log('exec', undef, $job->{'cmd'});
 	my $got = &proc::safe_process_exec($temp, $uinfo[2], $uinfo[3],
@@ -43,8 +45,6 @@ if ($in{'run'}) {
 else {
 	# Just delete the at job
 	&error_setup($text{'delete_err'});
-	my %access = &get_module_acl();
-	&can_edit_user(\%access, $job->{'user'}) || &error($text{'edit_ecannot'});
 	&delete_atjob($in{'id'});
 	&webmin_log("delete", "job", $job->{'user'}, $job);
 	&redirect("");

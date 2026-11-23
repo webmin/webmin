@@ -1,0 +1,15 @@
+aliases=forward-mail.svg
+assigns=users.svg
+attach=paperclip.svg
+bads=error.svg
+boxes=mailbox.svg
+locals=address-book.svg
+misc=tools.svg
+opts=list-options.svg
+p1=priority-high.svg
+p2=priority-low.svg
+percents=send-mail.svg
+queue=mail-queue.svg
+rcpts=check.svg
+routes=deliver-mail.svg
+virts=mail-folders.svg

@@ -5,7 +5,7 @@
 require './quota-lib.pl';
 &ReadParse();
 $whatfailed = $text{'ugraces_esave'};
-$access{'ugrace'} && &can_edit_filesys($in{'filesys'}) ||
+!$access{'ro'} && $access{'ugrace'} && &can_edit_filesys($in{'filesys'}) ||
 	&error($text{'ugraces_eedit'});
 
 if ($in{'bdef'}) { push(@args, 0, 0); }

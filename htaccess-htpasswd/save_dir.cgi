@@ -7,6 +7,13 @@ require './htaccess-lib.pl';
 $can_create || &error($text{'dir_ecannotcreate'});
 @dirs = &list_directories();
 &error_setup($text{'dir_err'});
+if (!$in{'delete'} && !$in{'remove'}) {
+	defined($in{'crypt'}) && $in{'crypt'} =~ /\A[0-3]\z/ ||
+		&error($text{'dir_ecrypt'});
+	}
+foreach my $field (qw(dir file gfile realm)) {
+	$in{$field} =~ /[\t\r\n\0]/ && &error($text{'dir_edir'});
+	}
 &foreign_require($apachemod, "apache-lib.pl");
 
 # Work out what .htaccess file to use
@@ -112,7 +119,7 @@ else {
 	# Parse groups file option
 	if (!$can_htgroups) {
 		# Groups file is always fixed, or none
-		$gfile = $in{'new'} ? undef : $dir->[3];
+		$gfile = $in{'new'} ? undef : $dir->[4];
 		}
 	elsif ($in{'gauto'} == 2) {
 		# No groups file

@@ -110,6 +110,9 @@ sub save_directive
 {
 local ($conf, $name, $values, $newsection, $noquote) = @_;
 my @values = ref($values) ? @$values : ( $values );
+if (grep { defined($_) && /[\r\n\0]/ } ($name, @values)) {
+	&error($text{'save_eline'});
+	}
 $newsection ||= "PHP";
 my @old = &find($name, $conf, 0);
 my @cmt = &find($name, $conf, 1);

@@ -31,7 +31,7 @@ elsif ($access{'amax'}) {
 		@cliases = grep { $_->{'name'} eq $remote_user } @aliases;
 		}
 	&error(&text('asave_emax', $access{'amax'}))
-		if (@caliases >= $access{'amax'});
+		if (@cliases >= $access{'amax'});
 	}
 
 if ($in{'delete'}) {
@@ -41,7 +41,11 @@ if ($in{'delete'}) {
 	}
 else {
 	# saving or creating .. check inputs
-	$in{'name'} =~ /^[^:@ ]+$/ ||
+	if ($in{'new'} && $in{'afile'} && &indexof($in{'afile'}, @$afile) < 0) {
+		&error($text{'asave_efile'});
+		}
+	$in{'cmt'} =~ /[\r\n\0]/ && &error($text{'asave_eline'});
+	$in{'name'} =~ /\A[^:@\s\0]+\z/ ||
 		&error(&text('asave_eaddr', $in{'name'}));
 	if ($in{'new'} || uc($a->{'name'}) ne uc($in{'name'})) {
 		# is this name taken?
@@ -62,6 +66,7 @@ else {
 		!$t || $access{"aedit_$t"} ||
 			&error($text{'asave_etype'});
 		$v = $in{"val_$i"};
+		$v =~ /[\r\n\0]/ && &error($text{'asave_eline'});
 		$v =~ s/^\s+//;
 		$v =~ s/\s+$//;
 		if ($t == 1 && $v !~ /^([^\|\:\"\' \t\/\\\%]\S*)$/) {
@@ -107,6 +112,15 @@ else {
 			if (-d $config{'smrsh_dir'}) {
 				&system_logged("ln -s $module_config_directory/filter.pl $config{'smrsh_dir'}/filter.pl");
 				}
+			}
+		}
+
+	# Each destination must be read back from the file as one value. A
+	# quote, or a comma in a value that is written without quotes, would
+	# split it into destinations of other types.
+	foreach $v (@values) {
+		if ($v =~ /"/ || $v !~ /\s/ && $v =~ /,/) {
+			&error(&text('asave_esplit', &html_escape($v)));
 			}
 		}
 

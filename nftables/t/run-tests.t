@@ -1143,4 +1143,11 @@ SKIP: {
        'unreadable system configuration leaves deprecated rules in place');
 }
 
+# The apply link returns to a page in this module
+{
+    local $ENV{'SCRIPT_NAME'} = '/nftables/index.cgi';
+    local $ENV{'QUERY_STRING'} = 'table=0';
+    is(this_url(), 'index.cgi?table=0', 'return URL is relative');
+}
+
 done_testing();

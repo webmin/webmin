@@ -79,27 +79,27 @@ elsif (@$rules && !$in{'reset'}) {
 	foreach $r (@$rules) {
 		local ($mover, $adder);
 		if ($r eq $rules->[@$rules-1]) {
-			$mover .= "<img src=images/gap.gif>";
+			$mover .= &ui_gap(20, 16);
 			}
 		else {
 			$mover .= "<a href='move.cgi?idx=$r->{'index'}&".
 			      	  "down=1'><img src=".
-			      	  "images/down.gif border=0></a>";
+				  "../images/shared/move-down.svg border=0></a>";
 			}
 		if ($r eq $rules->[0]) {
-			$mover .= "<img src=images/gap.gif>";
+			$mover .= &ui_gap(20, 16);
 			}
 		else {
 			$mover .= "<a href='move.cgi?idx=$r->{'index'}&".
-			          "up=1'><img src=images/up.gif ".
+			          "up=1'><img src=../images/shared/move-up.svg ".
 			          "border=0></a>";
 			}
 		$adder .= "<a href='edit_rule.cgi?new=1&".
 			  "after=$r->{'index'}'>".
-			  "<img src=images/after.gif border=0></a>";
+			  "<img src=../images/shared/move-to-bottom.svg border=0></a>";
 		$adder .= "<a href='edit_rule.cgi?new=1&".
 			  "before=$r->{'index'}'>".
-			  "<img src=images/before.gif border=0></a>";
+			  "<img src=../images/shared/move-to-top.svg border=0></a>";
 
 		local $active = $r->{'active'} ? $text{'yes'} :
                                   "<font color=#ff0000>$text{'no'}</font>";
@@ -117,7 +117,7 @@ elsif (@$rules && !$in{'reset'}) {
 			  $config{'view_condition'} ?
 				( &describe_rule($r) ) : ( ),
 			  $config{'view_comment'} ?
-				( $r->{'cmt'} || "<br>" ) : ( ),
+				( &html_escape($r->{'cmt'}) || "<br>" ) : ( ),
 			  $mover,
 			  $adder ],
 			\@widths, "d", $r->{'index'});
@@ -158,19 +158,19 @@ elsif (@$rules && !$in{'reset'}) {
 		foreach $r (@$natrules) {
 			local ($mover, $adder);
 			if ($r eq $natrules->[@$natrules-1]) {
-				$mover .= "<img src=images/gap.gif>";
+				$mover .= &ui_gap(20, 16);
 				}
 			else {
 				$mover .= "<a href='natmove.cgi?idx=$r->{'index'}&".
 					  "down=1'><img src=".
-					  "images/down.gif border=0></a>";
+					  "../images/shared/move-down.svg border=0></a>";
 				}
 			if ($r eq $natrules->[0]) {
-				$mover .= "<img src=images/gap.gif>";
+				$mover .= &ui_gap(20, 16);
 				}
 			else {
 				$mover .= "<a href='natmove.cgi?idx=$r->{'index'}&".
-					  "up=1'><img src=images/up.gif ".
+					  "up=1'><img src=../images/shared/move-up.svg ".
 					  "border=0></a>";
 				}
 
@@ -190,7 +190,8 @@ elsif (@$rules && !$in{'reset'}) {
 				  $config{'view_condition'} ?
 					( &describe_from($r), &describe_to($r) ) : ( ),
 				  $config{'view_comment'} ?
-					( $r->{'cmt'} || "<br>" ) : ( ),
+					( &html_escape($r->{'cmt'}) ||
+					  "<br>" ) : ( ),
 				  $mover ],
 				\@widths);
 			}

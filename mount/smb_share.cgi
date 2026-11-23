@@ -4,7 +4,9 @@
 
 require './mount-lib.pl';
 &ReadParse();
-&header(&text('smb_choose2', $in{'server'}));
+$access{'browse'} || &error($text{'browse_ecannot'});
+$hserver = &html_escape($in{'server'});
+&header(&text('smb_choose2', $hserver));
 print <<EOF;
 <script>
 function choose(f)
@@ -15,19 +17,21 @@ window.close();
 </script>
 EOF
 
+# A leading dash would be read as an smbclient option
+$in{'server'} =~ /^-/ && &error(&text('smb_ehost', $hserver));
 my $qserver = quotemeta($in{'server'});
 &execute_command("$config{'smbclient_path'} -d 0 -L $qserver -N",
 		 undef, \$out, \$out);
 if ($?) {
-	print "<b>",&text('smb_elist2', $in{'server'}),"</b>\n";
+	print "<b>",&text('smb_elist2', $hserver),"</b>\n";
 	exit;
 	}
 elsif ($out =~ /Unknown host/) {
-	print "<b>",&text('smb_ehost', $in{'server'}),"</b>\n";
+	print "<b>",&text('smb_ehost', $hserver),"</b>\n";
 	exit;
 	}
 elsif ($out =~ /error connecting|connect error/) {
-	print "<b>",&text('smb_edown', $in{'server'}),"</b>\n";
+	print "<b>",&text('smb_edown', $hserver),"</b>\n";
 	exit;
 	}
 
@@ -45,14 +49,18 @@ if (@names) {
 				  $text{'smb_comment'} ]);
 	for($i=0; $i<@names; $i++) {
 		print &ui_columns_row([
-            &ui_link("#", $names[$i], undef, "onClick='choose(\"$names[$i]\");return false;'" ),
+			# Share names come from the remote server
+			&ui_link("#", &html_escape($names[$i]), undef,
+				 "onClick='choose(\"".
+				 &quote_javascript($names[$i]).
+				 "\");return false;'"),
 			&html_escape($comms[$i]),
 			]);
 		}
 	print &ui_columns_end();
 	}
 else {
-	print "<b>",&text('smb_noshares', $in{'server'}),"</b><p>\n";
+	print "<b>",&text('smb_noshares', $hserver),"</b><p>\n";
 	}
 
 &popup_footer();

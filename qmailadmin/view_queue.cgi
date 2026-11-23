@@ -53,8 +53,7 @@ if (@attach) {
 	print "<tr> <td $tb><b>$text{'qview_attach'}</b></td> </tr>\n";
 	print "<tr> <td $cb>\n";
 	foreach $a (@attach) {
-		push(@titles, $a->{'filename'} ? $a->{'filename'}
-					       : $a->{'type'});
+		push(@titles, &html_escape($a->{'filename'} || $a->{'type'}));
 		push(@links, "detach_queue.cgi?file=$in{'file'}&attach=$a->{'idx'}");
 		push(@icons, "images/boxes.gif");
 		}

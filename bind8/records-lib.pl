@@ -557,12 +557,15 @@ sub save_zone_defaults
 }
 
 # allowed_zone_file(&access, file)
+# Returns 1 if an absolute zone file path is inside the ACL directory
 sub allowed_zone_file
 {
-return 0 if ($_[1] =~ /\.\./);
-return 0 if (-l $_[1] && !&allowed_zone_file($_[0], readlink($_[1])));
-my $l = length($_[0]->{'dir'});
-return length($_[1]) > $l && substr($_[1], 0, $l) eq $_[0]->{'dir'};
+my ($acl, $file) = @_;
+# An empty directory has always meant no restriction, like /
+my $dir = $acl->{'dir'} || "/";
+return 0 if ($file !~ m{^/} || $file =~ /\.\./);
+return $file ne $dir &&
+       &is_under_directory(&make_chroot($dir), &make_chroot($file));
 }
 
 # sort_records(list)

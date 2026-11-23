@@ -1001,6 +1001,72 @@ if ($callback) {
 return undef;
 }
 
+=head2 module_icon_url(url)
+
+Returns the URL of a module image in the best available format: SVG first,
+then PNG, then GIF. The theme's copy under its images/modules directory is
+used first, followed by Webmin's module artwork and the module's own copy.
+Modules name shared icons in images/icons.map with action=filename.
+A name beginning with ./ refers to another image in that module.
+Webmin supplies the same defaults for separately packaged add-ons in
+images/modules/icons.map. Other URLs pass through unchanged.
+
+=cut
+sub module_icon_url
+{
+my ($url) = @_;
+my $prefix = &get_webprefix();
+my $path = $url;
+$path =~ s!^\Q$prefix\E(?=/)!! if ($prefix);
+return $url if ($path !~ m!\A(?:(?:/|\.\./)?([\w-][\w.-]*)/)?images/([\w.-]+)\.(?:svg|png|gif)\z!);
+my ($module, $name) = ($1 || &get_module_name(), $2);
+return $url if (!$module);
+
+# A theme can override one action even when several share the same artwork.
+foreach my $root (@theme_root_directories, $root_directory) {
+	foreach my $ext ("svg", "png", "gif") {
+		my $image = "/images/modules/$module/$name.$ext";
+		return "$prefix$image" if (-f "$root$image");
+		}
+	}
+
+my $own = &module_root_directory($module);
+my %icons;
+&read_file_cached("$root_directory/images/modules/icons.map", \%icons);
+my $file = $icons{"$module/$name"};
+if (!$file) {
+	my %defaults;
+	&read_file_cached("$own/images/icons.map", \%defaults);
+	$file = $defaults{$name};
+	}
+if ($file) {
+	# A module-local filename follows the module when it is cloned.
+	if ($file =~ m!^\./([\w.-]+)$!) {
+		return "$prefix/$module/images/$1" if (-f "$own/images/$1");
+		}
+	else {
+		my $path = $file =~ m!^/! ? $file : "/images/shared/$file";
+		return "$prefix$path" if (-f "$root_directory$path");
+		# Shared artwork can change format, so a map written for the
+		# older file still finds it under the same name.
+		(my $base = $path) =~ s/\.\w+\z//;
+		foreach my $ext ("svg", "png", "gif") {
+			return "$prefix$base.$ext"
+				if (-f "$root_directory$base.$ext");
+			}
+		}
+	}
+
+# Keep the module's original URL when it supplies its own artwork.
+foreach my $ext ("svg", "png", "gif") {
+	if (-f "$own/images/$name.$ext") {
+		(my $rv = $url) =~ s/\.\w+\z/.$ext/;
+		return $rv;
+		}
+	}
+return $url;
+}
+
 =head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
 
 Prints HTML for an icon image. The parameters are :
@@ -1025,8 +1091,10 @@ Prints HTML for an icon image. The parameters are :
 sub generate_icon
 {
 &load_theme_library();
+my ($image, @args) = @_;
+$image = &module_icon_url($image);
 if (defined(&theme_generate_icon)) {
-	&theme_generate_icon(@_);
+	&theme_generate_icon($image, @args);
 	return;
 	}
 my $w = !defined($_[4]) ? "width='48'" : $_[4] ? "width='$_[4]'" : "";
@@ -1041,26 +1109,35 @@ if ($tconfig{'noicons'}) {
 	}
 elsif ($_[2]) {
 	print "<table border><tr><td width='48' height='48'>\n",
-	      "<a href=\"$_[2]\" $_[3]><img src=\"$_[0]\" alt=\"\" border='0' ",
+	      "<a href=\"$_[2]\" $_[3]><img src=\"$image\" alt=\"\" border='0' ",
 	      "$w $h></a></td></tr></table>\n";
 	print "$_[6]<a href=\"$_[2]\" $_[3]>$_[1]</a>$_[7]\n";
 	}
 else {
 	print "<table border><tr><td width='48' height='48'>\n",
-	      "<img src=\"$_[0]\" alt=\"\" border='0' $w $h>",
+	      "<img src=\"$image\" alt=\"\" border='0' $w $h>",
 	      "</td></tr></table>\n$_[6]$_[1]$_[7]\n";
 	}
 }
 
-=head2 urlize
+=head2 urlize(string, [keep-safe])
 
-Converts a string to a form ok for putting in a URL, using % escaping.
+Converts a string to a form ok for putting in a URL, using % escaping. If
+keep-safe is set, the characters - . _ and ~ are left as they are, as they
+need no escaping in a URL.
 
 =cut
 sub urlize
 {
-my ($rv) = @_;
-$rv =~ s/([^A-Za-z0-9])/sprintf("%%%2.2X", ord($1))/ge;
+my ($rv, $safe) = @_;
+if ($safe) {
+	# Leave the punctuation that is always allowed in a URL
+	$rv =~ s/([^A-Za-z0-9\-._~])/sprintf("%%%2.2X", ord($1))/ge;
+	}
+else {
+	# Encode everything except letters and digits
+	$rv =~ s/([^A-Za-z0-9])/sprintf("%%%2.2X", ord($1))/ge;
+	}
 return $rv;
 }
 
@@ -1928,7 +2005,7 @@ for(my $i=0; $i+1<@_; $i+=2) {
 			}
 		$url = "@{[&get_webprefix()]}$url" if ($url =~ /^\//);
 		if ($i == 0) {
-			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='@{[&get_webprefix()]}/images/left.gif'></a>\n";
+			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='@{[&get_webprefix()]}/images/left.svg'></a>\n";
 			}
 		else {
 			print "&nbsp;|\n";
@@ -1993,8 +2070,9 @@ if ($module_prefs_acls && -r $current_user_prefs) {
 	else {
 		my %newconfigtmp;
 		&read_file($current_user_prefs, \%newconfigtmp);
+		my %allowed = map { $_ => 1 } split(/,/, $module_prefs_acls);
 		foreach my $key (keys %newconfigtmp) {
-		if (grep(/^$key$/, split(",", $module_prefs_acls))) {
+			if ($allowed{$key}) {
 				$curr_config->{$key} = $newconfigtmp{$key};
 				}
 			}
@@ -12045,7 +12123,14 @@ return &theme_select_all_link(@_) if (defined(&theme_select_all_link));
 my ($field, $form, $text) = @_;
 $form = int($form);
 $text ||= $text{'ui_selall'};
-return "<a class='select_all' href='#' onClick='var ff = document.forms[$form].$field; ff.checked = true; for(i=0; i<ff.length; i++) { if (!ff[i].disabled) { ff[i].checked = true; } } return false'>$text</a>";
+# The field is one checkbox when the page has a single row, and a list of them
+# otherwise. A disabled checkbox is left as it is in both cases
+return "<a class='select_all' href='#' onClick='".
+       "var ff = document.forms[$form].$field; ".
+       "if (!ff.disabled) { ff.checked = true; } ".
+       "for(i=0; i<ff.length; i++) { ".
+       "if (!ff[i].disabled) { ff[i].checked = true; } } ".
+       "return false'>$text</a>";
 }
 
 =head2 select_invert_link(field, form, text)
@@ -12066,7 +12151,14 @@ return &theme_select_invert_link(@_) if (defined(&theme_select_invert_link));
 my ($field, $form, $text) = @_;
 $form = int($form);
 $text ||= $text{'ui_selinv'};
-return "<a class='select_invert' href='#' onClick='var ff = document.forms[$form].$field; ff.checked = !ff.checked; for(i=0; i<ff.length; i++) { if (!ff[i].disabled) { ff[i].checked = !ff[i].checked; } } return false'>$text</a>";
+# The field is one checkbox when the page has a single row, and a list of them
+# otherwise. A disabled checkbox is left as it is in both cases
+return "<a class='select_invert' href='#' onClick='".
+       "var ff = document.forms[$form].$field; ".
+       "if (!ff.disabled) { ff.checked = !ff.checked; } ".
+       "for(i=0; i<ff.length; i++) { ".
+       "if (!ff[i].disabled) { ff[i].checked = !ff[i].checked; } } ".
+       "return false'>$text</a>";
 }
 
 =head2 select_rows_link(field, form, text, &rows)
@@ -13056,14 +13148,52 @@ $rv =~ s/\$\{[A-Z]+\}//g;
 return $rv;
 }
 
+=head2 secure_random_bytes(length)
+
+Returns exactly length cryptographically random bytes from /dev/urandom, or
+undef on failure. Length must be an integer from 0 to 256. Interrupted and
+short reads are retried. This function never falls back to Perl's rand.
+
+=cut
+
+sub secure_random_bytes
+{
+my ($length) = @_;
+return undef if (!defined($length) || $length !~ /\A[0-9]+\z/ ||
+                 $length > 256);
+return "" if (!$length);
+
+# Fill the buffer completely, retrying interrupted and short reads.
+open(my $fh, '<', '/dev/urandom') || return undef;
+binmode($fh) || return undef;
+my $bytes = '';
+while (length($bytes) < $length) {
+	my $count = sysread($fh, $bytes, $length - length($bytes),
+			    length($bytes));
+	if (!defined($count)) {
+		# Retry signals, but do not return partial data on a read error.
+		next if ($!{'EINTR'});
+		return undef;
+		}
+	return undef if (!$count);
+	}
+close($fh);
+return $bytes;
+}
+
 =head2 substitute_pattern(regex-pattern, [&params])
 
 Given regular expression generates a string based on the pattern. Hash reference
 with params can be used to control default pattern length, results filtering and
 replacement, date/time substitution and manipulate resulted string with callback
 
-This function must be save to be used with patterns defined by a user to generate
-strings with desired pattern, like usernames
+This function must be safe to use with patterns defined by a user to generate
+strings with a desired pattern, like usernames.
+
+Set crypt to 1 in params to use secure_random_bytes for shuffling. This returns
+undef if a secure read fails or no-shuffle is also set. Without crypt, Perl's
+rand is used as before. Pattern length and alphabet, filters and callbacks
+still determine the strength of the result. Check for undef before using it.
 
 Examples:
 
@@ -13124,14 +13254,42 @@ my $_param = sub {
         return $params->{$param};
     }
 };
+my $crypt = &$_param('crypt');
+# Secure mode requires shuffling.
+return undef if ($crypt && &$_param('no-shuffle'));
+my $random_bytes = '';
+
+# Shuffle the expanded character range. Secure mode uses rejection sampling
+# so every index has equal probability even when the range is not a power of 2.
 my $_shuffle = sub {
     my $a = shift;
     my $c;
     for ($c = @{$a}; --$c;) {
-        my $b = int(rand($c + 1));
+        my $b;
+        if ($crypt) {
+            # Discard the incomplete interval at the top of the 32-bit range.
+            my $range = $c + 1;
+            return undef if ($range > 4294967296);
+            my $limit = 4294967296 - (4294967296 % $range);
+            do {
+                if (length($random_bytes) < 4) {
+                    # Read another block of random bytes for this call.
+                    $random_bytes = &secure_random_bytes(256);
+                    return undef if (!defined($random_bytes) ||
+                                     length($random_bytes) != 256);
+                    }
+                $b = unpack('N', substr($random_bytes, 0, 4, ''));
+                } while ($b >= $limit);
+            $b %= $range;
+            }
+        else {
+            # Preserve the generator used by existing callers.
+            $b = int(rand($c + 1));
+            }
         next if $c == $b;
         @{$a}[$c, $b] = @{$a}[$b, $c];
     }
+    return 1;
 };
 
 # Parse passed pattern to build a string based on it
@@ -13162,7 +13320,10 @@ while ($pattern =~
                     @ranges_ =
                       (@ranges_) x ceil($length / scalar(@ranges_));
                     }
-                &$_shuffle(\@ranges_) if (!&$_param('no-shuffle'));
+                if (!&$_param('no-shuffle')) {
+                    # Stop if secure randomness is unavailable.
+                    return undef if (!&$_shuffle(\@ranges_));
+                    }
                 }
             }
         }
@@ -14746,10 +14907,11 @@ $referer =~ s/http.*:\/\/.*?$prefix/\//;
 $referer =~ s/\/\//\//g;
 if ($query) {
 	my @pr;
-	my $pq = "?";
-	my $pq = "&"
-		if ($referer =~ /\?/);
-	map { push(@pr, "$_=$in{$_}")
+	# Extend an existing query, or else start one.
+	my $pq = $referer =~ /\?/ ? "&" : "?";
+	# Encode names and values so they cannot change the URL. Names keep
+	# safe punctuation, as themes look for plain names such as no-cache.
+	map { push(@pr, &urlize($_, 1)."=".&urlize($in{$_}))
 		if ($_ ne $query_str) } keys %in;
 	$referer .= "$pq".join('&', @pr)
 		if (@pr);

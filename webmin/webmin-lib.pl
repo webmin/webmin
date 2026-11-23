@@ -1314,7 +1314,8 @@ Returns a list of IP address to key file mappings from a miniserv.conf entry.
 sub get_ipkeys
 {
 my @rv;
-foreach my $k (keys %{$_[0]}) {
+# Sort so the entries come back in the same order on every call
+foreach my $k (sort keys %{$_[0]}) {
 	if ($k =~ /^ipkey_(\S+)/) {
 		my $ipkey = { 'ips' => [ split(/,/, $1) ],
 			      'key' => $_[0]->{$k},
@@ -1325,6 +1326,16 @@ foreach my $k (keys %{$_[0]}) {
 		}
 	}
 return @rv;
+}
+
+# find_ipkey(&mappings, ips)
+# Returns the mapping for a comma-separated address list, or undef
+sub find_ipkey
+{
+my ($keys, $ips) = @_;
+return undef if (!defined($ips));
+my ($key) = grep { join(",", @{$_->{'ips'}}) eq $ips } @$keys;
+return $key;
 }
 
 =head2 save_ipkeys(&miniserv, &keys)

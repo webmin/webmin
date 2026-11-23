@@ -1,3 +1,8 @@
+config_section=Κατηγορία διαμόρφωσης:
+config_change=Αλλαγή
+config_next=Αποθήκευση και Επόμενο
+config_nnext=Επόμενο
+config_nprev=Προηγ
 main_title3=Webmin $1 ($2)
 main_unused=Μονάδες που δεν χρησιμοποιούνται
 main_refreshmods=Ανανέωση μονάδων

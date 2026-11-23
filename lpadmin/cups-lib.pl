@@ -49,9 +49,12 @@ if ($body =~ /Interface: (.*)/) { $prn{'iface'} = $1; }
 if ($body =~ /Banner not required/) { $prn{'banner'} = 0; }
 else { $prn{'banner'} = 1; }
 
+# The name comes from lpstat output, so quote it for the shell
+local $nesc = quotemeta($prn{'name'});
+
 if (!$_[1]) {
 	# request availability
-	$avl = &backquote_command("$lpstat -a $prn{'name'} 2>&1", 1);
+	$avl = &backquote_command("$lpstat -a $nesc 2>&1", 1);
 	if ($avl =~ /^\S+\s+not accepting.*\n\s*(.*)/) {
 		$prn{'accepting'} = 0;
 		$prn{'accepting_why'} = lc($1) eq "reason unknown" ? "" : $1;
@@ -77,7 +80,7 @@ foreach my $file ("/etc/printers.conf", "/etc/cups/printers.conf") {
 		}
 	}
 if (!$uri) {
-	$con = &backquote_command("$lpstat -v $prn{'name'} 2>&1", 1);
+	$con = &backquote_command("$lpstat -v $nesc 2>&1", 1);
 	if ($con =~ /^device for \S+:\s+(\S+)/) {
 		$uri = $1;
 		}
@@ -123,7 +126,7 @@ local $esc = quotemeta($_[0]);
 open(LPQ, "$lpq -P$esc |");
 while(<LPQ>) {
 	s/\r|\n//g;
-	next if (/^Rank/i || /^$_[0]/);
+	next if (/^Rank/i || /^\Q$_[0]\E/);
 	if (/^(\S+)\s+(\S+)\s+(\d+)\s+(.*\S)\s+(\d+)\s+(\S.*)$/ ||
 	    /^(\S+)\s+(\S{1,8}?)\s*(\d+)\s+(.*\S)\s+(\d+)\s+(\S.*)$/) {
 		# Normal lpq output

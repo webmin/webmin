@@ -47,19 +47,17 @@ for($i=0; $i<@dlist; $i++) {
 			else {
 				print "<a href=\"edit_part.cgi?$i+$j\">$j</a>";
 				}
-			print "</td> <td>$p->{'tag'}</td> <td>\n";
+			print "</td> <td>$p->{'tag'}</td> <td width=$extwidth>\n";
 			if ($p->{'end'} != 0) {
-				printf
-				  "<img src=images/gap.gif height=10 width=%d>",
-				  $extwidth*$p->{'start'}/$dl->{'cyl'};
-				printf
-				  "<img src=images/use.gif height=10 width=%d>",
-				  $extwidth*($p->{'end'}-$p->{'start'})/
-				  $dl->{'cyl'};
-				printf
-				  "<img src=images/gap.gif height=10 width=%d>",
-				  $extwidth*($dl->{'cyl'}-$p->{'end'})/
-				  $dl->{'cyl'};
+				# Draw where the partition sits on the disk : the
+				# space before it, then the partition itself
+				print &ui_progress(undef, { 'small' => 1,
+					'segments' => [
+					  { 'pct' => 100*$p->{'start'}/$dl->{'cyl'},
+					    'empty' => 1 },
+					  { 'pct' => 100*($p->{'end'}-$p->{'start'})/
+						     $dl->{'cyl'},
+					    'state' => 'danger' } ] });
 				print "</td> <td>$p->{'start'}</td> ",
 				      "<td>$p->{'end'}</td> <td>\n";
 				@stat = &device_status($p->{'device'});

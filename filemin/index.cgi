@@ -15,7 +15,8 @@ else {
 	&ui_print_header(
 		undef, $module_info{'desc'}, "", undef, 0, 0, 0,
 		"<a href='config.cgi?path=" . &urlize($path) .
-		"' data-config-pagination='$userconfig{'per_page'}'>" .
+		"' data-config-pagination='" .
+		&quote_escape($userconfig{'per_page'}) . "'>" .
 		"$text{'module_config'}</a>");
 
 	my %acls;

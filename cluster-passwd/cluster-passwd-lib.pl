@@ -96,6 +96,14 @@ foreach $host (@{$_[0]}) {
 		&$pfunc(2, $cluster_useradmin::text{'usave_gone'});
 		next;
 		}
+	# Apply the grant to this member's current UID and group memberships.
+	my @groups = $access{'mode'} == 5 ? &remote_foreign_call(
+		$serv->{'host'}, "useradmin", "list_groups") : ( );
+	if ($passwd_error_msg || !&can_edit_passwd(
+	    { %$user, 'host' => { 'groups' => \@groups } })) {
+		&$pfunc(1, $passwd_error_msg || $passwd::text{'passwd_ecannot'});
+		next;
+		}
 
 	# Update password fields in user
 	$user->{'olduser'} = $user->{'user'};
@@ -112,9 +120,15 @@ foreach $host (@{$_[0]}) {
 		}
 
 	# Run the pre-change command
-	&remote_eval($serv->{'host'}, "useradmin", "set_user_envs", $user);
-	&remote_foreign_call($serv->{'host'}, "useradmin",
-			     "making_changes");
+	&remote_foreign_call($serv->{'host'}, "useradmin", "set_user_envs",
+			     $user, 'MODIFY_USER', $_[2]);
+	my $before = $passwd_error_msg || &remote_foreign_call(
+		$serv->{'host'}, "useradmin", "making_changes");
+	if ($passwd_error_msg || defined($before)) {
+		&$pfunc(1, &cluster_useradmin::text('usave_emaking',
+						    $passwd_error_msg || $before));
+		next;
+		}
 
 	# Update the user on the server
 	&$pfunc(-2, $cluster_useradmin::text{'usave_update'});

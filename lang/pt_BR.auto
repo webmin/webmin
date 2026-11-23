@@ -1,3 +1,8 @@
+config_section=Categoria de configuração:
+config_change=mudança
+config_next=Salvar e Avançar
+config_nnext=Próximo
+config_nprev=Anterior
 main_logout=Sair
 main_title3=Webmin $1 ($2)
 main_readonly=(Modo somente leitura)

@@ -2334,7 +2334,16 @@ $qfile = quotemeta($_[0]);
 $bl = $_[1] * ($_[2] eq "t" ? 1024*1024*1024 :
 	       $_[2] eq "g" ? 1024*1024 :
 	       $_[2] eq "m" ? 1024 : 1);
-$out = &backquote_logged("dd if=/dev/zero of=$qfile bs=1024 count=$bl 2>&1");
+# BusyBox dd lacks conv=excl, so create the file here only if the path is
+# unused. The file starts with mode 0600. dd reopens it by name to fill it.
+require Fcntl;
+local $sfh;
+sysopen($sfh, $_[0], &Fcntl::O_WRONLY() | &Fcntl::O_CREAT() |
+		     &Fcntl::O_EXCL() | &Fcntl::O_NOFOLLOW(), 0600) ||
+	return "Failed to create $_[0] : $!";
+close($sfh);
+$out = &backquote_logged("dd if=/dev/zero of=$qfile conv=notrunc ".
+			 "bs=1024 count=$bl 2>&1");
 if ($?) { return "dd failed : $out"; }
 $out = &backquote_logged("mkswap $qfile $bl 2>&1");
 if ($?) { return "mkswap failed : $out"; }

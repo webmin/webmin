@@ -58,6 +58,11 @@ config_ecannot=Bu modülü ayarlamak için izin verilmedi
 config_title=Ayarlama
 config_dir=$1 modülü için
 config_header=$1'deki ayarlanabilir seçenekler
+config_section=Yapılandırma kategorisi:
+config_change=Değiştir
+config_next=Kaydet ve İleri
+config_nnext=İleri
+config_nprev=Geri
 config_none=None
 config_eaccess=Bu modülü ayarlamak için izin verilmedi
 

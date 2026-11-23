@@ -10,7 +10,7 @@ require './samba-lib.pl';
 &error("$text{'eacl_np'} $text{'eacl_pmsync'}")
         unless $access{'maint_sync'};
 # save
-$in{'gid_def'} || $in{'gid'} =~ /^\S+$/ || &error($text{'esync_egid'});
+$in{'gid_def'} || $in{'gid'} =~ /\A(?:S-\d+(?:-\d+)+|\d+)\z/i || &error($text{'esync_egid'});
 &lock_file($module_config_file);
 foreach $s ("add", "change", "delete", "delete_profile", "change_profile") {
 	if ($in{$s}) { $config{"sync_$s"} = 1; }

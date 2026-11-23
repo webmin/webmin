@@ -216,6 +216,7 @@ htaccess_auto=Automatically
 htaccess_from=From directory
 htaccess_return=options file list
 htaccess_edir='$1' is not a valid directory
+htaccess_esearch=You are not allowed to search for options files in '$1'
 htaccess_ecreate=You are not allowed to create this options file
 htaccess_edelete=You are not allowed to delete this options file
 htaccess_eempty=No options file directory entered
@@ -1128,6 +1129,7 @@ cdir_err2=Failed to save per-directory options
 cdir_epath=Missing path
 cdir_eproxy=Proxy options cannot be created with the match regexp option enabled
 cdir_ecannot=You are not allowed to create per-directory options for the given path
+cdir_egone=The selected per-directory or per-file options no longer exist
 
 mod_band_enable=Bandwidth limiting enabled?
 mod_band_bw=Limit (bytes/sec)

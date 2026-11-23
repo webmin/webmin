@@ -332,6 +332,14 @@ my ($mod) = @_;
 return $access_mods{'*'} || $access_mods{$mod};
 }
 
+# can_notify()
+# Returns 1 if the current Webmin user can configure email notifications,
+# which may cover actions by any user in any module.
+sub can_notify
+{
+return $access{'notify'} && $access_users{'*'} && $access_mods{'*'};
+}
+
 =head2 get_action(id)
 
 Returns the structure for some action identified by an ID, in the same format 

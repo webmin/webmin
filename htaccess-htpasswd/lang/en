@@ -28,6 +28,7 @@ dir_auto=Choose automatically
 dir_sel=Selected file ..
 dir_none=None
 dir_crypt=Password encryption
+dir_ecrypt=Invalid password encryption method
 dir_crypt0=Unix crypt
 dir_crypt1=MD5
 dir_crypt2=SHA1

@@ -6,9 +6,9 @@ require './software-lib.pl';
 &ReadParse();
 $p = $in{'package'};
 $v = $in{'version'};
-&error_setup(&text('delete_err', $p));
+&error_setup(&text('delete_err', &html_escape($p)));
 (@pinfo = &package_info($p, $v)) ||
-	&error(&text('delete_epack', $p));
+	&error(&text('delete_epack', &html_escape($p)));
 
 if ($in{'sure'}) {
 	# do the deletion

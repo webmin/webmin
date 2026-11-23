@@ -87,7 +87,13 @@ else {
 			&error($text{'save_efile'});
 		}
 	-d $in{'dir'} || &error($text{'save_edir'});
-	$in{'cmode'} != 2 || -r $in{'cfile'} || &error($text{'save_ecfile'});
+	my $cfile = &config_file_name($in{'file'});
+	my $keep_link = -l $cfile && $in{'cmode'} == 2 &&
+			readlink($cfile) eq $in{'cfile'};
+	if ($in{'cmode'} == 2 && !$keep_link) {
+		!$access{'noconfig'} && -f $in{'cfile'} && -r $in{'cfile'} ||
+			&error($text{'save_ecfile'});
+		}
 	my $lconf = { };
 	if ($access{'user'} eq '*') {
 		# Set the user to whatever was entered
@@ -153,7 +159,6 @@ else {
 		}
 
 	# Create or link the custom webalizer.conf file
-	my $cfile = &config_file_name($in{'file'});
 	if ($in{'cmode'} == 0) {
 		# None at all
 		&unlink_logged($cfile);
@@ -168,7 +173,7 @@ else {
 			&copy_source_dest($config{'webalizer_conf'}, $cfile);
 			}
 		}
-	elsif ($in{'cmode'} == 2) {
+	elsif ($in{'cmode'} == 2 && !$keep_link) {
 		# Symbolic link to somewhere
 		&unlink_logged($cfile);
 		symlink($in{'cfile'}, $cfile);

@@ -1,3 +1,8 @@
+config_section=دسته پیکربندی:
+config_change=تغییر دادن
+config_next=ذخیره و بعدی
+config_nnext=بعد
+config_nprev=مقدمه
 main_title3=Webmin $1 ($2)
 main_readonly=(حالت فقط خواندنی)
 main_unused=ماژول های بدون استفاده

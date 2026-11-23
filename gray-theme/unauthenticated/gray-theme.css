@@ -28,6 +28,11 @@
 	 * The page bottom keeps scroll room under the last element. */
 	--card-gap: 4px;
 	--page-pad-bottom: 28px;
+	/* Space between the side edge of a card of rows or buttons and the
+	 * first and last thing in it: buttons, checkboxes and text alike.
+	 * With the card's own edge it equals the space above and under the
+	 * buttons of a toolbar. */
+	--card-inset: 11px;
 	/* Titles on the ground sit a little in from the card edge, so they
 	 * neither touch the edge nor go as deep as the text inside the
 	 * cards */
@@ -39,14 +44,23 @@
 	/* Which of two images, one per palette, is shown */
 	--show-light: block;
 	--show-dark: none;
+	/* Filter for a logo whose colors do not suit the surface */
+	--logo-filter: none;
 
 	/* Neutrals: a light gray ground, white surfaces and gray hairlines,
 	 * with near-black text */
-	--bg-color: #dfdfdf;
+	--bg-color: #cfcfcf;
 	--bg-color-frame: #ffffff;
 	--bg-color-hover: #f0f0f0;
+	/* The menu row of the page shown, and its text */
+	--bg-color-current: var(--bg-color-hover);
+	--text-color-current: var(--text-color);
 	--bg-color-switch: #e2e2e2;
 	--bg-color-switch-on: #ffffff;
+	/* Product switch: chosen pill text and shadow, other text */
+	--text-color-switch-on: var(--text-color);
+	--shadow-color-switch: var(--shadow-color);
+	--text-color-switch-off: var(--text-color-muted);
 	--main-content: #ffffff;
 	--bg-table-header: #f5f5f5;
 	--bg-color-input: #ffffff;
@@ -60,6 +74,11 @@
 	--border-color-lighter: #e8e8e8;
 	--border-color-frame: #e2e2e2;
 	--border-color-darker: #b8b8b8;
+	/* Lines on the ground, such as under a tab row, dark enough to show
+	 * on it */
+	--border-color-ground: #00000055;
+	/* A rule on the ground. The dark palette uses the fainter card edge */
+	--border-color-rule: var(--border-color-ground);
 	--border-color-input: #bcbcbc;
 	--border-color-focused: #dbe5f5;
 
@@ -70,6 +89,7 @@
 	--text-color-desc: #2b2f35;
 	--text-color-muted: #3d434b;
 	--text-color-disabled: #767d86;
+	--text-color-placeholder: var(--text-color-disabled);
 	--text-color-inverse: #ffffff;
 
 	/* Links are a deep blue, 9.5:1 on the ground, still apart from the
@@ -80,6 +100,15 @@
 	--accent-color-hover: #234d93;
 	--accent-color-soft: #a9c0e8;
 	--element-highlight-bg-color: #e3ebf8;
+	/* Text and icon on that fill, as on the menu's creation button */
+	--element-highlight-text-color: var(--text-color);
+	--element-highlight-icon-color: var(--accent-color-hover);
+	/* Cloudmin's orange, and its creation button: an orange tint */
+	--cloudmin-color: #df7935;
+	--cloudmin-create-bg: rgba(223, 121, 53, 0.14);
+	--cloudmin-create-bg-hover: rgba(223, 121, 53, 0.22);
+	--cloudmin-create-edge: rgba(223, 121, 53, 0.42);
+	--cloudmin-create-text: var(--text-color);
 	/* Navigation loader, with a separate shade for each color scheme. */
 	--menu-loader-color: #dc143c;
 	/* Text on a button filled with a notice color: white on the deep
@@ -122,9 +151,11 @@
 /* The dark palette. The two blocks below must be kept identical: the
  * first applies when the browser prefers dark and nothing marks the
  * scheme light, the second when the theme settings or the theme script
- * mark it dark. */
+ * mark it dark. Both also name the menu panel, so they outrank the blue
+ * menu palette of gray-theme-menu-navi-blue.css. */
 @media (prefers-color-scheme: dark) {
-	html:not([data-scheme="light"]) body:not([data-scheme="light"]) {
+	html:not([data-scheme="light"]) body:not([data-scheme="light"]),
+	html:not([data-scheme="light"]) body:not([data-scheme="light"]) .menu-panel {
 		color-scheme: dark;
 		--card-gap: 7px;
 		--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -132,11 +163,17 @@
 		--border-color-panel: #30353d;
 		--show-light: none;
 		--show-dark: block;
+		--logo-filter: none;
 		--bg-color: #15171b;
 		--bg-color-frame: #1a1d22;
 		--bg-color-hover: #262a30;
+		--bg-color-current: var(--bg-color-hover);
+		--text-color-current: var(--text-color);
 		--bg-color-switch: #262a30;
 		--bg-color-switch-on: #363b43;
+		--text-color-switch-on: var(--text-color);
+		--shadow-color-switch: var(--shadow-color);
+		--text-color-switch-off: var(--text-color-muted);
 		--main-content: #1e2126;
 		--bg-table-header: #23262c;
 		--bg-color-input: #1b1e23;
@@ -146,6 +183,8 @@
 		--border-color-lighter: #262a30;
 		--border-color-frame: #2a2f36;
 		--border-color-darker: #4d545e;
+		--border-color-ground: var(--border-color-darker);
+		--border-color-rule: var(--border-color);
 		--border-color-input: #4d545e;
 		--border-color-focused: rgba(106, 168, 240, 0.3);
 		--text-color: #e6e8ea;
@@ -153,6 +192,7 @@
 		--text-color-desc: #a7b0ba;
 		--text-color-muted: #99a3ae;
 		--text-color-disabled: #6b7581;
+		--text-color-placeholder: var(--text-color-disabled);
 		--text-color-inverse: #ffffff;
 		--link-color: #6aa8f0;
 		--link-color-hover: #8fc0f3;
@@ -160,6 +200,13 @@
 		--accent-color-hover: #5a8ad8;
 		--accent-color-soft: #3d5f8a;
 		--element-highlight-bg-color: #26395a;
+		--element-highlight-text-color: var(--text-color);
+		--element-highlight-icon-color: var(--accent-color-hover);
+		--cloudmin-color: #df7935;
+		--cloudmin-create-bg: rgba(223, 121, 53, 0.14);
+		--cloudmin-create-bg-hover: rgba(223, 121, 53, 0.22);
+		--cloudmin-create-edge: rgba(223, 121, 53, 0.42);
+		--cloudmin-create-text: var(--text-color);
 		--menu-loader-color: #c7302c;
 		--alert-button-text: var(--bg-color);
 		--alert-button-warning: #e0a63c;
@@ -188,7 +235,7 @@
 		--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%2399a3ae' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 	}
 	html:not([data-scheme="light"]) body:not([data-scheme="light"])
-	:is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog) {
+	:is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog, .ui_progress) {
 		color-scheme: dark;
 	}
 	/* The root follows its body, so the scrollbars and the canvas behind
@@ -202,7 +249,8 @@
 		background: #15171b;
 	}
 }
-html[data-scheme="dark"] body, body[data-scheme="dark"] {
+html[data-scheme="dark"] body, body[data-scheme="dark"],
+html[data-scheme="dark"] .menu-panel, body[data-scheme="dark"] .menu-panel {
 	color-scheme: dark;
 	--card-gap: 7px;
 	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -210,11 +258,17 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--border-color-panel: #30353d;
 	--show-light: none;
 	--show-dark: block;
+	--logo-filter: none;
 	--bg-color: #15171b;
 	--bg-color-frame: #1a1d22;
 	--bg-color-hover: #262a30;
+	--bg-color-current: var(--bg-color-hover);
+	--text-color-current: var(--text-color);
 	--bg-color-switch: #262a30;
 	--bg-color-switch-on: #363b43;
+	--text-color-switch-on: var(--text-color);
+	--shadow-color-switch: var(--shadow-color);
+	--text-color-switch-off: var(--text-color-muted);
 	--main-content: #1e2126;
 	--bg-table-header: #23262c;
 	--bg-color-input: #1b1e23;
@@ -224,6 +278,8 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--border-color-lighter: #262a30;
 	--border-color-frame: #2a2f36;
 	--border-color-darker: #4d545e;
+	--border-color-ground: var(--border-color-darker);
+	--border-color-rule: var(--border-color);
 	--border-color-input: #4d545e;
 	--border-color-focused: rgba(106, 168, 240, 0.3);
 	--text-color: #e6e8ea;
@@ -231,6 +287,7 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--text-color-desc: #a7b0ba;
 	--text-color-muted: #99a3ae;
 	--text-color-disabled: #6b7581;
+	--text-color-placeholder: var(--text-color-disabled);
 	--text-color-inverse: #ffffff;
 	--link-color: #6aa8f0;
 	--link-color-hover: #8fc0f3;
@@ -238,6 +295,13 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--accent-color-hover: #5a8ad8;
 	--accent-color-soft: #3d5f8a;
 	--element-highlight-bg-color: #26395a;
+	--element-highlight-text-color: var(--text-color);
+	--element-highlight-icon-color: var(--accent-color-hover);
+	--cloudmin-color: #df7935;
+	--cloudmin-create-bg: rgba(223, 121, 53, 0.14);
+	--cloudmin-create-bg-hover: rgba(223, 121, 53, 0.22);
+	--cloudmin-create-edge: rgba(223, 121, 53, 0.42);
+	--cloudmin-create-text: var(--text-color);
 	--menu-loader-color: #c7302c;
 	--alert-button-text: var(--bg-color);
 	--alert-button-warning: #e0a63c;
@@ -265,8 +329,8 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--toggle-thumb-color: #e6e8ea;
 	--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%2399a3ae' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 }
-html[data-scheme="dark"] body :is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog),
-body[data-scheme="dark"] :is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog) {
+html[data-scheme="dark"] body :is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog, .ui_progress),
+body[data-scheme="dark"] :is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog, .ui_progress) {
 	color-scheme: dark;
 }
 html[data-scheme="dark"], html:has(> body[data-scheme="dark"]) {
@@ -325,6 +389,9 @@ a:hover {
 }
 /* Element defaults */
 img, a img { border: 0; }
+/* The shared 16px icons, such as a folder before its name, sit level
+ * with the words next to them instead of standing on the text line */
+img[src$="-small.svg"] { vertical-align: text-top; }
 p { margin: 6px 0; }
 h1, h2, h3, h4, h5 {
 	margin: 10px 0 6px;
@@ -340,7 +407,7 @@ hr {
 	height: 0;
 	margin: 12px 0;
 	border: 0;
-	border-top: 1px solid var(--border-color-darker);
+	border-top: 1px solid var(--border-color-rule);
 }
 code, kbd, samp, tt, pre {
 	font-family: var(--font-family-mono);
@@ -793,6 +860,9 @@ tr.ui_buttons_row > td {
 	border-top: 1px solid var(--border-color-lighter);
 	vertical-align: middle;
 }
+/* The button and the end of its text keep the card's side inset */
+tr.ui_buttons_row > td:first-child { padding-left: var(--card-inset); }
+tr.ui_buttons_row > td:last-child { padding-right: var(--card-inset); }
 /* Each row is a form with a table of its own, as a form cannot wrap table
  * rows. Flattening the wrappers lets all rows share the outer columns */
 tr.ui_buttons_form_row,
@@ -1144,6 +1214,16 @@ div.ui_tabs_box { box-sizing: border-box; }
 }
 table.shrinkwrapper > tbody > tr > td,
 table.wrapper > tbody > tr > td { padding: 0; }
+/* Two tables side by side, as in a list of databases or monitors, are cards
+ * in the cells of a plain table. They keep the same gap between them as
+ * cards that follow each other, split over both cells so the tables stay
+ * equally wide. */
+td:not([class]):has(> table.wrapper):has(+ td:not([class]) > table.wrapper) {
+	padding-right: calc(var(--card-gap) / 2);
+}
+td:not([class]):has(> table.wrapper) + td:not([class]):has(> table.wrapper) {
+	padding-left: calc(var(--card-gap) / 2);
+}
 /* Data-table cards stay within the page. Only their columns scroll when
  * their natural width is wider than the available content area. */
 table.wrapper:has(> tbody > tr > td > .ui_columns_scroll) {
@@ -1291,25 +1371,47 @@ table.ui_table.border {
 }
 /* Cells of a grid of elements (ui_grid_table) */
 table.ui_grid_table td { padding: 2px 4px; }
-/* A grid of plain items in a card of its own, such as the list of Webmin
- * users, keeps the card's 16px side padding in its first and last
- * columns, with some air above its first row and under its last. Grids
- * inside a form row, grids of tables and the two-column link bars keep
- * their tight cells. */
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell {
+/* A grid in a card of its own, such as the list of Webmin users or a
+ * search form of labels and fields, keeps the card's inset on all four
+ * sides. Grids inside a form row and grids of tables keep their tight
+ * cells, and so do the two-column link bars joined to a table, whose
+ * rules further down outrank these. */
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row > td.ui_grid_cell {
 	padding: 4px 8px;
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child {
-	padding-left: 16px;
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child {
+	padding-left: var(--card-inset);
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:last-child {
-	padding-right: 16px;
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:last-child {
+	padding-right: var(--card-inset);
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row:first-child > td.ui_grid_cell {
-	padding-top: 8px;
+/* The heading of such a grid starts on the same line as its items */
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > thead > tr > td {
+	padding-left: var(--card-inset);
+	padding-right: var(--card-inset);
 }
-table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row:last-child > td.ui_grid_cell {
-	padding-bottom: 8px;
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row:first-child > td.ui_grid_cell {
+	padding-top: var(--card-inset);
+}
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(table)) > tbody > tr.ui_grid_row:last-child > td.ui_grid_cell {
+	padding-bottom: var(--card-inset);
+}
+/* In a row with a field, a menu or a row of links, every cell sits in the
+ * middle, so a label lines up with the control beside it. The row of links
+ * has no margin of its own there. */
+table.ui_grid_table > tbody > tr.ui_grid_row:has(> td > :is(.ui_links_row, select, textarea,
+	input:not([type="checkbox"], [type="radio"], [type="hidden"]))) > td.ui_grid_cell {
+	vertical-align: middle;
+}
+table.ui_grid_table td > .ui_links_row { margin: 0; }
+/* A plain label before the control that ends its row takes only the width
+ * of its text, so the control starts right after it instead of half way
+ * across the card */
+table.ui_grid_table > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child:not(:has(*)):has(
+	+ td.ui_grid_cell:last-child > :is(.ui_links_row, select, textarea,
+	input:not([type="checkbox"], [type="radio"], [type="hidden"]))) {
+	width: 1%;
+	white-space: nowrap;
 }
 
 /* Collapsible sections (ui_hidden_table_start) and the system
@@ -1375,7 +1477,12 @@ details.ui_hidden_table_start table.ui_columns {
 	width: max-content;
 	min-width: 100%;
 }
-.section-body { padding: 10px 16px 14px; }
+.section-body {
+	--section-pad: 16px;
+	/* A table in a block is inset by half of the block's side padding */
+	--card-inset: calc(var(--section-pad) / 2);
+	padding: 10px var(--section-pad) 14px;
+}
 /* Text above a dashboard block's content */
 .section-note {
 	margin: 0 0 8px;
@@ -1409,6 +1516,17 @@ table.ui_columns > thead > tr.ui_columns_heading > td {
 	color: var(--text-color);
 }
 table.ui_columns > thead > tr > td b { font-weight: inherit; }
+/* The sort script puts a slot for the arrow right after each heading link,
+ * so the link's underline covers the heading text only. The slot looks and
+ * works like a part of the link: it takes the link's colors and sorts on a
+ * click. */
+.sortarrow {
+	color: var(--link-color);
+	cursor: pointer;
+}
+a.sortheader:hover + .sortarrow, .sortarrow:hover {
+	color: var(--link-color-hover);
+}
 /* Rows are as tall as their content plus 4px above and below, in
  * every table alike */
 table.ui_columns > tbody > tr > td,
@@ -1419,8 +1537,18 @@ table.sortable > tbody > tr > td {
 	vertical-align: middle;
 }
 table.ui_columns > tbody > tr:last-child > td { border-bottom: 0; }
+/* The first and the last cell of every row keep the card's side inset, so
+ * titles, headings, checkboxes and text start on one line with the buttons
+ * of the toolbar above them */
+table.ui_columns > :is(thead, tbody) > tr > td:first-child {
+	padding-left: var(--card-inset);
+}
+table.ui_columns > :is(thead, tbody) > tr > td:last-child {
+	padding-right: var(--card-inset);
+}
 /* The first column, or the one after a checkbox, names the row and is
- * a little bolder; the checkbox column is as narrow as it can be */
+ * a little bolder; the checkbox column is as narrow as it can be, also
+ * when a module prints the checkbox as a plain first cell */
 table.ui_columns > tbody > tr > td:first-child,
 table.ui_columns > tbody > tr > td.ui_checked_checkbox + td,
 table.ui_columns > tbody > tr > td.ui_radio_radio + td {
@@ -1428,7 +1556,8 @@ table.ui_columns > tbody > tr > td.ui_radio_radio + td {
 	font-weight: 500;
 }
 table.ui_columns > tbody > tr > td.ui_checked_checkbox,
-table.ui_columns > tbody > tr > td.ui_radio_radio {
+table.ui_columns > tbody > tr > td.ui_radio_radio,
+table.ui_columns > tbody > tr > td:first-child:has(> input:is([type="checkbox"], [type="radio"]):only-child) {
 	width: 1%;
 	padding-right: 4px;
 }
@@ -1498,7 +1627,7 @@ table.ui_columns > tbody > tr > td > .text_type_warn:only-child {
 form.ui_form > .ui_links_row:has(+ table.wrapper),
 form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) {
 	margin: 0;
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-bottom: 0;
@@ -1511,13 +1640,13 @@ form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_lin
 	padding: 0;
 }
 form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) > tbody > tr > td {
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 }
-form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) table.ui_grid_table td {
+/* The grid inside a bar above or under a table has no padding of its own.
+ * A grid with links that is not joined to a table is a card, not a bar. */
+form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) > tbody > tr > td > table.ui_grid_table > tbody > tr > td,
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) > tbody > tr > td > table.ui_grid_table > tbody > tr > td {
 	padding: 0;
-}
-form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) .ui_links_row {
-	margin: 0;
 }
 form.ui_form > .ui_links_row:has(+ table.wrapper) + table.wrapper,
 form.ui_form > table.wrapper:has(.ui_links_row) + table.wrapper {
@@ -1532,7 +1661,7 @@ form.ui_form > table.wrapper + table.ui_form_end_buttons {
 	box-sizing: border-box;
 	width: 100%;
 	margin: calc(-1px - var(--card-gap)) 0 var(--card-gap);
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-top: 1px solid var(--border-color-light);
@@ -1551,7 +1680,7 @@ form.ui_form > table.wrapper:has(+ table.wrapper > tbody > tr > td > table.ui_gr
 form.ui_form > table.wrapper + .ui_links_row,
 form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) {
 	margin: calc(-1px - var(--card-gap)) 0 var(--card-gap);
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-top: 1px solid var(--border-color-light);
@@ -1562,7 +1691,7 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 	padding: 0;
 }
 form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) > tbody > tr > td {
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 }
 /* A links row and a button row under one table form a single footer
  * bar: 11px above the links, 11px between the rows and 11px under the
@@ -1583,7 +1712,7 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 	box-sizing: border-box;
 	width: 100%;
 	margin: 0 0 var(--card-gap);
-	padding: 11px 16px;
+	padding: 11px var(--card-inset);
 	background: var(--bg-table-header);
 	border: 1px solid var(--border-color);
 	border-top: 0;
@@ -1597,6 +1726,14 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 form.ui_form:has(> :is(table.wrapper, table.shrinkwrapper)):has(> .ui_submit):has(
 	+ form.ui_form, + script + form.ui_form) {
 	margin-bottom: var(--card-gap);
+}
+/* Buttons printed loose at the start of a form, above its table, as in the
+ * list of package updates, keep the card gap above and under them, so they
+ * touch neither the text before them nor the table */
+form.ui_form > :is(input[type="submit"], input[type="button"], input[type="reset"], button):not(
+	:is(table.wrapper, table.shrinkwrapper) ~ *):has(
+	~ :is(table.wrapper, table.shrinkwrapper)) {
+	margin-block: var(--card-gap);
 }
 
 /* A small form of controls before another form or a table, such as the
@@ -1666,13 +1803,13 @@ table.icons_table img { display: block; }
 
 /* ---- Tabs (ui_tabs_start) ---- */
 
-/* The tab row sits on the ground, so its line is the darker one */
+/* The tab row sits on the ground, so its line takes the ground line color */
 div.ui_tabs {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4px;
 	margin: 0 0 12px;
-	border-bottom: 1px solid var(--border-color-darker);
+	border-bottom: 1px solid var(--border-color-ground);
 }
 div.ui_tabs a.ui_tab {
 	display: block;
@@ -1701,6 +1838,25 @@ div.ui_tabs_box .ui_tabs_start > form:last-of-type > table.shrinkwrapper:last-ch
 div.ui_tabs_box .ui_tabs_start > table.shrinkwrapper:last-of-type,
 div.ui_tabs_box .ui_tabs_start > table.wrapper:last-of-type {
 	margin-bottom: 0;
+}
+/* A tab body made of cards is not a card itself. Its cards sit on the page
+ * ground, as on a page without tabs, so no card is framed and padded twice.
+ * A body of plain text and fields keeps the box. Only the open tab counts,
+ * along with cards printed after the tabs inside the box. */
+div.ui_tabs_box:has(
+	> .ui_tabs_start.opener_shown > :is(table.wrapper, table.shrinkwrapper,
+		div.wrapper, table.ui_buttons_table,
+		details.ui_hidden_table_start, details.default),
+	> .ui_tabs_start.opener_shown > form > :is(table.wrapper,
+		table.shrinkwrapper, div.wrapper, table.ui_buttons_table,
+		details.ui_hidden_table_start, details.default),
+	> :is(table.wrapper, table.shrinkwrapper, div.wrapper,
+		table.ui_buttons_table, details.ui_hidden_table_start,
+		details.default)) {
+	padding: 0;
+	background: none;
+	border: 0;
+	box-shadow: none;
 }
 
 /* ---- Help bubbles and tooltips ---- */
@@ -1877,6 +2033,7 @@ body.left-frame {
 	border: 1px solid var(--border-color-panel);
 	border-radius: 14px;
 	box-shadow: 0 2px 6px var(--shadow-color);
+	color: var(--text-color);
 }
 /* The brand block and the product switch stick to the top of the panel
  * while the menu scrolls under them */
@@ -1929,12 +2086,13 @@ html.loading-right .menu-loader { display: block; }
 	margin: 0 0 12px;
 	line-height: 0;
 }
-/* The product logo, in the version matching the palette */
+/* The product logo for the palette, with the palette's filter */
 .menu-brand-logo {
 	display: var(--show-light);
 	height: 36px;
 	width: auto;
 	max-width: 100%;
+	filter: var(--logo-filter);
 }
 .menu-brand-logo-dark { display: var(--show-dark); }
 /* Host and login under the logo: small lines with a leading icon; a
@@ -1971,7 +2129,7 @@ html.loading-right .menu-loader { display: block; }
 .mode {
 	display: flex;
 	margin: 14px 16px 0;
-	padding: 3px;
+	padding: 3.5px;
 	background: var(--bg-color-switch);
 	border-radius: var(--radius);
 }
@@ -1980,8 +2138,8 @@ html.loading-right .menu-loader { display: block; }
 	padding: 3px 0;
 	border-radius: var(--radius-sm);
 	background: var(--bg-color-switch-on);
-	box-shadow: 0 1px 2px var(--shadow-color);
-	color: var(--text-color);
+	box-shadow: 0 1px 2px var(--shadow-color-switch);
+	color: var(--text-color-switch-on);
 	font-size: 12.5px;
 	font-weight: 600;
 	text-align: center;
@@ -1991,7 +2149,7 @@ html.loading-right .menu-loader { display: block; }
 .mode > b:has(> a) {
 	background: transparent;
 	box-shadow: none;
-	color: var(--text-color-muted);
+	color: var(--text-color-switch-off);
 	font-weight: 400;
 	cursor: pointer;
 }
@@ -2039,7 +2197,7 @@ html.loading-right .menu-loader { display: block; }
 	border-radius: var(--radius-sm);
 	background: var(--accent-color);
 	color: var(--text-color-inverse);
-	font-weight: 600;
+	font-weight: 500;
 	text-align: center;
 	text-decoration: none;
 }
@@ -2048,31 +2206,33 @@ html.loading-right .menu-loader { display: block; }
 	color: var(--text-color-inverse);
 	text-decoration: none;
 }
-/* Cloudmin's creation action uses a quiet orange tint and outline. Normal
- * theme text stays readable without making the button dominate the menu. */
+/* The creation buttons take their colors from the palette */
 .menu-panel-cloudmin .menu-create {
-	background: rgba(223, 121, 53, 0.14);
-	box-shadow: inset 0 0 0 1px rgba(223, 121, 53, 0.42);
-	color: var(--text-color);
+	background: var(--cloudmin-create-bg);
+	box-shadow: inset 0 0 0 1px var(--cloudmin-create-edge);
+	color: var(--cloudmin-create-text);
 }
 .menu-panel-cloudmin .menu-create:hover {
-	background: rgba(223, 121, 53, 0.22);
-	color: var(--text-color);
+	background: var(--cloudmin-create-bg-hover);
+	color: var(--cloudmin-create-text);
 }
-.menu-panel-cloudmin .menu-create svg { color: #df7935; }
-/* Virtualmin uses the same quiet treatment with the theme's blue palette. */
+.menu-panel-cloudmin .menu-create svg { color: var(--cloudmin-color); }
 .menu-panel-virtualmin .menu-create {
 	background: var(--element-highlight-bg-color);
 	box-shadow: inset 0 0 0 1px var(--accent-color-soft);
-	color: var(--text-color);
+	color: var(--element-highlight-text-color);
 }
 .menu-panel-virtualmin .menu-create:hover {
 	box-shadow: inset 0 0 0 2px var(--border-color-info);
-	color: var(--text-color);
+	color: var(--element-highlight-text-color);
 }
-.menu-panel-virtualmin .menu-create svg { color: var(--accent-color-hover); }
+.menu-panel-virtualmin .menu-create svg {
+	color: var(--element-highlight-icon-color);
+}
 /* Forms in the menu: a caps label over a field that fills the panel */
 .menu-form { margin: 0 8px 12px; }
+/* A row has padding of its own, so a form keeps less space before one */
+.menu-form:has(+ .menu-link, + details.menu-cat) { margin-bottom: 6px; }
 .menu-label {
 	display: block;
 	margin-bottom: 4px;
@@ -2092,6 +2252,11 @@ html.loading-right .menu-loader { display: block; }
 	min-width: 0;
 	font-size: 12.5px;
 }
+/* Hint text in an empty field */
+.menu-field input::placeholder {
+	color: var(--text-color-placeholder);
+	opacity: 1;
+}
 /* Menu rows: 26px links that highlight under the mouse */
 .menu-link {
 	display: block;
@@ -2105,6 +2270,11 @@ html.loading-right .menu-loader { display: block; }
 	background: var(--bg-color-hover);
 	color: var(--text-color);
 	text-decoration: none;
+}
+/* The row of the page shown in the right frame, marked by the menu script */
+.menu-link[aria-current="page"] {
+	background: var(--bg-color-current);
+	color: var(--text-color-current);
 }
 /* Links inside a category are indented under its name */
 .menu-link.menu-sub { padding-left: 24px; }
@@ -2265,13 +2435,64 @@ body.right-frame { padding: 0; }
 /* Bars in cards and tiles are thin and round, and their second segment
  * is a soft accent instead of gray */
 .section .ui_progress { margin-top: 6px; }
+/* A bar alone in a table cell has nothing above it, and sits in the
+ * middle of its row */
+.section td > .ui_progress:only-child { margin-top: 0; }
+/* A small picture before a word, such as a monitor's state, sits level
+ * with the word instead of standing on the text line */
+.section img { vertical-align: text-top; }
 .section .ui_progress_track, .tile .ui_progress_track {
 	height: 6px;
 	border-radius: 999px;
 }
 .section .ui_progress_bar.ui_bg_neutral,
 .tile .ui_progress_bar.ui_bg_neutral { background: var(--accent-color-soft); }
-.section-body > table.wrapper:last-child { margin-bottom: 0; }
+/* A table in a dashboard block is a card inside a card. It keeps its
+ * border but takes up half of the block's side padding, and its cells are
+ * padded by the other half, so its text lines up with the block's heading.
+ * A button or links bar joined to the table moves with it. */
+.section-body table.wrapper:not(table table),
+.section-body form.ui_form > table.wrapper + table.ui_form_end_buttons {
+	width: calc(100% + var(--section-pad));
+}
+.section-body table.wrapper:not(table table),
+.section-body form.ui_form > table.wrapper + table.ui_form_end_buttons,
+.section-body form.ui_form > .ui_links_row:has(+ table.wrapper),
+.section-body form.ui_form > table.wrapper + .ui_links_row {
+	margin-left: calc(var(--section-pad) / -2);
+	margin-right: calc(var(--section-pad) / -2);
+}
+.section-body table.ui_columns > * > tr > td,
+.section-body form.ui_form > table.wrapper + table.ui_form_end_buttons,
+.section-body form.ui_form > .ui_links_row:has(+ table.wrapper),
+.section-body form.ui_form > table.wrapper + .ui_links_row {
+	padding-left: calc(var(--section-pad) / 2);
+	padding-right: calc(var(--section-pad) / 2);
+}
+/* The last table or button bar in a block adds no gap of its own under it,
+ * also inside a form. A block that ends with one has the same space under
+ * it as at its sides. */
+.section-body > table.wrapper:last-child,
+.section-body > form:last-of-type > :is(table.wrapper, table.ui_form_end_buttons):last-child {
+	margin-bottom: 0;
+}
+.section-body:has(> table.wrapper:last-child,
+		  > form:last-of-type > :is(table.wrapper, table.ui_form_end_buttons):last-child,
+		  > .ui_grid:last-child > .ui_card) {
+	padding-bottom: calc(var(--section-pad) / 2);
+}
+/* The same goes for the space above a table that starts a block. Assets
+ * before the table do not count. */
+.section-body:has(> table.wrapper:nth-child(1 of :not(script, style, link)),
+		  > .ui_grid:nth-child(1 of :not(script, style, link)) > .ui_card) {
+	padding-top: calc(var(--section-pad) / 2);
+}
+/* A grid of cards is placed like a table: it takes up half of the block's
+ * side padding, and the rules above give it the same space over and under
+ * it. The widget stylesheet's own gap after the assets is dropped. */
+details.section > .section-body > .ui_grid:has(> .ui_card) {
+	margin: 0 calc(var(--section-pad) / -2);
+}
 /* A paragraph break between a note and the table under it, as in the
  * package updates block, leaves a clear gap */
 .section-body p:has(+ table) { margin-bottom: 10px; }
@@ -2291,6 +2512,15 @@ body.right-frame { padding: 0; }
 	font-weight: 400;
 	color: var(--text-color-desc);
 }
+/* Keep space between host chips under a status when they wrap */
+.section .ui_stat_desc:has(> .ui_chip) {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+/* Action buttons in a block of the dashboard sit a little below its top
+ * edge, as they are closer to it than to the side */
+.section .ui_card .ui_cluster { margin-top: 3px; }
 
 /* ---- Widgets ---- */
 /* The ui-lib widgets keep square corners by default; this theme rounds
@@ -2306,6 +2536,13 @@ body.right-frame { padding: 0; }
 	border-radius: var(--radius-sm);
 }
 .ui_progress_track, .ui_progress_bar { border-radius: 999px; }
+/* The segments of one bar meet with square ends. The track rounds the
+ * start of the bar, and only the last segment that has any width gets a
+ * round end. */
+.ui_progress_segmented .ui_progress_bar { border-radius: 0; }
+.ui_progress_segmented .ui_progress_bar:nth-last-child(1 of :not([style="width:0%"])) {
+	border-radius: 0 999px 999px 0;
+}
 
 /* ---- Popup windows ---- */
 /* Choosers and help open in small windows split into frames, some only

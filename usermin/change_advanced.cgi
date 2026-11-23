@@ -2,6 +2,7 @@
 # Save advanced options
 
 require './usermin-lib.pl';
+$access{'advanced'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'advanced_err'});
 &get_usermin_miniserv_config(\%miniserv);

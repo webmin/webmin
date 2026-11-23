@@ -23,7 +23,7 @@ if (@{$d->{'data'}}) {
 	$i = -1;
 	foreach $u (@{$d->{'data'}}) {
 		$i++;
-		next if ($access{'perms'} == 2 && !&can_edit_db($u->[1]));
+		next if ($access{'perms'} == 2 && !&can_edit_grant_db($u->[1]));
 		local @cols;
 		push(@cols, "<a href='edit_host.cgi?idx=$i'>".
 			($u->[1] eq '%' || $u->[1] eq '' ? $text{'hosts_any'}

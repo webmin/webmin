@@ -5,7 +5,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-our (%config, %module_info, @remote_user_info, $user_module_config_directory,
+our (%config, %module_info, %text, @remote_user_info, $user_module_config_directory,
      $remote_user, $module_config_directory);
 BEGIN { push(@INC, ".."); };
 use WebminCore;
@@ -83,6 +83,9 @@ sub save_directories
 {
 my $d;
 my $fh = "DIRS";
+foreach my $dir (@{$_[0]}) {
+	grep { defined($_) && /[\t\r\n\0]/ } @$dir and &error($text{'dir_edir'});
+	}
 &open_tempfile($fh, ">$directories_file");
 foreach $d (@{$_[0]}) {
 	my @safed = map { defined($_) ? $_ : "" } @$d;
@@ -114,6 +117,7 @@ if (!$module_info{'usermin'} &&
 	my @uinfo = getpwnam($access{'user'} eq "*" ? $remote_user
 						       : $access{'user'});
 	$old_uid = $>;
+	@uinfo || &error($text{'dir_ecannot'});
 	$old_gid = $);
 	$) = "$uinfo[3] $uinfo[3]";
 	$> = $uinfo[2];

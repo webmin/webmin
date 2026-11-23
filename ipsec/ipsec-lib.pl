@@ -286,8 +286,9 @@ for($i=0; $i<@ipsec_logfiles; $i++) {
 	while(<LOG>) {
 		s/\r|\n//g;
 		if (/ipsec/i && /error/i) {
+			# Any local user can write to the log, so escape it
 			s/^(\S+)\s+(\d+)\s+(\d+:\d+:\d+)\s+(\S+)\s+//;
-			push(@errs, $_);
+			push(@errs, &html_escape($_));
 			}
 		}
 	close(LOG);

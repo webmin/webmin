@@ -63,16 +63,29 @@ closedir(DIR);
 return $i;
 }
 
+# slack_package_file(package)
+# Returns the path to a package's record file, or undef if the name could
+# point outside the package directory
+sub slack_package_file
+{
+my ($name) = @_;
+return undef if (!defined($name) || $name eq "" || $name =~ /\// ||
+		 $name eq "." || $name eq "..");
+return "$package_dir/$name";
+}
+
 # package_info(package)
 # Returns an array of package information in the order
 #  name, class, description, arch, version, vendor, installtime
 sub package_info
 {
+local $pfile = &slack_package_file($_[0]);
+return ( ) if (!$pfile || !-r &translate_filename($pfile));
 local @rv = ( $_[0], $text{'slack_unclass'}, $text{'slack_unknown'},
 	      $system_arch, $text{'slack_unknown'}, "Slackware" );
-local @st = stat(&translate_filename("$package_dir/$_[0]"));
+local @st = stat(&translate_filename($pfile));
 $rv[6] = ctime($st[9]);
-&open_readfile(PKG, "$package_dir/$_[0]");
+&open_readfile(PKG, $pfile);
 while(<PKG>) {
 	if (/^PACKAGE LOCATION:\s+disk([a-z]+)\d+/i) {
 		$rv[1] = $class_map{$1};
@@ -109,7 +122,9 @@ sub check_files
 {
 local $i = 0;
 local $file;
-&open_readfile(PKG, "$package_dir/$_[0]");
+local $pfile = &slack_package_file($_[0]);
+return 0 if (!$pfile);
+&open_readfile(PKG, $pfile) || return 0;
 while(<PKG>) {
 	last if (/^FILE LIST:/i);
 	}
@@ -146,7 +161,9 @@ sub package_files
 {
 local ($pkg) = @_;
 local @rv;
-&open_readfile(PKG, "$package_dir/$_[0]");
+local $pfile = &slack_package_file($pkg);
+return ( ) if (!$pfile);
+&open_readfile(PKG, $pfile) || return ( );
 while(<PKG>) {
 	last if (/^FILE LIST:/i);
 	}

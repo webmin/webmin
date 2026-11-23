@@ -1,0 +1,41 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+no warnings qw(once redefine);
+use FindBin;
+use Test::More;
+use File::Temp qw(tempdir);
+
+my $src = "$FindBin::Bin/..";
+require "$src/web-lib-funcs.pl";
+require "$src/config-lib.pl";
+require "$src/t/test-lib.pl";
+my $root = tempdir(CLEANUP => 1);
+mkdir("$root/conf") or die $!;
+local $main::config_directory = "$root/conf";
+local $main::remote_user = 'owner';
+local *main::module_root_directory = sub { return $root; };
+local *main::lock_file = sub {};
+local *main::unlock_file = sub {};
+local *main::is_readonly_mode = sub { return 0; };
+my $prefs = "$root/conf/example/prefs.owner";
+write_text("$root/prefs.info", "allowed=color,size\n");
+main::save_module_preferences('example', {color => 'blue', 'col.r' => 'red'});
+is(read_text($prefs), "color=blue\n", 'save accepts only literal preference names');
+main::save_module_preferences('example', {size => 10});
+is(read_text($prefs), "size=10\n", 'a later save uses only its own input');
+write_text($prefs, "color=green\ncol.r=invalid\n");
+my %settings;
+main::load_module_preferences('example', \%settings);
+is_deeply(\%settings, {color => 'green'}, 'load uses the same literal allowlist');
+write_text("$root/prefs.info", "allowed=*\n");
+main::save_module_preferences('example', {label => 'all'});
+%settings = ();
+main::load_module_preferences('example', \%settings);
+is_deeply(\%settings, {label => 'all'}, 'wildcard still permits all preferences');
+write_text("$root/prefs.info", "allowed=color,size\n");
+write_text($prefs, "color=green\nsize=10\n");
+main::save_module_preferences('example', {color => 'blue', size => 20}, ['size']);
+is(read_text($prefs), "color=green\nsize=20\n",
+	'a section save preserves personal overrides from other sections');
+done_testing();

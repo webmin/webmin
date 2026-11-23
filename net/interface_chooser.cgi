@@ -31,7 +31,7 @@ if ($in{'multi'}) {
 		$len = @il;
 		print "sel = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
-			print "sel[$i] = \"$il[$i]\";\n";
+			print "sel[$i] = \"",&quote_javascript($il[$i]),"\";\n";
 			}
 		print "</script>\n";
 		print "<title>$text{'interfaces_title1'}</title>\n";

@@ -39,6 +39,8 @@ else {
 	# Webmin connects to the database as the user specified in the per-user
 	# or global config
 	%access = &get_module_acl();
+	# A blank backup folder allows the same destinations as /.
+	$access{'bpath'} = '/' if ($access{'bpath'} eq '');
 	if ($access{'user'} && !$use_global_login) {
 		$mysql_login = $access{'user'};
 		$mysql_pass = $access{'pass'};
@@ -747,6 +749,18 @@ my ($db) = @_;
 $db =~ s/\\%/%/g;
 $db =~ s/\\_/_/g;
 return $db;
+}
+
+# can_edit_grant_db(db)
+# Returns 1 if the current user can manage privileges stored for a database
+# column value, in which escaped wildcards stand for the literal characters
+sub can_edit_grant_db
+{
+my ($db) = @_;
+return 1 if (!$module_info{'usermin'} && $access{'dbs'} eq '*');
+# Only escaped wildcards can identify one database in a grant.
+return 0 if ($db =~ /(?:\A|[^\\])(?:\\\\)*[_%]/);
+return &can_edit_db(&unquote_mysql_database($db));
 }
 
 # escapestr(string)

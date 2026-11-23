@@ -18,12 +18,7 @@ index_cloudmintitle=Cloudmin $1
 index_webmintitle=Webmin $1
 index_usermintitle=Usermin $1
 
-config_section=Kategorija konfiguracije:
-config_change=Promijeniti
 config_return=informacije o sustavu
-config_next=Spremi i Dalje
-config_nnext=Sljedeći
-config_nprev=Prethodna
 
 edright_title=Konfiguracija informacija o sustavu
 edright_header=Postavke stranice podataka o virtualnom sustavu

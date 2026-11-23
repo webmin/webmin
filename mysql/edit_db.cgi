@@ -12,7 +12,7 @@ if ($in{'new'}) {
 else {
 	$d = &execute_sql_safe($master_db, "select * from db order by db");
 	$u = $d->{'data'}->[$in{'idx'}];
-	$access{'perms'} == 1 || &can_edit_db($u->[1]) ||
+	$access{'perms'} == 1 || &can_edit_grant_db($u->[1]) ||
 		&error($text{'perms_edb'});
 	&ui_print_header(undef, $text{'db_title2'}, "", "edit_db");
 	}

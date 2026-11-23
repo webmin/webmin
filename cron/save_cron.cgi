@@ -51,6 +51,10 @@ if (&supports_users()) {
 		}
 	}
 &parse_times_input($job, \%in);
+if ($hourly_only && !$job->{'special'}) {
+	# Hourly-only users may pick just one minute in each hour
+	$job->{'mins'} =~ /^\d+$/ || &error($text{'save_ehourly'});
+	}
 $in{input} =~ s/\r//g; $in{input} =~ s/%/\\%/g;
 $in{cmd} =~ s/%/\\%/g;
 $job->{'active'} = $in{'active'};

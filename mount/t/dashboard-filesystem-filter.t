@@ -94,6 +94,8 @@ return 1;
 }
 sub foreign_require { }
 sub foreign_exists { return 0; }
+sub foreign_defined { return $_[0]->can($_[1]); }
+sub load_language_auto { return 0; }
 sub unique { my %seen; return grep { !$seen{$_}++ } @_; }
 sub foreign_call
 {
@@ -209,6 +211,15 @@ sub mount::ui_columns_end { return ''; }
 sub mount::ui_columns_row { return join('|', @{$_[0]})."\n"; }
 sub mount::ui_text_color { return "$_[1]:$_[0]"; }
 sub mount::nice_size { return $_[0]; }
+sub mount::html_escape
+{
+my ($str) = @_;
+$str =~ s/&/&amp;/g;
+$str =~ s/</&lt;/g;
+$str =~ s/>/&gt;/g;
+$str =~ s/"/&quot;/g;
+return $str;
+}
 {
 package mount;
 do "$root/mount/system_info.pl" or die "mount/system_info.pl: $@ $!";

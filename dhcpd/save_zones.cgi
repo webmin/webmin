@@ -15,6 +15,8 @@ $access{'zones'} || &error($text{'zone_ecannot'});
 unless ($in{'new'}){  # on change or delete
 	# Read current zone data from config file
 	($par, $zone, $indent) = &get_branch('zone');
+	# Only a zone can be changed or deleted here
+	$zone && $zone->{'name'} eq 'zone' || &error($text{'sgroup_echanged'});
 }
 
 # Get values from CGI Parameters

@@ -11,10 +11,21 @@ if ($in{'flush'}) {
 	# Flushing selected messages
 	@files || &error($text{'delq_enone'});
 	$access{'flushq'} || &error($text{'flushq_ecannot'});
+
+	# Only flush queue files that exist and that this user can view
+	local $conf = &get_sendmailcf();
+	local @mqueues = &mailq_dir($conf);
+	local @mails;
+	foreach my $file (@files) {
+		next if ($file =~ /\.\./ || $file !~ /\/[A-Za-z0-9]+\z/);
+		next if (!grep { $file =~ /^\Q$_\E\// } @mqueues);
+		my $mail = &mail_from_queue($file);
+		push(@mails, $mail) if ($mail && &can_view_qfile($mail));
+		}
+	@mails || &error($text{'delq_enone'});
 	&ui_print_unbuffered_header(undef, $text{'flushq_title'}, "");
 
 	# Split into quarantined and non-quarantined messages
-	local @mails = map { &mail_from_queue($_) } @files;
 	local @quar = grep { $_->{'quar'} } @mails;
 	local @nonquar = grep { !$_->{'quar'} } @mails;
 
@@ -27,7 +38,7 @@ if ($in{'flush'}) {
 			}
 		foreach $file (@files) {
 			$file =~ s/^.*\///;
-			$cmd .= " -qI$file";
+			$cmd .= " -qI".quotemeta($file);
 			}
 		if ($config{'mailq_order'}) {
 			$cmd .= " -O QueueSortOrder=$config{'mailq_order'}";
@@ -53,7 +64,9 @@ else {
 		$count = 0;
 		$conf = &get_sendmailcf();
 		foreach $file (@files) {
-			print &text('delq_file', "<tt>$file</tt>"),"&nbsp;&nbsp;&nbsp;\n";
+			print &text('delq_file',
+				    "<tt>".&html_escape($file)."</tt>"),
+			      "&nbsp;&nbsp;&nbsp;\n";
 
 			local $ok;
 			foreach $mqueue (&mailq_dir($conf)) {

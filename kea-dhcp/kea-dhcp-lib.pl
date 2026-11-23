@@ -226,6 +226,9 @@ foreach my $c (&kea_editable_components()) {
 # Include Control Agent password files because a missing password can make the
 # unit look inactive without any broken JSON to edit.
 foreach my $file (&kea_control_agent_password_files()) {
+	my $ctrl = &kea_config_file(&kea_component('ctrl'));
+	next if (!$ctrl ||
+		 !&is_under_directory(&kea_dirname($ctrl), $file));
 	next if (!$file || $seen{$file}++);
 	push(@rv, { 'file' => $file, 'type' => 'password' });
 	}

@@ -18,6 +18,8 @@ local *main::ReadParse = sub { };
 local *main::error = sub { die join(' ', @_)."\n"; };
 local *main::get_sendmailcf = sub { return []; };
 local *main::mailq_dir = sub { return '/fixture/queue'; };
+our $can_view_qfile = 1;
+local *main::can_view_qfile = sub { return $can_view_qfile; };
 
 # attachment_response(cgi, mime_type, data)
 # Render one MIME attachment through a real CGI with an in-memory queue entry.
@@ -86,6 +88,16 @@ for my $cgi (qw(postfix/detach_queue.cgi qmailadmin/detach_queue.cgi
 		my (undef, $body) = attachment_response($cgi, 'application/zip', $binary);
 		is($body, $binary, 'binary attachment is unchanged');
 		};
+	}
+
+# Sendmail users limited to some queue domains cannot detach other messages.
+{
+	local $can_view_qfile = 0;
+	local $main::text{'mailq_ecannot'} = 'Queue message denied';
+	my @rv = eval { attachment_response('sendmail/qdetach.cgi',
+					    'text/plain', 'secret') };
+	like($@, qr/Queue message denied/,
+	     'qdetach.cgi refuses a message the user cannot view');
 	}
 
 done_testing();

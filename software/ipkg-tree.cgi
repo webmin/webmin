@@ -106,18 +106,19 @@ local($s, $act, $i);
 print "<tr style=\"border-top: 1px solid #aaaaaa28\"> <td>", $spacer x $_[1];
 if ($_[0]) {
 	if ($in{'filter'}) {
-		print "<img border=0 src='images/close.gif'>";
+		print "<img border=0 src='../images/shared/folder-open-small.svg'>";
 	} else {
 		print "<a name=\"$_[0]\"></a>\n";
 		$act = $heiropen{$_[0]} ? "close" : "open";
+		my $folder = $heiropen{$_[0]} ? "folder-open-small.svg" : "folder-closed-small.svg";
 		my $link = "ipkg-$act.cgi?what=".&urlize($_[0]);
-		print &ui_link($link, "<img border=0 src='images/$act.gif'>");
+		print &ui_link($link, "<img border=0 src='../images/shared/$folder'>");
 	}
 	$_[0] =~ /([^\/]+)$/;
     print "&nbsp; $1</td>\n";
 	}
 else {
-	print "<img src=images/close.gif> <i>$text{'index_all'}</i></td>\n";
+	print "<img src=../images/shared/folder-open-small.svg> <i>$text{'index_all'}</i></td>\n";
 	}
 
 print "<td><br></td> </tr>\n";

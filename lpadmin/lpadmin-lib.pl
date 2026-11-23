@@ -159,7 +159,7 @@ else {
 	&print_tempfile(DRV, "$_[1]->{'program'} \"\$1\" \"\$2\" \"\$3\" \"\$4\" ",
 		  "\"\$5\" \"\$6\" \"\$7\" \"\$8\" \"\$9\" ",
 		  "\"\$10\" \"\$11\" \"\$12\" \"\$13\" >/tmp/\$\$.smb\n");
-	&system_logged("chmod a+rx '$_[1]->{'program'}'");
+	&system_logged("chmod a+rx ".quotemeta($_[1]->{'program'}));
 	}
 &print_tempfile(DRV, "$config{'smbclient_path'} '//$_[1]->{'server'}/$_[1]->{'share'}' ",
 	  $_[1]->{'pass'} ? $_[1]->{'pass'} : "-N",
@@ -211,7 +211,7 @@ else {
 	&print_tempfile(DRV, "$_[1]->{'program'} \"\$1\" \"\$2\" \"\$3\" \"\$4\" ",
 		  "\"\$5\" \"\$6\" \"\$7\" \"\$8\" \"\$9\" ",
 		  "\"\$10\" \"\$11\" \"\$12\" \"\$13\" >/tmp/\$\$.hpnp\n");
-	&system_logged("chmod a+rx '$_[1]->{'program'}'");
+	&system_logged("chmod a+rx ".quotemeta($_[1]->{'program'}));
 	}
 &print_tempfile(DRV, "$config{'hpnp_path'} -x $_[1]->{'server'}",
 	  $_[1]->{'port'} ? " -p $_[1]->{'port'}" : "",
@@ -440,6 +440,14 @@ foreach $p (split(/\s+/, $access{'printers'})) {
 	return 1 if ($p eq '*' || $p eq $_[0]);
 	}
 return 0;
+}
+
+# can_view_printer(printer)
+# Returns 1 if a printer is listed for this user, which allows viewing its jobs
+# and printing test pages on it
+sub can_view_printer
+{
+return &can_edit_printer($_[0]) || &can_edit_jobs($_[0]) || $access{'view'};
 }
 
 # can_edit_jobs(printer, user)

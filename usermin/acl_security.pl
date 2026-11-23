@@ -7,7 +7,7 @@ sub acl_security_form
 {
 my ($o) = @_;
 print &ui_table_row($text{'acl_icons'},
-	&ui_select("icons", [ keys %$o ],
+	&ui_select("icons", [ grep { $o->{$_} } &get_icons() ],
 		   [ map { [ $_, $text{$_."_title"} ] } &get_icons() ],
 		   10, 1));
 
@@ -43,6 +43,6 @@ $o->{'bootup'} = $in{'bootup'};
 
 sub get_icons
 {
-return ( "access" ,"bind" ,"log" ,"ui" ,"umods" ,"os" ,"lang" ,"upgrade" ,"session" ,"assignment" ,"categories" ,"themes", "referers", "anon", "ssl" ,"configs" ,"acl" ,"restrict" ,"users" ,"defacl", "sessions", "blocked", "advanced" );
+return ( "access" ,"bind" ,"log" ,"ui" ,"umods" ,"os" ,"lang" ,"upgrade" ,"session" ,"assignment" ,"categories" ,"themes", "referers", "anon", "ssl" ,"configs" ,"acl" ,"restrict" ,"users" ,"defacl", "sessions", "blocked", "advanced", "descs", "logout", "mobile", "twofactor", "web" );
 }
 

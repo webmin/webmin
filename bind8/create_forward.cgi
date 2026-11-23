@@ -30,7 +30,7 @@ if ($in{'rev'}) {
 	($ipv4 = &check_net_ip($in{'zone'})) ||
 	  $config{'support_aaaa'} &&
 	  (($in{'zone'} =~ /^([\w:]+)(\/\d+)$/) || &check_ip6address($1)) ||
-		&error(&text('create_enet', $in{'zone'}));
+		&error(&text('create_enet', &html_escape($in{'zone'})));
 	if ($ipv4) {
 		$in{'zone'} = &ip_to_arpa($in{'zone'});
 		}
@@ -40,15 +40,15 @@ if ($in{'rev'}) {
 	}
 else {
 	($in{'zone'} =~ /^[\d\.]+$/ || $in{'zone'} =~ /^[\d\:]+(\/[\d]+)?$/) &&
-		&error(&text('create_edom2', $in{'zone'}));
+		&error(&text('create_edom2', &html_escape($in{'zone'})));
 	&valdnsname($in{'zone'}, 0, ".") ||
-		&error(&text('create_edom', $in{'zone'}));
+		&error(&text('create_edom', &html_escape($in{'zone'})));
 	}
 $in{'zone'} =~ s/\.$//;
 my @masters = split(/\s+/, $in{'masters'});
 foreach my $m (@masters) {
 	&check_ipaddress($m) || &check_ip6address($m) ||
-		&error(&text('create_emaster', $m));
+		&error(&text('create_emaster', &html_escape($m)));
 	}
 #if (!@masters) {
 #	&error($text{'create_enone'});

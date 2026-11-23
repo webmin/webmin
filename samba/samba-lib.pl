@@ -54,7 +54,9 @@ $arr = (@_==2 ? $_[1] : "share");
 undef(%$arr);
 &open_readfile(SAMBA, $config{smb_conf});
 while(<SAMBA>) {
-	chop; s/^\s*;.*$//g; s/^\s*#.*$//g;
+	# Drop the line ending, including the CR of a CRLF file, so that
+	# saved values do not carry it back into smb.conf
+	chop; s/\r$//; s/^\s*;.*$//g; s/^\s*#.*$//g;
 	if (/^\s*\[([^\]]+)\]/) {
 		# Start of share section
 		$first = 1;
@@ -88,10 +90,23 @@ return $found;
 }
 
 
+# check_share_fields(name)
+# Each share and setting occupies one line of smb.conf.
+sub check_share_fields
+{
+my ($name) = @_;
+$name =~ /[\r\n\0\]]/ && &error($text{'share_evalue'});
+foreach my $key (keys %share) {
+	($key =~ /[\r\n\0=]/ || $share{$key} =~ /[\r\n\0]/) &&
+		&error($text{'share_evalue'});
+	}
+}
+
 # create_share(name)
 # Add an entry to the config file
 sub create_share
 {
+&check_share_fields($_[0]);
 &open_tempfile(CONF, ">> $config{smb_conf}");
 &print_tempfile(CONF, "\n");
 &print_tempfile(CONF, "[$_[0]]\n");
@@ -106,6 +121,7 @@ foreach $k (grep {!/share_name/} (keys %share)) {
 # Change a share (and maybe it's name)
 sub modify_share
 {
+&check_share_fields($_[1]);
 local($_, @conf, $replacing, $first);
 &open_readfile(CONF, $config{smb_conf});
 @conf = <CONF>;
@@ -655,7 +671,7 @@ if ($has_pdbedit) {
 	local $out = &backquote_logged(
 		"cd / && $config{'pdbedit'} -a -s $config{'smb_conf'} -t -u ".
 		quotemeta($user->{'name'}).
-		($config{'sync_gid'} ? " -g $config{'sync_gid'}" : "").
+		($config{'sync_gid'} ? " -g ".quotemeta($config{'sync_gid'}) : "").
 		" -c ".quotemeta("[".join("", @opts)."]").
 		" $ws <$temp 2>&1");
 	$? && &error("$config{'pdbedit'} failed : <pre>$out</pre>");
@@ -849,6 +865,42 @@ if ($acc->{'per_' . $stype . '_acls'}) {
 return 1;
 }
 
+# can_kill_connections([share])
+# Returns 1 if the current user can disconnect clients from a share, or from
+# all shares when no share is given
+sub can_kill_connections
+{
+my ($sname) = @_;
+if ($sname eq '') {
+	return $access{'view_all_con'} && $access{'kill_con'};
+	}
+return 0 if (!&can('rvV', \%access, $sname));
+
+# The per-share view and kill rights are only set when per-share ACLs are
+# enabled. Otherwise the global right to remove connections applies.
+local %share;
+&get_share($sname);
+my $stype = &istrue('printable') ? 'ps' : 'fs';
+return $access{'per_'.$stype.'_acls'} || $access{'kill_con'};
+}
+
+# kill_connection_pids(share, pid, ...)
+# Sends TERM to Samba processes serving a share, or any share when it is empty.
+# Calls error for a PID that does not belong to a current connection.
+sub kill_connection_pids
+{
+my ($sname, @pids) = @_;
+my %conpids = map { $_->[3], 1 }
+		  &list_connections($sname eq '' ? undef : $sname);
+foreach my $pid (@pids) {
+	$pid =~ /^\d+$/ && $pid > 1 && $conpids{$pid} ||
+		&error(&text('viewu_epid', &html_escape($pid)));
+	}
+foreach my $pid (@pids) {
+	&kill_logged('TERM', $pid);
+	}
+}
+
 # save_samba_acl($permissions_string, \%access, $share_name)
 sub save_samba_acl
 {
@@ -939,7 +991,7 @@ if ($has_smbgroupedit) {
 		" -c ".quotemeta($_[0]->{'sid'}).
 		($_[0]->{'unix'} == -1 ? "" :" -u ".quotemeta($_[0]->{'unix'})).
 		($_[0]->{'desc'} ? " -d ".quotemeta($_[0]->{'desc'}) :" -d ''").
-		" -t ".$_[0]->{'type'}.
+		" -t ".quotemeta($_[0]->{'type'}).
 		" 2>&1");
 	$? && &error("$config{'smbgroupedit'} failed : <pre>$out</pre>");
 	}
@@ -968,7 +1020,7 @@ if ($has_smbgroupedit) {
 		" -n ".quotemeta($_[0]->{'name'}).
 		($_[0]->{'priv'} ? " -p ".quotemeta($_[0]->{'priv'}) : "").
 		($_[0]->{'desc'} ? " -d ".quotemeta($_[0]->{'desc'}) :" -d ''").
-		" -t ".$_[0]->{'type'}." 2>&1");
+		" -t ".quotemeta($_[0]->{'type'})." 2>&1");
 	$? && &error("$config{'smbgroupedit'} failed : <pre>$out</pre>");
 	}
 else {

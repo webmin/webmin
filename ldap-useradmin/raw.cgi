@@ -4,7 +4,6 @@
 require './ldap-useradmin-lib.pl';
 &ReadParse();
 $ldap = &ldap_connect();
-$schema = $ldap->schema();
 if ($in{'user'}) {
 	$rv = $ldap->search(base => $in{'dn'},
 			    scope => 'base',
@@ -16,12 +15,16 @@ else {
 			    filter => &group_filter());
 	}
 ($what) = $rv->all_entries;
+$what || &error($text{'uedit_egone'});
+my %entry = &dn_to_hash($what);
+($in{'user'} ? &can_edit_user(\%entry) : &can_edit_group(\%entry)) ||
+	&error($text{$in{'user'} ? 'uedit_eedit' : 'gedit_eedit'});
 
-&ui_print_header(&text('raw_for', $in{'dn'}), $text{'raw_title'}, "");
+&ui_print_header(&text('raw_for', &html_escape($in{'dn'})), $text{'raw_title'}, "");
 
 foreach $a ($what->attributes()) {
-	push(@table, [ "<b>$a</b>",
-		       join(" , ", $what->get_value($a)) ]);
+	push(@table, [ "<b>".&html_escape($a)."</b>",
+		       join(" , ", map { &html_escape($_) } $what->get_value($a)) ]);
 	}
 print &ui_columns_table([ $text{'raw_name'}, $text{'raw_value'} ],
 			100, \@table, undef);

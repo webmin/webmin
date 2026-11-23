@@ -144,7 +144,7 @@ if ($in{'start'} || $total > $config{'perpage'}) {
 	print "<center>\n";
 	if ($in{'start'}) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s'>".
-		       "<img src=/images/left.gif border=0 align=middle></a>\n",
+		       "<img src=/images/left.svg border=0 align=middle></a>\n",
 			$in{'db'}, $in{'table'},
 			$in{'start'} - $config{'perpage'},
 			$searchargs;
@@ -154,7 +154,7 @@ if ($in{'start'} || $total > $config{'perpage'}) {
 	      $in{'start'}+$config{'perpage'}, $total),"</font>\n";
 	if ($in{'start'}+$config{'perpage'} < $total) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s'>".
-		      "<img src=/images/right.gif border=0 align=middle></a>\n",
+		      "<img src=/images/right.svg border=0 align=middle></a>\n",
 			$in{'db'}, $in{'table'},
 			$in{'start'} + $config{'perpage'},
 			$searchargs;

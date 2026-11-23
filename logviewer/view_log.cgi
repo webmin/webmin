@@ -123,8 +123,8 @@ defined($exec_uid) || &error($text{'save_ecannot2'});
 print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
 my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
-my $jfilter = $in{'filter'} ? $in{'filter'} : "";
-my $filter = $jfilter ? quotemeta($jfilter) : "";
+my $jfilter = $in{'filter'} // "";
+my $filter = quotemeta($jfilter);
 my $include_surrounding = $in{'surrounding'} ? 1 : 0;
 my $context_lines = $config{'include_context'} =~ /^\d+$/
 	? int($config{'include_context'}) : 0;
@@ -139,17 +139,27 @@ my $help_link = (!$no_navlinks && $skip_index) ?
 my $no_links = $no_navlinks || $skip_index;
 # Build the filter command, also shown in the header
 my $grep_cmd;
-if ($filter) {
+if (length($filter)) {
 	my $grep_mode = $use_regex ? "-E" : "-F";
 	my $context_opts = $has_context ? " -C $context_lines" : "";
 	my $grep_flags = $cmd =~ /journalctl/ ? "-a" : "-i -a";
+	# Search the selected journal newest first and count matching lines.
+	if ($in{'idx'} =~ /^journal-/ && !$follow &&
+	    $cmd =~ s/ --lines (\d+)\b//) {
+		$grep_flags .= " -m $1";
+		# Restore chronological order after selecting the newest matches.
+		if (!$reverse && !$journal_tac) {
+			$cmd .= " --reverse";
+			$journal_tac = 1;
+			}
+		}
 	$grep_cmd = "grep $grep_flags $grep_mode$context_opts -- $filter";
 	}
 my $cmd_unpacked = $cmd;
 $cmd_unpacked =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
 $cmd_unpacked =~ s/\s+\-\-reverse// if ($follow);
 $cmd_unpacked =~ s/\s+\-\-lines\s+\d+// if ($follow);
-$cmd_unpacked .= " | $grep_cmd" if ($filter);
+$cmd_unpacked .= " | $grep_cmd" if (length($filter));
 $cmd_unpacked .= " | tac" if ($journal_tac);
 my $view_title = $in{'idx'} =~ /^journal/ ?
 	$text{'view_titlejournal'} : $text{'view_title'};

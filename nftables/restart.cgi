@@ -14,4 +14,9 @@ my $err = apply_restore();
 error($err) if ($err);
 
 webmin_log("apply");
-redirect($in{'redir'} || "index.cgi");
+
+# Only return to a page in this module
+my $redir = $in{'redir'};
+$redir = "index.cgi"
+    if (!defined($redir) || $redir !~ /\A[\w.-]+\.cgi(?:\?[^\r\n]*)?\z/);
+redirect($redir);

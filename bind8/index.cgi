@@ -72,6 +72,8 @@ my $chroot = &get_chroot() || "";
 
 # If the named.conf file does not exist, offer to create it
 if ($need_create) {
+	$access{'defaults'} && !$access{'ro'} && !$access{'noconfig'} ||
+		&error($text{'boot_ecannot'});
 	print &text('index_eempty',
 		    "<tt>".&make_chroot($config{'named_conf'})."</tt>"),"<p>\n";
 
@@ -540,13 +542,13 @@ if ($_[0] ne "") {
 	else {
 		# Has children
 		my $act = $heiropen{$name} ? "close" : "open";
-		print &ui_link("$act.cgi?what=".&urlize($name), "<img border=0 src='images/$act.gif'>");
+		print &ui_link("$act.cgi?what=".&urlize($name), "<img border=0 src='images/$act.svg'>");
 		print "&nbsp; $1</td>\n",
 		}
 	}
 else {
 	# Is the root
-	print "<img src=images/close.gif> <i>$text{'index_all'}</i></td>\n";
+	print "<img src=images/close.svg> <i>$text{'index_all'}</i></td>\n";
 	}
 if ($zhash{$name}) {
 	my $cb = $zdelhash{$name} ?

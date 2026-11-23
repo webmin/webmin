@@ -4133,7 +4133,7 @@ print &ui_columns_start([
 	], 100, 0, \@tds);
 for(my $i=0; $i<@files; $i++) {
 	local $type = $attach[$i]->{'type'} || "message/rfc822";
-	local $typedesc = $typemap{lc($type)} || $type;
+	local $typedesc = &html_escape($typemap{lc($type)} || $type);
 	local @cols = (
 		"<a href='$links[$i]'>".&html_escape($files[$i])."</a>",
 		$typedesc,
@@ -4159,23 +4159,23 @@ sub message_icons
 local ($mail, $showto, $folder) = @_;
 local @rv;
 if (&mail_has_attachments($mail, $folder)) {
-	push(@rv, "<img src=images/attach.gif alt='A'>");
+	push(@rv, "<img src=../images/shared/paperclip.svg alt='A'>");
 	}
 local $p = int($mail->{'header'}->{'x-priority'});
 if ($p == 1) {
-	push(@rv, "<img src=images/p1.gif alt='P1'>");
+	push(@rv, "<img src=../images/shared/priority-high.svg alt='P1'>");
 	}
 elsif ($p == 2) {
-	push(@rv, "<img src=images/p2.gif alt='P2'>");
+	push(@rv, "<img src=../images/shared/priority-low.svg alt='P2'>");
 	}
 
 # Show icons if special or replied to
 local $read = &get_mail_read($folder, $mail);
 if ($read&2) {
-	push(@rv, "<img src=images/special.gif alt='*'>");
+	push(@rv, "<img src=../images/shared/special.svg alt='*'>");
 	}
 if ($read&4) {
-	push(@rv, "<img src=images/replied.gif alt='R'>");
+	push(@rv, "<img src=../images/shared/replied.svg alt='R'>");
 	}
 
 if ($showto && defined(&open_dsn_hash)) {
@@ -4183,13 +4183,14 @@ if ($showto && defined(&open_dsn_hash)) {
 	&open_dsn_hash();
 	local $mid = &get_mail_message_id($mail);
 	if ($dsnreplies{$mid}) {
-		push(@rv, "<img src=images/dsn.gif alt='R'>");
+		push(@rv, "<img src=../images/shared/read.svg alt='R'>");
 		}
 	if ($delreplies{$mid}) {
 		local ($bounce) = grep { /^\!/ }
 			split(/\s+/, $delreplies{$mid});
-		local $img = $bounce ? "red.gif" : "box.gif";
-		push(@rv, "<img src=images/$img alt='D'>");
+		local $img = $bounce ? "cross.svg" : "checkmark-small.svg";
+		push(@rv, "<img src=../images/shared/$img ".
+			  "width=16 height=16 alt='D'>");
 		}
 	}
 return @rv;

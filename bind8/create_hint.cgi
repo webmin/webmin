@@ -17,7 +17,7 @@ $access{'ro'} && &error($text{'master_ero'});
 
 # Validate inputs
 &allowed_zone_file(\%access, $in{'file'}) ||
-	&error(&text('hcreate_efile', $in{'file'}));
+	&error(&text('hcreate_efile', &html_escape($in{'file'})));
 &lock_file(&make_chroot($in{'file'}));
 open(my $FILE, ">>", &make_chroot($in{'file'})) ||
 	&error($text{'hcreate_efile2'});

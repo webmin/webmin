@@ -2,6 +2,7 @@
 # Display options specific to mobile devices
 
 require './usermin-lib.pl';
+$access{'mobile'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &ui_print_header(undef, $text{'mobile_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);

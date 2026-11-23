@@ -29,9 +29,9 @@ else {
 
 	if (-e $full) {
 		push @errors,
-			"<i>$file</i> " .
+			"<i>".&html_escape($file)."</i> " .
 			"$text{'file_already_exists'} " .
-			"<i>$path</i>";
+			"<i>".&html_escape($path)."</i>";
 		}
 	else {
 		&ui_print_header(

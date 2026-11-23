@@ -88,8 +88,10 @@ if (@visible) {
 			}
 		local $fsn = &fstype_name($minfo[2]);
 		$fsn .= " ($minfo[2])" if (uc($fsn) ne uc($minfo[2]));
-		push(@cols, $minfo[2] eq "*" ? $text{'index_auto'} : $fsn);
-		push(@cols, &device_name($minfo[1]));
+		# FUSE mounts let local users choose the type and device names
+		push(@cols, $minfo[2] eq "*" ? $text{'index_auto'}
+					     : &html_escape($fsn));
+		push(@cols, &html_escape(&device_name($minfo[1])));
 		if ($config{'show_used'}) {
 			# Add disk space used column
 			($total, $free) = &disk_space($minfo[2],$minfo[0]);

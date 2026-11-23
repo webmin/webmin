@@ -35,6 +35,7 @@ edit_index=WebNFS index file
 save_err=Failed to save share
 save_edirectory='$1' is not a valid directory name
 save_edirectory2=The directory '$1' does not exist
+save_edesc=The description contains an invalid line break or null character
 save_erw=You did not list any hosts to share read-write with
 save_ero=You did not list any hosts to share read-only with
 save_eroot=You did not list any hosts to share root with

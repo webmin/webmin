@@ -18,19 +18,22 @@ foreach $i ($in{'sidx'}, $in{'uidx'}, $in{'gidx'}, $in{'idx'}) {
 	}
 
 if ($client->{'name'} eq 'subnet') {
-	$title = &text('eopt_subtitle',$client->{'values'}->[0]);
+	$title = &text('eopt_subtitle',
+		       &html_escape($client->{'values'}->[0]));
 	$back = $text{'eopt_returnsub'};
 	$backlink = "edit_subnet.cgi";
 	&error("$text{'eacl_np'} $text{'eacl_pss'}") if !&can('r',\%access,$client);
 	}
 elsif ($client->{'name'} eq 'shared-network') {
-	$title = &text('eopt_snettitle',$client->{'values'}->[0]);
+	$title = &text('eopt_snettitle',
+		       &html_escape($client->{'values'}->[0]));
 	$back = $text{'eopt_returnshsub'};
 	$backlink = "edit_shared.cgi";
 	&error("$text{'eacl_np'} $text{'eacl_psn'}") if !&can('r',\%access,$client);
 	}
 elsif ($client->{'name'} eq 'host') {
-	$title = &text('eopt_hosttitle',$client->{'values'}->[0]);
+	$title = &text('eopt_hosttitle',
+		       &html_escape($client->{'values'}->[0]));
 	$back = $text{'eopt_returnhost'};
 	$backlink = "edit_host.cgi";
 	&error("$text{'eacl_np'} $text{'eacl_psh'}") if !&can('r',\%access,$client);

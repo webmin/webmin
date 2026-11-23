@@ -2,11 +2,14 @@
 # Save, create or delete an IP-specific SSL key
 
 require './usermin-lib.pl';
+$access{'ssl'} || &error($text{'acl_ecannot'});
 &ReadParse();
-&get_usermin_miniserv_config(\%miniserv);
+&lock_file($usermin_miniserv_config);
+&read_file($usermin_miniserv_config, \%miniserv);
 @ipkeys = &webmin::get_ipkeys(\%miniserv);
 if (!$in{'new'}) {
-	$ipkey = $ipkeys[$in{'idx'}];
+	$ipkey = &webmin::find_ipkey(\@ipkeys, $in{'mapping'}) ||
+		 &error($text{'ipkey_egone'});
 	}
 else {
 	$ipkey = { };
@@ -14,7 +17,8 @@ else {
 
 if ($in{'delete'}) {
 	# Just remove this entry
-	splice(@ipkeys, $in{'idx'}, 1);
+	defined($ipkey->{'index'}) || &error($text{'ipkey_egone'});
+	splice(@ipkeys, $ipkey->{'index'}, 1);
 	}
 else {
 	# Validate inputs
@@ -26,6 +30,8 @@ else {
 			&error(&text('ipkey_eip2', $i));
 		}
 	@ips || &error(&text('ipkey_eips'));
+	$existing = &webmin::find_ipkey(\@ipkeys, join(",", @ips));
+	$existing && $existing != $ipkey && &error($text{'ipkey_eduplicate'});
 	$ipkey->{'ips'} = \@ips;
 	&webmin::validate_key_cert($in{'key'}, $in{'cert_def'} ? undef : $in{'cert'});
 	$ipkey->{'key'} = $in{'key'};
@@ -52,7 +58,6 @@ else {
 	}
 
 &webmin::save_ipkeys(\%miniserv, \@ipkeys);
-&lock_file($usermin_miniserv_config);
 &put_usermin_miniserv_config(\%miniserv);
 &unlock_file($usermin_miniserv_config);
 &restart_usermin_miniserv();
