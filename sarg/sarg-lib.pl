@@ -431,7 +431,8 @@ if ($from || $to) {
 	}
 
 local $sfile = &find_value("access_log", $conf);
-local @all = &all_log_files($sfile);
+# Log file names come from a directory that the proxy user can write to
+local @all = map { quotemeta($_) } &all_log_files($sfile);
 local $cmd = "$config{'sarg'} -f $config{'sarg_conf'} -l @all $rangearg";
 print $h $cmd,"\n";
 open(OUT, "$cmd 2>&1 |");
