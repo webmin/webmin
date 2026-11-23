@@ -302,7 +302,7 @@ if (&in_schema($schema, "sambaPwdLastSet")) {
 print &ui_table_start($text{'uedit_gmem'}, "width=100%", 4, \@tds);
 
 # Primary group
-if ($in{'new'}) {
+if ($in{'new'} && $access{'gcreate'}) {
 	print &ui_table_row($text{'group'},
 		&ui_radio_table("gidmode",
 			$mconfig{'new_user_group'} ? 2 : $grp ? 1 : 0,

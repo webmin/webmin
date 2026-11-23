@@ -217,7 +217,8 @@ else {
 		$grp = &all_getgrgid($gid);
 		}
 	else {
-		# Creating a new group
+		# Creating a new group, which needs permission to create groups
+		$access{'gcreate'} || &error($text{'usave_egcreate'});
 		if ($in{'gidmode'} == 2) {
 			# Same name as the user
 			$grp = $in{'user'};
