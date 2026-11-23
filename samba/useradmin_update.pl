@@ -51,8 +51,10 @@ if (&istrue("encrypt passwords") && ($config{'smb_passwd'} || $has_pdbedit) &&
 	&unlock_file($config{'smb_passwd'});
 	}
 
-if ($config{'sync_delete_profile'}) {
-	# Delete his roaming profile, if any
+if ($config{'sync_delete_profile'} &&
+    $_[0]->{'user'} !~ /\/|^\.\.?$/) {
+	# Delete his roaming profile, if any. A name that is a path would point
+	# outside the profiles directory.
 	if (&get_share("Profiles")) {
 		local $ppath = &getval("path");
 		if ($ppath) {
@@ -109,8 +111,10 @@ if (&istrue("encrypt passwords") && ($config{'smb_passwd'} || $has_pdbedit) &&
 	&unlock_file($config{'smb_passwd'});
 	}
 
-if ($config{'sync_change_profile'}) {
-	# Rename his roaming profile, if any
+if ($config{'sync_change_profile'} &&
+    !grep { /\/|^\.\.?$/ } ($_[0]->{'olduser'}, $_[0]->{'user'})) {
+	# Rename his roaming profile, if any. Names that are paths would point
+	# outside the profiles directory.
 	if (&get_share("Profiles")) {
 		local $ppath = &getval("path");
 		if ($ppath) {
