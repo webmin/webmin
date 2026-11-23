@@ -309,11 +309,13 @@ else {
 	# Save bonding settings
 	if ($in{'bond'}) {
 		$b->{'bond'} = 1;
-		$in{'partner'} =~ /^\S+( +\S+)*$/ || &error($text{'bonding_epartner'});
+		# Interface names are written to scripts and config files
+		$in{'partner'} =~ /^[\w.:-]+( +[\w.:-]+)*\z/ ||
+			&error($text{'bonding_epartner'});
 		$b->{'partner'} = $in{'partner'};
 		$in{'bondmode'} =~ /^[0-6]$/ || &error($text{'bonding_ebondmode'});
 		$b->{'mode'} = $in{'bondmode'};
-		$in{'primary'} =~ /^\S*$/ || &error($text{'bonding_eprimary'});
+		$in{'primary'} =~ /^[\w.:-]*\z/ || &error($text{'bonding_eprimary'});
 		$b->{'primary'} = $in{'primary'};
 		$in{'miimon'} =~ /^\d*$/ || &error($text{'bonding_emiimon'});
 		$b->{'miimon'} = $in{'miimon'};
@@ -329,6 +331,9 @@ else {
 	# Save VLAN settings
 	if ($in{'vlan'}) {
 		$b->{'vlan'} = 1;
+		# Both form the interface name, which is written to config files
+		$in{'physical'} =~ /^[\w.:-]+\z/ && $in{'vlanid'} =~ /^\d+\z/ ||
+			&error($text{'vlan_einvalid'});
 		if ($in{'physical'}) {
 			$b->{'physical'} = $in{'physical'};
 			}
@@ -372,6 +377,8 @@ else {
 	# Save the interface with its final name
 	if ($b->{'vlan'}) {
 		$b->{'fullname'} = $in{'physical'}.".".$in{'vlanid'};
+		# The new name must also be an interface this user can edit
+		&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 		}
 	else {
 		$b->{'fullname'} = $b->{'name'}.

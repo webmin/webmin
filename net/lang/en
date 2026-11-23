@@ -152,6 +152,7 @@ vlan_add=Add Vlan Tagged Interface
 vlan_physical=Physical Device
 vlan_id=Vlan ID
 vlan_create=Create VLAN Interface
+vlan_einvalid=Missing or invalid physical device or VLAN ID
 
 bridge_create=Create Bridge Interface
 
