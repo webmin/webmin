@@ -595,8 +595,10 @@ if ($file && &get_config_fmt($file) eq "ini" &&
 sub should_switch_user
 {
 my ($file) = @_;
+# Files in /etc are edited as root. The path itself must be in /etc, as a
+# symlink elsewhere that points into /etc may belong to the user.
 return $access{'user'} && $access{'user'} ne 'root' && $< == 0 &&
-       !&is_under_directory("/etc", $file);
+       !($file =~ /^\/etc\// && &is_under_directory("/etc", $file));
 }
 
 # get_config_as_user([file])
