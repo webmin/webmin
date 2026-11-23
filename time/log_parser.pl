@@ -14,9 +14,13 @@ sub parse_webmin_log
 {
 my ($user, $script, $action, $type, $object, $p, $long) = @_;
 if ($action eq 'remote') {
-	my $tm = localtime($object);
-	return &text($long ? "log_remote_${type}_l" : "log_remote_${type}",
-	     "<i>$tm</i>", "<tt>".&html_escape($p->{'timeserver'})."</tt>");
+	my $server = "<tt>".&html_escape($p->{'timeserver'})."</tt>";
+	# Older sync entries may have no recorded time.
+	if ($long && $object =~ /\A-?[0-9]+\z/) {
+		my $tm = localtime($object);
+		return &text("log_remote_${type}_l", "<i>$tm</i>", $server);
+		}
+	return &text("log_remote_${type}", "", $server);
 	}
 elsif ($action eq 'set') {
 	my $tm = localtime($object);
