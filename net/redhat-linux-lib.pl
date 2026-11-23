@@ -716,7 +716,7 @@ if (!$supports_dev_gateway) {
 	else { $conf{'GATEWAY'} = $in{'gateway'}; }
 
 	if ($in{'gatewaydev_def'}) { delete($conf{'GATEWAYDEV'}); }
-	elsif ($in{'gatewaydev'} !~ /^\S+$/) {
+	elsif ($in{'gatewaydev'} !~ /^[\w.:-]+\z/) {
 		&error(&text('routes_edevice', &html_escape($in{'gatewaydev'})));
 		}
 	else { $conf{'GATEWAYDEV'} = $in{'gatewaydev'}; }
@@ -737,6 +737,12 @@ else {
 		next if (!$in{"gatewaydev$r"});
 		&check_ipaddress($in{"gateway$r"}) ||
 			&error(&text('routes_edefault2', $r+1));
+		# The IPv6 router is saved in a file that is read as a shell script
+		$in{"gateway6$r"} eq '' ||
+		    $in{"gateway6$r"} =~ /^([0-9a-f:\.]+)(%[\w.:-]+)?\z/i &&
+		    &check_ip6address("$1") ||
+			&error(&text('routes_edefault6',
+				     &html_escape($in{"gateway6$r"})));
 		if ($in{"gatewaydev$r"} eq "*") {
 			# For any interface
 			$conf{'GATEWAY'} && &error(&text('routes_eclash'));
@@ -771,7 +777,9 @@ else {
 for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	next if (!$dev);
 	$net = $in{"net_$i"}; $netmask = $in{"netmask_$i"}; $gw = $in{"gw_$i"};
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	# The device name is also used in route file names
+	$dev =~ /^[\w.:-]+\z/ ||
+		&error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) || &error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress($netmask) || &error(&text('routes_emask', &html_escape($netmask)));
 	&to_ipaddress($gw) || &error(&text('routes_egateway', &html_escape($gw)));
@@ -786,7 +794,9 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	$net = $in{"lnet_$i"}; $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	# The device name is also used in route file names
+	$dev =~ /^[\w.:-]+\z/ ||
+		&error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) ||
 	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
 		&error(&text('routes_enet', &html_escape($net)));
