@@ -21,6 +21,7 @@ $job || &error($text{'kill_egone'});
 &kill_logged('TERM', @killprocs);
 sleep(1);
 &kill_logged('KILL', @killprocs);
+delete($job->{'pass'});
 &webmin_log("kill", undef, $job->{'id'}, $job);
 &redirect("");
 

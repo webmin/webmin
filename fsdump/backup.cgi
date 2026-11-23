@@ -18,6 +18,7 @@ if ($config{'run_mode'}) {
 	&system_logged("$cron_cmd ".quotemeta($dump->{'id'}).
 	       " >/dev/null 2>&1 </dev/null &");
 	&reset_environment();
+	delete($dump->{'pass'});
 	&webmin_log("bgbackup", undef, undef, $dump);
 	}
 else {
