@@ -104,7 +104,7 @@ if ($in{'action'} eq $text{'action_sync'}) {
 	&webmincron::delete_webmin_cron($job);
 	}
 
-  &webmin_log("remote", $in{'action'} eq $text{'action_timeserver_sys'} ?  "date" : "hwclock", $rawtime, \%in);
+  &webmin_log("remote", $in{'action'} eq $text{'action_timeserver_sys'} ?  "date" : "hwclock", time(), \%in);
   $mode = "sync";
 }
 
