@@ -4594,8 +4594,27 @@ return "unsaved";
 }
 
 # describe_rule(&rule)
-# Returns a human-readable rule summary for listings
+# Returns a human-readable rule summary for listings, followed by the rule's
+# comment when "Display comment in rules list?" is enabled
 sub describe_rule
+{
+my ($r) = @_;
+my $desc = describe_rule_text($r);
+my $c = $r->{'comment'};
+return $desc if (!$config{'view_comment'} || !defined($c) || $c eq '');
+if ($desc eq html_escape($r->{'text'})) {
+	# No summary possible, so the raw rule text is shown. Move its comment
+	# out of the text so that it looks like the other rules
+	my $t = $r->{'text'};
+	return $desc if ($t !~ s/\s+comment\s+"(?:[^"\\]|\\.)*"\s*$//);
+	$desc = html_escape($t);
+	}
+return $desc." <i>(".html_escape($c).")</i>";
+}
+
+# describe_rule_text(&rule)
+# Returns a human-readable rule summary for listings, without the comment
+sub describe_rule_text
 {
 my ($r) = @_;
 my @conds;
