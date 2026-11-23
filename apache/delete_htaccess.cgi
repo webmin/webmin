@@ -4,11 +4,10 @@
 
 require './apache-lib.pl';
 &ReadParse();
+$access{'global'} || &error($text{'htaccess_ecannot'});
 &allowed_auth_file($in{'file'}) ||
 	&error($text{'htaccess_edelete'});
-&lock_file($in{'file'});
-unlink($in{'file'});
-&unlock_file($in{'file'});
+&unlink_logged($in{'file'});
 
 &read_file("$module_config_directory/site", \%site);
 @ht = split(/\s+/, $site{'htaccess'});
