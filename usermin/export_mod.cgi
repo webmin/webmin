@@ -2,6 +2,7 @@
 # Create and output a wbm.gz file of selected modules
 
 require './usermin-lib.pl';
+$access{'umods'} || &error($text{'acl_ecannot'});
 &ReadParse();
 &error_setup($text{'export_err'});
 @mods = split(/\0/, $in{'mod'});
