@@ -520,7 +520,8 @@ my %params = ( 'status_value' => $stat->{'value'},
 	       $suffix => 1,
 	     );
 foreach my $k (keys %$serv) {
-	next if ($k =~ /^_/);
+	# Internal fields and stored passwords are not sent
+	next if ($k =~ /^_|pass/i);
 	next if ($serv->{$k} eq "");
 	$params{'service_'.$k} = $serv->{$k};
 	}
