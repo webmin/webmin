@@ -334,12 +334,8 @@ else {
 		# Both form the interface name, which is written to config files
 		$in{'physical'} =~ /^[\w.:-]+\z/ && $in{'vlanid'} =~ /^\d+\z/ ||
 			&error($text{'vlan_einvalid'});
-		if ($in{'physical'}) {
-			$b->{'physical'} = $in{'physical'};
-			}
-		if ($in{'vlanid'}) {
-			$b->{'vlanid'} = $in{'vlanid'};
-			}
+		$b->{'physical'} = $in{'physical'};
+		$b->{'vlanid'} = $in{'vlanid'};
 		}
 	else {
 		delete($b->{'vlan'});
