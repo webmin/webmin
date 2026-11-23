@@ -48,6 +48,10 @@ if (!$in{'ports_def'}) {
 
 		# Other options
 		push(@opts, split(/,/, $in{"other_$i"}));
+
+		# Options are written as one line, and quoted in the .mc file
+		join(",", @opts) =~ /[\r\n\0'`]/ &&
+			&error(&text('ports_eopts', $i+1));
 		push(@ports, join(",", @opts));
 		}
 	}
