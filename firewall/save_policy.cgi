@@ -143,6 +143,7 @@ elsif ($in{'rename'}) {
 elsif ($in{'delsel'}) {
 	# Just delete selected rules
 	%idxs = map { $_, 1 } @d;
+	&check_selected_jumps();
 	&lock_file($ipvx_save);
 	$table->{'rules'} = [ grep { $_->{'chain'} ne $in{'chain'} ||
 				     !$idxs{$_->{'index'}} }
@@ -160,6 +161,7 @@ elsif ($in{'delsel'}) {
 elsif ($in{'movesel'} && $in{'dest'}) {
 	# Move selected rules to new chain
 	%idxs = map { $_, 1 } @d;
+	&check_selected_jumps();
         &lock_file($ipvx_save);
 
 	# Change the chain on each rule
@@ -225,3 +227,12 @@ else {
 	&redirect("index.cgi?version=${ipvx_arg}&table=".&urlize($in{'table'}));
 	}
 
+# check_selected_jumps()
+# Fails unless the user can edit every selected rule in the chain
+sub check_selected_jumps
+{
+foreach my $r (@{$table->{'rules'}}) {
+	next if ($r->{'chain'} ne $in{'chain'} || !$idxs{$r->{'index'}});
+	&can_jump($r) || &error($text{'ejump'});
+	}
+}

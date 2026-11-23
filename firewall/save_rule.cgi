@@ -14,10 +14,11 @@ else {
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
-if ($in{'new'}) {
+if ($in{'new'} && !$in{'delete'}) {
 	$rule = { 'chain' => $in{'chain'} };
 	}
 else {
+	# Check the saved rule before changing or deleting it.
 	$rule = $table->{'rules'}->[$in{'idx'}];
 	&can_jump($rule) || &error($text{'ejump'});
 	}
@@ -369,7 +370,10 @@ else {
 		push(@mods, "set");
 		}
 
-	# Add custom parameters and modules
+	# Add custom parameters and modules. They cannot set an action that
+	# this user is not allowed to use.
+	$access{'jumps'} && &args_set_target($in{'args'}) &&
+		&error($text{'save_ecanjump'});
 	$rule->{'args'} = $in{'args'};
 	push(@mods, split(/\s+/, $in{'mods'}));
 

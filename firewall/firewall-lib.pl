@@ -440,8 +440,69 @@ if (!%can_jumps_cache) {
 	%can_jumps_cache = map { lc($_), 1 } split(/\s+/, $access{'jumps'});
 	}
 local $j = ref($_[0]) ? $_[0]->{'j'}->[1] : $_[0];
+# Some saved rules specify their target in the additional parameters.
+return 0 if (ref($_[0]) && &args_set_target($_[0]->{'args'}));
 return 1 if (!$j);	# always allow 'do nothing'
 return $can_jumps_cache{lc($j)};
+}
+
+# args_set_target(args)
+# Returns 1 if extra iptables arguments contain an option that sets the rule
+# target. The arguments are split into words the same way iptables-restore
+# does, and abbreviated long options and combined short options are checked too.
+sub args_set_target
+{
+my ($args) = @_;
+
+# A double quote starts a quoted part, in which a backslash escapes the next
+# character. A closing quote, or a space outside quotes, ends the word.
+my (@words, $q, $esc);
+my $w = "";
+foreach my $c (split(//, $args)) {
+	if ($esc) {
+		# Escaped character inside quotes
+		$w .= $c;
+		$esc = 0;
+		}
+	elsif ($q && $c eq "\\") {
+		# Backslash inside quotes escapes the next character
+		$esc = 1;
+		}
+	elsif ($q && $c eq '"') {
+		# Closing quote ends the word, even an empty one
+		push(@words, $w);
+		$w = "";
+		$q = 0;
+		}
+	elsif ($c eq '"') {
+		# Opening quote continues the current word
+		$q = 1;
+		}
+	elsif (!$q && $c =~ /[ \t\n]/) {
+		# Space outside quotes ends a non-empty word
+		push(@words, $w) if ($w ne "");
+		$w = "";
+		}
+	else {
+		# Any other character is part of the word
+		$w .= $c;
+		}
+	}
+push(@words, $w) if ($w ne "");
+
+foreach my $w (@words) {
+	return 1 if ($w =~ /^--(j|ju|jum|jump|g|go|got|goto)(=|$)/);
+	next if ($w !~ /^-([^-].*)$/);
+
+	# In combined short options, the rest of the word after an option that
+	# takes a value is that value, like the module name in -mstring. Only
+	# -f, -v, -n, -x, -4 and -6 take no value.
+	foreach my $c (split(//, $1)) {
+		return 1 if ($c eq 'j' || $c eq 'g');
+		last if ($c !~ /[fvnx46]/);
+		}
+	}
+return 0;
 }
 
 # run_before_command()
