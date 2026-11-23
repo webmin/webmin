@@ -1213,6 +1213,7 @@ my $temp = &transname();
 
 # Download the signature, if we can check it
 my ($ec, $emsg) = &gnupg_setup();
+$ec && $sigmode == 2 && &error(&text('update_ebadsig', $emsg));
 if (!$ec && $sigmode) {
 	my $err;
 	my $sig;
@@ -1272,6 +1273,7 @@ sub check_update_signature
 my ($host, $port, $page, $ssl, $user, $pass, $file, $sigmode) = @_;
 
 my ($ec, $emsg) = &gnupg_setup();
+$ec && $sigmode == 2 && return &text('update_ebadmodsig', $emsg);
 if (!$ec && $sigmode) {
 	my $err;
 	my $sig;
