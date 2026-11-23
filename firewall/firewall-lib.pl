@@ -505,6 +505,23 @@ foreach my $w (@words) {
 return 0;
 }
 
+# check_rule_inputs(&in)
+# Returns 1 if the rule form fields can be saved safely. Only the address
+# lists may contain line breaks. Other fields cannot contain " or \, which
+# could add options to the rule, except the extra parameters and comments
+# that are saved on their own # line.
+sub check_rule_inputs
+{
+my ($in) = @_;
+foreach my $k (keys %$in) {
+	next if ($k eq 'source' || $k eq 'dest');
+	return 0 if ($in->{$k} =~ /[\r\n]/);
+	next if ($k eq 'args' || $k eq 'cmt' && !$config{'comment_mod'});
+	return 0 if ($in->{$k} =~ /["\\]/);
+	}
+return 1;
+}
+
 # run_before_command()
 # Runs the before-saving command, if any
 sub run_before_command

@@ -13,6 +13,8 @@ else {
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
+# Every action works on an existing chain, whose name is written into rules
+exists($table->{'defaults'}->{$in{'chain'}}) || &error($text{'new_ename'});
 @d = split(/\0/, $in{'d'});
 
 if ($in{'add'}) {
@@ -159,7 +161,8 @@ elsif ($in{'delsel'}) {
 	&redirect("index.cgi?version=${ipvx_arg}&table=".&urlize($in{'table'}));
 	}
 elsif ($in{'movesel'} && $in{'dest'}) {
-	# Move selected rules to new chain
+	# Move selected rules to new chain, which must exist
+	exists($table->{'defaults'}->{$in{'dest'}}) || &error($text{'new_ename'});
 	%idxs = map { $_, 1 } @d;
 	&check_selected_jumps();
         &lock_file($ipvx_save);
@@ -215,6 +218,10 @@ elsif ($in{'movesel'}) {
 else {
 	# Change the default for this chain
 	$access{'policy'} || &error($text{'policy_ecannot'});
+	# Only built-in chains have a default, which must be a standard action
+	$table->{'defaults'}->{$in{'chain'}} ne '-' &&
+	    $in{'policy'} =~ /^(ACCEPT|DROP|QUEUE|RETURN)\z/ ||
+		&error($text{'policy_einvalid'});
 	&lock_file($ipvx_save);
 	$table->{'defaults'}->{$in{'chain'}} = $in{'policy'};
 	&run_before_command();

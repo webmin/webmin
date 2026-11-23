@@ -15,6 +15,8 @@ else {
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
 if ($in{'new'} && !$in{'delete'}) {
+	# The chain name is written into the rule as is, so it must exist
+	exists($table->{'defaults'}->{$in{'chain'}}) || &error($text{'new_ename'});
 	$rule = { 'chain' => $in{'chain'} };
 	}
 else {
@@ -36,6 +38,7 @@ if ($in{'delete'}) {
 	}
 else {
 	# Validate and store inputs
+	&check_rule_inputs(\%in) || &error($text{'save_echars'});
 	if ($config{'comment_mod'}) {
 		$in{'cmt'} =~ s/^\s+//;
 		$in{'cmt'} =~ s/\s+$//;

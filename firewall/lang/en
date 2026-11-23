@@ -278,6 +278,8 @@ save_espfrom=Invalid starting port for SNAT
 save_espto=Missing or invalid ending port for SNAT
 save_estates=No connection states selected
 save_ecanjump=You are not allowed to use this action
+save_echars=A rule field contains a line break, quote or backslash that cannot be saved
+policy_einvalid=Invalid default action for this chain
 save_ephysdevin=Missing or invalid incoming physical interface
 save_ephysdevout=Missing or invalid outgoing physical interface
 
