@@ -118,7 +118,7 @@ ReadParse();
 # Work out whether this page is creating or editing a user-scoped unit.
 # User-scope units live in the selected Unix user's systemd manager.
 my $unituser = clean_unit_value($in{'unituser'} || $in{'user'});
-my $edit_user_scope = !$in{'new'} && $in{'scope'} eq 'user' ? 1 : 0;
+my $edit_user_scope = !$in{'new'} && $in{'scope'} && $in{'scope'} eq 'user' ? 1 : 0;
 my $create_default_user_scope = $in{'new'} && !defined($in{'scope'}) &&
 	$config{'default_create_scope'} eq 'user' ? 1 : 0;
 my $create_user_scope = $in{'new'} &&

@@ -23,7 +23,7 @@ ui_print_header(version_title(),
 print index_style();
 
 # Query parameters only choose the active tab and optional user context.
-my $scope = $in{'scope'} eq 'user' && tab_visible('user') ? 'user' : '';
+my $scope = $in{'scope'} && $in{'scope'} eq 'user' && tab_visible('user') ? 'user' : '';
 my $unituser = clean_unit_value($in{'unituser'});
 $unituser ||= systemd_acl_default_user() || "";
 my $unituser_details = $unituser ?
