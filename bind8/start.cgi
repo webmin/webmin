@@ -10,7 +10,7 @@ our (%access, %text, %in);
 require './bind8-lib.pl';    ## no critic
 &ReadParse();
 $access{'ro'} && &error($text{'start_ecannot'});
-$access{'apply'} || &error($text{'start_ecannot'});
+$access{'apply'} == 1 || &error($text{'start_ecannot'});
 my $err = &start_bind();
 &error($err) if ($err);
 &webmin_log("start");

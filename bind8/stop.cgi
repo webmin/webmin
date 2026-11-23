@@ -8,7 +8,7 @@ require './bind8-lib.pl';    ## no critic
 our (%access, %text, %in);
 &ReadParse();
 $access{'ro'} && &error($text{'stop_ecannot'});
-$access{'apply'} || &error($text{'stop_ecannot'});
+$access{'apply'} == 1 || &error($text{'stop_ecannot'});
 my $err = &stop_bind();
 &error($err) if ($err);
 &webmin_log("stop");
