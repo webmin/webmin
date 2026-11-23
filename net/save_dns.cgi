@@ -60,6 +60,9 @@ if (!$in{'domain_def'}) {
 	@dlist || &error($text{'dns_esearch'});
 	}
 &parse_order($dns);
+# The order is written as one line of the resolver config
+grep { /[\r\n]/ } (ref($dns->{'order'}) ? @{$dns->{'order'}} : $dns->{'order'})
+	and &error($text{'dns_eorder'});
 &save_dns_config($dns);
 &save_hostname($in{'hostname'});
 
