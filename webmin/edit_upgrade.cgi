@@ -70,9 +70,9 @@ if (!$skip_upgrade) {
 					$gconfig{'upgrade_delete'}));
 		}
 	if ((!$mode || $mode eq "rpm") && &foreign_check("proc")) {
-		# Checkbox to check signature
-		($ec, $emsg) = &gnupg_setup();
-		push(@cbs, &ui_checkbox("sig", 1, $text{'upgrade_sig'}, $ec));
+		# Checkbox to check signature, on by default so that a broken
+		# GnuPG setup stops the upgrade unless the check is turned off
+		push(@cbs, &ui_checkbox("sig", 1, $text{'upgrade_sig'}, 1));
 		}
 	if (!$mode) {
 		# Checkbox to not install missing modules

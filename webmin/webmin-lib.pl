@@ -1609,13 +1609,8 @@ if (&foreign_available($module_name) && !$gconfig{'nowebminup'} &&
 	    &compare_version_numbers($compver, $full) > 0) {
 		# New version is out there .. offer to upgrade
 		my $mode = &get_install_type();
-		my $checksig = 0;
-		if ((!$mode || $mode eq "rpm") && &foreign_check("proc")) {
-			my ($ec, $emsg) = &gnupg_setup();
-			if (!$ec) {
-				$checksig = 1;
-				}
-			}
+		# Request the same signature check as the upgrade form.
+		my $checksig = (!$mode || $mode eq "rpm") && &foreign_check("proc");
 		my $release_notes_link = " ".
 		   &ui_link("https://github.com/webmin/webmin/releases/tag/".
 		     	    "$config{'last_version_number'}",
