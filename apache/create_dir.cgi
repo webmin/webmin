@@ -13,6 +13,8 @@ require './apache-lib.pl';
 
 # Validate inputs
 $in{'path'} || &error($text{'cdir_epath'});
+# The section header is written as a single configuration line.
+&error($text{'enewline'}) if (grep { /[\r\n\0]/ } $in{'type'}, $in{'path'});
 $in{'type'} eq 'Proxy' || $in{'type'} eq 'Location' ||
    &allowed_doc_dir($in{'path'}) || &error($text{'cdir_ecannot'});
 

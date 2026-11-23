@@ -1467,6 +1467,16 @@ foreach $e (@{$_[0]}) {
 	$func = "save_".join('_', @dirs);
 	@rv = &$func($e);
 	for($i=0; $i<@dirs; $i++) {
+		# Each value is written as one Apache directive.
+		&error($text{'enewline'}) if (grep { /[\r\n\0]/ } @{$rv[$i]});
+
+		# Check the log destination as Apache will read it, including
+		# a quoted program with arguments.
+		if (!$access{'pipe'} &&
+		    $dirs[$i] =~ /^(Custom|Transfer|Error|Agent|Referer)Log$/ &&
+		    grep { /^\s*["']?\|/ } @{$rv[$i]}) {
+			&error($text{'core_eperm'});
+			}
 		push(@chname, $dirs[$i]);
 		push(@chval, $rv[$i]);
 		}
