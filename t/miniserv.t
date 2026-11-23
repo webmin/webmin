@@ -1276,6 +1276,59 @@ subtest 'network_to_address' => sub {
 	}
 };
 
+# unmap_ipv4_mapped — IPv4 clients in IPv4-mapped IPv6 form
+subtest 'unmap_ipv4_mapped' => sub {
+	plan skip_all => 'Socket lacks inet_pton'
+		if (!defined(&Socket::inet_pton));
+
+	# Every valid spelling of a mapped address becomes plain IPv4 and
+	# matches an IPv4 rule.
+	for my $addr ('::ffff:192.0.2.1', '::FFFF:192.0.2.1', '::ffff:c000:201',
+		      '0:0:0:0:0:ffff:192.0.2.1', '0:0:0:0:0:FFFF:C000:0201',
+		      '::0:0:0:0:ffff:c000:201') {
+		my $ip4 = miniserv::unmap_ipv4_mapped($addr);
+		is($ip4, '192.0.2.1', "$addr becomes plain IPv4");
+		my $rule = '192.0.2.0/24';
+		ok(miniserv::ip_match($ip4, '127.0.0.1', $rule),
+		   "$addr matches an IPv4 rule");
+		}
+	# Other addresses, and invalid mapped spellings, stay unchanged.
+	for my $addr ('1.2.3.4', '2001:db8::1', '::1', '::ffff:999.1.2.3',
+		      '::ffff:0:1.2.3.4', '64:ff9b::1.2.3.4', '::1.2.3.4',
+		      ':ffff:c000:201', '::ffff:1.2.3.4/96',
+		      "::ffff:192.0.2.1\0junk") {
+		(my $label = $addr) =~ s/\0/\\0/g;
+		is(miniserv::unmap_ipv4_mapped($addr), $addr,
+		   "$label is left unchanged");
+		}
+
+	# Leave the address alone if the core parser is unavailable.
+	{
+		local *Socket::inet_pton;
+		my $addr = '::ffff:192.0.2.1';
+		is(miniserv::unmap_ipv4_mapped($addr), $addr,
+		   'mapped address is preserved without Socket::inet_pton');
+	}
+
+	# An IPv4 client accepted on an IPv6 socket is reported as IPv4.
+	SKIP: {
+		eval { require Socket;
+		       Socket->import(qw(AF_INET6 inet_ntop inet_pton)); };
+		skip 'Socket lacks IPv6 helpers', 2 if $@;
+		no warnings 'redefine';
+		local *miniserv::inet_ntop = \&Socket::inet_ntop;
+		for my $case ([ '::ffff:1.2.3.4', '1.2.3.4' ],
+			      [ '2001:db8::1', '2001:db8::1' ]) {
+			my $bin = Socket::inet_pton(Socket::AF_INET6(),
+						    $case->[0]);
+			my $sn = Socket::pack_sockaddr_in6(10000, $bin);
+			my (undef, $text) = miniserv::get_address_ip($sn, 1);
+			is($text, $case->[1],
+			   "socket peer $case->[0] is reported as $case->[1]");
+			}
+	}
+};
+
 # to_ipaddress — pattern shortcuts that skip DNS
 subtest 'to_ipaddress (pattern shortcuts)' => sub {
 	# IPv4 literal: returned verbatim.
