@@ -647,6 +647,9 @@ foreach my $key (keys %options) {
 	if ($key =~ /_def$/) {
 		# Each _def field selects a default or a user-supplied value.
 		(my $param = $key) =~ s/_def$//;
+		# Parameter names are passed to postconf in a shell command
+		$param =~ /^\w+\z/ ||
+		    &error(&text('opts_eoption', &html_escape($param)));
 		!$allowed_options || $allowed{$param} ||
 		    &error(&text('opts_eoption', &html_escape($param)));
 		my $value = $options{$key} eq "__USE_FREE_FIELD__"

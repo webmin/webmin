@@ -32,7 +32,8 @@ if (defined($in{"inet_protocols"})) {
 $err = &reload_postfix();
 &error($err) if ($err);
 
-&webmin_log($in{'_log_form'} || "opts");
+# The action name can select an action script directory, so it must be a word
+&webmin_log($in{'_log_form'} =~ /^\w+\z/ ? $in{'_log_form'} : "opts");
 &redirect("");
 
 
