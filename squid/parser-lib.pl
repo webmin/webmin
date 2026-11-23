@@ -5,7 +5,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-our (@get_config_cache, %config);
+our (@get_config_cache, %config, %text);
 
 # get_config()
 # Parses squid.conf into an array of data structures
@@ -211,6 +211,8 @@ sub directive_line
 {
 my ($d) = @_;
 my @v = @{$d->{'values'}};
+# A line break would start another directive
+&error($text{'enewline'}) if (grep { /[\r\n\0]/ } $d->{'name'}, @v);
 return $d->{'name'}.(@v ? " ".join(' ',@v) : "").
        ($d->{'postcomment'} ? " #".$d->{'postcomment'} : "");
 }

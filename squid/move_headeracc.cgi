@@ -12,6 +12,9 @@ $access{'headeracc'} || &error($text{'header_ecannot'});
 &lock_file($config{'squid_conf'});
 my $conf = &get_config();
 my ($pos, $move, $type) = @ARGV;
+# Only header access rules can be moved here
+$type =~ /^((request|reply)_)?header_access\z/ ||
+	&error($text{'header_ecannot'});
 
 my @headeracc = &find_config($type, $conf);
 my $newpos = $pos + $move;

@@ -12,6 +12,9 @@ $access{'headeracc'} || &error($text{'headeracc_ecannot'});
 &lock_file($config{'squid_conf'});
 my $conf = &get_config();
 &error_setup($text{'headeracc_err'});
+# Only header access rules can be saved here
+$in{'type'} =~ /^((request|reply)_)?header_access\z/ ||
+	&error($text{'header_ecannot'});
 
 my @headeracc = &find_config($in{'type'}, $conf);
 my $h;

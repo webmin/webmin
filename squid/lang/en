@@ -133,6 +133,7 @@ aclsave_efile=You are not allowed to write to the ACL file '$1'
 aclsave_enofile=No ACL filename entered
 aclsave_ealready=ACL file already exists
 aclsave_eline=ACL values cannot contain line breaks
+enewline=Configuration values cannot contain line breaks
 aclsave_eport='$1' is not a valid port number
 aclsave_emaxconn='$1' is not a valid number of requests
 
