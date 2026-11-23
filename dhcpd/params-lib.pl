@@ -136,6 +136,11 @@ if ($config{'dhcpd_version'} >= 3) {
 	foreach $a (@adi) {
 		$vals{$a->{'values'}->[0]} = $a;
 		}
+	# These two choices become directive names.
+	foreach my $field ('unclients', 'clientupdates') {
+		!$in{$field} || $in{$field} =~ /\A(?:allow|deny|ignore)\z/ ||
+			&error(&text('sopt_echars', &html_escape($in{$field})));
+		}
 	&save_directive($_[0],
 		$vals{'unknown-clients'} ? [ $vals{'unknown-clients'} ] : [ ],
 		$in{'unclients'} ? [ { 'name' => $in{'unclients'},

@@ -69,11 +69,13 @@ else {
 
 	$in{'allow'} =~ s/\r//g;
 	foreach $a (split(/\n/, $in{'allow'})) {
+		&check_dhcp_value($a, 1);
 		push(@allow, { 'name' => 'allow', 'values' => [ $a ] });
 		}
 	&save_directive($pool, "allow", \@allow, 1);
 	$in{'deny'} =~ s/\r//g;
 	foreach $a (split(/\n/, $in{'deny'})) {
+		&check_dhcp_value($a, 1);
 		push(@deny, { 'name' => 'deny', 'values' => [ $a ] });
 		}
 	&save_directive($pool, "deny", \@deny, 1);

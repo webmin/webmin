@@ -233,7 +233,10 @@ return $rv."</td>\n";
 sub save_choice
 {
 local($nd);
-if ($in{$_[0]}) { $nd = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] }; }
+if ($in{$_[0]}) {
+	&check_dhcp_value($in{$_[0]}, 1);
+	$nd = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] };
+	}
 &save_directive($_[1], $_[0], $nd ? [ $nd ] : [ ], $_[2], 1);
 }
 
@@ -326,10 +329,25 @@ elsif ($_[1] && ($err = &{$_[1]}($in{$_[0]}))) {
 	&error($err);
 	}
 else {
+	&check_dhcp_value($in{$_[0]}, !$_[4]);
 	$dir = { 'name' => $_[0],
 		 'values' => [ $in{$_[0]} ],
 		 'quotes' => [ $_[4] ] };
 	&save_directive($_[2], $_[0], [ $dir ], $_[3], 1);
+	}
+}
+
+# check_dhcp_value(value, [unquoted])
+# Fails if a submitted value could end its directive or add another one.
+# A value written without quotes may still contain complete quoted strings,
+# such as the class name in a pool's allow line.
+sub check_dhcp_value
+{
+my ($value, $unquoted) = @_;
+my $plain = $value;
+$plain =~ s/"(?:[^"\\\r\n\0]|\\[^\r\n\0])*"//g if ($unquoted);
+if ($plain =~ /[\r\n\0"]|\\\z/ || $unquoted && $plain =~ m![;{}#\\]|/[*/]!) {
+	&error(&text('sopt_echars', &html_escape($value)));
 	}
 }
 
@@ -426,7 +444,10 @@ sub directive_lines
 {
 local(@rv, $v, $m, $i);
 if ($_[0]->{'comment'}) {
-	push(@rv, ("\t" x $_[1])."# ".$_[0]->{'comment'});
+	# A description occupies one comment line in the saved config.
+	my $comment = $_[0]->{'comment'};
+	$comment =~ s/[\r\n\0]+/ /g;
+	push(@rv, ("\t" x $_[1])."# ".$comment);
 	}
 local $first = "\t" x $_[1];
 $first .= "$_[0]->{'name'}";

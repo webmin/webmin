@@ -102,7 +102,7 @@ if ($config{'dhcpd_version'} >= 3) {
 		if ($in{"dtype_$i"} =~ /^[a-z0-9\s\.\-\_]+$/i) {
 			@dtypes = ( $in{"dtype_$i"} );
 			}
-		elsif ($in{"dtype_$i"} =~ /^\{.*\}$/) {
+		elsif ($in{"dtype_$i"} =~ /^\{[a-z0-9 \t\.\-\_,]+\}\z/i) {
 			@dtypes = split(/\s+/, $in{"dtype_$i"});
 			}
 		else {
@@ -140,21 +140,22 @@ if ($config{'dhcpd_version'} >= 3) {
 		       @{$client->{'members'}};
 	for($i=0; defined($in{"cname_$i"}); $i++) {
 		next if ($in{"cname_$i"} eq "");
+		$in{"cname_$i"} =~ /^[a-z0-9\.\-\_]+\z/i ||
+			&error(&text('sopt_edname', &html_escape($in{"cname_$i"})));
 		local $o = $optdef{$in{"cname_$i"}};
 		local $cv = $in{"cval_$i"};
 		$cv =~ /\S/ || &error(&text('sopt_ecval', $in{"cname_$i"}));
+		my $array = $o && $o->{'values'}->[4] =~ /^array(?:[ \t]|\z)/;
+		&check_dhcp_value($cv, $array);
 		if ($o && $o->{'values'}->[4] eq 'ip-address') {
 			&check_ipaddress($cv) ||
 			  &check_ip6address($cv) ||
 			    &error(&text('sopt_ecip', $in{"cname_$i"}));
 			}
-		if ($o && $o->{'values'}->[4] =~ /^array/) {
-			# No need to quote arrays
-			}
-		elsif ($o && $o->{'values'}->[4] eq 'string' ||
+		if (!$array && ($o && $o->{'values'}->[4] eq 'string' ||
 		       $o && $o->{'values'}->[4] eq 'text' ||
 		       $cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
-		       !&check_ipaddress($cv)) {
+		       !&check_ipaddress($cv))) {
 			# Quote if type is a string, or unknown and not an IP
 			$cv = "\"$cv\"";
 			}
@@ -177,6 +178,7 @@ else {
 		    $in{"cnum_$i"} =~ /^\S+$/) ||
 			&error(&text('sopt_ednum', $in{"cnum_$i"}));
 		local $cv = $in{"cval_$i"};
+		&check_dhcp_value($cv);
 		$cv = "\"$cv\""
 			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
 			    !&check_ipaddress($cv));
@@ -223,6 +225,7 @@ if ($in{"$_[0]_def"}) {
 	}
 else {
 	local $nv = $in{$_[0]};
+	&check_dhcp_value($nv);
 	local @nv = split(/\s+/, $nv);
 	if ($_[1] == 0) {
 		&to_ipaddress($nv) ||
@@ -255,6 +258,8 @@ else {
 		$nv = join(", ", @nnv);
 		}
 	elsif ($_[1] == 6) {
+		# Each domain is quoted separately in the search list.
+		&check_dhcp_value($_) foreach @nv;
 		$nv = join(", ", map { "\"$_\"" } @nv);
 		}
 	local @bool = !$_[4] ? ( ) :

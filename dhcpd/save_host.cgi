@@ -98,6 +98,7 @@ else {
 		$in{'hardware'} =~ /^([0-9a-f]{1,2}:)*[0-9a-f]{1,2}$/i ||
 			&error(&text('shost_invalidhwa', $in{'hardware'},
 				     $in{'hardware_type'}) );
+		&check_dhcp_value($in{'hardware_type'}, 1);
 		@hard = ( { 'name' => 'hardware',
 			    'values' => [ $in{'hardware_type'},
 					  $in{'hardware'} ] } );

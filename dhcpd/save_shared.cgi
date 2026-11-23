@@ -50,6 +50,7 @@ else {
 		&error_setup($text{'sshared_failsave'});
 		$in{'name'} =~ /^\S+$/ ||
 			&error($text{'sshared_invalidsname'});
+		&check_dhcp_value($in{'name'}, !$sha->{'quotes'}->[0]);
 		$sha->{'values'} = [ $in{'name'} ];
 		$sha->{'comment'} = $in{'desc'};
 	}
