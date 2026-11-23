@@ -126,12 +126,27 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		$user{'real'} = $line[5];
 		local @gids = split(/[ ,]+/, $line[4]);
 		$user{'gid'} = $gids[0];
-		local $grp = &all_getgrgid($gids[0]);
+		# Without a numeric group ID, the import creates a group.
+		if ($user{'gid'} !~ /^\d+$/ && !$access{'gcreate'}) {
+			print &text('batch_ecaccess', $lnum,
+				    $text{'usave_egcreate'}),"\n";
+			next;
+			}
+		local $grp = $user{'gid'} =~ /^\d+$/ ?
+			&all_getgrgid($user{'gid'}) : $user{'user'};
 
-		if ($line[6] eq '' && $mconfig{'home_base'}) {
-			# Choose home dir automatically
-			$user{'home'} = &auto_home_dir(
-				$mconfig{'home_base'}, $user{'user'}, $user{'gid'});
+		if ($access{'autohome'} || $line[6] eq '' && $mconfig{'home_base'}) {
+			# Choose home dir automatically, under the base from the
+			# ACL if this admin is limited to it
+			$user{'home'} = $access{'autohome'} ?
+				&auto_home_dir($access{'home'}, $user{'user'}, $grp) :
+				&auto_home_dir($mconfig{'home_base'}, $user{'user'},
+					       $user{'gid'});
+			if (!$user{'home'}) {
+				print &text('batch_ehome', $lnum,
+					    $user{'user'}),"\n";
+				next;
+				}
 			}
 		elsif ($line[6] !~ /^\//) {
 			print &text('batch_ehome', $lnum,$line[6]),"\n";
@@ -140,6 +155,13 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		else {
 			# Use given home dir
 			$user{'home'} = $line[6];
+			}
+
+		# Check access control restrictions
+		local $ch = &check_user(\%user);
+		if ($ch) {
+			print &text('batch_ecaccess', $lnum, $ch),"\n";
+			next;
 			}
 
 		# Work out secondary group membership
@@ -473,6 +495,13 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 				}
 			}
 
+		# Check access control restrictions
+		local $ch = &check_user(\%user, \%olduser);
+		if ($ch) {
+			print &text('batch_emaccess', $lnum, $ch),"\n";
+			next;
+			}
+
 		# Run the before command
 		&set_user_envs(\%user, 'MODIFY_USER', $user{'plainpass'},
 			       [ &secondary_groups($user{'user'}) ]);
@@ -576,7 +605,9 @@ if ($access{'lowuid'} && $_[0]->{'uid'} < $access{'lowuid'}) {
 if ($access{'hiuid'} && $_[0]->{'uid'} > $access{'hiuid'}) {
 	return &text('usave_ehiuid', $access{'hiuid'});
 	}
-if ($_[1] && !$access{'uuid'} && $_[1]->{'uid'} != $_[0]->{'uid'}) {
+# The LDAP permissions form leaves unoffered settings empty. Only apply
+# a UID or shell restriction when one was explicitly configured.
+if ($_[1] && $access{'uuid'} eq '0' && $_[1]->{'uid'} != $_[0]->{'uid'}) {
 	return $text{'usave_euuid'};
 	}
 
@@ -588,27 +619,11 @@ if (!$access{'autohome'}) {
 	}
 
 # check for invalid shell
-if ($access{'shells'} ne '*' &&
+if ($access{'shells'} ne '' && $access{'shells'} ne '*' &&
     &indexof($_[0]->{'shell'}, split(/\s+/, $access{'shells'})) < 0) {
 	return &text('usave_eshell', $_[0]->{'shell'});
 	}
 
-# check for invalid primary group (unless one is dynamically assigned)
-if ($user{'gid'} ne '') {
-	local $ng = &all_getgrgid($_[0]->{'gid'});
-	local $ni = &can_use_group(\%access, $ng);
-	if ($_[1]) {
-		if ($_[1]->{'gid'} != $_[0]->{'gid'}) {
-			local $og = &all_getgrgid($_[1]->{'gid'});
-			local $oi = &can_use_group(\%access, $og);
-			if (!$ni) { return &text('usave_eprimary', $ng); }
-			if (!$oi) { return &text('usave_eprimaryr', $og); }
-			}
-		}
-	else {
-		return &text('usave_eprimary', $ng) if (!$ni);
-		}
-	}
 return undef;
 }
 
