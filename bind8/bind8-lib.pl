@@ -1057,8 +1057,6 @@ my $type = $_[6] ? $_[6]->{'type'} : $_[2];
 print &ui_form_start("save_record.cgi");
 print &ui_hidden("zone", $_[0]);
 print &ui_hidden("view", $_[1]);
-print &ui_hidden("file", $_[3]);
-print &ui_hidden("origin", $_[4]);
 print &ui_hidden("sort", $in{'sort'});
 if (defined($_[5])) {
 	print &ui_hidden("num", $_[5]);

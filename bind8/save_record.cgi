@@ -13,6 +13,9 @@ our $ipv6revzone;
 &error_setup($text{'edit_err'});
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
+# Always use the file and origin of the zone being edited
+$in{'file'} = $zone->{'file'};
+$in{'origin'} = $dom;
 my @zl = &list_zone_names();
 my $reverse = ($in{'origin'} =~ /\.in-addr\.arpa/i ||
 	    $in{'origin'} =~ /\.$ipv6revzone/i);
