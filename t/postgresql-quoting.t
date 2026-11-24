@@ -145,6 +145,7 @@ subtest 'psql parameters reach the server unchanged' => sub {
 	local *main::quote_path = sub { "'$_[0]'" };
 	local *main::supports_pgpass = sub { 1 };
 	local *main::foreign_check = sub { 0 };
+	local *main::generate_miniserv_websocket_token = sub { 'abc123' };
 	local *main::command_with_login = sub {
 		$cmd = $_[0];
 		return "printf 'x\\n'";
@@ -179,6 +180,7 @@ subtest 'psql results and errors are read correctly' => sub {
 	local *main::quote_path = sub { "'$_[0]'" };
 	local *main::supports_pgpass = sub { 1 };
 	local *main::foreign_check = sub { 0 };
+	local *main::generate_miniserv_websocket_token = sub { 'abc123' };
 	local *main::entities_to_ascii = sub { $_[0] };
 	local *main::html_escape = sub { $_[0] };
 	local *main::text = sub { join(' ', @_) };
@@ -199,6 +201,35 @@ subtest 'psql results and errors are read correctly' => sub {
 	$rv = main::execute_sql_safe('db', 'select v, w from t');
 	is_deeply($rv->{'data'}, [ [ "a\nb\n", 'x' ] ],
 		  'a value with newlines is read whole');
+
+	# psql prints an empty value as a non-breaking space, and NULL as the
+	# null marker it is given. They must come back as DBI returns them,
+	# while stored text that looks like a marker stays text.
+	{
+	my @marks;
+	local *main::generate_miniserv_websocket_token = sub {
+		return sprintf("%032x", scalar(@marks) + 1);
+		};
+	local *main::command_with_login = sub {
+		my ($null) = $_[0] =~ /-P null=(\S+)/;
+		$null //= '';
+		push(@marks, $null);
+		return q{printf '<table>\n<tr>\n<th>e</th>\n<th>n</th>\n}.
+		       q{<th>t</th>\n<th>u</th>\n</tr>\n}.
+		       q{<tr>\n<td align="left">&nbsp; </td>\n}.
+		       qq{<td align="left">$null</td>\n}.
+		       q{<td align="left">__webmin_sql_null__</td>\n}.
+		       q{<td align="left">null_00000000000000000000000000000009</td>\n}.
+		       q{</tr>\n</table>\n'};
+		};
+	my $want = [ [ '', undef, '__webmin_sql_null__',
+		       'null_00000000000000000000000000000009' ] ];
+	$rv = main::execute_sql_safe('db', 'select e, n, t, u from t');
+	is_deeply($rv->{'data'}, $want,
+		  'empty values, NULL and marker-like text are read correctly');
+	main::execute_sql_safe('db', 'select e, n, t, u from t');
+	isnt($marks[0], $marks[1], 'each query uses a new null marker');
+	}
 
 	# A failed login where the first address is refused and the FATAL error
 	# for the next one comes on a later line

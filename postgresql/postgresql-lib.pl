@@ -403,8 +403,12 @@ else {
 			}
 		}
 
-	# Call the psql program
+	# Call the psql program. It prints empty values and NULL the same way,
+	# so have it print NULL as a marker that is read back as undef. The
+	# marker is random for each query, so stored text cannot match it.
+	local $nullmark = "null_".&generate_miniserv_websocket_token();
 	local $cmd = &quote_path($config{'psql'})." --html".
+		     " -P null=$nullmark".
 		     &host_port_flags().
 		     (!&supports_pgpass() ? " -u" :
 			" -U ".quotemeta($postgres_login)).
@@ -474,8 +478,20 @@ else {
 						}
 					$line =~ /^\s*<(td|th)[^>]*>(.*)<\/(td|th)>/s;
 					local $v = $2;
-					$v =~ s/<br\s*\/?>\n?/\n/g;
-					push(@$row, &entities_to_ascii($v));
+					if ($v eq "&nbsp; ") {
+						# psql prints an empty value,
+						# or one of only spaces, this way
+						$v = "";
+						}
+					elsif ($v eq $nullmark) {
+						# NULL, read as undef like DBI
+						$v = undef;
+						}
+					else {
+						$v =~ s/<br\s*\/?>\n?/\n/g;
+						$v = &entities_to_ascii($v);
+						}
+					push(@$row, $v);
 					}
 				}
 			$rv = { 'titles' => shift(@data),
