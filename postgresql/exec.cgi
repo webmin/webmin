@@ -16,6 +16,8 @@ else {
 	# Run some SQL
 	$in{'cmd'} = join(" ", split(/[\r\n]+/, $in{'cmd'}));
 	$cmd = $in{'cmd'} ? $in{'cmd'} : $in{'old'};
+	# Run the SQL exactly as typed, without doubling its backslashes
+	$main::disable_postgresql_escaping = 1;
 	$d = &execute_sql_logged($in{'db'}, $cmd);
 
 	&ui_print_header(undef, $text{'exec_title'}, "");

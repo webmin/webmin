@@ -93,4 +93,80 @@ subtest 'SQL file runner quotes the database name' => sub {
 		 shell_words($cmd)), 'the connection string is one shell word');
 };
 
+# sent_sql(sql, [param, ...])
+# Returns the SQL that execute_sql_safe would send over DBI.
+sub sent_sql
+{
+my ($sql, @params) = @_;
+my $sent;
+local *TestPgDbh::prepare = sub { $sent = $_[1]; die "captured\n"; };
+local *TestPgDriver::connect = sub { return bless { }, 'TestPgDbh'; };
+local $main::driver_handle = bless { }, 'TestPgDriver';
+local $main::postgres_sameunix = 0;
+local %main::config = ( );
+eval { main::execute_sql_safe('db', $sql, @params) };
+return $sent;
+}
+
+# server_value(sql-literal)
+# Reads a sent literal the way PostgreSQL 9.1 and later do. Plain strings keep
+# backslashes as they are, while E'...' strings treat them as escapes.
+sub server_value
+{
+my ($lit) = @_;
+if ($lit =~ /^'(.*)'$/s) {
+	(my $v = $1) =~ s/''/'/g;
+	return $v;
+	}
+$lit =~ /^E'(.*)'$/s or return undef;
+my $v = $1;
+my %esc = ( 'n' => "\n", 'r' => "\r", 't' => "\t", 'b' => "\b", 'f' => "\f" );
+$v =~ s/\\(.)|''/defined($1) ? ($esc{$1} \/\/ $1) : "'"/gse;
+return $v;
+}
+
+subtest 'Quoted literals reach the server unchanged' => sub {
+	foreach my $value ("a\\b", "a\\\\b", "q'\\z", "plain") {
+		my $sent = sent_sql("alter user u with password ".
+				    main::pg_quote_lit($value));
+		my ($lit) = $sent =~ /with password (.*)$/s;
+		is(server_value($lit), $value,
+		   "the server stores $value exactly");
+		}
+};
+
+subtest 'psql parameters reach the server unchanged' => sub {
+	no warnings 'redefine';
+	my $cmd;
+	local $main::driver_handle = undef;
+	local $main::postgres_sameunix = 0;
+	local $main::postgres_login = 'postgres';
+	local %main::config = ( 'psql' => '/usr/bin/psql' );
+	local *main::quote_path = sub { "'$_[0]'" };
+	local *main::supports_pgpass = sub { 1 };
+	local *main::foreign_check = sub { 0 };
+	local *main::command_with_login = sub {
+		$cmd = $_[0];
+		return "printf 'x\\n'";
+		};
+	foreach my $value ("a\\b", "c\$d\ne", "q'\\z") {
+		main::execute_sql_safe('db', 'select ?', $value);
+		my @words = shell_words($cmd);
+		my ($i) = grep { $words[$_] eq '-c' } (0..$#words);
+		my ($lit) = $words[$i+1] =~ /^select (.*)$/s;
+		is(server_value($lit), $value, "the server reads $value exactly");
+		}
+};
+
+subtest 'Typed SQL can bypass backslash doubling' => sub {
+	is(sent_sql("select 'a\\b'"), "select 'a\\\\b'",
+	   'library SQL still has its backslashes doubled');
+	local $main::disable_postgresql_escaping = 1;
+	is(sent_sql("select 'a\\b'"), "select 'a\\b'",
+	   'SQL run with escaping disabled is sent as typed');
+	my $src = do { local (@ARGV, $/) = ('postgresql/exec.cgi'); <> };
+	like($src, qr/disable_postgresql_escaping = 1;\s*\n\s*\$d = &execute_sql_logged/,
+	     'the Execute SQL page runs typed SQL that way');
+};
+
 done_testing();

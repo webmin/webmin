@@ -390,12 +390,13 @@ else {
 			&error("Incorrect number of parameters in $_[1] (".scalar(@params).")") if ($pos < 0);
 			local $qp = $p;
 			if ($qp !~ /^[bB]'\d+'$/) {
-				# Quote value, except for bits
+				# Quote value, except for bits. The backslash
+				# escapes below need an escape string.
 				$qp =~ s/\\/\\\\/g;
 				$qp =~ s/'/''/g;
 				$qp =~ s/\$/\\\$/g;
 				$qp =~ s/\n/\\n/g;
-				$qp = $qp eq '' ? "NULL" : "'$qp'";
+				$qp = $qp eq '' ? "NULL" : "E'$qp'";
 				}
 			$sql = substr($sql, 0, $pos).$qp.substr($sql, $pos+1);
 			$pos += length($qp)-1;
@@ -824,12 +825,14 @@ return "\"$name\"";
 }
 
 # pg_quote_lit(string)
-# Quotes a literal for use in SQL statements
+# Quotes a literal for use in SQL statements. execute_sql_safe doubles every
+# backslash before running SQL, so this returns an escape string, which turns
+# each doubled backslash back into one on any server.
 sub pg_quote_lit
 {
 my ($value) = @_;
 $value =~ s/'/''/g;
-return "'$value'";
+return "E'$value'";
 }
 
 # postgresql_command_unix_user([login])
