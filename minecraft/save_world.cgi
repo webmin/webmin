@@ -16,15 +16,24 @@ else {
 my @worlds = &list_worlds();
 my $conf = &get_minecraft_config();
 my $def = &find_value("level-name", $conf);
-&error_setup($in{'new'} ? $text{'world_err1'} : $text{'world_err2'});
+&error_setup($in{'new'} ? $text{'world_err1'} :
+	     $in{'download'} ? $text{'world_errdownload'} : $text{'world_err2'});
+# Clone, download and delete only existing world directories.
+if (!$in{'new'} || $in{'src'} == 1) {
+	my $name = $in{'new'} ? $in{'world'} : $in{'name'};
+	defined($name) && length($name) && $name !~ /[\x00\r\n\/]|^\.\.?\z/ ||
+		&error($text{'world_ename'});
+	(grep { $_->{'name'} eq $name } @worlds) || &error($text{'world_ename'});
+	}
 
 if ($in{'new'}) {
 	# Validate new world inputs
-	$in{'name'} =~ /^[a-z0-9\.\_\-]+$/i || &error($text{'world_ename'});
+	$in{'name'} =~ /^[a-z0-9._-]+\z/i && $in{'name'} !~ /^\.\.?\z/ ||
+		&error($text{'world_ename'});
 	my ($clash) = grep { $_->{'name'} eq $in{'name'} } @worlds;
 	$clash && &error($text{'world_eclash'});
 	my $dir = "$config{'minecraft_dir'}/$in{'name'}";
-	-e $dir && &error($text{'world_eclash2'});
+	(-e $dir || -l $dir) && &error($text{'world_eclash2'});
 
 	# Create world directory
 	if ($in{'src'} == 0) {
@@ -89,21 +98,20 @@ if ($in{'new'}) {
 	&redirect("list_worlds.cgi");
 	}
 elsif ($in{'delete'} && $in{'confirm'}) {
-	# Delete the world
-	$in{'name'} || &error("Missing world name");
+	# The active world may have changed since the confirmation was shown.
+	$def eq $in{'name'} && &error($text{'world_einuse'});
 	my $dir = "$config{'minecraft_dir'}/$in{'name'}";
 	&unlink_logged($dir);
 	&redirect("list_worlds.cgi");
 	}
 elsif ($in{'delete'}) {
 	# Ask first before deleting
-	$in{'name'} || &error("Missing world name");
 	$def eq $in{'name'} && &error($text{'world_einuse'});
 	&ui_print_header(undef, $text{'world_edit'}, "");
 
 	print &ui_confirmation_form(
 		"save_world.cgi",
-		&text('world_rusure', "<tt>$in{'name'}</tt>"),
+		&text('world_rusure', "<tt>".&html_escape($in{'name'})."</tt>"),
 		[ [ "name", $in{'name'} ],
 		  [ "delete", 1 ] ],
 		[ [ "confirm", $text{'world_confirm'} ] ],
@@ -112,31 +120,20 @@ elsif ($in{'delete'}) {
 	&ui_print_footer("list_worlds.cgi", $text{'worlds_return'});
 	}
 elsif ($in{'download'} && !$ENV{'PATH_INFO'}) {
-	# Redirect to download with a nice path
-	&redirect("save_world.cgi/$in{'name'}.zip?name=$in{'name'}&download=1");
+	# Report a linked world before redirecting to its download URL.
+	&error($text{'world_elink'}) if (-l "$config{'minecraft_dir'}/$in{'name'}");
+	my $name = &urlize($in{'name'});
+	&redirect("save_world.cgi/$name.zip?name=$name&download=1");
 	}
 elsif ($in{'download'} && $ENV{'PATH_INFO'}) {
 	# Download world as ZIP file
-	$in{'name'} || &error("Missing world name");
-	if (&is_minecraft_server_running() &&
-	    $def eq $in{'name'}) {
-		# Flush state to disk
-		&execute_minecraft_command("save-off");
-		&execute_minecraft_command("save-all");
-		}
 	my $temp = &transname().".zip";
-	my $out = &backquote_command(
-		"cd ".quotemeta($config{'minecraft_dir'})." && ".
-	        "zip -r $temp ".quotemeta($in{'name'}));
-	my $ex = $?;
-	if (&is_minecraft_server_running() &&
-	    $def eq $in{'name'}) {
-		# Re-enable world writes
-		&execute_minecraft_command("save-on");
+	my $err = &create_world_zip($in{'name'}, $temp, $def);
+	if (defined($err)) {
+		&unlink_file($temp) if (-f $temp);
+		&error(&html_escape($err));
 		}
 	my @st = stat($temp);
-	!$ex && @st ||
-	    &error(&text('world_ezip', "<tt>".&html_escape($out)."</tt>"));
 	print "Content-type: application/zip\n";
 	print "Content-length: $st[7]\n";
 	print "X-no-links: 1\n";

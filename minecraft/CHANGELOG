@@ -8,3 +8,8 @@ Added a button to grant XP orbs / levels to a player.
 Created the Daily Play Time page for displaying usage by user, and the ability to ban users who exceed daily limits.
 ---- Changes since 1.4 ----
 Added support for the new log file format found in Minecraft 1.7.2.
+---- Changes since 1.9 ----
+World downloads and backups store symbolic links inside a world as links. If the world folder itself is a symbolic link, the operation fails and any existing backup is preserved.
+Reusing a backup ZIP keeps files deleted from the world. If a path changed between a file or link and a directory, keeping both versions would prevent a restore. The backup then fails and preserves the existing ZIP. Choose a new destination to back up the current world.
+World backups require room for the new ZIP in Webmin's temporary directory. When reusing a destination, the existing backup must be a regular file.
+Backups made by earlier versions may contain copies of files that links inside a world pointed to. Make and verify a fresh backup before removing those older ZIPs.

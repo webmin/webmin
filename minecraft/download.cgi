@@ -12,6 +12,9 @@ our $progress_callback_url;
 
 # Validate inputs
 if ($in{'new'}) {	
+	# The install directory and user are saved in the module config
+	my %access = &get_module_acl();
+	$access{'noconfig'} && &error($text{'config_ecannot'});
 	$in{'dir'} =~ /^\/\S+$/ || &error($text{'download_edir'});
 	defined(getpwnam($in{'user'})) || &error($text{'download_euser'});
 	}

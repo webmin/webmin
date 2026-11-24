@@ -11,6 +11,9 @@ our (%in, %text, %config, $module_config_file, $module_name);
 &ReadParse();
 &error_setup($text{'backup_err'});
 
+# Changing or removing the backup schedule requires configuration access.
+my %access = &get_module_acl();
+$access{'noconfig'} && &error($text{'config_ecannot'});
 my $job = &get_backup_job();
 if (!$in{'enabled'}) {
 	# Delete scheduled job, if any
@@ -57,7 +60,7 @@ else {
 		print $text{'backup_doing'},"<p>\n";
 		my ($out, $failed) = &execute_backup_worlds();
 		foreach my $o (@$out) {
-			print $o,"<br>\n";
+			print &html_escape($o),"<br>\n";
 			}
 		if ($failed) {
 			print $text{'backup_failed'},"<p>\n";

@@ -7,6 +7,11 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 use WebminCore;
+use Errno qw(ENOENT EXDEV);
+use Fcntl qw(F_SETFD O_NOFOLLOW O_NONBLOCK O_RDONLY);
+use File::Basename qw(dirname);
+use File::Copy ();
+use File::Temp ();
 use Time::Local;
 use POSIX;
 &init_config();
@@ -897,41 +902,121 @@ my $failed = 0;
 foreach my $w (@worlds) {
 	my $file = "$dir/$w->{'name'}.zip";
 	push(@out, "Backing up $w->{'name'} to $file ..");
-	if ($w->{'name'} eq $def &&
-	    &is_minecraft_server_running()) {
-		# World is live, flush state to disk
-		&execute_minecraft_command("save-off");
-		&execute_minecraft_command("save-all");
-		}
-	my $out = &backquote_command(
-		"cd ".quotemeta($config{'minecraft_dir'})." && ".
-	        "zip -r ".quotemeta($file)." ".quotemeta($w->{'name'}));
-	my $ex = $?;
-	&set_ownership_permissions(undef, undef, 0755, $file);
-	if ($w->{'name'} eq $def &&
-	    &is_minecraft_server_running()) {
-		# Re-enable world writes
-		&execute_minecraft_command("save-on");
-		}
-	my @st = stat($file);
-	if (@st && $config{'unix_user'} ne 'root') {
-		&set_ownership_permissions($config{'unix_user'}, undef, undef,
-					   $file);
-		}
-	if ($ex) {
-		push(@out, " .. ZIP of $w->{'name'} failed : $out");
-		$failed++;
-		}
-	elsif (!@st) {
-		push(@out, " .. ZIP of $w->{'name'} produced no output : $out");
+	my $err = &create_world_zip($w->{'name'}, $file, $def, 1);
+	if (defined($err)) {
+		push(@out, " .. $err");
 		$failed++;
 		}
 	else {
-		push(@out, " .. done (".&nice_size($st[7]).")");
+		push(@out, " .. done (".&nice_size(-s $file).")");
 		}
 	push(@out, "");
 	}
 return (\@out, $failed);
+}
+
+# create_world_zip(name, file, active_world, [backup])
+# Return an error on failure. An existing ZIP keeps entries for files that
+# have since been deleted from the world.
+sub create_world_zip
+{
+my ($name, $file, $active_world, $backup) = @_;
+return $text{'world_elink'} if (-l "$config{'minecraft_dir'}/$name");
+
+# The server account can own the backup directory. Keep ZIP's working files
+# under Webmin's temporary directory until the replacement has been checked.
+my ($tmp, $candidate, $previous);
+my $archive = quotemeta($file);
+if ($backup) {
+	return $text{'world_ecreatezip'} if (&is_readonly_mode());
+	$tmp = eval { File::Temp->newdir(DIR => dirname(&transname())) };
+	return $@ if (!$tmp);
+	$candidate = "$tmp/world.zip";
+	$archive = quotemeta($candidate);
+	if (lstat($file)) {
+		# Read the same regular file even if the server renames its backup.
+		return $text{'world_ezipfile'} unless -f _ &&
+			sysopen($previous, $file, O_RDONLY | O_NOFOLLOW | O_NONBLOCK) &&
+			-f $previous;
+		my $input = "$tmp/previous.zip";
+		my $fd = "/dev/fd/".fileno($previous);
+		# ZIP needs a name ending in .zip. Use the open file directly when
+		# descriptor paths are available, or copy from its handle otherwise.
+		unless (-f $fd && defined(fcntl($previous, F_SETFD, 0)) &&
+			symlink($fd, $input)) {
+			File::Copy::copy($previous, $input) || return "$file : $!";
+			}
+		$archive = quotemeta($input)." --out $archive";
+		}
+	elsif ($! != ENOENT) {
+		return "$file : $!";
+		}
+	}
+
+# Pause writes only while archiving the running world.
+my $pid = $name eq $active_world && &is_minecraft_server_running();
+if ($pid) {
+	&execute_minecraft_command("save-off");
+	&execute_minecraft_command("save-all");
+	}
+
+# ZIP records a directory as "world/" and a link as "world". Exclude the
+# bare name so a folder replaced by a link fails instead of being archived.
+# The ./ prefix also keeps names starting with @ out of ZIP's list-file syntax.
+my $world = quotemeta("./$name");
+my $out = &backquote_command(
+	"cd ".quotemeta($config{'minecraft_dir'})." && ".
+	"zip -qry -MM -nw -x=$world $archive -- $world 2>&1");
+my $ex = $?;
+# The server may have stopped or restarted while ZIP was running.
+&execute_minecraft_command("save-on") if ($pid && &is_minecraft_server_running() == $pid);
+return $out || $text{'world_ecreatezip'} if ($ex);
+if ($candidate) {
+	if ($previous) {
+		my $err = &check_world_zip_paths($candidate);
+		return $err if (defined($err));
+		}
+	# Set ownership on our completed ZIP before exposing it to the server.
+	my $user = $config{'unix_user'} ne 'root' ? $config{'unix_user'} : undef;
+	&set_ownership_permissions($user, undef, 0755, $candidate) ||
+		return "$file : $!";
+	if (!rename($candidate, $file)) {
+		return "$file : $!" if ($! != EXDEV);
+		# For another disk, finish the copy before replacing its last backup.
+		my $copy = eval { File::Temp->new(DIR => dirname($file)) };
+		return $@ if (!$copy);
+		my @owner = (stat($candidate))[4,5];
+		File::Copy::copy($candidate, $copy) &&
+			chown(@owner, $copy) && chmod(0755, $copy) && close($copy) ||
+			return "$file : $!";
+		rename($copy->filename, $file) || return "$file : $!";
+		}
+	}
+return -s $file ? undef : $text{'world_ecreatezip'};
+}
+
+# check_world_zip_paths(file)
+# Return an error if retained entries would prevent the updated ZIP restoring.
+sub check_world_zip_paths
+{
+my ($file) = @_;
+open(my $entries, '-|', 'unzip', '-Z1', $file) || return "$file : $!";
+my %is_dir;
+while (my $path = <$entries>) {
+	chomp($path);
+	my $dir = $path =~ s{/$}{} ? 1 : 0;
+	# A child implies a directory even if the ZIP omits its directory entry.
+	while (length($path)) {
+		if (exists($is_dir{$path})) {
+			return $text{'world_ezipconflict'} if ($is_dir{$path} != $dir);
+			last;
+			}
+		$is_dir{$path} = $dir;
+		last unless $path =~ s{/[^/]*$}{};
+		$dir = 1;
+		}
+	}
+return close($entries) ? undef : $text{'world_eziplist'};
 }
 
 # send_backup_email(msg, error)
