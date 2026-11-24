@@ -166,6 +166,13 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			$user{'home'} = &auto_home_dir($access{'home'},
 						       $user{'user'},
 						       $grp);
+			# The user or group name must not lead outside the base
+			if (!&is_under_directory($access{'home'},
+						 $user{'home'})) {
+				print &text('batch_ehome', $lnum,
+					    &html_escape($user{'home'})),"\n";
+				next;
+				}
 			if ($config{'real_base'}) {
 				$real_home = &auto_home_dir(
 				    $config{'real_base'}, $user{'user'}, $grp);

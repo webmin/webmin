@@ -220,6 +220,10 @@ if ($access{'autohome'}) {
 	if ($in{'new'} || $ouser{'user'} ne $user{'user'}) {
 		$user{'home'} = &auto_home_dir($access{'home'}, $in{'user'},
 					       $grp);
+		# The user or group name must not lead outside the base
+		&is_under_directory($access{'home'}, $user{'home'}) ||
+			&error(&text('usave_ehomepath',
+				     &html_escape($user{'home'})));
 		$real_home = &auto_home_dir($config{'real_base'}, $in{'user'},
 					    $grp) if ($config{'real_base'});
 		}
