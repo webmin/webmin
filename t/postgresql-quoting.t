@@ -169,7 +169,7 @@ subtest 'Typed SQL can bypass backslash doubling' => sub {
 	     'the Execute SQL page runs typed SQL that way');
 };
 
-subtest 'psql errors after the first line are reported' => sub {
+subtest 'psql results and errors are read correctly' => sub {
 	no warnings 'redefine';
 	my $psql;
 	local $main::driver_handle = undef;
@@ -189,6 +189,16 @@ subtest 'psql errors after the first line are reported' => sub {
 	$psql = q{printf '<table>\n<tr>\n<th>v</th>\n</tr>\n<tr>\n<td>1</td>\n</tr>\n</table>\n'};
 	my $rv = main::execute_sql_safe('db', 'select 1 as v');
 	is_deeply($rv->{'data'}, [ [ 1 ] ], 'a successful query returns its rows');
+
+	# psql splits a value with newlines over several lines. The whole value
+	# must be read, and the next value must stay in its own column.
+	$psql = q{printf '<table border="1">\n  <tr>\n    <th align="center">v</th>\n}.
+		q{    <th align="center">w</th>\n  </tr>\n  <tr valign="top">\n}.
+		q{    <td align="left">a<br />\nb<br />\n</td>\n}.
+		q{    <td align="left">x</td>\n  </tr>\n</table>\n'};
+	$rv = main::execute_sql_safe('db', 'select v, w from t');
+	is_deeply($rv->{'data'}, [ [ "a\nb\n", 'x' ] ],
+		  'a value with newlines is read whole');
 
 	# A failed login where the first address is refused and the FATAL error
 	# for the next one comes on a later line

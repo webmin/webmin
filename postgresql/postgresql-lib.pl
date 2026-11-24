@@ -463,10 +463,18 @@ else {
 					push(@data, $row);
 					$row = undef;
 					}
-				elsif ($line =~ /^\s*<(td|th)[^>]*>(.*)<\/(td|th)>/) {
-					# Value in a row
+				elsif ($line =~ /^\s*<(td|th)[^>]*>/) {
+					# Value in a row. psql splits a value
+					# with newlines over several lines, so
+					# read up to the end of the cell.
+					while ($line !~ /<\/(td|th)>/ &&
+					       defined(my $more = <OUT>)) {
+						$out .= $more;
+						$line .= $more;
+						}
+					$line =~ /^\s*<(td|th)[^>]*>(.*)<\/(td|th)>/s;
 					local $v = $2;
-					$v =~ s/<br>/\n/g;
+					$v =~ s/<br\s*\/?>\n?/\n/g;
 					push(@$row, &entities_to_ascii($v));
 					}
 				}
