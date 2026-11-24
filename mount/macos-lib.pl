@@ -75,9 +75,10 @@ sub mount_dir
 {
 local($out, $opts, $shar, %options, %smbopts);
 
-$opts = $_[3] eq "-" ? "" : "-o \"$_[3]\"";
-$opts = join(',', grep { !/quota/ } split(/,/, $opts));
-$out = &backquote_logged("mount -t $_[2] $opts $_[1] $_[0] 2>&1");
+local @o = $_[3] eq "-" ? ( ) : grep { !/quota/ } split(/,/, $_[3]);
+$opts = @o ? "-o ".quotemeta(join(',', @o)) : "";
+$out = &backquote_logged("mount -t ".quotemeta($_[2])." $opts ".
+			 quotemeta($_[1])." ".quotemeta($_[0])." 2>&1");
 if ($?) { return "<pre>$out</pre>"; }
 
 return 0;
@@ -90,7 +91,7 @@ return 0;
 sub unmount_dir
 {
 local($out, %smbopts, $dir);
-$out = &backquote_logged("umount $_[0] 2>&1");
+$out = &backquote_logged("umount ".quotemeta($_[0])." 2>&1");
 if ($?) { return "<pre>$out</pre>"; }
 return 0;
 }

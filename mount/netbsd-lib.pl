@@ -160,14 +160,15 @@ sub mount_dir
 local($out, $opts, $shar, %options, %smbopts);
 if ($_[2] eq "swap") {
 	# Use swapon to add the swap space..
-	$out = &backquote_logged("swapon $_[1] 2>&1");
+	$out = &backquote_logged("swapon ".quotemeta($_[1])." 2>&1");
 	if ($?) { return "<pre>$out</pre>"; }
 	}
 else {
 	# some disk-based filesystem
-	$opts = $_[3] eq "-" ? "" : "-o \"$_[3]\"";
-	$opts = join(',', grep { !/quota/ } split(/,/, $opts));
-	$out = &backquote_logged("mount -t $_[2] $opts $_[1] $_[0] 2>&1");
+	local @o = $_[3] eq "-" ? ( ) : grep { !/quota/ } split(/,/, $_[3]);
+	$opts = @o ? "-o ".quotemeta(join(',', @o)) : "";
+	$out = &backquote_logged("mount -t ".quotemeta($_[2])." $opts ".
+				 quotemeta($_[1])." ".quotemeta($_[0])." 2>&1");
 	if ($?) { return "<pre>$out</pre>"; }
 	}
 return 0;
@@ -185,7 +186,7 @@ if ($_[2] eq "swap") {
 	&error("Swap space cannot be removed");
 	}
 else {
-	$out = &backquote_logged("umount $_[0] 2>&1");
+	$out = &backquote_logged("umount ".quotemeta($_[0])." 2>&1");
 	if ($?) { return "<pre>$out</pre>"; }
 	}
 return 0;
