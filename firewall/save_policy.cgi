@@ -79,7 +79,8 @@ elsif ($in{'rename'} && $in{'newname'}) {
 	# Rename a chain
 	&lock_file($ipvx_save);
 	$access{'delchain'} || &error($text{'rename_ecannot'});
-	$in{'newname'} =~ /^\S+$/ || &error($text{'new_ename'});
+	# The name is written into rules as is, so quotes could add options
+	$in{'newname'} =~ /^[^\s"\\]+\z/ || &error($text{'new_ename'});
 
 	# Change the chain on each rule
 	foreach $r (@{$table->{'rules'}}) {

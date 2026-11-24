@@ -16,7 +16,8 @@ $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
 &error_setup($text{'new_err'});
 &lock_file($ipvx_save);
-$in{'chain'} =~ /^\S+$/ || &error($text{'new_ename'});
+# The name is written into rules as is, so quotes could add options
+$in{'chain'} =~ /^[^\s"\\]+\z/ || &error($text{'new_ename'});
 $table->{'defaults'}->{$in{'chain'}} && &error($text{'new_etaken'});
 $table->{'defaults'}->{$in{'chain'}} = '-';
 &run_before_command();
