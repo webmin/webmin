@@ -45,8 +45,8 @@ $ipvx_todestpattern='^\[([0-9A-Fa-f:]+)\](\-([0-9A-Fa-f:]+))?(:(\d+)(\-(\d+))?)?
 &set_ipvx_version('ipv6');
 
 # check_ipmask(addresses)
-# Returns 1 if every address in the list is an IPv6 address or hostname,
-# optionally followed by a prefix length or mask, or 0 if not.
+# Returns 1 if every entry in the list is an IPv6 address or a hostname with
+# an IPv6 address, optionally followed by a prefix length or mask, or 0 if not.
 sub check_ipmask
 {
 foreach my $w (split(/[ \t\r\n,]+/, $_[0])) {
