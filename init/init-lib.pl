@@ -68,6 +68,10 @@ elsif (-d "/run/systemd/system" && &has_command("systemctl") &&
        &execute_command("systemctl list-units") == 0) {
 	$init_mode = "systemd";
 	}
+elsif (-d "/run/openrc" &&
+       (&has_command("openrc-run") || -x "/sbin/openrc-run")) {
+	$init_mode = "openrc";
+	}
 elsif ($config{'init_base'}) {
 	$init_mode = "init";
 	}
@@ -76,6 +80,13 @@ elsif ($config{'local_script'}) {
 	}
 elsif ($gconfig{'os_type'} eq 'windows') {
 	$init_mode = "win32";
+	}
+
+# OpenRC defaults, for OS configs written before OpenRC was detected
+if ($init_mode eq "openrc") {
+	$config{'init_base'} ||= "/etc/runlevels";
+	$config{'init_dir'} ||= "/etc/init.d";
+	$config{'boot_levels'} ||= "default";
 	}
 
 # Do init scripts support start and stop custom messages?
