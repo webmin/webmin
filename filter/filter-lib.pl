@@ -15,7 +15,8 @@ if (&get_product_name() eq 'usermin') {
 		if ($config{'virtualmin_spam'} &&
 		    -x $config{'virtualmin_spam'}) {
 			local $out = &backquote_command(
-				"$config{'virtualmin_spam'} ".quotemeta($remote_user)." ".
+				"$config{'virtualmin_spam'} ".
+				quotemeta($remote_user)." ".
 				"</dev/null 2>/dev/null");
 			$out =~ s/\r|\n//g;
 			if ($out =~ /\d/) {

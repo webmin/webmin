@@ -344,7 +344,8 @@ else {
 			my @range = split(/\0/, $in{$arr});
 			# Only plain numbers can be selected, and a step like */0
 			# would stop the scheduler
-			/^\d+\z/ || &error(&text('save_etimes', $text{"edit_$arr"}))
+			/^\d+\z/ || &error(&text('save_etimes',
+						 $text{"edit_$arr"}))
 				foreach (@range);
 			my @range = sort { $a <=> $b } @range;
 			my @newrange;
