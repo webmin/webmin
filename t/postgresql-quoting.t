@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Shell and SQL quoting in the PostgreSQL module.
+# Shell and SQL quoting, and psql errors, in the PostgreSQL module.
 
 use strict;
 use warnings;
@@ -167,6 +167,38 @@ subtest 'Typed SQL can bypass backslash doubling' => sub {
 	my $src = do { local (@ARGV, $/) = ('postgresql/exec.cgi'); <> };
 	like($src, qr/disable_postgresql_escaping = 1;\s*\n\s*\$d = &execute_sql_logged/,
 	     'the Execute SQL page runs typed SQL that way');
+};
+
+subtest 'psql errors after the first line are reported' => sub {
+	no warnings 'redefine';
+	my $psql;
+	local $main::driver_handle = undef;
+	local $main::postgres_sameunix = 0;
+	local $main::postgres_login = 'postgres';
+	local %main::config = ( 'psql' => '/usr/bin/psql' );
+	local *main::quote_path = sub { "'$_[0]'" };
+	local *main::supports_pgpass = sub { 1 };
+	local *main::foreign_check = sub { 0 };
+	local *main::entities_to_ascii = sub { $_[0] };
+	local *main::html_escape = sub { $_[0] };
+	local *main::text = sub { join(' ', @_) };
+	local *main::error = sub { die join('', @_)."\n" };
+	local *main::command_with_login = sub { return $psql; };
+
+	# A successful query still returns its rows
+	$psql = q{printf '<table>\n<tr>\n<th>v</th>\n</tr>\n<tr>\n<td>1</td>\n</tr>\n</table>\n'};
+	my $rv = main::execute_sql_safe('db', 'select 1 as v');
+	is_deeply($rv->{'data'}, [ [ 1 ] ], 'a successful query returns its rows');
+
+	# A failed login where the first address is refused and the FATAL error
+	# for the next one comes on a later line
+	$psql = q{printf 'psql: error: connection to server at "localhost" (::1), port 5432 failed: Connection refused\n}.
+		q{\tIs the server running on that host and accepting TCP/IP connections?\n}.
+		q{connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "app"\n'; exit 2};
+	my $ok = eval { main::execute_sql_safe('db', 'select 1'); 1 };
+	ok(!$ok, 'the failed login is an error');
+	like($@, qr/password authentication failed/,
+	     'the error includes the reason from the later line');
 };
 
 done_testing();

@@ -429,7 +429,7 @@ else {
 				}
 			}
 		open(OUT, "$cmd 2>&1 |");
-		local ($line, $rv, @data);
+		local ($line, $rv, @data, $out);
 		do {
 			$line = <OUT>;
 			} while($line =~ /^(username|password|user name):/i ||
@@ -451,7 +451,9 @@ else {
 			# Read HTML-format output
 			local $row;
 			local @data;
+			$out = $line;
 			while($line = <OUT>) {
+				$out .= $line;
 				if ($line =~ /^\s*<tr>/) {
 					# Start of a row
 					$row = [ ];
@@ -472,6 +474,12 @@ else {
 				'data' => \@data };
 			}
 		close(OUT);
+		if ($?) {
+			# psql failed without an error on its first line, such as
+			# a connection error that starts with "psql: error:"
+			&error(&text('esql', "<tt>".&html_escape($sql)."</tt>",
+				     "<tt>".&html_escape($out)."</tt>"));
+			}
 		return $rv;
 		}
 	else {
