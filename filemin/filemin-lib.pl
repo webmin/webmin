@@ -1363,6 +1363,7 @@ foreach my $fref (@{$files_to_extract}) {
 	}
 
 	my $extract_to = $extract_cwd;
+	my $created;
 	if (!$in{'overwrite_existing'}) {
 		my ($file_name) = $name =~ /(?|
 			(.*)\.((?|tar|wbm|wbt)\..*) |
@@ -1395,8 +1396,13 @@ foreach my $fref (@{$files_to_extract}) {
 					}
 				}
 			}
+		$created = mkdir($extract_to);
+		if (!$created) {
+			push(@errors, $text{'error_create'}." ".
+			     &html_escape("$extract_to : $!"));
+			next;
+			}
 		}
-	mkdir($extract_to);
 
 	my $archive_type =
 		mimetype($archive);
@@ -1594,13 +1600,13 @@ foreach my $fref (@{$files_to_extract}) {
 			}
 		}
 
-	# Set permissions for all extracted files
-	my @perms = stat($archive);
-	system("chown -R $perms[4]:$perms[5] " .
-		quotemeta($extract_to));
-
-	# Delete empty extraction
-	rmdir($extract_to);
+	# Give the new folder and its contents the archive's owner and group.
+	if ($created) {
+		my @perms = stat($archive);
+		system("chown -R $perms[4]:$perms[5] " .
+			quotemeta($extract_to));
+		rmdir($extract_to);
+		}
 
 	# Delete if no error
 	if ($delete && $status == 0) {
