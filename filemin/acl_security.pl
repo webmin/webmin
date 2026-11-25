@@ -117,6 +117,8 @@ else {
 		$in->{'acl_user_strict'};
 	}
 
+# Extracting archives as root can overwrite files outside the allowed
+# directories, so directory limits for root need explicit confirmation.
 # A group using the login's Unix identity can include root.
 my $user = $access->{'work_as_root'} ? 'root' :
 	   $access->{'work_as_user'} || $in->{'_acl_user'};

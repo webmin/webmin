@@ -10,6 +10,12 @@ my $name = $in{'file'};
 my $full = &validate_filename_path($name);
 $archive_type = clean_mimetype($full);
 
+# Known, accepted limit for every archive type: when File Manager runs as
+# root, the extraction tool can follow a symbolic link in the archive
+# outside the allowed directories and overwrite files there. Saving
+# directory limits for a root login requires accepting this risk, see
+# allow_root_paths in acl_security.pl. The safe setup is a Unix account
+# that can write only to the directories the user should manage.
 if ($archive_type =~ /x-bzip/) {
 	$cmd = "tar xvjfp ".
 		quotemeta($full).

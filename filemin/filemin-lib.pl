@@ -1341,7 +1341,13 @@ return 1;
 }
 
 # extract_files(&files_to_extract, delete)
-# Extracts archives and optionally deletes them after extraction
+# Extracts archives and optionally deletes them after extraction.
+# Known, accepted limit for every archive type: when File Manager runs as
+# root, the extraction tool can follow a symbolic link in the archive
+# outside the allowed directories and overwrite files there. Saving
+# directory limits for a root login requires accepting this risk, see
+# allow_root_paths in acl_security.pl. The safe setup is a Unix account
+# that can write only to the directories the user should manage.
 sub extract_files
 {
 my ($files_to_extract, $delete) = @_;
