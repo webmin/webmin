@@ -178,6 +178,22 @@ subtest 'Cluster ACL names' => sub {
 		}
 	};
 
+subtest 'Actions Log return link' => sub {
+	local $main::webmin_logfile = __FILE__;
+	local *main::build_log_index = local *main::ui_print_header = sub { };
+	local *main::make_date = sub { '' };
+	local *main::ui_print_footer = sub { print "footer($_[0])" };
+	my $local = 'index.cgi?user=sales@example.test&time=12:30';
+	for my $url ($local, 'javascript:alert(1)', 'https://example.test/',
+		     '//example.test/') {
+		my ($html, $error) = render_cgi('webminlog/search.cgi',
+			{ tall => 1, return => $url });
+		is($error, '', 'search completes');
+		my $href = $url eq $local ? main::html_escape($url) : '';
+		like($html, qr/\Qfooter($href)\E$/, 'footer accepts only the local URL');
+		}
+	};
+
 subtest 'File Manager rename handler' => sub {
 	plan skip_all => 'Node.js is required to execute rename handlers' if (!$node);
 	open(my $lib, '<', "$source_root/filemin/filemin-lib.pl") or die $!;

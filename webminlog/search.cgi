@@ -245,7 +245,8 @@ elsif (@match) {
 		print &ui_columns_row(\@cols);
 		}
 	print &ui_columns_end();
-	print &ui_link("search.cgi/webminlog.csv?$in&csv=1", $text{'search_csv'});
+	print &ui_link(&html_escape("search.cgi/webminlog.csv?$in&csv=1"),
+		       $text{'search_csv'});
     print "<p>\n";
 	}
 else {
@@ -254,9 +255,12 @@ else {
 	}
 
 if (!$in{'csv'} && !$in{'no_return'}) {
-	# Show page footer
-	if ($in{'return'}) {
-		&ui_print_footer($in{'return'}, $in{'returndesc'});
+	# Allow only relative return links, not javascript: or external URLs
+	my $return = $in{'return'};
+	if (length($return) &&
+	    $return !~ m{\A\s*(?:[a-z][a-z0-9+.-]*:|//)|[\\\x00-\x1f\x7f]}i) {
+		&ui_print_footer(&html_escape($return),
+				 &html_escape($in{'returndesc'}));
 		}
 	else {
 		&ui_print_footer("", $text{'index_return'});
