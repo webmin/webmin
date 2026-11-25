@@ -44,7 +44,7 @@ print &ui_table_row(
 		    ui_user_textbox(
 			"acl_user",
 			$access->{'work_as_user'}) .
-		    "&nbsp;" .
+		    &ui_br() .
 		    &ui_checkbox(
 			"acl_user_strict", 1,
 			$text{'acl_user_strict'} .
