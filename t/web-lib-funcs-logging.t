@@ -70,4 +70,42 @@ for my $layout ('old', 'new') {
         "$layout layout skips invalid records but keeps empty file creation");
     is($records[-1]->{'diff'}, 'real command', "$layout layout preserves following details");
 }
+# Actions without a parser description remove markup from the logged name.
+{
+    local $main::parser_cache{'fixture'} = 0;
+    my $action = { module => 'fixture', action => 'create', type => 'table',
+                   object => q{<img src=x onerror=alert(1)>Sales&Co} };
+    is(main::get_action_description($action), 'create table Sales&amp;Co',
+        'fallback descriptions are sanitized');
+}
+
+# Read database audit records back from the log before rendering.
+{
+    local @INC = ($tmp, @INC);
+    local *mysql::text = \&main::text;
+    local *postgresql::text = \&main::text;
+    write_text("$tmp/mysql-lib.pl", "1;\n");
+    write_text("$tmp/postgresql-lib.pl", "1;\n");
+    {
+        package mysql;
+        do "$root/mysql/log_parser.pl" or die $@ || $!;
+    }
+    {
+        package postgresql;
+        do "$root/postgresql/log_parser.pl" or die $@ || $!;
+    }
+    my $name = q{<img src=x onerror=alert(1)>Sales&Co};
+    my $db = q{<svg/onload=alert(1)>Reports, "2026"};
+    for my $module ('mysql', 'postgresql') {
+        local $main::parser_cache{$module} = 1;
+        local %main::text;
+        main::read_file("$root/$module/lang/en", \%main::text);
+        main::webmin_log('create', 'table', $name, { db => $db }, $module);
+        my @lines = split(/\n/, read_text($main::webmin_logfile));
+        my $action = main::parse_logline($lines[-1]);
+        is(main::get_action_description($action),
+            'Created table <tt>Sales&amp;Co</tt> in database <tt>Reports, &quot;2026&quot;</tt>',
+            "$module keeps formatting but removes markup from names");
+    }
+}
 done_testing();

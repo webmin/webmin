@@ -126,6 +126,7 @@ while(my ($id, $idx) = each %index) {
 		if (defined($in{'desc'}) && $in{'desc'} =~ /\S/) {
 			my $desc = &get_action_description($act, $in{'long'});
 			$desc =~ s/<[^>]+>//g;
+			$desc =~ s/&(?:amp|lt|gt|quot|#39|#61);/&entities_to_ascii($&)/ge;
 			next if ($desc !~ /\Q$in{'desc'}\E/i);
 			}
 
@@ -171,6 +172,7 @@ if ($in{'csv'}) {
 			}
 		my $desc = &get_action_description($act, $in{'long'});
 		$desc =~ s/<[^>]+>//g;
+		$desc =~ s/&(?:amp|lt|gt|quot|#39|#61);/&entities_to_ascii($&)/ge;
 		@cols = ( $desc, 
 			  $minfo->{'desc'},
 			  $act->{'user'},
@@ -179,6 +181,8 @@ if ($in{'csv'}) {
 			push(@cols, $act->{'webmin'});
 			}
 		push(@cols, &make_date($act->{'time'},0 , "yyyy-mm-dd"));
+		# Double quotes inside a quoted CSV field are written twice.
+		s/"/""/g foreach @cols;
 		print join(",", map { "\"$_\"" } @cols),"\n";
 		}
 	}

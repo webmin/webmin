@@ -8029,6 +8029,7 @@ if ($logemail || $gconfig{'logsyslog'}) {
         my $act = &webminlog::parse_logline($line);
         $msg = &webminlog::get_action_description($act, 0);
         $msg =~ s/<[^>]*>//g;   # Remove tags
+        $msg =~ s/&(?:amp|lt|gt|quot|#39|#61);/&entities_to_ascii($&)/ge;
         }
     $msg ||= "$param_action $param_type $param_object";
     }

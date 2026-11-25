@@ -442,9 +442,10 @@ elsif ($act->{'module'} eq 'global') {
 		$d = $text{'search_global_'.$act->{'action'}};
 		}
 	}
-return $d ? $d :
+# Logged names can contain HTML, so keep only formatting tags
+return &html_sanitize($d ? $d :
        $act->{'action'} eq '_config_' ? $text{'search_config'} :
-		join(" ", $act->{'action'}, $act->{'type'}, $act->{'object'});
+		join(" ", $act->{'action'}, $act->{'type'}, $act->{'object'}));
 }
 
 1;
