@@ -1467,16 +1467,7 @@ foreach $e (@{$_[0]}) {
 	$func = "save_".join('_', @dirs);
 	@rv = &$func($e, $_[1]);
 	for($i=0; $i<@dirs; $i++) {
-		# Each value is written as one Apache directive.
-		&error($text{'enewline'}) if (grep { /[\r\n\0]/ } @{$rv[$i]});
-
-		# Check the log destination as Apache will read it, including
-		# a quoted program with arguments.
-		if (!$access{'pipe'} &&
-		    $dirs[$i] =~ /^(Custom|Transfer|Error|Agent|Referer)Log$/ &&
-		    grep { /^\s*["']?\|/ } @{$rv[$i]}) {
-			&error($text{'core_eperm'});
-			}
+		&check_directive_lines($rv[$i]);
 		push(@chname, $dirs[$i]);
 		push(@chval, $rv[$i]);
 		}
@@ -1490,6 +1481,26 @@ for($i=0; $i<@chname; $i++) {
 &unlock_apache_files();
 &after_changing();
 &format_modifed_config_files();
+}
+
+# check_directive_lines(&values)
+# Each value is written as one Apache directive.
+sub check_directive_lines
+{
+&error($text{'enewline'}) if (grep { /[\r\n\0]/ } @{$_[0]});
+}
+
+# check_log_destinations(&values)
+# Return the log directives after checking the destination Apache will use.
+sub check_log_destinations
+{
+my ($values) = @_;
+if (!$access{'pipe'}) {
+	# Report malformed lines before checking for a quoted or bare pipe.
+	&check_directive_lines($values);
+	&error($text{'core_eperm'}) if (grep { /^\s*["']?\|/ } @$values);
+	}
+return $values;
 }
 
 # opt_input(value, name, default, size)

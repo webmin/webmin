@@ -1602,7 +1602,8 @@ if ($_[0]->{'version'} < 1.3) {
 		&error($text{'core_edirlog'});
 	$in{'ErrorLog_def'} || &directory_exists($in{'ErrorLog'}) ||
 		    &error($text{'core_eerrordir'});
-	return &parse_opt("ErrorLog", '^\S+$', $text{'core_efilelog'});
+	return &check_log_destinations(
+		&parse_opt("ErrorLog", '^\S+$', $text{'core_efilelog'}));
 	}
 else {
 	if ($in{'ErrorLog_type'} == 3) {
@@ -1615,7 +1616,7 @@ else {
 		    &error($text{'core_edirlog'});
 		&directory_exists($in{'ErrorLog_file'}) ||
 		    &error($text{'core_eerrordir'});
-		return ( [ $in{'ErrorLog_file'} ] );
+		return &check_log_destinations([ $in{'ErrorLog_file'} ]);
 		}
 	elsif ($in{'ErrorLog_type'} == 1) {
 		$in{'ErrorLog_prog'} =~ /\S/ ||

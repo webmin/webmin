@@ -133,7 +133,7 @@ for($i=0; defined($in{"Log_dest_$i"}); $i++) {
 		else { push(@cl, "$fileprog \"$cust\""); }
 		}
 	}
-return ( \@tl, \@cl );
+return ( &check_log_destinations(\@tl), &check_log_destinations(\@cl) );
 }
 
 1;

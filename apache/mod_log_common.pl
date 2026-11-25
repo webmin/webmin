@@ -27,8 +27,9 @@ $in{'TransferLog'} =~ /^\S+$/ ||
 	&error(&html_escape($in{'TransferLog'})." is not a valid access log filename");
 &allowed_auth_file($in{'TransferLog'}) ||
 	&error("access log is not under the allowed directory");
-if ($in{'TransferLog_mode'} == 1) { return ( [ $in{'TransferLog'} ] ); }
-else { return ( [ "|$in{'TransferLog'}" ] ); }
+my $dest = $in{'TransferLog'};
+$dest = "|$dest" if ($in{'TransferLog_mode'} != 1);
+return &check_log_destinations([ $dest ]);
 }
 
 1;

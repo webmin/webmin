@@ -28,8 +28,9 @@ $in{'RefererLog'} =~ /^\S+$/ ||
 	&error(&text('mod_log_referer_elog', &html_escape($in{'RefererLog'})));
 &allowed_auth_file($in{'RefererLog'}) ||
 	&error($text{'mod_log_referer_edir'});
-if ($in{'RefererLog_mode'} == 1) { return ( [ $in{'RefererLog'} ] ); }
-else { return ( [ "|$in{'RefererLog'}" ] ); }
+my $dest = $in{'RefererLog'};
+$dest = "|$dest" if ($in{'RefererLog_mode'} != 1);
+return &check_log_destinations([ $dest ]);
 }
 
 sub edit_RefererIgnore
