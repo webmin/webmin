@@ -68,23 +68,6 @@ During file transfers, the client pings the control session every half RPC timeo
 
 Built-in local RPC and its file transfers connect over IPv4 loopback. Programs started by local RPC do not inherit this listener restriction. Plain HTTP servers and older clients keep their existing protocol. TLS follows the server's existing certificate verification settings. Without certificate verification, it protects against passive eavesdropping but does not authenticate the initial HTTPS server.
 
-## File Manager RPM extraction
-
-Run `prove -v filemin/t/rpm-extract.t` for isolated command and failure checks.
-The tests also cover Authentic Theme when its source is in the sibling
-`authentic-theme-src` checkout. Set `AUTHENTIC_THEME_SOURCE` to use another path.
-
-For real extraction tests, use a disposable Linux VM with `bsdtar`, `rpmbuild`,
-Python 3, and Perl's Test::More installed. Run as root:
-
-```sh
-FILEMIN_RPM_VM_TEST=1 timeout 180 prove -v filemin/t/rpm-extract.t
-```
-
-These tests build RPM fixtures and check path traversal, symlinks, hard links,
-ownership, permissions, failed extraction, and extraction without root access.
-All fixture files are created in a temporary directory and removed afterward.
-
 ## File chooser access tests on a VM
 
 Run as root on a disposable Linux VM with Webmin and Perl's Test::More installed:

@@ -15,7 +15,6 @@
 * Update module and interface icons to SVG images in one consistent style, shared between modules
 * Fix IPv4 access rules matching some IPv6 clients and not recognizing IPv4 clients sent in IPv4-mapped form such as `::ffff:1.2.3.4`, so before upgrading add IPv6 rules such as `::/0` wherever IPv6 clients must be allowed or denied
 * Fix automatic fast RPC detection to honor SSL certificate checks before sending login credentials
-* Fix RPM extraction in File Manager to use `bsdtar` for better compatibility and security
 * Fix missing and stale Kea DHCP leases after lease file cleanup [#2930](https://github.com/webmin/webmin/issues/2930)
 * Fix sorting and message lookup in large mailboxes, and speed up unread counts and bulk flag changes in Maildir folders [#2902](https://github.com/webmin/webmin/pull/2902)
 * Fix standard theme sortable tables dropping controls from table headings, such as the select-all checkbox in File Manager
