@@ -1577,6 +1577,10 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 .ui_toggle:has(input:checked) .ui_toggle_thumb {
 	transform: translateX(14px);
 }
+/* Follow the checkbox even when Back restores its value. */
+.ui_toggle:has(input:not(:checked)) + .ui_toggle_details {
+	display: none;
+}
 /* Trade one pixel of padding for the border to keep the thumb in place. */
 .ui_toggle_outline .ui_toggle_track {
 	padding: 1px;
