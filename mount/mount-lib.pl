@@ -330,6 +330,7 @@ if (&has_command("zpool")) {
 
 # Add up all local filesystems
 foreach my $m (@mounted) {
+	next if ($m->[2] eq 'iso9660' || $m->[2] eq 'udf');
 	my $tmp_is_tmpfs = $m->[0] eq "/tmp" && $m->[2] eq "tmpfs";
 	if ($m->[2] =~ /^ext/ ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" || $m->[2] eq "f2fs" ||
