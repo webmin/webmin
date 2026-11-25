@@ -7,6 +7,7 @@
 * Add NTFS3 mount support and fix missing dashboard disk-space warnings for NTFS3 filesystems [#2928](https://github.com/webmin/webmin/issues/2928)
 * Add protection against infinite loops resolving recursive symlinks (thanks to Carl Zuzart, Zedden I.T.)
 * Add a Cloudmin virtualization host profile to the nftables module
+* Add automatic OpenRC detection so Webmin can start at boot on Gentoo [#2946](https://github.com/webmin/webmin/pull/2946)
 * Add drop-down menu, dialog, breadcrumb and page link widgets to the UI library, built on native `details` and `dialog` elements
 * Add confirmation dialogs for buttons and links carrying `data-ui-confirm`, replacing the browser's own prompt
 * Update the Framed Theme with many visual and usability improvements
