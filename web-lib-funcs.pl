@@ -8682,6 +8682,43 @@ if ($rv && defined($perms)) {
 return $rv;
 }
 
+=head2 set_ownership_permissions_recursive(user, group, perms, file, ...)
+
+Applies set_ownership_permissions recursively to each supplied file or
+directory, processing children before their parents. Returns 1 if all
+attempted changes succeed, or 0 otherwise. In list context, also returns the
+first error as "file : reason", or undef. Symbolic links are skipped.
+
+Changes are made by path, so a file or directory swapped for a link during the
+walk can still be followed. When running as root, avoid trees that other users
+can write to while it runs, including the directories that hold them.
+
+=cut
+sub set_ownership_permissions_recursive
+{
+my ($user, $group, $perms, @files) = @_;
+my ($rv, $err) = (1, undef);
+require File::Find;
+File::Find::find({
+	'follow' => 0,
+	'bydepth' => 1,
+	'wanted' => sub {
+		# Use paths relative to the current directory to reduce
+		# exposure to parent-directory rename races.
+		# Skip symbolic links to avoid modifying their targets. A link
+		# swapped in after this check is still followed, a known limit
+		# documented above.
+		return if (-l $_);
+		# Keep the first failure, as later ones usually share its cause
+		if (!&set_ownership_permissions($user, $group, $perms, $_)) {
+			$rv = 0;
+			$err ||= "$File::Find::name : $!";
+			}
+		},
+	}, @files);
+return wantarray ? ($rv, $err) : $rv;
+}
+
 =head2 unlink_logged(file, ...)
 
 Like Perl's unlink function, but locks the files beforehand and un-locks them
