@@ -68,7 +68,8 @@ elsif (-d "/run/systemd/system" && &has_command("systemctl") &&
        &execute_command("systemctl list-units") == 0) {
 	$init_mode = "systemd";
 	}
-elsif (!$config{'init_base'} && -d "/run/openrc" &&
+elsif ((!$config{'init_base'} || $config{'init_base'} =~ m{^/etc/runlevels/?$}) &&
+       -d "/run/openrc" &&
        (&has_command("openrc-run") || -x "/sbin/openrc-run")) {
 	$init_mode = "openrc";
 	}
