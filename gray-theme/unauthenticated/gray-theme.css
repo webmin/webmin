@@ -2755,16 +2755,28 @@ body:has(> table.header + p + center > tt:first-child) > center {
 /* ---- Error page ---- */
 /* The core prints an error as a heading between rules, with an optional
  * call stack table, and its own inline style after the theme's. The
- * heading becomes a danger notice with the notice icon, the rules are
- * dropped, and the stack becomes a card table under a small label. The
- * selectors repeat the classes of the inline style, so they outrank it. */
+ * heading becomes plain text, the rules are dropped, and the stack
+ * becomes a card table under a small label. The selectors repeat the
+ * classes of the inline style, so they outrank it. */
 
 hr:has(+ h3[data-fatal-error-text]), h3[data-fatal-error-text] + hr,
 hr:has(+ table.err-stack), table.err-stack + hr { display: none; }
 /* The notice sits close under the title; the inline style block the
  * core prints right after the header marks the error page */
 table.header:has(+ style[data-err]) { margin-bottom: 2px; }
-h3[data-fatal-error-text], h3.err-head[data-fatal-error-text],
+/* The message is a plain card like the stack table, and keeps its inline
+ * paths and links in one run of text */
+h3[data-fatal-error-text], h3.err-head[data-fatal-error-text] {
+	box-sizing: border-box;
+	margin: 0 0 var(--card-gap);
+	padding: 6px;
+	color: inherit;
+	font: 13px/1.45 var(--font-family);
+	text-transform: none;
+	transform: none;
+	white-space: normal;
+	overflow-wrap: break-word;
+}
 h3.ui_login_message {
 	display: flex;
 	box-sizing: border-box;
@@ -2796,7 +2808,7 @@ h3.ui_login_timed_out {
 }
 /* The icon is one of the theme's notice icons, drawn as a mask in the
  * notice color: x-circle, check-circle or the warning triangle */
-h3[data-fatal-error-text]::before, h3.ui_login_message::before {
+h3.ui_login_message::before {
 	content: "";
 	flex: 0 0 auto;
 	width: 18px;
