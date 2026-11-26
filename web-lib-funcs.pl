@@ -8636,6 +8636,106 @@ foreach my $folder (@folders) {
 return -d $dir;
 }
 
+=head2 open_beneath(base, path, [flags], [perms])
+
+Opens a file or directory relative to base and returns a file handle.
+Each component below base is opened without following symbolic links.
+Returns undef on failure, with the reason in $!. The parameters are :
+
+=item base - Absolute path of the directory to start from. Its own path is followed as usual, so only root should be able to change it.
+
+=item path - Full path below base, without .. components. A trailing slash or /. requires a directory.
+
+=item flags - Fcntl open flags for the last part of the path, such as O_WRONLY | O_CREAT | O_EXCL to create a new file. Defaults to O_RDONLY. Adding O_CREAT to O_DIRECTORY creates the directory.
+
+=item perms - Octal permissions for a new file or directory, limited by the umask.
+
+The walk temporarily changes the process working directory. The effective user
+needs read access to the original working directory so the helper can open it
+and return there afterward. Other threads and signal handlers must neither
+change the working directory nor rely on it during the call.
+
+The effective user must be able to read the directories on the way. If the
+operation must stay below base, untrusted users must be unable to move any
+intermediate directory outside it. Check ownership on the returned handle
+before modifying an existing file. O_TRUNC changes the file during the open.
+If opening a newly created directory fails, the directory remains on disk.
+
+=cut
+sub open_beneath
+{
+my ($base, $path, $flags, $perms) = @_;
+require Fcntl;
+my ($nofollow, $isdir) = eval { (Fcntl::O_NOFOLLOW(), Fcntl::O_DIRECTORY()) };
+my ($creat, $excl) = (Fcntl::O_CREAT(), Fcntl::O_EXCL());
+
+# Split the path under the base into its parts
+my $abs = $base =~ /^\//;
+$base =~ s/\/+\z//;
+my @parts = grep { length($_) && $_ ne "." }
+		 split(/\//, $path =~ /^\Q$base\E\/(.+)$/s ? $1 : "");
+
+# Refuse an empty or relative base, which must never come to mean /, and any
+# path that is not strictly below the base
+if (!$nofollow || !$abs || !@parts || grep { $_ eq ".." } @parts) {
+	$! = EINVAL;
+	return undef;
+	}
+$flags = ($flags || 0) | $nofollow;
+
+# The split drops a trailing slash, so ask for a directory in its place
+if (($flags & $isdir) || $path =~ m{/\.?\z}) {
+	# Only an explicit O_DIRECTORY | O_CREAT requests a new directory.
+	if (($flags & (Fcntl::O_ACCMODE() | Fcntl::O_TRUNC())) ||
+	    (($flags & $creat) && !($flags & $isdir))) {
+		$! = EISDIR;
+		return undef;
+		}
+	$flags |= $isdir;
+	}
+
+# Read-only mode allows opens that cannot change anything
+if (($flags & ($creat | Fcntl::O_ACCMODE() | Fcntl::O_TRUNC() |
+	       Fcntl::O_APPEND())) && &is_readonly_mode()) {
+	print STDERR "Vetoing open of $path\n";
+	$! = EROFS;
+	return undef;
+	}
+my $name = pop(@parts);
+
+# Walk one directory at a time. Restore the working directory before
+# propagating any exception, including a timeout while opening a file.
+# Use only built-ins during the walk because @INC can contain relative paths.
+opendir(my $cwd, ".") || return undef;
+my ($fh, $ok, $err);
+my $restored = eval {
+	$ok = chdir($base || "/");
+	foreach my $p (@parts) {
+		my $dh;
+		$ok &&= sysopen($dh, $p, $nofollow | $isdir) && chdir($dh);
+		}
+	if ($ok && ($flags & $creat) && ($flags & $isdir)) {
+		# Opening cannot create a directory, so make it first
+		$ok = mkdir($name, defined($perms) ? $perms : 0777) ||
+		      !($flags & $excl) && $! == EEXIST;
+		$flags &= ~($creat | $excl);
+		}
+	$ok &&= sysopen($fh, $name, $flags, defined($perms) ? $perms : 0666);
+	$err = $!;
+	chdir($cwd);
+	};
+if (!$restored) {
+	# A timeout can interrupt any step, including the final chdir.
+	my $died = $@;
+	chdir($cwd) ||
+		&error("Failed to return to the original directory : $!");
+	die $died if ($died);
+	}
+closedir($cwd);
+$! = $err;
+return $ok ? $fh : undef;
+}
+
 =head2 set_ownership_permissions(user, group, perms, file, ...)
 
 Sets the user, group owner and permissions on some files. The parameters are :
