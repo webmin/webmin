@@ -88,7 +88,6 @@ GetOptions(
 );
 
 # Set defaults
-$opt{'config'} ||= "/etc/webmin";
 $opt{'commands'} = $a0;
 
 # Load libs
@@ -496,7 +495,10 @@ return $root;
 sub loadlibs
 {
 my ($optref) = @_;
-$optref->{'config'} ||= "/etc/webmin";
+# Use the first standard config directory that exists.
+$optref->{'config'} ||= (grep { -r "$_/miniserv.conf" }
+			 "/etc/webmin", "/usr/local/etc/webmin")[0] ||
+			 "/etc/webmin";
 my $root = root($optref->{'config'});
 my $libroot = "$root/vendor_perl";
 eval "use lib '$libroot'";
@@ -531,7 +533,7 @@ Print this usage summary and exit. Subcommands may also have a usage summary.
 =item --config <path>, -c <path>
 
 Specify the full path to the Webmin configuration directory. Defaults to
-C</etc/webmin>.
+C</etc/webmin>, or to C</usr/local/etc/webmin> when only that one exists.
 
 =item --list-commands, -l
 

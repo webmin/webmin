@@ -5,10 +5,9 @@ require 'webmin-lib.pl';
 
 sub module_uninstall
 {
-# Remove the link from /usr/sbin/webmin
-my $bindir = "/usr/sbin";
-my $lnk = $bindir."/webmin";
-if (-l $lnk) {
+# Remove the link from /usr/local/bin/webmin if it points to this install
+my $lnk = "/usr/local/bin/webmin";
+if (readlink($lnk) eq $root_directory."/bin/webmin") {
 	unlink($lnk);
 	}
 }

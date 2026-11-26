@@ -68,11 +68,12 @@ if (!defined($miniserv{'no_trust_ssl'})) {
 &put_miniserv_config(\%miniserv);
 &unlock_file("$config_directory/miniserv.conf");
 
-# Create a link from /usr/sbin/webmin to bin/webmin under the root dir
-my $bindir = "/usr/sbin";
-my $lnk = $bindir."/webmin";
-if (-d $bindir && !-e $lnk) {
-	&symlink_file($lnk, $root_directory."/bin/webmin");
+# Create a link from /usr/local/bin/webmin to bin/webmin under the root dir.
+# RPM and Debian packages ship their own /usr/bin/webmin.
+my $lnk = "/usr/local/bin/webmin";
+if ((&get_install_type() || '') !~ /^(rpm|deb)$/ &&
+    -d "/usr/local/bin" && !-e $lnk) {
+	&symlink_file($root_directory."/bin/webmin", $lnk);
 	}
 
 # Record the version of Webmin at first install
