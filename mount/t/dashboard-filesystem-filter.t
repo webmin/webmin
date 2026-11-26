@@ -172,9 +172,11 @@ foreach my $remaining (0, 1) {
 # Run the unchanged raw enumeration with synthetic device/size discovery.
 my $discovery_root = tempdir(CLEANUP => 1, TMPDIR => 1);
 sub mount::has_command { return undef; }
+my %mount_options = ( 'udf' => 'rw' );
 sub mount::list_mounted
 {
-return map { [ $discovery_root.$_->{'dir'}, $_->{'device'}, $_->{'type'}, 'ro' ] } @$filesystems;
+return map { [ $discovery_root.$_->{'dir'}, $_->{'device'}, $_->{'type'},
+               $mount_options{$_->{'type'}} || 'ro' ] } @$filesystems;
 }
 sub mount::disk_space
 {
@@ -194,14 +196,18 @@ return ($fs->{'itotal'}, $fs->{'ifree'});
 sub mount::indexof { return status::indexof(@_); }
 %mount::config = (sysinfo_exclude_types => 'udf iso9660');
 my @raw_space = mount::local_disk_space();
-is_deeply([ @raw_space[0,1,3] ], [2100, 700, 1330],
+is_deeply([ @raw_space[0,1,3] ], [2000, 700, 1230],
           'raw local_disk_space totals are unaffected by Dashboard exclusions');
 is_deeply([ map { $_->{'dir'} } @{$raw_space[2]} ],
-          [ map { $discovery_root.$_ } @paths ],
-          'raw enumeration keeps read-only images and normal filesystems');
+          [ map { $discovery_root.$_ } @paths[0,1,2,4] ],
+          'raw enumeration skips ISO images but keeps writable UDF and normal filesystems');
 my @dashboard_space = mount::dashboard_disk_space();
 is_deeply([ @dashboard_space[0,1,3] ], [1800, 700, 1030],
           'Dashboard wrapper filters the real raw enumerator output');
+$mount_options{'udf'} = 'ro,relatime';
+is_deeply([ map { $_->{'dir'} } @{(mount::local_disk_space())[2]} ],
+          [ map { $discovery_root.$_ } @paths[0,2,4] ],
+          'raw enumeration skips read-only UDF images');
 
 # Render the mount Dashboard table with synthetic local disk data.
 sub mount::foreign_available { return $_[0] eq 'mount'; }

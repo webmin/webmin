@@ -368,8 +368,9 @@ foreach my $m (@mounted) {
 			# Skip /snap mounts
 			next;
 			}
-		if ($m->[1] =~ /^\/dev\/sr/) {
-			# Skip CDs
+		if ($m->[1] =~ /^\/dev\/sr/ || $m->[2] eq "iso9660" ||
+		    $m->[2] eq "udf" && $m->[3] =~ /(^|,)ro(,|$)/) {
+			# Skip CDs, DVDs and read-only disc images
 			next;
 			}
 		# apfs count only physical devices not containers shares
