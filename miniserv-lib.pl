@@ -433,6 +433,7 @@ if ($method eq "CONNECT" || $method eq "TRACE") {
 %acceptenc = map { $_, 1 } split(/,/, $header{'accept-encoding'});
 
 # replace %XX sequences in page
+my $origpage = $page;
 $page =~ s/%(..)/pack("c",hex($1))/ge;
 
 # Check if the browser's user agent indicates a mobile device
@@ -1225,7 +1226,7 @@ if (-d _) {
 		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 		&write_data("Date: $datestr\r\n");
 		&write_data("Server: @{[&server_info()]}\r\n");
-		&write_data("Location: $prot://$hostport$page/\r\n");
+		&write_data("Location: $prot://$hostport$origpage/\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
 		&log_request($loghost, $authuser, $reqline, 302, 0);
