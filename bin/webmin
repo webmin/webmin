@@ -495,10 +495,10 @@ return $root;
 sub loadlibs
 {
 my ($optref) = @_;
-# Use the first standard config directory that exists.
-$optref->{'config'} ||= (grep { -r "$_/miniserv.conf" }
-			 "/etc/webmin", "/usr/local/etc/webmin")[0] ||
-			 "/etc/webmin";
+# Use the first standard directory with a readable miniserv.conf.
+my ($cdir) = grep { -r "$_/miniserv.conf" }
+		  ("/etc/webmin", "/usr/local/etc/webmin");
+$optref->{'config'} ||= $cdir || "/etc/webmin";
 my $root = root($optref->{'config'});
 my $libroot = "$root/vendor_perl";
 eval "use lib '$libroot'";
