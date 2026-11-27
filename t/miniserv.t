@@ -167,19 +167,32 @@ subtest 'directory redirect behind a proxy' => sub {
 	local *miniserv::DEBUG;
 	open(miniserv::DEBUG, '>', \my $debug) or die $!;
 
-	# A proxy may forward the mount point or strip it before forwarding.
-	for my $path ('/webmin/mail%20archive', '/%77ebmin/mail%20archive',
-		      '/mail%20archive') {
+	# Returns the response to a request for the given path
+	my $response = sub {
+		my ($path) = @_;
 		local *miniserv::SOCK;
 		pipe(miniserv::SOCK, my $writer) or die $!;
 		print $writer "GET $path HTTP/1.0\r\nHost: proxy.test\r\n\r\n";
 		close($writer) or die $!;
 		local @written;
 		miniserv::handle_request('192.0.2.1', '192.0.2.2', 0);
-		like(join('', @written),
+		return join('', @written);
+		};
+
+	# A proxy may forward the mount point or strip it before forwarding.
+	for my $path ('/webmin/mail%20archive', '/%77ebmin/mail%20archive',
+		      '/mail%20archive') {
+		like($response->($path),
 		     qr{^Location: http://proxy\.test/webmin/mail%20archive/\r$}m,
 		     "one public prefix for $path");
 		}
+
+	# A prefix that only the proxy adds must not reach the browser.
+	local @miniserv::strip_prefix = ('/inside');
+	local %miniserv::config = ( );
+	like($response->('/inside/mail%20archive'),
+	     qr{^Location: http://proxy\.test/mail%20archive/\r$}m,
+	     'no backend-only prefix');
 };
 
 # simplify_path — security-critical path canonicalization

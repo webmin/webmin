@@ -470,10 +470,9 @@ foreach my $pfx (@strip_prefix) {
 	if(length($page) >= $l &&
 	   substr($page,0,$l) eq $pfx) {
 		$page=substr($page,$l);
-		# Redirects add redirect_prefix, so strip the prefix from the
-		# original path too. Each %XX is one byte.
-		$origpage =~ s{^(?:%..|.){$l}}{}
-			if ($config{'redirect_prefix'});
+		# Always strip the prefix from the original path, as redirects
+		# must not include it. Each %XX is one byte.
+		$origpage =~ s{^(?:%..|.){$l}}{};
 		last;
 		}
 	}
