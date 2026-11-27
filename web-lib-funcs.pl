@@ -11926,7 +11926,7 @@ sub is_under_directory
 {
 my ($dir, $file) = @_;
 return 1 if ($dir eq "/");
-return 0 if ($file =~ /\.\./);
+return 0 if ($file =~ /(^|[\/\\])\.\.([\/\\]|$)/);
 my $ld = &resolve_links($dir);
 if ($ld ne $dir) {
 	return &is_under_directory($ld, $file);

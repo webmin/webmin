@@ -67,6 +67,12 @@ is($resolved, "$root/target", 'follows the final absolute link after ..');
 ok(main::is_under_directory($root, "$root/x"),
 	'the valid target is still recognized as inside its directory');
 
+# Only a whole .. component leaves a directory; dots inside a name do not.
+ok(main::is_under_directory("$root/data", "$root/data/monthly..summary.txt"),
+	'a name containing two dots is inside its directory');
+ok(!main::is_under_directory("$root/data", "$root/data/../target"),
+	'a .. component is still rejected');
+
 # Revisiting a directory link with a shorter remaining path is not a cycle.
 ($resolved) = resolve_counted("$root/alias/../alias/file");
 is($resolved, "$root/data/../data/file",
