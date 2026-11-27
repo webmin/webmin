@@ -155,6 +155,33 @@ subtest 'http_error' => sub {
 	}
 };
 
+subtest 'directory redirect behind a proxy' => sub {
+	no warnings 'once';
+	my $root = File::Temp::tempdir(CLEANUP => 1);
+	mkdir("$root/mail archive") or die $!;
+	local @miniserv::roots = ($root);
+	local @miniserv::strip_prefix = ('/webmin');
+	local %miniserv::config = ( redirect_prefix => '/webmin' );
+	local %miniserv::anonymous = ( '/' => 'guest' );
+	local $miniserv::port = 80;
+	local *miniserv::DEBUG;
+	open(miniserv::DEBUG, '>', \my $debug) or die $!;
+
+	# A proxy may forward the mount point or strip it before forwarding.
+	for my $path ('/webmin/mail%20archive', '/%77ebmin/mail%20archive',
+		      '/mail%20archive') {
+		local *miniserv::SOCK;
+		pipe(miniserv::SOCK, my $writer) or die $!;
+		print $writer "GET $path HTTP/1.0\r\nHost: proxy.test\r\n\r\n";
+		close($writer) or die $!;
+		local @written;
+		miniserv::handle_request('192.0.2.1', '192.0.2.2', 0);
+		like(join('', @written),
+		     qr{^Location: http://proxy\.test/webmin/mail%20archive/\r$}m,
+		     "one public prefix for $path");
+		}
+};
+
 # simplify_path — security-critical path canonicalization
 subtest 'simplify_path' => sub {
 	my $bogus;
