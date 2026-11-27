@@ -229,6 +229,8 @@ $atotal += length($in{"attach${i}"}->[$j]);
 # Add server-side attachment
 for($i=0; defined($in{"file$i"}); $i++) {
 	next if (!$in{"file$i"} || !$access{'canattach'});
+	&is_under_directory(&allowed_directory(), $in{"file$i"}) ||
+		&error(&text('send_eperms2', &html_escape($in{"file$i"})));
 	@uinfo = &get_mail_user($in{'user'});
 	@uinfo || &error($text{'view_eugone'});
 	if ($in{"file$i"} !~ /^\//) {
