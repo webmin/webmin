@@ -2099,7 +2099,7 @@ local($idx, $more, $rv);
 while(($idx = index($main::read_buffer, "\n")) < 0) {
 	if (length($main::read_buffer) > 100000 && !$nolimit) {
 		&http_error(414, "Request too long",
-		    "Received excessive line <pre class=\"err-content\">".&html_strip($main::read_buffer)."</pre>");
+			    "Received excessive line");
 		}
 
 	# need to read more..
