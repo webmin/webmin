@@ -190,40 +190,26 @@ if (%in) {
 
 	if (@pidlist && $access{'simple'} && $access{'edit'}) {
 		# display form for mass killing with selected signals
-		print "<form action=kill_proc_list.cgi>\n";
-		print "<input type=hidden name=args value=\"",
-		      &html_escape($in),"\">\n";
-		printf "<input type=hidden name=pidlist value=\"%s\">\n",
-			join(" ", @pidlist);
-		print "<input type=hidden name=pid value=$pinfo{pid}>\n";
+		print &ui_form_start("kill_proc_list.cgi");
+		print &ui_hidden("args", $in);
+		print &ui_hidden("pidlist", join(" ", @pidlist));
 		foreach $s ('KILL', 'TERM', 'HUP', 'STOP', 'CONT') {
-			printf "<input type=submit value=\"%s\" name=%s>\n",
-				$text{"kill_".lc($s)}, $s;
+			print &ui_submit($text{"kill_".lc($s)}, $s);
 			}
-		print "</form>\n";
+		print &ui_form_end();
 		}
 	elsif (@pidlist && $access{'edit'}) {
 		# display form for mass killing with any signal
-		print "<form action=kill_proc_list.cgi>\n";
-		print "<input type=submit value=\"$text{'proc_kill'}\">\n";
-		print "<input type=hidden name=args value=\"",
-		      &html_escape($in),"\">\n";
-		printf "<input type=hidden name=pidlist value=\"%s\">\n",
-			join(" ", @pidlist);
-		print "<select name=signal>\n";
-		foreach $s (&supported_signals()) {
-			printf "<option value=\"$s\" %s>$s</option>\n",
-				$s eq "HUP" ? "selected" : "";
-			}
-		print "</select>\n";
-
+		print &ui_form_start("kill_proc_list.cgi");
+		print &ui_submit($text{'proc_kill'});
+		print &ui_hidden("args", $in);
+		print &ui_hidden("pidlist", join(" ", @pidlist));
+		print &ui_select("signal", "HUP", [ &supported_signals() ]);
 		print "&nbsp;" x 2;
-		print "<input type=submit name=TERM ",
-		      "value='$text{'search_sigterm'}'>\n";
+		print &ui_submit($text{'search_sigterm'}, "TERM");
 		print "&nbsp;" x 2;
-		print "<input type=submit name=KILL ",
-		      "value='$text{'search_sigkill'}'>\n";
-		print "</form>\n";
+		print &ui_submit($text{'search_sigkill'}, "KILL");
+		print &ui_form_end();
 		}
 	}
 
