@@ -279,7 +279,7 @@ if ($letsencrypt_cmd) {
 	# Call the native Let's Encrypt client
 	my $temp = &transname();
 	&open_tempfile(TEMP, ">$temp");
-	&print_tempfile(TEMP, "email = $email\n");
+	&print_tempfile(TEMP, "email = ",($account_email || $email),"\n");
 	&print_tempfile(TEMP, "text = True\n");
 	&close_tempfile(TEMP);
 	my $dir = $letsencrypt_cmd;
