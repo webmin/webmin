@@ -10,13 +10,15 @@ foreach $s ('KILL', 'TERM', 'HUP', 'STOP', 'CONT') {
 	}
 
 &ui_print_unbuffered_header(undef, $text{'proc_kill'}, "");
-@pidlist = split(/\s+/, $in{pidlist});
+
+@pidlist = split(/\s+/, $in{'pidlist'});
 @pinfo = &list_processes(@pidlist);
-for($i=0; $i<@pidlist; $i++) {
-	$in{"args$i"} = $pinfo[$i]->{'args'};
-	print "$text{'pid'} <tt>".&html_escape($pidlist[$i])."</tt> ... \n";
-	if (&can_edit_process($pinfo[$i]->{'user'})) {
-		if (&kill_logged($in{signal}, $pidlist[$i])) {
+for($i=0; $i<@pinfo; $i++) {
+	my $p = $pinfo[$i];
+	$in{"args$i"} = $p->{'args'};
+	print "$text{'pid'} <tt>".&html_escape($p->{'pid'})."</tt> ... \n";
+	if (&can_edit_process($p->{'user'})) {
+		if (&kill_logged($in{'signal'}, $p->{'pid'})) {
 			print "SIG".&html_escape($in{'signal'})." $text{'kill_sent'}<br>\n";
 			}
 		else {
